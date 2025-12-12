@@ -2,9 +2,52 @@ allprojects {
     repositories {
         google()
         mavenCentral()
+
+        flatDir {
+            dirs("libs")
+        }
+        //TU(Core)
+        maven {
+            url = uri( "https://jfrog.anythinktech.com/artifactory/overseas_sdk")
+        }
+
+        //Ironsource
+        maven {
+            url  = uri("https://android-sdk.is.com/")
+        }
+
+        //Pangle
+        maven {
+            url  = uri("https://artifact.bytedance.com/repository/pangle")
+        }
+
+        //Mintegral
+        maven {
+            url = uri( "https://dl-maven-android.mintegral.com/repository/mbridge_android_sdk_oversea")
+        }
+
+        //Chartboost
+        maven {
+            url  = uri("https://cboost.jfrog.io/artifactory/chartboost-ads")
+        }
+        maven {
+            url  = uri("https://cboost.jfrog.io/artifactory/chartboost-mediation")
+        }
+
+        maven { url = uri("https://artifactory.bidmachine.io/bidmachine") }
+
     }
+
 }
 
+buildscript {
+    repositories {
+        maven { url = uri("https://artifacts.applovin.com/android") }
+    }
+    dependencies {
+        classpath ("com.applovin.quality:AppLovinQualityServiceGradlePlugin:+")
+    }
+}
 val newBuildDir: Directory =
     rootProject.layout.buildDirectory
         .dir("../../build")
