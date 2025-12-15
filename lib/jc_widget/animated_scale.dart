@@ -3,8 +3,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
-class SSAScale extends StatefulWidget {
-  const SSAScale({
+class TwAScale extends StatefulWidget {
+  const TwAScale({
     super.key,
     required this.child,
     this.milliseconds = 1000,
@@ -18,12 +18,12 @@ class SSAScale extends StatefulWidget {
   final double? maxS;
 
   @override
-  State<SSAScale> createState() => _SSAScaleState();
+  State<TwAScale> createState() => _TwAScaleState();
 
 }
 
 
-class _SSAScaleState extends State<SSAScale> {
+class _TwAScaleState extends State<TwAScale> {
   double _sssssscale = 1;
 
   Timer? _ttttt;

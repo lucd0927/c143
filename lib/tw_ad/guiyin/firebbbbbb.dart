@@ -8,30 +8,26 @@ import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flutter/material.dart';
 
-import '../../jc_gj/log.dart';
+import '../../jc_gj/loggggg.dart';
 
-class PBFireBbbbbb {
+class TwFirebasssss {
   // auto patch 391
-  static final PBFireBbbbbb _instance = PBFireBbbbbb._();
+  static final TwFirebasssss _instance = TwFirebasssss._();
 
-  PBFireBbbbbb._();
+  TwFirebasssss._();
 
-  factory PBFireBbbbbb() => _instance;
+  factory TwFirebasssss() => _instance;
 
   final update = StreamController<bool>.broadcast();
 
   String by({required String name}) =>
       FirebaseRemoteConfig.instance.getString(name);
 
-  Future<void> initFirebase() async {
-    // auto patch 904
-    // if (Platform.isAndroid) {
-    //   return;
-    // }
+  Future<void> init() async {
     try {
-      ssLogggg("==PBFireBbbbbb==initFirebase====");
+      twLooog("==PBFireBbbbbb==initFirebase====");
       FirebaseApp firebaseApp = await Firebase.initializeApp();
-      ssLogggg(
+      twLooog(
         "==PBFireBbbbbb==initFirebase===firebaseApp:${firebaseApp.toString()}=",
       );
       FlutterError.onError =
@@ -44,31 +40,31 @@ class PBFireBbbbbb {
       // Pass all uncaught asynchronous errors that aren't handled by the Flutter framework to Crashlytics
       FirebaseRemoteConfig.instance.onConfigUpdated.listen((event) async {
         await FirebaseRemoteConfig.instance.activate();
-        ssLogggg(
+        twLooog(
           "===PBFireBbbbbb.instance.onConfigUpdated.listen=====$event=",
         );
         // Use the new jc_huanjing values here.
       });
       await _remote();
     } catch (e) {
-      ssLogggg("==PBFireBbbbbb==initFirebase===error:$e");
+      twLooog("==PBFireBbbbbb==initFirebase===error:$e");
     }
   }
 
   _remote() async {
     try {
-      ssLogggg("==PBFireBbbbbb=====remote ensureInitialized");
+      twLooog("==PBFireBbbbbb=====remote ensureInitialized");
       await FirebaseRemoteConfig.instance.ensureInitialized();
       // auto patch 99
-      ssLogggg("==PBFireBbbbbb=====remote fetchAndActivate");
+      twLooog("==PBFireBbbbbb=====remote fetchAndActivate");
       await FirebaseRemoteConfig.instance.fetchAndActivate();
       // auto patch 393
       // AbaoUtils().runme();
       update.sink.add(true);
     } catch (e) {
-      ssLogggg("==PBFireBbbbbb=====remote error:$e");
+      twLooog("==PBFireBbbbbb=====remote error:$e");
       // FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
     }
-    ssLogggg("==PBFireBbbbbb=====remote end");
+    twLooog("==PBFireBbbbbb=====remote end");
   }
 }

@@ -1,25 +1,25 @@
 
 import 'package:get/get.dart';
-import 'package:c143/jc_ad/kuangkuang/ad_limit.dart';
-import 'package:c143/jc_gj/denglugengzhong.dart';
-import 'package:c143/jc_gj/log.dart';
-import 'package:c143/jc_hive/sshive.dart';
+import 'package:c143/tw_ad/dialooooo/ad_limit.dart';
+import 'package:c143/jc_gj/login_trackkkk.dart';
+import 'package:c143/jc_gj/loggggg.dart';
+import 'package:c143/jc_hive/twhive.dart';
 
 
-import 'fengkong.dart';
+import 'fengkkkong.dart';
 
-class FKAds {
-  static final FKAds _instance = FKAds._();
+class TwFengkAds {
+  static final TwFengkAds _instance = TwFengkAds._();
 
-  factory FKAds() {
+  factory TwFengkAds() {
     return _instance;
   }
 
-  FKAds._(){
+  TwFengkAds._(){
     initCount();
   }
 
-  var box = SSHive.box;
+  var box = TwHive.box;
 
   String kLookAdCount = "kLookAdCount";
 
@@ -53,8 +53,8 @@ class FKAds {
   bool hasDanger = false;
 
   initCount() {
-    ssLogggg("==FKAds===initCount===");
-    if (PBLoginGenzhong.isFirstLoginToday) {
+    twLooog("==FKAds===initCount===");
+    if (TwLoginnnTrackkkk.isFirstLoginToday) {
       int count = 0;
       box.put(kLookAdCount, count);
       box.put(kLookAdRvCount, count);
@@ -62,24 +62,24 @@ class FKAds {
   }
 
   bool showDangerWidthInter() {
-    bool fkDanger = PBFk.hasDanger;
-    ssLogggg("插屏==风控======fkDanger=$fkDanger=hasDanger:$hasDanger");
+    bool fkDanger = TwFengk.hasDanger;
+    twLooog("插屏==风控======fkDanger=$fkDanger=hasDanger:$hasDanger");
     if (hasDanger || fkDanger) {
       return true;
     }
-    bool result = PBFk.needUibehavior();
-    ssLogggg("插屏==风控==showDangerWidthInter=needUibehavior==需要检测:$result");
+    bool result = TwFengk.needUibehavior();
+    twLooog("插屏==风控==showDangerWidthInter=needUibehavior==需要检测:$result");
     if (!result) {
       return false;
     }
     bool ad_daily_show_danger = ad_daily_show();
-    ssLogggg("插屏==风控======ad_daily_show:$ad_daily_show_danger");
+    twLooog("插屏==风控======ad_daily_show:$ad_daily_show_danger");
     if (ad_daily_show_danger) {
       return true;
     }
     // 现金金额达到提现门槛,视频数少于n次
     bool wrong_deem_ad_less_danger = wrong_deem_ad_less();
-    ssLogggg("激励==风控======wrong_deem_ad_less====:$wrong_deem_ad_less_danger");
+    twLooog("激励==风控======wrong_deem_ad_less====:$wrong_deem_ad_less_danger");
     if (wrong_deem_ad_less_danger) {
       return true;
     }
@@ -89,21 +89,21 @@ class FKAds {
   // 返回激励广告是否被封控
   bool showDangerWidthRv() {
     // 是否被封控
-    bool fkDanger = PBFk.hasDanger;
-    ssLogggg("激励==风控======fkDanger=$fkDanger=hasDanger:$hasDanger");
+    bool fkDanger = TwFengk.hasDanger;
+    twLooog("激励==风控======fkDanger=$fkDanger=hasDanger:$hasDanger");
     if (hasDanger || fkDanger) {
       return true;
     }
 
-    bool result = PBFk.needUibehavior();
-    ssLogggg("激励==风控======needUibehavior==需要检测:$result");
+    bool result = TwFengk.needUibehavior();
+    twLooog("激励==风控======needUibehavior==需要检测:$result");
     if (!result) {
       return false;
     }
 
     // 每日广告观看数上限
     bool ad_daily_show_danger = ad_daily_show();
-    ssLogggg("激励==风控======ad_daily_show:$ad_daily_show_danger");
+    twLooog("激励==风控======ad_daily_show:$ad_daily_show_danger");
     if (ad_daily_show_danger) {
       return true;
     }
@@ -114,14 +114,14 @@ class FKAds {
     // 现金金额达到提现门槛,视频数少于n次
 
     bool wrong_deem_ad_less_danger = wrong_deem_ad_less();
-    ssLogggg("激励==风控======wrong_deem_ad_less====:$wrong_deem_ad_less_danger");
+    twLooog("激励==风控======wrong_deem_ad_less====:$wrong_deem_ad_less_danger");
     if (wrong_deem_ad_less_danger) {
       return true;
     }
 
     //  用户观看90次RV(不包含插屏)，未到提现门槛
     bool ad_more_danger = wrong_deem_ad_more();
-    ssLogggg("激励==风控======wrong_deem_ad_more====ad_more_danger:$ad_more_danger");
+    twLooog("激励==风控======wrong_deem_ad_more====ad_more_danger:$ad_more_danger");
     if (ad_more_danger) {
       return true;
     }
@@ -137,8 +137,8 @@ class FKAds {
   }
 
   bool ad_short_close() {
-    bool result = PBFk.needUibehavior();
-    ssLogggg(
+    bool result = TwFengk.needUibehavior();
+    twLooog(
       "====ad_short_close=需要检测:$result  millRewordClose:$millRewordClose",
     );
     if (!result) {
@@ -149,20 +149,20 @@ class FKAds {
       millRewordClose = curTime;
     } else {
       int diff = curTime - millRewordClose;
-      var tuple2 = PBFk.behavior_ad_short_close();
+      var tuple2 = TwFengk.behavior_ad_short_close();
       int firebaseDiff = tuple2.item1 * 1000;
-      ssLogggg(
+      twLooog(
         "====ad_short_close=需要检测:相隔多少毫秒：$diff。firebaseDiff：$firebaseDiff dangerRewordCountClose:$dangerRewordCountClose",
       );
       if (diff < firebaseDiff) {
         dangerRewordCountClose = dangerRewordCountClose + 1;
         int count = tuple2.item2;
-        ssLogggg(
+        twLooog(
           "====ad_short_close=count:$count dangerRewordCountClose:$dangerRewordCountClose",
         );
         if (count <= dangerRewordCountClose) {
           hasDanger = true;
-          PBFk.risk_chance(value: "ad_short_close");
+          TwFengk.risk_chance(value: "ad_short_close");
           return true;
         }
       }
@@ -174,8 +174,8 @@ class FKAds {
 
   //  用户观看N次RV(不包含插屏)，未到提现门槛
   bool wrong_deem_ad_more() {
-    bool result = PBFk.needUibehavior();
-    ssLogggg("===wrong_deem_ad_more==需要检测:$result");
+    bool result = TwFengk.needUibehavior();
+    twLooog("===wrong_deem_ad_more==需要检测:$result");
     if (!result) {
       return false;
     }
@@ -183,16 +183,16 @@ class FKAds {
     count = count + 1;
     box.put(kLookAdRvCount, count);
 
-    int allCount = PBFk.behavior_wrong_deem_ad_more();
+    int allCount = TwFengk.behavior_wrong_deem_ad_more();
     // todo:一定要改
     // bool hasInitWithdrawTask = !XianjinController.to.hasInitWithdrawTask();
     bool hasInitWithdrawTask = false;
-    ssLogggg(
+    twLooog(
       "===wrong_deem_ad_more==allCount:$allCount  count:$count 提现门槛：$hasInitWithdrawTask",
     );
     if (allCount < count && hasInitWithdrawTask) {
       hasDanger = true;
-      PBFk.risk_chance(value: "wrong_deem_ad_more");
+      TwFengk.risk_chance(value: "wrong_deem_ad_more");
       return true;
     }
 
@@ -200,8 +200,8 @@ class FKAds {
   }
 
   bool ad_short_show() {
-    bool result = PBFk.needUibehavior();
-    ssLogggg("=ad_short_show1====需要检测:$result millRewordShow:$millRewordShow");
+    bool result = TwFengk.needUibehavior();
+    twLooog("=ad_short_show1====需要检测:$result millRewordShow:$millRewordShow");
     if (!result) {
       return false;
     }
@@ -212,17 +212,17 @@ class FKAds {
       millRewordShow = curTime;
     } else {
       int diff = curTime - millRewordShow;
-      var tuple2 = PBFk.behavior_ad_short_show();
+      var tuple2 = TwFengk.behavior_ad_short_show();
       int firebaseDiff = tuple2.item1 * 1000;
-      ssLogggg("===ad_short_show2==diff:$diff  firebaseDiff:$firebaseDiff");
+      twLooog("===ad_short_show2==diff:$diff  firebaseDiff:$firebaseDiff");
       if (diff < firebaseDiff) {
         dangerRewordCountShow = dangerRewordCountShow + 1;
         int count = tuple2.item2;
-        ssLogggg(
+        twLooog(
           "===ad_short_show==dangerRewordCountShow:$dangerRewordCountShow count：$count",
         );
         if (count < dangerRewordCountShow) {
-          PBFk.risk_chance(value: "ad_short_show");
+          TwFengk.risk_chance(value: "ad_short_show");
           hasDanger = true;
           return true;
         }
@@ -239,14 +239,14 @@ class FKAds {
     count = count + 1;
     box.put(kLookAdCount, count);
 
-    int allCount = PBFk.behavior_ad_daily_show();
-    ssLogggg("==ad_daily_show=====allCount:$allCount count:$count");
+    int allCount = TwFengk.behavior_ad_daily_show();
+    twLooog("==ad_daily_show=====allCount:$allCount count:$count");
     if (allCount < count) {
       if (!hasDanger) {
-        PBFk.see_you_tomorrow();
+        TwFengk.see_you_tomorrow();
         showTomorrowDialog();
       }
-      PBFk.risk_chance(value: "ad_daily_show");
+      TwFengk.risk_chance(value: "ad_daily_show");
 
       hasDanger = true;
       return true;
@@ -271,9 +271,9 @@ class FKAds {
     bool hasInitWithdrawTask = false;
     double minWithdrawMoney = 1000;
 
-    bool result = PBFk.needUibehavior();
+    bool result = TwFengk.needUibehavior();
 
-    ssLogggg("=====wrong_deem_ad_less=需要检测:$result  curMoney:$curMoney");
+    twLooog("=====wrong_deem_ad_less=需要检测:$result  curMoney:$curMoney");
     if (!result) {
       return false;
     }
@@ -282,14 +282,14 @@ class FKAds {
     box.put(kDangerWithdrawCount, count);
     // bool hasSaveCardId = CashController.to.hasSaveCardId();
     // double minWithdrawMoney = HomeController.to.maxMoney;
-    ssLogggg(
+    twLooog(
       "=====wrong_deem_ad_less=minWithdrawMoney:$minWithdrawMoney curMoney：$curMoney hasInitWithdrawTask:$hasInitWithdrawTask",
     );
     if (curMoney >= minWithdrawMoney || hasInitWithdrawTask) {
-      int allCount = PBFk.behavior_wrong_deem_ad_less();
-      ssLogggg("=====wrong_deem_ad_less=allCount:$allCount  count:$count");
+      int allCount = TwFengk.behavior_wrong_deem_ad_less();
+      twLooog("=====wrong_deem_ad_less=allCount:$allCount  count:$count");
       if (allCount >= count) {
-        PBFk.risk_chance(value: "wrong_deem_ad_less");
+        TwFengk.risk_chance(value: "wrong_deem_ad_less");
         hasDanger = true;
         return true;
       }

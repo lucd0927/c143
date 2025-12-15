@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:event_bus/event_bus.dart';
 import 'package:flutter/material.dart';
 
-class SSEventBus {
+class TwEventBus {
   static final EventBus _eeeee = EventBus();
 
   static void fire(dynamic event) {
@@ -12,7 +12,7 @@ class SSEventBus {
 }
 
 mixin SSEventBusMix<T extends StatefulWidget> on State<T> {
-  EventBus get eventBus => SSEventBus._eeeee;
+  EventBus get eventBus => TwEventBus._eeeee;
 
   final Map<String, StreamSubscription?> _eventMapStreams = {};
 

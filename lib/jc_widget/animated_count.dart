@@ -4,7 +4,7 @@ import 'dart:ui' show FontFeature;
 
 import 'package:flutter/widgets.dart';
 
-class SSAniiiiCount extends StatelessWidget {
+class TwAnimated_countttt extends StatelessWidget {
   /// The value of this counter.
   ///
   /// When a new value is specified, the counter will automatically animate
@@ -91,7 +91,7 @@ class SSAniiiiCount extends StatelessWidget {
   final EdgeInsets padding;
 
   final Gradient? textGradient;
-  const SSAniiiiCount({
+  const TwAnimated_countttt({
     super.key,
     required this.value,
     this.duration = const Duration(milliseconds: 300),

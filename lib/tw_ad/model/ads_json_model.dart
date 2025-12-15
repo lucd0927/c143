@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import '../gg_common_config.dart';
+import '../base_config.dart';
 
 
 

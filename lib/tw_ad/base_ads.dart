@@ -3,13 +3,13 @@ import 'dart:convert';
 import 'dart:math';
 
 import 'package:flutter_custom_facebook/flutter_custom_facebook.dart';
-import 'package:c143/jc_ad/guiyin/af.dart';
-import 'package:c143/jc_ad/guiyin/package.dart';
-import 'package:c143/jc_ad/uuuump.dart';
-import 'package:c143/jc_ad/guiyin/firebbbbbb.dart';
-import 'package:c143/jc_gj/log.dart';
+import 'package:c143/tw_ad/guiyin/af.dart';
+import 'package:c143/tw_ad/guiyin/package.dart';
+import 'package:c143/tw_ad/uuuump.dart';
+import 'package:c143/tw_ad/guiyin/firebbbbbb.dart';
+import 'package:c143/jc_gj/loggggg.dart';
 import 'package:c143/jc_gj/package.dart';
-import 'package:c143/jc_hive/sshive.dart';
+import 'package:c143/jc_hive/twhive.dart';
 import 'package:c143/jc_net/http_dio.dart';
 import 'package:c143/jc_widget/pb_tushi.dart';
 
@@ -21,27 +21,27 @@ import 'package:loader_overlay/loader_overlay.dart';
 
 import 'package:tuple/tuple.dart';
 
-import 'ads_tips.dart';
+import 'ads_tipppps.dart';
 
-import 'fengkong.dart';
-import 'fengkong_ads.dart';
-import 'gg_common_config.dart';
-import 'max.dart';
+import 'fengkkkong.dart';
+import 'fengkkong_adssss.dart';
+import 'base_config.dart';
+import 'base_max.dart';
 import 'model/ads_json_model.dart';
-import 'topon.dart';
+import 'base_topon.dart';
 
 
 
-class PBCommonAds {
-  static final PBCommonAds _instance = PBCommonAds._();
+class TwCommonAds {
+  static final TwCommonAds _instance = TwCommonAds._();
 
-  factory PBCommonAds() {
+  factory TwCommonAds() {
     return _instance;
   }
 
-  PBCommonAds._();
+  TwCommonAds._();
 
-  var box = SSHive.box;
+  var box = TwHive.box;
 
   late Map<String, dynamic> firebaseJson;
 
@@ -63,23 +63,23 @@ class PBCommonAds {
 
   // key:rvone       item1: adid
   //                 item2: platform
-  //                 item3: jc_ad type
+  //                 item3: tw_ad type
   //                 item4: time out
   // var interstitialData = {};
   // var rewardData = {};
 
-  GGCommonAdsListener? _ggCommonAdsListener;
+  TwComAdsListener? _ggCommonAdsListener;
   static const String kSWlvac = "kSWlvac";
 
   static void addAdEndCount() {
-    var box = SSHive.box;
+    var box = TwHive.box;
 
     int count = box.get(kSWlvac) ?? 0;
     count = count + 1;
     box.put(kSWlvac, count);
     int zero = count % 5;
     bool result = zero == 0;
-    ssLogggg("=addAdEndCount=now:$count===zero:$zero  report:$result");
+    twLooog("=addAdEndCount=now:$count===zero:$zero  report:$result");
     if (result) {
       // todo:
       // SWEventReport.cash_ad_detail("$count");
@@ -94,12 +94,12 @@ class PBCommonAds {
   static bool _hasDisplayAd = false;
 
   static bool hasDisplayAd() {
-    ssLogggg("===== 广告是否正在显示:$_hasDisplayAd");
+    twLooog("===== 广告是否正在显示:$_hasDisplayAd");
     return _hasDisplayAd;
   }
 
   static void resetDisplayAd() {
-    ssLogggg("=resetDisplayAd==_hasDisplayAd:false=");
+    twLooog("=resetDisplayAd==_hasDisplayAd:false=");
     _hasDisplayAd = false;
   }
 
@@ -152,13 +152,13 @@ class PBCommonAds {
         mediationNetwork = AFMediationNetwork.topon.value;
         break;
     }
-    ssLogggg(
+    twLooog(
       "==logRevenue ===network:$network currency:$currency value:$value source:$source。¥ mediationNetwork:$mediationNetwork ${mediationNetwork.isEmpty}",
     );
     if (mediationNetwork.isEmpty) return;
 
-    AppsflyerSdk? appsflyerSdk = JcAF.appsflyerSdk();
-    ssLogggg(
+    AppsflyerSdk? appsflyerSdk = TwApppsF.appsflyerSdk();
+    twLooog(
       "==logRevenue ===network:$network currency:$currency value:$value source:$source   appsflyerSdk:$appsflyerSdk",
     );
     appsflyerSdk?.logAdRevenue(
@@ -185,7 +185,7 @@ class PBCommonAds {
     int curTime = curDateTime.millisecondsSinceEpoch;
     String adsId = "";
     double ecpm = 0;
-    ssLogggg(
+    twLooog(
       "==onAdLoadedCallback===platform:$platform adsType:$adsType  curTime:${curDateTime}",
     );
     if (platform == EnumAdsPlatform.max) {
@@ -195,7 +195,7 @@ class PBCommonAds {
         // todo: 记得删除
         // ecpm = Random().nextDouble();
       }
-      ssLogggg(
+      twLooog(
         "==onAdLoadedCallback===platform adsId max:$adsId data:${data.toString()}",
       );
     } else if (platform == EnumAdsPlatform.topon) {
@@ -203,7 +203,7 @@ class PBCommonAds {
         adsId = data.placementID;
         var extraMap = data.extraMap;
         ecpm = extraMap['publisher_revenue'] ?? 0;
-        ssLogggg(
+        twLooog(
           "==onAdLoadedCallback===platform adsId topon:$adsId data:${data.extraMap}",
         );
       }
@@ -214,7 +214,7 @@ class PBCommonAds {
       GGCommonJson.k_ad_type: adsType,
       GGCommonJson.k_platfrom: platform,
     };
-    ssLogggg(
+    twLooog(
       "==onAdLoadedCallback===platform adsId:$adsId cacheAdsData:${cacheAdsData}  ===ecpm:$ecpm",
     );
     if (_hasFirstIntLoaded) {
@@ -234,17 +234,17 @@ class PBCommonAds {
     EnumAdsType adsType,
     dynamic data,
   ) {
-    ssLogggg(
+    twLooog(
       "==onAdLoadFailedCallback===platform:$platform adsType:$adsType $cacheAdsData",
     );
 
     DateTime curDateTime = DateTime.now();
     int curTime = curDateTime.millisecondsSinceEpoch;
     String adsId = "------";
-    ssLogggg(
+    twLooog(
       "==onAdLoadFailedCallback===platform:$platform adsType:$adsType  curTime:${curDateTime}",
     );
-    ssLogggg("==onAdLoadFailedCallback===platform data:${data.toString()}");
+    twLooog("==onAdLoadFailedCallback===platform data:${data.toString()}");
     if (platform == EnumAdsPlatform.max) {
       if (data is String) {
         adsId = data;
@@ -253,7 +253,7 @@ class PBCommonAds {
       if (data is ATInterstitialResponse || data is ATRewardResponse) {
         adsId = data.placementID;
         // var extraMap = data.extraMap;
-        ssLogggg(
+        twLooog(
           "==onAdLoadFailedCallback===platform adsId:$adsId data:${data.extraMap}",
         );
       }
@@ -263,7 +263,7 @@ class PBCommonAds {
     //   value.complete(false);
     // });
     // cacheCompleter.clear();
-    ssLogggg("==onAdLoadFailedCallback===cacheCompleter:$cacheCompleter ");
+    twLooog("==onAdLoadFailedCallback===cacheCompleter:$cacheCompleter ");
     // 延迟2s加载
     Future.delayed(Duration(milliseconds: 2000), () {
       loadAdWithAdsId(adsType, adsId);
@@ -271,7 +271,7 @@ class PBCommonAds {
   }
 
   void loadAdWithAdsId(EnumAdsType adsType, String adsId) {
-    ssLogggg("=====loadAdWithAdsId EnumAdsType:$adsType  adsID:$adsId");
+    twLooog("=====loadAdWithAdsId EnumAdsType:$adsType  adsID:$adsId");
 
     AdsJsonModel? adsJsonModel;
     if (adsType == EnumAdsType.reward) {
@@ -289,7 +289,7 @@ class PBCommonAds {
     EnumAdsType adsType,
     dynamic data,
   ) {
-    ssLogggg(
+    twLooog(
       "==onAdDisplayFailedCallback===播放失败platform:$platform adsType:$adsType",
     );
 
@@ -305,7 +305,7 @@ class PBCommonAds {
         // var extraMap = data.extraMap;
       }
     }
-    ssLogggg("==onAdDisplayFailedCallback===platform adsId:$adsId");
+    twLooog("==onAdDisplayFailedCallback===platform adsId:$adsId");
 
     cacheCompleter.forEach((key, value) {
       value.complete(false);
@@ -323,7 +323,7 @@ class PBCommonAds {
     EnumAdsType adsType,
     dynamic data,
   ) {
-    ssLogggg("==onAdDisplayedCallback===platform:$platform adsType:$adsType");
+    twLooog("==onAdDisplayedCallback===platform:$platform adsType:$adsType");
     // todo:
   }
 
@@ -333,15 +333,15 @@ class PBCommonAds {
     EnumAdsType adsType,
     dynamic data,
   ) {
-    ssLogggg("==onAdHiddenCallback===platform:$platform adsType:$adsType");
+    twLooog("==onAdHiddenCallback===platform:$platform adsType:$adsType");
     if (adsType == EnumAdsType.reward) {
-      FKAds().ad_short_close();
-      FKAds().ad_short_show();
+      TwFengkAds().ad_short_close();
+      TwFengkAds().ad_short_show();
     }
     DateTime curDateTime = DateTime.now();
     int curTime = curDateTime.millisecondsSinceEpoch;
     String adsId = "------";
-    ssLogggg(
+    twLooog(
       "==onAdHiddenCallback===platform:$platform adsType:$adsType  curTime:${curDateTime}",
     );
     bool result = true;
@@ -360,7 +360,7 @@ class PBCommonAds {
     }
 
     var tmpCompleter = cacheCompleter[adsId];
-    ssLogggg("==onAdHiddenCallback==result:$result=_hasRvRevenueReceived:$_hasRvRevenueReceived");
+    twLooog("==onAdHiddenCallback==result:$result=_hasRvRevenueReceived:$_hasRvRevenueReceived");
     tmpCompleter?.complete(result);
     cacheCompleter.remove(adsId);
     addAdEndCount();
@@ -373,7 +373,7 @@ class PBCommonAds {
     EnumAdsType adsType,
     dynamic data,
   ) {
-    ssLogggg("==onAdRevenuePaidCallback===platform:$platform adsType:$adsType");
+    twLooog("==onAdRevenuePaidCallback===platform:$platform adsType:$adsType");
 
     DateTime curDateTime = DateTime.now();
     int curTime = curDateTime.millisecondsSinceEpoch;
@@ -397,7 +397,7 @@ class PBCommonAds {
         adsId = data.placementID;
         var extraMap = data.extraMap;
         currency = extraMap['currency'] ?? "";
-        ssLogggg("==onAdRevenuePaidCallback===¥extraMap：$extraMap");
+        twLooog("==onAdRevenuePaidCallback===¥extraMap：$extraMap");
         var tmprevenue = extraMap['publisher_revenue'] ?? 0.0;
         if (tmprevenue is num) {
           revenue = tmprevenue * 1.0;
@@ -407,11 +407,11 @@ class PBCommonAds {
       }
     }
     rvRevenueReceivedTrue();
-    ssLogggg(
+    twLooog(
       "==onAdRevenuePaidCallback===platform:$platform adsType:$adsType currency:$currency  revenue:${revenue}",
     );
 
-    SSHttpDio().adEvent(
+    TwHttpDio().adEvent(
       networkName: networkName,
       adsId: adsId,
       format: format,
@@ -432,16 +432,16 @@ class PBCommonAds {
   }
 
   _initListener() {
-    _ggCommonAdsListener = GGCommonAdsListener(
+    _ggCommonAdsListener = TwComAdsListener(
       interstitialListener: InterstitialListener(
         onAdLoadedCallback: (ad) {
-          ssLogggg(
-            "插屏initializeInterstitialAds======onAdLoadedCallback jc_ad:${ad.adUnitId}",
+          twLooog(
+            "插屏initializeInterstitialAds======onAdLoadedCallback tw_ad:${ad.adUnitId}",
           );
           onAdLoadedCallback(EnumAdsPlatform.max, EnumAdsType.interstitial, ad);
         },
         onAdLoadFailedCallback: (adUnitId, error) {
-          ssLogggg(
+          twLooog(
             "插屏initializeInterstitialAds======onAdLoadFailedCallback 加载失败  adUnitId:$adUnitId error:$error",
           );
           onAdLoadFailedCallback(
@@ -451,10 +451,10 @@ class PBCommonAds {
           );
         },
         onAdDisplayedCallback: (ad) {
-          ssLogggg("插屏initializeInterstitialAds======onAdDisplayedCallback");
+          twLooog("插屏initializeInterstitialAds======onAdDisplayedCallback");
         },
         onAdDisplayFailedCallback: (ad, error) {
-          ssLogggg(
+          twLooog(
             "插屏initializeInterstitialAds======onAdDisplayFailedCallback error:$error",
           );
           onAdDisplayFailedCallback(
@@ -464,10 +464,10 @@ class PBCommonAds {
           );
         },
         onAdClickedCallback: (ad) {
-          ssLogggg("插屏initializeInterstitialAds======onAdClickedCallback");
+          twLooog("插屏initializeInterstitialAds======onAdClickedCallback");
         },
         onAdHiddenCallback: (ad) {
-          ssLogggg("插屏initializeInterstitialAds======onAdHiddenCallback");
+          twLooog("插屏initializeInterstitialAds======onAdHiddenCallback");
           onAdHiddenCallback(EnumAdsPlatform.max, EnumAdsType.interstitial, ad);
         },
         onAdRevenuePaidCallback: (ad) {
@@ -481,14 +481,14 @@ class PBCommonAds {
       ),
       rewardedAdListener: RewardedAdListener(
         onAdLoadedCallback: (ad) {
-          ssLogggg(
-            "激励initializeRewardedAd======onAdLoadedCallback jc_ad:${ad.adUnitId}",
+          twLooog(
+            "激励initializeRewardedAd======onAdLoadedCallback tw_ad:${ad.adUnitId}",
           );
           onAdLoadedCallback(EnumAdsPlatform.max, EnumAdsType.reward, ad);
         },
         onAdLoadFailedCallback: (adUnitId, error) {
           //  网络加载失败
-          ssLogggg(
+          twLooog(
             "激励initializeRewardedAd======onAdLoadFailedCallback 加载失败 adUnitId:$adUnitId error:$error",
           );
           onAdLoadFailedCallback(
@@ -498,11 +498,11 @@ class PBCommonAds {
           );
         },
         onAdDisplayedCallback: (ad) {
-          ssLogggg("激励initializeRewardedAd======onAdDisplayedCallback");
-          ssLogggg("onAdDisplayedCallback:${ad.placement}  ${ad.toString()}");
+          twLooog("激励initializeRewardedAd======onAdDisplayedCallback");
+          twLooog("onAdDisplayedCallback:${ad.placement}  ${ad.toString()}");
         },
         onAdDisplayFailedCallback: (ad, error) {
-          ssLogggg("激励initializeRewardedAd======onAdDisplayFailedCallback");
+          twLooog("激励initializeRewardedAd======onAdDisplayFailedCallback");
           onAdDisplayFailedCallback(
             EnumAdsPlatform.max,
             EnumAdsType.reward,
@@ -510,18 +510,18 @@ class PBCommonAds {
           );
         },
         onAdClickedCallback: (ad) {
-          ssLogggg("激励initializeRewardedAd======onAdClickedCallback");
+          twLooog("激励initializeRewardedAd======onAdClickedCallback");
         },
         onAdHiddenCallback: (ad) {
-          ssLogggg("激励initializeRewardedAd======onAdHiddenCallback");
+          twLooog("激励initializeRewardedAd======onAdHiddenCallback");
           onAdHiddenCallback(EnumAdsPlatform.max, EnumAdsType.reward, ad);
         },
         onAdReceivedRewardCallback: (ad, reward) {
-          ssLogggg("激励initializeRewardedAd======onAdReceivedRewardCallback");
+          twLooog("激励initializeRewardedAd======onAdReceivedRewardCallback");
         },
         onAdRevenuePaidCallback: (ad) {
           //todo: 广告事件
-          ssLogggg("激励initializeRewardedAd======onAdRevenuePaidCallback");
+          twLooog("激励initializeRewardedAd======onAdRevenuePaidCallback");
           onAdRevenuePaidCallback(EnumAdsPlatform.max, EnumAdsType.reward, ad);
         },
       ),
@@ -529,7 +529,7 @@ class PBCommonAds {
         switch (value.rewardStatus) {
           //广告加载失败
           case RewardedStatus.rewardedVideoDidFailToLoad:
-            ssLogggg(
+            twLooog(
               "=======topon激励====rewardedVideoDidFailToLoad ---- placementID: ${value.placementID} ---- errStr:${value.requestMessage}",
             );
             Future.delayed(Duration(seconds: 1), () {
@@ -543,7 +543,7 @@ class PBCommonAds {
             break;
           //广告加载成功
           case RewardedStatus.rewardedVideoDidFinishLoading:
-            ssLogggg(
+            twLooog(
               "=======topon激励====rewardedVideoDidFinishLoading ---- placementID: ${value.placementID}",
             );
             onAdLoadedCallback(
@@ -554,7 +554,7 @@ class PBCommonAds {
             break;
           //广告开始播放
           case RewardedStatus.rewardedVideoDidStartPlaying:
-            ssLogggg(
+            twLooog(
               "=======topon激励====rewardedVideoDidStartPlaying ---- placementID: ${value.placementID} ---- extra:${value.extraMap}",
             );
             onAdDisplayedCallback(
@@ -565,13 +565,13 @@ class PBCommonAds {
             break;
           //广告结束播放
           case RewardedStatus.rewardedVideoDidEndPlaying:
-            ssLogggg(
+            twLooog(
               "=======topon激励====rewardedVideoDidEndPlaying ---- placementID: ${value.placementID} ---- extra:${value.extraMap}",
             );
             break;
           //广告播放失败
           case RewardedStatus.rewardedVideoDidFailToPlay:
-            ssLogggg(
+            twLooog(
               "=======topon激励====rewardedVideoDidFailToPlay ---- placementID: ${value.placementID} ---- errStr:${value.extraMap}",
             );
             onAdDisplayFailedCallback(
@@ -582,7 +582,7 @@ class PBCommonAds {
             break;
           //激励成功，建议在此回调中下发奖励
           case RewardedStatus.rewardedVideoDidRewardSuccess:
-            ssLogggg(
+            twLooog(
               "=======topon激励====rewardedVideoDidRewardSuccess ---- placementID: ${value.placementID} ---- extra:${value.extraMap}",
             );
             onAdRevenuePaidCallback(
@@ -593,19 +593,19 @@ class PBCommonAds {
             break;
           //广告被点击
           case RewardedStatus.rewardedVideoDidClick:
-            ssLogggg(
+            twLooog(
               "=======topon激励====rewardedVideoDidClick ---- placementID: ${value.placementID} ---- extra:${value.extraMap}",
             );
             break;
           //Deeplink
           case RewardedStatus.rewardedVideoDidDeepLink:
-            ssLogggg(
+            twLooog(
               "=======topon激励====rewardedVideoDidDeepLink ---- placementID: ${value.placementID} ---- extra:${value.extraMap} ---- isDeeplinkSuccess:${value.isDeeplinkSuccess}",
             );
             break;
           //广告被关闭
           case RewardedStatus.rewardedVideoDidClose:
-            ssLogggg(
+            twLooog(
               "=======topon激励====rewardedVideoDidClose ---- placementID: ${value.placementID} ---- extra:${value.extraMap}",
             );
             onAdHiddenCallback(
@@ -615,7 +615,7 @@ class PBCommonAds {
             );
             break;
           case RewardedStatus.rewardedVideoUnknown:
-            ssLogggg("=======topon激励====rewardedVideoUnknown");
+            twLooog("=======topon激励====rewardedVideoUnknown");
             break;
 
           default:
@@ -626,7 +626,7 @@ class PBCommonAds {
         switch (value.interstatus) {
           //广告加载失败
           case InterstitialStatus.interstitialAdFailToLoadAD:
-            ssLogggg(
+            twLooog(
               "=======topon插屏====interstitialAdFailToLoadAD ---- placementID: ${value.placementID} ---- errStr:${value.requestMessage}",
             );
             Future.delayed(Duration(seconds: 1), () {
@@ -639,7 +639,7 @@ class PBCommonAds {
             break;
           //广告加载成功
           case InterstitialStatus.interstitialAdDidFinishLoading:
-            ssLogggg(
+            twLooog(
               "=======topon插屏====interstitialAdDidFinishLoading ---- placementID: ${value.placementID}",
             );
             onAdLoadedCallback(
@@ -650,19 +650,19 @@ class PBCommonAds {
             break;
           //广告视频开始播放，部分平台有此回调
           case InterstitialStatus.interstitialAdDidStartPlaying:
-            ssLogggg(
+            twLooog(
               "=======topon插屏====interstitialAdDidStartPlaying ---- placementID: ${value.placementID} ---- extra:${value.extraMap}",
             );
             break;
           //广告视频播放结束，部分广告平台有此回调
           case InterstitialStatus.interstitialAdDidEndPlaying:
-            ssLogggg(
+            twLooog(
               "=======topon插屏====interstitialAdDidEndPlaying ---- placementID: ${value.placementID} ---- extra:${value.extraMap}",
             );
             break;
           //广告视频播放失败，部分广告平台有此回调
           case InterstitialStatus.interstitialDidFailToPlayVideo:
-            ssLogggg(
+            twLooog(
               "=======topon插屏====interstitialDidFailToPlayVideo ---- placementID: ${value.placementID} ---- errStr:${value.requestMessage}",
             );
             onAdDisplayFailedCallback(
@@ -673,7 +673,7 @@ class PBCommonAds {
             break;
           //广告展示成功
           case InterstitialStatus.interstitialDidShowSucceed:
-            ssLogggg(
+            twLooog(
               "=======topon插屏====interstitialDidShowSucceed ---- placementID: ${value.placementID} ---- extra:${value.extraMap}",
             );
             onAdRevenuePaidCallback(
@@ -685,25 +685,25 @@ class PBCommonAds {
             break;
           //广告展示失败
           case InterstitialStatus.interstitialFailedToShow:
-            ssLogggg(
+            twLooog(
               "=======topon插屏====interstitialFailedToShow ---- placementID: ${value.placementID} ---- errStr:${value.requestMessage}",
             );
             break;
           //广告被点击
           case InterstitialStatus.interstitialAdDidClick:
-            ssLogggg(
+            twLooog(
               "=======topon插屏====interstitialAdDidClick ---- placementID: ${value.placementID} ---- extra:${value.extraMap}",
             );
             break;
           //Deeplink
           case InterstitialStatus.interstitialAdDidDeepLink:
-            ssLogggg(
+            twLooog(
               "=======topon插屏====interstitialAdDidDeepLink ---- placementID: ${value.placementID} ---- extra:${value.extraMap}",
             );
             break;
           //广告被关闭
           case InterstitialStatus.interstitialAdDidClose:
-            ssLogggg(
+            twLooog(
               "=======topon插屏====interstitialAdDidClose ---- placementID: ${value.placementID} ---- extra:${value.extraMap}",
             );
             onAdHiddenCallback(
@@ -714,7 +714,7 @@ class PBCommonAds {
             break;
 
           case InterstitialStatus.interstitialUnknown:
-            ssLogggg("=======topon插屏====interstitialUnknown");
+            twLooog("=======topon插屏====interstitialUnknown");
             break;
         }
       },
@@ -722,23 +722,23 @@ class PBCommonAds {
   }
 
   init() async {
-    ssLogggg("====init==_initListener");
+    twLooog("====init==_initListener");
     _initListener();
-    ssLogggg("====init==firebaseJson");
+    twLooog("====init==firebaseJson");
     firebaseJson = _onlineJson();
 
     _interstitialAdsModel();
-    ssLogggg("====init=hashCode:${hashCode}=_interstitialData:$chapingAdsModel");
+    twLooog("====init=hashCode:${hashCode}=_interstitialData:$chapingAdsModel");
 
     _rewardAdsModel();
-    ssLogggg("====init=hashCode:${hashCode}=_rewardData:$jiliAdsModel");
+    twLooog("====init=hashCode:${hashCode}=_rewardData:$jiliAdsModel");
 
 
-    ssLogggg("====init==PbUuuump start");
-    await PbUuuump().init();
-    ssLogggg("====init==PbUuuump end");
-    ssLogggg("====init==initMax");
-    bool result = await GGMaxAdsNew.initMax(
+    twLooog("====init==PbUuuump start");
+    await TwUmpppp().init();
+    twLooog("====init==PbUuuump end");
+    twLooog("====init==initMax");
+    bool result = await TwMaxAd.initMax(
       encodeKey: GGCommonJson.maxkeyEncode,
       cacheAdsData: cacheAdsData,
       interstitialListener: _ggCommonAdsListener!.interstitialListener,
@@ -747,13 +747,13 @@ class PBCommonAds {
     if (!result) {
       _loadFailReason = AdLoadFailReason.uninitialized;
     }
-    ssLogggg("====init==initTopon");
+    twLooog("====init==initTopon");
     await InitManger.initTopon(
       atInterstitialResponse: _ggCommonAdsListener!.atInterstitialResponse,
       atRewardResponse: _ggCommonAdsListener!.atRewardResponse,
     );
     // InitManger.setLogEnabled();
-    ssLogggg("====init==end");
+    twLooog("====init==end");
     _scheme =
         firebaseJson[GGCommonJson.k_which_scheme] ?? GGCommonJson.scheme_A;
 
@@ -770,11 +770,11 @@ class PBCommonAds {
     else {
       jiliAdsModel.addAll(chapingAdsModel);
     }
-    ssLogggg("====init==end:$jiliAdsModel");
+    twLooog("====init==end:$jiliAdsModel");
   }
 
   _loadAd(AdsJsonModel? tuple4) {
-    ssLogggg("==_loadAd===tuple4:$tuple4=");
+    twLooog("==_loadAd===tuple4:$tuple4=");
     if (tuple4 == null) {
       return;
     }
@@ -783,18 +783,18 @@ class PBCommonAds {
     String adsType = tuple4.adsType ?? "";
     if (platform == GGCommonJson.ad_platfrom_max) {
       if (adsType == GGCommonJson.ad_type_int) {
-        ssLogggg("=$platform=_loadAd===插屏loadInterstitial:$tuple4=");
-        GGMaxAdsNew.loadInterstitial(adsId);
+        twLooog("=$platform=_loadAd===插屏loadInterstitial:$tuple4=");
+        TwMaxAd.loadInterstitial(adsId);
       } else if (adsType == GGCommonJson.ad_type_rv) {
-        ssLogggg("=$platform=_loadAd===激励loadRewardedAd:$tuple4=");
-        GGMaxAdsNew.loadRewardedAd(adsId);
+        twLooog("=$platform=_loadAd===激励loadRewardedAd:$tuple4=");
+        TwMaxAd.loadRewardedAd(adsId);
       }
     } else if (platform == GGCommonJson.ad_platfrom_topon) {
       if (adsType == GGCommonJson.ad_type_int) {
-        ssLogggg("=$platform=_loadAd===插屏loadInterstitialAd:$tuple4=");
+        twLooog("=$platform=_loadAd===插屏loadInterstitialAd:$tuple4=");
         InitManger.loadInterstitialAd(placementId: adsId);
       } else if (adsType == GGCommonJson.ad_type_rv) {
-        ssLogggg("=$platform=_loadAd===激励loadRewardedVideo:$tuple4=");
+        twLooog("=$platform=_loadAd===激励loadRewardedVideo:$tuple4=");
         InitManger.loadRewardedVideo(placementId: adsId);
       }
     }
@@ -827,7 +827,7 @@ class PBCommonAds {
   }
 
   Future<Tuple2> _hasReady(AdsJsonModel? rvOne) async {
-    ssLogggg("======_hasReady==Tuple4:$rvOne=");
+    twLooog("======_hasReady==Tuple4:$rvOne=");
     if (rvOne == null) {
       return Tuple2(false, "");
     }
@@ -838,9 +838,9 @@ class PBCommonAds {
     String adsType = rvOne.adsType;
     if (platform == GGCommonJson.ad_platfrom_max) {
       if (adsType == GGCommonJson.ad_type_int) {
-        isReady = await GGMaxAdsNew.hasInterstitialReady(adsId: adsId);
+        isReady = await TwMaxAd.hasInterstitialReady(adsId: adsId);
       } else if (adsType == GGCommonJson.ad_type_rv) {
-        isReady = await GGMaxAdsNew.hasRewardedAdReady(adsId: adsId);
+        isReady = await TwMaxAd.hasRewardedAdReady(adsId: adsId);
       }
     } else if (platform == GGCommonJson.ad_platfrom_topon) {
       if (adsType == GGCommonJson.ad_type_int) {
@@ -849,12 +849,12 @@ class PBCommonAds {
         isReady = await InitManger.hasRewardAdReady(placementId: adsId);
       }
     }
-    ssLogggg("======_hasReady==isReady:$isReady=");
+    twLooog("======_hasReady==isReady:$isReady=");
     return Tuple2(isReady, adsId);
   }
 
   _showAd(AdsJsonModel? tuple4) {
-    ssLogggg("=====_showAd===tuple4:$tuple4");
+    twLooog("=====_showAd===tuple4:$tuple4");
     if (tuple4 == null) {
       return;
     }
@@ -863,9 +863,9 @@ class PBCommonAds {
     String adType = tuple4.adsType;
     if (platform == GGCommonJson.ad_platfrom_max) {
       if (adType == GGCommonJson.ad_type_int) {
-        GGMaxAdsNew.showInterstitial(adsId: adsId);
+        TwMaxAd.showInterstitial(adsId: adsId);
       } else {
-        GGMaxAdsNew.showRewardedAd(adsId: adsId);
+        TwMaxAd.showRewardedAd(adsId: adsId);
       }
     } else if (platform == GGCommonJson.ad_platfrom_topon) {
       if (adType == GGCommonJson.ad_type_int) {
@@ -890,24 +890,24 @@ class PBCommonAds {
   }) async {
     bool hasInter = adsType == EnumAdsType.interstitial;
     String text = hasInter ? "插屏" : "激励";
-    ssLogggg(
+    twLooog(
       "$text=========_hasDisplayAd:$_hasDisplayAd  count:$count hashCode:$hashCode",
     );
     bool showFkDanger = hasInter
-        ? FKAds().showDangerWidthInter()
-        : FKAds().showDangerWidthRv();
-    ssLogggg("$text========fengkong=showFkDanger:$showFkDanger");
+        ? TwFengkAds().showDangerWidthInter()
+        : TwFengkAds().showDangerWidthRv();
+    twLooog("$text========fengkong=showFkDanger:$showFkDanger");
     resetRvRevenueReceived();
     if (showFkDanger) {
       resetDisplayAd();
       // todo:
-      ssTushi(text: "Something went wrong,Please try later");
+      twToast(text: "Something went wrong,Please try later");
       if (outCompleter != null) {
         outCompleter.complete(false);
       }
       return false;
     }
-    ssLogggg(
+    twLooog(
       "$text=====ignored_hasDisplayAd:$ignored_hasDisplayAd====_hasDisplayAd:$_hasDisplayAd",
     );
     if (!ignored_hasDisplayAd) {
@@ -933,7 +933,7 @@ class PBCommonAds {
     bool isReady = false;
     AdsJsonModel? tupe4;
     String? firstRequestAdsId;
-    ssLogggg(
+    twLooog(
       "$text=======adPosId:$adPosId _scheme:$_scheme adsModel:$adIdWithJsonModel",
     );
     if (_scheme == GGCommonJson.scheme_A) {
@@ -951,7 +951,7 @@ class PBCommonAds {
         AdsJsonModel? adsJsonModel = adIdWithJsonModel[adsId];
         Tuple2 rvOne1 = await _hasReady(adsJsonModel);
         isReady = rvOne1.item1;
-        ssLogggg(
+        twLooog(
           "$text=======isReady:$isReady adsId:$adsId adsJsonModel:$adsJsonModel",
         );
         if (isReady) {
@@ -968,20 +968,20 @@ class PBCommonAds {
         firstRequestAdsId ??= adsId;
       }
 
-      ssLogggg("$text=======isReady:$isReady curTuple4:${tupe4?.toString()}");
+      twLooog("$text=======isReady:$isReady curTuple4:${tupe4?.toString()}");
     } else {
       // 执行B方案
 
-      ssLogggg(
+      twLooog(
         "$text======= 执行B方案 length:${cacheAdsData.length} cacheAdsData:$cacheAdsData",
       );
       var tmpAdsId = null;
       var data = null;
       List<String> rewardAdsId = curAdTypeIds;
-      ssLogggg("$text======里面是否含有==：$rewardAdsId");
+      twLooog("$text======里面是否含有==：$rewardAdsId");
       cacheAdsData.forEach((key, value) {
         bool result = rewardAdsId.contains(key);
-        ssLogggg("$text=====cacheAdsData=里面是否含有=result:$result=adsId：$key");
+        twLooog("$text=====cacheAdsData=里面是否含有=result:$result=adsId：$key");
         if (result) {
           if (data == null) {
             tmpAdsId = key;
@@ -996,7 +996,7 @@ class PBCommonAds {
           }
         }
       });
-      ssLogggg("$text======= tmpAdsId:$tmpAdsId data:$data");
+      twLooog("$text======= tmpAdsId:$tmpAdsId data:$data");
       if (tmpAdsId != null && data != null) {
         isReady = true;
         String adsId = tmpAdsId;
@@ -1016,15 +1016,15 @@ class PBCommonAds {
       }
     }
     if (isReady && tupe4 != null) {
-      ssLogggg("$text=======调用显示广告 成功");
+      twLooog("$text=======调用显示广告 成功");
       String adsId = tupe4.adsId ?? "";
       cacheCompleter[adsId] = completer;
       _showAd(tupe4);
     } else {
-      ssLogggg("$text=======调用显示广告 失败count:$count canTryAgain:$canTryAgain");
+      twLooog("$text=======调用显示广告 失败count:$count canTryAgain:$canTryAgain");
       resetDisplayAd();
       if (count < 1 && canTryAgain) {
-        GGAdsTips.noAds(
+        TwAdsTips.noAds(
           onTryAgain: () async {
             resetDisplayAd();
             adIdWithJsonModel.forEach((key, value) {
@@ -1051,7 +1051,7 @@ class PBCommonAds {
           },
         );
       } else {
-        GGAdsTips.toast();
+        TwAdsTips.toast();
         resetDisplayAd();
         completer.complete(false);
       }
@@ -1066,7 +1066,7 @@ class PBCommonAds {
       if (firstRequestAdsId != null) {
         AdsJsonModel? adsJsonModel = adIdWithJsonModel[firstRequestAdsId];
         String? ad_platform = adsJsonModel?.adsPlatform;
-        ssLogggg(
+        twLooog(
           "$text=====回调成功 显示广告 失败：adid:$firstRequestAdsId reason:$_loadFailReason ad_platform:$ad_platform",
         );
         _loadFailReason ??= AdLoadFailReason.notPrepared;
@@ -1088,7 +1088,7 @@ class PBCommonAds {
     }
     await Future.delayed(Duration(milliseconds: 100));
     resetDisplayAd();
-    ssLogggg(
+    twLooog(
       "$text=====回调成功 result：$result ad_platform222:$ad_platform222 firstRequestAdsId:$firstRequestAdsId",
     );
     return result;
@@ -1118,20 +1118,20 @@ class PBCommonAds {
     Map<String, dynamic> localJson = GGCommonJson.local;
     try {
       String name = "cdyun_ad_config";
-      String key = PBFireBbbbbb().by(name: name);
-      ssLogggg(
+      String key = TwFirebasssss().by(name: name);
+      twLooog(
         "====common_ads=== _onlineJson FirebaseUtils: $name string:$key test===",
       );
 
       Map<String, dynamic> json = jsonDecode(key);
       localJson = json;
-      ssLogggg("FirebaseUtils: $name json $json");
+      twLooog("FirebaseUtils: $name json $json");
     } on Exception catch (e) {
-      ssLogggg("onlineJson:$e");
+      twLooog("onlineJson:$e");
     }
 
     localJson = GGCommonJson.changeLocal(localJson);
-    ssLogggg("FirebaseUtils: final json ${jsonEncode(localJson)}");
+    twLooog("FirebaseUtils: final json ${jsonEncode(localJson)}");
     return localJson;
   }
 

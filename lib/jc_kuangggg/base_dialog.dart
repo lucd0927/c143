@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-jcShowBKuang({
+twBaseDialogggg({
   required Widget child,
   required BuildContext context,
   Color? barrierColor,
@@ -20,7 +20,7 @@ jcShowBKuang({
       return SafeArea(
         top: false,
         bottom: false,
-        child: BuFanhui(
+        child: CannotBack(
           child: Material(color: Colors.transparent, child: child),
         ),
       );
@@ -28,8 +28,8 @@ jcShowBKuang({
   );
 }
 
-class BuFanhui extends StatelessWidget {
-  const BuFanhui({super.key, required this.child});
+class CannotBack extends StatelessWidget {
+  const CannotBack({super.key, required this.child});
   final Widget child;
   @override
   Widget build(BuildContext context) {

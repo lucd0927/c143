@@ -5,16 +5,16 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 
 import 'package:flutter_tba_info/flutter_tba_info.dart';
-import 'package:c143/jc_gj/log.dart';
+import 'package:c143/jc_gj/loggggg.dart';
 import 'package:c143/jc_huanjing/config.dart';
 
-class SSHttpDio {
+class TwHttpDio {
   late Dio _dio;
 
-  SSHttpDio({String? url}) {
+  TwHttpDio({String? url}) {
     _dio = Dio(
       BaseOptions(
-        baseUrl: url ?? SSHuanjing.instance.bUuuu(),
+        baseUrl: url ?? TwConfigggg.instance.base_urllll(),
         connectTimeout: const Duration(seconds: 30),
         receiveTimeout: const Duration(seconds: 30),
         sendTimeout: const Duration(seconds: 30),
@@ -41,7 +41,7 @@ class SSHttpDio {
       cancelToken: cancelToken,
       onReceiveProgress: onReceiveProgress,
     );
-    ssLogggg("==response:${response.data}");
+    twLooog("==response:${response.data}");
     return response.data;
   }
 
@@ -87,7 +87,7 @@ class SSHttpDio {
 
   Future<String> cloak() async {
     try {
-      _dio.options.baseUrl = SSHuanjing.instance.tbaUuuuu();
+      _dio.options.baseUrl = TwConfigggg.instance.tbaaa_urlll();
       DateTime dateTime = DateTime.now();
       int client_ts = dateTime.millisecondsSinceEpoch;
       var distinct_id = await FlutterTbaInfo.instance.getDistinctId();
@@ -121,7 +121,7 @@ class SSHttpDio {
         "",
         data:jsonData,
       );
-      ssLogggg(
+      twLooog(
         "=========:返回结果\n${_dio.options.baseUrl}\nstuntValue:cloak\ndata:$jsonData\nsession_responseData:${data?.data}",
       );
       String cl = data?.data?.toString() ?? "";
@@ -294,7 +294,7 @@ class SSHttpDio {
 
     dataJson['kudo'] = bismuth;
     // dataJson.addAll(bismuth);
-    final Uri _url = Uri.parse(SSHuanjing.instance.bUuuu());
+    final Uri _url = Uri.parse(TwConfigggg.instance.base_urllll());
 
     // Dio dio = Dio(
     //   BaseOptions(headers: {'nebulae': distinct_id, 'hair': bundle_id}),
@@ -304,12 +304,12 @@ class SSHttpDio {
     _dio.options.headers['gaid'] = gaid;
     // _dio.options.headers['hair'] = bundle_id;
     var data2 = jsonEncode(dataJson);
-    ssLogggg("=========installJson:   $data2");
+    twLooog("=========installJson:   $data2");
     var response = await _dio.postUri(_url, data: dataJson);
 
     var data = response.data;
 
-    ssLogggg("===install=data:$data=");
+    twLooog("===install=data:$data=");
   }
 
   // 前后台切换的时候上报
@@ -324,7 +324,7 @@ class SSHttpDio {
     // var data2 = jsonEncode(dataJson);
     // swPrint("=========sessionJson:   $data2");
     var response = await post("", data: sessionJson);
-    ssLogggg(
+    twLooog(
       "=========:返回结果\n${_dio.options.baseUrl}\nstuntValue:ad_permission\ndata:$sessionJson\nsession_responseData:${response?.data}",
     );
   }
@@ -387,11 +387,11 @@ class SSHttpDio {
     // adJson.addAll(stuntJson);
     // adJson['scrawny'] = stuntJson;
     var data = jsonEncode(adJson);
-    ssLogggg("=========adJson:   $data");
+    twLooog("=========adJson:   $data");
 
     Response? response = await post("", data: adJson);
     var responseData = response?.data;
-    ssLogggg(
+    twLooog(
       "=========:返回结果\n${_dio.options.baseUrl}\nstuntValue:ad_permission\ndata:$data\nad_pos_id:$ad_pos_id\nadJson_responseData:$responseData",
     );
   }
@@ -433,7 +433,7 @@ class SSHttpDio {
     Response? response = await post("", data: dataJson);
     var responseData = response?.data;
 
-    ssLogggg(
+    twLooog(
       "====url\n${_dio.options.baseUrl}\nstuntValue:$moistValue\ndata:$data\nburyPoint_responseData:$responseData",
     );
     // dataJson[stuntValue] = {"cloak_user": 0};

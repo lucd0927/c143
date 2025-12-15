@@ -1,20 +1,20 @@
 // 🛠️ modified by obfuscator tool at 2025-07-09 11:08:44.325700
 import 'config.dart';
 
-class SSHuanjingDev implements SSHuanjing{
+class TwConfiggDevvv implements TwConfigggg{
   @override
-  String bUuuu() {
+  String base_urllll() {
     // TODO: implement baseUrl
-    return "https://test-hug.piggybankboostreward.com/lifeboat/oratoric";
+    return "";
 // auto patch 3
   }
 
   @override
-  String tbaUuuuu() {
+  String tbaaa_urlll() {
 
 // auto patch 490
     // TODO: implement cloakUrl
-    return "https://sikorsky.piggybankboostreward.com/forget/cheyenne";
+    return "";
   }
 
 }    

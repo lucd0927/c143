@@ -1,9 +1,9 @@
 // 🛠️ modified by obfuscator tool at 2025-07-09 11:08:44.316367
 import 'package:assets_audio_player/assets_audio_player.dart';
-import 'package:c143/jc_hive/sshive.dart';
+import 'package:c143/jc_hive/twhive.dart';
 
 
-import 'log.dart';
+import 'loggggg.dart';
 
 const qianzhui = "assets/";
 // SWAudioPlayer bgGGAudioPlayer = SWAudioPlayer(
@@ -15,25 +15,25 @@ const qianzhui = "assets/";
 //   audioPath: "${qianzhui}audio/scratch2.mp3",
 // );
 
-class YuYinBoFan {
+class TwAudioPlayyy {
   String audioKey;
   String audioPath;
 
-  YuYinBoFan({required this.audioKey, required this.audioPath});
+  TwAudioPlayyy({required this.audioKey, required this.audioPath});
 
   static const String kAudioPlayerBg = "kAudioPlayerBg";
   static const String kAudioPlayerScratch = "kAudioPlayerScratch";
 
   bool _hasOn = true;
 
-  bool get hasOn => SSHive.box.get(audioKey) ?? true;
+  bool get hasOn => TwHive.box.get(audioKey) ?? true;
 
   final audioPlayer = AssetsAudioPlayer();
 
   setReleaseMode() async {}
 
   Future<void> play() async {
-    ssLogggg("=====playLocalAssetBg==hasOn:$hasOn");
+    twLooog("=====playLocalAssetBg==hasOn:$hasOn");
     if (hasOn) {
       await audioPlayer.open(
         Audio(audioPath),
@@ -55,10 +55,10 @@ class YuYinBoFan {
   void setSWHasOn(bool isOn, {required bool showAudioPlayOrPause}) {
     _hasOn = isOn;
     PlayerState state = audioPlayer.playerState.value;
-    ssLogggg(
+    twLooog(
       "===GGAudioPlayer=audioKey:$audioKey=setHasOn=_hasOn=$_hasOn  state:$state",
     );
-    SSHive.box.put(audioKey, isOn);
+    TwHive.box.put(audioKey, isOn);
     if(showAudioPlayOrPause){
       if (isOn) {
         if (state == PlayerState.stop || state == PlayerState.pause) {
@@ -74,14 +74,14 @@ class YuYinBoFan {
   }
 
   pause() {
-    ssLogggg("=====audioplayer=pause=hasOn:$hasOn");
+    twLooog("=====audioplayer=pause=hasOn:$hasOn");
     if (hasOn) {
       audioPlayer.pause();
     }
   }
 
   resume() {
-    ssLogggg("=====audioplayer=resume=");
+    twLooog("=====audioplayer=resume=");
     if (hasOn) {
       audioPlayer.play();
       // auto patch 794

@@ -8,7 +8,7 @@ showAdFailedDialog(
   required VoidCallback onClose,
 }) {
   // PBMaiDian.ad_fail_pop();
-  return jcShowBKuang(
+  return twBaseDialogggg(
     context: context,
     child: AdFailedWidget(
       onClose: () {

@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:toastification/toastification.dart';
 
-ssTushi({String text = "", Alignment aaaaa = Alignment.topCenter}) {
+twToast({String text = "", Alignment locatin = Alignment.topCenter}) {
   toastification.show(
     context: Get.context, // optional if you use ToastificationWrapper
     title: Text(
@@ -15,7 +15,7 @@ ssTushi({String text = "", Alignment aaaaa = Alignment.topCenter}) {
       ),
     ),
     backgroundColor:Colors.black.withValues(alpha: 0.8),
-    alignment: aaaaa,
+    alignment: locatin,
     autoCloseDuration: const Duration(seconds: 4),
   );
 }

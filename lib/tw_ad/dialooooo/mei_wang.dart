@@ -3,15 +3,15 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:c143/jc_kuangggg/base_dialog.dart';
 
 
-showAdLimitDialog(
+
+showMeiwangDialog(
   BuildContext context, {
   required VoidCallback onBtn,
   required VoidCallback onClose,
 }) {
-  // PBMaiDian.ad_limit_pop();
-  return jcShowBKuang(
+  return twBaseDialogggg(
     context: context,
-    child: AdCishuLimit(
+    child: MeiwangWidget(
       onClose: () {
         onClose();
       },
@@ -22,17 +22,17 @@ showAdLimitDialog(
   );
 }
 
-class AdCishuLimit extends StatefulWidget {
-  const AdCishuLimit({super.key, required this.onClose, required this.onBtn});
+class MeiwangWidget extends StatefulWidget {
+  const MeiwangWidget({super.key, required this.onClose, required this.onBtn});
 
   final VoidCallback onClose;
   final VoidCallback onBtn;
 
   @override
-  State<AdCishuLimit> createState() => _AdCishuLimitState();
+  State<MeiwangWidget> createState() => _MeiwangWidgetState();
 }
 
-class _AdCishuLimitState extends State<AdCishuLimit> {
+class _MeiwangWidgetState extends State<MeiwangWidget> {
   int index = 0;
   bool showStep2 = false;
 
@@ -94,7 +94,7 @@ class _AdCishuLimitState extends State<AdCishuLimit> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      "Ad Limit reached",
+                      "No network currently",
                       style: TextStyle(
                         fontWeight: FontWeight.w700,
                         color: Color(0xffffffff),
@@ -120,9 +120,9 @@ class _AdCishuLimitState extends State<AdCishuLimit> {
                   //   color: Color(0xffffffff),
                   // ),
                   child: Container(
-                    color: Color(0xffffffff),
                     width: 40.h,
                     height: 40.h,
+                    color: Color(0xffffffff),
                   ),
                 ),
               ),
@@ -140,34 +140,23 @@ class _AdCishuLimitState extends State<AdCishuLimit> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SizedBox(height: 80.h),
+                    SizedBox(height: 150.h),
                     Stack(
                       children: [
                         Container(
-                          color: Color(0xffffffff),
                           width: 288.h,
-                          height: 288.h,
+                          height: 232.h,
+                          color: Color(0xffffffff),
                         ),
                         // Image.asset(
-                        //   Assets.tupian.adLimit.path,
+                        //   Assets.tupian.nonet.path,
                         //   width: 288.h,
-                        //   height: 288.h,
+                        //   height: 232.h,
                         //   fit: BoxFit.contain,
                         // ),
                       ],
                     ),
-                    SizedBox(height: 40.h),
-                    Center(
-                      child: Text(
-                        "You've watched all available ads for today. Try again tomorrow.",
-                        style: TextStyle(
-                          fontWeight: FontWeight.w700,
-                          fontSize: 30.sp,
-                          color: Color(0xff992D2D),
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
+
                     Expanded(
                       child: Center(
                         child: GestureDetector(
@@ -190,7 +179,7 @@ class _AdCishuLimitState extends State<AdCishuLimit> {
                               children: [
                                 Center(
                                   child: Text(
-                                    "Get",
+                                    "Try Again",
                                     style: TextStyle(
                                       fontWeight: FontWeight.w700,
                                       fontSize: 42.sp,

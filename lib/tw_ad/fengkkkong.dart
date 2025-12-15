@@ -2,8 +2,8 @@ import 'dart:convert';
 
 import 'package:dio/dio.dart';
 import 'package:c143/jc_gj/base_utils.dart';
-import 'package:c143/jc_ad/guiyin/firebbbbbb.dart';
-import 'package:c143/jc_gj/log.dart';
+import 'package:c143/tw_ad/guiyin/firebbbbbb.dart';
+import 'package:c143/jc_gj/loggggg.dart';
 import 'package:c143/jc_net/http_dio.dart';
 
 
@@ -12,7 +12,7 @@ import 'package:tuple/tuple.dart';
 
 import 'dsf/pbpig.dart';
 
-class PBFk {
+class TwFengk {
   static bool _hasDanger = false;
 
   static bool get hasDanger => _hasDanger;
@@ -25,16 +25,16 @@ class PBFk {
 
   static Future initNumberUnit() async {
     try {
-      var src = PBBaseUtils.decrypt(encryptTxt, code);
-      ssLogggg("=====key:$src");
+      var src = TwBaseUtils.decrypt(encryptTxt, code);
+      twLooog("=====key:$src");
       await Pbpig.instance.initddddNumsssberUdddnit(apiKey: src);
 
       __onlineJson();
-      ssLogggg("==__onlineJson:$_onlineJson====");
+      twLooog("==__onlineJson:$_onlineJson====");
       bool hasNeedDevice = needUidevice();
       bool hasNeedShemeng = needUinumber();
       bool hasNeedBehavior = needUibehavior();
-      ssLogggg("==hasNeedDevice:$hasNeedDevice====");
+      twLooog("==hasNeedDevice:$hasNeedDevice====");
       maidian();
       if (hasNeedDevice) {
         await deviceErr();
@@ -49,7 +49,7 @@ class PBFk {
         if (hasNeedBehavior) {}
       }
     } catch (e) {
-      ssLogggg("===initNumberUnit=error=$e");
+      twLooog("===initNumberUnit=error=$e");
     }
   }
 
@@ -58,12 +58,12 @@ class PBFk {
       channel: "shumeng_117",
       message: "shumeng_msg",
     );
-    ssLogggg("====did===$did");
+    twLooog("====did===$did");
     return did;
   }
 
   static ip() async {
-    Response? data = await SSHttpDio().post(
+    Response? data = await TwHttpDio().post(
       "https://ip-prod.piggybankboostreward.com/api/cape",
       data: {"androidId": "alion"},
     );
@@ -71,7 +71,7 @@ class PBFk {
     var responseData = data?.data??"";
     var dess = decrypt(responseData, 16);
     var jsonData = jsonDecode(dess);
-    ssLogggg("==ip===$dess==");
+    twLooog("==ip===$dess==");
     if (jsonData is Map) {
       String key = "bduck";
       var hasBanned = jsonData[key] ?? false;
@@ -95,7 +95,7 @@ class PBFk {
   static Future<bool> shumeng({int count = 0}) async {
     var did = await getNumberUnitID();
     try {
-      Response? data = await SSHttpDio().post(
+      Response? data = await TwHttpDio().post(
         "https://sg-ddi.shuzilm.cn/q",
         data: {
           "protocol": 2,
@@ -104,7 +104,7 @@ class PBFk {
         },
       );
 
-      ssLogggg("==shumeng==data:${data?.data}=");
+      twLooog("==shumeng==data:${data?.data}=");
       var responseData = data?.data;
       if (responseData is Map) {
         bool err = responseData['err'] == 0;
@@ -112,7 +112,7 @@ class PBFk {
         bool result = err && device_type;
         _hasDanger = result;
         _hasRequestNet = true;
-        ssLogggg("==shumeng==_hasDanger:${_hasDanger}=");
+        twLooog("==shumeng==_hasDanger:${_hasDanger}=");
         if (_hasDanger) {
           risk_chance(value: "number");
         }
@@ -125,7 +125,7 @@ class PBFk {
     } catch (e) {
       count = count + 1;
       _hasRequestNet = false;
-      ssLogggg("===shumeng net=error=count:$count=");
+      twLooog("===shumeng net=error=count:$count=");
       return false;
     }
   }
@@ -133,43 +133,43 @@ class PBFk {
   static maidian() async {
     try {
       bool hasContainerRoot = await rootChajian();
-      ssLogggg("=maidian==hasContainerRoot:$hasContainerRoot==");
+      twLooog("=maidian==hasContainerRoot:$hasContainerRoot==");
       session_custom(name: "root", value: hasContainerRoot ? "1" : "0");
 
       bool hasContainervpn = await vpnChajian();
-      ssLogggg("=maidian==hasContainervpn:$hasContainervpn==");
+      twLooog("=maidian==hasContainervpn:$hasContainervpn==");
       session_custom(name: "vpn", value: hasContainervpn ? "1" : "0");
 
       bool hasContainersim = await simChajian();
-      ssLogggg("=maidian==hasContainersim:$hasContainersim==");
+      twLooog("=maidian==hasContainersim:$hasContainersim==");
       session_custom(name: "sim", value: hasContainersim ? "1" : "0");
 
       bool hasContainersimulator = await simulatorChajian();
-      ssLogggg("=maidian==hasContainersimulator:$hasContainersimulator==");
+      twLooog("=maidian==hasContainersimulator:$hasContainersimulator==");
       session_custom(
         name: "simulator",
         value: hasContainersimulator ? "1" : "0",
       );
 
       bool hasContainergoogleplay = await storeChajian();
-      ssLogggg("=maidian==hasContainergoogleplay:$hasContainergoogleplay==");
+      twLooog("=maidian==hasContainergoogleplay:$hasContainergoogleplay==");
       session_custom(
         name: "googleplay",
         value: hasContainergoogleplay ? "1" : "0",
       );
 
       bool hasContainerdeveloper = await developerChajian();
-      ssLogggg("=maidian==hasContainerdeveloper:$hasContainerdeveloper==");
+      twLooog("=maidian==hasContainerdeveloper:$hasContainerdeveloper==");
       session_custom(
         name: "developer",
         value: hasContainerdeveloper ? "1" : "0",
       );
 
-      ssLogggg(
+      twLooog(
         "=风控=root:$hasContainerRoot===vpn:$hasContainervpn=sim:$hasContainersim=simulator:$hasContainersimulator googleplay:$hasContainergoogleplay developer:$hasContainerdeveloper",
       );
     } catch (e) {
-      ssLogggg("===maidian=error==$e");
+      twLooog("===maidian=error==$e");
     }
   }
 
@@ -229,12 +229,12 @@ class PBFk {
       bool hasContainerdeveloper = panduanShebei.contains("developer");
 
       bool hasContainerip = panduanShebei.contains("ip");
-      ssLogggg(
+      twLooog(
         "deviceErr=panduanShebei:$panduanShebei==hasContainergoogleplay:$hasContainergoogleplay hasContainerdeveloper:$hasContainerdeveloper hasContainerRoot:$hasContainerRoot hasContainervpn:$hasContainervpn hasContainersim:$hasContainersim hasContainersimulator:$hasContainersimulator",
       );
       if (hasContainerRoot) {
         bool hasRoot = await rootChajian();
-        ssLogggg("deviceErr=hasRoot:$hasRoot====");
+        twLooog("deviceErr=hasRoot:$hasRoot====");
         if (hasRoot) {
           _hasDanger = true;
           risk_chance(value: "root");
@@ -244,7 +244,7 @@ class PBFk {
 
       if (hasContainervpn) {
         bool hasvpn = await vpnChajian();
-        ssLogggg("deviceErr=hasvpn:$hasvpn====");
+        twLooog("deviceErr=hasvpn:$hasvpn====");
         if (hasvpn) {
           _hasDanger = true;
           risk_chance(value: "vpn");
@@ -254,7 +254,7 @@ class PBFk {
 
       if (hasContainersim) {
         bool sim = await simChajian();
-        ssLogggg("deviceErr=sim:$sim====");
+        twLooog("deviceErr=sim:$sim====");
         if (!sim) {
           _hasDanger = true;
           risk_chance(value: "sim");
@@ -264,7 +264,7 @@ class PBFk {
 
       if (hasContainersimulator) {
         bool simulator = await simulatorChajian();
-        ssLogggg("deviceErr=simulator:$simulator====");
+        twLooog("deviceErr=simulator:$simulator====");
         if (simulator) {
           _hasDanger = true;
           risk_chance(value: "simulator");
@@ -274,7 +274,7 @@ class PBFk {
 
       if (hasContainerdeveloper) {
         bool developer = await developerChajian();
-        ssLogggg("deviceErr=developer:$developer====");
+        twLooog("deviceErr=developer:$developer====");
         if (developer) {
           _hasDanger = true;
           risk_chance(value: "developer");
@@ -283,7 +283,7 @@ class PBFk {
       }
       if (hasContainergoogleplay) {
         bool googlePlay = await storeChajian();
-        ssLogggg("deviceErr=googlePlay:$googlePlay====");
+        twLooog("deviceErr=googlePlay:$googlePlay====");
         if (!googlePlay) {
           _hasDanger = true;
           risk_chance(value: "googlePlay");
@@ -299,13 +299,13 @@ class PBFk {
         }
       }
     } catch (e) {
-      ssLogggg("=deviceErr=error=$e=");
+      twLooog("=deviceErr=error=$e=");
     }
     return false;
   }
 
   static void session_custom({required String name, required String value}) {
-    SSHttpDio().buryPoint(
+    TwHttpDio().buryPoint(
       moistValue: "session_custom",
       veinKey: name,
       veinKeyValue: value,
@@ -313,8 +313,8 @@ class PBFk {
   }
 
   static void risk_chance({required String value}) {
-    ssLogggg("===触发风控==$value==");
-    SSHttpDio().buryPoint(
+    twLooog("===触发风控==$value==");
+    TwHttpDio().buryPoint(
       moistValue: "risk_chance",
       veinKey: "risk_from",
       veinKeyValue: value,
@@ -322,26 +322,26 @@ class PBFk {
   }
 
   static void see_you_tomorrow() {
-    SSHttpDio().buryPoint(moistValue: "see_you_tommorow");
+    TwHttpDio().buryPoint(moistValue: "see_you_tommorow");
   }
 
   static Map<String, dynamic> __onlineJson() {
     Map<String, dynamic> localJson = local;
     try {
       String name = "risk_control";
-      String key = PBFireBbbbbb().by(name: name);
-      ssLogggg(
+      String key = TwFirebasssss().by(name: name);
+      twLooog(
         "====common_ads=== _onlineJson FirebaseUtils: $name string:$key test===",
       );
 
       Map<String, dynamic> json = jsonDecode(key);
       localJson = json;
-      ssLogggg("FirebaseUtils: $name json $json");
+      twLooog("FirebaseUtils: $name json $json");
     } on Exception catch (e) {
-      ssLogggg("onlineJson:$e");
+      twLooog("onlineJson:$e");
     }
 
-    ssLogggg("FirebaseUtils: final json ${jsonEncode(localJson)}");
+    twLooog("FirebaseUtils: final json ${jsonEncode(localJson)}");
     _onlineJson = localJson;
     return localJson;
   }
@@ -353,17 +353,17 @@ class PBFk {
       }
 
       var data = _onlineJson?['device'] ?? [];
-      ssLogggg("==devices=before:$data");
+      twLooog("==devices=before:$data");
       List<String> tmpDevice = [];
       if (data is List) {
         data.forEach((value) {
           tmpDevice.add("$value");
         });
       }
-      ssLogggg("==devices=after:$tmpDevice");
+      twLooog("==devices=after:$tmpDevice");
       return tmpDevice;
     } catch (e) {
-      ssLogggg("==devices=error:$e");
+      twLooog("==devices=error:$e");
       return [];
     }
   }
@@ -428,7 +428,7 @@ class PBFk {
     }
     var data = _onlineJson!['ui'];
     var number = data['number'];
-    ssLogggg("==needUinumber:number:$number====");
+    twLooog("==needUinumber:number:$number====");
     return number == 1;
   }
 
@@ -438,7 +438,7 @@ class PBFk {
     }
     var data = _onlineJson!['ui'];
     var behavior = data['behavior'];
-    ssLogggg("==needUibehavior:behavior:$behavior====");
+    twLooog("==needUibehavior:behavior:$behavior====");
     return behavior == 1;
   }
 
@@ -448,7 +448,7 @@ class PBFk {
     }
     var data = _onlineJson!['ui'];
     var device = data['device'];
-    ssLogggg("==needUidevice:device:$device====");
+    twLooog("==needUidevice:device:$device====");
     return device == 1;
   }
 

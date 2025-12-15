@@ -4,41 +4,41 @@ import 'config_dev.dart';
 import 'config_prod.dart';
 import 'enum_app_evn.dart';
 
-abstract class SSHuanjing {
+abstract class TwConfigggg {
 
-  static SSHuanjingEnv? _env;
+  static SSConfiggEnv? _env;
 
-  static SSHuanjingEnv get env => _env ?? SSHuanjingEnv.prod;
-  static bool hasDevvvvv(){
-    return env == SSHuanjingEnv.dev;
+  static SSConfiggEnv get env => _env ?? SSConfiggEnv.prod;
+  static bool hasDeeevv(){
+    return env == SSConfiggEnv.dev;
   }
-  static bool hasPppord(){
-    return env == SSHuanjingEnv.prod;
+  static bool hasProdddd(){
+    return env == SSConfiggEnv.prod;
   }
-  static initEvn(SSHuanjingEnv env){
+  static initEvn(SSConfiggEnv env){
     _env = env;
   }
-  static SSHuanjing? _instance;
-  static SSHuanjing get instance => _getInstance();
+  static TwConfigggg? _instance;
+  static TwConfigggg get instance => _initInstance();
 
-  static SSHuanjing  _getInstance(){
+  static TwConfigggg  _initInstance(){
     switch(_env){
-      case SSHuanjingEnv.dev:
-        _instance = SSHuanjingDev();
+      case SSConfiggEnv.dev:
+        _instance = TwConfiggDevvv();
         break;
-      case SSHuanjingEnv.prod:
-        _instance = SSHuanjingProd();
+      case SSConfiggEnv.prod:
+        _instance = SSConfiggPordddd();
         break;
       default:
-        _instance = SSHuanjingProd();
+        _instance = SSConfiggPordddd();
     }
     return _instance!;
   }
 
 
 
-  String bUuuu();
-  String tbaUuuuu();
+  String base_urllll();
+  String tbaaa_urlll();
 
 
 

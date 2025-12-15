@@ -3,20 +3,20 @@ import 'package:adjust_sdk/adjust_ad_revenue.dart';
 import 'package:adjust_sdk/adjust_attribution.dart';
 import 'package:adjust_sdk/adjust_config.dart';
 import 'package:flutter_tba_info/flutter_tba_info.dart';
-import 'package:c143/jc_ad/gg_common_config.dart';
-import 'package:c143/jc_ad/guiyin/package.dart';
-import 'package:c143/jc_gj/log.dart';
+import 'package:c143/tw_ad/base_config.dart';
+import 'package:c143/tw_ad/guiyin/package.dart';
+import 'package:c143/jc_gj/loggggg.dart';
 
 
-class JcAdjust {
-  static const String TGA = "JcAdjust";
-  static final JcAdjust _instance = JcAdjust._();
+class TwAdjusssss {
+  static const String TGA = "TwAdjust";
+  static final TwAdjusssss _instance = TwAdjusssss._();
 
-  factory JcAdjust() {
+  factory TwAdjusssss() {
     return _instance;
   }
 
-  JcAdjust._();
+  TwAdjusssss._();
 
   AdjustConfig? adjustConfig() => _config;
 
@@ -28,44 +28,44 @@ class JcAdjust {
     config.logLevel = AdjustLogLevel.verbose;
     var distinct_id = await FlutterTbaInfo.instance.getDistinctId();
     // config.externalDeviceId =distinct_id;
-    ssLogggg("$TGA===initSdk=");
+    twLooog("$TGA===initSdk=");
     _config = config;
     Adjust.addGlobalCallbackParameter("customer_user_id", distinct_id);
     config.attributionCallback = (AdjustAttribution attributionChangedData) {
-      ssLogggg('$TGA: Attribution changed!');
+      twLooog('$TGA: Attribution changed!');
 
       if (attributionChangedData.trackerToken != null) {
-        ssLogggg(
+        twLooog(
           '$TGA: Tracker token: ${attributionChangedData!.trackerToken ?? ""}',
         );
       }
       if (attributionChangedData.trackerName != null) {
-        ssLogggg('$TGA: Tracker name: ${attributionChangedData.trackerName}');
+        twLooog('$TGA: Tracker name: ${attributionChangedData.trackerName}');
       }
       if (attributionChangedData.campaign != null) {
-        ssLogggg('$TGA: Campaign: ${attributionChangedData.campaign}');
+        twLooog('$TGA: Campaign: ${attributionChangedData.campaign}');
       }
       String? network = attributionChangedData.network;
       if (network != null) {
-        ssLogggg('$TGA: Network: ${network}');
+        twLooog('$TGA: Network: ${network}');
         // JCABluoji().guiyin(network);
       }
       if (attributionChangedData.creative != null) {
-        ssLogggg('$TGA: Creative: ${attributionChangedData.creative}');
+        twLooog('$TGA: Creative: ${attributionChangedData.creative}');
       }
       if (attributionChangedData.adgroup != null) {
-        ssLogggg('$TGA: Adgroup: ${attributionChangedData.adgroup}');
+        twLooog('$TGA: Adgroup: ${attributionChangedData.adgroup}');
       }
       if (attributionChangedData.clickLabel != null) {
-        ssLogggg('$TGA: Click label: ${attributionChangedData.clickLabel}');
+        twLooog('$TGA: Click label: ${attributionChangedData.clickLabel}');
       }
       if (attributionChangedData.fbInstallReferrer != null) {
-        ssLogggg(
+        twLooog(
           '$TGA: facebook install referrer: ${attributionChangedData.fbInstallReferrer}',
         );
       }
       if (attributionChangedData.jsonResponse != null) {
-        ssLogggg('$TGA: JSON Response: ${attributionChangedData.jsonResponse}');
+        twLooog('$TGA: JSON Response: ${attributionChangedData.jsonResponse}');
       }
     };
 
@@ -74,7 +74,7 @@ class JcAdjust {
 
     Adjust.getAttribution().then((attributionChangedData){
       String? network = attributionChangedData.network;
-      ssLogggg("$TGA====network:$network");
+      twLooog("$TGA====network:$network");
       JCABluoji().guiyin(network??"");
     });
     // JCShijianBaogao.adjust_req();

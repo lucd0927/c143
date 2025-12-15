@@ -3,13 +3,13 @@ import 'package:c143/jc_huanjing/config.dart';
 import 'package:thinkup_sdk/at_index.dart';
 import 'package:applovin_max/applovin_max.dart';
 
-class GGCommonAdsListener {
+class TwComAdsListener {
   final InterstitialListener? interstitialListener;
   final RewardedAdListener? rewardedAdListener;
   final void Function(ATRewardResponse)? atRewardResponse;
   final void Function(ATInterstitialResponse)? atInterstitialResponse;
 
-  GGCommonAdsListener({
+  TwComAdsListener({
     required this.interstitialListener,
     required this.rewardedAdListener,
     required this.atRewardResponse,
@@ -176,5 +176,5 @@ class GGCommonJson {
     ]
   };
 
-  static var local =SSHuanjing.hasDevvvvv()?localTopon: localB;
+  static var local =TwConfigggg.hasDeeevv()?localTopon: localB;
 }

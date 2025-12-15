@@ -1,14 +1,14 @@
 import 'dart:ui';
 
 import 'package:get/get.dart';
-import 'package:c143/jc_ad/kuangkuang/ad_failed.dart';
+import 'package:c143/tw_ad/dialooooo/ad_failed.dart';
 import 'package:c143/jc_widget/pb_tushi.dart';
 
-class GGAdsTips {
+class TwAdsTips {
   static void toast({
     String text = "Ad loading failed, please try again later",
   }) {
-    ssTushi(text: text);
+    twToast(text: text);
   }
 
   static noAds({

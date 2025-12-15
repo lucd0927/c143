@@ -1,12 +1,12 @@
 
-import 'package:c143/jc_gj/log.dart';
+import 'package:c143/jc_gj/loggggg.dart';
 import 'package:c143/jc_huanjing/config.dart';
 import 'package:thinkup_sdk/at_index.dart';
 
 
-final InitManger = InitTool();
+final InitManger = TwInitTool();
 
-class InitTool {
+class TwInitTool {
   // 打开SDK的Debug log，强烈建议在测试阶段打开，方便排查问题。
   setLogEnabled() async {
     await ATInitManger.setLogEnabled(logEnabled: true);
@@ -49,14 +49,14 @@ class InitTool {
   // 判断是否位于欧盟地区
   getUserLocation() async {
     await ATInitManger.getUserLocation().then((value) {
-      ssLogggg('flutter: Get user location -- ${value.toString()}');
+      twLooog('flutter: Get user location -- ${value.toString()}');
     });
   }
 
   // 获取GDPR的授权级别
   getGDPRLevel() async {
     await ATInitManger.getGDPRLevel().then((value) {
-      ssLogggg('flutter:Get GDPR --${value.toString()}');
+      twLooog('flutter:Get GDPR --${value.toString()}');
     });
   }
 
@@ -88,7 +88,7 @@ class InitTool {
       if (value.userLocation != null) {
         switch (value.userLocation) {
           case InitUserLocation.initUserLocationInEU:
-            ssLogggg("flutter Monitor initial user location in the EU--");
+            twLooog("flutter Monitor initial user location in the EU--");
 
             ATInitManger.getGDPRLevel().then((value) {
               if (value == ATInitManger.dataConsentSetUnknown()) {
@@ -97,12 +97,12 @@ class InitTool {
             });
             break;
           case InitUserLocation.initUserLocationOutOfEU:
-            ssLogggg(
+            twLooog(
               "flutter: flutter The location of the listening initial user is not in the EU",
             );
             break;
           case InitUserLocation.initUserLocationUnknown:
-            ssLogggg(
+            twLooog(
               "flutter: flutter The location of the initial listening user is unknown",
             );
             break;
@@ -110,7 +110,7 @@ class InitTool {
       }
 
       if (value.consentDismiss != null) {
-        ssLogggg("flutter: flutter consent dismiss callback");
+        twLooog("flutter: flutter consent dismiss callback");
       }
     });
   }
@@ -121,8 +121,8 @@ class InitTool {
     required void Function(ATInterstitialResponse)? atInterstitialResponse,
   }) async {
     try {
-      String appidS = SSHuanjing.hasDevvvvv() ? "h68f08f5ae3b21" : "h68ad7ba66635c";
-      String appidkeyStr= SSHuanjing.hasDevvvvv()
+      String appidS = TwConfigggg.hasDeeevv() ? "h68f08f5ae3b21" : "h68ad7ba66635c";
+      String appidkeyStr= TwConfigggg.hasDeeevv()
           ? "a6e684ab80848d5a5792d0027fb5443b5"
           : "aa25858a3da423bc9ff10facbbeed3794";
       String result = await ATInitManger.initAnyThinkSDK(
@@ -131,9 +131,9 @@ class InitTool {
       );
       interstitialListener(atInterstitialResponse);
       rewardListener(atRewardResponse);
-      ssLogggg("==initTopon====appidS:$appidS appidkeyStr:$appidkeyStr result:$result ");
+      twLooog("==initTopon====appidS:$appidS appidkeyStr:$appidkeyStr result:$result ");
     } catch (e) {
-      ssLogggg("==initTopon====error:$e");
+      twLooog("==initTopon====error:$e");
     }
   }
 
@@ -151,7 +151,7 @@ class InitTool {
     bool result = await ATInterstitialManager.hasInterstitialAdReady(
       placementID: placementId,
     );
-    ssLogggg('===topon===flutter插屏广告视频缓存hasInterAdReady:$result');
+    twLooog('===topon===flutter插屏广告视频缓存hasInterAdReady:$result');
     return result;
   }
 
@@ -182,7 +182,7 @@ class InitTool {
   }
 
   loadRewardedVideo({required String placementId}) async {
-    ssLogggg("====topon激励=====loadRewardedVideo");
+    twLooog("====topon激励=====loadRewardedVideo");
     await ATRewardedManager.loadRewardedVideo(
       placementID: placementId,
       extraMap: {
@@ -197,7 +197,7 @@ class InitTool {
     bool result = await ATRewardedManager.rewardedVideoReady(
       placementID: placementId,
     );
-    ssLogggg('==topon===广告视频缓存hasRewardAdReady:$result');
+    twLooog('==topon===广告视频缓存hasRewardAdReady:$result');
     return result;
   }
 

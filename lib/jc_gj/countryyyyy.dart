@@ -2,7 +2,7 @@
 import 'dart:io';
 
 
-class SSCountry {
+class TwCountryyyyy {
   // 美国
   static const String usCountry = "ssssss";
 
@@ -24,7 +24,7 @@ class SSCountry {
   // }
 
   // 当前货币符号
-  static String curGuojiaFuhao() {
+  static String curCountryyyySymbol() {
     String symbol = "\$";
     if (!hasUSA()) {
       symbol = "R\$";

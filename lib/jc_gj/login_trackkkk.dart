@@ -1,11 +1,11 @@
 // 🛠️ modified by obfuscator tool at 2025-07-09 11:08:44.324524
 import 'package:flutter/cupertino.dart';
 import 'package:hive_ce_flutter/hive_flutter.dart';
-import 'package:c143/jc_hive/sshive.dart';
+import 'package:c143/jc_hive/twhive.dart';
 
-import 'log.dart';
+import 'loggggg.dart';
 
-class PBLoginGenzhong {
+class TwLoginnnTrackkkk {
   static const String _lastLoginKey = 'last_login_utc_date';
   // 检查当天登录
   static const String _isTodayLogin = 'slkjfldsjlfgj';
@@ -16,7 +16,7 @@ class PBLoginGenzhong {
   // 启动了多少次
   static const String _launchCount = 'hive_launchCount';
 
-  static Box get box => SSHive.box;
+  static Box get box => TwHive.box;
 
   static void init() {
     _jianchaDenglu();
@@ -38,7 +38,7 @@ class PBLoginGenzhong {
       firstLogin = true;
     }
     _isFirstLoginTodayasdfas = firstLogin;
-    ssLogggg(
+    twLooog(
       "todayUtcString:$todayUtcString lastLoginDate:$lastLoginDate isFirstLoginToday:$firstLogin",
     );
 // auto patch 415
@@ -60,10 +60,10 @@ class PBLoginGenzhong {
       // 保存新的登录日期（UTC 格式）
       box.put(_isTodayLogin, todayUtcString);
       todayLoggg = false;
-      ssLogggg("===todayLoggg:$todayLoggg=");
+      twLooog("===todayLoggg:$todayLoggg=");
     }
 
-    ssLogggg(
+    twLooog(
       "todayUtcString:$todayUtcString lastLoginDate:$lastLoginDate isTodayLogin:$todayLoggg",
     );
 // auto patch 415
@@ -88,7 +88,7 @@ class PBLoginGenzhong {
       day = day + 1;
     }
 
-    ssLogggg("======launchDay:$day isFirstLoginToday:$isFirstLoginToday");
+    twLooog("======launchDay:$day isFirstLoginToday:$isFirstLoginToday");
     box.put(_launchDay, day);
     return day;
   }
@@ -105,14 +105,14 @@ class PBLoginGenzhong {
 
     count = count + 1;
     box.put(_launchCount, count);
-    ssLogggg("initLaunchCount:$count ");
+    twLooog("initLaunchCount:$count ");
     return count;
   }
 
   // 启动了多少次
   static int qiduoCishu() {
     int count = box.get(_launchCount) ?? 1;
-    ssLogggg("======GGLoginTracker===launchCount:$count");
+    twLooog("======GGLoginTracker===launchCount:$count");
     return count;
   }
 

@@ -1,6 +1,6 @@
 import 'dart:math';
 
-import 'package:c143/jc_gj/log.dart';
+import 'package:c143/jc_gj/loggggg.dart';
 import 'package:c143/jc_huanjing/config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
@@ -30,10 +30,10 @@ void backgourdListener(NotificationResponse ntftRse) {
 
 }
 
-class SSTzNotificattttt {
-  static final SSTzNotificattttt _shli = SSTzNotificattttt._();
-  SSTzNotificattttt._();
-  factory SSTzNotificattttt() {
+class TwNotificationnn {
+  static final TwNotificationnn _shli = TwNotificationnn._();
+  TwNotificationnn._();
+  factory TwNotificationnn() {
     return _shli;
   }
 
@@ -55,7 +55,7 @@ class SSTzNotificattttt {
     try {
       int localN = await AndroidFlutterLocalNotificationsPlugin()
           .extractMessageReceivedNum("local");
-      ssLogggg("==initNotificationCount==localcount:$localN==");
+      twLooog("==initNotificationCount==localcount:$localN==");
       if (localN > 0) {
         for (int i = 0; i < localN; i++) {
           // PBMaiDian.inform_p(veinKeyValue: "local");
@@ -64,7 +64,7 @@ class SSTzNotificattttt {
 
       int fcmNnnn = await AndroidFlutterLocalNotificationsPlugin()
           .extractMessageReceivedNum("fcm");
-      ssLogggg("==initNotificationCount==fcmcount:$fcmNnnn==");
+      twLooog("==initNotificationCount==fcmcount:$fcmNnnn==");
       if (fcmNnnn > 0) {
         for (int i = 0; i < localN; i++) {
           // PBMaiDian.inform_p(veinKeyValue: "fcm");
@@ -73,14 +73,14 @@ class SSTzNotificattttt {
 
       int lockNnnn = await AndroidFlutterLocalNotificationsPlugin()
           .extractMessageReceivedNum("unlock");
-      ssLogggg("==initNotificationCount==unlockcount:$lockNnnn==");
+      twLooog("==initNotificationCount==unlockcount:$lockNnnn==");
       if (lockNnnn > 0) {
         for (int i = 0; i < localN; i++) {
           // PBMaiDian.inform_p(veinKeyValue: "unlock");
         }
       }
     } catch (e) {
-      ssLogggg("===initNotificationCount==error:$e=");
+      twLooog("===initNotificationCount==error:$e=");
     }
   }
 
@@ -114,7 +114,7 @@ class SSTzNotificattttt {
     baioti = contents[random]['title'];
     neirong = contents[random]['content'];
 
-    ssLogggg("=initNotification====init===");
+    twLooog("=initNotification====init===");
     const AndroidInitializationSettings androidSettings =
         AndroidInitializationSettings('@mipmap/ic_launcher'); // 通知图标
 
@@ -135,7 +135,7 @@ class SSTzNotificattttt {
     NotificationAppLaunchDetails? notificationAppLaunchDetails =
         await AndroidFlutterLocalNotificationsPlugin()
             .getNotificationAppLaunchDetails();
-    ssLogggg(
+    twLooog(
       "=initNotification====getNotificationAppLaunchDetails==notificationAppLaunchDetails:$notificationAppLaunchDetails=",
     );
 
@@ -157,21 +157,21 @@ class SSTzNotificattttt {
     print("=====newContents:$newContents");
     dingshi(
       id: dingshitzid,
-      minutes: SSHuanjing.hasDevvvvv() ? 1 : 30,
+      minutes: TwConfigggg.hasDeeevv() ? 1 : 30,
       title: newContents[0]['title'],
       content: newContents[0]['content'],
       tzimage: tzimages[0],
     );
     dingshi(
       id: dingshitzid2,
-      minutes: SSHuanjing.hasDevvvvv() ? 2 : 60,
+      minutes: TwConfigggg.hasDeeevv() ? 2 : 60,
       title: newContents[1]['title'],
       content: newContents[1]['content'],
       tzimage: tzimages[1],
     );
     dingshi(
       id: dingshitzid3,
-      minutes: SSHuanjing.hasDevvvvv() ? 3 : 90,
+      minutes: TwConfigggg.hasDeeevv() ? 3 : 90,
       title: newContents[2]['title'],
       content: newContents[2]['content'],
       tzimage: tzimages[2],
@@ -204,7 +204,7 @@ class SSTzNotificattttt {
           .request();
       result = permissionStatus == PermissionStatus.granted;
     }
-    ssLogggg("==requestNotificationPermission=result:$result");
+    twLooog("==requestNotificationPermission=result:$result");
     return result;
   }
 
@@ -221,7 +221,7 @@ class SSTzNotificattttt {
     required String content,
     required String tzimage,
   }) async {
-    ssLogggg("==initNotification=_repeatNotification===id:$id minutes:$minutes");
+    twLooog("==initNotification=_repeatNotification===id:$id minutes:$minutes");
     //自定义通知ID
     // id = dingshitzid;
 
@@ -271,9 +271,9 @@ class SSTzNotificattttt {
               importance: Importance.high,
             ),
           );
-      ssLogggg("==initNotification=_subscribeFcmTopic===$result");
+      twLooog("==initNotification=_subscribeFcmTopic===$result");
     } catch (e) {
-      ssLogggg("==initNotification=_subscribeFcmTopic=error==$e");
+      twLooog("==initNotification=_subscribeFcmTopic=error==$e");
     }
   }
 
@@ -292,7 +292,7 @@ class SSTzNotificattttt {
       tttttt,
       ccccc,
       //两次发送解锁通知的间隔，根据需求设置
-      SSHuanjing.hasDevvvvv() ? Duration(seconds: 5) : Duration(minutes: 15),
+      TwConfigggg.hasDeeevv() ? Duration(seconds: 5) : Duration(minutes: 15),
       'android.intent.action.USER_PRESENT',
       AndroidNotificationDetails(
         'pbwwww',
@@ -315,7 +315,7 @@ class SSTzNotificattttt {
 
   Future<bool> checkNotificationPermission() async {
     bool result = await Permission.notification.isGranted;
-    ssLogggg("==requestNotificationPermission=result:$result");
+    twLooog("==requestNotificationPermission=result:$result");
     return result;
   }
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class SSTxtGraBorder extends StatelessWidget {
+class TwTxtGraBorder extends StatelessWidget {
   final Color? fontColor;
   final Gradient? gradient;
   final FontStyle? fontStyle;
@@ -15,7 +15,7 @@ class SSTxtGraBorder extends StatelessWidget {
 
   final bool showShadow;
 
-  const SSTxtGraBorder({
+  const TwTxtGraBorder({
     super.key,
     required this.text,
     this.gradient,

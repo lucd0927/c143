@@ -1,9 +1,9 @@
 
-enum SSHuanjingEnv {
+enum SSConfiggEnv {
   dev(name: "dev"),
   prod(name: "prod");
 
-  const SSHuanjingEnv({required this.name});
+  const SSConfiggEnv({required this.name});
 
   final String name;
 }

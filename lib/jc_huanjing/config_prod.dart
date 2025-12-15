@@ -3,19 +3,19 @@
 
 import 'config.dart';
 
-class SSHuanjingProd implements SSHuanjing{
+class SSConfiggPordddd implements TwConfigggg{
   @override
-  String bUuuu() {
+  String base_urllll() {
     // TODO: implement baseUrl
-    return "https://hug.piggybankboostreward.com/squaw/mulligan/borate";
+    return "";
   }
 
   @override
-  String tbaUuuuu() {
+  String tbaaa_urlll() {
 // auto patch 793
     // TODO: implement cloakUrl
 // auto patch 79
-    return "https://sikorsky.piggybankboostreward.com/forget/cheyenne";
+    return "";
   }
 
 }    
