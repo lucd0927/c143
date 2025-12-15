@@ -4,7 +4,7 @@ import 'dart:ui' show FontFeature;
 
 import 'package:flutter/widgets.dart';
 
-class TwAnimated_countttt extends StatelessWidget {
+class TwAnimatedCountttt extends StatelessWidget {
   /// The value of this counter.
   ///
   /// When a new value is specified, the counter will automatically animate
@@ -91,7 +91,10 @@ class TwAnimated_countttt extends StatelessWidget {
   final EdgeInsets padding;
 
   final Gradient? textGradient;
-  const TwAnimated_countttt({
+  final Color? strokeColor;
+  final double? strokeWidth;
+
+  const TwAnimatedCountttt({
     super.key,
     required this.value,
     this.duration = const Duration(milliseconds: 300),
@@ -104,24 +107,22 @@ class TwAnimated_countttt extends StatelessWidget {
     this.fractionDigits = 0,
     this.wholeDigits = 1,
     this.hideLeadingZeroes = false,
-    this.thousandSeparator=",",
+    this.thousandSeparator = ",",
     this.decimalSeparator = '.',
     this.mainAxisAlignment = MainAxisAlignment.center,
     this.padding = EdgeInsets.zero,
     this.textGradient,
-  })  : assert(fractionDigits >= 0, 'fractionDigits must be non-negative'),
-        assert(wholeDigits >= 0, 'wholeDigits must be non-negative');
+    this.strokeColor,
+    this.strokeWidth,
+  }) : assert(fractionDigits >= 0, 'fractionDigits must be non-negative'),
+       assert(wholeDigits >= 0, 'wholeDigits must be non-negative');
 
   @override
   Widget build(BuildContext context) {
     // Merge the text style with the default style, and request tabular figures
     // for consistent width of digits (if supported by the font).
 
-
-
-
-    final style = DefaultTextStyle.of(context)
-        .style
+    final style = DefaultTextStyle.of(context).style
         .merge(textStyle)
         .merge(const TextStyle(fontFeatures: [FontFeature.tabularFigures()]));
 
@@ -171,6 +172,8 @@ class TwAnimated_countttt extends StatelessWidget {
         color: color,
         padding: padding,
         textGradient: textGradient,
+        strokeColor: strokeColor,
+        strokeWidth: strokeWidth,
         // We might want to hide leading zeroes. The way we split digits, only
 
         // leading zeroes have "true zero" value. E.g. five hundred, 0500 is
@@ -222,8 +225,8 @@ class TwAnimated_countttt extends StatelessWidget {
         textDirection: TextDirection.ltr,
         children: [
           if (prefix != null) Text(prefix!),
-          // Draw the negative sign (-), if exists
 
+          // Draw the negative sign (-), if exists
           ClipRect(
             child: TweenAnimationBuilder(
               // Animate the negative sign (-) appearing and disappearing
@@ -235,7 +238,7 @@ class TwAnimated_countttt extends StatelessWidget {
               ),
             ),
           ),
-// auto patch 1
+          // auto patch 1
           if (infix != null) Text(infix!),
           // Draw digits before the decimal point
           ...integerWidgets,
@@ -252,6 +255,8 @@ class TwAnimated_countttt extends StatelessWidget {
               color: color,
               padding: padding,
               textGradient: textGradient,
+              strokeColor: strokeColor,
+              strokeWidth: strokeWidth,
             ),
           if (suffix != null) Text(suffix!),
         ],
@@ -269,7 +274,10 @@ class _SingleDigitFlipCounter extends StatelessWidget {
   final EdgeInsets padding;
   final bool visible; // user can choose to hide leading zeroes
   final Gradient? textGradient;
-// auto patch 765
+  final Color? strokeColor;
+  final double? strokeWidth;
+
+  // auto patch 765
   const _SingleDigitFlipCounter({
     Key? key,
 
@@ -282,6 +290,8 @@ class _SingleDigitFlipCounter extends StatelessWidget {
     required this.padding,
     this.visible = true,
     required this.textGradient,
+    required this.strokeColor,
+    required this.strokeWidth,
   }) : super(key: key);
 
   @override
@@ -303,16 +313,20 @@ class _SingleDigitFlipCounter extends StatelessWidget {
           child: Stack(
             children: <Widget>[
               _buildSingleDigit(
-                  digit: whole % 10,
-                  offset: h * decimal,
-                  opacity: 1 - decimal,
-                  gradient: textGradient
+                digit: whole % 10,
+                offset: h * decimal,
+                opacity: 1 - decimal,
+                gradient: textGradient,
+                strokeColor: strokeColor,
+                strokeWidth: strokeWidth,
               ),
               _buildSingleDigit(
-                  digit: (whole + 1) % 10,
-                  offset: h * decimal - h,
-                  opacity: decimal,
-                  gradient: textGradient
+                digit: (whole + 1) % 10,
+                offset: h * decimal - h,
+                opacity: decimal,
+                gradient: textGradient,
+                strokeColor: strokeColor,
+                strokeWidth: strokeWidth,
               ),
             ],
           ),
@@ -321,8 +335,69 @@ class _SingleDigitFlipCounter extends StatelessWidget {
     );
   }
 
-
   Widget _buildSingleDigit({
+    required int digit,
+    required double offset,
+    required double opacity,
+    required Color? strokeColor,
+    required double? strokeWidth,
+    Gradient? gradient,
+  }) {
+
+
+    /// 填充文字
+    Widget fillText = Text(
+      '$digit',
+      textAlign: TextAlign.center,
+      style: TextStyle(color: color.withOpacity(opacity.clamp(0, 1))),
+    );
+
+    /// 渐变支持
+    if (gradient != null) {
+      fillText = ShaderMask(
+        shaderCallback: (bounds) => gradient.createShader(bounds),
+        blendMode: BlendMode.srcIn,
+        child: fillText,
+      );
+    }
+
+    if(strokeColor == null || strokeWidth == null){
+      return Positioned(
+        left: 0,
+        right: 0,
+        bottom: offset + padding.bottom,
+        child: fillText,
+      );
+    }else{
+      /// 描边文字
+      final strokeText = Text(
+        '$digit',
+        textAlign: TextAlign.center,
+        style: TextStyle(
+          foreground: Paint()
+            ..style = PaintingStyle.stroke
+            ..strokeWidth = strokeWidth
+            ..color = strokeColor.withOpacity(opacity.clamp(0, 1)),
+        ),
+      );
+      return Positioned(
+        left: 0,
+        right: 0,
+        bottom: offset + padding.bottom,
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
+            strokeText, // 👈 外边框
+            fillText, // 👈 内容
+          ],
+        ),
+      );
+    }
+
+
+  }
+
+  Widget _buildSingleDigit3({
     required int digit,
     required double offset,
     required double opacity,
@@ -334,7 +409,6 @@ class _SingleDigitFlipCounter extends StatelessWidget {
       // If the text style does not involve transparency, we can modify
       // the text color directly.
       child = Text(
-
         '$digit',
         textAlign: TextAlign.center,
         style: TextStyle(color: color.withOpacity(opacity.clamp(0, 1))),
@@ -343,10 +417,7 @@ class _SingleDigitFlipCounter extends StatelessWidget {
       // Otherwise, we have to use the `Opacity` widget (less performant).
       child = Opacity(
         opacity: opacity.clamp(0, 1),
-        child: Text(
-          '$digit',
-          textAlign: TextAlign.center,
-        ),
+        child: Text('$digit', textAlign: TextAlign.center),
       );
     }
     // 如果使用渐变，包裹 ShaderMask
@@ -366,8 +437,6 @@ class _SingleDigitFlipCounter extends StatelessWidget {
     );
   }
 
-
-
   Widget _buildSingleDigit2({
     required int digit,
 
@@ -380,7 +449,6 @@ class _SingleDigitFlipCounter extends StatelessWidget {
       // If the text style does not involve transparency, we can modify
       // the text color directly.
       child = Text(
-
         '$digit',
         textAlign: TextAlign.center,
         style: TextStyle(color: color.withOpacity(opacity.clamp(0, 1))),
@@ -389,10 +457,7 @@ class _SingleDigitFlipCounter extends StatelessWidget {
       // Otherwise, we have to use the `Opacity` widget (less performant).
       child = Opacity(
         opacity: opacity.clamp(0, 1),
-        child: Text(
-          '$digit',
-          textAlign: TextAlign.center,
-        ),
+        child: Text('$digit', textAlign: TextAlign.center),
       );
     }
     return Positioned(

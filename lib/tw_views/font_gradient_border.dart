@@ -24,7 +24,7 @@ class TwTxtGraBorder extends StatelessWidget {
     this.fontWeight = FontWeight.bold,
     this.fontColor = Colors.white,
     this.height = 1,
-    this.strokeColor = const Color(0xffFFFAD7),
+    this.strokeColor = const Color(0xff7E5400),
 
     this.showShadow = false,
     this.fontStyle,
@@ -37,11 +37,9 @@ class TwTxtGraBorder extends StatelessWidget {
         gradient ??
             LinearGradient(
               colors: [
-                Color(0xffFFF565),
-                Color(0xffFFE0A7),
-                Color(0xffFFFE10),
-                Color(0xffFFF9AA),
-                Color(0xffFDDE51),
+                Color(0xffFFDF12),
+                Color(0xffFFAA00),
+
               ],
               end: Alignment.bottomCenter,
               begin: Alignment.topCenter,

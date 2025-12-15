@@ -4,6 +4,7 @@ import 'package:c143/tw_143/tw_pages/main_cash/main_cash.dart';
 import 'package:c143/tw_143/tw_pages/main_controller.dart';
 import 'package:c143/tw_143/tw_pages/main_quiz/main_quiz.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/main_tree.dart';
+import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -32,6 +33,7 @@ class _TwMainPageState extends State<TwMainPage> {
     super.initState();
 
     Get.put(MainController());
+    Get.put(MainTreeController());
 
 
   }
