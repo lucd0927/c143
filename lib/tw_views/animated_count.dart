@@ -97,7 +97,7 @@ class TwAnimatedCountttt extends StatelessWidget {
   const TwAnimatedCountttt({
     super.key,
     required this.value,
-    this.duration = const Duration(milliseconds: 300),
+    this.duration = const Duration(milliseconds: 800),
     this.negativeSignDuration = const Duration(milliseconds: 150),
     this.curve = Curves.linear,
     this.textStyle,
@@ -335,7 +335,7 @@ class _SingleDigitFlipCounter extends StatelessWidget {
     );
   }
 
-  Widget _buildSingleDigit({
+  Widget _buildSingleDigit3({
     required int digit,
     required double offset,
     required double opacity,
@@ -343,14 +343,24 @@ class _SingleDigitFlipCounter extends StatelessWidget {
     required double? strokeWidth,
     Gradient? gradient,
   }) {
-
-
     /// 填充文字
-    Widget fillText = Text(
-      '$digit',
-      textAlign: TextAlign.center,
-      style: TextStyle(color: color.withOpacity(opacity.clamp(0, 1))),
-    );
+    Widget fillText = const SizedBox();
+
+    if (color.opacity == 1) {
+      // If the text style does not involve transparency, we can modify
+      // the text color directly.
+      fillText = Text(
+        '$digit',
+        textAlign: TextAlign.center,
+        style: TextStyle(color: color.withOpacity(opacity.clamp(0, 1))),
+      );
+    } else {
+      // Otherwise, we have to use the `Opacity` widget (less performant).
+      fillText = Opacity(
+        opacity: opacity.clamp(0, 1),
+        child: Text('$digit', textAlign: TextAlign.center),
+      );
+    }
 
     /// 渐变支持
     if (gradient != null) {
@@ -361,14 +371,14 @@ class _SingleDigitFlipCounter extends StatelessWidget {
       );
     }
 
-    if(strokeColor == null || strokeWidth == null){
+    if (strokeColor == null || strokeWidth == null) {
       return Positioned(
         left: 0,
         right: 0,
         bottom: offset + padding.bottom,
         child: fillText,
       );
-    }else{
+    } else {
       /// 描边文字
       final strokeText = Text(
         '$digit',
@@ -393,15 +403,15 @@ class _SingleDigitFlipCounter extends StatelessWidget {
         ),
       );
     }
-
-
   }
 
-  Widget _buildSingleDigit3({
+  Widget _buildSingleDigit({
     required int digit,
     required double offset,
     required double opacity,
     Gradient? gradient, // 新增
+    Color? strokeColor,
+    double? strokeWidth,
   }) {
     // 当需要渐变时，强制文字颜色为白色（用于 mask）
     Widget child = const SizedBox();

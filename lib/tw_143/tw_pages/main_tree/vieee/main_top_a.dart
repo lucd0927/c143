@@ -55,12 +55,12 @@ class _MainTopAState extends State<MainTopA> {
                           Obx(() {
                             double value =
                                 MainTreeController.to.curMoneyyyy.value;
+                            value = 110;
                             return TwAnimatedCountttt(
                               value: value,
                               fractionDigits: 0,
                               strokeWidth: 1.w,
                               strokeColor: Color(0xff133F88),
-                              prefix: "",
                               textStyle: TextStyle(
                                 fontSize: 14.sp,
                                 color: Color(0xffFFDF12),

@@ -1,4 +1,5 @@
 import 'package:c143/gen/assets.gen.dart';
+import 'package:c143/tw_143/tw_pages/main_tree/vieee/main_center.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/vieee/main_top_a.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -23,10 +24,10 @@ class _MainTreeState extends State<MainTree> {
         ),
         Positioned.fill(
           child: Column(
-
             children: [
               SizedBox(height: 40.h),
               MainTopA(),
+              MainCenter(),
             ],
           ),
         ),
