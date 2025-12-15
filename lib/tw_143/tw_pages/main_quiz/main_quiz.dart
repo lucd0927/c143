@@ -2,20 +2,20 @@
 import 'package:c143/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
 
-class MainTree extends StatefulWidget {
-  const MainTree({super.key});
+class MainQuiz extends StatefulWidget {
+  const MainQuiz({super.key});
 
   @override
-  State<MainTree> createState() => _MainTreeState();
+  State<MainQuiz> createState() => _MainQuizState();
 }
 
-class _MainTreeState extends State<MainTree> {
+class _MainQuizState extends State<MainQuiz> {
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
         Image.asset(
-          Assets.twimg.mainBg.path,
+          Assets.twimg.mainBg3.path,
           width: double.infinity,
           height: double.infinity,
           fit: BoxFit.fill,

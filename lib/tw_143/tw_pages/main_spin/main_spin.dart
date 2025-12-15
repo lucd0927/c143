@@ -2,20 +2,20 @@
 import 'package:c143/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
 
-class MainTree extends StatefulWidget {
-  const MainTree({super.key});
+class MainSpin extends StatefulWidget {
+  const MainSpin({super.key});
 
   @override
-  State<MainTree> createState() => _MainTreeState();
+  State<MainSpin> createState() => _MainSpinState();
 }
 
-class _MainTreeState extends State<MainTree> {
+class _MainSpinState extends State<MainSpin> {
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
         Image.asset(
-          Assets.twimg.mainBg.path,
+          Assets.twimg.mainBg2.path,
           width: double.infinity,
           height: double.infinity,
           fit: BoxFit.fill,

@@ -1,6 +1,9 @@
 
 import 'package:c143/tw_143/tw_pages/main/views/main_nav.dart';
+import 'package:c143/tw_143/tw_pages/main_cash/main_cash.dart';
 import 'package:c143/tw_143/tw_pages/main_controller.dart';
+import 'package:c143/tw_143/tw_pages/main_quiz/main_quiz.dart';
+import 'package:c143/tw_143/tw_pages/main_tree/main_tree.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -17,7 +20,10 @@ class _TwMainPageState extends State<TwMainPage> {
 
 
   List<Widget> get _mainNavs => [
-
+    MainTree(),
+    MainQuiz(),
+    MainCash(),
+    MainCash(),
   ];
 
   @override
@@ -53,12 +59,12 @@ class _TwMainPageState extends State<TwMainPage> {
                   children: [
                     Column(
                       children: [
-                        // Expanded(
-                        //   child: IndexedStack(
-                        //     index: curNacIndex,
-                        //     children: _mainNavs,
-                        //   ),
-                        // ),
+                        Expanded(
+                          child: IndexedStack(
+                            index: curNacIndex,
+                            children: _mainNavs,
+                          ),
+                        ),
                         // SizedBox(height: bottomNavHeight,),
                       ],
                     ),
