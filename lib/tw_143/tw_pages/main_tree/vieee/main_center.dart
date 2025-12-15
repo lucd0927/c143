@@ -7,6 +7,7 @@ import 'package:c143/tw_views/shimmer_effect.dart';
 import 'package:c143/tw_views/tw_progress.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:get/get_connect/http/src/utils/utils.dart';
 
 class MainCenter extends StatefulWidget {
@@ -30,11 +31,14 @@ class _MainCenterState extends State<MainCenter> {
             right: 0,
             bottom: 40.h,
             child: Center(
-              child: Image.asset(
-                Assets.twimg.mainTree1.path,
-                width: 280.h,
-                height: 280.h,
-              ),
+              child: Obx((){
+                String icon = MainTreeController.to.treeIcon();
+               return Image.asset(
+                  icon,
+                  width: 280.h,
+                  height: 280.h,
+                );
+              }),
             ),
           ),
           Positioned(child: leftWidget(), left: 0, top: 0, bottom: 0),
@@ -46,47 +50,50 @@ class _MainCenterState extends State<MainCenter> {
   }
 
   levelWidget() {
-    return Center(
-      child: Container(
-        width: 140.w,
-        height: 16.h,
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [Color(0xffFAE4B6), Color(0xffFAC986)],
-            end: Alignment.bottomCenter,
-            begin: Alignment.topCenter,
+    return Obx(() {
+      int curLevel = MainTreeController.to.curLevel.value;
+      return Center(
+        child: Container(
+          width: 140.w,
+          height: 16.h,
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [Color(0xffFAE4B6), Color(0xffFAC986)],
+              end: Alignment.bottomCenter,
+              begin: Alignment.topCenter,
+            ),
+            borderRadius: BorderRadius.circular(16.h),
+            border: Border.all(color: Color(0xffDEB378), width: 0.5.w),
           ),
-          borderRadius: BorderRadius.circular(16.h),
-          border: Border.all(color: Color(0xffDEB378), width: 0.5.w),
-        ),
-        child: Row(
-          children: [
-            SizedBox(width: 8.w),
-            TwAnimatedCountttt(
-              value: MainTreeController.to.curLevel.value,
-              fractionDigits: 0,
+          child: Row(
+            children: [
+              SizedBox(width: 8.w),
+              TwAnimatedCountttt(
+                value: curLevel,
+                fractionDigits: 0,
 
-              prefix: "Lv.",
-              textStyle: TextStyle(
-                fontSize: 14.sp,
-                color: Color(0xff634417),
-                height: 1,
-                fontWeight: FontWeight.bold,
+                prefix: "Lv.",
+                textStyle: TextStyle(
+                  fontSize: 14.sp,
+                  color: Color(0xff634417),
+                  height: 1,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
-            ),
-            SizedBox(width: 8.w),
-            TwProgress(
-              height: 12.h,
-              innerHeight: 8.h,
-              width: 94.w,
-              progress: 0.5,
-              gradientColors: [Color(0xffFFB52B), Color(0xffFF5F03)],
-              bgColor: Color(0xffC18420),
-            ),
-          ],
+              SizedBox(width: 8.w),
+              TwProgress(
+                height: 12.h,
+                innerHeight: 8.h,
+                width: 94.w,
+                progress: MainTreeController.to.curLevelProgress(),
+                gradientColors: [Color(0xffFFB52B), Color(0xffFF5F03)],
+                bgColor: Color(0xffC18420),
+              ),
+            ],
+          ),
         ),
-      ),
-    );
+      );
+    });
   }
 
   leftWidget() {
@@ -118,6 +125,7 @@ class _MainCenterState extends State<MainCenter> {
           width: 60.h,
           count: 10,
           icon: Assets.twimg.mainFertilize.path,
+          onClick: () {},
         ),
       ],
     );
@@ -129,7 +137,12 @@ class _MainCenterState extends State<MainCenter> {
     return Row(
       children: [
         SizedBox(width: 100.w),
-        centerItem(width: 40.h, count: count, icon: Assets.twimg.mainSun.path),
+        centerItem(
+          width: 40.h,
+          count: count,
+          icon: Assets.twimg.mainSun.path,
+          onClick: () {},
+        ),
       ],
     );
   }
@@ -138,6 +151,7 @@ class _MainCenterState extends State<MainCenter> {
     required double width,
     required double count,
     required String icon,
+    required VoidCallback onClick,
     bool showTxt = true,
     bool txtLocationBottom = true,
   }) {
@@ -153,30 +167,33 @@ class _MainCenterState extends State<MainCenter> {
         ),
       );
     }
-    return TwAScale(
-      child: Container(
-        width: width,
-        height: width,
-
-        child: Stack(
-          clipBehavior: Clip.none,
-          children: [
-            ShiningEffect(
-              duration: Duration(milliseconds: 5000),
-              shineColor: Color(0xffffffff),
-              opacity: 1,
-              angle: -0.9,
-              topLeft: false,
-              child: Image.asset(
-                icon,
-                width: double.infinity,
-                height: double.infinity,
+    return GestureDetector(
+      onTap: onClick,
+      child: TwAScale(
+        child: Container(
+          width: width,
+          height: width,
+          color: Colors.transparent,
+          child: Stack(
+            clipBehavior: Clip.none,
+            children: [
+              ShiningEffect(
+                duration: Duration(milliseconds: 5000),
+                shineColor: Color(0xffffffff),
+                opacity: 1,
+                angle: -0.9,
+                topLeft: false,
+                child: Image.asset(
+                  icon,
+                  width: double.infinity,
+                  height: double.infinity,
+                ),
               ),
-            ),
-            txtLocationBottom
-                ? Positioned(left: 0, right: 0, bottom: 0, child: txtW)
-                : Positioned(left: 0, right: 0, top: 0, child: txtW),
-          ],
+              txtLocationBottom
+                  ? Positioned(left: 0, right: 0, bottom: 0, child: txtW)
+                  : Positioned(left: 0, right: 0, top: 0, child: txtW),
+            ],
+          ),
         ),
       ),
     );
@@ -186,7 +203,12 @@ class _MainCenterState extends State<MainCenter> {
     return Row(
       children: [
         SizedBox(width: 50.w),
-        centerItem(width: 40.h, count: 10, icon: Assets.twimg.mainSpin.path),
+        centerItem(
+          width: 40.h,
+          count: 10,
+          icon: Assets.twimg.mainSpin.path,
+          onClick: () {},
+        ),
       ],
     );
   }
@@ -221,9 +243,14 @@ class _MainCenterState extends State<MainCenter> {
           count: 10,
           icon: Assets.twimg.mainWater.path,
           showTxt: false,
+          onClick: onWater,
         ),
       ],
     );
+  }
+
+  void onWater() {
+    MainTreeController.to.onAddWaterCount();
   }
 
   coinWidget() {
@@ -235,6 +262,7 @@ class _MainCenterState extends State<MainCenter> {
           count: 10,
           icon: Assets.twimg.mainWater.path,
           showTxt: false,
+          onClick: () {},
         ),
       ],
     );
@@ -249,6 +277,7 @@ class _MainCenterState extends State<MainCenter> {
           count: 10,
           icon: Assets.twimg.mainChuanzi.path,
           showTxt: false,
+          onClick: () {},
         ),
       ],
     );
