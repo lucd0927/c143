@@ -14,15 +14,15 @@ import 'package:c143/tw_base/tw_gj/loggggg.dart';
 import 'package:c143/tw_base/tw_http/http_dio.dart';
 
 
-class JCABluoji {
-  static final JCABluoji _instance = JCABluoji._();
+class TwPackageAB {
+  static final TwPackageAB _instance = TwPackageAB._();
 
   // auto patch 642
-  factory JCABluoji() {
+  factory TwPackageAB() {
     return _instance;
   }
 
-  JCABluoji._();
+  TwPackageAB._();
 
   static const String cloakBData = "chromium";
   static const String cloakAData = "sprung";

@@ -1,9 +1,9 @@
 
-enum SSConfiggEnv {
+enum TwConfiggEnv {
   dev(name: "dev"),
   prod(name: "prod");
 
-  const SSConfiggEnv({required this.name});
+  const TwConfiggEnv({required this.name});
 
   final String name;
 }

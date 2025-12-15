@@ -6,16 +6,16 @@ import 'enum_app_evn.dart';
 
 abstract class TwConfigggg {
 
-  static SSConfiggEnv? _env;
+  static TwConfiggEnv? _env;
 
-  static SSConfiggEnv get env => _env ?? SSConfiggEnv.prod;
+  static TwConfiggEnv get env => _env ?? TwConfiggEnv.prod;
   static bool hasDeeevv(){
-    return env == SSConfiggEnv.dev;
+    return env == TwConfiggEnv.dev;
   }
   static bool hasProdddd(){
-    return env == SSConfiggEnv.prod;
+    return env == TwConfiggEnv.prod;
   }
-  static initEvn(SSConfiggEnv env){
+  static initEvn(TwConfiggEnv env){
     _env = env;
   }
   static TwConfigggg? _instance;
@@ -23,10 +23,10 @@ abstract class TwConfigggg {
 
   static TwConfigggg  _initInstance(){
     switch(_env){
-      case SSConfiggEnv.dev:
+      case TwConfiggEnv.dev:
         _instance = TwConfiggDevvv();
         break;
-      case SSConfiggEnv.prod:
+      case TwConfiggEnv.prod:
         _instance = SSConfiggPordddd();
         break;
       default:

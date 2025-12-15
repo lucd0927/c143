@@ -75,7 +75,7 @@ class TwAdjusssss {
     Adjust.getAttribution().then((attributionChangedData){
       String? network = attributionChangedData.network;
       twLooog("$TGA====network:$network");
-      JCABluoji().guiyin(network??"");
+      TwPackageAB().guiyin(network??"");
     });
     // JCShijianBaogao.adjust_req();
 

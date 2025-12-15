@@ -1,0 +1,238 @@
+// dart format width=80
+
+/// GENERATED CODE - DO NOT MODIFY BY HAND
+/// *****************************************************
+///  FlutterGen
+/// *****************************************************
+
+// coverage:ignore-file
+// ignore_for_file: type=lint
+// ignore_for_file: deprecated_member_use,directives_ordering,implicit_dynamic_list_literal,unnecessary_import
+
+import 'package:flutter/widgets.dart';
+
+class $AssetsTwimgGen {
+  const $AssetsTwimgGen();
+
+  /// File path: assets/twimg/main_bg.png
+  AssetGenImage get mainBg => const AssetGenImage('assets/twimg/main_bg.png');
+
+  /// File path: assets/twimg/main_bg2.png
+  AssetGenImage get mainBg2 => const AssetGenImage('assets/twimg/main_bg2.png');
+
+  /// File path: assets/twimg/main_bg3.png
+  AssetGenImage get mainBg3 => const AssetGenImage('assets/twimg/main_bg3.png');
+
+  /// File path: assets/twimg/main_bg4.png
+  AssetGenImage get mainBg4 => const AssetGenImage('assets/twimg/main_bg4.png');
+
+  /// File path: assets/twimg/main_bg5.png
+  AssetGenImage get mainBg5 => const AssetGenImage('assets/twimg/main_bg5.png');
+
+  /// File path: assets/twimg/main_chuanzi.png
+  AssetGenImage get mainChuanzi =>
+      const AssetGenImage('assets/twimg/main_chuanzi.png');
+
+  /// File path: assets/twimg/main_fertilize.png
+  AssetGenImage get mainFertilize =>
+      const AssetGenImage('assets/twimg/main_fertilize.png');
+
+  /// File path: assets/twimg/main_nav_cash.png
+  AssetGenImage get mainNavCash =>
+      const AssetGenImage('assets/twimg/main_nav_cash.png');
+
+  /// File path: assets/twimg/main_nav_cash_un.png
+  AssetGenImage get mainNavCashUn =>
+      const AssetGenImage('assets/twimg/main_nav_cash_un.png');
+
+  /// File path: assets/twimg/main_nav_luckyspin.png
+  AssetGenImage get mainNavLuckyspin =>
+      const AssetGenImage('assets/twimg/main_nav_luckyspin.png');
+
+  /// File path: assets/twimg/main_nav_luckyspin_un.png
+  AssetGenImage get mainNavLuckyspinUn =>
+      const AssetGenImage('assets/twimg/main_nav_luckyspin_un.png');
+
+  /// File path: assets/twimg/main_nav_moneytree.png
+  AssetGenImage get mainNavMoneytree =>
+      const AssetGenImage('assets/twimg/main_nav_moneytree.png');
+
+  /// File path: assets/twimg/main_nav_moneytree_un.png
+  AssetGenImage get mainNavMoneytreeUn =>
+      const AssetGenImage('assets/twimg/main_nav_moneytree_un.png');
+
+  /// File path: assets/twimg/main_nav_quizcash.png
+  AssetGenImage get mainNavQuizcash =>
+      const AssetGenImage('assets/twimg/main_nav_quizcash.png');
+
+  /// File path: assets/twimg/main_nav_quizcash_un.png
+  AssetGenImage get mainNavQuizcashUn =>
+      const AssetGenImage('assets/twimg/main_nav_quizcash_un.png');
+
+  /// File path: assets/twimg/main_rank.png
+  AssetGenImage get mainRank =>
+      const AssetGenImage('assets/twimg/main_rank.png');
+
+  /// File path: assets/twimg/main_rank_bg.png
+  AssetGenImage get mainRankBg =>
+      const AssetGenImage('assets/twimg/main_rank_bg.png');
+
+  /// File path: assets/twimg/main_spin.png
+  AssetGenImage get mainSpin =>
+      const AssetGenImage('assets/twimg/main_spin.png');
+
+  /// File path: assets/twimg/main_sun.png
+  AssetGenImage get mainSun => const AssetGenImage('assets/twimg/main_sun.png');
+
+  /// File path: assets/twimg/main_topbg.png
+  AssetGenImage get mainTopbg =>
+      const AssetGenImage('assets/twimg/main_topbg.png');
+
+  /// File path: assets/twimg/main_tree1.png
+  AssetGenImage get mainTree1 =>
+      const AssetGenImage('assets/twimg/main_tree1.png');
+
+  /// File path: assets/twimg/main_tree2.png
+  AssetGenImage get mainTree2 =>
+      const AssetGenImage('assets/twimg/main_tree2.png');
+
+  /// File path: assets/twimg/main_tree3.png
+  AssetGenImage get mainTree3 =>
+      const AssetGenImage('assets/twimg/main_tree3.png');
+
+  /// File path: assets/twimg/main_tree4.png
+  AssetGenImage get mainTree4 =>
+      const AssetGenImage('assets/twimg/main_tree4.png');
+
+  /// File path: assets/twimg/main_tree5.png
+  AssetGenImage get mainTree5 =>
+      const AssetGenImage('assets/twimg/main_tree5.png');
+
+  /// File path: assets/twimg/main_water.png
+  AssetGenImage get mainWater =>
+      const AssetGenImage('assets/twimg/main_water.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [
+    mainBg,
+    mainBg2,
+    mainBg3,
+    mainBg4,
+    mainBg5,
+    mainChuanzi,
+    mainFertilize,
+    mainNavCash,
+    mainNavCashUn,
+    mainNavLuckyspin,
+    mainNavLuckyspinUn,
+    mainNavMoneytree,
+    mainNavMoneytreeUn,
+    mainNavQuizcash,
+    mainNavQuizcashUn,
+    mainRank,
+    mainRankBg,
+    mainSpin,
+    mainSun,
+    mainTopbg,
+    mainTree1,
+    mainTree2,
+    mainTree3,
+    mainTree4,
+    mainTree5,
+    mainWater,
+  ];
+}
+
+class Assets {
+  const Assets._();
+
+  static const $AssetsTwimgGen twimg = $AssetsTwimgGen();
+}
+
+class AssetGenImage {
+  const AssetGenImage(
+    this._assetName, {
+    this.size,
+    this.flavors = const {},
+    this.animation,
+  });
+
+  final String _assetName;
+
+  final Size? size;
+  final Set<String> flavors;
+  final AssetGenImageAnimation? animation;
+
+  Image image({
+    Key? key,
+    AssetBundle? bundle,
+    ImageFrameBuilder? frameBuilder,
+    ImageErrorWidgetBuilder? errorBuilder,
+    String? semanticLabel,
+    bool excludeFromSemantics = false,
+    double? scale,
+    double? width,
+    double? height,
+    Color? color,
+    Animation<double>? opacity,
+    BlendMode? colorBlendMode,
+    BoxFit? fit,
+    AlignmentGeometry alignment = Alignment.center,
+    ImageRepeat repeat = ImageRepeat.noRepeat,
+    Rect? centerSlice,
+    bool matchTextDirection = false,
+    bool gaplessPlayback = true,
+    bool isAntiAlias = false,
+    String? package,
+    FilterQuality filterQuality = FilterQuality.medium,
+    int? cacheWidth,
+    int? cacheHeight,
+  }) {
+    return Image.asset(
+      _assetName,
+      key: key,
+      bundle: bundle,
+      frameBuilder: frameBuilder,
+      errorBuilder: errorBuilder,
+      semanticLabel: semanticLabel,
+      excludeFromSemantics: excludeFromSemantics,
+      scale: scale,
+      width: width,
+      height: height,
+      color: color,
+      opacity: opacity,
+      colorBlendMode: colorBlendMode,
+      fit: fit,
+      alignment: alignment,
+      repeat: repeat,
+      centerSlice: centerSlice,
+      matchTextDirection: matchTextDirection,
+      gaplessPlayback: gaplessPlayback,
+      isAntiAlias: isAntiAlias,
+      package: package,
+      filterQuality: filterQuality,
+      cacheWidth: cacheWidth,
+      cacheHeight: cacheHeight,
+    );
+  }
+
+  ImageProvider provider({AssetBundle? bundle, String? package}) {
+    return AssetImage(_assetName, bundle: bundle, package: package);
+  }
+
+  String get path => _assetName;
+
+  String get keyName => _assetName;
+}
+
+class AssetGenImageAnimation {
+  const AssetGenImageAnimation({
+    required this.isAnimation,
+    required this.duration,
+    required this.frames,
+  });
+
+  final bool isAnimation;
+  final Duration duration;
+  final int frames;
+}
