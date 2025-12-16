@@ -7,7 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 double minPinnedHeight = 180.h;
-double maxPinnedHeight = 540.h;
+// double maxPinnedHeight = 540.h;
+double maxPinnedHeight = 500.h;
 
 class MainTree extends StatefulWidget {
   const MainTree({super.key});

@@ -8,7 +8,6 @@ import 'package:c143/tw_views/tw_progress.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:get/get_connect/http/src/utils/utils.dart';
 
 class MainCenter extends StatefulWidget {
   const MainCenter({super.key});
@@ -22,14 +21,14 @@ class _MainCenterState extends State<MainCenter> {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      height: 360.h,
+      height: 320.h,
       color: Colors.amber.withValues(alpha: 0.0),
       child: Stack(
         children: [
           Positioned(
             left: 0,
             right: 0,
-            bottom: 50.h,
+            bottom: 10.h,
             child: Center(
               child: Obx(() {
                 String icon = MainTreeController.to.treeIcon();
@@ -54,12 +53,12 @@ class _MainCenterState extends State<MainCenter> {
           Positioned(child: leftWidget(), left: 0, top: 0, bottom: 0),
           Positioned(child: rightWidget(), right: 0, top: 0, bottom: 0),
 
-          Positioned(
-            child: textCongratulationWidget(),
-            left: 0,
-            right: 0,
-            bottom: 8.h,
-          ),
+          // Positioned(
+          //   child: textCongratulationWidget(),
+          //   left: 0,
+          //   right: 0,
+          //   bottom: 8.h,
+          // ),
         ],
       ),
     );
