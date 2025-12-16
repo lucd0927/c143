@@ -223,4 +223,10 @@ class MainTreeController extends GetxController {
     box.put(twKeyMoneyyyy, tmpCurmmm2);
     curMoneyyyy.value = tmpCurmmm2;
   }
+
+
+  topTextChange(){
+
+  }
+
 }

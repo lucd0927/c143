@@ -1,6 +1,7 @@
 import 'package:c143/gen/assets.gen.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
 import 'package:c143/tw_views/animated_count.dart';
+import 'package:c143/tw_views/fade_switcher.dart';
 import 'package:c143/tw_views/font_border.dart';
 import 'package:c143/tw_views/font_gradient_border.dart';
 import 'package:c143/tw_views/tw_progress.dart';
@@ -16,6 +17,36 @@ class MainTopA extends StatefulWidget {
 }
 
 class _MainTopAState extends State<MainTopA> {
+  Map<int, List<String>> stageTexts = {
+    30: [
+      "Nice one! Your coin journey has begun!",
+      "You’ve earned your first pot of gold! Keep collecting coins!",
+      "Every tap brings you one step closer to your goal!",
+    ],
+    70: [
+      "Full speed ahead! At this rate, you can claim big rewards today!",
+      "Halfway there! The more you play, the more coins you earn!",
+      "Watch an ad, and your progress bar will jump up a notch!",
+      "You’ve outpaced 20% of users in today’s progress!",
+    ],
+    95: [
+      "Victory is within sight! Only 500 coins left to go!",
+      "Final sprint! Just 10 more taps to claim rewards!",
+      "Wow! You’re almost there!",
+      // "You’re expected to claim full rewards in 15 minutes!",
+    ],
+    100: [
+      "Tomorrow’s taps are more valuable!",
+      "Today’s tasks are complete! Log in tomorrow to get 1000 coins directly!",
+      "The coin tree grows at night—come back tomorrow morning for a surprise!",
+    ],
+    101: [
+      "🎉 Congratulations! You’ve reached your reward goal!",
+      "Awesome! Claim now and get your bonus coins!",
+      "Tap here—your coins are ready!",
+    ],
+  };
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -70,8 +101,9 @@ class _MainTopAState extends State<MainTopA> {
                           }),
                           Spacer(),
                           TwTxtGraBorder(
-                            text:
-                                MainTreeController.maxCoinNum.toStringAsFixed(0),
+                            text: MainTreeController.maxCoinNum.toStringAsFixed(
+                              0,
+                            ),
                           ),
                         ],
                       ),
@@ -87,43 +119,72 @@ class _MainTopAState extends State<MainTopA> {
                     ],
                   ),
                 ),
-                Container(
-                  width: 320.w,
-                  height: 28.h,
-                  color: Colors.red.withValues(alpha: 0.0),
-                  child: Row(
-                    children: [
-                      Expanded(
-                        child: Text(
-                          "Nice! Your Wealth Journey Has Begun!",
-                          style: TextStyle(
-                            fontSize: 12.sp,
-                            color: Color(0xffffffff),
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                      // Image.asset(
-                      //   Assets.twimg.mainChuanzi.path,
-                      //   width: 16.w,
-                      //   height: 16.h,
-                      // ),
-                      // Text(
-                      //   "x1",
-                      //   style: TextStyle(
-                      //     fontSize: 14.sp,
-                      //     color: Color(0xffFFD10E),
-                      //     fontWeight: FontWeight.bold,
-                      //   ),
-                      // ),
-                    ],
-                  ),
-                ),
+                bottomTxt(),
               ],
             ),
           ),
         ],
       ),
     );
+  }
+
+  Widget bottomTxt() {
+    return Obx((){    double tmpCurMmmm = MainTreeController.to.curMoneyyyy.value;
+    double progress = tmpCurMmmm / MainTreeController.maxCoinNum;
+    List<String> tmp =
+        stageTexts[30] ??
+            [
+              "Nice one! Your coin journey has begun!",
+              "You’ve earned your first pot of gold! Keep collecting coins!",
+              "Every tap brings you one step closer to your goal!",
+            ];
+    if (progress <= 0.3) {
+      tmp = stageTexts[30]!;
+    } else if (progress <= 0.7) {
+      tmp = stageTexts[70]!;
+    } else if (progress <= 0.8) {
+      tmp = stageTexts[95]!;
+    } else if (progress <= 1) {
+      tmp = stageTexts[100]!;
+    } else if (progress > 1) {
+      tmp = stageTexts[101]!;
+    }
+    int length = tmp.length;
+    List<Widget> chilren = [];
+    for (int i = 0; i < length; i++) {
+      Widget item = Text(
+        tmp[i],
+        style: TextStyle(
+          fontSize: 12.sp,
+          color: Color(0xffffffff),
+          fontWeight: FontWeight.bold,
+          height: 1,
+        ),
+      );
+      chilren.add(item);
+    }
+    return Container(
+      width: 320.w,
+      height: 28.h,
+      color: Colors.red.withValues(alpha: 0.0),
+      child: Row(
+        children: [
+          Expanded(child: FadeSwitcher(children: [...chilren])),
+          // Image.asset(
+          //   Assets.twimg.mainChuanzi.path,
+          //   width: 16.w,
+          //   height: 16.h,
+          // ),
+          // Text(
+          //   "x1",
+          //   style: TextStyle(
+          //     fontSize: 14.sp,
+          //     color: Color(0xffFFD10E),
+          //     fontWeight: FontWeight.bold,
+          //   ),
+          // ),
+        ],
+      ),
+    );});
   }
 }
