@@ -18,8 +18,8 @@ class MainTreeController extends GetxController {
   // current level
   var curLevel = 1.obs;
 
-  var curWaterCount = 0.obs;
-  var curShifeiCount = 0.obs;
+  var curStageWaterCount = 0.obs;
+  var curStageShifeiCount = 0.obs;
 
   static String get twKeyMoneyyyy =>
       TwPackageAB.isPackageB() ? "twKeyMoneyyyyBbbb" : "twKeyMoneyyyy";
@@ -33,69 +33,25 @@ class MainTreeController extends GetxController {
   static String get twKeyShifeiCount =>
       TwPackageAB.isPackageB() ? "twKeyShifeiCountBbbb" : "twKeyShifeiCount";
 
-  static const List<int> waterCounts = [1, 20, 60];
-  static const List<int> shifeiCounts = [1, 5, 15];
+  static const List<int> waterCounts = [1, 20, 60, 80];
+  static const List<int> shifeiCounts = [1, 5, 15, 20];
 
-  String treeIcon(){
+  String treeIcon() {
     String tmpTreeIcon = Assets.twimg.mainTree1.path;
     int curLevvvv = curLevel.value;
-    if(curLevvvv == 1){
+    if (curLevvvv == 1) {
       tmpTreeIcon = Assets.twimg.mainTree1.path;
-    }else if(curLevvvv == 2){
+    } else if (curLevvvv == 2) {
       tmpTreeIcon = Assets.twimg.mainTree2.path;
-    }else if(curLevvvv == 3){
+    } else if (curLevvvv == 3) {
       tmpTreeIcon = Assets.twimg.mainTree3.path;
-    }else if(curLevvvv == 4){
+    } else if (curLevvvv == 4) {
       tmpTreeIcon = Assets.twimg.mainTree4.path;
-    }else if(curLevvvv >= 5){
+    } else if (curLevvvv >= 5) {
       tmpTreeIcon = Assets.twimg.mainTree5.path;
     }
 
     return tmpTreeIcon;
-  }
-
-  double curLevelProgress() {
-    double progress = 0;
-    int curLevellll = _jisuanLevel();
-    int tmpCurWaterCount = curWaterCount.value;
-    int tmpCurShifeiCount = curShifeiCount.value;
-
-    if (curLevellll == 1) {
-      progress = 0;
-    } else if (curLevellll == 2) {
-      double waterPro = (waterCounts[0] - tmpCurWaterCount ) / waterCounts[1];
-      double shifeiPro =
-          (shifeiCounts[0] -tmpCurShifeiCount) / shifeiCounts[1];
-
-      bool whichD = waterPro >= shifeiPro;
-      progress = whichD ? waterPro : shifeiPro;
-    } else if (curLevellll == 3) {
-      double waterPro =
-          (waterCounts[0] + waterCounts[1] -tmpCurWaterCount ) / waterCounts[2];
-      double shifeiPro =
-          (shifeiCounts[0] + shifeiCounts[1] -tmpCurShifeiCount ) /
-          shifeiCounts[2];
-
-      bool whichD = waterPro >= shifeiPro;
-      progress = whichD ? waterPro : shifeiPro;
-    } else if (curLevellll >= 4) {
-      double waterPro =
-          (tmpCurWaterCount -
-              -waterCounts[0] -
-              waterCounts[1] -
-              waterCounts[2]) /
-          waterCounts[2];
-      double shifeiPro =
-          (tmpCurShifeiCount -
-              -shifeiCounts[0] -
-              shifeiCounts[1] -
-              shifeiCounts[2]) /
-          shifeiCounts[2];
-      bool whichD = waterPro >= shifeiPro;
-      progress = whichD ? waterPro : shifeiPro;
-    }
-    twLooog("=======curLevellll:$curLevellll progress:$progress");
-    return progress;
   }
 
   @override
@@ -107,86 +63,155 @@ class MainTreeController extends GetxController {
     curMoneyyyy = tmpMmm.obs;
 
     int tmpWaterCount = box.get(twKeyWaterCount) ?? 0;
-    curWaterCount = tmpWaterCount.obs;
+    curStageWaterCount = tmpWaterCount.obs;
     int tmpShifeiCount = box.get(twKeyShifeiCount) ?? 0;
-    curShifeiCount = tmpShifeiCount.obs;
+    curStageShifeiCount = tmpShifeiCount.obs;
 
-    int tmpLevelll = _jisuanLevel();
+    int tmpLevelll = _jisuanLevel(hasResetStageCount: false);
     curLevel = tmpLevelll.obs;
   }
 
-  int _jisuanLevel() {
-    int tmpCurWaterCount = curWaterCount.value;
+  double curLevelProgress() {
+    double progress = 0;
+    int curLevellll = curLevel.value;
+    int tmpCurWaterCount = curStageWaterCount.value;
+    int tmpCurShifeiCount = curStageShifeiCount.value;
+    int curStageAllWaterCount = 1;
+    int curStageAllShifeiCount = 1;
+    if (curLevellll == 1) {
+      curStageAllWaterCount = waterCounts[0];
+      curStageAllShifeiCount = shifeiCounts[0];
+    } else if (curLevellll == 2) {
+      curStageAllWaterCount = waterCounts[1];
+      curStageAllShifeiCount = shifeiCounts[1];
+    } else if (curLevellll == 3) {
+      curStageAllWaterCount = waterCounts[2];
+      curStageAllShifeiCount = shifeiCounts[2];
+    } else if (curLevellll == 4) {
+      curStageAllWaterCount = waterCounts[3];
+      curStageAllShifeiCount = shifeiCounts[3];
+    } else if (curLevellll > 4) {
+      curStageAllWaterCount = waterCounts[3];
+      curStageAllShifeiCount = shifeiCounts[3];
+    }
+
+    double waterPro = tmpCurWaterCount / curStageAllWaterCount;
+    double shifeiPro = tmpCurShifeiCount / curStageAllShifeiCount;
+    progress = max(waterPro, shifeiPro);
+
+    twLooog(
+      "=====curLevelProgress==curLevellll:$curLevellll progress:$progress shifeiPro:$shifeiPro waterPro:$waterPro curStageAllWaterCount:$curStageAllWaterCount curStageAllShifeiCount:$curStageAllShifeiCount",
+    );
+    if (progress <= 0) {
+      progress = 0;
+    } else if (progress >= 1) {
+      progress = 1;
+    }
+    return progress;
+  }
+
+  int _jisuanLevel({bool hasResetStageCount = true}) {
+    // cur level
+    int tmpCurLevel = curLevel.value;
+
+    int tmpCurWaterCount = curStageWaterCount.value;
 
     int waterCountStage1 = waterCounts[0];
     int waterCountStage2 = waterCounts[1];
     int waterCountStage3 = waterCounts[2];
-    int waterLevelStage2 = waterCountStage1 + waterCountStage2;
-    int waterLevelStage3 =
-        waterCountStage1 + waterCountStage2 + waterCountStage3;
-    int waterLevel = 1;
-    twLooog(
-      "=====waterLevelStage2:$waterLevelStage2 waterLevelStage3:$waterLevelStage3 ",
-    );
-    if (tmpCurWaterCount == 1) {
-      waterLevel = 2;
-    } else if (tmpCurWaterCount > waterCountStage1 &&
-        tmpCurWaterCount <= waterLevelStage2) {
-      waterLevel = 3;
-    } else if (tmpCurWaterCount > waterCountStage1 &&
-        tmpCurWaterCount <= waterLevelStage3) {
-      waterLevel = 4;
-    } else if (tmpCurWaterCount > waterLevelStage3) {
-      waterLevel = 5;
+    int waterCountStage4 = waterCounts[3];
+
+    int nextWaterLevel = tmpCurLevel;
+
+    if (tmpCurLevel == 1) {
+      if (tmpCurWaterCount == 0) {
+        nextWaterLevel = 1;
+      } else if (tmpCurWaterCount >= waterCountStage1) {
+        nextWaterLevel = 2;
+      }
+    } else if (tmpCurLevel == 2) {
+      if (tmpCurWaterCount >= waterCountStage2) {
+        nextWaterLevel = 3;
+      }
+    } else if (tmpCurLevel == 3) {
+      if (tmpCurWaterCount >= waterCountStage3) {
+        nextWaterLevel = 4;
+      }
+    } else if (tmpCurLevel == 4) {
+      if (tmpCurWaterCount >= waterCountStage4) {
+        nextWaterLevel = 5;
+      }
     }
 
-    int tmpCurShifeiCount = curShifeiCount.value;
-    int shifeiLevel = 1;
+    int tmpCurShifeiCount = curStageShifeiCount.value;
+    int nextShifeiLevel = 1;
     int shifeiCountStage1 = shifeiCounts[0];
     int shifeiCountStage2 = shifeiCounts[1];
     int shifeiCountStage3 = shifeiCounts[2];
+    int shifeiCountStage4 = shifeiCounts[3];
 
-    int shifeilevelStage2 = shifeiCountStage1 + shifeiCountStage2;
-    int shifeilevelStage3 =
-        shifeiCountStage1 + shifeiCountStage2 + shifeiCountStage3;
-    if (tmpCurShifeiCount == 1) {
-      shifeiLevel = 2;
-    } else if (tmpCurShifeiCount > shifeiCountStage1 &&
-        tmpCurShifeiCount <= shifeilevelStage2) {
-      shifeiLevel = 3;
-    } else if (tmpCurShifeiCount > shifeiCountStage1 &&
-        tmpCurShifeiCount <= shifeilevelStage3) {
-      shifeiLevel = 4;
-    } else if (tmpCurShifeiCount > shifeilevelStage3) {
-      shifeiLevel = 5;
+    if (tmpCurLevel == 1) {
+      if (tmpCurShifeiCount == 0) {
+        nextShifeiLevel = 1;
+      } else if (tmpCurShifeiCount >= shifeiCountStage1) {
+        nextShifeiLevel = 2;
+      }
+    } else if (tmpCurLevel == 2) {
+      if (tmpCurShifeiCount >= shifeiCountStage2) {
+        nextShifeiLevel = 3;
+      }
+    } else if (tmpCurLevel == 3) {
+      if (tmpCurShifeiCount >= shifeiCountStage3) {
+        nextShifeiLevel = 4;
+      }
+    } else if (tmpCurLevel == 4) {
+      if (tmpCurShifeiCount >= shifeiCountStage4) {
+        nextShifeiLevel = 5;
+      }
     }
 
-    int curMax = max(waterLevel, shifeiLevel);
+    int curMax = max(nextWaterLevel, nextShifeiLevel);
     twLooog(
-      "=====curlevel:$curMax waterLevel:$waterLevel shifeiLevel:$shifeiLevel  tmpCurWaterCount:$tmpCurWaterCount tmpCurShifeiCount:$tmpCurShifeiCount",
+      "=====curlevel:$curMax waterLevel:$nextWaterLevel shifeiLevel:$nextShifeiLevel  tmpCurWaterCount:$tmpCurWaterCount tmpCurShifeiCount:$tmpCurShifeiCount",
     );
+    twLooog(
+      "=====hasResetStageCount:$hasResetStageCount tmpCurLevel:$tmpCurLevel nextShifeiLevel:$nextShifeiLevel",
+    );
+
+    if (hasResetStageCount && tmpCurLevel != curMax) {
+      resetWaterAndShifeiCount();
+    }
+
     return curMax;
   }
 
   onAddShiFeiCount() {
-    int tmpCurMmm = curShifeiCount.value;
+    int tmpCurMmm = curStageShifeiCount.value;
 
     int tmpCurmmm2 = tmpCurMmm + 1;
     box.put(twKeyShifeiCount, tmpCurmmm2);
-    curShifeiCount.value = tmpCurmmm2;
+    curStageShifeiCount.value = tmpCurmmm2;
 
-    int tmpL  =_jisuanLevel();
+    int tmpL = _jisuanLevel();
     curLevel.value = tmpL;
   }
 
+  resetWaterAndShifeiCount() {
+    twLooog("====resetWaterAndShifeiCount");
+    curStageShifeiCount.value = 0;
+    curStageWaterCount.value = 0;
+    box.put(twKeyShifeiCount, 0);
+    box.put(twKeyWaterCount, 0);
+  }
+
   onAddWaterCount() {
-    int tmpCurMmm = curWaterCount.value;
+    int tmpCurMmm = curStageWaterCount.value;
 
     int tmpCurmmm2 = tmpCurMmm + 1;
 
     box.put(twKeyWaterCount, tmpCurmmm2);
-    curWaterCount.value = tmpCurmmm2;
-    int tmpL  =_jisuanLevel();
+    curStageWaterCount.value = tmpCurmmm2;
+    int tmpL = _jisuanLevel();
     curLevel.value = tmpL;
   }
 

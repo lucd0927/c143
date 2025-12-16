@@ -31,13 +31,9 @@ class _MainCenterState extends State<MainCenter> {
             right: 0,
             bottom: 40.h,
             child: Center(
-              child: Obx((){
+              child: Obx(() {
                 String icon = MainTreeController.to.treeIcon();
-               return Image.asset(
-                  icon,
-                  width: 280.h,
-                  height: 280.h,
-                );
+                return Image.asset(icon, width: 280.h, height: 280.h);
               }),
             ),
           ),
@@ -123,9 +119,12 @@ class _MainCenterState extends State<MainCenter> {
         SizedBox(width: 20.w),
         centerItem(
           width: 60.h,
-          count: 10,
+          count: 0,
           icon: Assets.twimg.mainFertilize.path,
-          onClick: () {},
+          showTxt: false,
+          onClick: () {
+            MainTreeController.to.onAddShiFeiCount();
+          },
         ),
       ],
     );
