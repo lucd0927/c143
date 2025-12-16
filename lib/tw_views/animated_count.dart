@@ -335,7 +335,7 @@ class _SingleDigitFlipCounter extends StatelessWidget {
     );
   }
 
-  Widget _buildSingleDigit3({
+  Widget _buildSingleDigit({
     required int digit,
     required double offset,
     required double opacity,
@@ -405,7 +405,7 @@ class _SingleDigitFlipCounter extends StatelessWidget {
     }
   }
 
-  Widget _buildSingleDigit({
+  Widget _buildSingleDigit3({
     required int digit,
     required double offset,
     required double opacity,

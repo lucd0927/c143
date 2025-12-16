@@ -122,12 +122,14 @@ class _MainCenterState extends State<MainCenter> {
           count: 0,
           icon: Assets.twimg.mainFertilize.path,
           showTxt: false,
-          onClick: () {
-            MainTreeController.to.onAddShiFeiCount();
-          },
+          onClick: onAddShiFeiCount,
         ),
       ],
     );
+  }
+
+  void onAddShiFeiCount() {
+    MainTreeController.to.onAddShiFeiCount();
   }
 
   sunWidget() {
@@ -140,7 +142,9 @@ class _MainCenterState extends State<MainCenter> {
           width: 40.h,
           count: count,
           icon: Assets.twimg.mainSun.path,
-          onClick: () {},
+          onClick: () {
+            MainTreeController.to.onAddMoneyyyy(count);
+          },
         ),
       ],
     );
@@ -203,8 +207,9 @@ class _MainCenterState extends State<MainCenter> {
       children: [
         SizedBox(width: 50.w),
         centerItem(
-          width: 40.h,
+          width: 50.h,
           count: 10,
+          showTxt: false,
           icon: Assets.twimg.mainSpin.path,
           onClick: () {},
         ),

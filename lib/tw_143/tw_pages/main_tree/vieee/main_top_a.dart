@@ -44,7 +44,7 @@ class _MainTopAState extends State<MainTopA> {
                       Row(
                         children: [
                           Text(
-                            "My Earnings:",
+                            "My Earnings:  ",
                             style: TextStyle(
                               fontSize: 14.sp,
                               color: Color(0xff194FA7),
@@ -55,7 +55,7 @@ class _MainTopAState extends State<MainTopA> {
                           Obx(() {
                             double value =
                                 MainTreeController.to.curMoneyyyy.value;
-                            value = 110;
+                            // value = 110;
                             return TwAnimatedCountttt(
                               value: value,
                               fractionDigits: 0,
