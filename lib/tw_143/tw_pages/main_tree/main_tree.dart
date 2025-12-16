@@ -29,9 +29,7 @@ class _MainTreeState extends State<MainTree> {
             height: double.infinity,
             fit: BoxFit.fill,
           ),
-          Positioned.fill(
-            child: _buildExtendNestedScrollerView(),
-          ),
+          Positioned.fill(child: _buildExtendNestedScrollerView()),
         ],
       ),
     );
@@ -49,8 +47,6 @@ class _MainTreeState extends State<MainTree> {
           height: maxPinnedHeight,
           child: Stack(
             children: [
-
-
               Column(
                 children: [
                   SizedBox(height: 40.h),
@@ -68,8 +64,11 @@ class _MainTreeState extends State<MainTree> {
   _buildExtendNestedScrollerView() {
     return ExtendedNestedScrollView(
       headerSliverBuilder: headerSliverBuilder,
-      onlyOneScrollInBody: true,
-      body: ExtendedVisibilityDetector(uniqueKey: ValueKey("MainRank00000"), child: MainRank()),
+      onlyOneScrollInBody: false,
+      body: ExtendedVisibilityDetector(
+        uniqueKey: ValueKey("MainRank00000"),
+        child: MainRank(),
+      ),
       pinnedHeaderSliverHeightBuilder: () {
         return minPinnedHeight;
       },
