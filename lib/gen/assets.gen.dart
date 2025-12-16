@@ -11,6 +11,22 @@
 
 import 'package:flutter/widgets.dart';
 
+class $AssetsAvatarGen {
+  const $AssetsAvatarGen();
+
+  /// File path: assets/avatar/avatar1.png
+  AssetGenImage get avatar1 => const AssetGenImage('assets/avatar/avatar1.png');
+
+  /// File path: assets/avatar/avatar2.png
+  AssetGenImage get avatar2 => const AssetGenImage('assets/avatar/avatar2.png');
+
+  /// File path: assets/avatar/avatar3.png
+  AssetGenImage get avatar3 => const AssetGenImage('assets/avatar/avatar3.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [avatar1, avatar2, avatar3];
+}
+
 class $AssetsTwimgGen {
   const $AssetsTwimgGen();
 
@@ -33,41 +49,41 @@ class $AssetsTwimgGen {
   AssetGenImage get mainChuanzi =>
       const AssetGenImage('assets/twimg/main_chuanzi.png');
 
+  /// File path: assets/twimg/main_coin.png
+  AssetGenImage get mainCoin =>
+      const AssetGenImage('assets/twimg/main_coin.png');
+
+  /// File path: assets/twimg/main_coin_yu.png
+  AssetGenImage get mainCoinYu =>
+      const AssetGenImage('assets/twimg/main_coin_yu.png');
+
   /// File path: assets/twimg/main_fertilize.png
   AssetGenImage get mainFertilize =>
       const AssetGenImage('assets/twimg/main_fertilize.png');
 
-  /// File path: assets/twimg/main_nav_cash.png
-  AssetGenImage get mainNavCash =>
-      const AssetGenImage('assets/twimg/main_nav_cash.png');
+  /// File path: assets/twimg/main_nav_quiz.png
+  AssetGenImage get mainNavQuiz =>
+      const AssetGenImage('assets/twimg/main_nav_quiz.png');
 
-  /// File path: assets/twimg/main_nav_cash_un.png
-  AssetGenImage get mainNavCashUn =>
-      const AssetGenImage('assets/twimg/main_nav_cash_un.png');
+  /// File path: assets/twimg/main_nav_quiz_un.png
+  AssetGenImage get mainNavQuizUn =>
+      const AssetGenImage('assets/twimg/main_nav_quiz_un.png');
 
-  /// File path: assets/twimg/main_nav_luckyspin.png
-  AssetGenImage get mainNavLuckyspin =>
-      const AssetGenImage('assets/twimg/main_nav_luckyspin.png');
+  /// File path: assets/twimg/main_nav_spin.png
+  AssetGenImage get mainNavSpin =>
+      const AssetGenImage('assets/twimg/main_nav_spin.png');
 
-  /// File path: assets/twimg/main_nav_luckyspin_un.png
-  AssetGenImage get mainNavLuckyspinUn =>
-      const AssetGenImage('assets/twimg/main_nav_luckyspin_un.png');
+  /// File path: assets/twimg/main_nav_spin_un.png
+  AssetGenImage get mainNavSpinUn =>
+      const AssetGenImage('assets/twimg/main_nav_spin_un.png');
 
-  /// File path: assets/twimg/main_nav_moneytree.png
-  AssetGenImage get mainNavMoneytree =>
-      const AssetGenImage('assets/twimg/main_nav_moneytree.png');
+  /// File path: assets/twimg/main_nav_tree.png
+  AssetGenImage get mainNavTree =>
+      const AssetGenImage('assets/twimg/main_nav_tree.png');
 
-  /// File path: assets/twimg/main_nav_moneytree_un.png
-  AssetGenImage get mainNavMoneytreeUn =>
-      const AssetGenImage('assets/twimg/main_nav_moneytree_un.png');
-
-  /// File path: assets/twimg/main_nav_quizcash.png
-  AssetGenImage get mainNavQuizcash =>
-      const AssetGenImage('assets/twimg/main_nav_quizcash.png');
-
-  /// File path: assets/twimg/main_nav_quizcash_un.png
-  AssetGenImage get mainNavQuizcashUn =>
-      const AssetGenImage('assets/twimg/main_nav_quizcash_un.png');
+  /// File path: assets/twimg/main_nav_tree_un.png
+  AssetGenImage get mainNavTreeUn =>
+      const AssetGenImage('assets/twimg/main_nav_tree_un.png');
 
   /// File path: assets/twimg/main_rank.png
   AssetGenImage get mainRank =>
@@ -76,6 +92,14 @@ class $AssetsTwimgGen {
   /// File path: assets/twimg/main_rank_bg.png
   AssetGenImage get mainRankBg =>
       const AssetGenImage('assets/twimg/main_rank_bg.png');
+
+  /// File path: assets/twimg/main_rank_des.png
+  AssetGenImage get mainRankDes =>
+      const AssetGenImage('assets/twimg/main_rank_des.png');
+
+  /// File path: assets/twimg/main_rank_top.png
+  AssetGenImage get mainRankTop =>
+      const AssetGenImage('assets/twimg/main_rank_top.png');
 
   /// File path: assets/twimg/main_spin.png
   AssetGenImage get mainSpin =>
@@ -120,17 +144,19 @@ class $AssetsTwimgGen {
     mainBg4,
     mainBg5,
     mainChuanzi,
+    mainCoin,
+    mainCoinYu,
     mainFertilize,
-    mainNavCash,
-    mainNavCashUn,
-    mainNavLuckyspin,
-    mainNavLuckyspinUn,
-    mainNavMoneytree,
-    mainNavMoneytreeUn,
-    mainNavQuizcash,
-    mainNavQuizcashUn,
+    mainNavQuiz,
+    mainNavQuizUn,
+    mainNavSpin,
+    mainNavSpinUn,
+    mainNavTree,
+    mainNavTreeUn,
     mainRank,
     mainRankBg,
+    mainRankDes,
+    mainRankTop,
     mainSpin,
     mainSun,
     mainTopbg,
@@ -146,6 +172,7 @@ class $AssetsTwimgGen {
 class Assets {
   const Assets._();
 
+  static const $AssetsAvatarGen avatar = $AssetsAvatarGen();
   static const $AssetsTwimgGen twimg = $AssetsTwimgGen();
 }
 

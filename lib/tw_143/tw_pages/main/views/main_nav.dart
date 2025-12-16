@@ -42,29 +42,24 @@ class _MainNavState extends State<MainNav> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   _navItem(
-                    icon: Assets.twimg.mainNavMoneytreeUn.path,
-                    icon2: Assets.twimg.mainNavMoneytree.path,
+                    icon: Assets.twimg.mainNavTreeUn.path,
+                    icon2: Assets.twimg.mainNavTree.path,
                     index: MainController.treeIndex,
                     text: "home".tr,
                   ),
                   _navItem(
-                    icon: Assets.twimg.mainNavQuizcashUn.path,
-                    icon2: Assets.twimg.mainNavQuizcash.path,
+                    icon: Assets.twimg.mainNavQuizUn.path,
+                    icon2: Assets.twimg.mainNavQuiz.path,
                     index: MainController.quizIndex,
                     text: "home".tr,
                   ),
                   _navItem(
-                    icon: Assets.twimg.mainNavLuckyspinUn.path,
-                    icon2: Assets.twimg.mainNavLuckyspin.path,
+                    icon: Assets.twimg.mainNavSpinUn.path,
+                    icon2: Assets.twimg.mainNavSpin.path,
                     index: MainController.wheelIndex,
                     text: "home".tr,
                   ),
-                  _navItem(
-                    icon: Assets.twimg.mainNavCashUn.path,
-                    icon2: Assets.twimg.mainNavCash.path,
-                    index: MainController.cashIndex,
-                    text: "home".tr,
-                  ),
+
                 ],
               ),
             ),
@@ -85,10 +80,10 @@ class _MainNavState extends State<MainNav> {
     required int index,
     required String text,
   }) {
-    double maxWidth = screenWidth / 4;
+    double maxWidth = screenWidth / 3;
     final int curIndex = MainController.to.curMainNavIndex.value;
     bool select = index == curIndex;
-    double width = select ? 90.w : 90.w;
+    double width = select ? 120.w : 120.w;
     double height = select ? 72.h : 64.h;
     String tmpIcon = select ? icon2 : icon;
     return InkWell(

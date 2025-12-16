@@ -43,6 +43,7 @@ class _TwMainPageState extends State<TwMainPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       // appBar: BaseAppBar(title: "title", leftTitle: ""),
+      backgroundColor: Colors.transparent,
       resizeToAvoidBottomInset: false,
       body: Stack(
         children: [

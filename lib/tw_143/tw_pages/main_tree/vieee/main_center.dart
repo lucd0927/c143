@@ -139,7 +139,7 @@ class _MainCenterState extends State<MainCenter> {
       children: [
         SizedBox(width: 100.w),
         centerItem(
-          width: 40.h,
+          width: 50.h,
           count: count,
           icon: Assets.twimg.mainSun.path,
           onClick: () {
@@ -181,7 +181,7 @@ class _MainCenterState extends State<MainCenter> {
             clipBehavior: Clip.none,
             children: [
               ShiningEffect(
-                duration: Duration(milliseconds: 5000),
+                duration: Duration(milliseconds: 4000),
                 shineColor: Color(0xffffffff),
                 opacity: 1,
                 angle: -0.9,
@@ -232,7 +232,7 @@ class _MainCenterState extends State<MainCenter> {
           SizedBox(height: height2),
           coinWidget(),
           SizedBox(height: height3),
-          chuangziWidget(),
+          coinYuWidget(),
         ],
       ),
     );
@@ -264,7 +264,7 @@ class _MainCenterState extends State<MainCenter> {
         centerItem(
           width: 40.h,
           count: 10,
-          icon: Assets.twimg.mainWater.path,
+          icon: Assets.twimg.mainCoin.path,
           showTxt: false,
           onClick: () {},
         ),
@@ -272,14 +272,14 @@ class _MainCenterState extends State<MainCenter> {
     );
   }
 
-  chuangziWidget() {
+  coinYuWidget() {
     return Row(
       children: [
         SizedBox(width: 90.w),
         centerItem(
           width: 60.h,
           count: 10,
-          icon: Assets.twimg.mainChuanzi.path,
+          icon: Assets.twimg.mainCoinYu.path,
           showTxt: false,
           onClick: () {},
         ),
