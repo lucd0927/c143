@@ -6,7 +6,7 @@ import 'package:extended_nested_scroll_view/extended_nested_scroll_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-double minPinnedHeight = 200.h;
+double minPinnedHeight = 180.h;
 double maxPinnedHeight = 540.h;
 
 class MainTree extends StatefulWidget {
@@ -68,8 +68,8 @@ class _MainTreeState extends State<MainTree> {
   _buildExtendNestedScrollerView() {
     return ExtendedNestedScrollView(
       headerSliverBuilder: headerSliverBuilder,
-      body: MainRank(),
-      onlyOneScrollInBody: false,
+      onlyOneScrollInBody: true,
+      body: ExtendedVisibilityDetector(uniqueKey: ValueKey("MainRank00000"), child: MainRank()),
       pinnedHeaderSliverHeightBuilder: () {
         return minPinnedHeight;
       },

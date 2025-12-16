@@ -99,9 +99,9 @@ class MainTreeController extends GetxController {
     double shifeiPro = tmpCurShifeiCount / curStageAllShifeiCount;
     progress = max(waterPro, shifeiPro);
 
-    twLooog(
-      "=====curLevelProgress==curLevellll:$curLevellll progress:$progress shifeiPro:$shifeiPro waterPro:$waterPro curStageAllWaterCount:$curStageAllWaterCount curStageAllShifeiCount:$curStageAllShifeiCount",
-    );
+    // twLooog(
+    //   "=====curLevelProgress==curLevellll:$curLevellll progress:$progress shifeiPro:$shifeiPro waterPro:$waterPro curStageAllWaterCount:$curStageAllWaterCount curStageAllShifeiCount:$curStageAllShifeiCount",
+    // );
     if (progress <= 0) {
       progress = 0;
     } else if (progress >= 1) {
