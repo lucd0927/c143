@@ -22,25 +22,69 @@ class _MainCenterState extends State<MainCenter> {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      height: 350.h,
+      height: 360.h,
       color: Colors.amber.withValues(alpha: 0.0),
       child: Stack(
         children: [
           Positioned(
             left: 0,
             right: 0,
-            bottom: 40.h,
+            bottom: 50.h,
             child: Center(
               child: Obx(() {
                 String icon = MainTreeController.to.treeIcon();
-                return Image.asset(icon, width: 280.h, height: 280.h);
+                return Container(
+                  width: 280.h,
+                  height: 280.h,
+                  child: Stack(
+                    children: [
+                      Image.asset(icon, width: 280.h, height: 280.h),
+                      Positioned(
+                        child: levelWidget(),
+                        left: 0,
+                        right: 0,
+                        bottom: 0.h,
+                      ),
+                    ],
+                  ),
+                );
               }),
             ),
           ),
           Positioned(child: leftWidget(), left: 0, top: 0, bottom: 0),
           Positioned(child: rightWidget(), right: 0, top: 0, bottom: 0),
-          Positioned(child: levelWidget(), left: 0, right: 0, bottom: 40.h),
+
+          Positioned(
+            child: textCongratulationWidget(),
+            left: 0,
+            right: 0,
+            bottom: 8.h,
+          ),
         ],
+      ),
+    );
+  }
+
+  textCongratulationWidget() {
+    return Center(
+      child: Container(
+        width: 312.w,
+        height: 28.h,
+        decoration: BoxDecoration(
+          color: Color(0xffffffff).withValues(alpha: 0.4),
+          borderRadius: BorderRadius.circular(28.h),
+          border: Border.all(color: Color(0xffFFE345)),
+        ),
+        child: Center(
+          child: Text(
+            "Congratulations to user 789 on cashing out \$100!",
+            style: TextStyle(
+              fontSize: 12.sp,
+              fontWeight: FontWeight.w700,
+              color: Color(0xff603000),
+            ),
+          ),
+        ),
       ),
     );
   }

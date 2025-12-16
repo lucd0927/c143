@@ -29,6 +29,7 @@ class _MainRankState extends State<MainRank> {
                     color: Color(0xff0E226C),
                     child: Column(
                       children: [
+                        SizedBox(height: 20.h),
                         rankTopWidget(),
                         Expanded(
                           child: CustomScrollView(
@@ -54,7 +55,7 @@ class _MainRankState extends State<MainRank> {
           Positioned(
             left: 0,
             right: 0,
-            top: -0.h,
+            top: 0.h,
             child: Image.asset(
               Assets.twimg.mainRankDes.path,
               width: double.infinity,
