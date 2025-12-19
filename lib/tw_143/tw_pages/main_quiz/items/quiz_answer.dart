@@ -38,7 +38,7 @@ class _QuizAnswerState extends State<QuizAnswer> {
                     child: Container(
                       width: double.infinity,
                       // height: 210.h,
-                      color: Colors.green.withValues(alpha: 0.0),
+                      color: Colors.green.withValues(alpha: 0.5),
                       margin: EdgeInsets.symmetric(
                         horizontal: 30.w,
                         vertical: 16.h,
@@ -60,7 +60,7 @@ class _QuizAnswerState extends State<QuizAnswer> {
                   answerView(answer: "A",answerContent: "akdjkjdshgihsihfkjhdfskjlhdshfkljdhsk"),
                   SizedBox(height: 8.h,),
                   answerView(answer: "B",answerContent: "a"),
-                  SizedBox(height: 20.h,),
+                  SizedBox(height: 30.h,),
 
                 ],
               ),

@@ -40,7 +40,7 @@ class _TwQuizGiftWidgetState extends State<TwQuizGiftWidget>
 
   // 多少题显示宝箱
   static const int jumpCount = TwQuizGiftWidget.chaNumber;
-  static const int firstRightCount = 2;
+  static const int firstRightCount = 3;
 
   final twBox = TwHive.box;
 
@@ -359,7 +359,7 @@ class _TwQuizGiftWidgetState extends State<TwQuizGiftWidget>
               right: isLassssst ? leftDistancccce : 0,
             ),
             decoration: BoxDecoration(
-              color: Color(0xff253668),
+              color: Color(0xff883D13),
               borderRadius: isLassssst
                   ? BorderRadius.only(
                       topRight: Radius.circular(borderRadius),
@@ -380,7 +380,7 @@ class _TwQuizGiftWidgetState extends State<TwQuizGiftWidget>
                     height: innerHeight,
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
-                        colors: [Color(0xffA0FFD6), Color(0xff00CA11)],
+                        colors: [Color(0xffA0FFa6), Color(0xff00CA1a)],
                         begin: Alignment.topCenter,
                         end: Alignment.bottomCenter,
                       ),
