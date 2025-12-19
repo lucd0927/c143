@@ -1,5 +1,7 @@
 
 import 'package:c143/gen/assets.gen.dart';
+import 'package:c143/tw_143/tw_pages/main_quiz/items/quiz_gifttt.dart';
+import 'package:c143/tw_143/tw_pages/main_tree/vieee/main_top_a.dart';
 import 'package:flutter/material.dart';
 
 class MainQuiz extends StatefulWidget {
@@ -15,11 +17,16 @@ class _MainQuizState extends State<MainQuiz> {
     return Stack(
       children: [
         Image.asset(
-          Assets.twimg.mainBg3.path,
+          Assets.twimg.quizBg.path,
           width: double.infinity,
           height: double.infinity,
           fit: BoxFit.fill,
         ),
+
+        Positioned.fill(child: Column(children: [
+          MainTopA(),
+          TwQuizGiftWidget(),
+        ],))
       ],
     );
   }

@@ -11,7 +11,7 @@ class TwEventBus {
   }
 }
 
-mixin SSEventBusMix<T extends StatefulWidget> on State<T> {
+mixin TwEventBusMix<T extends StatefulWidget> on State<T> {
   EventBus get eventBus => TwEventBus._eeeee;
 
   final Map<String, StreamSubscription?> _eventMapStreams = {};

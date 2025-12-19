@@ -25,6 +25,7 @@ class _MainRankState extends State<MainRank> {
   static const String twkeyHistoryDataAvatar = "hHistoryDataAvatar";
 
   int length = 40;
+
   randomNum() {
     final random = Random();
     final tmpNum = <int>{};
@@ -42,7 +43,7 @@ class _MainRankState extends State<MainRank> {
 
     // 生成 50 个 [0, 100] 内的随机 double
     List<double> numbers = List.generate(length, (_) {
-      double tmp = (tmpRandom.nextDouble() * 12000)+1000;
+      double tmp = (tmpRandom.nextDouble() * 12000) + 1000;
 
       return tmp.toAsFixedFloor(2);
     });
@@ -55,7 +56,7 @@ class _MainRankState extends State<MainRank> {
     // 生成 50 个 [0, 100] 内的随机整数
     List<int> numbersInt = List.generate(
       length,
-          (_) => randInt.nextInt(99) + 1,
+      (_) => randInt.nextInt(99) + 1,
     );
 
     // 排序，从大到小
@@ -67,9 +68,8 @@ class _MainRankState extends State<MainRank> {
       final rand2 = zifuc[Random().nextInt(zifuc.length)];
       final rand3 = zifuc[Random().nextInt(zifuc.length)];
 
-
       String userName = "$random$rand1****$rand2$rand3";
-      historyData.add([userName,  numbers[i], numbersInt[i],i]);
+      historyData.add([userName, numbers[i], numbersInt[i], i]);
     }
 
     box.put(twkeyHistoryData, historyData);
@@ -83,9 +83,9 @@ class _MainRankState extends State<MainRank> {
     // TODO: implement initState
     super.initState();
 
-    historyData = box.get(twkeyHistoryData)??[];
+    historyData = box.get(twkeyHistoryData) ?? [];
     historyData = [];
-    if(TwLoginnnTrackkkk.isFirstLoginToday || historyData.isEmpty){
+    if (TwLoginnnTrackkkk.isFirstLoginToday || historyData.isEmpty) {
       initData();
     }
 
@@ -99,7 +99,6 @@ class _MainRankState extends State<MainRank> {
 
   @override
   Widget build(BuildContext context) {
-
     twLooog("=====");
     return ClipRect(
       child: Container(
@@ -119,6 +118,7 @@ class _MainRankState extends State<MainRank> {
 
                   Expanded(
                     child: SingleChildScrollView(
+                      physics: ClampingScrollPhysics(),
                       child: Container(
                         color: Color(0xff0E226C),
                         child: Column(
@@ -156,9 +156,9 @@ class _MainRankState extends State<MainRank> {
   }
 
   _itemWidget(int index) {
-    int tmpRank = index +1;
+    int tmpRank = index + 1;
     List tmpHistoryData = historyData[index];
-    String userName = tmpHistoryData[0]?.toString()??"";
+    String userName = tmpHistoryData[0]?.toString() ?? "";
     String earing = "Total earning:${tmpHistoryData[1].toStringAsFixed(0)}";
     String adCount = "Ads watched::${tmpHistoryData[2]}";
     return Center(
@@ -222,7 +222,7 @@ class _MainRankState extends State<MainRank> {
                       ),
                     ),
                     Text(
-                      adCount ,
+                      adCount,
                       style: TextStyle(
                         fontWeight: FontWeight.w700,
                         fontSize: 12.sp,
@@ -266,7 +266,7 @@ class _MainRankState extends State<MainRank> {
 
   Positioned rankDes3() {
     List tmpHistoryData = historyData[2];
-    String userName = tmpHistoryData[0]?.toString()??"";
+    String userName = tmpHistoryData[0]?.toString() ?? "";
     String earing = "Total earning:${tmpHistoryData[1].toStringAsFixed(0)}";
     String adCount = "Ads watched::${tmpHistoryData[2]}";
     return Positioned(
@@ -310,7 +310,7 @@ class _MainRankState extends State<MainRank> {
 
   Positioned rankDes1() {
     List tmpHistoryData = historyData[0];
-    String userName = tmpHistoryData[0]?.toString()??"";
+    String userName = tmpHistoryData[0]?.toString() ?? "";
     String earing = "Total earning:${tmpHistoryData[1].toStringAsFixed(0)}";
     String adCount = "Ads watched::${tmpHistoryData[2]}";
     return Positioned(
@@ -354,7 +354,7 @@ class _MainRankState extends State<MainRank> {
 
   Positioned rankDes2() {
     List tmpHistoryData = historyData[1];
-    String userName = tmpHistoryData[0]?.toString()??"";
+    String userName = tmpHistoryData[0]?.toString() ?? "";
     String earing = "Total earning:${tmpHistoryData[1].toStringAsFixed(0)}";
     String adCount = "Ads watched::${tmpHistoryData[2]}";
     return Positioned(

@@ -1,5 +1,5 @@
 import 'package:c143/gen/assets.gen.dart';
-import 'package:c143/tw_143/tw_pages/main_controller.dart';
+import 'package:c143/tw_143/tw_pages/main/main_controller.dart';
 import 'package:c143/tw_views/font_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

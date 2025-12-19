@@ -50,7 +50,7 @@ class _MainTreeState extends State<MainTree> {
             children: [
               Column(
                 children: [
-                  SizedBox(height: 40.h),
+
                   MainTopA(),
                   MainCenter(),
                 ],
