@@ -104,21 +104,34 @@ class _MainTopAState extends State<MainTopA> {
                               }),
                               Spacer(),
                               TwTxtGraBorder(
-                                text: MainTreeController.maxCoinNum.toStringAsFixed(
-                                  0,
-                                ),
+                                text: MainTreeController.maxCoinNum
+                                    .toStringAsFixed(0),
                               ),
                             ],
                           ),
                           SizedBox(height: 10.h),
-                          TwProgress(
-                            height: 12.h,
-                            innerHeight: 10.h,
-                            width: 320.w,
-                            progress: 0.1,
-                            gradientColors: [Color(0xffFFDC2E), Color(0xffFF8C00)],
-                            bgColor: Color(0xff203C9F),
-                          ),
+                          Obx(() {
+                            double value =
+                                MainTreeController.to.curMoneyyyy.value;
+
+                            double progress =
+                                value / MainTreeController.maxCoinNum;
+                            if (progress > 1) {
+                              progress = 1;
+                            }
+                            progress = 0.01;
+                            return TwProgress(
+                              height: 12.h,
+                              innerHeight: 10.h,
+                              width: 320.w,
+                              progress: progress,
+                              gradientColors: [
+                                Color(0xffFFDC2E),
+                                Color(0xffFF8C00),
+                              ],
+                              bgColor: Color(0xff203C9F),
+                            );
+                          }),
                         ],
                       ),
                     ),
@@ -134,62 +147,64 @@ class _MainTopAState extends State<MainTopA> {
   }
 
   Widget bottomTxt() {
-    return Obx((){    double tmpCurMmmm = MainTreeController.to.curMoneyyyy.value;
-    double progress = tmpCurMmmm / MainTreeController.maxCoinNum;
-    List<String> tmp =
-        stageTexts[30] ??
-            [
-              "Nice one! Your coin journey has begun!",
-              "You’ve earned your first pot of gold! Keep collecting coins!",
-              "Every tap brings you one step closer to your goal!",
-            ];
-    if (progress <= 0.3) {
-      tmp = stageTexts[30]!;
-    } else if (progress <= 0.7) {
-      tmp = stageTexts[70]!;
-    } else if (progress <= 0.8) {
-      tmp = stageTexts[95]!;
-    } else if (progress <= 1) {
-      tmp = stageTexts[100]!;
-    } else if (progress > 1) {
-      tmp = stageTexts[101]!;
-    }
-    int length = tmp.length;
-    List<Widget> chilren = [];
-    for (int i = 0; i < length; i++) {
-      Widget item = Text(
-        tmp[i],
-        style: TextStyle(
-          fontSize: 12.sp,
-          color: Color(0xffffffff),
-          fontWeight: FontWeight.bold,
-          height: 1,
+    return Obx(() {
+      double tmpCurMmmm = MainTreeController.to.curMoneyyyy.value;
+      double progress = tmpCurMmmm / MainTreeController.maxCoinNum;
+      List<String> tmp =
+          stageTexts[30] ??
+          [
+            "Nice one! Your coin journey has begun!",
+            "You’ve earned your first pot of gold! Keep collecting coins!",
+            "Every tap brings you one step closer to your goal!",
+          ];
+      if (progress <= 0.3) {
+        tmp = stageTexts[30]!;
+      } else if (progress <= 0.7) {
+        tmp = stageTexts[70]!;
+      } else if (progress <= 0.8) {
+        tmp = stageTexts[95]!;
+      } else if (progress <= 1) {
+        tmp = stageTexts[100]!;
+      } else if (progress > 1) {
+        tmp = stageTexts[101]!;
+      }
+      int length = tmp.length;
+      List<Widget> chilren = [];
+      for (int i = 0; i < length; i++) {
+        Widget item = Text(
+          tmp[i],
+          style: TextStyle(
+            fontSize: 12.sp,
+            color: Color(0xffffffff),
+            fontWeight: FontWeight.bold,
+            height: 1,
+          ),
+        );
+        chilren.add(item);
+      }
+      return Container(
+        width: 320.w,
+        height: 28.h,
+        color: Colors.red.withValues(alpha: 0.0),
+        child: Row(
+          children: [
+            Expanded(child: FadeSwitcher(children: [...chilren])),
+            // Image.asset(
+            //   Assets.twimg.mainChuanzi.path,
+            //   width: 16.w,
+            //   height: 16.h,
+            // ),
+            // Text(
+            //   "x1",
+            //   style: TextStyle(
+            //     fontSize: 14.sp,
+            //     color: Color(0xffFFD10E),
+            //     fontWeight: FontWeight.bold,
+            //   ),
+            // ),
+          ],
         ),
       );
-      chilren.add(item);
-    }
-    return Container(
-      width: 320.w,
-      height: 28.h,
-      color: Colors.red.withValues(alpha: 0.0),
-      child: Row(
-        children: [
-          Expanded(child: FadeSwitcher(children: [...chilren])),
-          // Image.asset(
-          //   Assets.twimg.mainChuanzi.path,
-          //   width: 16.w,
-          //   height: 16.h,
-          // ),
-          // Text(
-          //   "x1",
-          //   style: TextStyle(
-          //     fontSize: 14.sp,
-          //     color: Color(0xffFFD10E),
-          //     fontWeight: FontWeight.bold,
-          //   ),
-          // ),
-        ],
-      ),
-    );});
+    });
   }
 }
