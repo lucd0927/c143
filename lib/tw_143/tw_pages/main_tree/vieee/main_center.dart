@@ -120,14 +120,19 @@ class _MainCenterState extends State<MainCenter> {
                 ),
               ),
               SizedBox(width: 8.w),
-              TwProgress(
-                height: 12.h,
-                innerHeight: 8.h,
-                width: 94.w,
-                progress: MainTreeController.to.curLevelProgress(),
-                gradientColors: [Color(0xffFFB52B), Color(0xffFF5F03)],
-                bgColor: Color(0xffC18420),
-              ),
+              Expanded(child: LayoutBuilder(builder: (BuildContext context, BoxConstraints constraints){
+
+                double maxWidth = constraints.maxWidth;
+
+                return TwProgress(
+                  height: 12.h,
+                  innerHeight: 8.h,
+                  width: maxWidth-8.w,
+                  progress: MainTreeController.to.curLevelProgress(),
+                  gradientColors: [Color(0xffFFB52B), Color(0xffFF5F03)],
+                  bgColor: Color(0xffC18420),
+                );
+              }))
             ],
           ),
         ),

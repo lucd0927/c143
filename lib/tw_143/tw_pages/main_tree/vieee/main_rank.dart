@@ -177,7 +177,7 @@ class _MainRankState extends State<MainRank> {
 
             Positioned(
               left: 8.w,
-              top: 28.h,
+              top: 26.h,
               child: Container(
                 width: 20.w,
                 height: 20.h,

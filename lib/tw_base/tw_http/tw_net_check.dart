@@ -60,8 +60,8 @@ class TwNetCheckkkk {
         // No available network types
         print("没有网络连接");
         if (Get.context != null) {
-          showMeiwangDialog(Get.context!, onBtn: () {}, onClose: () {});
-          recordCountPop(EnumGetScene.unknow);
+          // showMeiwangDialog(Get.context!, onBtn: () {}, onClose: () {});
+          // recordCountPop(EnumGetScene.unknow);
         }
       }
 

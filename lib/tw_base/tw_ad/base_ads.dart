@@ -30,8 +30,6 @@ import 'base_max.dart';
 import 'model/ads_json_model.dart';
 import 'base_topon.dart';
 
-
-
 class TwCommonAds {
   static final TwCommonAds _instance = TwCommonAds._();
 
@@ -107,11 +105,11 @@ class TwCommonAds {
   // 这个为true，才代表广告成功
   bool _hasRvRevenueReceived = false;
 
-  void resetRvRevenueReceived(){
+  void resetRvRevenueReceived() {
     _hasRvRevenueReceived = false;
   }
 
-  void rvRevenueReceivedTrue(){
+  void rvRevenueReceivedTrue() {
     _hasRvRevenueReceived = true;
   }
 
@@ -354,13 +352,15 @@ class TwCommonAds {
         adsId = data.placementID;
         var extraMap = data.extraMap;
       }
-      if(adsType == EnumAdsType.reward){
+      if (adsType == EnumAdsType.reward) {
         result = _hasRvRevenueReceived;
       }
     }
 
     var tmpCompleter = cacheCompleter[adsId];
-    twLooog("==onAdHiddenCallback==result:$result=_hasRvRevenueReceived:$_hasRvRevenueReceived");
+    twLooog(
+      "==onAdHiddenCallback==result:$result=_hasRvRevenueReceived:$_hasRvRevenueReceived",
+    );
     tmpCompleter?.complete(result);
     cacheCompleter.remove(adsId);
     addAdEndCount();
@@ -716,6 +716,10 @@ class TwCommonAds {
           case InterstitialStatus.interstitialUnknown:
             twLooog("=======topon插屏====interstitialUnknown");
             break;
+
+          default:
+            twLooog("=======topon插屏====default:${value.interstatus}");
+            break;
         }
       },
     );
@@ -732,7 +736,6 @@ class TwCommonAds {
 
     _rewardAdsModel();
     twLooog("====init=hashCode:${hashCode}=_rewardData:$jiliAdsModel");
-
 
     twLooog("====init==PbUuuump start");
     await TwUmpppp().init();
@@ -1083,9 +1086,7 @@ class TwCommonAds {
     TwAdsJsonModel? adsJsonModel = adIdWithJsonModel[firstRequestAdsId];
     String? ad_platform222 = adsJsonModel?.adsPlatform;
     if (ad_platform222 == null ||
-        ad_platform222 == EnumAdsPlatform.topon.name) {
-
-    }
+        ad_platform222 == EnumAdsPlatform.topon.name) {}
     await Future.delayed(Duration(milliseconds: 100));
     resetDisplayAd();
     twLooog(

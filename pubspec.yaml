@@ -52,17 +52,14 @@ dependencies:
   flutter_screenutil: ^5.9.3
   flutter_native_splash: ^2.4.7
   get: ^4.7.2
-  applovin_max: 4.5.2
+  applovin_max: 4.6.0
   loader_overlay: ^5.0.0
   flutter_tba_info: ^0.0.9
   dio: ^5.9.0
   toastification: ^3.0.3
 
 
-  firebase_core: ^4.2.0
-  firebase_remote_config: ^6.1.0
-  firebase_analytics: ^12.0.3
-  firebase_crashlytics: ^5.0.3
+
   flutter_custom_facebook: ^0.0.5
   permission_handler: ^12.0.1
   rxdart: ^0.27.7
@@ -79,12 +76,17 @@ dependencies:
   #  birdsong:
   #    path: ./dsfk/common_push-output/
   thinkup_sdk:
-    path: ./c143sfcj/thinkup_sdk-1.0.7/
+    path: ./c143sfcj/thinkup_sdk-1.0.8/
 
   shiny_striped_progress_bar: ^1.1.0
   adjust_sdk: ^5.4.4
   google_mobile_ads: ^6.0.0
   iabtcf_consent_info: ^3.4.0+1
+
+  firebase_core: ^4.3.0
+  firebase_remote_config: ^6.1.3
+  firebase_analytics: ^12.1.0
+  firebase_crashlytics: ^5.0.6
 dev_dependencies:
   flutter_test:
     sdk: flutter
