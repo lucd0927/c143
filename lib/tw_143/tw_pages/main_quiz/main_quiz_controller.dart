@@ -9,11 +9,18 @@ import 'package:get/get.dart';
 
 class MainQuizController extends GetxController {
   static MainQuizController get to => Get.find();
+
+  String get twkeyAnswerCount{
+    return TwPackageAB.isPackageB() ?"twkeyAnswerCountBBBBB":"twkeyAnswerCountA";
+  }
+  String get twkeyAnswerRightCount{
+    return TwPackageAB.isPackageB() ?"twkeyAnswerRightCountBBBB":"twkeyAnswerRightCountAAAA";
+  }
+
   static int gestureMaxTimer = 3;
 
   var box = TwHive.box;
 
-  var curRightNum = 0.obs;
 
   var curQuizCategory = EnumQuizDataType.dailyLife.name.obs;
 
@@ -64,6 +71,13 @@ class MainQuizController extends GetxController {
   void onInit() {
     // TODO: implement onInit
     super.onInit();
+
+    int tmpcurAnswerCount = box.get(twkeyAnswerCount)??0;
+    curAnswerCount = tmpcurAnswerCount.obs;
+    int tmpcurAnswerRightCount = box.get(twkeyAnswerRightCount)??0;
+    curAnswerRightCount = tmpcurAnswerRightCount.obs;
+    twLooog("====curAnswerCount:$curAnswerCount=");
+    twLooog("====curAnswerRightCount:$curAnswerRightCount=");
     _initQuizDatusssss();
     _timerGesture(hasFirst: true);
   }
@@ -106,20 +120,42 @@ class MainQuizController extends GetxController {
     _curGestureLeftTimer?.cancel();
     await Future.delayed(Duration(milliseconds: 2000));
     if (click == right) {
+      _onAddAnswerRightCount();
       _nextQuestion();
 
-
-    } else {}
+    } else {
+      _nextQuestion();
+    }
   }
 
 
   _nextQuestion(){
     curClickAnswer.value = "";
     _timerGesture(hasFirst: false);
-    int tmpcurInde = curAnswerCount.value;
-
-    curAnswerCount.value = tmpcurInde + 1;
+    _onAddAnswerCount();
 
 
   }
+
+  _onAddAnswerCount(){
+    int tmpcurInde = curAnswerCount.value;
+    int maxLength = _initQuizDatus.length;
+    int nextIndex = tmpcurInde+1;
+    if(nextIndex > maxLength){
+      nextIndex = 0;
+    }
+
+    curAnswerCount.value = nextIndex;
+
+
+    box.put(twkeyAnswerCount, nextIndex);
+  }
+
+  _onAddAnswerRightCount(){
+    int tmpcurInde = curAnswerRightCount.value;
+    int nextIndex = tmpcurInde+1;
+    curAnswerRightCount.value = nextIndex;
+    box.put(twkeyAnswerRightCount, nextIndex);
+  }
+
 }

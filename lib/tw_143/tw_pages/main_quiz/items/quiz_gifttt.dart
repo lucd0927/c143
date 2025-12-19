@@ -30,9 +30,6 @@ class TwQuizGiftWidget extends StatefulWidget {
 
 class _TwQuizGiftWidgetState extends State<TwQuizGiftWidget>
     with TwEventBusMix {
-
-
-
   List<int> curDataaaa = [firstRightCount];
 
   // 当前答对多少题
@@ -82,9 +79,11 @@ class _TwQuizGiftWidgetState extends State<TwQuizGiftWidget>
 
     twBox.put(keyLastIndexClick__(), index);
   }
+
   late ScrollController _giftPrgresssScroller;
   late ScrollController _giftForegroundScroller;
   late LinkedScrollControllerGroup _collectScroller;
+
   @override
   void initState() {
     // TODO: implement initState
@@ -100,8 +99,7 @@ class _TwQuizGiftWidgetState extends State<TwQuizGiftWidget>
     register<QuizGifttttEvent>(_onGiftEvent);
   }
 
-
-  initJump(){
+  initJump() {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       int index = (_quizRightCount / jumpCount).toInt();
       index = index - 1;
@@ -143,9 +141,9 @@ class _TwQuizGiftWidgetState extends State<TwQuizGiftWidget>
 
   // answer num
 
-  int get _quizRightCount{
-    int number = MainQuizController.to.curRightNum.value;
-    number = 26;
+  int get _quizRightCount {
+    int number = MainQuizController.to.curAnswerRightCount.value;
+    // number = 26;
     return number;
   }
 
@@ -166,7 +164,7 @@ class _TwQuizGiftWidgetState extends State<TwQuizGiftWidget>
 
   scrollerIndex(int indexxxxx, {int scrollTime = 2000}) async {
     double width = indexxxxx * _itemWidth;
-    int time = scrollTime ;
+    int time = scrollTime;
     if (indexxxxx > 0) {
       width = width + 7.w;
       if (indexxxxx == 2) {
@@ -234,7 +232,7 @@ class _TwQuizGiftWidgetState extends State<TwQuizGiftWidget>
         } else {
           category = EnumQuizgiftTypppppe.coinyu;
         }
-        twLooog("=====tmpCategory:$tmpCategory count:$count");
+        // twLooog("=====tmpCategory:$tmpCategory count:$count");
         // 0 3 6  9 12 15 18 21 24
         // 2 5 8 11 14 17 20 23 26
 
@@ -440,15 +438,19 @@ class _TwQuizGiftWidgetState extends State<TwQuizGiftWidget>
         : Assets.twimg.quizSpinUn.path;
     // 能否打开
     bool canOpen = curAnswerRightCount >= count;
-    hasOpened = !TwPackageAB.isPackageB();
-    if (canOpen && hasOpened) {
+    if (canOpen ) {
       icon = heziLeixing
           ? Assets.twimg.quizCoinYu.path
           : Assets.twimg.quizSpin.path;
     }
 
-
-    Widget gift = Image.asset(icon, width: 37.h, height: 37.h);
+    Widget gift = Image.asset(
+      icon,
+      width: 37.h,
+      height: 37.h,
+      gaplessPlayback: true,
+      opacity: AlwaysStoppedAnimation(canOpen && hasOpened ? 0.2 : 1),
+    );
     Widget tmpImage = Stack(
       clipBehavior: Clip.none,
       children: [
@@ -462,7 +464,11 @@ class _TwQuizGiftWidgetState extends State<TwQuizGiftWidget>
               //   width: 60.w,
               //   height: 60.h,
               // ),
-              child: Container(width: 60.h, height: 60.h, color: Colors.blue.withValues(alpha: 0)),
+              child: Container(
+                width: 60.h,
+                height: 60.h,
+                color: Colors.blue.withValues(alpha: 0.0),
+              ),
             ),
           ),
         gift,
@@ -627,7 +633,11 @@ class _TwQuizGiftWidgetState extends State<TwQuizGiftWidget>
                 //   width: 15.h,
                 //   height: 15.h,
                 // ),
-                child: Container(width: 15.h, height: 15.h, color: Colors.blue.withValues(alpha: 0)),
+                child: Container(
+                  width: 15.h,
+                  height: 15.h,
+                  color: Colors.blue.withValues(alpha: 0),
+                ),
               ),
           ],
         ),
