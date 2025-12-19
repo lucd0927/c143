@@ -4,7 +4,7 @@ abstract class TwBaseEvent{
 }
 
 
-enum EnumQuizGfittt { updateRight2, updateRight8, scroll }
+enum EnumQuizGfittt { index2, index8, scroll }
 
 class QuizGifttttEvent extends TwBaseEvent {
   @override

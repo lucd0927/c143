@@ -1,5 +1,6 @@
 import 'package:c143/gen/assets.gen.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
+import 'package:c143/tw_base/tw_gj/loggggg.dart';
 import 'package:c143/tw_views/animated_count.dart';
 import 'package:c143/tw_views/animated_scale.dart';
 import 'package:c143/tw_views/font_border.dart';
@@ -76,7 +77,7 @@ class _MainCenterState extends State<MainCenter> {
         ),
         child: Center(
           child: Text(
-            "Congratulations to user 789 on cashing out \$100!",
+            "Congratulations to user 789",
             style: TextStyle(
               fontSize: 12.sp,
               fontWeight: FontWeight.w700,
@@ -89,55 +90,56 @@ class _MainCenterState extends State<MainCenter> {
   }
 
   levelWidget() {
-    return Obx(() {
-      int curLevel = MainTreeController.to.curLevel.value;
-      return Center(
-        child: Container(
-          width: 140.w,
-          height: 16.h,
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              colors: [Color(0xffFAE4B6), Color(0xffFAC986)],
-              end: Alignment.bottomCenter,
-              begin: Alignment.topCenter,
-            ),
-            borderRadius: BorderRadius.circular(16.h),
-            border: Border.all(color: Color(0xffDEB378), width: 0.5.w),
+    int curLevel = MainTreeController.to.curLevel.value;
+    double progress = MainTreeController.to.curLevelProgress();
+    twLooog("=====progress:$progress");
+    return Center(
+      child: Container(
+        width: 140.w,
+        height: 16.h,
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [Color(0xffFAE4B6), Color(0xffFAC986)],
+            end: Alignment.bottomCenter,
+            begin: Alignment.topCenter,
           ),
-          child: Row(
-            children: [
-              SizedBox(width: 8.w),
-              TwAnimatedCountttt(
-                value: curLevel,
-                fractionDigits: 0,
-
-                prefix: "Lv.",
-                textStyle: TextStyle(
-                  fontSize: 14.sp,
-                  color: Color(0xff634417),
-                  height: 1,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              SizedBox(width: 8.w),
-              Expanded(child: LayoutBuilder(builder: (BuildContext context, BoxConstraints constraints){
-
-                double maxWidth = constraints.maxWidth;
-
-                return TwProgress(
-                  height: 12.h,
-                  innerHeight: 8.h,
-                  width: maxWidth-8.w,
-                  progress: MainTreeController.to.curLevelProgress(),
-                  gradientColors: [Color(0xffFFB52B), Color(0xffFF5F03)],
-                  bgColor: Color(0xffC18420),
-                );
-              }))
-            ],
-          ),
+          borderRadius: BorderRadius.circular(16.h),
+          border: Border.all(color: Color(0xffDEB378), width: 0.5.w),
         ),
-      );
-    });
+        child: Row(
+          children: [
+            SizedBox(width: 8.w),
+            TwAnimatedCountttt(
+              value: curLevel,
+              fractionDigits: 0,
+
+              prefix: "Lv.",
+              textStyle: TextStyle(
+                fontSize: 14.sp,
+                color: Color(0xff634417),
+                height: 1,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(width: 8.w),
+            Expanded(child: LayoutBuilder(builder: (BuildContext context, BoxConstraints constraints){
+
+              double maxWidth = constraints.maxWidth;
+
+              return TwProgress(
+                height: 12.h,
+                innerHeight: 8.h,
+                width: maxWidth,
+                progress: progress,
+                gradientColors: [Color(0xffFFB52B), Color(0xffFF5F03)],
+                bgColor: Color(0xffC18420),
+              );
+            })),
+            SizedBox(width: 8.w),
+          ],
+        ),
+      ),
+    );
   }
 
   leftWidget() {

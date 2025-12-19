@@ -181,6 +181,10 @@ class $AssetsTwimgGen {
   AssetGenImage get quizCoinYu =>
       const AssetGenImage('assets/twimg/quiz_coin_yu.png');
 
+  /// File path: assets/twimg/quiz_coin_yu_un.png
+  AssetGenImage get quizCoinYuUn =>
+      const AssetGenImage('assets/twimg/quiz_coin_yu_un.png');
+
   /// File path: assets/twimg/quiz_dati_bg.png
   AssetGenImage get quizDatiBg =>
       const AssetGenImage('assets/twimg/quiz_dati_bg.png');
@@ -192,6 +196,10 @@ class $AssetsTwimgGen {
   /// File path: assets/twimg/quiz_spin.png
   AssetGenImage get quizSpin =>
       const AssetGenImage('assets/twimg/quiz_spin.png');
+
+  /// File path: assets/twimg/quiz_spin_un.png
+  AssetGenImage get quizSpinUn =>
+      const AssetGenImage('assets/twimg/quiz_spin_un.png');
 
   /// List of all assets
   List<AssetGenImage> get values => [
@@ -235,9 +243,11 @@ class $AssetsTwimgGen {
     mainWater,
     quizBg,
     quizCoinYu,
+    quizCoinYuUn,
     quizDatiBg,
     quizDatiBg2,
     quizSpin,
+    quizSpinUn,
   ];
 }
 
