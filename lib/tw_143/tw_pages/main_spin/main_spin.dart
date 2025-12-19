@@ -19,6 +19,7 @@ class _MainSpinState extends State<MainSpin> {
           width: double.infinity,
           height: double.infinity,
           fit: BoxFit.fill,
+          gaplessPlayback: true,
         ),
       ],
     );

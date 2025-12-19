@@ -22,6 +22,7 @@ class _MainQuizState extends State<MainQuiz> {
           width: double.infinity,
           height: double.infinity,
           fit: BoxFit.fill,
+          gaplessPlayback: true,
         ),
 
         Positioned.fill(
@@ -38,15 +39,11 @@ class _MainQuizState extends State<MainQuiz> {
                       width: double.infinity,
                       height: double.infinity,
                       fit: BoxFit.fill,
+                      gaplessPlayback: true,
                     ),
                     Positioned.fill(
                       child: Column(
-                        children: [TwQuizGiftWidget(),
-
-                          QuizAnswer()
-
-
-                        ],
+                        children: [TwQuizGiftWidget(), QuizAnswer()],
                       ),
                     ),
                   ],

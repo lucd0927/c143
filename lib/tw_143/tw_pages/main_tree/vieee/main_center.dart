@@ -38,7 +38,7 @@ class _MainCenterState extends State<MainCenter> {
                   height: 280.h,
                   child: Stack(
                     children: [
-                      Image.asset(icon, width: 280.h, height: 280.h),
+                      Image.asset(icon, width: 280.h, height: 280.h, gaplessPlayback: true,),
                       Positioned(
                         child: levelWidget(),
                         left: 0,
@@ -240,6 +240,7 @@ class _MainCenterState extends State<MainCenter> {
                   icon,
                   width: double.infinity,
                   height: double.infinity,
+                  gaplessPlayback: true,
                 ),
               ),
               txtLocationBottom

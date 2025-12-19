@@ -29,6 +29,7 @@ class _MainTreeState extends State<MainTree> {
             width: double.infinity,
             height: double.infinity,
             fit: BoxFit.fill,
+            gaplessPlayback: true,
           ),
           Positioned.fill(child: _buildExtendNestedScrollerView()),
         ],

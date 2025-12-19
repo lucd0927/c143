@@ -147,6 +147,7 @@ class _MainRankState extends State<MainRank> {
                 width: double.infinity,
                 height: 52.h,
                 fit: BoxFit.fill,
+                gaplessPlayback: true,
               ),
             ),
           ],
@@ -173,6 +174,7 @@ class _MainRankState extends State<MainRank> {
               width: double.infinity,
               height: double.infinity,
               fit: BoxFit.fill,
+              gaplessPlayback: true,
             ),
 
             Positioned(
@@ -251,6 +253,7 @@ class _MainRankState extends State<MainRank> {
               width: double.infinity,
               height: double.infinity,
               fit: BoxFit.fill,
+              gaplessPlayback: true,
             ),
           ),
           rank2(),

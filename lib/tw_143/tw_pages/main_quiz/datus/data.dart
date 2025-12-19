@@ -5,29 +5,29 @@ import 'data_math.dart';
 import 'data_nature.dart';
 import 'data_science.dart';
 
-enum EnumLeixinType {
+enum EnumQuizDataType {
   animal("Animal"),
   dailyLife("DailyLife"),
   science("Science"),
   math("Math"),
   nature("Nature");
 
-  const EnumLeixinType(this.name);
+  const EnumQuizDataType(this.name);
 
   final String name;
 }
-class DaTiShuju {
+class QuizDatus {
   static const int code = 143;
   static const kCategory = "category";
   static const kData = "data";
 
 
   static Map<String, dynamic> data = {
-    EnumLeixinType.dailyLife.name: DailyLife.dataA(),
-    EnumLeixinType.nature.name: Nature.dataA(),
-    EnumLeixinType.science.name: Science.dataA(),
-    EnumLeixinType.math.name: Math.dataA(),
-    EnumLeixinType.animal.name: Animal.dataA(),
+    EnumQuizDataType.dailyLife.name: DailyLife.dataA(),
+    EnumQuizDataType.nature.name: Nature.dataA(),
+    EnumQuizDataType.science.name: Science.dataA(),
+    EnumQuizDataType.math.name: Math.dataA(),
+    EnumQuizDataType.animal.name: Animal.dataA(),
   };
 
   static dynamic testData(){

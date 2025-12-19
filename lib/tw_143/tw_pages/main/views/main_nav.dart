@@ -110,6 +110,7 @@ class _MainNavState extends State<MainNav> {
                     width: width,
                     height: height,
                     fit: BoxFit.fill,
+                    gaplessPlayback: true,
                   ),
                 ),
               ),
