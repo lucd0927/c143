@@ -284,6 +284,8 @@ class _ParticleEffectsState extends State<ParticleEffects>
                     twLooog("=======particle2:=$particle");
                     if (particle != null) {
                       twLooog("=======particle3:$particle=");
+
+
                     }
                   },
                   child: CustomPaint(
