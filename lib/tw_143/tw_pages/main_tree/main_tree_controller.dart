@@ -10,6 +10,9 @@ class MainTreeController extends GetxController {
   static MainTreeController get to => Get.find();
 
   static const double maxCoinNum = 5000;
+
+  static const String twkeyGuideProgress = "MainTreeController_twkeyGuideProgress";
+
   var box = TwHive.box;
 
   // current money

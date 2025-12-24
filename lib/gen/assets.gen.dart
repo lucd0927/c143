@@ -36,6 +36,10 @@ class $AssetsTwimgGen {
   /// File path: assets/twimg/gesture.png
   AssetGenImage get gesture => const AssetGenImage('assets/twimg/gesture.png');
 
+  /// File path: assets/twimg/guide1water_tips.png
+  AssetGenImage get guide1waterTips =>
+      const AssetGenImage('assets/twimg/guide1water_tips.png');
+
   /// File path: assets/twimg/main_bg.png
   AssetGenImage get mainBg => const AssetGenImage('assets/twimg/main_bg.png');
 
@@ -205,6 +209,7 @@ class $AssetsTwimgGen {
   List<AssetGenImage> get values => [
     btnQuiz,
     gesture,
+    guide1waterTips,
     mainBg,
     mainBg2,
     mainBg3,

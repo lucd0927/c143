@@ -89,7 +89,13 @@ class _TwMainPageState extends State<TwMainPage> {
 
 
 
-          Hongbaoyu(),
+          // Center(child: ClipRRect(
+          //   child: Container(
+          //     width: 200,
+          //     height: 300,
+          //     child: Hongbaoyu(),
+          //   ),
+          // ),)
 
         ],
       ),

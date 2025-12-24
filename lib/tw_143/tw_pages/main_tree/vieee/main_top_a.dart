@@ -54,7 +54,7 @@ class _MainTopAState extends State<MainTopA> {
         SizedBox(height: 40.h),
         Container(
           width: 352.w,
-          height: 132.h,
+          height: 150.h,
           // color: Colors.amber,
           child: Stack(
             children: [
@@ -67,10 +67,10 @@ class _MainTopAState extends State<MainTopA> {
               Positioned.fill(
                 child: Column(
                   children: [
-                    SizedBox(height: 10.h),
+                    SizedBox(height: 20.h),
                     Container(
-                      width: 320.w,
-                      height: 90.h,
+                      width: 290.w,
+                      height: 84.h,
                       color: Colors.amber.withValues(alpha: 0.0),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -81,7 +81,7 @@ class _MainTopAState extends State<MainTopA> {
                                 "My Earnings:  ",
                                 style: TextStyle(
                                   fontSize: 14.sp,
-                                  color: Color(0xff194FA7),
+                                  color: Color(0xffA4FFBC),
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
@@ -95,6 +95,14 @@ class _MainTopAState extends State<MainTopA> {
                                   fractionDigits: 0,
                                   strokeWidth: 1.w,
                                   strokeColor: Color(0xff133F88),
+                                  textGradient: LinearGradient(
+                                    colors: [
+                                      Color(0xffFFDF12),
+                                      Color(0xffFFAA00),
+                                    ],
+                                    end: Alignment.bottomCenter,
+                                    begin: Alignment.topCenter,
+                                  ),
                                   textStyle: TextStyle(
                                     fontSize: 14.sp,
                                     color: Color(0xffFFDF12),
@@ -123,13 +131,13 @@ class _MainTopAState extends State<MainTopA> {
                             return TwProgress(
                               height: 12.h,
                               innerHeight: 10.h,
-                              width: 320.w,
+                              width: 290.w,
                               progress: progress,
                               gradientColors: [
                                 Color(0xffFFDC2E),
                                 Color(0xffFF8C00),
                               ],
-                              bgColor: Color(0xff203C9F),
+                              bgColor: Color(0xff155F28),
                             );
                           }),
                         ],
@@ -183,7 +191,7 @@ class _MainTopAState extends State<MainTopA> {
         chilren.add(item);
       }
       return Container(
-        width: 320.w,
+        width: 290.w,
         height: 28.h,
         color: Colors.red.withValues(alpha: 0.0),
         child: Row(

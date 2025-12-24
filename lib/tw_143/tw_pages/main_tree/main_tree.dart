@@ -1,14 +1,17 @@
 import 'package:c143/gen/assets.gen.dart';
+import 'package:c143/tw_143/tw_pages/guide/guide1_water.dart';
+import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/vieee/main_center.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/vieee/main_rank.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/vieee/main_top_a.dart';
+import 'package:c143/tw_hive/twhive.dart';
 import 'package:extended_nested_scroll_view/extended_nested_scroll_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-double minPinnedHeight = 180.h;
-// double maxPinnedHeight = 540.h;
-double maxPinnedHeight = 500.h;
+double minPinnedHeight = 200.h;
+double maxPinnedHeight = 530.h;
+// double maxPinnedHeight = 500.h;
 
 class MainTree extends StatefulWidget {
   const MainTree({super.key});
@@ -18,6 +21,28 @@ class MainTree extends StatefulWidget {
 }
 
 class _MainTreeState extends State<MainTree> {
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    WidgetsBinding.instance.addPostFrameCallback((_){
+      var box = TwHive.box;
+      String key = MainTreeController.twkeyGuideProgress;
+      var data = box.get(key);
+      bool showCheckDialog = data != null && data > 14;
+
+      if (data == null) {
+        OverlayGuide1Water().show();
+      }
+
+
+    });
+
+
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(

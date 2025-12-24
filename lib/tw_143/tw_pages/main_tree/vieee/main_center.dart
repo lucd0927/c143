@@ -1,4 +1,5 @@
 import 'package:c143/gen/assets.gen.dart';
+import 'package:c143/tw_143/tw_pages/guide/guide1_water.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
 import 'package:c143/tw_base/tw_gj/loggggg.dart';
 import 'package:c143/tw_views/animated_count.dart';
@@ -38,7 +39,12 @@ class _MainCenterState extends State<MainCenter> {
                   height: 280.h,
                   child: Stack(
                     children: [
-                      Image.asset(icon, width: 280.h, height: 280.h, gaplessPlayback: true,),
+                      Image.asset(
+                        icon,
+                        width: 280.h,
+                        height: 280.h,
+                        gaplessPlayback: true,
+                      ),
                       Positioned(
                         child: levelWidget(),
                         left: 0,
@@ -122,19 +128,22 @@ class _MainCenterState extends State<MainCenter> {
               ),
             ),
             SizedBox(width: 8.w),
-            Expanded(child: LayoutBuilder(builder: (BuildContext context, BoxConstraints constraints){
+            Expanded(
+              child: LayoutBuilder(
+                builder: (BuildContext context, BoxConstraints constraints) {
+                  double maxWidth = constraints.maxWidth;
 
-              double maxWidth = constraints.maxWidth;
-
-              return TwProgress(
-                height: 12.h,
-                innerHeight: 8.h,
-                width: maxWidth,
-                progress: progress,
-                gradientColors: [Color(0xffFFB52B), Color(0xffFF5F03)],
-                bgColor: Color(0xffC18420),
-              );
-            })),
+                  return TwProgress(
+                    height: 12.h,
+                    innerHeight: 8.h,
+                    width: maxWidth,
+                    progress: progress,
+                    gradientColors: [Color(0xffFFB52B), Color(0xffFF5F03)],
+                    bgColor: Color(0xffC18420),
+                  );
+                },
+              ),
+            ),
             SizedBox(width: 8.w),
           ],
         ),
@@ -293,12 +302,19 @@ class _MainCenterState extends State<MainCenter> {
     return Row(
       children: [
         SizedBox(width: 50.w),
-        centerItem(
-          width: 60.h,
-          count: 10,
-          icon: Assets.twimg.mainWater.path,
-          showTxt: false,
-          onClick: onWater,
+        Builder(
+          builder: (context) {
+            Widget child = centerItem(
+              width: 60.h,
+              count: 10,
+              icon: Assets.twimg.mainWater.path,
+              showTxt: false,
+              onClick: onWater,
+            );
+            OverlayGuide1Water.guideChild = child;
+            OverlayGuide1Water.guideContext = context;
+            return child;
+          },
         ),
       ],
     );

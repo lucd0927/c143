@@ -24,7 +24,7 @@ class Hongbaoyu extends StatelessWidget {
           minSize: 50.w,
           maxSize: 50.w,
           enableRotation: true,
-          enableSizeVariation: false,
+          // enableSizeVariation: true,
           velocityMultiplier: 2,
           animationDuration: Duration(seconds: 10),
           minOpacity: 1.0,
