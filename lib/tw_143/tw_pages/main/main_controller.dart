@@ -1,3 +1,4 @@
+import 'package:c143/tw_143/tw_pages/guide/guide_test_animated.dart';
 import 'package:get/get.dart';
 
 
@@ -10,6 +11,8 @@ class MainController extends GetxController {
   static const int cashIndex = 3;
   void resetIndex(int index) {
     curMainNavIndex.value = index;
+
+    OverlayGuideTestAnim().show();
 
     if (index == cashIndex) {
 
