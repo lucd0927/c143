@@ -11,6 +11,7 @@ import 'package:c143/tw_143/tw_pages/main/main_controller.dart';
 import 'package:c143/tw_143/tw_pages/main_quiz/main_quiz.dart';
 import 'package:c143/tw_143/tw_pages/main_quiz/main_quiz_controller.dart';
 import 'package:c143/tw_143/tw_pages/main_spin/main_spin.dart';
+import 'package:c143/tw_143/tw_pages/main_spin/main_spin_controller.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/main_tree.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
 import 'package:c143/tw_notification/ios_notification.dart';
@@ -45,6 +46,7 @@ class _TwMainPageState extends State<TwMainPage> {
     Get.put(MainController());
     Get.put(MainTreeController());
     Get.put(MainQuizController());
+    Get.put(MainSpinController());
 
     TwNotificationIos().init();
   }

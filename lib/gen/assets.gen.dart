@@ -221,6 +221,10 @@ class $AssetsTwimgGen {
   /// File path: assets/twimg/spin_bg.png
   AssetGenImage get spinBg => const AssetGenImage('assets/twimg/spin_bg.png');
 
+  /// File path: assets/twimg/spin_bottom_bg.png
+  AssetGenImage get spinBottomBg =>
+      const AssetGenImage('assets/twimg/spin_bottom_bg.png');
+
   /// File path: assets/twimg/spin_check.png
   AssetGenImage get spinCheck =>
       const AssetGenImage('assets/twimg/spin_check.png');
@@ -310,6 +314,7 @@ class $AssetsTwimgGen {
     quizSpinUn,
     spinAd,
     spinBg,
+    spinBottomBg,
     spinCheck,
     spinCount,
     spinWheel,

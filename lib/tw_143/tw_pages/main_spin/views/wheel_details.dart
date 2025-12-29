@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:c143/gen/assets.gen.dart';
 import 'package:c143/tw_base/tw_gj/loggggg.dart';
+import 'package:c143/tw_views/font_border.dart';
 import 'package:c143/tw_views/font_gradient_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -28,19 +29,23 @@ class _SpinWheelDetailsState extends State<SpinWheelDetails> {
       children: [
         SizedBox(height: 60.h),
         Container(
-          width: _imgWidth,
-          height: _imgHeight,
           color: Colors.blue.withValues(alpha: 0),
           child: Stack(
             children: [
-              Image.asset(
-                Assets.twimg.spinWheel.path,
-                fit: BoxFit.fill,
+              Container(
                 width: double.infinity,
-                height: double.infinity,
+                color: Colors.red.withValues(alpha: 0),
+                child: Center(
+                  child: Image.asset(
+                    Assets.twimg.spinWheel.path,
+                    fit: BoxFit.fill,
+                    width: _imgWidth,
+                    height: _imgHeight,
+                  ),
+                ),
               ),
 
-              Positioned.fill(child: PositionItems()),
+              PositionItems(),
             ],
           ),
         ),
@@ -128,27 +133,99 @@ class _PositionItemsState extends State<PositionItems>
   @override
   Widget build(BuildContext context) {
     _imgItemWidth = 52.h;
-    return Container(
-      width: double.infinity,
-      height: double.infinity,
-      color: Colors.red.withValues(alpha: 0.0),
-      child: Stack(
-        children: [
-          index0(),
-          index1(),
-          index2(),
-          index3(),
-          index4(),
-          index5(),
-          index6(),
-          index7(),
-          index8(),
-          index9(),
-          index10(),
-          index11(),
+    return Column(
+      children: [
+        Container(
+          width: _imgWidth,
+          height: _imgHeight,
+          color: Colors.red.withValues(alpha: 0.0),
+          child: Stack(
+            children: [
+              index0(),
+              index1(),
+              index2(),
+              index3(),
+              index4(),
+              index5(),
+              index6(),
+              index7(),
+              index8(),
+              index9(),
+              index10(),
+              index11(),
 
-          centerBtnWinbig(),
-        ],
+              // centerBtnWinbig(),
+            ],
+          ),
+        ),
+        SizedBox(height: 12.h,),
+        btnDrawNow(),
+      ],
+    );
+  }
+
+  Widget btnDrawNow() {
+    return Center(
+      child: GestureDetector(
+        onTap: onWinbig,
+        child: Container(
+          width: 260.h,
+          height: 56.h,
+          color: Colors.black.withValues(alpha: 0.0),
+          child: Stack(
+            clipBehavior: Clip.none,
+            children: [
+              Image.asset(
+                Assets.twimg.btnSpin.path,
+                width: double.infinity,
+                height: double.infinity,
+                fit: BoxFit.fill,
+              ),
+              Center(
+                child: TwTxtBorder(
+                  text: "Draw Now",
+                  fontSize: 24.sp,
+                  fontWeight: FontWeight.w900,
+                  fontColor: Color(0xffffffff),
+                  foreground: Color(0xff22431B),
+                ),
+              ),
+              Positioned(
+                top: -10.h,
+                left: -5.h,
+                child: Image.asset(
+                  Assets.twimg.ad.path,
+                  width: 28.h,
+                  height: 28.h,
+                ),
+              ),
+
+              Positioned(
+                top: -0.h,
+                right: -5.h,
+                child: Container(
+                  padding: EdgeInsets.symmetric(vertical: 0.h, horizontal: 4.h),
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: [Color(0xffFF5151), Color(0xffCC0909)],
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                    ),
+                    borderRadius: BorderRadius.circular(100),
+                  ),
+                  child: Text(
+                    "3 Change Left",
+                    style: TextStyle(
+                      fontSize: 10.sp,
+                      fontWeight: FontWeight.w700,
+                      color: Color(0xffFFD059),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
@@ -303,22 +380,19 @@ class _PositionItemsState extends State<PositionItems>
               bottom: -10.h,
               child: Center(
                 child: Container(
-                  width: _imgItemWidth+10.h,
-                  height: _imgItemWidth+10.h,
+                  width: _imgItemWidth + 10.h,
+                  height: _imgItemWidth + 10.h,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(_imgItemWidth),
-                    border: Border.all(color: Colors.red, width: 2.w),
+                    border: Border.all(color: Colors.red.withValues(alpha: 0.5), width: 2.w),
                   ),
                   child: Stack(
-                    children: [
-                      Image.asset(Assets.twimg.wheelScroll.path,)
-                    ],
+                    children: [Image.asset(Assets.twimg.wheelScroll.path)],
                   ),
                 ),
               ),
             ),
           txt,
-
         ],
       ),
     );
@@ -401,6 +475,6 @@ class _PositionItemsState extends State<PositionItems>
       _startIndex = 0;
     }
     int targeIndex = Random().nextInt(12);
-    startSpin(startIndex: _startIndex,targetIndex: targeIndex);
+    startSpin(startIndex: _startIndex, targetIndex: targeIndex);
   }
 }

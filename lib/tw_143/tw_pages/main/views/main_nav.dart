@@ -28,6 +28,7 @@ class _MainNavState extends State<MainNav> {
 
   @override
   Widget build(BuildContext context) {
+    // bottomSafeHeight =0;
     return Obx(() {
       return Container(
         height: bottomNavRealHeight,
