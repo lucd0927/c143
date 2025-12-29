@@ -1,5 +1,6 @@
 import 'package:c143/gen/assets.gen.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide1_water.dart';
+import 'package:c143/tw_143/tw_pages/guide/guide2_coin.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
 import 'package:c143/tw_base/tw_gj/loggggg.dart';
 import 'package:c143/tw_views/animated_count.dart';
@@ -240,7 +241,7 @@ class _MainCenterState extends State<MainCenter> {
             clipBehavior: Clip.none,
             children: [
               ShiningEffect(
-                duration: Duration(milliseconds: 4000),
+                duration: Duration(milliseconds: 2000),
                 shineColor: Color(0xffffffff),
                 opacity: 1,
                 angle: -0.9,
@@ -328,12 +329,20 @@ class _MainCenterState extends State<MainCenter> {
     return Row(
       children: [
         SizedBox(width: 90.w),
-        centerItem(
-          width: 40.h,
-          count: 10,
-          icon: Assets.twimg.mainCoin.path,
-          showTxt: false,
-          onClick: () {},
+        Builder(
+          builder: (context) {
+            Widget child = centerItem(
+              width: 40.h,
+              count: 10,
+              icon: Assets.twimg.mainCoin.path,
+              showTxt: false,
+              onClick: () {},
+            );
+            OverlayGuide2Coin.guideChild = child;
+            OverlayGuide2Coin.guideContext = context;
+
+            return child;
+          },
         ),
       ],
     );

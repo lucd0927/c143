@@ -1,3 +1,4 @@
+import 'package:c143/tw_143/tw_pages/guide/guide1_water.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide_test_animated.dart';
 import 'package:get/get.dart';
 
@@ -12,8 +13,8 @@ class MainController extends GetxController {
   void resetIndex(int index) {
     curMainNavIndex.value = index;
 
-    OverlayGuideTestAnim().show();
-
+    // OverlayGuideTestAnim().show();
+    OverlayGuide1Water().show();
     if (index == cashIndex) {
 
     } else if (index == quizIndex) {

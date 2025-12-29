@@ -66,6 +66,10 @@ class $AssetsTwimgGen {
   AssetGenImage get guide1waterTips =>
       const AssetGenImage('assets/twimg/guide1water_tips.png');
 
+  /// File path: assets/twimg/guide2cointips.png
+  AssetGenImage get guide2cointips =>
+      const AssetGenImage('assets/twimg/guide2cointips.png');
+
   /// File path: assets/twimg/main_bg.png
   AssetGenImage get mainBg => const AssetGenImage('assets/twimg/main_bg.png');
 
@@ -292,6 +296,7 @@ class $AssetsTwimgGen {
     btnSpinWinbig,
     gesture,
     guide1waterTips,
+    guide2cointips,
     mainBg,
     mainBg2,
     mainBg3,
