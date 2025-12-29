@@ -59,21 +59,32 @@ class _GuideTestWidgetState extends State<GuideTestWidget> {
 
   bool showEffect = false;
 
+  bool showAnimated = false;
+  Duration animD = Duration(milliseconds: 200);
+  double startScale = 0.8;
+
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
 
-    Future.delayed(Duration(milliseconds: 100), () {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
       if (mounted) {
         setState(() {
-          itemHgith = 124.h;
+          showAnimated = true;
         });
-
-        Future.delayed(Duration(milliseconds: 300), () {
+        Future.delayed(Duration(milliseconds: 100), () {
           if (mounted) {
             setState(() {
-              showEffect = true;
+              itemHgith = 124.h;
+            });
+
+            Future.delayed(Duration(milliseconds: 300), () {
+              if (mounted) {
+                setState(() {
+                  showEffect = true;
+                });
+              }
             });
           }
         });
@@ -88,13 +99,26 @@ class _GuideTestWidgetState extends State<GuideTestWidget> {
         twLooog("=====_GuideTestWidgetState=close");
         widget.onClose();
       },
-      child: Container(
-        width: ScreenUtil().screenWidth,
-        height: ScreenUtil().screenHeight,
-        color: Colors.black.withValues(alpha: 0.5),
-        child: Stack(
-          clipBehavior: Clip.none,
-          children: [Positioned(top: 90.h, child: ScaleOverlayAnim())],
+      child: AnimatedContainer(
+        duration: animD,
+        color: Colors.black.withValues(alpha: showAnimated ? 0.6 : 0),
+        child: AnimatedScale(
+          duration: animD,
+          scale: showAnimated ? 1.0 : 1.0,
+          child: Container(
+            width: ScreenUtil().screenWidth,
+            height: ScreenUtil().screenHeight,
+            color: Colors.black.withValues(alpha: 0.0),
+            child: Stack(
+              clipBehavior: Clip.none,
+              children: [
+                Positioned(
+                  top: 90.h,
+                  child: FittedBox(child: ScaleOverlayAnim()),
+                ),
+              ],
+            ),
+          ),
         ),
       ),
     );
@@ -149,70 +173,72 @@ class _ScaleOverlayAnimState extends State<ScaleOverlayAnim>
     return SizedBox(
       width: 360.w,
       height: 124.h,
-      child: Stack(
-        clipBehavior: Clip.none,
-        alignment: Alignment.center,
-        children: [
-          // 底图
-          AnimatedBuilder(
-            animation: heightAnim,
-            builder: (_, __) {
-              return Transform.translate(
-                offset: Offset(slideAnim.value, 0),
-                child: Image.asset(
-                  Assets.twimg.animatedBg11.path,
+      child: FittedBox(
+        child: Stack(
+          clipBehavior: Clip.none,
+          alignment: Alignment.center,
+          children: [
+            // 底图
+            AnimatedBuilder(
+              animation: heightAnim,
+              builder: (_, __) {
+                return Transform.translate(
+                  offset: Offset(slideAnim.value, 0),
+                  child: Image.asset(
+                    Assets.twimg.animatedBg11.path,
 
-                  width: 360.w,
-                  height: 124.h,
-                  fit: BoxFit.fill,
-                ),
-              );
-            },
-          ),
+                    width: 360.w,
+                    height: 124.h,
+                    fit: BoxFit.fill,
+                  ),
+                );
+              },
+            ),
 
-          // 上图
-          AnimatedBuilder(
-            animation: _controller,
-            builder: (_, __) {
-              final h = heightAnim.value / 2;
-              return Positioned(
-                top: -14.h,
-                child: Transform.translate(
-                  offset: Offset(-slideAnim.value, 0),
-                  child: Container(
-                    color: Colors.white.withValues(alpha: 0),
+            // 上图
+            AnimatedBuilder(
+              animation: _controller,
+              builder: (_, __) {
+                final h = heightAnim.value / 2;
+                return Positioned(
+                  top: -14.h,
+                  child: Transform.translate(
+                    offset: Offset(-slideAnim.value, 0),
+                    child: Container(
+                      color: Colors.white.withValues(alpha: 0),
+                      child: Image.asset(
+                        Assets.twimg.animatedBg12.path,
+                        width: 360.w,
+                        height: 28.h,
+                        fit: BoxFit.fill,
+                      ),
+                    ),
+                  ),
+                );
+              },
+            ),
+
+            // 下图
+            AnimatedBuilder(
+              animation: _controller,
+              builder: (_, __) {
+                final h = heightAnim.value / 2;
+                return Positioned(
+                  bottom: -14.h,
+                  child: Transform.translate(
+                    offset: Offset(-slideAnim.value, 0),
                     child: Image.asset(
-                      Assets.twimg.animatedBg12.path,
+                      Assets.twimg.animatedBg13.path,
                       width: 360.w,
                       height: 28.h,
                       fit: BoxFit.fill,
                     ),
                   ),
-                ),
-              );
-            },
-          ),
-
-          // 下图
-          AnimatedBuilder(
-            animation: _controller,
-            builder: (_, __) {
-              final h = heightAnim.value / 2;
-              return Positioned(
-                bottom: -14.h,
-                child: Transform.translate(
-                  offset: Offset(-slideAnim.value, 0),
-                  child: Image.asset(
-                    Assets.twimg.animatedBg13.path,
-                    width: 360.w,
-                    height: 28.h,
-                    fit: BoxFit.fill,
-                  ),
-                ),
-              );
-            },
-          ),
-        ],
+                );
+              },
+            ),
+          ],
+        ),
       ),
     );
   }

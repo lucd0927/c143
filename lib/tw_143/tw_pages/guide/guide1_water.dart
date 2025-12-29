@@ -22,19 +22,12 @@ class OverlayGuide1Water {
       builder: (context) {
         return Material(
           color: Colors.transparent,
-          child: GestureDetector(
-            onTap: () {
-              // close();
+          child: Guide1WaterWidget(
+            guideChild: guideChild!,
+            guideContext: guideContext!,
+            onClose: () async {
+              close();
             },
-            child: Container(
-              color: Colors.black.withValues(alpha: 0.6),
-
-              child: Guide1WaterWidget(
-                guideChild: guideChild!,
-                guideContext: guideContext!,
-                onClose: () async {},
-              ),
-            ),
           ),
         );
       },
@@ -68,30 +61,50 @@ class Guide1WaterWidget extends StatefulWidget {
 class _Guide1WaterWidgetState extends State<Guide1WaterWidget> {
   int index = 0;
 
+  bool showAnimated = false;
+  Duration animD = Duration(milliseconds: 200);
+  double startScale = 0.8;
+
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) {
+        setState(() {
+          showAnimated = true;
+        });
+      }
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: ScreenUtil().screenWidth,
-      height: ScreenUtil().screenHeight,
-      child: IndexedStack(
-        index: index,
-        children: [
-          GestureDetector(
-            onTap: () {
-              widget.onClose();
-            },
-            child: GuideWidget(
-              guideChild: widget.guideChild,
-              guideContext: widget.guideContext,
-            ),
+    return AnimatedContainer(
+      duration: animD,
+      color: Colors.black.withValues(alpha: showAnimated ? 0.6 : 0),
+      child: AnimatedScale(
+        duration: animD,
+        scale: showAnimated ? 1.0 : startScale,
+        child: SizedBox(
+          width: ScreenUtil().screenWidth,
+          height: ScreenUtil().screenHeight,
+          child: IndexedStack(
+            index: index,
+            children: [
+              GestureDetector(
+                onTap: () {
+                  widget.onClose();
+                },
+                child: GuideWidget(
+                  guideChild: widget.guideChild,
+                  guideContext: widget.guideContext,
+                ),
+              ),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }
