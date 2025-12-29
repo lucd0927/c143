@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:c143/gen/assets.gen.dart';
 import 'package:c143/tw_base/tw_gj/loggggg.dart';
+import 'package:c143/tw_views/font_gradient_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get_connect/http/src/utils/utils.dart';
@@ -93,7 +94,8 @@ class _PositionItemsState extends State<PositionItems>
         IntTween(begin: startIndex, end: targetAngle).animate(
             CurvedAnimation(
               parent: _controller,
-              curve: Curves.easeInOutCubic, // 先加速后减速
+              // curve: Curves.easeInOutCubic, // 先加速后减速
+              curve: Curves.fastOutSlowIn, // 先加速后减速
             ),
           )
           ..addListener(() {
@@ -219,7 +221,7 @@ class _PositionItemsState extends State<PositionItems>
 
   _indexItem({required int index}) {
     String icon = Assets.twimg.wheelCoin.path;
-
+    Widget txt = const SizedBox();
     if (index == 0 ||
         index == 4 ||
         index == 5 ||
@@ -230,12 +232,54 @@ class _PositionItemsState extends State<PositionItems>
         index == 10 ||
         index == 11) {
       icon = Assets.twimg.wheelCoin.path;
+
+      txt = Center(
+        child: TwTxtGraBorder(
+          text: "100",
+          fontWeight: FontWeight.w700,
+          fontSize: 20.sp,
+          strokeColor: Color(0xffBD5500),
+        ),
+      );
     } else if (index == 1) {
       icon = Assets.twimg.wheelFeiliangad.path;
+      txt = Positioned(
+        left: 0,
+        right: 0,
+        bottom: 0,
+        child: TwTxtGraBorder(
+          text: "speed up recovery",
+          fontWeight: FontWeight.w700,
+          fontSize: 8.sp,
+          strokeColor: Color(0xffBD5500),
+        ),
+      );
     } else if (index == 2) {
       icon = Assets.twimg.wheelFeiliang.path;
+      txt = Positioned(
+        left: 0,
+        right: 0,
+        bottom: 0,
+        child: TwTxtGraBorder(
+          text: "speed up recovery",
+          fontWeight: FontWeight.w700,
+          fontSize: 8.sp,
+          strokeColor: Color(0xffBD5500),
+        ),
+      );
     } else if (index == 3) {
       icon = Assets.twimg.wheelDoubleex.path;
+      txt = Positioned(
+        left: 0,
+        right: 0,
+        bottom: 0,
+        child: TwTxtGraBorder(
+          text: "double earnings",
+          fontWeight: FontWeight.w700,
+          fontSize: 8.sp,
+          strokeColor: Color(0xffBD5500),
+        ),
+      );
     }
 
     return Container(
@@ -243,6 +287,7 @@ class _PositionItemsState extends State<PositionItems>
       height: _imgItemWidth,
       color: Colors.amber.withValues(alpha: 0),
       child: Stack(
+        clipBehavior: Clip.none,
         children: [
           Image.asset(
             icon,
@@ -251,14 +296,29 @@ class _PositionItemsState extends State<PositionItems>
             fit: BoxFit.contain,
           ),
           if (_selectIndex == index)
-            Container(
-              width: _imgItemWidth,
-              height: _imgItemWidth,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(_imgItemWidth),
-                border: Border.all(color: Colors.black, width: 1),
+            Positioned(
+              left: -10.h,
+              right: -10.h,
+              top: -10.h,
+              bottom: -10.h,
+              child: Center(
+                child: Container(
+                  width: _imgItemWidth+10.h,
+                  height: _imgItemWidth+10.h,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(_imgItemWidth),
+                    border: Border.all(color: Colors.red, width: 2.w),
+                  ),
+                  child: Stack(
+                    children: [
+                      Image.asset(Assets.twimg.wheelScroll.path,)
+                    ],
+                  ),
+                ),
               ),
             ),
+          txt,
+
         ],
       ),
     );
@@ -302,7 +362,7 @@ class _PositionItemsState extends State<PositionItems>
 
   index3() {
     double left = _imgWidth / 2 - _imgItemWidth / 2 + 130.h;
-    double top = 150.h;
+    double top = 145.h;
     return Positioned(left: left, top: top, child: _indexItem(index: 3));
   }
 
@@ -337,9 +397,10 @@ class _PositionItemsState extends State<PositionItems>
   }
 
   void onWinbig() {
-    if(_selectIndex <=0){
+    if (_selectIndex <= 0) {
       _startIndex = 0;
     }
-    startSpin(startIndex: _startIndex);
+    int targeIndex = Random().nextInt(12);
+    startSpin(startIndex: _startIndex,targetIndex: targeIndex);
   }
 }

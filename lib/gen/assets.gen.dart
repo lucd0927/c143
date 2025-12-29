@@ -253,6 +253,10 @@ class $AssetsTwimgGen {
   AssetGenImage get wheelFeiliangad =>
       const AssetGenImage('assets/twimg/wheel_feiliangad.png');
 
+  /// File path: assets/twimg/wheel_scroll.png
+  AssetGenImage get wheelScroll =>
+      const AssetGenImage('assets/twimg/wheel_scroll.png');
+
   /// List of all assets
   List<AssetGenImage> get values => [
     ad,
@@ -314,6 +318,7 @@ class $AssetsTwimgGen {
     wheelDoubleex,
     wheelFeiliang,
     wheelFeiliangad,
+    wheelScroll,
   ];
 }
 
