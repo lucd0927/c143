@@ -10,8 +10,10 @@ import 'package:c143/tw_143/tw_pages/main_cash/main_cash.dart';
 import 'package:c143/tw_143/tw_pages/main/main_controller.dart';
 import 'package:c143/tw_143/tw_pages/main_quiz/main_quiz.dart';
 import 'package:c143/tw_143/tw_pages/main_quiz/main_quiz_controller.dart';
+import 'package:c143/tw_143/tw_pages/main_spin/main_spin.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/main_tree.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
+import 'package:c143/tw_notification/ios_notification.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -31,7 +33,7 @@ class _TwMainPageState extends State<TwMainPage> {
   List<Widget> get _mainNavs => [
     MainTree(),
     MainQuiz(),
-    MainCash(),
+    MainSpin(),
     MainCash(),
   ];
 
@@ -44,7 +46,7 @@ class _TwMainPageState extends State<TwMainPage> {
     Get.put(MainTreeController());
     Get.put(MainQuizController());
 
-
+    TwNotificationIos().init();
   }
 
 

@@ -30,8 +30,18 @@ class $AssetsAvatarGen {
 class $AssetsTwimgGen {
   const $AssetsTwimgGen();
 
+  /// File path: assets/twimg/ad.png
+  AssetGenImage get ad => const AssetGenImage('assets/twimg/ad.png');
+
   /// File path: assets/twimg/btn_quiz.png
   AssetGenImage get btnQuiz => const AssetGenImage('assets/twimg/btn_quiz.png');
+
+  /// File path: assets/twimg/btn_spin.png
+  AssetGenImage get btnSpin => const AssetGenImage('assets/twimg/btn_spin.png');
+
+  /// File path: assets/twimg/btn_spin_winbig.png
+  AssetGenImage get btnSpinWinbig =>
+      const AssetGenImage('assets/twimg/btn_spin_winbig.png');
 
   /// File path: assets/twimg/gesture.png
   AssetGenImage get gesture => const AssetGenImage('assets/twimg/gesture.png');
@@ -205,9 +215,50 @@ class $AssetsTwimgGen {
   AssetGenImage get quizSpinUn =>
       const AssetGenImage('assets/twimg/quiz_spin_un.png');
 
+  /// File path: assets/twimg/spin_ad.png
+  AssetGenImage get spinAd => const AssetGenImage('assets/twimg/spin_ad.png');
+
+  /// File path: assets/twimg/spin_bg.png
+  AssetGenImage get spinBg => const AssetGenImage('assets/twimg/spin_bg.png');
+
+  /// File path: assets/twimg/spin_check.png
+  AssetGenImage get spinCheck =>
+      const AssetGenImage('assets/twimg/spin_check.png');
+
+  /// File path: assets/twimg/spin_count.png
+  AssetGenImage get spinCount =>
+      const AssetGenImage('assets/twimg/spin_count.png');
+
+  /// File path: assets/twimg/spin_wheel.png
+  AssetGenImage get spinWheel =>
+      const AssetGenImage('assets/twimg/spin_wheel.png');
+
+  /// File path: assets/twimg/spin_wheel_s.png
+  AssetGenImage get spinWheelS =>
+      const AssetGenImage('assets/twimg/spin_wheel_s.png');
+
+  /// File path: assets/twimg/wheel_coin.png
+  AssetGenImage get wheelCoin =>
+      const AssetGenImage('assets/twimg/wheel_coin.png');
+
+  /// File path: assets/twimg/wheel_doubleex.png
+  AssetGenImage get wheelDoubleex =>
+      const AssetGenImage('assets/twimg/wheel_doubleex.png');
+
+  /// File path: assets/twimg/wheel_feiliang.png
+  AssetGenImage get wheelFeiliang =>
+      const AssetGenImage('assets/twimg/wheel_feiliang.png');
+
+  /// File path: assets/twimg/wheel_feiliangad.png
+  AssetGenImage get wheelFeiliangad =>
+      const AssetGenImage('assets/twimg/wheel_feiliangad.png');
+
   /// List of all assets
   List<AssetGenImage> get values => [
+    ad,
     btnQuiz,
+    btnSpin,
+    btnSpinWinbig,
     gesture,
     guide1waterTips,
     mainBg,
@@ -253,6 +304,16 @@ class $AssetsTwimgGen {
     quizDatiBg2,
     quizSpin,
     quizSpinUn,
+    spinAd,
+    spinBg,
+    spinCheck,
+    spinCount,
+    spinWheel,
+    spinWheelS,
+    wheelCoin,
+    wheelDoubleex,
+    wheelFeiliang,
+    wheelFeiliangad,
   ];
 }
 

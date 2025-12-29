@@ -1,5 +1,5 @@
-
 import 'package:c143/gen/assets.gen.dart';
+import 'package:c143/tw_143/tw_pages/main_spin/views/wheel_details.dart';
 import 'package:flutter/material.dart';
 
 class MainSpin extends StatefulWidget {
@@ -15,12 +15,13 @@ class _MainSpinState extends State<MainSpin> {
     return Stack(
       children: [
         Image.asset(
-          Assets.twimg.mainBg2.path,
+          Assets.twimg.spinBg.path,
           width: double.infinity,
           height: double.infinity,
           fit: BoxFit.fill,
           gaplessPlayback: true,
         ),
+        Positioned.fill(child: Column(children: [SpinWheelDetails()])),
       ],
     );
   }

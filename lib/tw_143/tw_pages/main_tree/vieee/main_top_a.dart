@@ -127,7 +127,7 @@ class _MainTopAState extends State<MainTopA> {
                             if (progress > 1) {
                               progress = 1;
                             }
-                            progress = 0.01;
+                            // progress = 0.01;
                             return TwProgress(
                               height: 12.h,
                               innerHeight: 10.h,
