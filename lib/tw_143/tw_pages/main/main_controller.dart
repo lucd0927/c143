@@ -16,13 +16,15 @@ class MainController extends GetxController {
 
     // OverlayGuideTestAnim().show();
     // OverlayGuide1Water().show();
-    OverlayGuide7Rank().show();
+    // OverlayGuide7Rank().show();
     if (index == cashIndex) {
 
     } else if (index == quizIndex) {
 
     } else if (index == wheelIndex) {
 
+    }else if (index == treeIndex) {
+      OverlayGuide7Rank().show();
     }
   }
 }

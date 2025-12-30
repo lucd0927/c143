@@ -4,6 +4,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:c143/gen/assets.gen.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide1_water.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide3_adspot.dart';
+import 'package:c143/tw_143/tw_pages/main/main_controller.dart';
 import 'package:c143/tw_143/tw_pages/main/views/main_nav.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
 import 'package:c143/tw_base/tw_gj/loggggg.dart';
@@ -38,6 +39,9 @@ class OverlayGuide7Rank {
             guideContext: guideContext!,
             onClose: () async {
               close();
+
+              MainController.to.resetIndex(MainController.quizIndex);
+
             },
           ),
         );
@@ -227,22 +231,7 @@ class _Guide7RankWidgetState extends State<Guide7RankWidget> {
                                         ),
                                 ),
 
-                                Positioned(
-                                  bottom: 260.h,
-                                  left: -topLeftPosition.dx,
-                                  right: -topLeftPosition.dx,
-                                  child: AnimatedSize(
-                                    duration: Duration(milliseconds: 800),
-                                    alignment: Alignment.topCenter,
-                                    child: _text == text4
-                                        ? Image.asset(
-                                            Assets.twimg.guide7SprintTxt.path,
-                                            width: 272.w,
-                                            height: 80.h,
-                                          )
-                                        : const SizedBox(),
-                                  ),
-                                ),
+
                                 Positioned(
                                   top: -130.h,
                                   left: 0,
@@ -291,7 +280,22 @@ class _Guide7RankWidgetState extends State<Guide7RankWidget> {
                                     ),
                                   ),
                                 ),
-
+                                Positioned(
+                                  bottom: 260.h,
+                                  left: -topLeftPosition.dx,
+                                  right: -topLeftPosition.dx,
+                                  child: AnimatedSize(
+                                    duration: Duration(milliseconds:500),
+                                    alignment: Alignment.topCenter,
+                                    child: _text == text4
+                                        ? Image.asset(
+                                      Assets.twimg.guide7SprintTxt.path,
+                                      width: 272.w,
+                                      height: 80.h,
+                                    )
+                                        : const SizedBox(),
+                                  ),
+                                ),
                                 if (_text == text4)
                                   Positioned(
                                     left: 0,
@@ -506,6 +510,7 @@ class _Guide7ScaleOverlayAnimState extends State<_Guide7ScaleOverlayAnim>
                                 fontWeight: FontWeight.w900,
                                 color: Color(0xffffffff),
                               ),
+                              textAlign: TextAlign.center,
                             ),
                           ),
                         ),

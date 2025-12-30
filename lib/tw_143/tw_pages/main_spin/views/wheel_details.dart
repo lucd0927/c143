@@ -2,8 +2,10 @@ import 'dart:math';
 
 import 'package:c143/gen/assets.gen.dart';
 import 'package:c143/tw_base/tw_gj/loggggg.dart';
+import 'package:c143/tw_views/animated_scale.dart';
 import 'package:c143/tw_views/font_border.dart';
 import 'package:c143/tw_views/font_gradient_border.dart';
+import 'package:c143/tw_views/shimmer_effect.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get_connect/http/src/utils/utils.dart';
@@ -175,11 +177,31 @@ class _PositionItemsState extends State<PositionItems>
           child: Stack(
             clipBehavior: Clip.none,
             children: [
-              Image.asset(
-                Assets.twimg.btnSpin.path,
-                width: double.infinity,
-                height: double.infinity,
-                fit: BoxFit.fill,
+              ShiningEffect(
+                duration: Duration(milliseconds: 2000),
+                shineColor: Color(0xffffffff),
+                opacity: 0.6,
+                angle: -0.1,
+                topLeft: false,
+                child: Image.asset(
+                  Assets.twimg.btnSpin.path,
+                  width: double.infinity,
+                  height: double.infinity,
+                  fit: BoxFit.fill,
+                ),
+              ),
+              Positioned(
+                bottom: -30.h,
+                right: -30.h,
+                child: IgnorePointer(
+                  child: TwAScale(
+                    child: Image.asset(
+                      Assets.twimg.gesture.path,
+                      width: 70.w,
+                      height: 70.w,
+                    ),
+                  ),
+                ),
               ),
               Center(
                 child: TwTxtBorder(
