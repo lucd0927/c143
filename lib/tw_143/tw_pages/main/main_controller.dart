@@ -1,5 +1,6 @@
 import 'package:c143/tw_143/tw_pages/guide/guide1_water.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide7_rank.dart';
+import 'package:c143/tw_143/tw_pages/guide/guide8_quiz1.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide_test_animated.dart';
 import 'package:get/get.dart';
 
@@ -17,6 +18,7 @@ class MainController extends GetxController {
     // OverlayGuideTestAnim().show();
     // OverlayGuide1Water().show();
     // OverlayGuide7Rank().show();
+    // OverlayGuide8Quiz1().show(coins: 100);
     if (index == cashIndex) {
 
     } else if (index == quizIndex) {
@@ -24,7 +26,7 @@ class MainController extends GetxController {
     } else if (index == wheelIndex) {
 
     }else if (index == treeIndex) {
-      OverlayGuide7Rank().show();
+      // OverlayGuide7Rank().show();
     }
   }
 }

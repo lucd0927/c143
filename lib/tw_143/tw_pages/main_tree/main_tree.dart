@@ -1,5 +1,7 @@
 import 'package:c143/gen/assets.gen.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide1_water.dart';
+import 'package:c143/tw_143/tw_pages/guide/guide7_rank.dart';
+import 'package:c143/tw_143/tw_pages/guide/guide8_quiz1.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/vieee/main_center.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/vieee/main_rank.dart';
@@ -34,7 +36,9 @@ class _MainTreeState extends State<MainTree> {
       bool showCheckDialog = data != null && data > 14;
 
       if (data == null) {
-        OverlayGuide1Water().show();
+        // OverlayGuide1Water().show();
+        // OverlayGuide7Rank().show();
+
       }
 
 

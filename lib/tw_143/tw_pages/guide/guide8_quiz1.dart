@@ -1,22 +1,27 @@
+import 'dart:async';
+
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:c143/gen/assets.gen.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide7_rank.dart';
+import 'package:c143/tw_143/tw_pages/main_quiz/main_quiz_controller.dart';
 import 'package:c143/tw_base/tw_gj/loggggg.dart';
+import 'package:c143/tw_views/animated_count.dart';
 import 'package:c143/tw_views/animated_scale.dart';
 import 'package:c143/tw_views/font_border.dart';
+import 'package:c143/tw_views/font_gradient_border.dart';
 import 'package:c143/tw_views/shimmer_effect.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-class OverlayGuide6RewardDouble {
+class OverlayGuide8Quiz1 {
   OverlayEntry? _overlayEntry;
 
   ///是否真正显示
   bool get isShowing => _isShowing;
   bool _isShowing = false;
 
-  void show() {
+  void show({required double coins,required ValueChanged onBtn}) {
     _overlayEntry = null;
 
     _overlayEntry = OverlayEntry(
@@ -26,11 +31,13 @@ class OverlayGuide6RewardDouble {
           child: Container(
             color: Colors.black.withValues(alpha: 0.6),
 
-            child: Guide6RewardDouble(
+            child: Guide8Quiz1Widget(
+              coins: coins,
               onClose: () async {
                 twLooog("=====OverlayGuideTestAnim=close");
                 close();
-                OverlayGuide7Rank().show();
+                onBtn.call(coins);
+                // MainQuizController.to.saveGuideStatus();
               },
             ),
           ),
@@ -47,16 +54,21 @@ class OverlayGuide6RewardDouble {
   }
 }
 
-class Guide6RewardDouble extends StatefulWidget {
-  const Guide6RewardDouble({super.key, required this.onClose});
+class Guide8Quiz1Widget extends StatefulWidget {
+  const Guide8Quiz1Widget({
+    super.key,
+    required this.onClose,
+    required this.coins,
+  });
 
   final VoidCallback onClose;
+  final double coins;
 
   @override
-  State<Guide6RewardDouble> createState() => _Guide6RewardDoubleState();
+  State<Guide8Quiz1Widget> createState() => _Guide8Quiz1WidgetState();
 }
 
-class _Guide6RewardDoubleState extends State<Guide6RewardDouble> {
+class _Guide8Quiz1WidgetState extends State<Guide8Quiz1Widget> {
   int index = 0;
   double itemHgith = 0;
 
@@ -66,7 +78,12 @@ class _Guide6RewardDoubleState extends State<Guide6RewardDouble> {
   Duration animD = Duration(milliseconds: 200);
   double startScale = 0.8;
 
-  bool showDoubleEx = false;
+  bool showNumber = false;
+
+  Timer? _timer;
+
+  double _coinsss = 0;
+  Offset _offset = Offset(-30.w, 0);
 
   @override
   void initState() {
@@ -78,17 +95,30 @@ class _Guide6RewardDoubleState extends State<Guide6RewardDouble> {
         setState(() {
           showAnimated = true;
         });
-
-        Future.delayed(Duration(milliseconds: 3000), () {
+        Future.delayed(Duration(milliseconds: 100), () {
           if (mounted) {
             setState(() {
-              showDoubleEx = true;
-            });
-            Future.delayed(Duration(milliseconds: 2000), () {
-              widget.onClose();
+              _coinsss = widget.coins;
+              _offset = Offset.zero;
             });
           }
         });
+        initTimer();
+      }
+    });
+  }
+
+  final Duration _timerD = Duration(milliseconds: 3000);
+
+  initTimer() {
+    _timer?.cancel();
+    _timer = Timer(_timerD, () {
+      _timer?.cancel();
+      if (mounted) {
+        setState(() {
+          showNumber = true;
+        });
+        // widget.onClose();
       }
     });
   }
@@ -98,7 +128,7 @@ class _Guide6RewardDoubleState extends State<Guide6RewardDouble> {
     return GestureDetector(
       onTap: () {
         twLooog("=====_GuideTestWidgetState=close");
-        // widget.onClose();
+        widget.onClose();
       },
       child: AnimatedContainer(
         duration: animD,
@@ -114,9 +144,33 @@ class _Guide6RewardDoubleState extends State<Guide6RewardDouble> {
               clipBehavior: Clip.none,
               children: [
                 Center(
-                  child: showDoubleEx
-                      ? _coinDouble()
-                      : FittedBox(child: _Guide6ScaleOverlayAnim()),
+                  child: FittedBox(
+                    child: Column(
+                      children: [
+                        AnimatedSlide(
+                          offset: _offset,
+                          duration: Duration(milliseconds: 300),
+                          child: TwAnimatedCountttt(
+                            duration: Duration(milliseconds: 300),
+                            value: _coinsss,
+                            prefix: "+",
+                            textStyle: TextStyle(
+                              fontSize: 36.sp,
+                              fontWeight: FontWeight.w900,
+                              color: Color(0xffFFDF12),
+                            ),
+
+                            textGradient: LinearGradient(
+                              colors: [Color(0xffFFDF12), Color(0xffFFAA00)],
+                              end: Alignment.bottomCenter,
+                              begin: Alignment.topCenter,
+                            ),
+                          ),
+                        ),
+                        _Guide8ScaleOverlayAnim(),
+                      ],
+                    ),
+                  ),
                 ),
               ],
             ),
@@ -126,47 +180,23 @@ class _Guide6RewardDoubleState extends State<Guide6RewardDouble> {
     );
   }
 
-  _coinDouble() {
-    return TwAScale(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Container(
-            width: 176.h,
-            height: 176.h,
-            child: Stack(
-              children: [
-                Image.asset(
-                  Assets.twimg.coinGuide6.path,
-                  width: double.infinity,
-                  height: double.infinity,
-                  fit: BoxFit.fill,
-                ),
-              ],
-            ),
-          ),
-
-          TwTxtBorder(
-            text: "x2",
-            fontWeight: FontWeight.w900,
-            fontSize: 40.sp,
-            fontColor: Color(0xffFFE56F),
-            foreground: Color(0xff9D790E),
-          ),
-        ],
-      ),
-    );
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    _timer?.cancel();
   }
 }
 
-class _Guide6ScaleOverlayAnim extends StatefulWidget {
-  const _Guide6ScaleOverlayAnim({super.key});
+class _Guide8ScaleOverlayAnim extends StatefulWidget {
+  const _Guide8ScaleOverlayAnim({super.key});
 
   @override
-  State<_Guide6ScaleOverlayAnim> createState() => _Guide6ScaleOverlayAnimState();
+  State<_Guide8ScaleOverlayAnim> createState() =>
+      _Guide8ScaleOverlayAnimState();
 }
 
-class _Guide6ScaleOverlayAnimState extends State<_Guide6ScaleOverlayAnim>
+class _Guide8ScaleOverlayAnimState extends State<_Guide8ScaleOverlayAnim>
     with SingleTickerProviderStateMixin {
   static double containerHeight = 360.w;
 
@@ -241,7 +271,7 @@ class _Guide6ScaleOverlayAnimState extends State<_Guide6ScaleOverlayAnim>
                           child: Padding(
                             padding: EdgeInsets.symmetric(horizontal: 16.w),
                             child: Text(
-                              "Your ad space value is SKYROCKETING!\n🚀 You’re now a TOP FEATURED SPOT on the platform!",
+                              "Boosting your cash-out progress!！\nYou’re closer to cashing out!",
                               style: TextStyle(
                                 fontSize: 16.sp,
                                 fontWeight: FontWeight.w900,

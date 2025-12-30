@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:c143/tw_143/tw_pages/guide/guide8_quiz1.dart';
 import 'package:c143/tw_143/tw_pages/main_quiz/datus/data.dart';
 import 'package:c143/tw_143/tw_pages/main_quiz/datus/quiz_model.dart';
 import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
@@ -10,17 +11,21 @@ import 'package:get/get.dart';
 class MainQuizController extends GetxController {
   static MainQuizController get to => Get.find();
 
-  String get twkeyAnswerCount{
-    return TwPackageAB.isPackageB() ?"twkeyAnswerCountBBBBB":"twkeyAnswerCountA";
+  String get twkeyAnswerCount {
+    return TwPackageAB.isPackageB()
+        ? "twkeyAnswerCountBBBBB"
+        : "twkeyAnswerCountA";
   }
-  String get twkeyAnswerRightCount{
-    return TwPackageAB.isPackageB() ?"twkeyAnswerRightCountBBBB":"twkeyAnswerRightCountAAAA";
+
+  String get twkeyAnswerRightCount {
+    return TwPackageAB.isPackageB()
+        ? "twkeyAnswerRightCountBBBB"
+        : "twkeyAnswerRightCountAAAA";
   }
 
   static int gestureMaxTimer = 3;
 
   var box = TwHive.box;
-
 
   var curQuizCategory = EnumQuizDataType.dailyLife.name.obs;
 
@@ -64,17 +69,88 @@ class MainQuizController extends GetxController {
       }
     }
     _initQuizDatus = tmpDatiModels;
+
+    initQuizGuideDatusssss();
     twLooog("=====tmpDatiModels:${tmpDatiModels.length}  ");
   }
+
+  var guideStatus = "".obs;
+  static const String guideStatus1 = "guideStatus1";
+  static const String guideStatus2 = "guideStatus2";
+
+  String twkeyGuideStatus() {
+    return TwPackageAB.isPackageB()
+        ? "twkeyGuideStatus2e"
+        : "twkeyGuideStatus54654";
+  }
+
+  saveGuideStatus() {
+    String keyguideStatus = guideStatus.value;
+    if (keyguideStatus == guideStatus1) {
+      keyguideStatus = guideStatus2;
+    }
+    String status = keyguideStatus;
+
+    guideStatus.value = status;
+
+    String tmpKeyGuide = twkeyGuideStatus();
+    box.put(tmpKeyGuide, status);
+  }
+
+  initQuizGuideDatusssss() {
+    String tmpKeyGuide = twkeyGuideStatus();
+    String result = box.get(tmpKeyGuide) ?? guideStatus1;
+    guideStatus = result.obs;
+
+    if (result == guideStatus1 || result == guideStatus2) {
+      var categoryData = guideData;
+
+      List<TwQuizModel> tmpDatiModels = [];
+      for (int i = 0; i < categoryData.length; i++) {
+        var data = categoryData[i];
+        TwQuizModel tmp = TwQuizModel.fromJson(data);
+        tmpDatiModels.add(tmp);
+      }
+
+      twLooog(
+        "=====initQuizGuideDatusssss:${tmpDatiModels.length}  result:$result",
+      );
+
+      if (tmpDatiModels.length > 1) {
+        if (result == guideStatus1) {
+          _initQuizDatus.insert(0, tmpDatiModels[1]);
+          _initQuizDatus.insert(0, tmpDatiModels[0]);
+        } else if (result == guideStatus2) {
+          _initQuizDatus.insert(0, tmpDatiModels[1]);
+        }
+      }
+    }
+  }
+
+  static List<Map<String, dynamic>> guideData = [
+    {
+      "question": "Do you want to earn more coins?",
+      "a": "Yes",
+      "b": "No",
+      "answer": "a",
+    },
+    {
+      "question": "Were you happy with the ad you just watched?!",
+      "a": "Yes",
+      "b": "Just so-so",
+      "c": "No",
+      "answer": "a",
+    },
+  ];
 
   @override
   void onInit() {
     // TODO: implement onInit
     super.onInit();
 
-    int tmpcurAnswerCount = box.get(twkeyAnswerCount)??0;
+    int tmpcurAnswerCount = box.get(twkeyAnswerCount) ?? 0;
     curAnswerCount = tmpcurAnswerCount.obs;
-    int tmpcurAnswerRightCount = box.get(twkeyAnswerRightCount)??0;
+    int tmpcurAnswerRightCount = box.get(twkeyAnswerRightCount) ?? 0;
     curAnswerRightCount = tmpcurAnswerRightCount.obs;
     twLooog("====curAnswerCount:$curAnswerCount=");
     twLooog("====curAnswerRightCount:$curAnswerRightCount=");
@@ -111,7 +187,15 @@ class MainQuizController extends GetxController {
   onClickAnswerrrr({required String click, required String right}) async {
     twLooog("=====click:$click  right:$right");
     String tmpClick = curClickAnswer.value;
+    bool hasClickRight = click == right;
     if (tmpClick.isNotEmpty) {
+      return;
+    }
+    String tmpGuideStatus = guideStatus.value;
+    bool hasGuide =
+        tmpGuideStatus == guideStatus1 || tmpGuideStatus == guideStatus2;
+    if (hasGuide && !hasClickRight) {
+      twLooog("=====click: don't click");
       return;
     }
 
@@ -119,43 +203,51 @@ class MainQuizController extends GetxController {
     curShowGesture.value = false;
     _curGestureLeftTimer?.cancel();
     await Future.delayed(Duration(milliseconds: 2000));
-    if (click == right) {
+    if (hasClickRight) {
       _onAddAnswerRightCount();
       _nextQuestion();
-
     } else {
       _nextQuestion();
     }
   }
 
+  _nextQuestion() {
+    String keyguideStatus = guideStatus.value;
+    if (keyguideStatus == guideStatus1) {
+      OverlayGuide8Quiz1().show(
+        coins: 100,
+        onBtn: (v) {
+          __nextQuestion();
+        },
+      );
+    } else {
+      __nextQuestion();
+    }
+  }
 
-  _nextQuestion(){
+  __nextQuestion() {
     curClickAnswer.value = "";
     _timerGesture(hasFirst: false);
     _onAddAnswerCount();
-
-
   }
 
-  _onAddAnswerCount(){
+  _onAddAnswerCount() {
     int tmpcurInde = curAnswerCount.value;
     int maxLength = _initQuizDatus.length;
-    int nextIndex = tmpcurInde+1;
-    if(nextIndex > maxLength){
+    int nextIndex = tmpcurInde + 1;
+    if (nextIndex > maxLength) {
       nextIndex = 0;
     }
 
     curAnswerCount.value = nextIndex;
 
-
     box.put(twkeyAnswerCount, nextIndex);
   }
 
-  _onAddAnswerRightCount(){
+  _onAddAnswerRightCount() {
     int tmpcurInde = curAnswerRightCount.value;
-    int nextIndex = tmpcurInde+1;
+    int nextIndex = tmpcurInde + 1;
     curAnswerRightCount.value = nextIndex;
     box.put(twkeyAnswerRightCount, nextIndex);
   }
-
 }

@@ -100,7 +100,7 @@ class MainTreeController extends GetxController {
     curFertilizeLeftTime = tmpFertilizeTime.obs;
     Timer.periodic(Duration(seconds: 1), (timer) {
       String tmpFertilizeTime2 = _fertilizeLeftTime.leftTimeToHHmmss();
-      twLooog("tmpFertilizeTime2:$tmpFertilizeTime2");
+      // twLooog("tmpFertilizeTime2:$tmpFertilizeTime2");
       curFertilizeLeftTime.value = tmpFertilizeTime2;
     });
   }

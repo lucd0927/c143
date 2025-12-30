@@ -71,10 +71,10 @@ class TimeLeft {
         _leftTime = shengyu;
         // MainController.to.showBoxTime.value = false;
         _leftTimeTimer?.cancel();
-        twLooog("=====_initTimer=_leftTime end:$_leftTime _textLeftTime:$_textLeftTime");
+        // twLooog("=====_initTimer=_leftTime end:$_leftTime _textLeftTime:$_textLeftTime");
         return;
       }
-      twLooog("=====_initTimer=_leftTime:$_leftTime _textLeftTime:$_textLeftTime");
+      // twLooog("=====_initTimer=_leftTime:$_leftTime _textLeftTime:$_textLeftTime");
       _textLeftTime = _formatDuration(seconds);
       _leftTime = shengyu;
     });

@@ -224,7 +224,13 @@ class TwAnimatedCountttt extends StatelessWidget {
         // Even in RTL languages, numbers should always be displayed LTR.
         textDirection: TextDirection.ltr,
         children: [
-          if (prefix != null) Text(prefix!),
+          if (prefix != null && textGradient != null)
+            ShaderMask(
+              shaderCallback: (bounds) => textGradient!.createShader(bounds),
+              blendMode: BlendMode.srcIn,
+              child: Text(prefix!),
+            ),
+          if (prefix != null && textGradient == null) Text(prefix!),
 
           // Draw the negative sign (-), if exists
           ClipRect(
