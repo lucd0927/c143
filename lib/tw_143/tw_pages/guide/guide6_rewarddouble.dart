@@ -1,5 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:c143/gen/assets.gen.dart';
+import 'package:c143/tw_143/tw_pages/guide/guide7_rank.dart';
 import 'package:c143/tw_base/tw_gj/loggggg.dart';
 import 'package:c143/tw_views/animated_scale.dart';
 import 'package:c143/tw_views/font_border.dart';
@@ -29,6 +30,7 @@ class OverlayGuide6RewardDouble {
               onClose: () async {
                 twLooog("=====OverlayGuideTestAnim=close");
                 close();
+                OverlayGuide7Rank().show();
               },
             ),
           ),
@@ -114,7 +116,7 @@ class _Guide6RewardDoubleState extends State<Guide6RewardDouble> {
                 Center(
                   child: showDoubleEx
                       ? _coinDouble()
-                      : FittedBox(child: ScaleOverlayAnim()),
+                      : FittedBox(child: _Guide6ScaleOverlayAnim()),
                 ),
               ],
             ),
@@ -157,14 +159,14 @@ class _Guide6RewardDoubleState extends State<Guide6RewardDouble> {
   }
 }
 
-class ScaleOverlayAnim extends StatefulWidget {
-  const ScaleOverlayAnim({super.key});
+class _Guide6ScaleOverlayAnim extends StatefulWidget {
+  const _Guide6ScaleOverlayAnim({super.key});
 
   @override
-  State<ScaleOverlayAnim> createState() => _ScaleOverlayAnimState();
+  State<_Guide6ScaleOverlayAnim> createState() => _Guide6ScaleOverlayAnimState();
 }
 
-class _ScaleOverlayAnimState extends State<ScaleOverlayAnim>
+class _Guide6ScaleOverlayAnimState extends State<_Guide6ScaleOverlayAnim>
     with SingleTickerProviderStateMixin {
   static double containerHeight = 360.w;
 

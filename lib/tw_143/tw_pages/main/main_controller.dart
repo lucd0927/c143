@@ -1,4 +1,5 @@
 import 'package:c143/tw_143/tw_pages/guide/guide1_water.dart';
+import 'package:c143/tw_143/tw_pages/guide/guide7_rank.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide_test_animated.dart';
 import 'package:get/get.dart';
 
@@ -14,7 +15,8 @@ class MainController extends GetxController {
     curMainNavIndex.value = index;
 
     // OverlayGuideTestAnim().show();
-    OverlayGuide1Water().show();
+    // OverlayGuide1Water().show();
+    OverlayGuide7Rank().show();
     if (index == cashIndex) {
 
     } else if (index == quizIndex) {

@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:c143/gen/assets.gen.dart';
+import 'package:c143/tw_143/tw_pages/guide/guide7_rank.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/main_tree.dart';
 import 'package:c143/tw_base/tw_gj/loggggg.dart';
 import 'package:c143/tw_base/tw_gj/login_trackkkk.dart';
@@ -100,7 +101,8 @@ class _MainRankState extends State<MainRank> {
   @override
   Widget build(BuildContext context) {
     twLooog("=====");
-    return ClipRect(
+
+    Widget child = ClipRect(
       child: Container(
         // clipBehavior: Clip.none,
         width: double.infinity,
@@ -123,7 +125,7 @@ class _MainRankState extends State<MainRank> {
                         color: Color(0xff0E226C),
                         child: Column(
                           children: [
-                            SizedBox(height: 20.h),
+                           SizedBox(height: 20.h),
                             rankTopWidget(),
 
                             // _itemWidget(1),
@@ -154,6 +156,8 @@ class _MainRankState extends State<MainRank> {
         ),
       ),
     );
+
+    return child;
   }
 
   _itemWidget(int index) {
@@ -242,28 +246,35 @@ class _MainRankState extends State<MainRank> {
   }
 
   rankTopWidget() {
-    return Container(
-      width: 344.w,
-      height: 208.h,
-      child: Stack(
-        children: [
-          Center(
-            child: Image.asset(
-              Assets.twimg.mainRankTop.path,
-              width: double.infinity,
-              height: double.infinity,
-              fit: BoxFit.fill,
-              gaplessPlayback: true,
-            ),
+    return Builder(
+      builder: (context) {
+        Widget child = Container(
+          width: 344.w,
+          height: 208.h,
+          child: Stack(
+            children: [
+              Center(
+                child: Image.asset(
+                  Assets.twimg.mainRankTop.path,
+                  width: double.infinity,
+                  height: double.infinity,
+                  fit: BoxFit.fill,
+                  gaplessPlayback: true,
+                ),
+              ),
+              rank2(),
+              rank3(),
+              rank1(),
+              rankDes2(),
+              rankDes1(),
+              rankDes3(),
+            ],
           ),
-          rank2(),
-          rank3(),
-          rank1(),
-          rankDes2(),
-          rankDes1(),
-          rankDes3(),
-        ],
-      ),
+        );
+        OverlayGuide7Rank.guideContext = context;
+        OverlayGuide7Rank.guideChild = child;
+        return child;
+      },
     );
   }
 

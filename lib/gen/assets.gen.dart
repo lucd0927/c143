@@ -45,6 +45,18 @@ class $AssetsTwimgGen {
   AssetGenImage get animatedBg13 =>
       const AssetGenImage('assets/twimg/animated_bg1_3.png');
 
+  /// File path: assets/twimg/animated_bg2_1.png
+  AssetGenImage get animatedBg21 =>
+      const AssetGenImage('assets/twimg/animated_bg2_1.png');
+
+  /// File path: assets/twimg/animated_bg2_2.png
+  AssetGenImage get animatedBg22 =>
+      const AssetGenImage('assets/twimg/animated_bg2_2.png');
+
+  /// File path: assets/twimg/animated_bg2_3.png
+  AssetGenImage get animatedBg23 =>
+      const AssetGenImage('assets/twimg/animated_bg2_3.png');
+
   /// File path: assets/twimg/btn_quiz.png
   AssetGenImage get btnQuiz => const AssetGenImage('assets/twimg/btn_quiz.png');
 
@@ -96,6 +108,14 @@ class $AssetsTwimgGen {
   /// File path: assets/twimg/guide4_txt.png
   AssetGenImage get guide4Txt =>
       const AssetGenImage('assets/twimg/guide4_txt.png');
+
+  /// File path: assets/twimg/guide7_arrow_down1.png
+  AssetGenImage get guide7ArrowDown1 =>
+      const AssetGenImage('assets/twimg/guide7_arrow_down1.png');
+
+  /// File path: assets/twimg/guide7_arrow_down2.png
+  AssetGenImage get guide7ArrowDown2 =>
+      const AssetGenImage('assets/twimg/guide7_arrow_down2.png');
 
   /// File path: assets/twimg/main_bg.png
   AssetGenImage get mainBg => const AssetGenImage('assets/twimg/main_bg.png');
@@ -317,6 +337,9 @@ class $AssetsTwimgGen {
     animatedBg11,
     animatedBg12,
     animatedBg13,
+    animatedBg21,
+    animatedBg22,
+    animatedBg23,
     btnQuiz,
     btnQuizSelectOk,
     btnSpin,
@@ -331,6 +354,8 @@ class $AssetsTwimgGen {
     guide3Ok,
     guide3Txt,
     guide4Txt,
+    guide7ArrowDown1,
+    guide7ArrowDown2,
     mainBg,
     mainBg2,
     mainBg3,
