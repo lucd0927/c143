@@ -2,6 +2,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:c143/gen/assets.gen.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide1_water.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide4_fertilize.dart';
+import 'package:c143/tw_143/tw_pages/guide/guide6_rewarddouble.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
 import 'package:c143/tw_base/tw_gj/loggggg.dart';
 import 'package:c143/tw_views/animated_count.dart';
@@ -13,7 +14,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-class OverlayGuide3AdSpot {
+class OverlayGuide5AdSpot {
   OverlayEntry? _overlayEntry;
 
   ///是否真正显示
@@ -27,11 +28,11 @@ class OverlayGuide3AdSpot {
       builder: (context) {
         return Material(
           color: Colors.transparent,
-          child: Guide3AdSpot(
+          child: Guide5AdSpot(
             onClose: () async {
               close();
 
-              OverlayGuide4Fertilize().show();
+              OverlayGuide6RewardDouble().show();
             },
           ),
         );
@@ -47,16 +48,16 @@ class OverlayGuide3AdSpot {
   }
 }
 
-class Guide3AdSpot extends StatefulWidget {
-  const Guide3AdSpot({super.key, required this.onClose});
+class Guide5AdSpot extends StatefulWidget {
+  const Guide5AdSpot({super.key, required this.onClose});
 
   final VoidCallback onClose;
 
   @override
-  State<Guide3AdSpot> createState() => _Guide3AdSpotState();
+  State<Guide5AdSpot> createState() => _Guide5AdSpotState();
 }
 
-class _Guide3AdSpotState extends State<Guide3AdSpot> {
+class _Guide5AdSpotState extends State<Guide5AdSpot> {
   int index = 0;
 
   bool showAnimated = false;

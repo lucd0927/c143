@@ -1,10 +1,25 @@
+import 'dart:async';
 import 'dart:math';
 
 import 'package:c143/gen/assets.gen.dart';
 import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
 import 'package:c143/tw_base/tw_gj/loggggg.dart';
+import 'package:c143/tw_base/tw_gj/time_left.dart';
 import 'package:c143/tw_hive/twhive.dart';
+import 'package:c143/tw_views/pb_tushi.dart';
 import 'package:get/get.dart';
+
+
+enum TwEnumTreeType{
+  fertilize("fertilize"),
+  spin("spin"),
+  coin("coin"),
+  sun("sun"),
+  coin_rain("coin_rain"),
+  water("water");
+  final String name;
+  const TwEnumTreeType(this.name);
+}
 
 class MainTreeController extends GetxController {
   static MainTreeController get to => Get.find();
@@ -23,7 +38,7 @@ class MainTreeController extends GetxController {
 
   var curStageWaterCount = 0.obs;
   var curStageShifeiCount = 0.obs;
-
+  var curFertilizeLeftTime = "".obs;
   static String get twKeyMoneyyyy =>
       TwPackageAB.isPackageB() ? "twKeyMoneyyyyBbbb" : "twKeyMoneyyyy";
 
@@ -35,6 +50,12 @@ class MainTreeController extends GetxController {
 
   static String get twKeyShifeiCount =>
       TwPackageAB.isPackageB() ? "twKeyShifeiCountBbbb" : "twKeyShifeiCount";
+
+  static String get twkeyTimeLeftFertilize =>
+      TwPackageAB.isPackageB() ? "sdg4545uyioy3445" : "sdg4545uyioy344578ew";
+
+
+  TimeLeft _fertilizeLeftTime = TimeLeft(twkeyTimeLeft: twkeyTimeLeftFertilize);
 
   static const List<int> waterCounts = [1, 20, 60, 80];
   static const List<int> shifeiCounts = [1, 5, 15, 20];
@@ -72,6 +93,16 @@ class MainTreeController extends GetxController {
 
     int tmpLevelll = _jisuanLevel(hasResetStageCount: false);
     curLevel = tmpLevelll.obs;
+
+    _fertilizeLeftTime.initLeftTimer(hasFirst: true);
+    // _fertilizeLeftTime.textLeftTime;
+    String tmpFertilizeTime = _fertilizeLeftTime.leftTimeToHHmmss();
+    curFertilizeLeftTime = tmpFertilizeTime.obs;
+    Timer.periodic(Duration(seconds: 1), (timer) {
+      String tmpFertilizeTime2 = _fertilizeLeftTime.leftTimeToHHmmss();
+      twLooog("tmpFertilizeTime2:$tmpFertilizeTime2");
+      curFertilizeLeftTime.value = tmpFertilizeTime2;
+    });
   }
 
   double curLevelProgress() {
@@ -189,14 +220,26 @@ class MainTreeController extends GetxController {
   }
 
   onAddShiFeiCount() {
-    int tmpCurMmm = curStageShifeiCount.value;
+    bool canClick = true;
+    if(curFertilizeLeftTime.value.isEmpty && canClick){
+      canClick = false;
+      int tmpCurMmm = curStageShifeiCount.value;
 
-    int tmpCurmmm2 = tmpCurMmm + 1;
-    box.put(twKeyShifeiCount, tmpCurmmm2);
-    curStageShifeiCount.value = tmpCurmmm2;
+      int tmpCurmmm2 = tmpCurMmm + 1;
+      box.put(twKeyShifeiCount, tmpCurmmm2);
+      curStageShifeiCount.value = tmpCurmmm2;
 
-    int tmpL = _jisuanLevel();
-    curLevel.value = tmpL;
+      int tmpL = _jisuanLevel();
+      curLevel.value = tmpL;
+
+      _fertilizeLeftTime.resetLeftTime();
+      canClick = true;
+    }else{
+      twToast(text: "You can claim it after the countdown ends");
+    }
+
+
+
   }
 
   resetWaterAndShifeiCount() {
@@ -231,5 +274,12 @@ class MainTreeController extends GetxController {
   topTextChange(){
 
   }
+
+
+
+
+
+
+
 
 }

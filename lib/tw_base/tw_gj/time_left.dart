@@ -5,20 +5,33 @@ import 'package:c143/tw_base/tw_gj/loggggg.dart';
 import 'package:c143/tw_hive/twhive.dart';
 
 class TimeLeft {
-  static var box = TwHive.box;
+  final String twkeyTimeLeft;
 
-  static String get twkeyTimeLeft =>
-      TwPackageAB.isPackageB() ? "sdg4545uyioy3445" : "sdg4545uyioy344578ew";
-  Timer? _leftTime;
+  TimeLeft({required this.twkeyTimeLeft});
 
-  int maxSeconds = 60 * 60 * 8;
+
+  var box = TwHive.box;
+
+
+  Timer? _leftTimeTimer;
+
+  int maxSeconds = 60 * 1;
 
   // static const int maxSeconds = 60 * 1;
 
-  var textBoxGiftTime = "";
-  var boxGiftTime = -1;
+  var _textLeftTime = "";
+  var _leftTime = -1;
 
-  int leftTime() {
+
+  int leftTime(){
+    return _leftTime;
+  }
+
+  String leftTimeToHHmmss(){
+    return _textLeftTime;
+  }
+
+  int _getLeftTime() {
     int mill = DateTime.now().millisecondsSinceEpoch;
     var tmpData = box.get(twkeyTimeLeft) ?? {"count": 0, "time": mill};
     int time = tmpData['time'];
@@ -26,11 +39,11 @@ class TimeLeft {
     // 过了多少时间
     int diff = mill - time;
     // 剩下多少时间
-    int shengyu = ((maxSeconds * 1000 - diff) / 1000).toInt();
-    if (shengyu <= 0) {
-      shengyu = 0;
+    int left = ((maxSeconds * 1000 - diff) / 1000).toInt();
+    if (left <= 0) {
+      left = 0;
     }
-    return shengyu;
+    return left;
   }
 
   resetLeftTime() {
@@ -41,29 +54,29 @@ class TimeLeft {
   }
 
   initLeftTimer({bool hasFirst = true}) {
-    int tmpLeftTime = leftTime();
+    int tmpLeftTime = _getLeftTime();
     if (hasFirst) {
-      boxGiftTime = tmpLeftTime;
+      _leftTime = tmpLeftTime;
 
-      textBoxGiftTime = _formatDuration(tmpLeftTime);
+      _textLeftTime = _formatDuration(tmpLeftTime);
     }
     // ssLogggg("====_initTimer=shengyu:$shengyu");
-    _leftTime?.cancel();
-    _leftTime = Timer.periodic(Duration(seconds: 1), (timer) {
+    _leftTimeTimer?.cancel();
+    _leftTimeTimer = Timer.periodic(Duration(seconds: 1), (timer) {
       int tick = timer.tick;
-      int shengyu = leftTime();
+      int shengyu = _getLeftTime();
       int seconds = shengyu;
       if (shengyu <= 0) {
-        textBoxGiftTime = _formatDuration(seconds);
-        boxGiftTime = shengyu;
+        _textLeftTime = _formatDuration(seconds);
+        _leftTime = shengyu;
         // MainController.to.showBoxTime.value = false;
-        _leftTime?.cancel();
-        // ssLogggg("=====_initTimer=shengyu:$shengyu ${textBoxGiftTime.value}");
+        _leftTimeTimer?.cancel();
+        twLooog("=====_initTimer=_leftTime end:$_leftTime _textLeftTime:$_textLeftTime");
         return;
       }
-      // ssLogggg("=====_initTimer=shengyu:$shengyu ${textBoxGiftTime.value}");
-      textBoxGiftTime = _formatDuration(seconds);
-      boxGiftTime = shengyu;
+      twLooog("=====_initTimer=_leftTime:$_leftTime _textLeftTime:$_textLeftTime");
+      _textLeftTime = _formatDuration(seconds);
+      _leftTime = shengyu;
     });
   }
 

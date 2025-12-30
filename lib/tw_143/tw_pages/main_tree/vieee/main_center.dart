@@ -1,6 +1,7 @@
 import 'package:c143/gen/assets.gen.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide1_water.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide2_coin.dart';
+import 'package:c143/tw_143/tw_pages/guide/guide4_fertilize.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
 import 'package:c143/tw_base/tw_gj/loggggg.dart';
 import 'package:c143/tw_views/animated_count.dart';
@@ -174,18 +175,32 @@ class _MainCenterState extends State<MainCenter> {
   }
 
   fertilizeWidget() {
-    return Row(
-      children: [
-        SizedBox(width: 20.w),
-        centerItem(
-          width: 60.h,
-          count: 0,
-          icon: Assets.twimg.mainFertilize.path,
-          showTxt: false,
-          onClick: onAddShiFeiCount,
-        ),
-      ],
-    );
+    return Obx(() {
+      String leftTime = MainTreeController.to.curFertilizeLeftTime.value;
+      return Row(
+        children: [
+          SizedBox(width: 20.w),
+          Builder(
+            builder: (context) {
+              Widget child =  centerItem(
+                width: 60.h,
+                count: leftTime,
+                icon: Assets.twimg.mainFertilize.path,
+                showTxt: true,
+                txtLocationBottom: false,
+                treeType: TwEnumTreeType.fertilize,
+                onClick: onAddShiFeiCount,
+              );
+              OverlayGuide4Fertilize.guideChild = child;
+              OverlayGuide4Fertilize.guideContext = context;
+
+              return child;
+            }
+          ),
+
+        ],
+      );
+    });
   }
 
   void onAddShiFeiCount() {
@@ -200,7 +215,7 @@ class _MainCenterState extends State<MainCenter> {
         SizedBox(width: 100.w),
         centerItem(
           width: 50.h,
-          count: count,
+          count: count.toStringAsFixed(0),
           icon: Assets.twimg.mainSun.path,
           onClick: () {
             MainTreeController.to.onAddMoneyyyy(count);
@@ -212,23 +227,37 @@ class _MainCenterState extends State<MainCenter> {
 
   centerItem({
     required double width,
-    required double count,
+    required String count,
     required String icon,
     required VoidCallback onClick,
+    TwEnumTreeType? treeType,
     bool showTxt = true,
     bool txtLocationBottom = true,
   }) {
     Widget txtW = const SizedBox();
     if (showTxt) {
-      txtW = Center(
-        child: TwTxtBorder(
-          text: "+${count.toStringAsFixed(0)}",
-          fontSize: 12.sp,
-          fontColor: Color(0xffFFD64D),
-          foreground: Color(0xff874A00),
-          fontWeight: FontWeight.w700,
-        ),
-      );
+      if(treeType == TwEnumTreeType.fertilize){
+        txtW = Center(
+          child: TwTxtBorder(
+            text: "${count}",
+            fontSize: 10.sp,
+
+            fontWeight: FontWeight.w700,
+          ),
+        );
+      }else{
+        txtW = Center(
+          child: TwTxtBorder(
+            text: "+${count}",
+            fontSize: 12.sp,
+            fontColor: Color(0xffFFD64D),
+            foreground: Color(0xff874A00),
+            fontWeight: FontWeight.w700,
+          ),
+        );
+      }
+
+
     }
     return GestureDetector(
       onTap: onClick,
@@ -269,10 +298,10 @@ class _MainCenterState extends State<MainCenter> {
         SizedBox(width: 50.w),
         centerItem(
           width: 50.h,
-          count: 10,
           showTxt: false,
           icon: Assets.twimg.mainSpin.path,
           onClick: () {},
+          count: '',
         ),
       ],
     );
@@ -307,7 +336,7 @@ class _MainCenterState extends State<MainCenter> {
           builder: (context) {
             Widget child = centerItem(
               width: 60.h,
-              count: 10,
+              count: '',
               icon: Assets.twimg.mainWater.path,
               showTxt: false,
               onClick: onWater,
@@ -326,6 +355,7 @@ class _MainCenterState extends State<MainCenter> {
   }
 
   coinWidget() {
+    int count = 10;
     return Row(
       children: [
         SizedBox(width: 90.w),
@@ -333,7 +363,7 @@ class _MainCenterState extends State<MainCenter> {
           builder: (context) {
             Widget child = centerItem(
               width: 40.h,
-              count: 10,
+              count: count.toStringAsFixed(0),
               icon: Assets.twimg.mainCoin.path,
               showTxt: false,
               onClick: () {},
@@ -349,12 +379,13 @@ class _MainCenterState extends State<MainCenter> {
   }
 
   coinYuWidget() {
+    int count = 10;
     return Row(
       children: [
         SizedBox(width: 90.w),
         centerItem(
           width: 60.h,
-          count: 10,
+          count: count.toStringAsFixed(0),
           icon: Assets.twimg.mainCoinYu.path,
           showTxt: false,
           onClick: () {},
