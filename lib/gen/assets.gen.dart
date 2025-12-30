@@ -117,6 +117,10 @@ class $AssetsTwimgGen {
   AssetGenImage get guide7ArrowDown2 =>
       const AssetGenImage('assets/twimg/guide7_arrow_down2.png');
 
+  /// File path: assets/twimg/guide7_sprint_txt.png
+  AssetGenImage get guide7SprintTxt =>
+      const AssetGenImage('assets/twimg/guide7_sprint_txt.png');
+
   /// File path: assets/twimg/main_bg.png
   AssetGenImage get mainBg => const AssetGenImage('assets/twimg/main_bg.png');
 
@@ -356,6 +360,7 @@ class $AssetsTwimgGen {
     guide4Txt,
     guide7ArrowDown1,
     guide7ArrowDown2,
+    guide7SprintTxt,
     mainBg,
     mainBg2,
     mainBg3,

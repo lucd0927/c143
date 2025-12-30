@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:c143/gen/assets.gen.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide1_water.dart';
@@ -7,6 +9,7 @@ import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
 import 'package:c143/tw_base/tw_gj/loggggg.dart';
 import 'package:c143/tw_views/animated_count.dart';
 import 'package:c143/tw_views/animated_scale.dart';
+import 'package:c143/tw_views/font_border.dart';
 import 'package:c143/tw_views/shimmer_effect.dart';
 import 'package:c143/tw_views/tw_progress.dart';
 import 'package:flutter/material.dart';
@@ -78,6 +81,11 @@ class _Guide7RankWidgetState extends State<Guide7RankWidget> {
   String text3 = "Look! This spot will be YOURS SOON!! 🏆💸";
   String text4 = "Dare to challenge the COIN LEADERBOARD TOP SPOT?! 🏆💥";
 
+  Timer? _timer;
+  Timer? _timer2;
+  Timer? _timer3;
+  Timer? _timer4;
+
   @override
   void initState() {
     // TODO: implement initState
@@ -88,20 +96,49 @@ class _Guide7RankWidgetState extends State<Guide7RankWidget> {
         setState(() {
           showAnimated = true;
         });
-        Future.delayed(Duration(milliseconds: 3000), () {
-          if (mounted) {
-            setState(() {
-              _text = text2;
-            });
-            Future.delayed(Duration(milliseconds: 3000), () {
-              if (mounted) {
-                setState(() {
-                  _text = text3;
-                });
-                Future.delayed(Duration(milliseconds: 3000), () {});
-              }
-            });
-          }
+        initTimer();
+      }
+    });
+  }
+
+  final Duration _timerD = Duration(milliseconds: 3000);
+
+  initTimer() {
+    _timer?.cancel();
+    _timer = Timer(_timerD, () {
+      _timer?.cancel();
+      if (mounted) {
+        setState(() {
+          _text = text2;
+        });
+        initTimer2();
+      }
+    });
+  }
+
+  initTimer2() {
+    _timer?.cancel();
+    _timer2?.cancel();
+    _timer2 = Timer(_timerD, () {
+      _timer2?.cancel();
+      if (mounted) {
+        setState(() {
+          _text = text3;
+        });
+        initTimer3();
+      }
+    });
+  }
+
+  initTimer3() {
+    _timer?.cancel();
+    _timer2?.cancel();
+    _timer3?.cancel();
+    _timer3 = Timer(_timerD, () {
+      _timer3?.cancel();
+      if (mounted) {
+        setState(() {
+          _text = text4;
         });
       }
     });
@@ -127,7 +164,7 @@ class _Guide7RankWidgetState extends State<Guide7RankWidget> {
             children: [
               GestureDetector(
                 onTap: () {
-                  widget.onClose();
+                  // widget.onClose();
                 },
                 child: Container(
                   color: Colors.red.withValues(alpha: 0.0),
@@ -140,106 +177,133 @@ class _Guide7RankWidgetState extends State<Guide7RankWidget> {
                         child: Stack(
                           clipBehavior: Clip.none,
                           children: [
-                            IgnorePointer(
-                              child: Stack(
-                                clipBehavior: Clip.none,
-                                children: [
-                                  Positioned(
-                                    top: -22.h,
-                                    left: -topLeftPosition.dx,
-                                    right: -0.w,
-                                    bottom: 0,
-                                    child: Container(
-                                      color: Color(0xff0E226C),
-                                      height: 22.h,
-                                      width: double.infinity,
-                                    ),
+                            Stack(
+                              clipBehavior: Clip.none,
+                              children: [
+                                Positioned(
+                                  top: -22.h,
+                                  left: -topLeftPosition.dx,
+                                  right: -0.w,
+                                  bottom: 0,
+                                  child: Container(
+                                    color: Color(0xff0E226C),
+                                    height: 22.h,
+                                    width: double.infinity,
                                   ),
-                                  widget.guideChild,
-                                  Positioned(
-                                    top: -22.h,
-                                    left: -topLeftPosition.dx,
-                                    right: -0.w,
-                                    child: Container(
-                                      color: Color(0xff0E226C),
-                                      height: 22.h,
-                                      width: double.infinity,
-                                    ),
+                                ),
+                                widget.guideChild,
+                                Positioned(
+                                  top: -22.h,
+                                  left: -topLeftPosition.dx,
+                                  right: -0.w,
+                                  child: Container(
+                                    color: Color(0xff0E226C),
+                                    height: 22.h,
+                                    width: double.infinity,
                                   ),
-                                  Positioned(
-                                    top: -42.h,
-                                    left: -topLeftPosition.dx,
-                                    right: -0.w,
-                                    child: Image.asset(
-                                      Assets.twimg.mainRankDes.path,
-                                      width: double.infinity,
-                                      height: 52.h,
-                                      fit: BoxFit.fill,
-                                      gaplessPlayback: true,
-                                    ),
+                                ),
+                                Positioned(
+                                  top: -42.h,
+                                  left: -topLeftPosition.dx,
+                                  right: -0.w,
+                                  child: Image.asset(
+                                    Assets.twimg.mainRankDes.path,
+                                    width: double.infinity,
+                                    height: 52.h,
+                                    fit: BoxFit.fill,
+                                    gaplessPlayback: true,
                                   ),
+                                ),
 
+                                Positioned(
+                                  bottom: 320.h,
+                                  left: -topLeftPosition.dx,
+                                  right: -topLeftPosition.dx,
+                                  child: _text == text4
+                                      ? const SizedBox()
+                                      : _Guide7ScaleOverlayAnim(
+                                          key: ValueKey(_text),
+                                          text: _text,
+                                        ),
+                                ),
 
-
-                                  Positioned(
-                                    bottom: 320.h,
-                                    left: -topLeftPosition.dx,
-                                    right: -topLeftPosition.dx,
-                                    child: _Guide7ScaleOverlayAnim(
-                                      key: ValueKey(_text),
-                                      text: _text,
+                                Positioned(
+                                  bottom: 260.h,
+                                  left: -topLeftPosition.dx,
+                                  right: -topLeftPosition.dx,
+                                  child: AnimatedSize(
+                                    duration: Duration(milliseconds: 800),
+                                    alignment: Alignment.topCenter,
+                                    child: _text == text4
+                                        ? Image.asset(
+                                            Assets.twimg.guide7SprintTxt.path,
+                                            width: 272.w,
+                                            height: 80.h,
+                                          )
+                                        : const SizedBox(),
+                                  ),
+                                ),
+                                Positioned(
+                                  top: -130.h,
+                                  left: 0,
+                                  right: 0,
+                                  child: IgnorePointer(
+                                    child: AnimatedSize(
+                                      duration: Duration(milliseconds: 800),
+                                      alignment: Alignment.topCenter,
+                                      child: _text == text2
+                                          ? Container(
+                                              color: Colors.red.withValues(
+                                                alpha: 0,
+                                              ),
+                                              child: Image.asset(
+                                                Assets
+                                                    .twimg
+                                                    .guide7ArrowDown1
+                                                    .path,
+                                                width: 88.h,
+                                                height: 88.h,
+                                              ),
+                                            )
+                                          : SizedBox(width: 88.h, height: 0.h),
                                     ),
                                   ),
+                                ),
+
+                                Positioned(
+                                  top: -120.h,
+                                  left: 0,
+                                  right: 0,
+                                  child: IgnorePointer(
+                                    child: AnimatedSize(
+                                      duration: Duration(milliseconds: 800),
+                                      alignment: Alignment.topCenter,
+                                      child: _text == text3
+                                          ? Image.asset(
+                                              Assets
+                                                  .twimg
+                                                  .guide7ArrowDown2
+                                                  .path,
+                                              width: 120.h,
+                                              height: 120.h,
+                                            )
+                                          : const SizedBox(),
+                                    ),
+                                  ),
+                                ),
+
+                                if (_text == text4)
                                   Positioned(
-                                    top: -130.h,
                                     left: 0,
                                     right: 0,
-                                    child: IgnorePointer(
-                                      child: AnimatedSize(
-                                        duration: Duration(milliseconds: 800),
-                                        alignment: Alignment.topCenter,
-                                        child: _text == text2
-                                            ? Container(
-                                          color: Colors.red.withValues(alpha: 0),
-                                          child: Image.asset(
-                                            Assets.twimg.guide7ArrowDown1.path,
-                                            width: 88.h,
-                                            height: 88.h,
-                                          ),
-                                        )
-                                            : SizedBox(width: 88.h, height: 0.h),
-                                      ),
-                                    ),
+                                    bottom: 90.h,
+                                    child: Center(child: btnClaim()),
                                   ),
-
-                                  Positioned(
-                                    top: -120.h,
-                                    left: 0,
-                                    right: 0,
-                                    child: IgnorePointer(
-                                      child: AnimatedSize(
-                                        duration: Duration(milliseconds: 800),
-                                        alignment: Alignment.topCenter,
-                                        child: _text == text3
-                                            ? Image.asset(
-                                          Assets.twimg.guide7ArrowDown2.path,
-                                          width: 120.h,
-                                          height: 120.h,
-                                        )
-                                            : const SizedBox(),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
+                              ],
                             ),
                           ],
                         ),
                       ),
-
-
-
-
 
                       Positioned(
                         bottom: 0,
@@ -257,9 +321,99 @@ class _Guide7RankWidgetState extends State<Guide7RankWidget> {
       ),
     );
   }
+
+  Widget btnClaim() {
+    return Center(
+      child: GestureDetector(
+        onTap: onClaim,
+        child: Container(
+          width: 260.h,
+          height: 56.h,
+          color: Colors.black.withValues(alpha: 0.0),
+          child: Stack(
+            clipBehavior: Clip.none,
+            children: [
+              ShiningEffect(
+                duration: Duration(milliseconds: 2000),
+                shineColor: Color(0xffffffff),
+                opacity: 0.6,
+                angle: -0.1,
+                topLeft: false,
+                child: Image.asset(
+                  Assets.twimg.btnSpin.path,
+                  width: double.infinity,
+                  height: double.infinity,
+                  fit: BoxFit.fill,
+                ),
+              ),
+              Center(
+                child: TwTxtBorder(
+                  text: "SPRINT FOR COINS",
+                  fontSize: 20.sp,
+                  fontWeight: FontWeight.w900,
+                  fontColor: Color(0xffffffff),
+                  foreground: Color(0xff22431B),
+                ),
+              ),
+              Positioned(
+                bottom: -30.h,
+                right: -30.h,
+                child: IgnorePointer(
+                  child: TwAScale(
+                    child: Image.asset(
+                      Assets.twimg.gesture.path,
+                      width: 70.w,
+                      height: 70.w,
+                    ),
+                  ),
+                ),
+              ),
+
+              // Positioned(
+              //   top: -0.h,
+              //   right: -5.h,
+              //   child: Container(
+              //     padding: EdgeInsets.symmetric(vertical: 0.h, horizontal: 4.h),
+              //     decoration: BoxDecoration(
+              //       gradient: LinearGradient(
+              //         colors: [Color(0xffFF5151), Color(0xffCC0909)],
+              //         begin: Alignment.topCenter,
+              //         end: Alignment.bottomCenter,
+              //       ),
+              //       borderRadius: BorderRadius.circular(100),
+              //     ),
+              //     child: Text(
+              //       "3 Change Left",
+              //       style: TextStyle(
+              //         fontSize: 10.sp,
+              //         fontWeight: FontWeight.w700,
+              //         color: Color(0xffFFD059),
+              //       ),
+              //     ),
+              //   ),
+              // ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  void onClaim() {
+    twLooog("==onClaim===");
+    widget.onClose();
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    _timer?.cancel();
+    _timer2?.cancel();
+    _timer3?.cancel();
+    _timer4?.cancel();
+  }
 }
-
-
 
 class _Guide7ScaleOverlayAnim extends StatefulWidget {
   const _Guide7ScaleOverlayAnim({super.key, required this.text});

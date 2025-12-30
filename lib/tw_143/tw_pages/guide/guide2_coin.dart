@@ -141,7 +141,7 @@ class GuideWidget extends StatelessWidget {
           Positioned(
             left: 0,
             right: 0,
-            top: 200.h,
+            top: 170.h,
             child: Center(
               child: Container(
                 width: double.infinity,

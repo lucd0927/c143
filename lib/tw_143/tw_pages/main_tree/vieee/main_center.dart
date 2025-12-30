@@ -25,7 +25,7 @@ class _MainCenterState extends State<MainCenter> {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      height: 320.h,
+      height: 290.h,
       color: Colors.amber.withValues(alpha: 0.0),
       child: Stack(
         children: [
