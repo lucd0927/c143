@@ -36,8 +36,9 @@ class OverlayGuide8Quiz1 {
               onClose: () async {
                 twLooog("=====OverlayGuideTestAnim=close");
                 close();
+                MainQuizController.to.saveGuideStatus();
                 onBtn.call(coins);
-                // MainQuizController.to.saveGuideStatus();
+
               },
             ),
           ),

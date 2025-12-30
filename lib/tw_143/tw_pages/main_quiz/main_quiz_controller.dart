@@ -117,12 +117,8 @@ class MainQuizController extends GetxController {
       );
 
       if (tmpDatiModels.length > 1) {
-        if (result == guideStatus1) {
-          _initQuizDatus.insert(0, tmpDatiModels[1]);
-          _initQuizDatus.insert(0, tmpDatiModels[0]);
-        } else if (result == guideStatus2) {
-          _initQuizDatus.insert(0, tmpDatiModels[1]);
-        }
+        _initQuizDatus.insert(0, tmpDatiModels[1]);
+        _initQuizDatus.insert(0, tmpDatiModels[0]);
       }
     }
   }
@@ -192,8 +188,7 @@ class MainQuizController extends GetxController {
       return;
     }
     String tmpGuideStatus = guideStatus.value;
-    bool hasGuide =
-        tmpGuideStatus == guideStatus1 || tmpGuideStatus == guideStatus2;
+    bool hasGuide = tmpGuideStatus == guideStatus1;
     if (hasGuide && !hasClickRight) {
       twLooog("=====click: don't click");
       return;

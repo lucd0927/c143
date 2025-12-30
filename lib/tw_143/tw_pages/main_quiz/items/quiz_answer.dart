@@ -55,12 +55,14 @@ class _QuizAnswerState extends State<QuizAnswer> {
     TwQuizModel twQuizModel = MainQuizController.to.curTwQuizModel;
     String a = twQuizModel.a ?? "";
     String b = twQuizModel.b ?? "";
-
+    bool showC = MainQuizController.to.guideStatus.value == MainQuizController.guideStatus2;
     return Column(
       children: [
-        answerView(answer: "A", answerContent: a.toUpperCase()),
+        answerView(answer: "A", answerContent: a),
         SizedBox(height: 8.h),
-        answerView(answer: "B", answerContent: b.toUpperCase()),
+        answerView(answer: "B", answerContent: b),
+        if(showC)SizedBox(height: 8.h),
+        if(showC) answerView(answer: "C", answerContent: "No"),
       ],
     );
   }
@@ -92,7 +94,7 @@ class _QuizAnswerState extends State<QuizAnswer> {
     String rightAnswer = twQuizModel.answer?.toUpperCase() ??"----";
     String clickAnswer = MainQuizController.to.curClickAnswer.value;
     bool showIcon = answer == clickAnswer;
-
+    bool showC = MainQuizController.to.guideStatus.value == MainQuizController.guideStatus2;
     bool selectRight = rightAnswer == answer;
     String answerIcon = selectRight
         ? Assets.twimg.quizSpin.path
@@ -110,6 +112,9 @@ class _QuizAnswerState extends State<QuizAnswer> {
     double opacity = 1;
     if(showG){
         opacity= selectRight?1:0.2;
+    }
+    if(showC){
+      opacity = 1;
     }
     return GestureDetector(
       onTap: () {
