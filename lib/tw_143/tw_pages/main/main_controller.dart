@@ -14,7 +14,7 @@ class MainController extends GetxController {
     curMainNavIndex.value = index;
 
     // OverlayGuideTestAnim().show();
-    OverlayGuide1Water().show();
+    // OverlayGuide1Water().show();
     if (index == cashIndex) {
 
     } else if (index == quizIndex) {

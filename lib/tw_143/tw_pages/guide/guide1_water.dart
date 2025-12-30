@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
+const double overlayOpacity = 0.8;
+
 class OverlayGuide1Water {
   static BuildContext? guideContext;
   static Widget? guideChild;
@@ -86,7 +88,7 @@ class _Guide1WaterWidgetState extends State<Guide1WaterWidget> {
   Widget build(BuildContext context) {
     return AnimatedContainer(
       duration: animD,
-      color: Colors.black.withValues(alpha: showAnimated ? 0.6 : 0),
+      color: Colors.black.withValues(alpha: showAnimated ? overlayOpacity : 0),
       child: AnimatedScale(
         duration: animD,
         scale: showAnimated ? 1.0 : startScale,
