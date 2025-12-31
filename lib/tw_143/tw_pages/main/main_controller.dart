@@ -1,6 +1,7 @@
 import 'package:c143/tw_143/tw_pages/guide/guide1_water.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide7_rank.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide8_quiz1.dart';
+import 'package:c143/tw_143/tw_pages/guide/guide9_quiz2.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide_test_animated.dart';
 import 'package:get/get.dart';
 
@@ -14,7 +15,17 @@ class MainController extends GetxController {
   static const int cashIndex = 3;
   void resetIndex(int index) {
     curMainNavIndex.value = index;
+    // OverlayGuide8Quiz1().show(
+    //   coins: 100,
+    //   onBtn: (v) {
+    //   },
+    // );
 
+    OverlayGuide9Quiz2().show(
+      coins: 100,
+      onBtn: (v) {
+      },
+    );
     // OverlayGuideTestAnim().show();
     // OverlayGuide1Water().show();
     // OverlayGuide7Rank().show();

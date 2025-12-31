@@ -24,7 +24,6 @@ class OverlayGuide6RewardDouble {
         return Material(
           color: Colors.transparent,
           child: Container(
-            color: Colors.black.withValues(alpha: 0.6),
 
             child: Guide6RewardDouble(
               onClose: () async {

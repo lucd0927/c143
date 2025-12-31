@@ -15,7 +15,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-class OverlayGuide8Quiz1 {
+class OverlayGuide9Quiz2 {
   OverlayEntry? _overlayEntry;
 
   ///是否真正显示
@@ -30,8 +30,9 @@ class OverlayGuide8Quiz1 {
         return Material(
           color: Colors.transparent,
           child: Container(
+            color: Colors.black.withValues(alpha: 0.0),
 
-            child: Guide8Quiz1Widget(
+            child: Guide9Quiz2Widget(
               coins: coins,
               onClose: () async {
                 twLooog("=====OverlayGuideTestAnim=close");
@@ -54,8 +55,8 @@ class OverlayGuide8Quiz1 {
   }
 }
 
-class Guide8Quiz1Widget extends StatefulWidget {
-  const Guide8Quiz1Widget({
+class Guide9Quiz2Widget extends StatefulWidget {
+  const Guide9Quiz2Widget({
     super.key,
     required this.onClose,
     required this.coins,
@@ -65,10 +66,10 @@ class Guide8Quiz1Widget extends StatefulWidget {
   final double coins;
 
   @override
-  State<Guide8Quiz1Widget> createState() => _Guide8Quiz1WidgetState();
+  State<Guide9Quiz2Widget> createState() => _Guide9Quiz2WidgetState();
 }
 
-class _Guide8Quiz1WidgetState extends State<Guide8Quiz1Widget> {
+class _Guide9Quiz2WidgetState extends State<Guide9Quiz2Widget> {
   int index = 0;
   double itemHgith = 0;
 
@@ -85,30 +86,61 @@ class _Guide8Quiz1WidgetState extends State<Guide8Quiz1Widget> {
   double _coinsss = 0;
   Offset _offset = Offset(-30.w, 0);
 
+  List<List<String>> texts = [
+    ["Your ANSWERS are just as VALUABLE as ", "your ATTENTION!!!"],
+    ["Advertisers need YOUR feedback! You’re the one making ads ", "better!!!"],
+    ["Advertisers get feedback,", "YOU get COINS!!!"],
+  ];
+
+  List<String> _curTexts = [];
+
+  Timer? _timer2;
+  Timer? _timer3;
+
+  initTimer2() {
+    _timer?.cancel();
+    _timer2?.cancel();
+    _timer2 = Timer(_timerD, () {
+      _timer2?.cancel();
+      if (mounted) {
+        setState(() {
+          _curTexts = texts[2];
+        });
+      }
+    });
+  }
+
+  initTimer3() {
+    _timer?.cancel();
+    _timer2?.cancel();
+    _timer3?.cancel();
+    _timer3 = Timer(_timerD, () {
+      _timer3?.cancel();
+      if (mounted) {
+        setState(() {
+          _curTexts = texts[2];
+        });
+      }
+    });
+  }
+
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-
+    _curTexts = texts[0];
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (mounted) {
         setState(() {
           showAnimated = true;
         });
-        Future.delayed(Duration(milliseconds: 100), () {
-          if (mounted) {
-            setState(() {
-              _coinsss = widget.coins;
-              _offset = Offset.zero;
-            });
-          }
-        });
+
         initTimer();
       }
     });
   }
 
-  final Duration _timerD = Duration(milliseconds: 3000);
+  final Duration _timerD = Duration(milliseconds: 2500);
 
   initTimer() {
     _timer?.cancel();
@@ -117,8 +149,9 @@ class _Guide8Quiz1WidgetState extends State<Guide8Quiz1Widget> {
       if (mounted) {
         setState(() {
           showNumber = true;
+          _curTexts = texts[1];
         });
-        // widget.onClose();
+        initTimer2();
       }
     });
   }
@@ -132,7 +165,9 @@ class _Guide8Quiz1WidgetState extends State<Guide8Quiz1Widget> {
       },
       child: AnimatedContainer(
         duration: animD,
-        color: Colors.black.withValues(alpha: showAnimated ? overlayOpacity : 0),
+        color: Colors.black.withValues(
+          alpha: showAnimated ? overlayOpacity : 0,
+        ),
         child: AnimatedScale(
           duration: animD,
           scale: showAnimated ? 1.0 : 1.0,
@@ -144,39 +179,26 @@ class _Guide8Quiz1WidgetState extends State<Guide8Quiz1Widget> {
               clipBehavior: Clip.none,
               children: [
                 Center(
-                  child: showNumber
-                      ? guide2widget()
-                      : FittedBox(
-                          child: Column(
-                            children: [
-                              AnimatedSlide(
-                                offset: _offset,
-                                duration: Duration(milliseconds: 300),
-                                child: TwAnimatedCountttt(
-                                  duration: Duration(milliseconds: 300),
-                                  value: _coinsss,
-                                  prefix: "+",
-                                  textStyle: TextStyle(
-                                    fontSize: 36.sp,
-                                    fontWeight: FontWeight.w900,
-                                    color: Color(0xffFFDF12),
-                                  ),
-
-                                  textGradient: LinearGradient(
-                                    colors: [
-                                      Color(0xffFFDF12),
-                                      Color(0xffFFAA00),
-                                    ],
-                                    end: Alignment.bottomCenter,
-                                    begin: Alignment.topCenter,
-                                  ),
-                                ),
-                              ),
-                              _Guide8ScaleOverlayAnim(),
-                            ],
-                          ),
+                  child: FittedBox(
+                    child: Column(
+                      children: [
+                        _Guide9ScaleOverlayAnim(
+                          key: ValueKey("${_curTexts[1]}"),
+                          text: _curTexts[0],
+                          text2: _curTexts[1],
                         ),
+                      ],
+                    ),
+                  ),
                 ),
+
+                if (_curTexts[1] == texts[2][1])
+                  Positioned(
+                    child: btnClaim(),
+                    left: 0,
+                    right: 0,
+                    bottom: 100.h,
+                  ),
               ],
             ),
           ),
@@ -184,99 +206,6 @@ class _Guide8Quiz1WidgetState extends State<Guide8Quiz1Widget> {
       ),
     );
   }
-
-  guide2widget() {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Image.asset(Assets.twimg.guide8Txt.path, width: 285.h, height: 76.h),
-        SizedBox(height: 50.h),
-        Container(
-          width: 240.h,
-          height: 148.h,
-          child: Stack(
-            children: [
-              Image.asset(
-                Assets.twimg.guide8Coinbg.path,
-                width: double.infinity,
-                height: double.infinity,
-                fit: BoxFit.fill,
-              ),
-              Positioned.fill(
-                child: Column(
-                  children: [
-                    SizedBox(height: 10.h),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image.asset(
-                          Assets.twimg.coin.path,
-                          width: 32.h,
-                          height: 32.h,
-                        ),
-                        SizedBox(width: 8.h),
-                        Text(
-                          "+${widget.coins.toStringAsFixed(0)}",
-                          style: TextStyle(
-                            fontSize: 36.sp,
-                            color: Color(0xffD23723),
-                            fontWeight: FontWeight.w900,
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 4.h),
-                    Text(
-                      "My Coin",
-                      style: TextStyle(
-                        fontWeight: FontWeight.w700,
-                        fontSize: 14.sp,
-                        color: Color(0xff7e5719),
-                      ),
-                    ),
-                    SizedBox(height: 2.h),
-
-                    Container(
-                      width: 224.h,
-                      height: 50.h,
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage(Assets.twimg.guide8Coinnumbg.path),
-                          fit: BoxFit.fill,
-                        ),
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Image.asset(
-                            Assets.twimg.coin.path,
-                            width: 28.h,
-                            height: 28.h,
-                          ),
-                          SizedBox(width: 8.h),
-                          Text(
-                            "${widget.coins.toStringAsFixed(2)}",
-                            style: TextStyle(
-                              fontSize: 36.sp,
-                              color: Color(0xff4B2E00),
-                              fontWeight: FontWeight.w700,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ),
-        SizedBox(height: 100.h),
-        btnClaim(),
-      ],
-    );
-  }
-
 
   Widget btnClaim() {
     return Center(
@@ -297,11 +226,24 @@ class _Guide8Quiz1WidgetState extends State<Guide8Quiz1Widget> {
               ),
               Center(
                 child: TwTxtBorder(
-                  text: "Claim",
+                  text: "Earn More",
                   fontSize: 24.sp,
                   fontWeight: FontWeight.w900,
                   fontColor: Color(0xffffffff),
                   foreground: Color(0xff22431B),
+                ),
+              ),
+              Positioned(
+                top: 30.h,
+                right: -30.w,
+                child: IgnorePointer(
+                  child: TwAScale(
+                    child: Image.asset(
+                      Assets.twimg.gesture.path,
+                      width: 70.w,
+                      height: 70.w,
+                    ),
+                  ),
                 ),
               ),
               // Positioned(
@@ -353,18 +295,27 @@ class _Guide8Quiz1WidgetState extends State<Guide8Quiz1Widget> {
     // TODO: implement dispose
     super.dispose();
     _timer?.cancel();
+    _timer2?.cancel();
+    _timer3?.cancel();
   }
 }
 
-class _Guide8ScaleOverlayAnim extends StatefulWidget {
-  const _Guide8ScaleOverlayAnim({super.key});
+class _Guide9ScaleOverlayAnim extends StatefulWidget {
+  const _Guide9ScaleOverlayAnim({
+    super.key,
+    required this.text,
+    required this.text2,
+  });
+
+  final String text;
+  final String text2;
 
   @override
-  State<_Guide8ScaleOverlayAnim> createState() =>
-      _Guide8ScaleOverlayAnimState();
+  State<_Guide9ScaleOverlayAnim> createState() =>
+      _Guide9ScaleOverlayAnimState();
 }
 
-class _Guide8ScaleOverlayAnimState extends State<_Guide8ScaleOverlayAnim>
+class _Guide9ScaleOverlayAnimState extends State<_Guide9ScaleOverlayAnim>
     with SingleTickerProviderStateMixin {
   static double containerHeight = 360.w;
 
@@ -378,7 +329,7 @@ class _Guide8ScaleOverlayAnimState extends State<_Guide8ScaleOverlayAnim>
 
     _controller = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 500),
+      duration: const Duration(milliseconds: 300),
     );
 
     // 底图：先执行
@@ -404,7 +355,7 @@ class _Guide8ScaleOverlayAnimState extends State<_Guide8ScaleOverlayAnim>
   Widget build(BuildContext context) {
     return SizedBox(
       width: 360.w,
-      height: 124.h,
+      height: 160.h,
       child: FittedBox(
         child: Stack(
           clipBehavior: Clip.none,
@@ -415,11 +366,13 @@ class _Guide8ScaleOverlayAnimState extends State<_Guide8ScaleOverlayAnim>
               animation: heightAnim,
               builder: (_, __) {
                 return Transform.translate(
-                  offset: Offset(slideAnim.value, 0),
+                  offset: Offset(-slideAnim.value, 0),
                   child: Container(
                     width: 360.w,
-                    height: 124.h,
+                    height: 160.h,
+                    color: Colors.red.withValues(alpha: 0),
                     child: Stack(
+                      alignment: Alignment.centerRight,
                       children: [
                         ShiningEffect(
                           duration: Duration(milliseconds: 2000),
@@ -428,22 +381,31 @@ class _Guide8ScaleOverlayAnimState extends State<_Guide8ScaleOverlayAnim>
                           angle: -0.1,
                           topLeft: false,
                           child: Image.asset(
-                            Assets.twimg.animatedBg11.path,
+                            Assets.twimg.guide9Quizbg.path,
 
-                            width: 360.w,
-                            height: 124.h,
+                            width: 308.w,
+                            height: 160.h,
                             fit: BoxFit.fill,
                           ),
                         ),
-                        Center(
-                          child: Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 16.w),
-                            child: Text(
-                              "Boosting your cash-out progress!！\nYou’re closer to cashing out!",
+                        Padding(
+                          padding: EdgeInsets.only(right: 16.w, left: 80.w),
+                          child: Transform.rotate(
+                            angle: -0.05,
+                            child: Text.rich(
+                              TextSpan(
+                                text: widget.text,
+                                children: [
+                                  TextSpan(
+                                    text: widget.text2,
+                                    style: TextStyle(color: Color(0xffDE0909)),
+                                  ),
+                                ],
+                              ),
                               style: TextStyle(
-                                fontSize: 16.sp,
+                                fontSize: 20.sp,
                                 fontWeight: FontWeight.w900,
-                                color: Color(0xffffffff),
+                                color: Color(0xff591F00),
                               ),
                               textAlign: TextAlign.center,
                             ),
@@ -456,48 +418,48 @@ class _Guide8ScaleOverlayAnimState extends State<_Guide8ScaleOverlayAnim>
               },
             ),
 
-            // 上图
-            AnimatedBuilder(
-              animation: _controller,
-              builder: (_, __) {
-                final h = heightAnim.value / 2;
-                return Positioned(
-                  top: -14.h,
-                  child: Transform.translate(
-                    offset: Offset(-slideAnim.value, 0),
-                    child: Container(
-                      color: Colors.white.withValues(alpha: 0),
-                      child: Image.asset(
-                        Assets.twimg.animatedBg12.path,
-                        width: 360.w,
-                        height: 28.h,
-                        fit: BoxFit.fill,
-                      ),
-                    ),
-                  ),
-                );
-              },
-            ),
-
-            // 下图
-            AnimatedBuilder(
-              animation: _controller,
-              builder: (_, __) {
-                final h = heightAnim.value / 2;
-                return Positioned(
-                  bottom: -14.h,
-                  child: Transform.translate(
-                    offset: Offset(-slideAnim.value, 0),
-                    child: Image.asset(
-                      Assets.twimg.animatedBg13.path,
-                      width: 360.w,
-                      height: 28.h,
-                      fit: BoxFit.fill,
-                    ),
-                  ),
-                );
-              },
-            ),
+            // // 上图
+            // AnimatedBuilder(
+            //   animation: _controller,
+            //   builder: (_, __) {
+            //     final h = heightAnim.value / 2;
+            //     return Positioned(
+            //       top: -14.h,
+            //       child: Transform.translate(
+            //         offset: Offset(-slideAnim.value, 0),
+            //         child: Container(
+            //           color: Colors.white.withValues(alpha: 0),
+            //           child: Image.asset(
+            //             Assets.twimg.animatedBg12.path,
+            //             width: 360.w,
+            //             height: 28.h,
+            //             fit: BoxFit.fill,
+            //           ),
+            //         ),
+            //       ),
+            //     );
+            //   },
+            // ),
+            //
+            // // 下图
+            // AnimatedBuilder(
+            //   animation: _controller,
+            //   builder: (_, __) {
+            //     final h = heightAnim.value / 2;
+            //     return Positioned(
+            //       bottom: -14.h,
+            //       child: Transform.translate(
+            //         offset: Offset(-slideAnim.value, 0),
+            //         child: Image.asset(
+            //           Assets.twimg.animatedBg13.path,
+            //           width: 360.w,
+            //           height: 28.h,
+            //           fit: BoxFit.fill,
+            //         ),
+            //       ),
+            //     );
+            //   },
+            // ),
           ],
         ),
       ),

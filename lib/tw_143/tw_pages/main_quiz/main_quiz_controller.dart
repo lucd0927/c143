@@ -77,6 +77,7 @@ class MainQuizController extends GetxController {
   var guideStatus = "".obs;
   static const String guideStatus1 = "guideStatus1";
   static const String guideStatus2 = "guideStatus2";
+  static const String guideStatus3 = "over_quiz_guide";
 
   String twkeyGuideStatus() {
     return TwPackageAB.isPackageB()
@@ -88,6 +89,8 @@ class MainQuizController extends GetxController {
     String keyguideStatus = guideStatus.value;
     if (keyguideStatus == guideStatus1) {
       keyguideStatus = guideStatus2;
+    } else if (keyguideStatus == guideStatus2) {
+      keyguideStatus = guideStatus3;
     }
     String status = keyguideStatus;
 

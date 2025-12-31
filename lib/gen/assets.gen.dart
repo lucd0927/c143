@@ -121,6 +121,22 @@ class $AssetsTwimgGen {
   AssetGenImage get guide7SprintTxt =>
       const AssetGenImage('assets/twimg/guide7_sprint_txt.png');
 
+  /// File path: assets/twimg/guide8_coinbg.png
+  AssetGenImage get guide8Coinbg =>
+      const AssetGenImage('assets/twimg/guide8_coinbg.png');
+
+  /// File path: assets/twimg/guide8_coinnumbg.png
+  AssetGenImage get guide8Coinnumbg =>
+      const AssetGenImage('assets/twimg/guide8_coinnumbg.png');
+
+  /// File path: assets/twimg/guide8_txt.png
+  AssetGenImage get guide8Txt =>
+      const AssetGenImage('assets/twimg/guide8_txt.png');
+
+  /// File path: assets/twimg/guide9_quizbg.png
+  AssetGenImage get guide9Quizbg =>
+      const AssetGenImage('assets/twimg/guide9_quizbg.png');
+
   /// File path: assets/twimg/main_bg.png
   AssetGenImage get mainBg => const AssetGenImage('assets/twimg/main_bg.png');
 
@@ -361,6 +377,10 @@ class $AssetsTwimgGen {
     guide7ArrowDown1,
     guide7ArrowDown2,
     guide7SprintTxt,
+    guide8Coinbg,
+    guide8Coinnumbg,
+    guide8Txt,
+    guide9Quizbg,
     mainBg,
     mainBg2,
     mainBg3,
