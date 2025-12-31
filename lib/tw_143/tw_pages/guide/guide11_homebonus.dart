@@ -32,7 +32,7 @@ class OverlayGuide11HomeBonus {
           child: Guide11HomeBonusWidget(
             onClose: () async {
               close();
-
+              MainTreeController.to.saveGuideIndexData(MainTreeController.guide11);
               OverlayGuide12HomeReward().show(coins: 100, onBtn: (value) {  });
               
             },

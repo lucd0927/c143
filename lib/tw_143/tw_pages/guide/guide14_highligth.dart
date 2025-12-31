@@ -32,6 +32,7 @@ class OverlayGuide14HighLight {
           child: Guide14HighLight(
             onClose: () async {
               close();
+              MainTreeController.to.saveGuideIndexData(MainTreeController.guide14);
             },
           ),
         );

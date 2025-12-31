@@ -34,6 +34,7 @@ class OverlayGuide15CoinToSun {
           child: Guide15CoinToSun(
             onClose: () async {
               close();
+              MainTreeController.to.saveGuideIndexData(MainTreeController.guide15);
             },
           ),
         );

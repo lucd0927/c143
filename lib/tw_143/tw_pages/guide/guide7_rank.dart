@@ -40,7 +40,7 @@ class OverlayGuide7Rank {
             guideContext: guideContext!,
             onClose: () async {
               close();
-
+              MainTreeController.to.saveGuideIndexData(MainTreeController.guide7);
               MainController.to.resetIndex(MainController.quizIndex);
 
 

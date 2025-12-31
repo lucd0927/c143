@@ -33,7 +33,7 @@ class OverlayGuide2Coin {
             guideContext: guideContext!,
             onClose: () async {
               close();
-
+              MainTreeController.to.saveGuideIndexData(MainTreeController.guide2);
               OverlayGuide3AdSpot().show();
             },
           ),

@@ -3,6 +3,7 @@ import 'package:c143/gen/assets.gen.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide1_water.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide2_coin.dart';
 import 'package:c143/tw_143/tw_pages/main/main_controller.dart';
+import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
 import 'package:c143/tw_views/animated_scale.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -32,6 +33,7 @@ class OverlayGuide13Spin {
             guideContext: guideContext!,
             onClose: () async {
               close();
+              MainTreeController.to.saveGuideIndexData(MainTreeController.guide13);
               MainController.to.resetIndex(MainController.wheelIndex);
             },
           ),

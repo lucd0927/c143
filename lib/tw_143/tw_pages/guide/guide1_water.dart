@@ -1,6 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:c143/gen/assets.gen.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide2_coin.dart';
+import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
 import 'package:c143/tw_views/animated_scale.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -30,6 +31,9 @@ class OverlayGuide1Water {
             guideContext: guideContext!,
             onClose: () async {
               close();
+
+              MainTreeController.to.saveGuideIndexData(MainTreeController.guide1);
+
 
               OverlayGuide2Coin().show();
             },

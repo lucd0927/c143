@@ -56,6 +56,14 @@ class MainController extends GetxController {
 
     }else if (index == treeIndex) {
       // OverlayGuide7Rank().show();
+      String? data = MainTreeController.to.guideIndexData();
+
+      if(data == MainTreeController.guide10){
+        OverlayGuide11HomeBonus().show();
+
+      }
+
+
     }
   }
 }

@@ -1,7 +1,15 @@
 import 'package:c143/gen/assets.gen.dart';
+import 'package:c143/tw_143/tw_pages/guide/guide10_quiz3.dart';
+import 'package:c143/tw_143/tw_pages/guide/guide11_homebonus.dart';
+import 'package:c143/tw_143/tw_pages/guide/guide12_homereward.dart';
+import 'package:c143/tw_143/tw_pages/guide/guide13_spin.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide1_water.dart';
+import 'package:c143/tw_143/tw_pages/guide/guide2_coin.dart';
+import 'package:c143/tw_143/tw_pages/guide/guide4_fertilize.dart';
+import 'package:c143/tw_143/tw_pages/guide/guide6_rewarddouble.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide7_rank.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide8_quiz1.dart';
+import 'package:c143/tw_143/tw_pages/guide/guide9_quiz2.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/vieee/high_light_tips.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/vieee/main_center.dart';
@@ -30,14 +38,30 @@ class _MainTreeState extends State<MainTree> {
     super.initState();
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      var box = TwHive.box;
-      String key = MainTreeController.twkeyGuideProgress;
-      var data = box.get(key);
-      bool showCheckDialog = data != null && data > 14;
+      String? data = MainTreeController.to.guideIndexData();
 
       if (data == null) {
-        // OverlayGuide1Water().show();
-        // OverlayGuide7Rank().show();
+        OverlayGuide1Water().show();
+      }else if(data == MainTreeController.guide1){
+        OverlayGuide2Coin().show();
+      }else if(data == MainTreeController.guide3){
+        OverlayGuide4Fertilize().show();
+      }else if(data == MainTreeController.guide5){
+        OverlayGuide6RewardDouble().show();
+      }else if(data == MainTreeController.guide6){
+        OverlayGuide7Rank().show();
+      }else if(data == MainTreeController.guide7){
+        OverlayGuide8Quiz1().show(coins: 10, onBtn: (value) {  });
+      }else if(data == MainTreeController.guide8){
+        OverlayGuide9Quiz2().show(coins: 10, onBtn: (value) {  });
+      }else if(data == MainTreeController.guide9){
+        OverlayGuide10Quiz3().show(coins: 10, onBtn: (value) {  });
+      }else if(data == MainTreeController.guide10){
+        OverlayGuide11HomeBonus().show();
+      }else if(data == MainTreeController.guide11){
+        OverlayGuide12HomeReward().show(coins: 10, onBtn: (value) {  });
+      }else if(data == MainTreeController.guide12){
+        OverlayGuide13Spin().show();
       }
     });
   }

@@ -1,6 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:c143/gen/assets.gen.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide7_rank.dart';
+import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
 import 'package:c143/tw_base/tw_gj/loggggg.dart';
 import 'package:c143/tw_views/animated_scale.dart';
 import 'package:c143/tw_views/font_border.dart';
@@ -29,6 +30,7 @@ class OverlayGuide6RewardDouble {
               onClose: () async {
                 twLooog("=====OverlayGuideTestAnim=close");
                 close();
+                MainTreeController.to.saveGuideIndexData(MainTreeController.guide6);
                 OverlayGuide7Rank().show();
               },
             ),

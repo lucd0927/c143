@@ -10,15 +10,16 @@ import 'package:c143/tw_views/pb_tushi.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-
-enum TwEnumTreeType{
+enum TwEnumTreeType {
   fertilize("fertilize"),
   spin("spin"),
   coin("coin"),
   sun("sun"),
   coin_rain("coin_rain"),
   water("water");
+
   final String name;
+
   const TwEnumTreeType(this.name);
 }
 
@@ -27,7 +28,68 @@ class MainTreeController extends GetxController {
 
   static const double maxCoinNum = 5000;
 
-  static const String twkeyGuideProgress = "MainTreeController_twkeyGuideProgress";
+  static String get twkeyGuideProgress => TwPackageAB.isPackageB()
+      ? "MainTreeController_twkeyGuideProgressBbb"
+      : "MainTreeController_twkeyGuideProgress";
+
+  static String get guide1 =>
+      TwPackageAB.isPackageB() ? "guide1Bbb" : "guide1Aaaa";
+
+  static String get guide2 =>
+      TwPackageAB.isPackageB() ? "guide2Bbb" : "guide2Aaaa";
+
+  static String get guide3 =>
+      TwPackageAB.isPackageB() ? "guide3Bbb" : "guide3Aaaa";
+
+  static String get guide4 =>
+      TwPackageAB.isPackageB() ? "guide4Bbb" : "guide4Aaaa";
+
+  static String get guide5 =>
+      TwPackageAB.isPackageB() ? "guide5Bbb" : "guide5Aaaa";
+
+  static String get guide6 =>
+      TwPackageAB.isPackageB() ? "guide6Bbb" : "guide6Aaaa";
+
+  static String get guide7 =>
+      TwPackageAB.isPackageB() ? "guide7Bbb" : "guide7Aaaa";
+
+  static String get guide8 =>
+      TwPackageAB.isPackageB() ? "guide8Bbb" : "guide8Aaaa";
+
+  static String get guide9 =>
+      TwPackageAB.isPackageB() ? "guide9Bbb" : "guide9Aaaa";
+
+  static String get guide10 =>
+      TwPackageAB.isPackageB() ? "guide10Bbb" : "guide10Aaaa";
+
+  static String get guide11 =>
+      TwPackageAB.isPackageB() ? "guide11Bbb" : "guide11Aaaa";
+
+  static String get guide12 =>
+      TwPackageAB.isPackageB() ? "guide12Bbb" : "guide12Aaaa";
+
+  static String get guide13 =>
+      TwPackageAB.isPackageB() ? "guide13Bbb" : "guide13Aaaa";
+
+  static String get guide14 =>
+      TwPackageAB.isPackageB() ? "guide14Bbb" : "guide14Aaaa";
+
+  static String get guide15 =>
+      TwPackageAB.isPackageB() ? "guide15Bbb" : "guide15Aaaa";
+
+  static String get guide16 =>
+      TwPackageAB.isPackageB() ? "guide16Bbb" : "guide16Aaaa";
+
+  String? guideIndexData() {
+    String key = twkeyGuideProgress;
+    var data = box.get(key);
+    return data;
+  }
+
+  saveGuideIndexData(String value) {
+    String key = twkeyGuideProgress;
+    box.put(key, value);
+  }
 
   OverlayPortalController overlayPortalController = OverlayPortalController();
 
@@ -42,6 +104,7 @@ class MainTreeController extends GetxController {
   var curStageWaterCount = 0.obs;
   var curStageShifeiCount = 0.obs;
   var curFertilizeLeftTime = "".obs;
+
   static String get twKeyMoneyyyy =>
       TwPackageAB.isPackageB() ? "twKeyMoneyyyyBbbb" : "twKeyMoneyyyy";
 
@@ -56,7 +119,6 @@ class MainTreeController extends GetxController {
 
   static String get twkeyTimeLeftFertilize =>
       TwPackageAB.isPackageB() ? "sdg4545uyioy3445" : "sdg4545uyioy344578ew";
-
 
   TimeLeft _fertilizeLeftTime = TimeLeft(twkeyTimeLeft: twkeyTimeLeftFertilize);
 
@@ -224,7 +286,7 @@ class MainTreeController extends GetxController {
 
   onAddShiFeiCount() {
     bool canClick = true;
-    if(curFertilizeLeftTime.value.isEmpty && canClick){
+    if (curFertilizeLeftTime.value.isEmpty && canClick) {
       canClick = false;
       int tmpCurMmm = curStageShifeiCount.value;
 
@@ -237,12 +299,9 @@ class MainTreeController extends GetxController {
 
       _fertilizeLeftTime.resetLeftTime();
       canClick = true;
-    }else{
+    } else {
       twToast(text: "You can claim it after the countdown ends");
     }
-
-
-
   }
 
   resetWaterAndShifeiCount() {
@@ -273,16 +332,5 @@ class MainTreeController extends GetxController {
     curMoneyyyy.value = tmpCurmmm2;
   }
 
-
-  topTextChange(){
-
-  }
-
-
-
-
-
-
-
-
+  topTextChange() {}
 }

@@ -31,7 +31,7 @@ class OverlayGuide5AdSpot {
           child: Guide5AdSpot(
             onClose: () async {
               close();
-
+              MainTreeController.to.saveGuideIndexData(MainTreeController.guide5);
               OverlayGuide6RewardDouble().show();
             },
           ),

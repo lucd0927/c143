@@ -5,6 +5,7 @@ import 'package:c143/gen/assets.gen.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide1_water.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide7_rank.dart';
 import 'package:c143/tw_143/tw_pages/main_quiz/main_quiz_controller.dart';
+import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
 import 'package:c143/tw_base/tw_gj/loggggg.dart';
 import 'package:c143/tw_views/animated_count.dart';
 import 'package:c143/tw_views/animated_scale.dart';
@@ -36,6 +37,7 @@ class OverlayGuide10Quiz3 {
                 twLooog("=====OverlayGuideTestAnim=close");
                 close();
                 MainQuizController.to.saveGuideStatus();
+                MainTreeController.to.saveGuideIndexData(MainTreeController.guide10);
                 onBtn.call(coins);
               },
             ),

@@ -30,7 +30,7 @@ class OverlayGuide3AdSpot {
           child: Guide3AdSpot(
             onClose: () async {
               close();
-
+              MainTreeController.to.saveGuideIndexData(MainTreeController.guide3);
               OverlayGuide4Fertilize().show();
             },
           ),

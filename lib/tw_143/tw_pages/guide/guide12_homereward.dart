@@ -45,6 +45,7 @@ class OverlayGuide12HomeReward {
 
                 Future.delayed(Duration(milliseconds: 3400),(){
                   MainController.to.resetIndex(MainController.treeIndex);
+                  MainTreeController.to.saveGuideIndexData(MainTreeController.guide12);
                   OverlayGuide13Spin().show();
                 });
 
