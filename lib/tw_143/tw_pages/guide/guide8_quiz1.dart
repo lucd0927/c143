@@ -37,7 +37,7 @@ class OverlayGuide8Quiz1 {
               onClose: () async {
                 twLooog("=====OverlayGuideTestAnim=close");
                 close();
-                MainQuizController.to.saveGuideStatus();
+                // MainQuizController.to.saveGuideStatus();
 
                 OverlayGuide9Quiz2().show(
                   coins: 100,
