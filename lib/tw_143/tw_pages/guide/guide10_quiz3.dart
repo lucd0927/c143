@@ -75,7 +75,7 @@ class _Guide10Quiz3State extends State<Guide10Quiz3> {
 
   bool showNumber = false;
 
-  Timer? _timer;
+
 
   double _coinsss = 0;
   Offset _offset = Offset(-30.w, 0);
@@ -102,8 +102,8 @@ class _Guide10Quiz3State extends State<Guide10Quiz3> {
       }
     });
   }
-
-  final Duration _timerD = Duration(milliseconds: 3000);
+  Timer? _timer;
+  final Duration _timerD = Duration(milliseconds: 800);
 
   initTimer() {
     _timer?.cancel();
@@ -147,53 +147,52 @@ class _Guide10Quiz3State extends State<Guide10Quiz3> {
                         AnimatedSlide(
                           offset: _offset,
                           duration: Duration(milliseconds: 300),
-                          child:  TwTxtGraBorder(
+                          child: TwTxtGraBorder(
                             text: "An Extra",
                             fontSize: 32.sp,
                             fontWeight: FontWeight.w900,
                             fontColor: Color(0xffffffff),
                             gradient: LinearGradient(
-                              colors: [
-                                Color(0xffFFF7A3),
-                                Color(0xffFFC941),
-                              ],
+                              colors: [Color(0xffFFF7A3), Color(0xffFFC941)],
                               end: Alignment.bottomCenter,
                               begin: Alignment.topCenter,
                             ),
                             strokeColor: Color(0xffFFED75),
                           ),
                         ),
-                        SizedBox(height: 16.h,),
+                        SizedBox(height: 16.h),
                         _Guide10ScaleOverlayAnim(text: "10"),
-                        SizedBox(height: 16.h,),
+                        SizedBox(height: 16.h),
                         AnimatedSlide(
                           offset: _offset,
                           duration: Duration(milliseconds: 300),
-                          child:  TwTxtGraBorder(
+                          child: TwTxtGraBorder(
                             text: "FREE for YOU!!!",
                             fontSize: 32.sp,
                             fontWeight: FontWeight.w900,
                             fontColor: Color(0xffffffff),
                             gradient: LinearGradient(
-                              colors: [
-                                Color(0xffFFF7A3),
-                                Color(0xffFFC941),
-                              ],
+                              colors: [Color(0xffFFF7A3), Color(0xffFFC941)],
                               end: Alignment.bottomCenter,
                               begin: Alignment.topCenter,
                             ),
                             strokeColor: Color(0xffFFED75),
                           ),
                         ),
-                        SizedBox(height: 100.h,),
-                        if (showNumber)btnClaim(),
+                        SizedBox(height: 100.h),
+                        // showNumber ? btnClaim() : SizedBox(height: 56.h,)
+                        AnimatedCrossFade(
+                          firstChild: SizedBox(height: 56.h),
+                          secondChild: btnClaim(),
+                          crossFadeState: showNumber
+                              ? CrossFadeState.showSecond
+                              : CrossFadeState.showFirst,
+                          duration: Duration(milliseconds: 300),
+                        ),
                       ],
                     ),
                   ),
                 ),
-
-
-
               ],
             ),
           ),

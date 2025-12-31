@@ -275,7 +275,7 @@ class _SplashProgressState extends State<SplashProgress> {
               SizedBox(
                 width: 325.w,
                 height: 15.w,
-                child: AnimatedGradientProgressBar(
+                child: AnimatedGradientProgressBar2(
                   value: startTime, // 表示 60%
                   gradientColors: [
                     Color(0xffEFFF04),
@@ -432,11 +432,11 @@ class AnimatedGradientProgressBar2 extends StatelessWidget {
                       gradient: LinearGradient(
                         colors: [
                           // Color(0xffffffff).withValues(alpha: 0.3),
-                          Color(0xffffffff).withValues(alpha: 0.4),
+                          Color(0xffffffff).withValues(alpha: 0.3),
                           Color(0xffffffff).withValues(alpha: 0.5),
-                          Color(0xffffffff).withValues(alpha: 0.4),
+                          Color(0xffffffff).withValues(alpha: 0.3),
                           Color(0xffffffff).withValues(alpha: 0.2),
-                          Color(0xffffffff).withValues(alpha: 0.1),
+                          Color(0xffffffff).withValues(alpha: 0.0),
                           Color(0xffffffff).withValues(alpha: 0.0),
                         ],
                         begin: Alignment.topCenter,
@@ -444,13 +444,7 @@ class AnimatedGradientProgressBar2 extends StatelessWidget {
                       ),
                       border: Border.all(color: Color(0xff5CD3F4), width: 0.w),
                       borderRadius: BorderRadius.circular(height),
-                      // boxShadow: [
-                      //   BoxShadow(
-                      //     color: Colors.white.withValues(alpha: 0.4),
-                      //     blurRadius: 2,
-                      //     spreadRadius: 20,
-                      //   ),
-                      // ],
+
                     ),
                   ),
                 ],

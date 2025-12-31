@@ -1,4 +1,7 @@
 import 'package:c143/tw_143/tw_pages/guide/guide11_homebonus.dart';
+import 'package:c143/tw_143/tw_pages/guide/guide14_highligth.dart';
+import 'package:c143/tw_143/tw_pages/guide/guide15_coin_to_sun.dart';
+import 'package:c143/tw_143/tw_pages/guide/guide16_highligthend.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide1_water.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide7_rank.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide8_quiz1.dart';
@@ -41,7 +44,9 @@ class MainController extends GetxController {
     // }else{
     //   MainTreeController.to.overlayPortalController.show();
     // }
-
+    // OverlayGuide14HighLight().show();
+    // OverlayGuide15CoinToSun().show();
+    // OverlayGuide16HighLightEnd().show();
 
     if (index == cashIndex) {
 

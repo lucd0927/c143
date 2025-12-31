@@ -85,6 +85,22 @@ class $AssetsTwimgGen {
   AssetGenImage get guide10Coinbg =>
       const AssetGenImage('assets/twimg/guide10_coinbg.png');
 
+  /// File path: assets/twimg/guide14_txt.png
+  AssetGenImage get guide14Txt =>
+      const AssetGenImage('assets/twimg/guide14_txt.png');
+
+  /// File path: assets/twimg/guide15_sun.png
+  AssetGenImage get guide15Sun =>
+      const AssetGenImage('assets/twimg/guide15_sun.png');
+
+  /// File path: assets/twimg/guide15_txt.png
+  AssetGenImage get guide15Txt =>
+      const AssetGenImage('assets/twimg/guide15_txt.png');
+
+  /// File path: assets/twimg/guide16_txt.png
+  AssetGenImage get guide16Txt =>
+      const AssetGenImage('assets/twimg/guide16_txt.png');
+
   /// File path: assets/twimg/guide1water_tips.png
   AssetGenImage get guide1waterTips =>
       const AssetGenImage('assets/twimg/guide1water_tips.png');
@@ -376,6 +392,10 @@ class $AssetsTwimgGen {
     coinGuide6,
     gesture,
     guide10Coinbg,
+    guide14Txt,
+    guide15Sun,
+    guide15Txt,
+    guide16Txt,
     guide1waterTips,
     guide2cointips,
     guide3Centerbg,
