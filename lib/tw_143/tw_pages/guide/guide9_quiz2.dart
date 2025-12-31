@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:c143/gen/assets.gen.dart';
+import 'package:c143/tw_143/tw_pages/guide/guide10_quiz3.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide1_water.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide7_rank.dart';
 import 'package:c143/tw_143/tw_pages/main_quiz/main_quiz_controller.dart';
@@ -37,8 +38,15 @@ class OverlayGuide9Quiz2 {
               onClose: () async {
                 twLooog("=====OverlayGuideTestAnim=close");
                 close();
-                MainQuizController.to.saveGuideStatus();
-                onBtn.call(coins);
+
+                OverlayGuide10Quiz3().show(
+                  coins: 100,
+                  onBtn: (v) {
+                    onBtn.call(coins);
+                  },
+                );
+
+
               },
             ),
           ),

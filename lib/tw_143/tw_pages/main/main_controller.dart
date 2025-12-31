@@ -21,11 +21,11 @@ class MainController extends GetxController {
     //   },
     // );
 
-    OverlayGuide9Quiz2().show(
-      coins: 100,
-      onBtn: (v) {
-      },
-    );
+    // OverlayGuide9Quiz2().show(
+    //   coins: 100,
+    //   onBtn: (v) {
+    //   },
+    // );
     // OverlayGuideTestAnim().show();
     // OverlayGuide1Water().show();
     // OverlayGuide7Rank().show();

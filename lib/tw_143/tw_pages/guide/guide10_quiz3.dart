@@ -30,7 +30,6 @@ class OverlayGuide10Quiz3 {
         return Material(
           color: Colors.transparent,
           child: Container(
-
             child: Guide10Quiz3(
               coins: coins,
               onClose: () async {
@@ -55,11 +54,7 @@ class OverlayGuide10Quiz3 {
 }
 
 class Guide10Quiz3 extends StatefulWidget {
-  const Guide10Quiz3({
-    super.key,
-    required this.onClose,
-    required this.coins,
-  });
+  const Guide10Quiz3({super.key, required this.onClose, required this.coins});
 
   final VoidCallback onClose;
   final double coins;
@@ -132,7 +127,9 @@ class _Guide10Quiz3State extends State<Guide10Quiz3> {
       },
       child: AnimatedContainer(
         duration: animD,
-        color: Colors.black.withValues(alpha: showAnimated ? overlayOpacity : 0),
+        color: Colors.black.withValues(
+          alpha: showAnimated ? overlayOpacity : 0,
+        ),
         child: AnimatedScale(
           duration: animD,
           scale: showAnimated ? 1.0 : 1.0,
@@ -144,39 +141,59 @@ class _Guide10Quiz3State extends State<Guide10Quiz3> {
               clipBehavior: Clip.none,
               children: [
                 Center(
-                  child: showNumber
-                      ? guide2widget()
-                      : FittedBox(
-                          child: Column(
-                            children: [
-                              AnimatedSlide(
-                                offset: _offset,
-                                duration: Duration(milliseconds: 300),
-                                child: TwAnimatedCountttt(
-                                  duration: Duration(milliseconds: 300),
-                                  value: _coinsss,
-                                  prefix: "+",
-                                  textStyle: TextStyle(
-                                    fontSize: 36.sp,
-                                    fontWeight: FontWeight.w900,
-                                    color: Color(0xffFFDF12),
-                                  ),
-
-                                  textGradient: LinearGradient(
-                                    colors: [
-                                      Color(0xffFFDF12),
-                                      Color(0xffFFAA00),
-                                    ],
-                                    end: Alignment.bottomCenter,
-                                    begin: Alignment.topCenter,
-                                  ),
-                                ),
-                              ),
-                              _Guide8ScaleOverlayAnim(),
-                            ],
+                  child: FittedBox(
+                    child: Column(
+                      children: [
+                        AnimatedSlide(
+                          offset: _offset,
+                          duration: Duration(milliseconds: 300),
+                          child:  TwTxtGraBorder(
+                            text: "An Extra",
+                            fontSize: 32.sp,
+                            fontWeight: FontWeight.w900,
+                            fontColor: Color(0xffffffff),
+                            gradient: LinearGradient(
+                              colors: [
+                                Color(0xffFFF7A3),
+                                Color(0xffFFC941),
+                              ],
+                              end: Alignment.bottomCenter,
+                              begin: Alignment.topCenter,
+                            ),
+                            strokeColor: Color(0xffFFED75),
                           ),
                         ),
+                        SizedBox(height: 16.h,),
+                        _Guide10ScaleOverlayAnim(text: "10"),
+                        SizedBox(height: 16.h,),
+                        AnimatedSlide(
+                          offset: _offset,
+                          duration: Duration(milliseconds: 300),
+                          child:  TwTxtGraBorder(
+                            text: "FREE for YOU!!!",
+                            fontSize: 32.sp,
+                            fontWeight: FontWeight.w900,
+                            fontColor: Color(0xffffffff),
+                            gradient: LinearGradient(
+                              colors: [
+                                Color(0xffFFF7A3),
+                                Color(0xffFFC941),
+                              ],
+                              end: Alignment.bottomCenter,
+                              begin: Alignment.topCenter,
+                            ),
+                            strokeColor: Color(0xffFFED75),
+                          ),
+                        ),
+                        SizedBox(height: 100.h,),
+                        if (showNumber)btnClaim(),
+                      ],
+                    ),
+                  ),
                 ),
+
+
+
               ],
             ),
           ),
@@ -184,99 +201,6 @@ class _Guide10Quiz3State extends State<Guide10Quiz3> {
       ),
     );
   }
-
-  guide2widget() {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Image.asset(Assets.twimg.guide8Txt.path, width: 285.h, height: 76.h),
-        SizedBox(height: 50.h),
-        Container(
-          width: 240.h,
-          height: 148.h,
-          child: Stack(
-            children: [
-              Image.asset(
-                Assets.twimg.guide8Coinbg.path,
-                width: double.infinity,
-                height: double.infinity,
-                fit: BoxFit.fill,
-              ),
-              Positioned.fill(
-                child: Column(
-                  children: [
-                    SizedBox(height: 10.h),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image.asset(
-                          Assets.twimg.coin.path,
-                          width: 32.h,
-                          height: 32.h,
-                        ),
-                        SizedBox(width: 8.h),
-                        Text(
-                          "+${widget.coins.toStringAsFixed(0)}",
-                          style: TextStyle(
-                            fontSize: 36.sp,
-                            color: Color(0xffD23723),
-                            fontWeight: FontWeight.w900,
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 4.h),
-                    Text(
-                      "My Coin",
-                      style: TextStyle(
-                        fontWeight: FontWeight.w700,
-                        fontSize: 14.sp,
-                        color: Color(0xff7e5719),
-                      ),
-                    ),
-                    SizedBox(height: 2.h),
-
-                    Container(
-                      width: 224.h,
-                      height: 50.h,
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage(Assets.twimg.guide8Coinnumbg.path),
-                          fit: BoxFit.fill,
-                        ),
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Image.asset(
-                            Assets.twimg.coin.path,
-                            width: 28.h,
-                            height: 28.h,
-                          ),
-                          SizedBox(width: 8.h),
-                          Text(
-                            "${widget.coins.toStringAsFixed(2)}",
-                            style: TextStyle(
-                              fontSize: 36.sp,
-                              color: Color(0xff4B2E00),
-                              fontWeight: FontWeight.w700,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ),
-        SizedBox(height: 100.h),
-        btnClaim(),
-      ],
-    );
-  }
-
 
   Widget btnClaim() {
     return Center(
@@ -304,15 +228,15 @@ class _Guide10Quiz3State extends State<Guide10Quiz3> {
                   foreground: Color(0xff22431B),
                 ),
               ),
-              // Positioned(
-              //   top: -10.h,
-              //   left: -5.h,
-              //   child: Image.asset(
-              //     Assets.twimg.ad.path,
-              //     width: 28.h,
-              //     height: 28.h,
-              //   ),
-              // ),
+              Positioned(
+                top: -10.h,
+                right: -5.h,
+                child: Image.asset(
+                  Assets.twimg.ad.path,
+                  width: 28.h,
+                  height: 28.h,
+                ),
+              ),
 
               // Positioned(
               //   top: -0.h,
@@ -356,15 +280,17 @@ class _Guide10Quiz3State extends State<Guide10Quiz3> {
   }
 }
 
-class _Guide8ScaleOverlayAnim extends StatefulWidget {
-  const _Guide8ScaleOverlayAnim({super.key});
+class _Guide10ScaleOverlayAnim extends StatefulWidget {
+  const _Guide10ScaleOverlayAnim({super.key, required this.text});
+
+  final String text;
 
   @override
-  State<_Guide8ScaleOverlayAnim> createState() =>
-      _Guide8ScaleOverlayAnimState();
+  State<_Guide10ScaleOverlayAnim> createState() =>
+      _Guide10ScaleOverlayAnimState();
 }
 
-class _Guide8ScaleOverlayAnimState extends State<_Guide8ScaleOverlayAnim>
+class _Guide10ScaleOverlayAnimState extends State<_Guide10ScaleOverlayAnim>
     with SingleTickerProviderStateMixin {
   static double containerHeight = 360.w;
 
@@ -404,7 +330,7 @@ class _Guide8ScaleOverlayAnimState extends State<_Guide8ScaleOverlayAnim>
   Widget build(BuildContext context) {
     return SizedBox(
       width: 360.w,
-      height: 124.h,
+      height: 104.h,
       child: FittedBox(
         child: Stack(
           clipBehavior: Clip.none,
@@ -418,7 +344,7 @@ class _Guide8ScaleOverlayAnimState extends State<_Guide8ScaleOverlayAnim>
                   offset: Offset(slideAnim.value, 0),
                   child: Container(
                     width: 360.w,
-                    height: 124.h,
+                    height: 104.h,
                     child: Stack(
                       children: [
                         ShiningEffect(
@@ -428,71 +354,45 @@ class _Guide8ScaleOverlayAnimState extends State<_Guide8ScaleOverlayAnim>
                           angle: -0.1,
                           topLeft: false,
                           child: Image.asset(
-                            Assets.twimg.animatedBg11.path,
+                            Assets.twimg.guide10Coinbg.path,
 
                             width: 360.w,
-                            height: 124.h,
+                            height: 104.h,
                             fit: BoxFit.fill,
                           ),
                         ),
                         Center(
                           child: Padding(
                             padding: EdgeInsets.symmetric(horizontal: 16.w),
-                            child: Text(
-                              "Boosting your cash-out progress!！\nYou’re closer to cashing out!",
-                              style: TextStyle(
-                                fontSize: 16.sp,
-                                fontWeight: FontWeight.w900,
-                                color: Color(0xffffffff),
-                              ),
-                              textAlign: TextAlign.center,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Image.asset(
+                                  Assets.twimg.coin.path,
+                                  width: 32.h,
+                                  height: 32.h,
+                                ),
+                                SizedBox(width: 8.w),
+                                TwTxtGraBorder(
+                                  text: widget.text,
+                                  fontSize: 48.sp,
+                                  fontWeight: FontWeight.w900,
+                                  fontColor: Color(0xffffffff),
+                                  gradient: LinearGradient(
+                                    colors: [
+                                      Color(0xffFF920D),
+                                      Color(0xffFF2F18),
+                                    ],
+                                    end: Alignment.bottomCenter,
+                                    begin: Alignment.topCenter,
+                                  ),
+                                  strokeColor: Color(0xffFFED75),
+                                ),
+                              ],
                             ),
                           ),
                         ),
                       ],
-                    ),
-                  ),
-                );
-              },
-            ),
-
-            // 上图
-            AnimatedBuilder(
-              animation: _controller,
-              builder: (_, __) {
-                final h = heightAnim.value / 2;
-                return Positioned(
-                  top: -14.h,
-                  child: Transform.translate(
-                    offset: Offset(-slideAnim.value, 0),
-                    child: Container(
-                      color: Colors.white.withValues(alpha: 0),
-                      child: Image.asset(
-                        Assets.twimg.animatedBg12.path,
-                        width: 360.w,
-                        height: 28.h,
-                        fit: BoxFit.fill,
-                      ),
-                    ),
-                  ),
-                );
-              },
-            ),
-
-            // 下图
-            AnimatedBuilder(
-              animation: _controller,
-              builder: (_, __) {
-                final h = heightAnim.value / 2;
-                return Positioned(
-                  bottom: -14.h,
-                  child: Transform.translate(
-                    offset: Offset(-slideAnim.value, 0),
-                    child: Image.asset(
-                      Assets.twimg.animatedBg13.path,
-                      width: 360.w,
-                      height: 28.h,
-                      fit: BoxFit.fill,
                     ),
                   ),
                 );

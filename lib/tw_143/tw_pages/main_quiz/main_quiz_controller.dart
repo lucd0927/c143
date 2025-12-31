@@ -1,6 +1,8 @@
 import 'dart:async';
 
+import 'package:c143/tw_143/tw_pages/guide/guide10_quiz3.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide8_quiz1.dart';
+import 'package:c143/tw_143/tw_pages/guide/guide9_quiz2.dart';
 import 'package:c143/tw_143/tw_pages/main_quiz/datus/data.dart';
 import 'package:c143/tw_143/tw_pages/main_quiz/datus/quiz_model.dart';
 import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
@@ -218,6 +220,9 @@ class MainQuizController extends GetxController {
           __nextQuestion();
         },
       );
+    } else if (keyguideStatus == guideStatus2) {
+      MainQuizController.to.saveGuideStatus();
+      __nextQuestion();
     } else {
       __nextQuestion();
     }

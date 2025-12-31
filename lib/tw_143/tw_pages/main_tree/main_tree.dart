@@ -36,7 +36,7 @@ class _MainTreeState extends State<MainTree> {
       bool showCheckDialog = data != null && data > 14;
 
       if (data == null) {
-        // OverlayGuide1Water().show();
+        OverlayGuide1Water().show();
         // OverlayGuide7Rank().show();
 
       }
