@@ -172,6 +172,10 @@ class $AssetsTwimgGen {
   AssetGenImage get mainFertilize =>
       const AssetGenImage('assets/twimg/main_fertilize.png');
 
+  /// File path: assets/twimg/main_luckytips.png
+  AssetGenImage get mainLuckytips =>
+      const AssetGenImage('assets/twimg/main_luckytips.png');
+
   /// File path: assets/twimg/main_nav_cash.png
   AssetGenImage get mainNavCash =>
       const AssetGenImage('assets/twimg/main_nav_cash.png');
@@ -395,6 +399,7 @@ class $AssetsTwimgGen {
     mainCoin,
     mainCoinYu,
     mainFertilize,
+    mainLuckytips,
     mainNavCash,
     mainNavCashUn,
     mainNavLuckyspin,

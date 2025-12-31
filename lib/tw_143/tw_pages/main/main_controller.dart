@@ -4,6 +4,7 @@ import 'package:c143/tw_143/tw_pages/guide/guide7_rank.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide8_quiz1.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide9_quiz2.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide_test_animated.dart';
+import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
 import 'package:get/get.dart';
 
 
@@ -32,7 +33,16 @@ class MainController extends GetxController {
     // OverlayGuide7Rank().show();
     // OverlayGuide8Quiz1().show(coins: 100);
 
-    OverlayGuide11HomeBonus().show();
+    // OverlayGuide11HomeBonus().show();
+
+    // bool result =MainTreeController.to.overlayPortalController.isShowing;
+    // if(result){
+    //   MainTreeController.to.overlayPortalController.hide();
+    // }else{
+    //   MainTreeController.to.overlayPortalController.show();
+    // }
+
+
     if (index == cashIndex) {
 
     } else if (index == quizIndex) {

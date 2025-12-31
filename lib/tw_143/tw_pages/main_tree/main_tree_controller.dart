@@ -7,6 +7,7 @@ import 'package:c143/tw_base/tw_gj/loggggg.dart';
 import 'package:c143/tw_base/tw_gj/time_left.dart';
 import 'package:c143/tw_hive/twhive.dart';
 import 'package:c143/tw_views/pb_tushi.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 
@@ -27,6 +28,8 @@ class MainTreeController extends GetxController {
   static const double maxCoinNum = 5000;
 
   static const String twkeyGuideProgress = "MainTreeController_twkeyGuideProgress";
+
+  OverlayPortalController overlayPortalController = OverlayPortalController();
 
   var box = TwHive.box;
 

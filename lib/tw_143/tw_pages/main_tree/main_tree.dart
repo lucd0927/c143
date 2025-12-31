@@ -3,6 +3,7 @@ import 'package:c143/tw_143/tw_pages/guide/guide1_water.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide7_rank.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide8_quiz1.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
+import 'package:c143/tw_143/tw_pages/main_tree/vieee/high_light_tips.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/vieee/main_center.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/vieee/main_rank.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/vieee/main_top_a.dart';
@@ -23,13 +24,12 @@ class MainTree extends StatefulWidget {
 }
 
 class _MainTreeState extends State<MainTree> {
-
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
 
-    WidgetsBinding.instance.addPostFrameCallback((_){
+    WidgetsBinding.instance.addPostFrameCallback((_) {
       var box = TwHive.box;
       String key = MainTreeController.twkeyGuideProgress;
       var data = box.get(key);
@@ -38,30 +38,31 @@ class _MainTreeState extends State<MainTree> {
       if (data == null) {
         OverlayGuide1Water().show();
         // OverlayGuide7Rank().show();
-
       }
-
-
     });
-
-
   }
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.transparent,
-      child: Stack(
-        children: [
-          Image.asset(
-            Assets.twimg.mainBg.path,
-            width: double.infinity,
-            height: double.infinity,
-            fit: BoxFit.fill,
-            gaplessPlayback: true,
-          ),
-          Positioned.fill(child: _buildExtendNestedScrollerView()),
-        ],
+    return OverlayPortal(
+      controller: MainTreeController.to.overlayPortalController,
+      overlayChildBuilder: (BuildContext context) {
+        return MainHighLightTips();
+      },
+      child: Container(
+        color: Colors.transparent,
+        child: Stack(
+          children: [
+            Image.asset(
+              Assets.twimg.mainBg.path,
+              width: double.infinity,
+              height: double.infinity,
+              fit: BoxFit.fill,
+              gaplessPlayback: true,
+            ),
+            Positioned.fill(child: _buildExtendNestedScrollerView()),
+          ],
+        ),
       ),
     );
   }
@@ -78,13 +79,7 @@ class _MainTreeState extends State<MainTree> {
           height: maxPinnedHeight,
           child: Stack(
             children: [
-              Column(
-                children: [
-
-                  MainTopA(),
-                  MainCenter(),
-                ],
-              ),
+              Column(children: [MainTopA(), MainCenter()]),
             ],
           ),
         ),

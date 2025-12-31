@@ -2,10 +2,13 @@ import 'dart:async';
 
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:c143/gen/assets.gen.dart';
+import 'package:c143/tw_143/tw_pages/guide/guide13_spin.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide1_water.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide7_rank.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide9_quiz2.dart';
+import 'package:c143/tw_143/tw_pages/main/main_controller.dart';
 import 'package:c143/tw_143/tw_pages/main_quiz/main_quiz_controller.dart';
+import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
 import 'package:c143/tw_base/tw_gj/loggggg.dart';
 import 'package:c143/tw_views/animated_count.dart';
 import 'package:c143/tw_views/animated_scale.dart';
@@ -38,9 +41,12 @@ class OverlayGuide12HomeReward {
                 twLooog("=====OverlayGuideTestAnim=close");
                 close();
                 // MainQuizController.to.saveGuideStatus();
+                MainTreeController.to.overlayPortalController.show();
 
-
-
+                Future.delayed(Duration(milliseconds: 3400),(){
+                  MainController.to.resetIndex(MainController.treeIndex);
+                  OverlayGuide13Spin().show();
+                });
 
               },
             ),

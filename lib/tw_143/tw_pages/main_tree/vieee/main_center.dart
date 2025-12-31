@@ -1,4 +1,5 @@
 import 'package:c143/gen/assets.gen.dart';
+import 'package:c143/tw_143/tw_pages/guide/guide13_spin.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide1_water.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide2_coin.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide4_fertilize.dart';
@@ -182,7 +183,7 @@ class _MainCenterState extends State<MainCenter> {
           SizedBox(width: 20.w),
           Builder(
             builder: (context) {
-              Widget child =  centerItem(
+              Widget child = centerItem(
                 width: 60.h,
                 count: leftTime,
                 icon: Assets.twimg.mainFertilize.path,
@@ -195,9 +196,8 @@ class _MainCenterState extends State<MainCenter> {
               OverlayGuide4Fertilize.guideContext = context;
 
               return child;
-            }
+            },
           ),
-
         ],
       );
     });
@@ -236,7 +236,7 @@ class _MainCenterState extends State<MainCenter> {
   }) {
     Widget txtW = const SizedBox();
     if (showTxt) {
-      if(treeType == TwEnumTreeType.fertilize){
+      if (treeType == TwEnumTreeType.fertilize) {
         txtW = Center(
           child: TwTxtBorder(
             text: "${count}",
@@ -245,7 +245,7 @@ class _MainCenterState extends State<MainCenter> {
             fontWeight: FontWeight.w700,
           ),
         );
-      }else{
+      } else {
         txtW = Center(
           child: TwTxtBorder(
             text: "+${count}",
@@ -256,8 +256,6 @@ class _MainCenterState extends State<MainCenter> {
           ),
         );
       }
-
-
     }
     return GestureDetector(
       onTap: onClick,
@@ -296,12 +294,21 @@ class _MainCenterState extends State<MainCenter> {
     return Row(
       children: [
         SizedBox(width: 50.w),
-        centerItem(
-          width: 50.h,
-          showTxt: false,
-          icon: Assets.twimg.mainSpin.path,
-          onClick: () {},
-          count: '',
+        Builder(
+          builder: (context) {
+            Widget child = centerItem(
+              width: 50.h,
+              showTxt: false,
+              icon: Assets.twimg.mainSpin.path,
+              onClick: () {},
+              count: '',
+            );
+
+            OverlayGuide13Spin.guideChild = child;
+            OverlayGuide13Spin.guideContext = context;
+
+            return child;
+          },
         ),
       ],
     );
