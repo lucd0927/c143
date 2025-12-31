@@ -1,3 +1,4 @@
+import 'package:c143/tw_143/tw_pages/guide/guide11_homebonus.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide1_water.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide7_rank.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide8_quiz1.dart';
@@ -30,6 +31,8 @@ class MainController extends GetxController {
     // OverlayGuide1Water().show();
     // OverlayGuide7Rank().show();
     // OverlayGuide8Quiz1().show(coins: 100);
+
+    OverlayGuide11HomeBonus().show();
     if (index == cashIndex) {
 
     } else if (index == quizIndex) {
