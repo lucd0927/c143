@@ -6,8 +6,10 @@ import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
 import 'package:c143/tw_base/tw_gj/loggggg.dart';
 import 'package:c143/tw_base/tw_gj/time_left.dart';
 import 'package:c143/tw_hive/twhive.dart';
+import 'package:c143/tw_views/animated_fly.dart';
 import 'package:c143/tw_views/pb_tushi.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 enum TwEnumTreeType {
@@ -324,12 +326,20 @@ class MainTreeController extends GetxController {
   }
 
   onAddMoneyyyy(double monnn) {
-    double tmpCurMmm = curMoneyyyy.value;
 
-    double tmpCurmmm2 = tmpCurMmm + monnn;
 
-    box.put(twKeyMoneyyyy, tmpCurmmm2);
-    curMoneyyyy.value = tmpCurmmm2;
+    overlayCoinMain.showWithSize(
+      childSize: Size(20.w, 20.w),
+      showTargetWidget: true,
+      onEnd: (){
+        double tmpCurMmm = curMoneyyyy.value;
+
+        double tmpCurmmm2 = tmpCurMmm + monnn;
+
+        box.put(twKeyMoneyyyy, tmpCurmmm2);
+        curMoneyyyy.value = tmpCurmmm2;
+      }
+    );
   }
 
   topTextChange() {}

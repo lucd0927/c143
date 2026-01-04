@@ -1,6 +1,7 @@
 import 'package:c143/gen/assets.gen.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
 import 'package:c143/tw_views/animated_count.dart';
+import 'package:c143/tw_views/animated_fly.dart';
 import 'package:c143/tw_views/fade_switcher.dart';
 import 'package:c143/tw_views/font_border.dart';
 import 'package:c143/tw_views/font_gradient_border.dart';
@@ -86,7 +87,12 @@ class _MainTopAState extends State<MainTopA> {
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
-                              Image.asset(Assets.twimg.coin.path,width: 20.w,height: 20.w,),
+                              Builder(
+                                builder: (context) {
+                                  overlayCoinMain.targetContext = context;
+                                  return Image.asset(Assets.twimg.coin.path,width: 20.w,height: 20.w,);
+                                }
+                              ),
                               Text(
                                 "  ",
                                 style: TextStyle(
