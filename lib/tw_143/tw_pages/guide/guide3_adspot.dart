@@ -20,7 +20,9 @@ class OverlayGuide3AdSpot {
   bool get isShowing => _isShowing;
   bool _isShowing = false;
 
-  void show() {
+  void show({
+    required double coins,
+}) {
     _overlayEntry = null;
 
     _overlayEntry = OverlayEntry(
@@ -31,8 +33,14 @@ class OverlayGuide3AdSpot {
             onClose: () async {
               close();
               MainTreeController.to.saveGuideIndexData(MainTreeController.guide3);
-              OverlayGuide4Fertilize().show();
+
+              MainTreeController.to.onAddMoneyyyy(coins,onEnd: (){
+                OverlayGuide4Fertilize().show();
+              });
+
+
             },
+            coins: coins,
           ),
         );
       },
@@ -48,10 +56,10 @@ class OverlayGuide3AdSpot {
 }
 
 class Guide3AdSpot extends StatefulWidget {
-  const Guide3AdSpot({super.key, required this.onClose});
+  const Guide3AdSpot({super.key, required this.onClose, required this.coins});
 
   final VoidCallback onClose;
-
+  final double coins;
   @override
   State<Guide3AdSpot> createState() => _Guide3AdSpotState();
 }
@@ -147,7 +155,7 @@ class _Guide3AdSpotState extends State<Guide3AdSpot> {
                                     ),
                                     SizedBox(width: 8.w),
                                     TwTxtGraBorder(
-                                      text: "10",
+                                      text: "${widget.coins.toStringAsFixed(0)}",
                                       fontSize: 32.sp,
                                       fontWeight: FontWeight.w900,
                                     ),

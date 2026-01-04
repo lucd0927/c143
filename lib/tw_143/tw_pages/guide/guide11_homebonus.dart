@@ -22,7 +22,9 @@ class OverlayGuide11HomeBonus {
   bool get isShowing => _isShowing;
   bool _isShowing = false;
 
-  void show() {
+  void show({
+    required double coins,
+}) {
     _overlayEntry = null;
 
     _overlayEntry = OverlayEntry(
@@ -33,9 +35,19 @@ class OverlayGuide11HomeBonus {
             onClose: () async {
               close();
               MainTreeController.to.saveGuideIndexData(MainTreeController.guide11);
-              OverlayGuide12HomeReward().show(coins: 100, onBtn: (value) {  });
+
+
+
+              MainTreeController.to.onAddMoneyyyy(
+                coins,
+                onEnd: () {
+                  OverlayGuide12HomeReward().show(coins: 10, onBtn: (value) {  });
+                },
+              );
+
               
             },
+            coins: coins,
           ),
         );
       },
@@ -51,10 +63,10 @@ class OverlayGuide11HomeBonus {
 }
 
 class Guide11HomeBonusWidget extends StatefulWidget {
-  const Guide11HomeBonusWidget({super.key, required this.onClose});
+  const Guide11HomeBonusWidget({super.key, required this.onClose, required this.coins});
 
   final VoidCallback onClose;
-
+  final double coins;
   @override
   State<Guide11HomeBonusWidget> createState() => _Guide11HomeBonusWidgetState();
 }
@@ -136,7 +148,7 @@ class _Guide11HomeBonusWidgetState extends State<Guide11HomeBonusWidget> {
                                   color: Colors.red.withValues(alpha: 0.0),
                                   child: Center(
                                     child: TwTxtBorder(
-                                      text: "BONUS 10 for YOU!!",
+                                      text: "BONUS ${widget.coins} for YOU!!",
                                       fontSize: 16.sp,
                                       fontWeight: FontWeight.w900,
                                       fontColor: Color(0xffffffff),
@@ -155,7 +167,7 @@ class _Guide11HomeBonusWidgetState extends State<Guide11HomeBonusWidget> {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     TwTxtGraBorder(
-                                      text: "+10",
+                                      text: "+${widget.coins}",
                                       fontSize: 32.sp,
                                       fontWeight: FontWeight.w900,
                                     ),

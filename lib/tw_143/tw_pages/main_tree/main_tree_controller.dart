@@ -151,7 +151,6 @@ class MainTreeController extends GetxController {
     return tmpTreeIcon;
   }
 
-
   EnumTwLottttieJson lottieType() {
     EnumTwLottttieJson type = EnumTwLottttieJson.coin1;
     int curLevvvv = curLevel.value;
@@ -339,38 +338,52 @@ class MainTreeController extends GetxController {
     box.put(twKeyWaterCount, 0);
   }
 
-  onAddWaterCount() {
+  var curHasWatering = false.obs;
+  bool canClickWater = true;
 
-    OverlayLotWater().show();
+  onAddWaterCount({required VoidCallback onEnd}) {
+    if (canClickWater) {
+      canClickWater = false;
 
-    int tmpCurMmm = curStageWaterCount.value;
+      OverlayLotWater().show(
+        onEnd: () {
+          curHasWatering.value = true;
+          Timer(Duration(milliseconds: 2000), () {
+            int tmpCurMmm = curStageWaterCount.value;
 
-    int tmpCurmmm2 = tmpCurMmm + 1;
+            int tmpCurmmm2 = tmpCurMmm + 1;
 
-    box.put(twKeyWaterCount, tmpCurmmm2);
-    curStageWaterCount.value = tmpCurmmm2;
-    int tmpL = _jisuanLevel();
-    curLevel.value = tmpL;
+            box.put(twKeyWaterCount, tmpCurmmm2);
+            curStageWaterCount.value = tmpCurmmm2;
+            int tmpL = _jisuanLevel();
+            curLevel.value = tmpL;
+            curHasWatering.value = false;
+            canClickWater = false;
+            onEnd();
+          });
+        },
+      );
+    }
   }
 
-  onAddMoneyyyy(double monnn) {
+  onAddMoneyyyy(double monnn, {VoidCallback? onEnd}) {
     overlayCoinMain.showWithSize(
       childSize: Size(20.w, 20.w),
       showTargetWidget: true,
       onEnd: () {
-        _onAddMoney(monnn);
+        _onAddMoney(monnn, onEnd: onEnd);
       },
     );
   }
 
-  void _onAddMoney(double monnn) {
+  void _onAddMoney(double monnn, {required VoidCallback? onEnd}) {
     double tmpCurMmm = curMoneyyyy.value;
 
     double tmpCurmmm2 = tmpCurMmm + monnn;
 
     box.put(twKeyMoneyyyy, tmpCurmmm2);
     curMoneyyyy.value = tmpCurmmm2;
-
+    onEnd?.call();
     String? data = guideIndexData();
     twLooog("======guideIndexData:$data tmpCurmmm2:$tmpCurmmm2");
     if (tmpCurmmm2 >= stage2Num && data == MainTreeController.guide14) {
@@ -383,16 +396,17 @@ class MainTreeController extends GetxController {
   static Map<EnumTwLottttieJson, LottieComposition> _kLottie_vCompo = {};
 
   static LottieComposition? composition(EnumTwLottttieJson type) {
-    return  _kLottie_vCompo[type];
+    return _kLottie_vCompo[type];
   }
+
   static initComposition() {
     AssetLottie(Assets.lottiejson.bghightligth).load().then((value) {
       _kLottie_vCompo[EnumTwLottttieJson.bghightligth] = value;
-    });    AssetLottie(Assets.lottiejson.water).load().then((value) {
+    });
+    AssetLottie(Assets.lottiejson.water).load().then((value) {
       _kLottie_vCompo[EnumTwLottttieJson.water] = value;
     });
   }
-
 }
 
 enum EnumTwLottttieJson {

@@ -40,20 +40,20 @@ class _MainCenterState extends State<MainCenter> {
               child: Obx(() {
                 String icon = MainTreeController.to.treeIcon();
                 EnumTwLottttieJson type = MainTreeController.to.lottieType();
+                bool result = MainTreeController.to.curHasWatering.value;
                 return Container(
                   width: 280.h,
                   height: 280.h,
                   child: Stack(
                     children: [
+                      TwLottieCommon(type: type,animate: result,),
                       // Image.asset(
-                      //   icon,
-                      //   width: 280.h,
-                      //   height: 280.h,
-                      //   gaplessPlayback: true,
-                      // ),
-                      TwLottieCommon(
-                        type: EnumTwLottttieJson.coin5,
-                      ),
+                      //           icon,
+                      //           width: 280.h,
+                      //           height: 280.h,
+                      //           gaplessPlayback: true,
+                      //         ),
+
                       Positioned(
                         child: levelWidget(),
                         left: 0,
@@ -364,7 +364,7 @@ class _MainCenterState extends State<MainCenter> {
   }
 
   void onWater() {
-    MainTreeController.to.onAddWaterCount();
+    MainTreeController.to.onAddWaterCount(onEnd: (){});
   }
 
   coinWidget() {

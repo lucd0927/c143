@@ -1,5 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:c143/gen/assets.gen.dart';
+import 'package:c143/tw_143/tw_common/lottieeee/common.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide7_rank.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
 import 'package:c143/tw_base/tw_gj/loggggg.dart';
@@ -17,7 +18,7 @@ class OverlayGuide6RewardDouble {
   bool get isShowing => _isShowing;
   bool _isShowing = false;
 
-  void show() {
+  void show({required double coins}) {
     _overlayEntry = null;
 
     _overlayEntry = OverlayEntry(
@@ -25,13 +26,21 @@ class OverlayGuide6RewardDouble {
         return Material(
           color: Colors.transparent,
           child: Container(
-
             child: Guide6RewardDouble(
+              coins: coins,
               onClose: () async {
                 twLooog("=====OverlayGuideTestAnim=close");
                 close();
-                MainTreeController.to.saveGuideIndexData(MainTreeController.guide6);
-                OverlayGuide7Rank().show();
+                MainTreeController.to.saveGuideIndexData(
+                  MainTreeController.guide6,
+                );
+
+                MainTreeController.to.onAddMoneyyyy(
+                  coins*2,
+                  onEnd: () {
+                    OverlayGuide7Rank().show();
+                  },
+                );
               },
             ),
           ),
@@ -49,9 +58,14 @@ class OverlayGuide6RewardDouble {
 }
 
 class Guide6RewardDouble extends StatefulWidget {
-  const Guide6RewardDouble({super.key, required this.onClose});
+  const Guide6RewardDouble({
+    super.key,
+    required this.onClose,
+    required this.coins,
+  });
 
   final VoidCallback onClose;
+  final double coins;
 
   @override
   State<Guide6RewardDouble> createState() => _Guide6RewardDoubleState();
@@ -128,31 +142,52 @@ class _Guide6RewardDoubleState extends State<Guide6RewardDouble> {
   }
 
   _coinDouble() {
-    return TwAScale(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+    return Container(
+      width: 200.h,
+      height: 240.h,
+      child: Stack(
         children: [
-          Container(
-            width: 176.h,
-            height: 176.h,
-            child: Stack(
-              children: [
-                Image.asset(
-                  Assets.twimg.coinGuide6.path,
-                  width: double.infinity,
-                  height: double.infinity,
-                  fit: BoxFit.fill,
-                ),
-              ],
-            ),
-          ),
+          Center(
+            child: TwAScale(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    width: 176.h,
+                    height: 176.h,
+                    child: Stack(
+                      clipBehavior: Clip.none,
+                      children: [
+                        Positioned(
+                          left: -20.w,
+                          right: -20.w,
+                          top: -20.h,
+                          bottom: -20.h,
 
-          TwTxtBorder(
-            text: "x2",
-            fontWeight: FontWeight.w900,
-            fontSize: 40.sp,
-            fontColor: Color(0xffFFE56F),
-            foreground: Color(0xff9D790E),
+                          child: TwLottieCommon(
+                            type: EnumTwLottttieJson.bghightligth,
+                          ),
+                        ),
+                        Image.asset(
+                          Assets.twimg.coinGuide6.path,
+                          width: double.infinity,
+                          height: double.infinity,
+                          fit: BoxFit.fill,
+                        ),
+                      ],
+                    ),
+                  ),
+
+                  TwTxtBorder(
+                    text: "x2",
+                    fontWeight: FontWeight.w900,
+                    fontSize: 40.sp,
+                    fontColor: Color(0xffFFE56F),
+                    foreground: Color(0xff9D790E),
+                  ),
+                ],
+              ),
+            ),
           ),
         ],
       ),
@@ -164,7 +199,8 @@ class _Guide6ScaleOverlayAnim extends StatefulWidget {
   const _Guide6ScaleOverlayAnim({super.key});
 
   @override
-  State<_Guide6ScaleOverlayAnim> createState() => _Guide6ScaleOverlayAnimState();
+  State<_Guide6ScaleOverlayAnim> createState() =>
+      _Guide6ScaleOverlayAnimState();
 }
 
 class _Guide6ScaleOverlayAnimState extends State<_Guide6ScaleOverlayAnim>

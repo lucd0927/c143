@@ -33,10 +33,14 @@ class OverlayGuide1Water {
             onClose: () async {
               close();
 
-              MainTreeController.to.saveGuideIndexData(MainTreeController.guide1);
+
+              MainTreeController.to.onAddWaterCount(onEnd: (){
+                MainTreeController.to.saveGuideIndexData(MainTreeController.guide1);
+
+                OverlayGuide2Coin().show();
+              });
 
 
-              OverlayGuide2Coin().show();
             },
           ),
         );

@@ -60,7 +60,7 @@ class MainController extends GetxController {
       String? data = MainTreeController.to.guideIndexData();
 
       if(data == MainTreeController.guide10){
-        OverlayGuide11HomeBonus().show();
+        OverlayGuide11HomeBonus().show(coins: 10);
 
       }
 

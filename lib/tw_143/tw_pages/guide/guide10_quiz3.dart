@@ -163,7 +163,7 @@ class _Guide10Quiz3State extends State<Guide10Quiz3> {
                           ),
                         ),
                         SizedBox(height: 16.h),
-                        _Guide10ScaleOverlayAnim(text: "10"),
+                        _Guide10ScaleOverlayAnim(text: "${widget.coins.toStringAsFixed(0)}"),
                         SizedBox(height: 16.h),
                         AnimatedSlide(
                           offset: _offset,

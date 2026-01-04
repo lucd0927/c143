@@ -32,23 +32,17 @@ class OverlayGuide8Quiz1 {
         return Material(
           color: Colors.transparent,
           child: Container(
-
             child: Guide8Quiz1Widget(
               coins: coins,
               onClose: () async {
                 twLooog("=====OverlayGuideTestAnim=close");
                 close();
                 // MainQuizController.to.saveGuideStatus();
-                MainTreeController.to.saveGuideIndexData(MainTreeController.guide8);
-                onBtn.call(coins);
-                OverlayGuide9Quiz2().show(
-                  coins: 100,
-                  onBtn: (v) {
-
-                  },
+                MainTreeController.to.saveGuideIndexData(
+                  MainTreeController.guide8,
                 );
-
-
+                onBtn.call(coins);
+                OverlayGuide9Quiz2().show(coins: 100, onBtn: (v) {});
               },
             ),
           ),
@@ -143,7 +137,9 @@ class _Guide8Quiz1WidgetState extends State<Guide8Quiz1Widget> {
       },
       child: AnimatedContainer(
         duration: animD,
-        color: Colors.black.withValues(alpha: showAnimated ? overlayOpacity : 0),
+        color: Colors.black.withValues(
+          alpha: showAnimated ? overlayOpacity : 0,
+        ),
         child: AnimatedScale(
           duration: animD,
           scale: showAnimated ? 1.0 : 1.0,
@@ -266,7 +262,7 @@ class _Guide8Quiz1WidgetState extends State<Guide8Quiz1Widget> {
                           ),
                           SizedBox(width: 8.h),
                           Text(
-                            "${widget.coins.toStringAsFixed(2)}",
+                            "${MainTreeController.to.curMoneyyyy.value.toStringAsFixed(2)}",
                             style: TextStyle(
                               fontSize: 36.sp,
                               color: Color(0xff4B2E00),
@@ -287,7 +283,6 @@ class _Guide8Quiz1WidgetState extends State<Guide8Quiz1Widget> {
       ],
     );
   }
-
 
   Widget btnClaim() {
     return Center(

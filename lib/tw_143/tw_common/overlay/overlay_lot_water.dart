@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:c143/tw_143/tw_common/lottieeee/common.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
 
@@ -14,7 +16,9 @@ class OverlayLotWater {
   bool get isShowing => _isShowing;
   bool _isShowing = false;
 
-  void show() {
+  void show({
+    required VoidCallback onEnd,
+}) {
     _overlayEntry = null;
 
     _overlayEntry = OverlayEntry(
@@ -24,6 +28,7 @@ class OverlayLotWater {
           child: LotWaterWidget(
             onClose: () async {
               close();
+              onEnd();
             },
           ),
         );
@@ -55,6 +60,8 @@ class _LotWaterWidgetState extends State<LotWaterWidget> {
   Duration animD = Duration(milliseconds: 200);
   double startScale = 0.8;
 
+  Timer? _timer;
+
   @override
   void initState() {
     // TODO: implement initState
@@ -65,9 +72,19 @@ class _LotWaterWidgetState extends State<LotWaterWidget> {
         setState(() {
           showAnimated = true;
         });
+        initTimer();
       }
     });
   }
+  final Duration _timerD = Duration(milliseconds: 2000);
+  initTimer() {
+    _timer?.cancel();
+    _timer = Timer(_timerD, () {
+      _timer?.cancel();
+      widget.onClose();
+    });
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -75,7 +92,7 @@ class _LotWaterWidgetState extends State<LotWaterWidget> {
     double top = 250.h;
     EnumTwLottttieJson type = MainTreeController.to.lottieType();
     if (type == EnumTwLottttieJson.coin1 || type == EnumTwLottttieJson.monn1) {
-      right = 80.w;
+      right = 60.w;
       top = 250.h;
     } else if (type == EnumTwLottttieJson.coin2 ||
         type == EnumTwLottttieJson.monn2) {
@@ -119,5 +136,13 @@ class _LotWaterWidgetState extends State<LotWaterWidget> {
         ),
       ),
     );
+  }
+
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    _timer?.cancel();
+    super.dispose();
   }
 }

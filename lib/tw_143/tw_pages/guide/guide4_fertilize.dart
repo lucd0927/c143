@@ -36,7 +36,7 @@ class OverlayGuide4Fertilize{
             onClose: () async {
               close();
               MainTreeController.to.saveGuideIndexData(MainTreeController.guide4);
-              OverlayGuide5AdSpot().show();
+              OverlayGuide5AdSpot().show(coins: 10);
 
 
             },

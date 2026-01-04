@@ -216,7 +216,7 @@ class MainQuizController extends GetxController {
     if (keyguideStatus == guideStatus1) {
 
       OverlayGuide8Quiz1().show(
-        coins: 100,
+        coins: 5,
         onBtn: (v) {
           __nextQuestion();
         },

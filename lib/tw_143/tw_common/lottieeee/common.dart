@@ -4,16 +4,22 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
 class TwLottieCommon extends StatelessWidget {
-  const TwLottieCommon({super.key, required this.type, this.repeat = true});
+  const TwLottieCommon({
+    super.key,
+    required this.type,
+    this.repeat = true,
+    this.animate = true,
+  });
 
   final EnumTwLottttieJson type;
   final bool repeat;
+  final bool animate;
 
   @override
   Widget build(BuildContext context) {
     var data = MainTreeController.composition(type);
     if (data != null) {
-      return Lottie(composition: data, repeat: repeat);
+      return Lottie(composition: data, repeat: repeat,animate: animate,);
     }
     String jsonpath = "";
     if (type == EnumTwLottttieJson.water) {
@@ -52,6 +58,7 @@ class TwLottieCommon extends StatelessWidget {
       jsonpath,
       repeat: repeat,
       frameBuilder: (_, child, __) => child,
+      animate: animate,
     );
   }
 }
