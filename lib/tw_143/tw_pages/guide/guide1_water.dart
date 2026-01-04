@@ -1,5 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:c143/gen/assets.gen.dart';
+import 'package:c143/tw_143/tw_common/lottieeee/gesture.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide2_coin.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
 import 'package:c143/tw_views/animated_scale.dart';
@@ -149,13 +150,7 @@ class GuideWidget extends StatelessWidget {
                 Positioned(
                   top: 30.h,
                   left: 30.w,
-                  child: TwAScale(
-                    child: Image.asset(
-                      Assets.twimg.gesture.path,
-                      width: 70.w,
-                      height: 70.w,
-                    ),
-                  ),
+                  child: TwLottieGesture(),
                 ),
 
                 Positioned(

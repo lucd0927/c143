@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:c143/gen/assets.gen.dart';
 import 'package:c143/tw_143/tw_common/event.dart';
+import 'package:c143/tw_143/tw_common/lottieeee/gesture.dart';
 import 'package:c143/tw_143/tw_pages/main_quiz/main_quiz_controller.dart';
 import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
 import 'package:c143/tw_base/tw_gj/event_bus.dart';
@@ -540,13 +541,14 @@ class _TwQuizGiftWidgetState extends State<TwQuizGiftWidget>
     //   );
     // }
     Widget gesture = IgnorePointer(
-      child: TwAScale(
-        child: Image.asset(
-          Assets.twimg.gesture.path,
-          width: 40.w,
-          height: 40.w,
-        ),
-      ),
+      // child: TwAScale(
+      //   child: Image.asset(
+      //     Assets.twimg.gesture.path,
+      //     width: 40.w,
+      //     height: 40.w,
+      //   ),
+      // ),
+      child: TwLottieGesture(),
     );
     // ggPrint("==_GiftProgressState=count:$count===index:$index=canOpen:$canOpen===hasLastOpened:$hasLastOpened=clickGift:$clickGift=hasOpened:$hasOpened");
     return Center(

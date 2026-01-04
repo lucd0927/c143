@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:c143/gen/assets.gen.dart';
+import 'package:c143/tw_143/tw_common/lottieeee/gesture.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide10_quiz3.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide1_water.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide7_rank.dart';
@@ -239,13 +240,14 @@ class _GuideOldState extends State<GuideOld> {
                 top: 30.h,
                 right: -30.w,
                 child: IgnorePointer(
-                  child: TwAScale(
-                    child: Image.asset(
-                      Assets.twimg.gesture.path,
-                      width: 70.w,
-                      height: 70.w,
-                    ),
-                  ),
+                  // child: TwAScale(
+                  //   child: Image.asset(
+                  //     Assets.twimg.gesture.path,
+                  //     width: 70.w,
+                  //     height: 70.w,
+                  //   ),
+                  // ),
+                  child: TwLottieGesture(),
                 ),
               ),
               // Positioned(

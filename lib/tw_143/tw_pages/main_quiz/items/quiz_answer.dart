@@ -1,5 +1,6 @@
 import 'package:auto_size_text_plus/auto_size_text_plus.dart';
 import 'package:c143/gen/assets.gen.dart';
+import 'package:c143/tw_143/tw_common/lottieeee/gesture.dart';
 import 'package:c143/tw_143/tw_pages/main_quiz/datus/quiz_model.dart';
 import 'package:c143/tw_143/tw_pages/main_quiz/main_quiz_controller.dart';
 import 'package:c143/tw_base/tw_gj/loggggg.dart';
@@ -188,13 +189,14 @@ class _QuizAnswerState extends State<QuizAnswer> {
                   top: 20.h,
                   // bottom: 0,
                   right: -20.w,
-                  child: TwAScale(
-                    child: Image.asset(
-                      Assets.twimg.gesture.path,
-                      width: 70.w,
-                      height: 70.w,
-                    ),
-                  ),
+                  // child: TwAScale(
+                  //   child: Image.asset(
+                  //     Assets.twimg.gesture.path,
+                  //     width: 70.w,
+                  //     height: 70.w,
+                  //   ),
+                  // ),
+                  child: TwLottieGesture(),
                 ),
             ],
           ),
