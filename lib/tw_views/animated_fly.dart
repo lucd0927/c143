@@ -83,7 +83,7 @@ class TwOverlayAnimatedS2T {
               arcHeight: 10,
               startSize: startSize,
               endSize: endSize,
-              duration: Duration(milliseconds: 1200),
+              duration: Duration(milliseconds: 800),
               delayBetween: Duration(milliseconds: 20),
               onFinish: () {
                 close();

@@ -110,7 +110,7 @@ class _Guide7RankWidgetState extends State<Guide7RankWidget> {
     });
   }
 
-  final Duration _timerD = Duration(milliseconds: 3000);
+  final Duration _timerD = Duration(milliseconds: 2000);
 
   initTimer() {
     _timer?.cancel();
@@ -290,7 +290,7 @@ class _Guide7RankWidgetState extends State<Guide7RankWidget> {
                                   left: -topLeftPosition.dx,
                                   right: -topLeftPosition.dx,
                                   child: AnimatedSize(
-                                    duration: Duration(milliseconds:500),
+                                    duration: Duration(milliseconds:300),
                                     alignment: Alignment.topCenter,
                                     child: _text == text4
                                         ? Image.asset(

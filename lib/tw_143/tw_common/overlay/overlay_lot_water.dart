@@ -76,7 +76,7 @@ class _LotWaterWidgetState extends State<LotWaterWidget> {
       }
     });
   }
-  final Duration _timerD = Duration(milliseconds: 2000);
+  final Duration _timerD = Duration(milliseconds: 1000);
   initTimer() {
     _timer?.cancel();
     _timer = Timer(_timerD, () {

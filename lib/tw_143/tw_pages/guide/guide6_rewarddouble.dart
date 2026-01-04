@@ -94,12 +94,12 @@ class _Guide6RewardDoubleState extends State<Guide6RewardDouble> {
           showAnimated = true;
         });
 
-        Future.delayed(Duration(milliseconds: 3000), () {
+        Future.delayed(Duration(milliseconds: 1900), () {
           if (mounted) {
             setState(() {
               showDoubleEx = true;
             });
-            Future.delayed(Duration(milliseconds: 2000), () {
+            Future.delayed(Duration(milliseconds: 1000), () {
               widget.onClose();
             });
           }
