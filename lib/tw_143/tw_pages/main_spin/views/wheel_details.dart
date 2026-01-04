@@ -1,13 +1,17 @@
 import 'dart:math';
 
 import 'package:c143/gen/assets.gen.dart';
+import 'package:c143/tw_143/tw_pages/main/main_controller.dart';
+import 'package:c143/tw_143/tw_pages/main_spin/main_spin_controller.dart';
 import 'package:c143/tw_base/tw_gj/loggggg.dart';
 import 'package:c143/tw_views/animated_scale.dart';
 import 'package:c143/tw_views/font_border.dart';
 import 'package:c143/tw_views/font_gradient_border.dart';
+import 'package:c143/tw_views/pb_tushi.dart';
 import 'package:c143/tw_views/shimmer_effect.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:hive_ce_flutter/adapters.dart';
 
@@ -122,6 +126,7 @@ class _PositionItemsState extends State<PositionItems>
               if (mounted) {
                 setState(() {
                   _startIndex = targetIndex;
+                  canClick = true;
                 });
               }
             }
@@ -160,96 +165,105 @@ class _PositionItemsState extends State<PositionItems>
             ],
           ),
         ),
-        SizedBox(height: 12.h,),
+        SizedBox(height: 12.h),
         btnDrawNow(),
       ],
     );
   }
 
   Widget btnDrawNow() {
-    return Center(
-      child: GestureDetector(
-        onTap: onWinbig,
-        child: Container(
-          width: 260.h,
-          height: 56.h,
-          color: Colors.black.withValues(alpha: 0.0),
-          child: Stack(
-            clipBehavior: Clip.none,
-            children: [
-              ShiningEffect(
-                duration: Duration(milliseconds: 2000),
-                shineColor: Color(0xffffffff),
-                opacity: 0.6,
-                angle: -0.1,
-                topLeft: false,
-                child: Image.asset(
-                  Assets.twimg.btnSpin.path,
-                  width: double.infinity,
-                  height: double.infinity,
-                  fit: BoxFit.fill,
+    return Obx(() {
+      int count = MainSpinController.to.curTwSpinNum.value;
+      if (count <= 0) {
+        count = 0;
+      }
+      return Center(
+        child: GestureDetector(
+          onTap: onWinbig,
+          child: Container(
+            width: 260.h,
+            height: 56.h,
+            color: Colors.black.withValues(alpha: 0.0),
+            child: Stack(
+              clipBehavior: Clip.none,
+              children: [
+                ShiningEffect(
+                  duration: Duration(milliseconds: 2000),
+                  shineColor: Color(0xffffffff),
+                  opacity: 0.6,
+                  angle: -0.1,
+                  topLeft: false,
+                  child: Image.asset(
+                    Assets.twimg.btnSpin.path,
+                    width: double.infinity,
+                    height: double.infinity,
+                    fit: BoxFit.fill,
+                  ),
                 ),
-              ),
-              Positioned(
-                bottom: -30.h,
-                right: -30.h,
-                child: IgnorePointer(
-                  child: TwAScale(
-                    child: Image.asset(
-                      Assets.twimg.gesture.path,
-                      width: 70.w,
-                      height: 70.w,
+                Positioned(
+                  bottom: -30.h,
+                  right: -30.h,
+                  child: IgnorePointer(
+                    child: TwAScale(
+                      child: Image.asset(
+                        Assets.twimg.gesture.path,
+                        width: 70.w,
+                        height: 70.w,
+                      ),
                     ),
                   ),
                 ),
-              ),
-              Center(
-                child: TwTxtBorder(
-                  text: "Draw Now",
-                  fontSize: 24.sp,
-                  fontWeight: FontWeight.w900,
-                  fontColor: Color(0xffffffff),
-                  foreground: Color(0xff22431B),
+                Center(
+                  child: TwTxtBorder(
+                    text: "Draw Now",
+                    fontSize: 24.sp,
+                    fontWeight: FontWeight.w900,
+                    fontColor: Color(0xffffffff),
+                    foreground: Color(0xff22431B),
+                  ),
                 ),
-              ),
-              Positioned(
-                top: -10.h,
-                left: -5.h,
-                child: Image.asset(
-                  Assets.twimg.ad.path,
-                  width: 28.h,
-                  height: 28.h,
+                Positioned(
+                  top: -10.h,
+                  left: -5.h,
+                  child: Image.asset(
+                    Assets.twimg.ad.path,
+                    width: 28.h,
+                    height: 28.h,
+                  ),
                 ),
-              ),
 
-              Positioned(
-                top: -0.h,
-                right: -5.h,
-                child: Container(
-                  padding: EdgeInsets.symmetric(vertical: 0.h, horizontal: 4.h),
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      colors: [Color(0xffFF5151), Color(0xffCC0909)],
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
+                Positioned(
+                  top: -0.h,
+                  right: -5.h,
+                  child: Container(
+                    padding: EdgeInsets.symmetric(
+                      vertical: 0.h,
+                      horizontal: 4.h,
                     ),
-                    borderRadius: BorderRadius.circular(100),
-                  ),
-                  child: Text(
-                    "3 Change Left",
-                    style: TextStyle(
-                      fontSize: 10.sp,
-                      fontWeight: FontWeight.w700,
-                      color: Color(0xffFFD059),
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        colors: [Color(0xffFF5151), Color(0xffCC0909)],
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                      ),
+                      borderRadius: BorderRadius.circular(100),
+                    ),
+                    child: Text(
+                      "$count Change Left",
+                      style: TextStyle(
+                        fontSize: 10.sp,
+                        fontWeight: FontWeight.w700,
+                        color: Color(0xffFFD059),
+                      ),
                     ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
-      ),
-    );
+      );
+    });
   }
 
   Widget centerBtnWinbig() {
@@ -406,7 +420,10 @@ class _PositionItemsState extends State<PositionItems>
                   height: _imgItemWidth + 10.h,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(_imgItemWidth),
-                    border: Border.all(color: Colors.red.withValues(alpha: 0.5), width: 2.w),
+                    border: Border.all(
+                      color: Colors.red.withValues(alpha: 0.5),
+                      width: 2.w,
+                    ),
                   ),
                   child: Stack(
                     children: [Image.asset(Assets.twimg.wheelScroll.path)],
@@ -492,7 +509,24 @@ class _PositionItemsState extends State<PositionItems>
     return Positioned(left: left, top: top, child: _indexItem(index: 7));
   }
 
+  bool canClick = true;
+
   void onWinbig() {
+    twLooog("=======onWinbig canClick:$canClick");
+    if (!canClick) {
+      return;
+    }
+
+
+    int curSpinNum = MainSpinController.to.curTwSpinNum.value;
+    if(curSpinNum <= 0){
+      twToast(text: "You can earn spins by answering questions.");
+      MainController.to.resetIndex(MainController.quizIndex);
+      return;
+    }
+    canClick = false;
+    MainSpinController.to.subSpinNum();
+
     if (_selectIndex <= 0) {
       _startIndex = 0;
     }

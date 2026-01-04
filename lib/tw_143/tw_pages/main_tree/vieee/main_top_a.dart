@@ -76,16 +76,25 @@ class _MainTopAState extends State<MainTopA> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(
-                                "My Earnings:  ",
+                                "My Earnings: ",
                                 style: TextStyle(
                                   fontSize: 14.sp,
                                   color: Color(0xffA4FFBC),
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
-
+                              Image.asset(Assets.twimg.coin.path,width: 20.w,height: 20.w,),
+                              Text(
+                                "  ",
+                                style: TextStyle(
+                                  fontSize: 14.sp,
+                                  color: Color(0xffA4FFBC),
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
                               Obx(() {
                                 double value =
                                     MainTreeController.to.curMoneyyyy.value;

@@ -65,7 +65,7 @@ class _MainSpinState extends State<MainSpin> {
                         color: Colors.red.withValues(alpha: 0.0),
                         child: Center(
                           child: Text(
-                            "earn money by completing tasks",
+                            "Earn coins by completing tasks",
                             style: TextStyle(
                               fontWeight: FontWeight.w700,
                               color: Colors.black,
