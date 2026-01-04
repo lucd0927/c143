@@ -1,11 +1,15 @@
+import 'dart:async';
+import 'dart:math';
+
 import 'package:c143/tw_base/tw_gj/loggggg.dart';
+import 'package:c143/tw_base/tw_gj/number_extend.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../models/particle_config.dart';
 import '../models/particle_data.dart';
 import '../models/particle_type.dart';
 import '../painters/particle_painter.dart';
-
 
 /// The main widget that wraps any child widget with particle effects.
 ///
@@ -53,7 +57,9 @@ class ParticleEffects extends StatefulWidget {
   /// Preloads particle images to ensure smooth animation
   /// Call this method early in your app to preload images
   static Future<void> preloadImages(List<String> imagePaths) async {
-    final futures = imagePaths.map((path) => ParticlePainter.preloadImage(path));
+    final futures = imagePaths.map(
+      (path) => ParticlePainter.preloadImage(path),
+    );
     await Future.wait(futures);
   }
 
@@ -64,8 +70,13 @@ class ParticleEffects extends StatefulWidget {
 
   /// Preloads custom widgets for particle effects
   /// Call this method early in your app to preload custom widgets
-  static Future<void> preloadCustomWidgets(List<Widget> widgets, double size) async {
-    final futures = widgets.map((widget) => ParticlePainter.preloadCustomWidget(widget, size));
+  static Future<void> preloadCustomWidgets(
+    List<Widget> widgets,
+    double size,
+  ) async {
+    final futures = widgets.map(
+      (widget) => ParticlePainter.preloadCustomWidget(widget, size),
+    );
     await Future.wait(futures);
   }
 
@@ -94,7 +105,7 @@ class _ParticleEffectsState extends State<ParticleEffects>
     super.initState();
     _startTime = DateTime.now();
     _setupAnimation();
-    WidgetsBinding.instance.addPostFrameCallback((_){
+    WidgetsBinding.instance.addPostFrameCallback((_) {
       _initializeParticles();
     });
   }
@@ -116,12 +127,11 @@ class _ParticleEffectsState extends State<ParticleEffects>
     }
 
     if (needsLoading) {
-      if(mounted){
+      if (mounted) {
         setState(() {
           _isImageLoading = true;
         });
       }
-
 
       try {
         if (widget.config.particleType == ParticleType.image &&
@@ -133,7 +143,10 @@ class _ParticleEffectsState extends State<ParticleEffects>
             widget.config.customParticle != null) {
           // Preload widget with average particle size
           final avgSize = (widget.config.minSize + widget.config.maxSize) / 2;
-          await ParticlePainter.preloadCustomWidget(widget.config.customParticle!, avgSize);
+          await ParticlePainter.preloadCustomWidget(
+            widget.config.customParticle!,
+            avgSize,
+          );
         }
       } catch (e) {
         debugPrint('Error preloading particle resources: $e');
@@ -147,12 +160,11 @@ class _ParticleEffectsState extends State<ParticleEffects>
     }
 
     _generateParticles();
-    if(mounted){
+    if (mounted) {
       setState(() {
         _isInitialized = true;
       });
     }
-
   }
 
   /// Sets up the animation controller and animation curve.
@@ -163,15 +175,63 @@ class _ParticleEffectsState extends State<ParticleEffects>
     );
 
     _animation = Tween<double>(begin: 0.0, end: 1.0).animate(
-      CurvedAnimation(
-        parent: _animationController,
-        curve: Curves.linear,
-      ),
+      CurvedAnimation(parent: _animationController, curve: Curves.linear),
     );
 
     if (widget.isEnabled) {
       _animationController.repeat();
     }
+  }
+
+  Offset? clickLocation;
+  double clickCoins = 0;
+  Timer? _clickTimer ;
+  generateClickCoins(){
+    double random = 10+10*Random().nextDouble();
+    clickCoins =  random.toAsFixedFloor(2);
+  }
+  showClickWidget() {
+    if (clickLocation == null) {
+      return const SizedBox();
+    }
+    double width = 100.w;
+    double height = 50.h;
+    double startY = clickLocation!.dy-widget.config.maxSize;
+    double screenHeight = ScreenUtil().screenHeight;
+    double maxY =screenHeight - widget.config.maxSize-20.h;
+    double leftY = screenHeight - startY;
+    double value = _animation.value;
+   return AnimatedBuilder(
+      animation: _animation,
+      builder: (context, child) {
+        double value2 = _animation.value;
+        double top =startY + (value2 -value)*leftY;
+        if(top >= maxY){
+          top =maxY;
+        }
+        return Positioned(
+          left: clickLocation!.dx -width/2,
+          top: top,
+          child: Container(
+            width: width,
+            height: height,
+            color: Colors.white,
+            child: Center(
+              child: Text(
+                "$clickCoins",
+                style: TextStyle(
+                  fontWeight: FontWeight.w800,
+                  fontSize: 20.sp,
+                  color: Color(0xffFFAA00),
+                ),
+              ),
+            ),
+          ),
+        );
+      },
+    );
+
+
   }
 
   /// Generates all particles based on the current configuration.
@@ -180,6 +240,12 @@ class _ParticleEffectsState extends State<ParticleEffects>
     for (int i = 0; i < widget.config.particleCount; i++) {
       _particles.add(ParticleData.generate(i, widget.config));
     }
+  }
+
+  void _addRandomParticles() {
+    int i = widget.config.particleCount;
+    _particles.add(ParticleData.generate(i, widget.config));
+    ;
   }
 
   @override
@@ -192,13 +258,15 @@ class _ParticleEffectsState extends State<ParticleEffects>
 
     if (oldWidget.config.particleType != widget.config.particleType ||
         oldWidget.config.imagePath != widget.config.imagePath) {
-      needsImageReload = widget.config.particleType == ParticleType.image &&
+      needsImageReload =
+          widget.config.particleType == ParticleType.image &&
           widget.config.imagePath != null;
     }
 
     if (oldWidget.config.particleType != widget.config.particleType ||
         oldWidget.config.customParticle != widget.config.customParticle) {
-      needsWidgetReload = widget.config.particleType == ParticleType.custom &&
+      needsWidgetReload =
+          widget.config.particleType == ParticleType.custom &&
           widget.config.customParticle != null;
     }
 
@@ -211,7 +279,8 @@ class _ParticleEffectsState extends State<ParticleEffects>
       }
 
       // Update animation duration if it changed
-      if (oldWidget.config.animationDuration != widget.config.animationDuration) {
+      if (oldWidget.config.animationDuration !=
+          widget.config.animationDuration) {
         _animationController.duration = widget.config.animationDuration;
       }
     }
@@ -229,6 +298,7 @@ class _ParticleEffectsState extends State<ParticleEffects>
   @override
   void dispose() {
     _animationController.dispose();
+    _clickTimer?.cancel();
     super.dispose();
   }
 
@@ -244,28 +314,27 @@ class _ParticleEffectsState extends State<ParticleEffects>
         // Show loading indicator if images/widgets are loading
         if (_isImageLoading)
           Positioned.fill(
-            child: widget.loadingWidget ??
+            child:
+                widget.loadingWidget ??
                 Container(
                   color: Colors.transparent,
                   child: const Center(
                     child: SizedBox(
                       width: 24,
                       height: 24,
-                      child: CircularProgressIndicator(
-                        strokeWidth: 2,
-                      ),
+                      child: CircularProgressIndicator(strokeWidth: 2),
                     ),
                   ),
                 ),
           ),
-
+        showClickWidget(),
         // Particle overlay
         if (widget.isEnabled && _isInitialized && !_isImageLoading)
           Positioned.fill(
             child: AnimatedBuilder(
               animation: _animation,
               builder: (context, child) {
-              _curParticlePainter =   ParticlePainter(
+                _curParticlePainter = ParticlePainter(
                   particles: _particles,
                   animation: _animation,
                   config: widget.config,
@@ -275,19 +344,7 @@ class _ParticleEffectsState extends State<ParticleEffects>
 
                 return GestureDetector(
                   behavior: HitTestBehavior.translucent,
-                  onTapDown: (details) {
-                    final painter = _curParticlePainter;
-                    twLooog("=======particle:$painter=");
-                    if (painter == null) return;
-
-                    final particle = painter.hitTest2(details.localPosition);
-                    twLooog("=======particle2:=$particle");
-                    if (particle != null) {
-                      twLooog("=======particle3:$particle=");
-
-
-                    }
-                  },
+                  onTapDown: onTapDown,
                   child: CustomPaint(
                     painter: _curParticlePainter,
                     size: Size.infinite,
@@ -299,6 +356,43 @@ class _ParticleEffectsState extends State<ParticleEffects>
       ],
     );
   }
+
+  void onTapDown(details) {
+      final painter = _curParticlePainter;
+      twLooog("=======particle:$painter=");
+      if (painter == null) return;
+
+      final particle = painter.hitTest2(details.localPosition);
+      twLooog("=======particle2:=$particle");
+      if (particle != null) {
+        twLooog(
+          "=======particle3:$particle= ${details.localPosition}",
+        );
+        _clickTimer?.cancel();
+
+        setState(() {
+          _particles.remove(particle);
+          _addRandomParticles();
+          clickLocation = details.localPosition;
+          generateClickCoins();
+          showClickWidget();
+        });
+
+        _clickTimer = Timer(Duration(milliseconds: 3000), (){
+          if(mounted){
+            setState(() {
+              clickLocation = null;
+              clickCoins = 0;
+              _clickTimer?.cancel();
+            });
+          }
+        });
+
+      }
+    }
+
+
+
 }
 
 /// Predefined particle effect types for SimpleParticleEffects.

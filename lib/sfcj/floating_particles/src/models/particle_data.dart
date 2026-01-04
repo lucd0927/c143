@@ -52,7 +52,7 @@ class ParticleData {
   /// Uses a seeded random generator to ensure consistent results across rebuilds
   /// while still providing natural-looking variation between particles.
   static ParticleData generate(int index, ParticleConfig config) {
-    final random = Random(index);
+    final random = Random();
 
     return ParticleData(
       initialX: random.nextDouble(),
