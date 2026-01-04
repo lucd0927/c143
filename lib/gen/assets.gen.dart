@@ -117,8 +117,16 @@ class $AssetsTwimgGen {
   AssetGenImage get animatedBg23 =>
       const AssetGenImage('assets/twimg/animated_bg2_3.png');
 
+  /// File path: assets/twimg/bghightlight.png
+  AssetGenImage get bghightlight =>
+      const AssetGenImage('assets/twimg/bghightlight.png');
+
   /// File path: assets/twimg/btn_quiz.png
   AssetGenImage get btnQuiz => const AssetGenImage('assets/twimg/btn_quiz.png');
+
+  /// File path: assets/twimg/btn_quiz_select_error.png
+  AssetGenImage get btnQuizSelectError =>
+      const AssetGenImage('assets/twimg/btn_quiz_select_error.png');
 
   /// File path: assets/twimg/btn_quiz_select_ok.png
   AssetGenImage get btnQuizSelectOk =>
@@ -137,6 +145,9 @@ class $AssetsTwimgGen {
   /// File path: assets/twimg/coin_guide6.png
   AssetGenImage get coinGuide6 =>
       const AssetGenImage('assets/twimg/coin_guide6.png');
+
+  /// File path: assets/twimg/error.png
+  AssetGenImage get error => const AssetGenImage('assets/twimg/error.png');
 
   /// File path: assets/twimg/gesture.png
   AssetGenImage get gesture => const AssetGenImage('assets/twimg/gesture.png');
@@ -381,6 +392,10 @@ class $AssetsTwimgGen {
   AssetGenImage get quizDatiBg2 =>
       const AssetGenImage('assets/twimg/quiz_dati_bg2.png');
 
+  /// File path: assets/twimg/quiz_gift_get.png
+  AssetGenImage get quizGiftGet =>
+      const AssetGenImage('assets/twimg/quiz_gift_get.png');
+
   /// File path: assets/twimg/quiz_spin.png
   AssetGenImage get quizSpin =>
       const AssetGenImage('assets/twimg/quiz_spin.png');
@@ -444,12 +459,15 @@ class $AssetsTwimgGen {
     animatedBg21,
     animatedBg22,
     animatedBg23,
+    bghightlight,
     btnQuiz,
+    btnQuizSelectError,
     btnQuizSelectOk,
     btnSpin,
     btnSpinWinbig,
     coin,
     coinGuide6,
+    error,
     gesture,
     guide10Coinbg,
     guide14Txt,
@@ -513,6 +531,7 @@ class $AssetsTwimgGen {
     quizCoinYuUn,
     quizDatiBg,
     quizDatiBg2,
+    quizGiftGet,
     quizSpin,
     quizSpinUn,
     spinAd,

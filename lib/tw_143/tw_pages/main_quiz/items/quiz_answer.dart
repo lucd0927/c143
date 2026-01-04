@@ -98,15 +98,15 @@ class _QuizAnswerState extends State<QuizAnswer> {
     bool showC = MainQuizController.to.guideStatus.value == MainQuizController.guideStatus2;
     bool selectRight = rightAnswer == answer;
     String answerIcon = selectRight
-        ? Assets.twimg.quizSpin.path
-        : Assets.twimg.quizSpinUn.path;
+        ? Assets.twimg.ok.path
+        : Assets.twimg.error.path;
 
     bool showG = MainQuizController.to.curShowGesture.value;
     String icon = Assets.twimg.btnQuiz.path;
     if (showIcon) {
       icon = selectRight
-          ? Assets.twimg.btnQuiz.path
-          : Assets.twimg.btnQuiz.path;
+          ? Assets.twimg.btnQuizSelectOk.path
+          : Assets.twimg.btnQuizSelectError.path;
     }
     twLooog("====showG:$showG selectRight:$selectRight answer:$answer rightAnswer:$rightAnswer showIcon:$showIcon");
 

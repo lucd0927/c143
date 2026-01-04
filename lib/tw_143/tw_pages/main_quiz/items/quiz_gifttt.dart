@@ -439,19 +439,42 @@ class _TwQuizGiftWidgetState extends State<TwQuizGiftWidget>
         : Assets.twimg.quizSpinUn.path;
     // 能否打开
     bool canOpen = curAnswerRightCount >= count;
-    if (canOpen ) {
+    if (canOpen) {
       icon = heziLeixing
           ? Assets.twimg.quizCoinYu.path
           : Assets.twimg.quizSpin.path;
     }
 
-    Widget gift = Image.asset(
-      icon,
-      width: 37.h,
-      height: 37.h,
-      gaplessPlayback: true,
-      opacity: AlwaysStoppedAnimation(canOpen && hasOpened ? 0.2 : 1),
-    );
+    Widget gift = canOpen && hasOpened
+        ? Container(
+            width: 37.h,
+            height: 37.h,
+            child: Stack(
+              children: [
+                Image.asset(
+                  icon,
+                  width: 37.h,
+                  height: 37.h,
+                  gaplessPlayback: true,
+                  opacity: AlwaysStoppedAnimation(1),
+                ),
+                Image.asset(
+                  Assets.twimg.quizGiftGet.path,
+                  width: 37.h,
+                  height: 37.h,
+                  gaplessPlayback: true,
+                  opacity: AlwaysStoppedAnimation(1),
+                ),
+              ],
+            ),
+          )
+        : Image.asset(
+            icon,
+            width: 37.h,
+            height: 37.h,
+            gaplessPlayback: true,
+            opacity: AlwaysStoppedAnimation(1),
+          );
     Widget tmpImage = Stack(
       clipBehavior: Clip.none,
       children: [
@@ -460,16 +483,18 @@ class _TwQuizGiftWidgetState extends State<TwQuizGiftWidget>
             right: -10.w,
             top: -10.h,
             child: TwRotateWidggggg(
-              // child: Image.asset(
-              //   Assets.bbb.quizXuanguang.path,
-              //   width: 60.w,
-              //   height: 60.h,
-              // ),
-              child: Container(
-                width: 60.h,
+              duration: Duration(milliseconds: 30000),
+              child: Image.asset(
+                Assets.twimg.bghightlight.path,
+                width: 60.w,
                 height: 60.h,
-                color: Colors.blue.withValues(alpha: 0.0),
               ),
+
+              // child: Container(
+              //   width: 60.h,
+              //   height: 60.h,
+              //   color: Colors.blue.withValues(alpha: 0.5),
+              // ),
             ),
           ),
         gift,
@@ -482,64 +507,7 @@ class _TwQuizGiftWidgetState extends State<TwQuizGiftWidget>
         ),
       ],
     );
-    // if (count == 2 || count == 8) {
-    //   tmpImage = Builder(
-    //     builder: (context) {
-    //       Widget child = Stack(
-    //         clipBehavior: Clip.none,
-    //         children: [
-    //           if (canOpen && !hasOpened)
-    //             Positioned(
-    //               right: -10.w,
-    //               top: -10.h,
-    //               // child: TwRotateWidggggg(
-    //               //   child: Image.asset(
-    //               //     Assets.bbb.quizXuanguang.path,
-    //               //     width: 60.w,
-    //               //     height: 60.h,
-    //               //   ),
-    //               // ),
-    //               child: Container(
-    //                 width: 60.h,
-    //                 height: 60.h,
-    //                 color: Colors.blue,
-    //               ),
-    //             ),
-    //           gift,
-    //         ],
-    //       );
-    //       Widget child2 = Stack(
-    //         clipBehavior: Clip.none,
-    //         children: [
-    //           child,
-    //           Positioned(
-    //             bottom: -14.h,
-    //             right: 0,
-    //             left: 0,
-    //             child: Center(child: answerCountItem),
-    //           ),
-    //         ],
-    //       );
-    //       // if (count == 2) {
-    //       //   GuideRight2.guideChild = child;
-    //       //   GuideRight2.guideContext = context;
-    //       // } else if (count == 8) {
-    //       //   GuideRight8.guideChild = child;
-    //       //   GuideRight8.guideContext = context;
-    //       // }
-    //
-    //       // if(!DtController.to.hasGuideRight2()){
-    //       //   GuideRight2.guideChild = child;
-    //       //   GuideRight2.guideContext = context;
-    //       // }else{
-    //       //   GuideRight8.guideChild = child;
-    //       //   GuideRight8.guideContext = context;
-    //       // }
-    //
-    //       return child2;
-    //     },
-    //   );
-    // }
+
     Widget gesture = IgnorePointer(
       // child: TwAScale(
       //   child: Image.asset(
