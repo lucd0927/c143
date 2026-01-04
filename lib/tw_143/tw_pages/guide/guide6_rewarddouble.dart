@@ -6,6 +6,7 @@ import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
 import 'package:c143/tw_base/tw_gj/loggggg.dart';
 import 'package:c143/tw_views/animated_scale.dart';
 import 'package:c143/tw_views/font_border.dart';
+import 'package:c143/tw_views/rotate.dart';
 import 'package:c143/tw_views/shimmer_effect.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -30,6 +31,7 @@ class OverlayGuide6RewardDouble {
               coins: coins,
               onClose: () async {
                 twLooog("=====OverlayGuideTestAnim=close");
+                // return;
                 close();
                 MainTreeController.to.saveGuideIndexData(
                   MainTreeController.guide6,
@@ -163,10 +165,25 @@ class _Guide6RewardDoubleState extends State<Guide6RewardDouble> {
                           right: -20.w,
                           top: -20.h,
                           bottom: -20.h,
+                          child: TwRotateWidggggg(
+                            duration: Duration(milliseconds: 3000),
+                            child: Image.asset(
+                              Assets.twimg.bghightlight.path,
+                              width: double.infinity,
+                              height: double.infinity,
+                              fit: BoxFit.fill,
+                            ),
 
-                          child: TwLottieCommon(
-                            type: EnumTwLottttieJson.bghightligth,
+                            // child: Container(
+                            //   width: 60.h,
+                            //   height: 60.h,
+                            //   color: Colors.blue.withValues(alpha: 0.5),
+                            // ),
                           ),
+                          //
+                          // child: TwLottieCommon(
+                          //   type: EnumTwLottttieJson.bghightligth,
+                          // ),
                         ),
                         Image.asset(
                           Assets.twimg.coinGuide6.path,

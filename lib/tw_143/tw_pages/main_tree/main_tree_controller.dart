@@ -310,23 +310,34 @@ class MainTreeController extends GetxController {
     return curMax;
   }
 
-  onAddShiFeiCount() {
-    bool canClick = true;
-    if (curFertilizeLeftTime.value.isEmpty && canClick) {
-      canClick = false;
-      int tmpCurMmm = curStageShifeiCount.value;
+  onAddShiFeiCount({required VoidCallback onEnd}) {
+    if (canClickWater) {
+      canClickWater = false;
 
-      int tmpCurmmm2 = tmpCurMmm + 1;
-      box.put(twKeyShifeiCount, tmpCurmmm2);
-      curStageShifeiCount.value = tmpCurmmm2;
+      OverlayLotWater().show(
+        onEnd: () {
+          curHasWatering.value = true;
+          Timer(Duration(milliseconds: 2000), () {
+            if (curFertilizeLeftTime.value.isEmpty) {
+              int tmpCurMmm = curStageShifeiCount.value;
 
-      int tmpL = _jisuanLevel();
-      curLevel.value = tmpL;
+              int tmpCurmmm2 = tmpCurMmm + 1;
+              box.put(twKeyShifeiCount, tmpCurmmm2);
+              curStageShifeiCount.value = tmpCurmmm2;
 
-      _fertilizeLeftTime.resetLeftTime();
-      canClick = true;
-    } else {
-      twToast(text: "You can claim it after the countdown ends");
+              int tmpL = _jisuanLevel();
+              curLevel.value = tmpL;
+
+              _fertilizeLeftTime.resetLeftTime();
+            } else {
+              twToast(text: "You can claim it after the countdown ends");
+            }
+
+            _resetTreeGrownStatus();
+            onEnd();
+          });
+        },
+      );
     }
   }
 
@@ -357,13 +368,17 @@ class MainTreeController extends GetxController {
             curStageWaterCount.value = tmpCurmmm2;
             int tmpL = _jisuanLevel();
             curLevel.value = tmpL;
-            curHasWatering.value = false;
-            canClickWater = false;
+            _resetTreeGrownStatus();
             onEnd();
           });
         },
       );
     }
+  }
+
+  _resetTreeGrownStatus(){
+    curHasWatering.value = false;
+    canClickWater = true;
   }
 
   onAddMoneyyyy(double monnn, {VoidCallback? onEnd}) {
@@ -400,9 +415,9 @@ class MainTreeController extends GetxController {
   }
 
   static initComposition() {
-    AssetLottie(Assets.lottiejson.bghightligth).load().then((value) {
-      _kLottie_vCompo[EnumTwLottttieJson.bghightligth] = value;
-    });
+    // AssetLottie(Assets.lottiejson.bghightligth).load().then((value) {
+    //   _kLottie_vCompo[EnumTwLottttieJson.bghightligth] = value;
+    // });
     AssetLottie(Assets.lottiejson.water).load().then((value) {
       _kLottie_vCompo[EnumTwLottttieJson.water] = value;
     });

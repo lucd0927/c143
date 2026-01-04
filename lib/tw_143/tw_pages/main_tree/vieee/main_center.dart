@@ -5,6 +5,7 @@ import 'package:c143/tw_143/tw_pages/guide/guide13_spin.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide1_water.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide2_coin.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide4_fertilize.dart';
+import 'package:c143/tw_143/tw_pages/main/main_controller.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
 import 'package:c143/tw_base/tw_gj/loggggg.dart';
 import 'package:c143/tw_views/animated_count.dart';
@@ -46,14 +47,14 @@ class _MainCenterState extends State<MainCenter> {
                   height: 280.h,
                   child: Stack(
                     children: [
-                      TwLottieCommon(type: type,animate: result,),
+                      TwLottieCommon(type: type, animate: result),
+
                       // Image.asset(
                       //           icon,
                       //           width: 280.h,
                       //           height: 280.h,
                       //           gaplessPlayback: true,
                       //         ),
-
                       Positioned(
                         child: levelWidget(),
                         left: 0,
@@ -210,25 +211,31 @@ class _MainCenterState extends State<MainCenter> {
   }
 
   void onAddShiFeiCount() {
-    MainTreeController.to.onAddShiFeiCount();
+    MainTreeController.to.onAddShiFeiCount(onEnd: (){});
   }
 
   sunWidget() {
-    double count = 100;
-
-    return Row(
-      children: [
-        SizedBox(width: 100.w),
-        centerItem(
-          width: 50.h,
-          count: count.toStringAsFixed(0),
-          icon: Assets.twimg.mainSun.path,
-          onClick: () {
-            MainTreeController.to.onAddMoneyyyy(count);
-          },
-        ),
-      ],
-    );
+    return Obx(() {
+      double count = 10;
+      double monnn = MainTreeController.to.curMoneyyyy.value;
+      double stage2 = MainTreeController.stage2Num;
+      bool showSun = stage2 <= monnn;
+      return Row(
+        children: [
+          SizedBox(width: 100.w),
+          centerItem(
+            width: 50.h,
+            count: count.toStringAsFixed(0),
+            icon: showSun
+                ? Assets.twimg.mainSun.path
+                : Assets.twimg.mainCoin.path,
+            onClick: () {
+              MainTreeController.to.onAddMoneyyyy(count);
+            },
+          ),
+        ],
+      );
+    });
   }
 
   centerItem({
@@ -306,7 +313,9 @@ class _MainCenterState extends State<MainCenter> {
               width: 50.h,
               showTxt: false,
               icon: Assets.twimg.mainSpin.path,
-              onClick: () {},
+              onClick: () {
+                MainController.to.resetIndex(MainController.wheelIndex);
+              },
               count: '',
             );
 
@@ -364,31 +373,40 @@ class _MainCenterState extends State<MainCenter> {
   }
 
   void onWater() {
-    MainTreeController.to.onAddWaterCount(onEnd: (){});
+    MainTreeController.to.onAddWaterCount(onEnd: () {});
   }
 
   coinWidget() {
-    int count = 10;
-    return Row(
-      children: [
-        SizedBox(width: 90.w),
-        Builder(
-          builder: (context) {
-            Widget child = centerItem(
-              width: 40.h,
-              count: count.toStringAsFixed(0),
-              icon: Assets.twimg.mainCoin.path,
-              showTxt: false,
-              onClick: () {},
-            );
-            OverlayGuide2Coin.guideChild = child;
-            OverlayGuide2Coin.guideContext = context;
+    return Obx(() {
+      double count = 10;
+      double monnn = MainTreeController.to.curMoneyyyy.value;
+      double stage2 = MainTreeController.stage2Num;
+      bool showSun = stage2 <= monnn;
+      return Row(
+        children: [
+          SizedBox(width: 90.w),
+          Builder(
+            builder: (context) {
+              Widget child = centerItem(
+                width: 40.h,
+                count: count.toStringAsFixed(0),
+                icon: showSun
+                    ? Assets.twimg.mainSun.path
+                    : Assets.twimg.mainCoin.path,
+                showTxt: true,
+                onClick: () {
+                  onWater();
+                },
+              );
+              OverlayGuide2Coin.guideChild = child;
+              OverlayGuide2Coin.guideContext = context;
 
-            return child;
-          },
-        ),
-      ],
-    );
+              return child;
+            },
+          ),
+        ],
+      );
+    });
   }
 
   coinYuWidget() {

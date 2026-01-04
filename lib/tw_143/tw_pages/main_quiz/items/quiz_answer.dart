@@ -97,6 +97,7 @@ class _QuizAnswerState extends State<QuizAnswer> {
     bool showIcon = answer == clickAnswer;
     bool showC = MainQuizController.to.guideStatus.value == MainQuizController.guideStatus2;
     bool selectRight = rightAnswer == answer;
+
     String answerIcon = selectRight
         ? Assets.twimg.ok.path
         : Assets.twimg.error.path;
@@ -116,6 +117,11 @@ class _QuizAnswerState extends State<QuizAnswer> {
     }
     if(showC){
       opacity = 1;
+      if(clickAnswer.isNotEmpty){
+        answerIcon = Assets.twimg.ok.path;
+        icon = Assets.twimg.btnQuizSelectOk.path;
+      }
+
     }
     return GestureDetector(
       onTap: () {

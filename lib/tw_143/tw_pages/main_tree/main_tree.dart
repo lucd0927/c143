@@ -44,7 +44,7 @@ class _MainTreeState extends State<MainTree> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       String? data = MainTreeController.to.guideIndexData();
       twLooog("======data:$data");
-      // data = null;
+      data = null;
       if (data == null) {
         OverlayGuide1Water().show();
       } else if (data == MainTreeController.guide1) {
