@@ -40,41 +40,39 @@ class _MainTreeState extends State<MainTree> {
   void initState() {
     // TODO: implement initState
     super.initState();
-
+    MainTreeController.initComposition();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       String? data = MainTreeController.to.guideIndexData();
       twLooog("======data:$data");
       if (data == null) {
         OverlayGuide1Water().show();
-      }else if(data == MainTreeController.guide1){
+      } else if (data == MainTreeController.guide1) {
         OverlayGuide2Coin().show();
-      }else if(data == MainTreeController.guide2){
+      } else if (data == MainTreeController.guide2) {
         OverlayGuide3AdSpot().show();
-      }else if(data == MainTreeController.guide3){
+      } else if (data == MainTreeController.guide3) {
         OverlayGuide4Fertilize().show();
-      }else if(data == MainTreeController.guide4){
+      } else if (data == MainTreeController.guide4) {
         OverlayGuide5AdSpot().show();
-      }else if(data == MainTreeController.guide5){
+      } else if (data == MainTreeController.guide5) {
         OverlayGuide6RewardDouble().show();
-      }else if(data == MainTreeController.guide6){
+      } else if (data == MainTreeController.guide6) {
         OverlayGuide7Rank().show();
-      }else if(data == MainTreeController.guide7){
+      } else if (data == MainTreeController.guide7) {
         MainController.to.resetIndex(MainController.quizIndex);
         // OverlayGuide8Quiz1().show(coins: 10, onBtn: (value) {  });
-      }else if(data == MainTreeController.guide8){
+      } else if (data == MainTreeController.guide8) {
         MainController.to.resetIndex(MainController.quizIndex);
-        OverlayGuide9Quiz2().show(coins: 10, onBtn: (value) {
-
-        });
-      }else if(data == MainTreeController.guide9){
+        OverlayGuide9Quiz2().show(coins: 10, onBtn: (value) {});
+      } else if (data == MainTreeController.guide9) {
         MainController.to.resetIndex(MainController.quizIndex);
-        OverlayGuide10Quiz3().show(coins: 10, onBtn: (value) {  });
-      }else if(data == MainTreeController.guide10){
+        OverlayGuide10Quiz3().show(coins: 10, onBtn: (value) {});
+      } else if (data == MainTreeController.guide10) {
         // MainController.to.resetIndex(MainController.quizIndex);
         OverlayGuide11HomeBonus().show();
-      }else if(data == MainTreeController.guide11){
-        OverlayGuide12HomeReward().show(coins: 10, onBtn: (value) {  });
-      }else if(data == MainTreeController.guide12){
+      } else if (data == MainTreeController.guide11) {
+        OverlayGuide12HomeReward().show(coins: 10, onBtn: (value) {});
+      } else if (data == MainTreeController.guide12) {
         OverlayGuide13Spin().show();
       }
     });

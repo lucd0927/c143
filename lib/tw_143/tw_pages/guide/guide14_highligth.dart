@@ -4,6 +4,7 @@ import 'package:c143/tw_143/tw_common/view/progress.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide1_water.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide4_fertilize.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide6_rewarddouble.dart';
+import 'package:c143/tw_143/tw_pages/main/main_controller.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
 import 'package:c143/tw_base/tw_gj/loggggg.dart';
 import 'package:c143/tw_views/animated_count.dart';
@@ -33,6 +34,7 @@ class OverlayGuide14HighLight {
             onClose: () async {
               close();
               MainTreeController.to.saveGuideIndexData(MainTreeController.guide14);
+              MainController.to.resetIndex(MainController.treeIndex);
             },
           ),
         );
@@ -103,7 +105,7 @@ class _Guide14HighLightState extends State<Guide14HighLight> {
                   ),
                   SizedBox(height: 60.h),
                   Center(
-                    child: TwAnimatedProgress(width: 312.w, height: 16.h),
+                    child: TwAnimatedProgress(width: 312.w, height: 16.h,maxProgress: 0.2,),
                   ),
                   SizedBox(height: 120.h),
                   Text(

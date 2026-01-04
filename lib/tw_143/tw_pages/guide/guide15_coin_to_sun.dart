@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:c143/gen/assets.gen.dart';
 import 'package:c143/tw_143/tw_common/view/progress.dart';
+import 'package:c143/tw_143/tw_pages/guide/guide16_highligthend.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide1_water.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide4_fertilize.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide6_rewarddouble.dart';
@@ -35,6 +36,7 @@ class OverlayGuide15CoinToSun {
             onClose: () async {
               close();
               MainTreeController.to.saveGuideIndexData(MainTreeController.guide15);
+              OverlayGuide16HighLightEnd().show();
             },
           ),
         );

@@ -2,6 +2,9 @@ import 'dart:async';
 import 'dart:math';
 
 import 'package:c143/gen/assets.gen.dart';
+import 'package:c143/tw_143/tw_common/overlay/overlay_lot_water.dart';
+import 'package:c143/tw_143/tw_pages/guide/guide14_highligth.dart';
+import 'package:c143/tw_143/tw_pages/guide/guide15_coin_to_sun.dart';
 import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
 import 'package:c143/tw_base/tw_gj/loggggg.dart';
 import 'package:c143/tw_base/tw_gj/time_left.dart';
@@ -11,6 +14,7 @@ import 'package:c143/tw_views/pb_tushi.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:lottie/lottie.dart';
 
 enum TwEnumTreeType {
   fertilize("fertilize"),
@@ -126,6 +130,8 @@ class MainTreeController extends GetxController {
 
   static const List<int> waterCounts = [1, 20, 60, 80];
   static const List<int> shifeiCounts = [1, 5, 15, 20];
+  static double stage1Num = 1000;
+  static double stage2Num = 2000;
 
   String treeIcon() {
     String tmpTreeIcon = Assets.twimg.mainTree1.path;
@@ -143,6 +149,25 @@ class MainTreeController extends GetxController {
     }
 
     return tmpTreeIcon;
+  }
+
+
+  EnumTwLottttieJson lottieType() {
+    EnumTwLottttieJson type = EnumTwLottttieJson.coin1;
+    int curLevvvv = curLevel.value;
+    if (curLevvvv == 1) {
+      type = EnumTwLottttieJson.coin1;
+    } else if (curLevvvv == 2) {
+      type = EnumTwLottttieJson.coin2;
+    } else if (curLevvvv == 3) {
+      type = EnumTwLottttieJson.coin3;
+    } else if (curLevvvv == 4) {
+      type = EnumTwLottttieJson.coin4;
+    } else if (curLevvvv >= 5) {
+      type = EnumTwLottttieJson.coin5;
+    }
+
+    return type;
   }
 
   @override
@@ -315,6 +340,9 @@ class MainTreeController extends GetxController {
   }
 
   onAddWaterCount() {
+
+    OverlayLotWater().show();
+
     int tmpCurMmm = curStageWaterCount.value;
 
     int tmpCurmmm2 = tmpCurMmm + 1;
@@ -326,21 +354,59 @@ class MainTreeController extends GetxController {
   }
 
   onAddMoneyyyy(double monnn) {
-
-
     overlayCoinMain.showWithSize(
       childSize: Size(20.w, 20.w),
       showTargetWidget: true,
-      onEnd: (){
-        double tmpCurMmm = curMoneyyyy.value;
-
-        double tmpCurmmm2 = tmpCurMmm + monnn;
-
-        box.put(twKeyMoneyyyy, tmpCurmmm2);
-        curMoneyyyy.value = tmpCurmmm2;
-      }
+      onEnd: () {
+        _onAddMoney(monnn);
+      },
     );
   }
 
-  topTextChange() {}
+  void _onAddMoney(double monnn) {
+    double tmpCurMmm = curMoneyyyy.value;
+
+    double tmpCurmmm2 = tmpCurMmm + monnn;
+
+    box.put(twKeyMoneyyyy, tmpCurmmm2);
+    curMoneyyyy.value = tmpCurmmm2;
+
+    String? data = guideIndexData();
+    twLooog("======guideIndexData:$data tmpCurmmm2:$tmpCurmmm2");
+    if (tmpCurmmm2 >= stage2Num && data == MainTreeController.guide14) {
+      OverlayGuide15CoinToSun().show();
+    } else if (tmpCurmmm2 >= stage1Num && data == MainTreeController.guide13) {
+      OverlayGuide14HighLight().show();
+    }
+  }
+
+  static Map<EnumTwLottttieJson, LottieComposition> _kLottie_vCompo = {};
+
+  static LottieComposition? composition(EnumTwLottttieJson type) {
+    return  _kLottie_vCompo[type];
+  }
+  static initComposition() {
+    AssetLottie(Assets.lottiejson.bghightligth).load().then((value) {
+      _kLottie_vCompo[EnumTwLottttieJson.bghightligth] = value;
+    });    AssetLottie(Assets.lottiejson.water).load().then((value) {
+      _kLottie_vCompo[EnumTwLottttieJson.water] = value;
+    });
+  }
+
+}
+
+enum EnumTwLottttieJson {
+  water,
+  coin1,
+  coin2,
+  coin3,
+  coin4,
+  coin5,
+  monn1,
+  monn2,
+  monn3,
+  monn4,
+  monn5,
+  gesture,
+  bghightligth,
 }

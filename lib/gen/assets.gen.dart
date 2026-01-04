@@ -27,6 +27,66 @@ class $AssetsAvatarGen {
   List<AssetGenImage> get values => [avatar1, avatar2, avatar3];
 }
 
+class $AssetsLottiejsonGen {
+  const $AssetsLottiejsonGen();
+
+  /// File path: assets/lottiejson/bghightligth.json
+  String get bghightligth => 'assets/lottiejson/bghightligth.json';
+
+  /// File path: assets/lottiejson/coin1.json
+  String get coin1 => 'assets/lottiejson/coin1.json';
+
+  /// File path: assets/lottiejson/coin2.json
+  String get coin2 => 'assets/lottiejson/coin2.json';
+
+  /// File path: assets/lottiejson/coin3.json
+  String get coin3 => 'assets/lottiejson/coin3.json';
+
+  /// File path: assets/lottiejson/coin4.json
+  String get coin4 => 'assets/lottiejson/coin4.json';
+
+  /// File path: assets/lottiejson/coin5.json
+  String get coin5 => 'assets/lottiejson/coin5.json';
+
+  /// File path: assets/lottiejson/gesture.json
+  String get gesture => 'assets/lottiejson/gesture.json';
+
+  /// File path: assets/lottiejson/monn1.json
+  String get monn1 => 'assets/lottiejson/monn1.json';
+
+  /// File path: assets/lottiejson/monn2.json
+  String get monn2 => 'assets/lottiejson/monn2.json';
+
+  /// File path: assets/lottiejson/monn3.json
+  String get monn3 => 'assets/lottiejson/monn3.json';
+
+  /// File path: assets/lottiejson/monn4.json
+  String get monn4 => 'assets/lottiejson/monn4.json';
+
+  /// File path: assets/lottiejson/monn5.json
+  String get monn5 => 'assets/lottiejson/monn5.json';
+
+  /// File path: assets/lottiejson/water.json
+  String get water => 'assets/lottiejson/water.json';
+
+  /// List of all assets
+  List<String> get values => [
+    bghightligth,
+    coin1,
+    coin2,
+    coin3,
+    coin4,
+    coin5,
+    gesture,
+    monn1,
+    monn2,
+    monn3,
+    monn4,
+    monn5,
+    water,
+  ];
+}
+
 class $AssetsTwimgGen {
   const $AssetsTwimgGen();
 
@@ -474,6 +534,7 @@ class Assets {
   const Assets._();
 
   static const $AssetsAvatarGen avatar = $AssetsAvatarGen();
+  static const $AssetsLottiejsonGen lottiejson = $AssetsLottiejsonGen();
   static const $AssetsTwimgGen twimg = $AssetsTwimgGen();
 }
 

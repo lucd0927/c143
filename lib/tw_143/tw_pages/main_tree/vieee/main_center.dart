@@ -1,4 +1,5 @@
 import 'package:c143/gen/assets.gen.dart';
+import 'package:c143/tw_143/tw_common/lottieeee/common.dart';
 import 'package:c143/tw_143/tw_common/view/hongbaoyu.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide13_spin.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide1_water.dart';
@@ -38,16 +39,20 @@ class _MainCenterState extends State<MainCenter> {
             child: Center(
               child: Obx(() {
                 String icon = MainTreeController.to.treeIcon();
+                EnumTwLottttieJson type = MainTreeController.to.lottieType();
                 return Container(
                   width: 280.h,
                   height: 280.h,
                   child: Stack(
                     children: [
-                      Image.asset(
-                        icon,
-                        width: 280.h,
-                        height: 280.h,
-                        gaplessPlayback: true,
+                      // Image.asset(
+                      //   icon,
+                      //   width: 280.h,
+                      //   height: 280.h,
+                      //   gaplessPlayback: true,
+                      // ),
+                      TwLottieCommon(
+                        type: EnumTwLottttieJson.coin5,
                       ),
                       Positioned(
                         child: levelWidget(),

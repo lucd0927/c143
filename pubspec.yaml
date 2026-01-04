@@ -39,7 +39,7 @@ dependencies:
   connectivity_plus: ^6.1.5
   webview_flutter: ^4.13.0
 
-  #  lottie: ^3.3.1
+  lottie: ^3.3.2
   spine_flutter: ^4.2.36
   appsflyer_sdk: ^6.17.7
   hive_ce_flutter: ^2.3.3
@@ -115,6 +115,7 @@ flutter:
   assets:
     - assets/twimg/
     - assets/avatar/
+    - assets/lottiejson/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
