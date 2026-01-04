@@ -39,11 +39,11 @@ class OverlayGuide9Quiz2 {
               onClose: () async {
                 twLooog("=====OverlayGuideTestAnim=close");
                 close();
-
+                MainTreeController.to.saveGuideIndexData(MainTreeController.guide9);
                 OverlayGuide10Quiz3().show(
                   coins: 100,
                   onBtn: (v) {
-                    MainTreeController.to.saveGuideIndexData(MainTreeController.guide9);
+
                     onBtn.call(coins);
                   },
                 );

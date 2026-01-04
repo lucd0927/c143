@@ -40,10 +40,11 @@ class OverlayGuide8Quiz1 {
                 close();
                 // MainQuizController.to.saveGuideStatus();
                 MainTreeController.to.saveGuideIndexData(MainTreeController.guide8);
+                onBtn.call(coins);
                 OverlayGuide9Quiz2().show(
                   coins: 100,
                   onBtn: (v) {
-                    onBtn.call(coins);
+
                   },
                 );
 
