@@ -36,9 +36,15 @@ class OverlayGuide10Quiz3 {
               onClose: () async {
                 twLooog("=====OverlayGuideTestAnim=close");
                 close();
-                MainQuizController.to.saveGuideStatus();
-                MainTreeController.to.saveGuideIndexData(MainTreeController.guide10);
-                onBtn.call(coins);
+                MainTreeController.to.onAddMoneyyyy(
+                  coins,
+                  onEnd: () {
+                    MainQuizController.to.saveGuideStatus();
+                    MainTreeController.to.saveGuideIndexData(MainTreeController.guide10);
+                    onBtn.call(coins);
+                  },
+                );
+
               },
             ),
           ),

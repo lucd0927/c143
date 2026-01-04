@@ -38,11 +38,18 @@ class OverlayGuide8Quiz1 {
                 twLooog("=====OverlayGuideTestAnim=close");
                 close();
                 // MainQuizController.to.saveGuideStatus();
-                MainTreeController.to.saveGuideIndexData(
-                  MainTreeController.guide8,
+
+                MainTreeController.to.onAddMoneyyyy(
+                  coins,
+                  onEnd: () {
+                    MainTreeController.to.saveGuideIndexData(
+                      MainTreeController.guide8,
+                    );
+                    onBtn.call(coins);
+                    OverlayGuide9Quiz2().show(coins: 10, onBtn: (v) {});
+                  },
                 );
-                onBtn.call(coins);
-                OverlayGuide9Quiz2().show(coins: 100, onBtn: (v) {});
+
               },
             ),
           ),
