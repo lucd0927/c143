@@ -83,7 +83,7 @@ class GGCommonJson {
   // 广告过期时间
 
   static const String maxkeyEncode =
-      "OCI/Dx0bMCUBPgQNOT4nOTQZIwchDCQTOkcjDSIvIgEjDSomDyEiNio4EhovOUIeIT47AUwBRjgqOhI8L0dBGzctJy0NIxFMGhIkMAVCQ0RDISITRjY=";
+      "wtjF9efhyt/7xP73w8Tdw87j2f3b9t7pwL3Z99jV2PvZ99Dc9dvYzNDC6ODVw7jk28TB+7b7vMLQwOjG1b274c3X3df32eu24Ojeyv+4ub6529jpvMw=";
 
   // max 平台
   static final String ad_platfrom_max = EnumAdsPlatform.max.name;

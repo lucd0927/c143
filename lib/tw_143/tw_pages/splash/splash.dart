@@ -183,7 +183,7 @@ class _SplashProgressState extends State<SplashProgress> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       twLooog("======= _allTime: $_allTime");
       initTimer();
-      // initAbLogic();
+      initAbLogic();
     });
   }
 

@@ -7,6 +7,8 @@ import 'package:c143/tw_143/tw_pages/guide/guide2_coin.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide4_fertilize.dart';
 import 'package:c143/tw_143/tw_pages/main/main_controller.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
+import 'package:c143/tw_base/tw_ad/ads_iddddd.dart';
+import 'package:c143/tw_base/tw_ad/base_ads.dart';
 import 'package:c143/tw_base/tw_gj/loggggg.dart';
 import 'package:c143/tw_views/animated_count.dart';
 import 'package:c143/tw_views/animated_scale.dart';
@@ -210,7 +212,12 @@ class _MainCenterState extends State<MainCenter> {
     });
   }
 
-  void onAddShiFeiCount() {
+  void onAddShiFeiCount() async{
+
+    bool result = await TwCommonAds().showInterstitialAd(adPosId: TwAdsPosId.test);
+    if(!result){
+      return;
+    }
     MainTreeController.to.onAddShiFeiCount(onEnd: (){});
   }
 
@@ -230,7 +237,13 @@ class _MainCenterState extends State<MainCenter> {
             icon: showSun
                 ? Assets.twimg.mainSun.path
                 : Assets.twimg.mainCoin.path,
-            onClick: () {
+            onClick: () async{
+
+              bool result = await TwCommonAds().showInterstitialAd(adPosId: TwAdsPosId.test);
+              if(!result){
+                return;
+              }
+
               MainTreeController.to.onAddMoneyyyy(count);
             },
           ),
@@ -385,13 +398,18 @@ class _MainCenterState extends State<MainCenter> {
     );
   }
 
-  void onWater() {
+  void onWater() async{
+
+    bool result = await TwCommonAds().showInterstitialAd(adPosId: TwAdsPosId.test);
+    if(!result){
+      return;
+    }
     MainTreeController.to.onAddWaterCount(onEnd: () {});
   }
 
   coinWidget() {
     return Obx(() {
-      double count = 10;
+      double count = 100;
       double monnn = MainTreeController.to.curMoneyyyy.value;
       double stage2 = MainTreeController.stage2Num;
       bool showSun = stage2 <= monnn;

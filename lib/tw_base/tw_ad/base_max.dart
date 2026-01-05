@@ -28,7 +28,7 @@ class TwMaxAd {
   }) async {
     // _cacheAdsData = cacheAdsData;
 
-    String asdfasfdmaxkey = TwBaseUtils.decrypt(encodeKey,117);
+    String asdfasfdmaxkey = TwBaseUtils.decrypt(encodeKey,143);
     twLooog("====GGMaxAdsNew=initMax====maxkey:$asdfasfdmaxkey");
     // AppLovinMAX.setVerboseLogging(true);
     MaxConfiguration? configuration = await AppLovinMAX.initialize(asdfasfdmaxkey);

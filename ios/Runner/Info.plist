@@ -49,5 +49,7 @@
 		<string>ca-app-pub-3940256099942544~1458002511</string>
 		<key>UIStatusBarHidden</key>
 		<false/>
+		<key>NSUserTrackingUsageDescription</key>
+        	<string>To give you a better user experience, please enable access to tracking data. We only use your tracking data when necessary. Click "Allow"</string>
 	</dict>
 </plist>

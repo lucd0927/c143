@@ -410,4 +410,11 @@ class _Guide10ScaleOverlayAnimState extends State<_Guide10ScaleOverlayAnim>
       ),
     );
   }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    _controller.dispose();
+  }
 }

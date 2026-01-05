@@ -314,16 +314,16 @@ class TwPackageAB {
         await TwAdjusssss().initSdk(
           TwConfigggg.hasDeeevv()
               ? (Platform.isIOS
-              ? "ih2pm2dr3k74"
-              : "4qedga65udq8")
-              : (Platform.isIOS ? "jg382mhf3b40" : "dxxu9j7r8phc"),
+              ? "sadf"
+              : "dhgdfh")
+              : (Platform.isIOS ? "ghjj" : "rtuytu"),
         );
       } else {
         String asdkasfdhka = "XM9ua37BHJWBKq8jTYg74a";
         if (asdkasfdhka.isEmpty) {
           return;
         }
-        await TwApppsF().initAppsFlyer(afDevKey: asdkasfdhka, appId: "6752763599");
+        await TwApppsF().initAppsFlyer(afDevKey: asdkasfdhka, appId: "34557");
       }
       String qs_af_on123 = TwFirebasssss().by(name: "qs_adjust_on");
       twLooog("==qs_af_on123==$qs_af_on123");

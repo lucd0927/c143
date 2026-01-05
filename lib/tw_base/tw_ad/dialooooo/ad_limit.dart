@@ -75,8 +75,8 @@ class _AdCishuLimitState extends State<AdCishuLimit> {
 
   content() {
     return Container(
-      width: 678.w,
-      height: 771.h,
+      width: 340.w,
+      height: 380.h,
       decoration: BoxDecoration(
         color: Color(0xff992D2E),
         borderRadius: BorderRadius.circular(16.w),
@@ -98,7 +98,7 @@ class _AdCishuLimitState extends State<AdCishuLimit> {
                       style: TextStyle(
                         fontWeight: FontWeight.w700,
                         color: Color(0xffffffff),
-                        fontSize: 42.sp,
+                        fontSize: 20.sp,
                       ),
                     ),
                   ],

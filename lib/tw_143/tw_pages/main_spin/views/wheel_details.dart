@@ -92,7 +92,7 @@ class _PositionItemsState extends State<PositionItems>
   generatedCoins() {
     tmpCoins = [];
     for (int i = 0; i < 18; i++) {
-      int coin = 10 + Random().nextInt(90);
+      int coin = 100 + Random().nextInt(90);
       tmpCoins.add(coin * 1.0);
     }
   }
