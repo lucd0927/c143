@@ -231,10 +231,6 @@ class $AssetsTwimgGen {
   AssetGenImage get guide9Quizbg =>
       const AssetGenImage('assets/twimg/guide9_quizbg.png');
 
-  /// File path: assets/twimg/hongbaoyu_bg.png
-  AssetGenImage get hongbaoyuBg =>
-      const AssetGenImage('assets/twimg/hongbaoyu_bg.png');
-
   /// File path: assets/twimg/hongbaoyu_leftbg.png
   AssetGenImage get hongbaoyuLeftbg =>
       const AssetGenImage('assets/twimg/hongbaoyu_leftbg.png');
@@ -512,7 +508,6 @@ class $AssetsTwimgGen {
     guide8Coinnumbg,
     guide8Txt,
     guide9Quizbg,
-    hongbaoyuBg,
     hongbaoyuLeftbg,
     hongbaoyuRightbg,
     hongbaoyuTimer,

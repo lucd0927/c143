@@ -311,6 +311,12 @@ class MainTreeController extends GetxController {
   }
 
   onAddShiFeiCount({required VoidCallback onEnd}) {
+
+    if (curFertilizeLeftTime.value.isNotEmpty){
+      twToast(text: "You can claim it after the countdown ends");
+      return;
+    }
+
     if (canClickWater) {
       canClickWater = false;
 
@@ -330,7 +336,7 @@ class MainTreeController extends GetxController {
 
               _fertilizeLeftTime.resetLeftTime();
             } else {
-              twToast(text: "You can claim it after the countdown ends");
+
             }
 
             _resetTreeGrownStatus();

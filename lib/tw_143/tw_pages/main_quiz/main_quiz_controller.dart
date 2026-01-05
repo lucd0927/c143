@@ -204,7 +204,7 @@ class MainQuizController extends GetxController {
     curClickAnswer.value = click;
     curShowGesture.value = false;
     _curGestureLeftTimer?.cancel();
-    await Future.delayed(Duration(milliseconds: 2000));
+    await Future.delayed(Duration(milliseconds: 1000));
     if (hasClickRight) {
       _onAddAnswerRightCount();
       double coins = TwBaseNumber.coins();

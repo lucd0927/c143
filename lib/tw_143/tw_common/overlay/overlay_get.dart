@@ -46,6 +46,8 @@ class OverlayGetCoins {
               );
             },
             onClose: () async {
+              twLooog("=====OverlayGetCoins onClose");
+              close();
               onClose();
             },
             coins: coins,
