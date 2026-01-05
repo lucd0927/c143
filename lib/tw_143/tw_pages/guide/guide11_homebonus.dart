@@ -111,7 +111,7 @@ class _Guide11HomeBonusWidgetState extends State<Guide11HomeBonusWidget> {
                 children: [
                   SizedBox(height: 80.h),
                   TwTxtGraBorder(
-                    text: "Your feedback pays off",
+                    text: "Correct! Congrats!",
                     gradient: LinearGradient(
                       colors: [
                         Color(0xffEBD462),

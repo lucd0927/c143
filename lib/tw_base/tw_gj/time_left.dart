@@ -15,7 +15,7 @@ class TimeLeft {
 
   Timer? _leftTimeTimer;
 
-  int maxSeconds = 60 * 1;
+  int maxSeconds = 60 * 5;
 
   // static const int maxSeconds = 60 * 1;
 

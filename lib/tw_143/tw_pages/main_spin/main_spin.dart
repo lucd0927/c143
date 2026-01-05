@@ -1,9 +1,11 @@
 import 'package:c143/gen/assets.gen.dart';
+import 'package:c143/tw_143/tw_pages/main_spin/main_spin_controller.dart';
 import 'package:c143/tw_143/tw_pages/main_spin/views/wheel_details.dart';
 import 'package:c143/tw_views/font_border.dart';
 import 'package:c143/tw_views/font_gradient_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
 class MainSpin extends StatefulWidget {
   const MainSpin({super.key});
@@ -37,72 +39,84 @@ class _MainSpinState extends State<MainSpin> {
     );
   }
 
-
-
   bottomWidget() {
-    return SingleChildScrollView(
-      child: Column(
-        children: [
-          Container(
-            width: 336.h,
-            height: 202.h,
-            child: Stack(
-              clipBehavior: Clip.none,
-              children: [
-                Image.asset(
-                  Assets.twimg.spinBottomBg.path,
-                  width: double.infinity,
-                  height: double.infinity,
-                  fit: BoxFit.fill,
-                  gaplessPlayback: true,
-                ),
-                Positioned.fill(
-                  child: Column(
-                    children: [
-                      Container(
-                        width: double.infinity,
-                        height: 30.h,
-                        color: Colors.red.withValues(alpha: 0.0),
-                        child: Center(
-                          child: Text(
-                            "Earn coins by completing tasks",
-                            style: TextStyle(
-                              fontWeight: FontWeight.w700,
-                              color: Colors.black,
-                              fontSize: 16.sp,
+    return Obx(() {
+      bool tmpClickDailyCheck = MainSpinController.to.curClickDailyCheck.value;
+
+      return SingleChildScrollView(
+        child: Column(
+          children: [
+            Container(
+              width: 336.h,
+              height: 202.h,
+              child: Stack(
+                clipBehavior: Clip.none,
+                children: [
+                  Image.asset(
+                    Assets.twimg.spinBottomBg.path,
+                    width: double.infinity,
+                    height: double.infinity,
+                    fit: BoxFit.fill,
+                    gaplessPlayback: true,
+                  ),
+                  Positioned.fill(
+                    child: Column(
+                      children: [
+                        Container(
+                          width: double.infinity,
+                          height: 30.h,
+                          color: Colors.red.withValues(alpha: 0.0),
+                          child: Center(
+                            child: Text(
+                              "Earn coins by completing tasks",
+                              style: TextStyle(
+                                fontWeight: FontWeight.w700,
+                                color: Colors.black,
+                                fontSize: 16.sp,
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                      SizedBox(height: 12.h,),
-                      bottomItem(
-                        icon: Assets.twimg.spinCheck.path,
-                        text: "daily check-in ",
-                        text2: "+100",
-                        btnText: "Claim",
-                      ),
-                      bottomItem(
-                        icon: Assets.twimg.spinWheelS.path,
-                        text: "spin the lucky wheel 20 times",
-                        text2: "+100",
-                        btnText: "Claim",
-                      ),
-                      bottomItem(
-                        icon: Assets.twimg.spinAd.path,
-                        text: "watch 100 ads",
-                        text2: "+100",
-                        btnText: "Claim",
-                      ),
-                    ],
+                        SizedBox(height: 12.h),
+                        bottomItem(
+                          icon: Assets.twimg.spinCheck.path,
+                          text: "daily check-in",
+                          text2: "+100",
+                          btnText: !tmpClickDailyCheck ? "Claim" : "Go",
+                          canClick: !tmpClickDailyCheck,
+                          onTap: () {
+                            if (!tmpClickDailyCheck) {
+                              MainSpinController.to.clickDailyCheck(100);
+                            } else {
+
+                            }
+                          },
+                        ),
+                        bottomItem(
+                          icon: Assets.twimg.spinWheelS.path,
+                          text: "spin the lucky wheel 20 times",
+                          text2: "+100",
+                          btnText: "Go",
+                          onTap: () {},
+                        ),
+                        bottomItem(
+                          icon: Assets.twimg.spinAd.path,
+                          text: "watch 100 ads",
+                          text2: "+100",
+                          btnText: "Go",
+                          onTap: () {},
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-          SizedBox(height: 100.h),
-        ],
-      ),
-    );
+            SizedBox(height: 100.h),
+          ],
+        ),
+      );
+    });
   }
 
   bottomItem({
@@ -110,6 +124,8 @@ class _MainSpinState extends State<MainSpin> {
     required String text,
     required String text2,
     required String btnText,
+    bool canClick = false,
+    required VoidCallback onTap,
   }) {
     return Container(
       width: double.infinity,
@@ -138,24 +154,29 @@ class _MainSpinState extends State<MainSpin> {
             ),
           ),
           SizedBox(width: 8.w),
-          Container(
-            width: 72.h,
-            height: 28.h,
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: [Color(0xffFFA800), Color(0xffF47900)],
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
+          GestureDetector(
+            onTap: onTap,
+            child: Container(
+              width: 72.h,
+              height: 28.h,
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  colors: canClick
+                      ? [Color(0xffFFA800), Color(0xffF47900)]
+                      : [Color(0xff42DF0F), Color(0xff098906)],
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                ),
+                borderRadius: BorderRadius.circular(100),
               ),
-              borderRadius: BorderRadius.circular(100),
-            ),
-            child: Center(
-              child: Text(
-                btnText,
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.w700,
-                  fontSize: 14.sp,
+              child: Center(
+                child: Text(
+                  btnText,
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.w700,
+                    fontSize: 14.sp,
+                  ),
                 ),
               ),
             ),

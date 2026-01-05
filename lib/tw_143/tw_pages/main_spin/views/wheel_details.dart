@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:c143/gen/assets.gen.dart';
 import 'package:c143/tw_143/tw_common/lottieeee/gesture.dart';
+import 'package:c143/tw_143/tw_common/overlay/overlay_get.dart';
 import 'package:c143/tw_143/tw_pages/main/main_controller.dart';
 import 'package:c143/tw_143/tw_pages/main_spin/main_spin_controller.dart';
 import 'package:c143/tw_base/tw_gj/loggggg.dart';
@@ -72,6 +73,7 @@ class _PositionItemsState extends State<PositionItems>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<int> _animation;
+  List<double> tmpCoins = [];
 
   @override
   void initState() {
@@ -82,6 +84,16 @@ class _PositionItemsState extends State<PositionItems>
       vsync: this,
       duration: Duration(seconds: 6),
     );
+
+    generatedCoins();
+  }
+
+  generatedCoins() {
+    tmpCoins = [];
+    for (int i = 0; i < 18; i++) {
+      int coin = 10 + Random().nextInt(90);
+      tmpCoins.add(coin * 1.0);
+    }
   }
 
   @override
@@ -104,38 +116,48 @@ class _PositionItemsState extends State<PositionItems>
     final int targetAngle = round * indexCount + targetIndex;
     _animation =
         IntTween(begin: startIndex, end: targetAngle).animate(
-            CurvedAnimation(
-              parent: _controller,
-              // curve: Curves.easeInOutCubic, // 先加速后减速
-              curve: Curves.fastOutSlowIn, // 先加速后减速
-            ),
-          )
-          ..addListener(() {
-            if (mounted) {
-              // var value2 = _animation.value;
-              // twLooog("=====value2:$value2");
-              // return;
-              int value = _animation.value;
-              int tmpSelectIndex = value % indexCount;
-              _selectIndex = tmpSelectIndex;
-
-              setState(() {});
-            }
-          })
-          ..addStatusListener((status) {
-            if (status == AnimationStatus.completed) {
-              if (mounted) {
-                setState(() {
-                  _startIndex = targetIndex;
-                  canClick = true;
-                });
-              }
-            }
-          });
+          CurvedAnimation(
+            parent: _controller,
+            // curve: Curves.easeInOutCubic, // 先加速后减速
+            curve: Curves.fastOutSlowIn, // 先加速后减速
+          ),
+        )..addListener(() {
+          if (mounted) {
+            // var value2 = _animation.value;
+            // twLooog("=====value2:$value2");
+            // return;
+            int value = _animation.value;
+            int tmpSelectIndex = value % indexCount;
+            _selectIndex = tmpSelectIndex;
+            twLooog("======aaaastatus:$value");
+            setState(() {});
+          }
+        });
 
     _controller
       ..reset()
-      ..forward();
+      ..forward().whenComplete(() {
+        if (mounted) {
+          setState(() {
+            _startIndex = targetIndex;
+            canClick = true;
+          });
+          OverlayGetCoins().show(
+            coins: tmpCoins[_startIndex],
+            onBtn: () {
+              setState(() {
+                generatedCoins();
+              });
+            },
+            onClose: () {
+              setState(() {
+                generatedCoins();
+              });
+            },
+          );
+          twLooog("======whenComplete:whenComplete");
+        }
+      });
   }
 
   @override
@@ -188,33 +210,47 @@ class _PositionItemsState extends State<PositionItems>
             child: Stack(
               clipBehavior: Clip.none,
               children: [
-                TwShiningEffect(
-                  duration: Duration(milliseconds: 2000),
-                  shineColor: Color(0xffffffff),
-                  opacity: 0.6,
-                  angle: -0.1,
-                  topLeft: false,
-                  child: Image.asset(
-                    Assets.twimg.btnSpin.path,
-                    width: double.infinity,
-                    height: double.infinity,
-                    fit: BoxFit.fill,
+                canClick
+                    ? TwShiningEffect(
+                        duration: Duration(milliseconds: 2000),
+                        shineColor: Color(0xffffffff),
+                        opacity: 0.6,
+                        angle: -0.1,
+                        topLeft: false,
+                        child: Image.asset(
+                          Assets.twimg.btnSpin.path,
+                          width: double.infinity,
+                          height: double.infinity,
+                          fit: BoxFit.fill,
+                        ),
+                      )
+                    : ColorFiltered(
+                        colorFilter: ColorFilter.mode(
+                          Colors.grey,
+                          BlendMode.modulate,
+                        ),
+                        child: Image.asset(
+                          Assets.twimg.btnSpin.path,
+                          width: double.infinity,
+                          height: double.infinity,
+                          fit: BoxFit.fill,
+                        ),
+                      ),
+                if (canClick)
+                  Positioned(
+                    bottom: -30.h,
+                    right: -30.h,
+                    child: IgnorePointer(
+                      // child: TwAScale(
+                      //   child: Image.asset(
+                      //     Assets.twimg.gesture.path,
+                      //     width: 70.w,
+                      //     height: 70.w,
+                      //   ),
+                      // ),
+                      child: TwLottieGesture(),
+                    ),
                   ),
-                ),
-                Positioned(
-                  bottom: -30.h,
-                  right: -30.h,
-                  child: IgnorePointer(
-                    // child: TwAScale(
-                    //   child: Image.asset(
-                    //     Assets.twimg.gesture.path,
-                    //     width: 70.w,
-                    //     height: 70.w,
-                    //   ),
-                    // ),
-                    child: TwLottieGesture(),
-                  ),
-                ),
                 Center(
                   child: TwTxtBorder(
                     text: "Draw Now",
@@ -224,15 +260,15 @@ class _PositionItemsState extends State<PositionItems>
                     foreground: Color(0xff22431B),
                   ),
                 ),
-                Positioned(
-                  top: -10.h,
-                  left: -5.h,
-                  child: Image.asset(
-                    Assets.twimg.ad.path,
-                    width: 28.h,
-                    height: 28.h,
-                  ),
-                ),
+                // Positioned(
+                //   top: -10.h,
+                //   left: -5.h,
+                //   child: Image.asset(
+                //     Assets.twimg.ad.path,
+                //     width: 28.h,
+                //     height: 28.h,
+                //   ),
+                // ),
 
                 Positioned(
                   top: -0.h,
@@ -345,12 +381,13 @@ class _PositionItemsState extends State<PositionItems>
         index == 8 ||
         index == 9 ||
         index == 10 ||
+        true ||
         index == 11) {
       icon = Assets.twimg.wheelCoin.path;
 
       txt = Center(
         child: TwTxtGraBorder(
-          text: "100",
+          text: "${tmpCoins[index].toStringAsFixed(0)}",
           fontWeight: FontWeight.w700,
           fontSize: 20.sp,
           strokeColor: Color(0xffBD5500),
@@ -358,41 +395,53 @@ class _PositionItemsState extends State<PositionItems>
       );
     } else if (index == 1) {
       icon = Assets.twimg.wheelFeiliangad.path;
+      icon = Assets.twimg.wheelCoin.path;
       txt = Positioned(
         left: 0,
         right: 0,
         bottom: 0,
-        child: TwTxtGraBorder(
-          text: "speed up recovery",
-          fontWeight: FontWeight.w700,
-          fontSize: 8.sp,
-          strokeColor: Color(0xffBD5500),
+        top: 0,
+        child: Center(
+          child: TwTxtGraBorder(
+            text: "${tmpCoins[index].toStringAsFixed(0)}",
+            fontWeight: FontWeight.w700,
+            fontSize: 20.sp,
+            strokeColor: Color(0xffBD5500),
+          ),
         ),
       );
     } else if (index == 2) {
       icon = Assets.twimg.wheelFeiliang.path;
+      icon = Assets.twimg.wheelCoin.path;
       txt = Positioned(
         left: 0,
         right: 0,
         bottom: 0,
-        child: TwTxtGraBorder(
-          text: "speed up recovery",
-          fontWeight: FontWeight.w700,
-          fontSize: 8.sp,
-          strokeColor: Color(0xffBD5500),
+        top: 0,
+        child: Center(
+          child: TwTxtGraBorder(
+            text: "${tmpCoins[index].toStringAsFixed(0)}",
+            fontWeight: FontWeight.w700,
+            fontSize: 20.sp,
+            strokeColor: Color(0xffBD5500),
+          ),
         ),
       );
     } else if (index == 3) {
       icon = Assets.twimg.wheelDoubleex.path;
+      icon = Assets.twimg.wheelCoin.path;
       txt = Positioned(
         left: 0,
         right: 0,
         bottom: 0,
-        child: TwTxtGraBorder(
-          text: "double earnings",
-          fontWeight: FontWeight.w700,
-          fontSize: 8.sp,
-          strokeColor: Color(0xffBD5500),
+        top: 0,
+        child: Center(
+          child: TwTxtGraBorder(
+            text: "??",
+            fontWeight: FontWeight.w700,
+            fontSize: 20.sp,
+            strokeColor: Color(0xffBD5500),
+          ),
         ),
       );
     }
@@ -519,9 +568,8 @@ class _PositionItemsState extends State<PositionItems>
       return;
     }
 
-
     int curSpinNum = MainSpinController.to.curTwSpinNum.value;
-    if(curSpinNum <= 0){
+    if (curSpinNum <= 0) {
       twToast(text: "You can earn spins by answering questions.");
       MainController.to.resetIndex(MainController.quizIndex);
       return;

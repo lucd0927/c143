@@ -4,10 +4,13 @@ import 'dart:io';
 import 'dart:ui' as ui;
 
 import 'package:c143/gen/assets.gen.dart';
+import 'package:c143/tw_143/tw_common/lottieeee/common.dart';
 import 'package:c143/tw_143/tw_common/tw_router.dart';
+import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
 import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
 import 'package:c143/tw_base/tw_gj/loggggg.dart';
 import 'package:c143/tw_views/font_border.dart';
+import 'package:c143/tw_views/shake.dart';
 import 'package:c143/tw_views/shimmer_effect.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -37,10 +40,9 @@ class _TwSplashState extends State<TwSplash> {
   precacheImage() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       Duration tmpD = Duration(milliseconds: 200);
-      Future.delayed(tmpD,(){
+      Future.delayed(tmpD, () {
         FlutterNativeSplash.remove();
       });
-
 
       // //
       // AssetImage assetImage = AssetImage(Assets.img.mainWheel.path);
@@ -141,21 +143,14 @@ class _TwSplashState extends State<TwSplash> {
               right: 0,
               top: 240.h,
               child: Center(
-                child:  Image.asset(
-                  Assets.twimg.mainTree5.path,
-                  width: 320.w,
-                  height:  320.h,
-                  // fit: BoxFit.fill,
-                ),
+                child:  TwLottieCommon(type: EnumTwLottttieJson.coin5, animate: true),
               ),
             ),
             Positioned(
               left: 0,
               right: 0,
               top: 640.h,
-              child: Center(
-                child: SplashProgress(),
-              ),
+              child: Center(child: SplashProgress()),
             ),
           ],
         ),
@@ -175,7 +170,7 @@ class _SplashProgressState extends State<SplashProgress> {
   double startTime = 0.0;
   late Timer _timer;
   final Duration _delayTime = Duration(milliseconds: _oneTime);
-  double _allTime = 1000;
+  double _allTime = 5000;
   static const int _oneTime = 100;
   bool canGoToMain = true;
   Timer? _delayTimer;
@@ -192,7 +187,7 @@ class _SplashProgressState extends State<SplashProgress> {
     });
   }
 
-  initTimer(){
+  initTimer() {
     double count = _allTime / _oneTime;
     _timer = Timer.periodic(_delayTime, (time) {
       // ggPrint("time:${time.tick} =========count:$count");
@@ -272,11 +267,7 @@ class _SplashProgressState extends State<SplashProgress> {
                 height: 15.w,
                 child: _AnimGraProBar(
                   value: startTime, // 表示 60%
-                  gradientColors: [
-                    Color(0xffd9e42e),
-                    Color(0xff7b5d17),
-
-                  ],
+                  gradientColors: [Color(0xffd9e42e), Color(0xff7b5d17)],
                   height: 15.w,
                   borderRadius: BorderRadius.circular(30.w),
                 ),
@@ -438,7 +429,6 @@ class _AnimGraProBar extends StatelessWidget {
                       ),
                       border: Border.all(color: Color(0xff5CD3F4), width: 0.w),
                       borderRadius: BorderRadius.circular(height),
-
                     ),
                   ),
                 ],
