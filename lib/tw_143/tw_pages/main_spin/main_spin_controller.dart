@@ -65,6 +65,19 @@ class MainSpinController extends GetxController {
 
 
 
+  addSpinNum(){
+    int tmpSpinNum = curTwSpinNum.value;
+
+    int tmpSpinNum2 = tmpSpinNum +1;
+    if(tmpSpinNum2 <= 0){
+      tmpSpinNum2 = 0;
+    }
+
+    curTwSpinNum.value = tmpSpinNum2;
+    box.put(twkeySpinNum, tmpSpinNum2);
+
+  }
+
 
 
 

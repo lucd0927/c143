@@ -216,7 +216,7 @@ class _MainCenterState extends State<MainCenter> {
 
   sunWidget() {
     return Obx(() {
-      double count = 10;
+      double count = 100;
       double monnn = MainTreeController.to.curMoneyyyy.value;
       double stage2 = MainTreeController.stage2Num;
       bool showSun = stage2 <= monnn;
@@ -356,7 +356,7 @@ class _MainCenterState extends State<MainCenter> {
           SizedBox(height: height2),
           coinWidget(),
           SizedBox(height: height3),
-          coinYuWidget(),
+          sunWidget(),
         ],
       ),
     );
@@ -402,7 +402,7 @@ class _MainCenterState extends State<MainCenter> {
             builder: (context) {
               Widget child = centerItem(
                 treeType: TwEnumTreeType.coin,
-                width: 40.h,
+                width: 60.h,
                 count: count.toStringAsFixed(0),
                 icon: showSun
                     ? Assets.twimg.mainSun.path

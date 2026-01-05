@@ -3,7 +3,9 @@ import 'dart:async';
 import 'package:c143/gen/assets.gen.dart';
 import 'package:c143/tw_143/tw_common/event.dart';
 import 'package:c143/tw_143/tw_common/lottieeee/gesture.dart';
+import 'package:c143/tw_143/tw_common/overlay/overlay_hongbaoyu.dart';
 import 'package:c143/tw_143/tw_pages/main_quiz/main_quiz_controller.dart';
+import 'package:c143/tw_143/tw_pages/main_spin/main_spin_controller.dart';
 import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
 import 'package:c143/tw_base/tw_gj/event_bus.dart';
 import 'package:c143/tw_base/tw_gj/loggggg.dart';
@@ -650,7 +652,10 @@ class _TwQuizGiftWidgetState extends State<TwQuizGiftWidget>
     if (canClick) {
       setIndexJsonDataaaa(index: index, hasOpen: true, money: 0);
       if (liwu == EnumQuizgiftTypppppe.wheel) {
-      } else {}
+        MainSpinController.to.addSpinNum();
+      } else  if (liwu == EnumQuizgiftTypppppe.coinyu) {
+       OverlayHongbaoyu().show();
+      }
 
       setState(() {});
     }

@@ -130,7 +130,7 @@ class _PositionItemsState extends State<PositionItems>
             int value = _animation.value;
             int tmpSelectIndex = value % indexCount;
             _selectIndex = tmpSelectIndex;
-            twLooog("======aaaastatus:$value");
+            // twLooog("======aaaastatus:$value");
             setState(() {});
           }
         });
