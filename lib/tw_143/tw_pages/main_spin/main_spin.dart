@@ -82,7 +82,7 @@ class _MainSpinState extends State<MainSpin> {
                           icon: Assets.twimg.spinCheck.path,
                           text: "daily check-in",
                           text2: "+100",
-                          btnText: !tmpClickDailyCheck ? "Claim" : "Go",
+                          btnText: !tmpClickDailyCheck ? "Claim" : "Wait",
                           canClick: !tmpClickDailyCheck,
                           onTap: () {
                             if (!tmpClickDailyCheck) {
@@ -96,14 +96,14 @@ class _MainSpinState extends State<MainSpin> {
                           icon: Assets.twimg.spinWheelS.path,
                           text: "spin the lucky wheel 20 times",
                           text2: "+100",
-                          btnText: "Go",
+                          btnText: "Wait",
                           onTap: () {},
                         ),
                         bottomItem(
                           icon: Assets.twimg.spinAd.path,
                           text: "watch 100 ads",
                           text2: "+100",
-                          btnText: "Go",
+                          btnText: "Wait",
                           onTap: () {},
                         ),
                       ],

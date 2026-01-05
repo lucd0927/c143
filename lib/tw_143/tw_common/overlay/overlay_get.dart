@@ -87,6 +87,7 @@ class _GetCoinsWidgetState extends State<GetCoinsWidget> {
   bool showAnimated = false;
   Duration animD = Duration(milliseconds: 200);
   double startScale = 0.8;
+  double _coins = 0;
 
   @override
   void initState() {
@@ -97,6 +98,7 @@ class _GetCoinsWidgetState extends State<GetCoinsWidget> {
       if (mounted) {
         setState(() {
           showAnimated = true;
+          _coins = widget.coins;
         });
       }
     });
@@ -194,11 +196,30 @@ class _GetCoinsWidgetState extends State<GetCoinsWidget> {
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    TwTxtGraBorder(
-                                      text:
-                                          "+${widget.coins.toStringAsFixed(2)}",
-                                      fontSize: 32.sp,
-                                      fontWeight: FontWeight.w900,
+                                    // TwTxtGraBorder(
+                                    //   text:
+                                    //       "+${widget.coins.toStringAsFixed(2)}",
+                                    //   fontSize: 32.sp,
+                                    //   fontWeight: FontWeight.w900,
+                                    // ),
+                                    TwAnimatedCountttt(
+                                      value: _coins,
+                                      fractionDigits: 0,
+                                      prefix: "+",
+                                      textStyle: TextStyle(
+                                        fontWeight: FontWeight.w900,
+                                        fontSize: 32.sp,
+                                      ),
+                                      textGradient: LinearGradient(
+                                        colors: [
+                                          Color(0xffFFDF12),
+                                          Color(0xffFFAA00),
+                                        ],
+                                        end: Alignment.bottomCenter,
+                                        begin: Alignment.topCenter,
+                                      ),
+                                      strokeColor: Color(0xffBD5500),
+                                      strokeWidth: 1.w,
                                     ),
                                   ],
                                 ),

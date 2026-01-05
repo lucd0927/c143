@@ -6,6 +6,7 @@ import 'package:c143/tw_143/tw_common/overlay/overlay_get.dart';
 import 'package:c143/tw_143/tw_pages/main/main_controller.dart';
 import 'package:c143/tw_143/tw_pages/main_spin/main_spin_controller.dart';
 import 'package:c143/tw_base/tw_gj/loggggg.dart';
+import 'package:c143/tw_views/animated_count.dart';
 import 'package:c143/tw_views/animated_scale.dart';
 import 'package:c143/tw_views/font_border.dart';
 import 'package:c143/tw_views/font_gradient_border.dart';
@@ -260,6 +261,7 @@ class _PositionItemsState extends State<PositionItems>
                     foreground: Color(0xff22431B),
                   ),
                 ),
+
                 // Positioned(
                 //   top: -10.h,
                 //   left: -5.h,
@@ -269,7 +271,6 @@ class _PositionItemsState extends State<PositionItems>
                 //     height: 28.h,
                 //   ),
                 // ),
-
                 Positioned(
                   top: -0.h,
                   right: -5.h,
@@ -386,11 +387,23 @@ class _PositionItemsState extends State<PositionItems>
       icon = Assets.twimg.wheelCoin.path;
 
       txt = Center(
-        child: TwTxtGraBorder(
-          text: "${tmpCoins[index].toStringAsFixed(0)}",
-          fontWeight: FontWeight.w700,
-          fontSize: 20.sp,
+        // child: TwTxtGraBorder(
+        //   text: "${tmpCoins[index].toStringAsFixed(0)}",
+        //   fontWeight: FontWeight.w700,
+        //   fontSize: 20.sp,
+        //   strokeColor: Color(0xffBD5500),
+        // ),
+        child: TwAnimatedCountttt(
+          value: tmpCoins[index],
+          fractionDigits: 0,
+          textStyle: TextStyle(fontWeight: FontWeight.w700, fontSize: 20.sp),
+          textGradient: LinearGradient(
+            colors: [Color(0xffFFDF12), Color(0xffFFAA00)],
+            end: Alignment.bottomCenter,
+            begin: Alignment.topCenter,
+          ),
           strokeColor: Color(0xffBD5500),
+          strokeWidth: 1.w,
         ),
       );
     } else if (index == 1) {
