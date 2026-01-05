@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 /// 一个通用闪光特效组件，可用于任意子Widget
-class ShiningEffect extends StatefulWidget {
+class TwShiningEffect extends StatefulWidget {
   final Widget child;
   final Duration duration;
   final bool enabled;
@@ -12,7 +12,7 @@ class ShiningEffect extends StatefulWidget {
   final double? borderRadius;
   final bool topLeft;
 
-  const ShiningEffect({
+  const TwShiningEffect({
     super.key,
     required this.child,
     this.duration = const Duration(milliseconds: 1800),
@@ -26,10 +26,10 @@ class ShiningEffect extends StatefulWidget {
   });
 
   @override
-  State<ShiningEffect> createState() => _ShiningEffectState();
+  State<TwShiningEffect> createState() => _TwShiningEffectState();
 }
 
-class _ShiningEffectState extends State<ShiningEffect>
+class _TwShiningEffectState extends State<TwShiningEffect>
     with SingleTickerProviderStateMixin {
   late final AnimationController _controller;
 
@@ -44,7 +44,7 @@ class _ShiningEffectState extends State<ShiningEffect>
   }
 
   @override
-  void didUpdateWidget(covariant ShiningEffect oldWidget) {
+  void didUpdateWidget(covariant TwShiningEffect oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (widget.enabled && !_controller.isAnimating) {
       _controller.repeat();

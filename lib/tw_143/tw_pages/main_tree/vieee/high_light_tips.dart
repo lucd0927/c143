@@ -77,7 +77,7 @@ class _MainHighLightTipsState extends State<MainHighLightTips> {
                     color: Colors.red.withValues(alpha: 0),
                     child: Stack(
                       children: [
-                        ShiningEffect(
+                        TwShiningEffect(
                           duration: Duration(milliseconds: 2000),
                           shineColor: Color(0xffffffff),
                           opacity: 1,

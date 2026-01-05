@@ -342,7 +342,7 @@ class _Guide7RankWidgetState extends State<Guide7RankWidget> {
           child: Stack(
             clipBehavior: Clip.none,
             children: [
-              ShiningEffect(
+              TwShiningEffect(
                 duration: Duration(milliseconds: 2000),
                 shineColor: Color(0xffffffff),
                 opacity: 0.6,
@@ -492,7 +492,7 @@ class _Guide7ScaleOverlayAnimState extends State<_Guide7ScaleOverlayAnim>
                     height: 124.h,
                     child: Stack(
                       children: [
-                        ShiningEffect(
+                        TwShiningEffect(
                           duration: Duration(milliseconds: 2000),
                           shineColor: Color(0xffffffff),
                           opacity: 0.6,

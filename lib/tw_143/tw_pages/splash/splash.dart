@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'dart:ui' as ui;
 
+import 'package:c143/gen/assets.gen.dart';
 import 'package:c143/tw_143/tw_common/tw_router.dart';
 import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
 import 'package:c143/tw_base/tw_gj/loggggg.dart';
@@ -35,6 +36,12 @@ class _TwSplashState extends State<TwSplash> {
 
   precacheImage() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
+      Duration tmpD = Duration(milliseconds: 200);
+      Future.delayed(tmpD,(){
+        FlutterNativeSplash.remove();
+      });
+
+
       // //
       // AssetImage assetImage = AssetImage(Assets.img.mainWheel.path);
       // precacheImage(assetImage, context);
@@ -71,7 +78,7 @@ class _TwSplashState extends State<TwSplash> {
 
   @override
   Widget build(BuildContext context) {
-    FlutterNativeSplash.remove();
+    // FlutterNativeSplash.remove();
     // Locale yuyan = ui.window.locale;
     //
     // twLooog("======国家：$yuyan。${"update_language".tr}");
@@ -88,49 +95,40 @@ class _TwSplashState extends State<TwSplash> {
         color: Colors.white,
         child: Stack(
           children: [
-            // Image.asset(
-            //   Assets.img.splashBg.path,
-            //   width: double.infinity,
-            //   height: double.infinity,
-            //   fit: BoxFit.fill,
-            // ),
-            Container(
+            Image.asset(
+              Assets.twimg.mainBg.path,
               width: double.infinity,
               height: double.infinity,
-              color: Colors.green,
+              fit: BoxFit.fill,
             ),
+
             Positioned(
               left: 0,
               right: 0,
-              top: 30.h,
+              top: 80.h,
               child: Column(
                 children: [
                   SizedBox(
-                    width: 254.h,
-                    height: 165.h,
-                    child: ShiningEffect(
-                      duration: Duration(milliseconds: 5000),
+                    width: 200.h,
+                    height: 132.h,
+                    child: TwShiningEffect(
+                      duration: Duration(milliseconds: 2000),
                       shineColor: Color(0xffffffff),
                       opacity: 1,
                       angle: -0.9,
                       topLeft: false,
-                      // child: Image.asset(
-                      //   Assets.img.splashTitle.path,
-                      //   width: double.infinity,
-                      //   height: double.infinity,
-                      //   fit: BoxFit.contain,
-                      // ),
-                      child: Container(
+                      child: Image.asset(
+                        Assets.twimg.splashTreeworld.path,
                         width: double.infinity,
                         height: double.infinity,
-                        color: Colors.amber,
+                        fit: BoxFit.contain,
                       ),
+                      // child: Container(
+                      //   width: double.infinity,
+                      //   height: double.infinity,
+                      //   color: Colors.amber,
+                      // ),
                     ),
-                    // child: Container(
-                    //   width: double.infinity,
-                    //   height: double.infinity,
-                    //   color: Colors.green,
-                    // ),
                   ),
                   SizedBox(height: 230.h),
 
@@ -138,28 +136,25 @@ class _TwSplashState extends State<TwSplash> {
                 ],
               ),
             ),
-
             Positioned(
               left: 0,
               right: 0,
-              top: 680.h,
+              top: 240.h,
               child: Center(
-                child: Column(
-                  children: [
-                    SplashProgress(),
-                    // SizedBox(height: 30.h),
-                    // SizedBox(
-                    //   width: 462.w,
-                    //   height: 36.h,
-                    //   // child: Image.asset(
-                    //   //   Assets.imgB.splashDes.path,
-                    //   //   width: double.infinity,
-                    //   //   height: double.infinity,
-                    //   //   fit: BoxFit.contain,
-                    //   // ),
-                    // ),
-                  ],
+                child:  Image.asset(
+                  Assets.twimg.mainTree5.path,
+                  width: 320.w,
+                  height:  320.h,
+                  // fit: BoxFit.fill,
                 ),
+              ),
+            ),
+            Positioned(
+              left: 0,
+              right: 0,
+              top: 640.h,
+              child: Center(
+                child: SplashProgress(),
               ),
             ),
           ],
@@ -192,31 +187,35 @@ class _SplashProgressState extends State<SplashProgress> {
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       twLooog("======= _allTime: $_allTime");
-      double count = _allTime / _oneTime;
-      _timer = Timer.periodic(_delayTime, (time) {
-        // ggPrint("time:${time.tick} =========count:$count");
-        int tick = time.tick;
-
-        if (tick > count + 1) {
-          _timer.cancel();
-
-          twLooog("======= _allTime:$_allTime 计时器: to home");
-          canGoToMain = false;
-          xiayigeyemina();
-        } else {
-          setState(() {
-            startTime = tick * _oneTime / _allTime;
-            if (startTime >= 1) {
-              startTime = 1.0;
-            }
-          });
-        }
-      });
-      // abInitttt();
+      initTimer();
+      // initAbLogic();
     });
   }
 
-  abInitttt() async {
+  initTimer(){
+    double count = _allTime / _oneTime;
+    _timer = Timer.periodic(_delayTime, (time) {
+      // ggPrint("time:${time.tick} =========count:$count");
+      int tick = time.tick;
+
+      if (tick > count + 1) {
+        _timer.cancel();
+
+        twLooog("======= _allTime:$_allTime 计时器: to home");
+        canGoToMain = false;
+        _nextMain();
+      } else {
+        setState(() {
+          startTime = tick * _oneTime / _allTime;
+          if (startTime >= 1) {
+            startTime = 1.0;
+          }
+        });
+      }
+    });
+  }
+
+  initAbLogic() async {
     int time = DateTime.now().millisecondsSinceEpoch;
     twLooog("==SSABChange().init start====");
     // // // 5 ab包逻辑
@@ -236,15 +235,11 @@ class _SplashProgressState extends State<SplashProgress> {
       });
       await Future.delayed(Duration(milliseconds: _oneTime * 2));
 
-      xiayigeyemina();
+      _nextMain();
     }
   }
 
-  xiayigeyemina() {
-    // JCShijianBaogao.session();
-    // JCShijianBaogao.install();
-    // JCShijianBaogao.launch_page(kv: JCTzIossssss.clickTz ? "push" : "icon");
-
+  _nextMain() {
     Get.offNamed(TwRouters.main);
   }
 
@@ -254,7 +249,7 @@ class _SplashProgressState extends State<SplashProgress> {
       children: [
         TwTxtBorder(
           text: "${(startTime * 100.toInt()).toStringAsFixed(0)}%",
-          foreground: Color(0xff3D100E),
+          foreground: Color(0xff171111),
           fontWeight: FontWeight.w700,
           fontSize: 20.sp,
           fontColor: Color(0xffF9F7ED),
@@ -275,13 +270,12 @@ class _SplashProgressState extends State<SplashProgress> {
               SizedBox(
                 width: 325.w,
                 height: 15.w,
-                child: AnimatedGradientProgressBar2(
+                child: _AnimGraProBar(
                   value: startTime, // 表示 60%
                   gradientColors: [
-                    Color(0xffEFFF04),
-                    Color(0xffF9B821),
-                    Color(0xffF7AA0C),
-                    Color(0xffFBD107),
+                    Color(0xffd9e42e),
+                    Color(0xff7b5d17),
+
                   ],
                   height: 15.w,
                   borderRadius: BorderRadius.circular(30.w),
@@ -369,14 +363,14 @@ class AnimatedGradientProgressBar extends StatelessWidget {
   }
 }
 
-class AnimatedGradientProgressBar2 extends StatelessWidget {
+class _AnimGraProBar extends StatelessWidget {
   final BorderRadius borderRadius;
   final double value; // 当前进度 0.0 ~ 1.0
   final double height;
   final Duration duration;
   final List<Color> gradientColors;
 
-  const AnimatedGradientProgressBar2({
+  const _AnimGraProBar({
     super.key,
     required this.value,
     this.height = 8.0,

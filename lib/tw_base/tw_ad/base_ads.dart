@@ -1118,7 +1118,7 @@ class TwCommonAds {
   _onlineJson() {
     Map<String, dynamic> localJson = GGCommonJson.local;
     try {
-      String name = "cdyun_ad_config";
+      String name = "cuvxv_ad_config";
       String key = TwFirebasssss().by(name: name);
       twLooog(
         "====common_ads=== _onlineJson FirebaseUtils: $name string:$key test===",

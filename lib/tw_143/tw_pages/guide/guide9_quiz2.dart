@@ -386,7 +386,7 @@ class _Guide9ScaleOverlayAnimState extends State<_Guide9ScaleOverlayAnim>
                     child: Stack(
                       alignment: Alignment.centerRight,
                       children: [
-                        ShiningEffect(
+                        TwShiningEffect(
                           duration: Duration(milliseconds: 2000),
                           shineColor: Color(0xffffffff),
                           opacity: 0.6,

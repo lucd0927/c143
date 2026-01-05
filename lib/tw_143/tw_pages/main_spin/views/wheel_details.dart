@@ -188,7 +188,7 @@ class _PositionItemsState extends State<PositionItems>
             child: Stack(
               clipBehavior: Clip.none,
               children: [
-                ShiningEffect(
+                TwShiningEffect(
                   duration: Duration(milliseconds: 2000),
                   shineColor: Color(0xffffffff),
                   opacity: 0.6,

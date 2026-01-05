@@ -340,7 +340,7 @@ class _Guide8ScaleOverlayAnimState extends State<_Guide8ScaleOverlayAnim>
                     height: 124.h,
                     child: Stack(
                       children: [
-                        ShiningEffect(
+                        TwShiningEffect(
                           duration: Duration(milliseconds: 2000),
                           shineColor: Color(0xffffffff),
                           opacity: 0.6,

@@ -354,7 +354,7 @@ class _Guide10ScaleOverlayAnimState extends State<_Guide10ScaleOverlayAnim>
                     height: 104.h,
                     child: Stack(
                       children: [
-                        ShiningEffect(
+                        TwShiningEffect(
                           duration: Duration(milliseconds: 2000),
                           shineColor: Color(0xffffffff),
                           opacity: 0.6,

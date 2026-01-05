@@ -430,6 +430,10 @@ class $AssetsTwimgGen {
   AssetGenImage get spinWheelS =>
       const AssetGenImage('assets/twimg/spin_wheel_s.png');
 
+  /// File path: assets/twimg/splash_treeworld.png
+  AssetGenImage get splashTreeworld =>
+      const AssetGenImage('assets/twimg/splash_treeworld.png');
+
   /// File path: assets/twimg/wheel_coin.png
   AssetGenImage get wheelCoin =>
       const AssetGenImage('assets/twimg/wheel_coin.png');
@@ -541,6 +545,7 @@ class $AssetsTwimgGen {
     spinCount,
     spinWheel,
     spinWheelS,
+    splashTreeworld,
     wheelCoin,
     wheelDoubleex,
     wheelFeiliang,

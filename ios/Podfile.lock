@@ -7,6 +7,8 @@ PODS:
     - Adjust (= 5.5.0)
     - Flutter
   - AdjustSignature (3.62.0)
+  - app_tracking_transparency (0.0.1):
+    - Flutter
   - applovin_max (4.6.0):
     - AppLovinSDK (= 13.5.0)
     - Flutter
@@ -222,6 +224,7 @@ PODS:
 
 DEPENDENCIES:
   - adjust_sdk (from `.symlinks/plugins/adjust_sdk/ios`)
+  - app_tracking_transparency (from `.symlinks/plugins/app_tracking_transparency/ios`)
   - applovin_max (from `.symlinks/plugins/applovin_max/ios`)
   - appsflyer_sdk (from `.symlinks/plugins/appsflyer_sdk/ios`)
   - assets_audio_player (from `.symlinks/plugins/assets_audio_player/ios`)
@@ -280,6 +283,8 @@ SPEC REPOS:
 EXTERNAL SOURCES:
   adjust_sdk:
     :path: ".symlinks/plugins/adjust_sdk/ios"
+  app_tracking_transparency:
+    :path: ".symlinks/plugins/app_tracking_transparency/ios"
   applovin_max:
     :path: ".symlinks/plugins/applovin_max/ios"
   appsflyer_sdk:
@@ -327,6 +332,7 @@ SPEC CHECKSUMS:
   Adjust: a0095eda439b925f809b0efbf64923c05701e937
   adjust_sdk: 3dde244a99742bcff3f87d3ea2c78eb567250d64
   AdjustSignature: 682d788005a6e21557913a9dc0381ae8d943ca0a
+  app_tracking_transparency: 3d84f147f67ca82d3c15355c36b1fa6b66ca7c92
   applovin_max: a921604ba97b0400e3cdf4768da0aa53e756978e
   AppLovinSDK: bf8974163120910e6b902e9610e7c5a2c0f577b6
   appsflyer_sdk: 01d0cd834fe2fffd7f2372ab38690f7483587720

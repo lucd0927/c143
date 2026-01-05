@@ -1,31 +1,30 @@
-
 import 'dart:async';
 import 'dart:io';
 
-
-import 'package:rxdart/rxdart.dart';
-import 'package:c143/tw_hive/twhive.dart';
+import 'package:app_tracking_transparency/app_tracking_transparency.dart';
 import 'package:c143/tw_base/tw_ad/base_ads.dart';
 import 'package:c143/tw_base/tw_ad/fengkkkong.dart';
 import 'package:c143/tw_base/tw_ad/guiyin/adjust.dart';
 import 'package:c143/tw_base/tw_ad/guiyin/af.dart';
 import 'package:c143/tw_base/tw_ad/guiyin/firebbbbbb.dart';
+import 'package:c143/tw_base/tw_configgg/config.dart';
 import 'package:c143/tw_base/tw_gj/loggggg.dart';
 import 'package:c143/tw_base/tw_http/http_dio.dart';
-
+import 'package:c143/tw_hive/twhive.dart';
+import 'package:rxdart/rxdart.dart';
 
 class TwPackageAB {
   static final TwPackageAB _instance = TwPackageAB._();
 
-  // auto patch 642
   factory TwPackageAB() {
     return _instance;
   }
 
   TwPackageAB._();
 
-  static const String cloakBData = "chromium";
-  static const String cloakAData = "sprung";
+  static String get cloakBData => Platform.isIOS ? "dsaf" : "sdfg";
+
+  static String get cloakAData => Platform.isIOS ? "fdjhgdhj" : "wqrew";
   static const String afDataOrganic = "Organic";
 
   static const String kHivePackage = "kjdsdsfjkghj";
@@ -53,16 +52,17 @@ class TwPackageAB {
 
   var box = TwHive.box;
 
-  void sendAAA({required String cloakData, required String afData}) {
+  sendAAA({required String cloakData, required String afData}) async {
     bool entryBBB =
         cloakData == cloakBData &&
             (afData.isNotEmpty && afData != afDataOrganic);
     twLooog(
-      "$TGA=ABPackage send: cloakData:$cloakData  ====afData:$afData entryBBB:$entryBBB",
+      "$TGA=SSABChange().listen ABPackage send: cloakData:$cloakData  ====afData:$afData entryBBB:$entryBBB",
     );
 
     var data = box.get(kHivePackage);
-
+    // entryBBB = true;
+    // await Future.delayed(Duration(milliseconds: 15000));
     if (entryBBB) {
       if (data == packageB) {
         _name = packageB;
@@ -105,9 +105,7 @@ class TwPackageAB {
 
   static const String kkGuiyin = "sdfjkdshfgkj";
 
-  hasSaveGuiyinData(){
-
-  }
+  hasSaveGuiyinData() {}
 
   guiyin(String source) {
     if (isPackageB()) {
@@ -148,6 +146,20 @@ class TwPackageAB {
     }
   }
 
+
+  Future<void> requestATT() async {
+    if(Platform.isIOS){
+      final status = await AppTrackingTransparency.trackingAuthorizationStatus;
+      twLooog("$TGA===requestATT==status: $status");
+      if (status == TrackingStatus.notDetermined) {
+        TrackingStatus trackingStatus = await AppTrackingTransparency.requestTrackingAuthorization();
+        twLooog("$TGA===requestATT==trackingStatus: $trackingStatus");
+      }
+    }
+
+
+  }
+
   cloakAAAA({int count = 0}) async {
     // JCShijianBaogao.cloak_req();
     var data = await TwHttpDio().cloak();
@@ -184,6 +196,8 @@ class TwPackageAB {
   }
 
   Future _initA() async {
+
+
     // 广告初始化
     twLooog("$TGA====_initA==cloak();==");
     var cloakData = await cloakAAAA();
@@ -196,10 +210,10 @@ class TwPackageAB {
     twLooog(
       "$TGA===PBFireBbbbbb==${dateTime2.millisecondsSinceEpoch - dateTime.millisecondsSinceEpoch}",
     );
+    initAd();
     await _chushiGuiyin();
 
-
-
+    twLooog("$TGA===_chushiGuiyin==end");
   }
 
   Future _initB() async {
@@ -210,9 +224,9 @@ class TwPackageAB {
     // await GGCommonAds().init();
     int time2 = DateTime.now().millisecondsSinceEpoch;
     twLooog("$TGA===_initB===GGCommonAds().init end===耗时:${time2 - time}");
-    var box = TwHive.box;
     box.put(kHivePackage, packageB);
     twLooog("$TGA===_initB===_initAppsFlyer() start==");
+    initAd();
     await _chushiGuiyin();
     int time3 = DateTime.now().millisecondsSinceEpoch;
     twLooog("$TGA===_initB===_initAppsFlyer() end===耗时:${time3 - time2}");
@@ -229,7 +243,6 @@ class TwPackageAB {
         _cloakData = cloakAData;
       }
       // JCShijianBaogao.cloak_suc(_cloakData == cloakBData ? "1" : "0");
-
     });
 
     initCompleter?.complete(true);
@@ -238,18 +251,21 @@ class TwPackageAB {
   // auto patch 285
 
   Completer<bool>? initCompleter;
-  static const String TGA = "QuizPackage:";
+  static const String TGA = "13222222:";
 
   Future<bool> init() async {
     initCompleter = Completer<bool>();
-    var box = TwHive.box;
     var packageName = box.get(kHivePackage) ?? packageA;
     // packageName = packageB;
+    if (Platform.isAndroid) {
+      packageName = packageB;
+    }
 
     _name = packageName;
+    DateTime dateTime = DateTime.now();
+    await requestATT();
     twLooog("$TGA=package==init:$packageName==");
     if (packageName == packageB) {
-      DateTime dateTime = DateTime.now();
       twLooog("$TGA===PBFireBbbbbb==${dateTime.millisecondsSinceEpoch}");
       // 初始化firebase
       await TwFirebasssss().init();
@@ -258,24 +274,33 @@ class TwPackageAB {
         "$TGA===PBFireBbbbbb==${dateTime2.millisecondsSinceEpoch - dateTime.millisecondsSinceEpoch}",
       );
 
-      await _initB();
+      _initB();
     } else {
-      await _initA();
+      _initA();
     }
 
     bool result = (await initCompleter?.future) ?? false;
-    twLooog("$TGA=package==result:$result==isPackageB:${isPackageB()}");
-    if (isPackageB()) {
-      DateTime dd = DateTime.now();
-      // 初始化firebase
-      await TwCommonAds().init();
-      DateTime dddd = DateTime.now();
-      twLooog(
-        "$TGA===PBCommonAds==${dddd.millisecondsSinceEpoch - dd.millisecondsSinceEpoch}",
-      );
-    }
+    DateTime dateTimeEnd = DateTime.now();
+    twLooog(
+      "$TGA==SSABChange().listen==guiyin time==${dateTimeEnd.millisecondsSinceEpoch - dateTime.millisecondsSinceEpoch}",
+    );
 
+    twLooog("$TGA=package==result:$result==isPackageB:${isPackageB()}");
+    // if (isPackageB() || true) {
+    //   await initAd();
+    // }
+    // await Future.delayed(Duration(milliseconds: 20000));
     return result;
+  }
+
+  initAd() async {
+    DateTime dd = DateTime.now();
+    // 初始化firebase
+    await TwCommonAds().init();
+    DateTime dddd = DateTime.now();
+    twLooog(
+      "$TGA===SSCommonAds==${dddd.millisecondsSinceEpoch - dd.millisecondsSinceEpoch}",
+    );
   }
 
   bool sfChushiAF = false;
@@ -286,7 +311,13 @@ class TwPackageAB {
       sfChushiAF = true;
 
       if (hasAdjust) {
-        await TwAdjusssss().initSdk("d1x71jap6eio");
+        await TwAdjusssss().initSdk(
+          TwConfigggg.hasDeeevv()
+              ? (Platform.isIOS
+              ? "ih2pm2dr3k74"
+              : "4qedga65udq8")
+              : (Platform.isIOS ? "jg382mhf3b40" : "dxxu9j7r8phc"),
+        );
       } else {
         String asdkasfdhka = "XM9ua37BHJWBKq8jTYg74a";
         if (asdkasfdhka.isEmpty) {
@@ -296,19 +327,6 @@ class TwPackageAB {
       }
       String qs_af_on123 = TwFirebasssss().by(name: "qs_adjust_on");
       twLooog("==qs_af_on123==$qs_af_on123");
-      //
-      // String qs_af_on123 = PBFireBbbbbb().by(name: "qs_adjust_on");
-      // pbLog("$TGA==guiyin=pre==qs_af_on123:$qs_af_on123==");
-      // if (qs_af_on123.isEmpty) {
-      //   qs_af_on123 = "1";
-      // }
-      //
-      // if(qs_af_on123 == "0"){
-      //   _appsFlyerData = "qs_af_on123";
-      //   sendAAA(cloakData: _cloakData, afData: _appsFlyerData);
-      // }
-      //
-
     }
   }
 }

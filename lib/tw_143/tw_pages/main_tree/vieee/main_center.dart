@@ -226,6 +226,7 @@ class _MainCenterState extends State<MainCenter> {
           centerItem(
             width: 50.h,
             count: count.toStringAsFixed(0),
+            treeType: TwEnumTreeType.sun,
             icon: showSun
                 ? Assets.twimg.mainSun.path
                 : Assets.twimg.mainCoin.path,
@@ -243,7 +244,7 @@ class _MainCenterState extends State<MainCenter> {
     required String count,
     required String icon,
     required VoidCallback onClick,
-    TwEnumTreeType? treeType,
+    required TwEnumTreeType treeType,
     bool showTxt = true,
     bool txtLocationBottom = true,
   }) {
@@ -280,7 +281,7 @@ class _MainCenterState extends State<MainCenter> {
           child: Stack(
             clipBehavior: Clip.none,
             children: [
-              ShiningEffect(
+              TwShiningEffect(
                 duration: Duration(milliseconds: 2000),
                 shineColor: Color(0xffffffff),
                 opacity: 1,
@@ -296,6 +297,16 @@ class _MainCenterState extends State<MainCenter> {
               txtLocationBottom
                   ? Positioned(left: 0, right: 0, bottom: 0, child: txtW)
                   : Positioned(left: 0, right: 0, top: 0, child: txtW),
+
+              if (treeType == TwEnumTreeType.coin || treeType == TwEnumTreeType.sun || treeType == TwEnumTreeType.water)  Positioned(
+                top: -10.h,
+                right: -5.h,
+                child: Image.asset(
+                  Assets.twimg.ad.path,
+                  width: 28.h,
+                  height: 28.h,
+                ),
+              ),
             ],
           ),
         ),
@@ -310,6 +321,7 @@ class _MainCenterState extends State<MainCenter> {
         Builder(
           builder: (context) {
             Widget child = centerItem(
+              treeType: TwEnumTreeType.spin,
               width: 50.h,
               showTxt: false,
               icon: Assets.twimg.mainSpin.path,
@@ -357,6 +369,7 @@ class _MainCenterState extends State<MainCenter> {
         Builder(
           builder: (context) {
             Widget child = centerItem(
+              treeType: TwEnumTreeType.water,
               width: 60.h,
               count: '',
               icon: Assets.twimg.mainWater.path,
@@ -388,6 +401,7 @@ class _MainCenterState extends State<MainCenter> {
           Builder(
             builder: (context) {
               Widget child = centerItem(
+                treeType: TwEnumTreeType.coin,
                 width: 40.h,
                 count: count.toStringAsFixed(0),
                 icon: showSun
@@ -395,7 +409,7 @@ class _MainCenterState extends State<MainCenter> {
                     : Assets.twimg.mainCoin.path,
                 showTxt: true,
                 onClick: () {
-                  onWater();
+                  MainTreeController.to.onAddMoneyyyy(count);
                 },
               );
               OverlayGuide2Coin.guideChild = child;
@@ -415,6 +429,7 @@ class _MainCenterState extends State<MainCenter> {
       children: [
         SizedBox(width: 90.w),
         centerItem(
+          treeType: TwEnumTreeType.coin_rain,
           width: 60.h,
           count: count.toStringAsFixed(0),
           icon: Assets.twimg.mainCoinYu.path,
