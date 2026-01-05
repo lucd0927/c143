@@ -97,7 +97,7 @@ class TwAnimatedCountttt extends StatelessWidget {
   const TwAnimatedCountttt({
     super.key,
     required this.value,
-    this.duration = const Duration(milliseconds: 800),
+    this.duration = const Duration(milliseconds: 500),
     this.negativeSignDuration = const Duration(milliseconds: 150),
     this.curve = Curves.linear,
     this.textStyle,

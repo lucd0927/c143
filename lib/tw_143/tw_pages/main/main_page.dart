@@ -4,7 +4,7 @@ import 'package:c143/sfcj/floating_particles/src/models/direction.dart';
 import 'package:c143/sfcj/floating_particles/src/models/particle_config.dart';
 import 'package:c143/sfcj/floating_particles/src/models/particle_type.dart';
 import 'package:c143/sfcj/floating_particles/src/widgets/particle_effects_widget.dart';
-import 'package:c143/tw_143/tw_common/view/hongbaoyu.dart';
+import 'package:c143/tw_143/tw_common/overlay/overlay_hongbaoyu.dart';
 import 'package:c143/tw_143/tw_pages/main/views/main_nav.dart';
 import 'package:c143/tw_143/tw_pages/main_cash/main_cash.dart';
 import 'package:c143/tw_143/tw_pages/main/main_controller.dart';

@@ -90,8 +90,12 @@ class _MainTopAState extends State<MainTopA> {
                               Builder(
                                 builder: (context) {
                                   overlayCoinMain.targetContext = context;
-                                  return Image.asset(Assets.twimg.coin.path,width: 20.w,height: 20.w,);
-                                }
+                                  return Image.asset(
+                                    Assets.twimg.coin.path,
+                                    width: 20.w,
+                                    height: 20.w,
+                                  );
+                                },
                               ),
                               Text(
                                 "  ",
@@ -107,7 +111,7 @@ class _MainTopAState extends State<MainTopA> {
                                 // value = 110;
                                 return TwAnimatedCountttt(
                                   value: value,
-                                  fractionDigits: 0,
+                                  fractionDigits: 2,
                                   strokeWidth: 1.w,
                                   strokeColor: Color(0xff133F88),
                                   textGradient: LinearGradient(

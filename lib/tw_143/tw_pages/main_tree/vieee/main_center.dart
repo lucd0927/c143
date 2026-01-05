@@ -1,6 +1,6 @@
 import 'package:c143/gen/assets.gen.dart';
 import 'package:c143/tw_143/tw_common/lottieeee/common.dart';
-import 'package:c143/tw_143/tw_common/view/hongbaoyu.dart';
+import 'package:c143/tw_143/tw_common/overlay/overlay_hongbaoyu.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide13_spin.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide1_water.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide2_coin.dart';

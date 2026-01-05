@@ -117,6 +117,9 @@ class $AssetsTwimgGen {
   AssetGenImage get animatedBg23 =>
       const AssetGenImage('assets/twimg/animated_bg2_3.png');
 
+  /// File path: assets/twimg/back.png
+  AssetGenImage get back => const AssetGenImage('assets/twimg/back.png');
+
   /// File path: assets/twimg/bghightlight.png
   AssetGenImage get bghightlight =>
       const AssetGenImage('assets/twimg/bghightlight.png');
@@ -227,6 +230,22 @@ class $AssetsTwimgGen {
   /// File path: assets/twimg/guide9_quizbg.png
   AssetGenImage get guide9Quizbg =>
       const AssetGenImage('assets/twimg/guide9_quizbg.png');
+
+  /// File path: assets/twimg/hongbaoyu_bg.png
+  AssetGenImage get hongbaoyuBg =>
+      const AssetGenImage('assets/twimg/hongbaoyu_bg.png');
+
+  /// File path: assets/twimg/hongbaoyu_leftbg.png
+  AssetGenImage get hongbaoyuLeftbg =>
+      const AssetGenImage('assets/twimg/hongbaoyu_leftbg.png');
+
+  /// File path: assets/twimg/hongbaoyu_rightbg.png
+  AssetGenImage get hongbaoyuRightbg =>
+      const AssetGenImage('assets/twimg/hongbaoyu_rightbg.png');
+
+  /// File path: assets/twimg/hongbaoyu_timer.png
+  AssetGenImage get hongbaoyuTimer =>
+      const AssetGenImage('assets/twimg/hongbaoyu_timer.png');
 
   /// File path: assets/twimg/main_bg.png
   AssetGenImage get mainBg => const AssetGenImage('assets/twimg/main_bg.png');
@@ -463,6 +482,7 @@ class $AssetsTwimgGen {
     animatedBg21,
     animatedBg22,
     animatedBg23,
+    back,
     bghightlight,
     btnQuiz,
     btnQuizSelectError,
@@ -492,6 +512,10 @@ class $AssetsTwimgGen {
     guide8Coinnumbg,
     guide8Txt,
     guide9Quizbg,
+    hongbaoyuBg,
+    hongbaoyuLeftbg,
+    hongbaoyuRightbg,
+    hongbaoyuTimer,
     mainBg,
     mainBg2,
     mainBg3,

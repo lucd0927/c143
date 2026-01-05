@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:math';
 
+import 'package:c143/gen/assets.gen.dart';
 import 'package:c143/tw_base/tw_gj/loggggg.dart';
 import 'package:c143/tw_base/tw_gj/number_extend.dart';
 import 'package:flutter/material.dart';
@@ -41,10 +42,11 @@ class ParticleEffects extends StatefulWidget {
 
   /// Widget to show while images are loading (only for image particles)
   final Widget? loadingWidget;
-
+  final ValueChanged<double> onClickValue;
   const ParticleEffects({
     super.key,
     required this.child,
+    required this.onClickValue,
     this.config = const ParticleConfig(),
     this.isEnabled = true,
     this.onAnimationComplete,
@@ -100,6 +102,7 @@ class _ParticleEffectsState extends State<ParticleEffects>
   bool _isImageLoading = false;
   late DateTime _startTime;
 
+
   @override
   void initState() {
     super.initState();
@@ -107,8 +110,18 @@ class _ParticleEffectsState extends State<ParticleEffects>
     _setupAnimation();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _initializeParticles();
+
+
+
     });
+
+
+
+
+
   }
+
+
 
   /// Initialize particles with image/widget preloading if needed
   void _initializeParticles() async {
@@ -187,20 +200,21 @@ class _ParticleEffectsState extends State<ParticleEffects>
   double clickCoins = 0;
   Timer? _clickTimer ;
   generateClickCoins(){
-    double random = 10+10*Random().nextDouble();
+    double random = 10*Random().nextDouble();
     clickCoins =  random.toAsFixedFloor(2);
   }
+  double value = 0;
   showClickWidget() {
     if (clickLocation == null) {
       return const SizedBox();
     }
-    double width = 100.w;
+    double width = 140.w;
     double height = 50.h;
     double startY = clickLocation!.dy-widget.config.maxSize;
     double screenHeight = ScreenUtil().screenHeight;
     double maxY =screenHeight - widget.config.maxSize-20.h;
     double leftY = screenHeight - startY;
-    double value = _animation.value;
+
    return AnimatedBuilder(
       animation: _animation,
       builder: (context, child) {
@@ -213,18 +227,28 @@ class _ParticleEffectsState extends State<ParticleEffects>
           left: clickLocation!.dx -width/2,
           top: top,
           child: Container(
-            width: width,
-            height: height,
-            color: Colors.white,
-            child: Center(
-              child: Text(
-                "$clickCoins",
-                style: TextStyle(
-                  fontWeight: FontWeight.w800,
-                  fontSize: 20.sp,
-                  color: Color(0xffFFAA00),
+            // width: width,
+            // height: height,
+            padding: EdgeInsets.symmetric(horizontal: 8.w,vertical: 2.w),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(height),
+              color: Colors.amber.withValues(alpha: 0.2),
+            ),
+            // color: Colors.white,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset(Assets.twimg.coin.path,width: 24.w,height: 24.w,),
+                SizedBox(width: 4.w,),
+                Text(
+                  "+$clickCoins",
+                  style: TextStyle(
+                    fontWeight: FontWeight.w800,
+                    fontSize: 20.sp,
+                    color: Color(0xffFFAA00),
+                  ),
                 ),
-              ),
+              ],
             ),
           ),
         );
@@ -376,6 +400,9 @@ class _ParticleEffectsState extends State<ParticleEffects>
           clickLocation = details.localPosition;
           generateClickCoins();
           showClickWidget();
+          value =_animation.value;
+
+          widget.onClickValue(clickCoins);
         });
 
         _clickTimer = Timer(Duration(milliseconds: 3000), (){

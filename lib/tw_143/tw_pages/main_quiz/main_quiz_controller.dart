@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import 'package:c143/tw_143/tw_common/base_number.dart';
+import 'package:c143/tw_143/tw_common/overlay/overlay_get.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide10_quiz3.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide8_quiz1.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide9_quiz2.dart';
@@ -205,7 +207,14 @@ class MainQuizController extends GetxController {
     await Future.delayed(Duration(milliseconds: 2000));
     if (hasClickRight) {
       _onAddAnswerRightCount();
-      _nextQuestion();
+      double coins = TwBaseNumber.coins();
+      OverlayGetCoins().show(coins: coins, onBtn: (){
+        _nextQuestion();
+      }, onClose: (){
+        _nextQuestion();
+      });
+
+
     } else {
       _nextQuestion();
     }
