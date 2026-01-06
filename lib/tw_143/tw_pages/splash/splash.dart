@@ -242,7 +242,7 @@ class _SplashProgressState extends State<SplashProgress> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        TwTxtBorder(
+        TwTxtBorderC143(
           text: "${(startTime * 100.toInt()).toStringAsFixed(0)}%",
           foreground: Color(0xff171111),
           fontWeight: FontWeight.w700,

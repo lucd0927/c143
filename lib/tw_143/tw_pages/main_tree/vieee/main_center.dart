@@ -145,7 +145,7 @@ class _MainCenterState extends State<MainCenter> {
                 builder: (BuildContext context, BoxConstraints constraints) {
                   double maxWidth = constraints.maxWidth;
 
-                  return TwProgress(
+                  return TwProgressC143(
                     height: 12.h,
                     innerHeight: 8.h,
                     width: maxWidth,
@@ -270,7 +270,7 @@ class _MainCenterState extends State<MainCenter> {
     if (showTxt) {
       if (treeType == TwEnumTreeType.fertilize) {
         txtW = Center(
-          child: TwTxtBorder(
+          child: TwTxtBorderC143(
             text: "${count}",
             fontSize: 10.sp,
 
@@ -279,7 +279,7 @@ class _MainCenterState extends State<MainCenter> {
         );
       } else {
         txtW = Center(
-          child: TwTxtBorder(
+          child: TwTxtBorderC143(
             text: "+${count}",
             fontSize: 12.sp,
             fontColor: Color(0xffFFD64D),
@@ -292,7 +292,7 @@ class _MainCenterState extends State<MainCenter> {
 
     return GestureDetector(
       onTap: onClick,
-      child: TwAScale(
+      child: TwAScaleC143(
         child: Container(
           width: width,
           height: width,

@@ -233,7 +233,7 @@ class _hongbaoyuuuState extends State<_hongbaoyuuu> {
                                   fit: BoxFit.contain,
                                 ),
                               ),
-                              Center(child: TwTxtBorder(text: timeText)),
+                              Center(child: TwTxtBorderC143(text: timeText)),
                             ],
                           ),
                         ),

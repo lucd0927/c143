@@ -155,7 +155,7 @@ class _QuizAnswerState extends State<QuizAnswer> {
                 child: Center(
                   child: Padding(
                     padding: EdgeInsets.all(10.w),
-                    child: TwTxtBorder(
+                    child: TwTxtBorderC143(
                       text: "$answer.",
                       fontSize: 16.sp,
                       fontWeight: FontWeight.w700,
@@ -172,7 +172,7 @@ class _QuizAnswerState extends State<QuizAnswer> {
                 child: Center(
                   child: Padding(
                     padding: EdgeInsets.all(10.w),
-                    child: TwTxtBorder(
+                    child: TwTxtBorderC143(
                       text: "$answerContent",
                       fontSize: 16.sp,
                       fontWeight: FontWeight.w700,

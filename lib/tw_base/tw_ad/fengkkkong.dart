@@ -25,7 +25,7 @@ class TwFengk {
 
   static Future initNumberUnit() async {
     try {
-      var src = TwBaseUtils.decrypt(encryptTxt, code);
+      var src = TwBaseUtilsC143.decrypt(encryptTxt, code);
       twLooog("=====key:$src");
       await Pbpig.instance.initddddNumsssberUdddnit(apiKey: src);
 

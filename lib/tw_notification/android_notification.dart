@@ -155,21 +155,21 @@ class TwNotificationnn {
     List newContents = getRandomNMinus3(contents);
     List tzimages = getRandomNMinus3(imgTz);
     print("=====newContents:$newContents");
-    dingshi(
+    dingshhhhi(
       id: dingshitzid,
       minutes: TwConfigggg.hasDeeevv() ? 1 : 30,
       title: newContents[0]['title'],
       content: newContents[0]['content'],
       tzimage: tzimages[0],
     );
-    dingshi(
+    dingshhhhi(
       id: dingshitzid2,
       minutes: TwConfigggg.hasDeeevv() ? 2 : 60,
       title: newContents[1]['title'],
       content: newContents[1]['content'],
       tzimage: tzimages[1],
     );
-    dingshi(
+    dingshhhhi(
       id: dingshitzid3,
       minutes: TwConfigggg.hasDeeevv() ? 3 : 90,
       title: newContents[2]['title'],
@@ -213,7 +213,7 @@ class TwNotificationnn {
   int dingshitzid3 = 5656;
   String pushIcon = "tzimg1";
 
-  Future<void> dingshi({
+  Future<void> dingshhhhi({
     required int id,
     required int minutes,
 

@@ -259,7 +259,7 @@ class GuideWidget extends StatelessWidget {
                 builder: (BuildContext context, BoxConstraints constraints) {
                   double maxWidth = constraints.maxWidth;
 
-                  return TwProgress(
+                  return TwProgressC143(
                     height: 12.h,
                     innerHeight: 8.h,
                     width: maxWidth,

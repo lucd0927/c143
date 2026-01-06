@@ -11,18 +11,18 @@ import 'package:c143/tw_base/tw_gj/loggggg.dart';
 
 
 
-TwNetCheckkkk ssNetChecccc = TwNetCheckkkk();
+TwNetCheckC143 ssNetCheckC143 = TwNetCheckC143();
 
-class TwNetCheckkkk {
+class TwNetCheckC143 {
   StreamSubscription<List<ConnectivityResult>>? _subscription;
 
-  report() {
+  reportC143() {
     _report_no_internet_popup();
     // _report_no_internet_ack();
     // _report_no_internet_close();
   }
 
-  init() {
+  initC143() {
     _subscription = Connectivity().onConnectivityChanged.listen((
       List<ConnectivityResult> connectivityResult,
     ) async {
@@ -33,7 +33,7 @@ class TwNetCheckkkk {
 
         bool result = await isOnline();
         if (result) {
-          report();
+          reportC143();
         }
         print("移动网络连接 result:$result");
       } else if (connectivityResult.contains(ConnectivityResult.wifi)) {
@@ -42,7 +42,7 @@ class TwNetCheckkkk {
         // When both mobile and Wi-Fi are turned on system will return Wi-Fi only as active network type
         bool result = await isOnline();
         if (result) {
-          report();
+          reportC143();
         }
         print("📡 WiFi 网络连接 result:$result");
       } else if (connectivityResult.contains(ConnectivityResult.ethernet)) {
@@ -89,7 +89,7 @@ class TwNetCheckkkk {
     }
   }
 
-  dispose() {
+  disposeC143() {
     _subscription?.cancel();
   }
 }

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:auto_size_text_plus/auto_size_text_plus.dart';
-class TwTxtBorder extends StatelessWidget {
-  const TwTxtBorder({
+class TwTxtBorderC143 extends StatelessWidget {
+  const TwTxtBorderC143({
     super.key,
     required this.text,
     this.fontWeight,

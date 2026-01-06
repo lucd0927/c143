@@ -145,7 +145,7 @@ class _Guide14HighLightState extends State<Guide14HighLight> {
                 fit: BoxFit.fill,
               ),
               Center(
-                child: TwTxtBorder(
+                child: TwTxtBorderC143(
                   text: "Other Coins",
                   fontSize: 24.sp,
                   fontWeight: FontWeight.w900,

@@ -27,7 +27,7 @@ main() async {
   // // 2 本地存储
   twLooog("====initFlutter=");
   await Hive.initFlutter();
-  await Hive.openBox(TwHive.hBox);
+  await Hive.openBox(TwHive.twkeyBox);
 
   // 设置只允许竖屏
   await SystemChrome.setPreferredOrientations([
@@ -40,9 +40,9 @@ main() async {
   TwConfigggg.initEvn(TwConfiggEnv.dev);
 
   twLooog("====SSDlTracking.init=");
-  TwLoginnnTrackkkk.init();
-  TwNetCheckkkk().isOnline();
-  ssNetChecccc.init();
+  TwLoginnnTrackC143.init();
+  TwNetCheckC143().isOnline();
+  ssNetCheckC143.initC143();
 
   runApp(const MyApp());
 }

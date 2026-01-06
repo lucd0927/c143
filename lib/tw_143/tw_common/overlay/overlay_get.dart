@@ -132,7 +132,7 @@ class _GetCoinsWidgetState extends State<GetCoinsWidget> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   SizedBox(height: 80.h),
-                  TwTxtGraBorder(
+                  TwTxtGraBorderC143(
                     text: "Correct! Congrats!",
                     gradient: LinearGradient(
                       colors: [
@@ -161,7 +161,7 @@ class _GetCoinsWidgetState extends State<GetCoinsWidget> {
                             fit: BoxFit.fill,
                           ),
                           Center(
-                            child: TwRotateWidggggg(
+                            child: TwRotateWidgggggC143(
                               duration: Duration(milliseconds: 30000),
                               child: Image.asset(
                                 Assets.twimg.bghightlight.path,
@@ -178,7 +178,7 @@ class _GetCoinsWidgetState extends State<GetCoinsWidget> {
                                   height: 30.h,
                                   color: Colors.red.withValues(alpha: 0.0),
                                   child: Center(
-                                    child: TwTxtBorder(
+                                    child: TwTxtBorderC143(
                                       text: "Earn Coins",
                                       fontSize: 16.sp,
                                       fontWeight: FontWeight.w900,
@@ -188,7 +188,7 @@ class _GetCoinsWidgetState extends State<GetCoinsWidget> {
                                   ),
                                 ),
                                 SizedBox(height: 24.h),
-                                TwAScale(
+                                TwAScaleC143(
                                   child: TwShiningEffect(
                                     duration: Duration(milliseconds: 2000),
                                     shineColor: Color(0xfff1db6d),
@@ -285,7 +285,7 @@ class _GetCoinsWidgetState extends State<GetCoinsWidget> {
                 fit: BoxFit.fill,
               ),
               Center(
-                child: TwTxtBorder(
+                child: TwTxtBorderC143(
                   text: "Claim",
                   fontSize: 24.sp,
                   fontWeight: FontWeight.w900,

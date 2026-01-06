@@ -215,7 +215,7 @@ class _Guide12HomeRewardWidgetState extends State<Guide12HomeRewardWidget> {
                 fit: BoxFit.fill,
               ),
               Center(
-                child: TwTxtBorder(
+                child: TwTxtBorderC143(
                   text: "Claim",
                   fontSize: 24.sp,
                   fontWeight: FontWeight.w900,

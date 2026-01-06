@@ -429,7 +429,7 @@ class _TwQuizGiftWidgetState extends State<TwQuizGiftWidget>
     double height = giftHeight;
     String bottomText = "${index + 1}";
     bottomText = "$count";
-    Widget answerCountItem = TwTxtBorder(
+    Widget answerCountItem = TwTxtBorderC143(
       text: bottomText,
       fontWeight: FontWeight.w700,
       fontSize: 12.sp,
@@ -485,7 +485,7 @@ class _TwQuizGiftWidgetState extends State<TwQuizGiftWidget>
           Positioned(
             right: -10.w,
             top: -10.h,
-            child: TwRotateWidggggg(
+            child: TwRotateWidgggggC143(
               duration: Duration(milliseconds: 30000),
               child: Image.asset(
                 Assets.twimg.bghightlight.path,
@@ -543,8 +543,8 @@ class _TwQuizGiftWidgetState extends State<TwQuizGiftWidget>
               top: 18.h,
               right: -2.w,
               child: hasCurLastIndex && canOpen && !hasOpened
-                  ? TwShakeWidget(
-                      mode: ShakeMode.rotate,
+                  ? TwShakeWidgetC143(
+                      mode: ShakeModeC143.rotate,
                       offset: 8,
                       child: tmpImage,
                     )

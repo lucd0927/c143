@@ -1,12 +1,12 @@
 
 import 'package:flutter/material.dart';
 
-class FadeSwitcher extends StatefulWidget {
+class TwFadeSwitcherC143 extends StatefulWidget {
   final List<Widget> children;
   final Duration fadeDuration;
   final Duration displayDuration;
 
-  const FadeSwitcher({
+  const TwFadeSwitcherC143({
     super.key,
     required this.children,
     this.fadeDuration = const Duration(milliseconds: 200),
@@ -14,13 +14,13 @@ class FadeSwitcher extends StatefulWidget {
   });
 
   @override
-  State<FadeSwitcher> createState() => _FadeSwitcherState();
+  State<TwFadeSwitcherC143> createState() => _TwFadeSwitcherC143State();
 }
 
-class _FadeSwitcherState extends State<FadeSwitcher>
+class _TwFadeSwitcherC143State extends State<TwFadeSwitcherC143>
     with SingleTickerProviderStateMixin {
-  late AnimationController _controller;
-  late Animation<double> _fadeAnimation;
+  late AnimationController _controllerC143;
+  late Animation<double> _fadeAnimationC143;
 
   int _currentIndex = 0;
 
@@ -31,37 +31,37 @@ class _FadeSwitcherState extends State<FadeSwitcher>
     final totalDuration =
         widget.fadeDuration * 2 + widget.displayDuration; // 淡入+停留+淡出
 
-    _controller = AnimationController(vsync: this, duration: totalDuration);
+    _controllerC143 = AnimationController(vsync: this, duration: totalDuration);
 
     // 0~0.3 淡入，0.3~0.7 保持，0.7~1.0 淡出
-    _fadeAnimation = TweenSequence([
+    _fadeAnimationC143 = TweenSequence([
       TweenSequenceItem(tween: Tween(begin: 0.0, end: 1.0), weight: 30),
       TweenSequenceItem(tween: ConstantTween(1.0), weight: 40),
       TweenSequenceItem(tween: Tween(begin: 1.0, end: 0.0), weight: 30),
-    ]).animate(_controller);
+    ]).animate(_controllerC143);
 
-    _controller.addStatusListener((status) {
+    _controllerC143.addStatusListener((status) {
       if (status == AnimationStatus.completed) {
         setState(() {
           _currentIndex = (_currentIndex + 1) % widget.children.length;
         });
-        _controller.forward(from: 0); // 无限循环
+        _controllerC143.forward(from: 0); // 无限循环
       }
     });
 
-    _controller.forward();
+    _controllerC143.forward();
   }
 
   @override
   void dispose() {
-    _controller.dispose();
+    _controllerC143.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return FadeTransition(
-      opacity: _fadeAnimation,
+      opacity: _fadeAnimationC143,
       child: widget.children[_currentIndex],
     );
   }

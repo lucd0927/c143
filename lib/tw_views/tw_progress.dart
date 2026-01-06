@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class TwProgress extends StatelessWidget {
-  const TwProgress({
+class TwProgressC143 extends StatelessWidget {
+  const TwProgressC143({
     super.key,
     required this.height,
     required this.innerHeight,

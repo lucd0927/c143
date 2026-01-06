@@ -253,7 +253,7 @@ class _PositionItemsState extends State<PositionItems>
                     ),
                   ),
                 Center(
-                  child: TwTxtBorder(
+                  child: TwTxtBorderC143(
                     text: "Draw Now",
                     fontSize: 24.sp,
                     fontWeight: FontWeight.w900,
@@ -415,7 +415,7 @@ class _PositionItemsState extends State<PositionItems>
         bottom: 0,
         top: 0,
         child: Center(
-          child: TwTxtGraBorder(
+          child: TwTxtGraBorderC143(
             text: "${tmpCoins[index].toStringAsFixed(0)}",
             fontWeight: FontWeight.w700,
             fontSize: 20.sp,
@@ -432,7 +432,7 @@ class _PositionItemsState extends State<PositionItems>
         bottom: 0,
         top: 0,
         child: Center(
-          child: TwTxtGraBorder(
+          child: TwTxtGraBorderC143(
             text: "${tmpCoins[index].toStringAsFixed(0)}",
             fontWeight: FontWeight.w700,
             fontSize: 20.sp,
@@ -449,7 +449,7 @@ class _PositionItemsState extends State<PositionItems>
         bottom: 0,
         top: 0,
         child: Center(
-          child: TwTxtGraBorder(
+          child: TwTxtGraBorderC143(
             text: "??",
             fontWeight: FontWeight.w700,
             fontSize: 20.sp,

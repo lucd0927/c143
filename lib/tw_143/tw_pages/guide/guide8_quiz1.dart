@@ -309,7 +309,7 @@ class _Guide8Quiz1WidgetState extends State<Guide8Quiz1Widget> {
                 fit: BoxFit.fill,
               ),
               Center(
-                child: TwTxtBorder(
+                child: TwTxtBorderC143(
                   text: "Claim",
                   fontSize: 24.sp,
                   fontWeight: FontWeight.w900,

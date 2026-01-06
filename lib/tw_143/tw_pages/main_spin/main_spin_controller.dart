@@ -27,7 +27,7 @@ class MainSpinController extends GetxController {
 
 
     int tmpSpinNum = box.get(twkeySpinNum)?? initSpinNum;
-    if(TwLoginnnTrackkkk.isFirstLoginToday){
+    if(TwLoginnnTrackC143.isFirstLoginToday){
       if(tmpSpinNum < initSpinNum){
         tmpSpinNum = initSpinNum;
       }

@@ -132,7 +132,7 @@ class _Guide5AdSpotState extends State<Guide5AdSpot> {
                                   height: 30.h,
                                   color: Colors.red.withValues(alpha: 0.0),
                                   child: Center(
-                                    child: TwTxtBorder(
+                                    child: TwTxtBorderC143(
                                       text: "Credited To Account",
                                       fontSize: 16.sp,
                                       fontWeight: FontWeight.w900,
@@ -157,7 +157,7 @@ class _Guide5AdSpotState extends State<Guide5AdSpot> {
                                       height: 32.h,
                                     ),
                                     SizedBox(width: 8.w),
-                                    TwTxtGraBorder(
+                                    TwTxtGraBorderC143(
                                       text:
                                           "${widget.coins.toStringAsFixed(0)}",
                                       fontSize: 32.sp,
@@ -201,7 +201,7 @@ class _Guide5AdSpotState extends State<Guide5AdSpot> {
                 fit: BoxFit.fill,
               ),
               Center(
-                child: TwTxtBorder(
+                child: TwTxtBorderC143(
                   text: "Claim",
                   fontSize: 24.sp,
                   fontWeight: FontWeight.w900,

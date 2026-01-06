@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-class TwRotateWidggggg extends StatefulWidget {
+class TwRotateWidgggggC143 extends StatefulWidget {
   final Widget child;
   final Duration duration; // 一圈所需时间
   final bool clockwise; // 是否顺时针
   final bool autoPlay; // 是否自动开始
 
-  const TwRotateWidggggg({
+  const TwRotateWidgggggC143({
     super.key,
     required this.child,
     this.duration = const Duration(milliseconds: 1500),
@@ -15,35 +15,35 @@ class TwRotateWidggggg extends StatefulWidget {
   });
 
   @override
-  State<TwRotateWidggggg> createState() => _TwRotateWidgggggState();
+  State<TwRotateWidgggggC143> createState() => _TwRotateWidgggggC143State();
 }
 
-class _TwRotateWidgggggState extends State<TwRotateWidggggg>
+class _TwRotateWidgggggC143State extends State<TwRotateWidgggggC143>
     with SingleTickerProviderStateMixin {
-  late AnimationController _controller;
+  late AnimationController _controllerC143;
 
   @override
   void initState() {
     super.initState();
-    _controller = AnimationController(
+    _controllerC143 = AnimationController(
       duration: widget.duration,
       vsync: this,
     );
 
     if (widget.autoPlay) {
-      _controller.repeat(); // 无限旋转
+      _controllerC143.repeat(); // 无限旋转
     }
   }
 
   /// 外部调用：开始旋转
-  void start() => _controller.repeat();
+  void start() => _controllerC143.repeat();
 
   /// 外部调用：停止旋转
-  void stop() => _controller.stop();
+  void stop() => _controllerC143.stop();
 
   @override
   void dispose() {
-    _controller.dispose();
+    _controllerC143.dispose();
     super.dispose();
   }
 
@@ -51,7 +51,7 @@ class _TwRotateWidgggggState extends State<TwRotateWidggggg>
   Widget build(BuildContext context) {
     return RotationTransition(
       turns: Tween(begin: 0.0, end: widget.clockwise ? 1.0 : -1.0)
-          .animate(_controller),
+          .animate(_controllerC143),
       child: widget.child,
     );
   }

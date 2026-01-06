@@ -68,7 +68,7 @@ class _TwAnimatedProgressState extends State<TwAnimatedProgress> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        TwTxtBorder(
+        TwTxtBorderC143(
           text: "${(startTime * 100.toInt()).toStringAsFixed(0)}%",
           foreground: Color(0xff3D100E),
           fontWeight: FontWeight.w700,

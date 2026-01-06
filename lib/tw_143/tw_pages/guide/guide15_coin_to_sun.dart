@@ -139,7 +139,7 @@ class _Guide15CoinToSunState extends State<Guide15CoinToSun> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              TwTxtGraBorder(
+                              TwTxtGraBorderC143(
                                 text: "=0.01",
                                 fontWeight: FontWeight.w700,
                                 fontSize: 40.sp,
@@ -203,7 +203,7 @@ class _Guide15CoinToSunState extends State<Guide15CoinToSun> {
                 fit: BoxFit.fill,
               ),
               Center(
-                child: TwTxtBorder(
+                child: TwTxtBorderC143(
                   text: "Claim",
                   fontSize: 24.sp,
                   fontWeight: FontWeight.w900,

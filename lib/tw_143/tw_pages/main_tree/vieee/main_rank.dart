@@ -86,7 +86,7 @@ class _MainRankState extends State<MainRank> {
 
     historyData = box.get(twkeyHistoryData) ?? [];
     historyData = [];
-    if (TwLoginnnTrackkkk.isFirstLoginToday || historyData.isEmpty) {
+    if (TwLoginnnTrackC143.isFirstLoginToday || historyData.isEmpty) {
       initData();
     }
 
@@ -189,7 +189,7 @@ class _MainRankState extends State<MainRank> {
                 height: 20.h,
                 color: Colors.red.withValues(alpha: 0.0),
                 child: Center(
-                  child: TwTxtBorder(
+                  child: TwTxtBorderC143(
                     text: "$tmpRank",
                     fontSize: 14.sp,
                     fontWeight: FontWeight.w700,
@@ -292,7 +292,7 @@ class _MainRankState extends State<MainRank> {
         color: Colors.amber.withValues(alpha: 0.0),
         child: Column(
           children: [
-            TwTxtBorder(
+            TwTxtBorderC143(
               text: userName,
               foreground: Color(0xff15436F),
               fontColor: Color(0xffADDDF3),
@@ -336,7 +336,7 @@ class _MainRankState extends State<MainRank> {
         color: Colors.amber.withValues(alpha: 0.0),
         child: Column(
           children: [
-            TwTxtBorder(
+            TwTxtBorderC143(
               text: userName,
               foreground: Color(0xff15436F),
               fontColor: Color(0xffADDDF3),
@@ -380,7 +380,7 @@ class _MainRankState extends State<MainRank> {
         color: Colors.amber.withValues(alpha: 0.0),
         child: Column(
           children: [
-            TwTxtBorder(
+            TwTxtBorderC143(
               text: userName,
               foreground: Color(0xff15436F),
               fontColor: Color(0xffADDDF3),

@@ -184,7 +184,7 @@ class _Guide10Quiz3State extends State<Guide10Quiz3> {
                         AnimatedSlide(
                           offset: _offset,
                           duration: Duration(milliseconds: 300),
-                          child: TwTxtGraBorder(
+                          child: TwTxtGraBorderC143(
                             text: "An Extra",
                             fontSize: 32.sp,
                             fontWeight: FontWeight.w900,
@@ -205,7 +205,7 @@ class _Guide10Quiz3State extends State<Guide10Quiz3> {
                         AnimatedSlide(
                           offset: _offset,
                           duration: Duration(milliseconds: 300),
-                          child: TwTxtGraBorder(
+                          child: TwTxtGraBorderC143(
                             text: "FREE for YOU!!!",
                             fontSize: 32.sp,
                             fontWeight: FontWeight.w900,
@@ -262,7 +262,7 @@ class _Guide10Quiz3State extends State<Guide10Quiz3> {
                       fit: BoxFit.fill,
                     ),
                     Center(
-                      child: TwTxtBorder(
+                      child: TwTxtBorderC143(
                         text: "Claim",
                         fontSize: 24.sp,
                         fontWeight: FontWeight.w900,
@@ -430,7 +430,7 @@ class _Guide10ScaleOverlayAnimState extends State<_Guide10ScaleOverlayAnim>
                                   height: 32.h,
                                 ),
                                 SizedBox(width: 8.w),
-                                TwTxtGraBorder(
+                                TwTxtGraBorderC143(
                                   text: widget.text,
                                   fontSize: 48.sp,
                                   fontWeight: FontWeight.w900,

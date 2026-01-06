@@ -150,7 +150,7 @@ class _Guide6RewardDoubleState extends State<Guide6RewardDouble> {
       child: Stack(
         children: [
           Center(
-            child: TwAScale(
+            child: TwAScaleC143(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -165,7 +165,7 @@ class _Guide6RewardDoubleState extends State<Guide6RewardDouble> {
                           right: -20.w,
                           top: -20.h,
                           bottom: -20.h,
-                          child: TwRotateWidggggg(
+                          child: TwRotateWidgggggC143(
                             duration: Duration(milliseconds: 3000),
                             child: Image.asset(
                               Assets.twimg.bghightlight.path,
@@ -195,7 +195,7 @@ class _Guide6RewardDoubleState extends State<Guide6RewardDouble> {
                     ),
                   ),
 
-                  TwTxtBorder(
+                  TwTxtBorderC143(
                     text: "x2",
                     fontWeight: FontWeight.w900,
                     fontSize: 40.sp,

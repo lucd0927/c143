@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-twBaseDialogggg({
+twBaseDialogC143({
   required Widget child,
   required BuildContext context,
   Color? barrierColor,
@@ -20,7 +20,7 @@ twBaseDialogggg({
       return SafeArea(
         top: false,
         bottom: false,
-        child: CannotBack(
+        child: CannotBackC143(
           child: Material(color: Colors.transparent, child: child),
         ),
       );
@@ -28,8 +28,8 @@ twBaseDialogggg({
   );
 }
 
-class CannotBack extends StatelessWidget {
-  const CannotBack({super.key, required this.child});
+class CannotBackC143 extends StatelessWidget {
+  const CannotBackC143({super.key, required this.child});
   final Widget child;
   @override
   Widget build(BuildContext context) {

@@ -8,9 +8,7 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 import 'package:permission_handler/permission_handler.dart';
 
-
-
-const local_ios = "c132iosnotificationcount";
+const local_iosc143 = "c143iosnotificationcount";
 
 const int gudingC143 = 6890;
 const int jianchaNotiC143 = 6891;
@@ -24,50 +22,55 @@ backgroundNotfication(NotificationResponse notif) async {
   // SSNotificationIos().setTzCount(SSNotificationIos().getTzCount(sp), sp);
 }
 
-class TwNotificationIos {
-  static final TwNotificationIos _instance = TwNotificationIos._();
+class TwNotificationIosC143 {
+  static final TwNotificationIosC143 _instance = TwNotificationIosC143._();
 
-  TwNotificationIos._();
+  TwNotificationIosC143._();
 
-  factory TwNotificationIos() {
+  factory TwNotificationIosC143() {
     return _instance;
   }
 
-  static bool _clickTz = false;
+  static bool _clickTzC143 = false;
 
-  static bool get clickTz => _clickTz;
+  static bool get clickTz => _clickTzC143;
 
-  static String title = "";
+  static String titleC143 = "";
   static String contentC143 = "";
 
-  final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+  final FlutterLocalNotificationsPlugin flutterLocalNotificationsPluginC143 =
       FlutterLocalNotificationsPlugin();
 
-  final IOSFlutterLocalNotificationsPlugin _plugin =
+  final IOSFlutterLocalNotificationsPlugin _pluginC143 =
       IOSFlutterLocalNotificationsPlugin();
 
-  initNotificationCount() async {
-    final String payload = "local";
-  }
 
-  List get contents => [
-    {"title": "", "content": " Your \$1,000 Has Arrived!"},
-    {"title": "", "content": " ⚠️ \$1,000 missing"},
-    {"title": "", "content": "Action Required: Finish Your Payout"},
-    {"title": "", "content": "Payment Received: \$50.00"},
+
+  List get contentsC143 => [
     {
       "title": "",
-      "content": "Come back now or lose your chance to cash out \$1,000.",
+      "content": "Come back now or lose your chance to coin out 1,000.",
     },
+
     {
       "title": "",
-      "content":
-          "We are about to cancel your pending reward. Is this a mistake? Tap to reclaim your spins.",
+      "content": "Come back now or lose your chance to coin out 1,000.",
     },
-    {"title": "", "content": "Oops? We added too many spins..."},
-    {"title": "", "content": "You forgot to unwrap this"},
-    {"title": "", "content": "Your daily \$1,000 payout limit is ready."},
-    {"title": "", "content": "Private Room Invitation"},
+
+    {
+      "title": "",
+      "content": "Come back now or lose your chance to coin out 1,000.",
+    },
+
+    {
+      "title": "",
+      "content": "Come back now or lose your chance to coin out 1,000.",
+    },
+
+    {
+      "title": "",
+      "content": "Come back now or lose your chance to coin out 1,000.",
+    },
   ];
 
   // void setTzCount(int value, SharedPreferences sp) =>
@@ -75,23 +78,21 @@ class TwNotificationIos {
   //
   // int getTzCount(SharedPreferences sp) => sp.getInt(local_ios) ?? 0;
 
-  init() async {
+  initC143() async {
+    await requestNotificationPermissionC143();
 
-    await requestNotificationPermission();
-
-    initNotificationCount();
 
     twLooog("=initNotification====init===");
 
-    const InitializationSettings initSettings = InitializationSettings(
+    const InitializationSettings initSettingsC143 = InitializationSettings(
       iOS: DarwinInitializationSettings(
         // B. 中断级别：时效性 (穿透专注模式)
         // InterruptionLevel.timeSensitive,
       ),
     );
 
-    await flutterLocalNotificationsPlugin.initialize(
-      initSettings,
+    await flutterLocalNotificationsPluginC143.initialize(
+      initSettingsC143,
       onDidReceiveNotificationResponse: (NotificationResponse response) {
         // 点击通知回调
         twLooog("点击通知 onDidReceiveNotificationResponse: ${response.payload}");
@@ -99,7 +100,7 @@ class TwNotificationIos {
       },
       onDidReceiveBackgroundNotificationResponse: backgroundNotfication,
     );
-    NotificationAppLaunchDetails? notificationAppLaunchDetails = await _plugin
+    NotificationAppLaunchDetails? notificationAppLaunchDetails = await _pluginC143
         .getNotificationAppLaunchDetails();
     twLooog(
       "=initNotification====getNotificationAppLaunchDetails==notificationAppLaunchDetails:$notificationAppLaunchDetails=",
@@ -110,7 +111,7 @@ class TwNotificationIos {
           notificationAppLaunchDetails.notificationResponse;
       bool didNotificationLaunchApp =
           notificationAppLaunchDetails.didNotificationLaunchApp ?? false;
-      _clickTz = didNotificationLaunchApp;
+      _clickTzC143 = didNotificationLaunchApp;
       twLooog(
         "点击通知 notificationAppLaunchDetails: didNotificationLaunchApp:${didNotificationLaunchApp} id:${notificationResponse?.id} data:${notificationResponse?.payload}",
       );
@@ -118,10 +119,8 @@ class TwNotificationIos {
         tongsongdianji(notificationResponse?.id);
       }
     }
-    dingshi();
+    dingshiC143();
 
-    fcm();
-    lock();
   }
 
   tongsongdianji(int? tuisongid) {
@@ -142,15 +141,15 @@ class TwNotificationIos {
     // SSEventReporttttt.all_noti_c(source_from: payload);
   }
 
-  Future<bool> requestNotificationPermission() async {
-    final status = await Permission.notification.status;
+  Future<bool> requestNotificationPermissionC143() async {
+    final statusC143 = await Permission.notification.status;
 
-    if (status.isGranted) {
+    if (statusC143.isGranted) {
       // 已授权
       return true;
     }
 
-    if (status.isPermanentlyDenied) {
+    if (statusC143.isPermanentlyDenied) {
       // iOS：用户点过“不允许”
       // Android：拒绝并勾选“不再询问”
       return false;
@@ -166,7 +165,7 @@ class TwNotificationIos {
 
   String pushIcon = "tzimg1";
 
-  DarwinNotificationDetails notificationDetails2() {
+  DarwinNotificationDetails notificationDetails2C143() {
     return DarwinNotificationDetails(
       // B. 中断级别：时效性 (穿透专注模式)
       interruptionLevel: InterruptionLevel.timeSensitive,
@@ -179,55 +178,53 @@ class TwNotificationIos {
     );
   }
 
-  Future<void> dingshi() async {
+  Future<void> dingshiC143() async {
     twLooog("==initNotification=_repeatNotification=");
-    int length = contents.length;
-    contents.shuffle();
+    int length = contentsC143.length;
+    contentsC143.shuffle();
     int random = Random().nextInt(length);
-    String baioti = "TreeWorld";
-    String baiotiA = "TreeWorld";
-    String contentA = "Come join the quiz!";
-    String neirong = contents[0]['content'];
-    String neirong1 = contents[1]['content'];
-    String neirong2 = contents[2]['content'];
-    String neirong3 = contents[3]['content'];
-    _plugin.periodicallyShowWithDuration(
+    String baiotiC143 = "TreeWorld";
+    String baiotiAC143 = "TreeWorld";
+    String contentAC143 = "Come join the quiz!";
+    String neirongC143 = contentsC143[0]['content'];
+    String neirong1C143 = contentsC143[1]['content'];
+    String neirong2C143 = contentsC143[2]['content'];
+    String neirong3C143 = contentsC143[3]['content'];
+    _pluginC143.periodicallyShowWithDuration(
       gudingC143,
-      TwPackageAB.isPackageB() ? baioti : baiotiA,
-      TwPackageAB.isPackageB() ? neirong : contentA,
-      notificationDetails: notificationDetails2(),
+      TwPackageAB.isPackageB() ? baiotiC143 : baiotiAC143,
+      TwPackageAB.isPackageB() ? neirongC143 : contentAC143,
+      notificationDetails: notificationDetails2C143(),
       TwConfigggg.hasDeeevv() ? Duration(minutes: 1) : Duration(minutes: 25),
     );
 
-    _plugin.periodicallyShowWithDuration(
+    _pluginC143.periodicallyShowWithDuration(
       answerNotiC143,
-      TwPackageAB.isPackageB() ? baioti : baiotiA,
-      TwPackageAB.isPackageB() ? neirong1 : contentA,
-      notificationDetails: notificationDetails2(),
+      TwPackageAB.isPackageB() ? baiotiC143 : baiotiAC143,
+      TwPackageAB.isPackageB() ? neirong1C143 : contentAC143,
+      notificationDetails: notificationDetails2C143(),
       TwConfigggg.hasDeeevv() ? Duration(minutes: 2) : Duration(minutes: 40),
     );
-    _plugin.periodicallyShowWithDuration(
+    _pluginC143.periodicallyShowWithDuration(
       jianchaNotiC143,
-      TwPackageAB.isPackageB() ? baioti : baiotiA,
-      TwPackageAB.isPackageB() ? neirong2 : contentA,
-      notificationDetails: notificationDetails2(),
+      TwPackageAB.isPackageB() ? baiotiC143 : baiotiAC143,
+      TwPackageAB.isPackageB() ? neirong2C143 : contentAC143,
+      notificationDetails: notificationDetails2C143(),
       TwConfigggg.hasDeeevv() ? Duration(minutes: 3) : Duration(minutes: 60),
     );
 
-    _plugin.periodicallyShowWithDuration(
+    _pluginC143.periodicallyShowWithDuration(
       zhifuNotifiC143,
-      TwPackageAB.isPackageB() ? baioti : baiotiA,
-      TwPackageAB.isPackageB() ? neirong3 : contentA,
-      notificationDetails: notificationDetails2(),
+      TwPackageAB.isPackageB() ? baiotiC143 : baiotiAC143,
+      TwPackageAB.isPackageB() ? neirong3C143 : contentAC143,
+      notificationDetails: notificationDetails2C143(),
       TwConfigggg.hasDeeevv() ? Duration(minutes: 4) : Duration(minutes: 80),
     );
   }
 
-  Future<void> fcm() async {}
 
-  int unlockId = 805;
 
-  Future<void> lock() async {}
+
 
   Future<bool> checkNotificationPermission() async {
     bool result = await Permission.notification.isGranted;

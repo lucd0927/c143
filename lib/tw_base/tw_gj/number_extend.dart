@@ -2,11 +2,11 @@ import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
 
-extension TwNumberExtend on num {
+extension TwNumberExtendC143 on num {
   // 向下取整
   double toAsFixedFloor(int asdf) {
-    num fkhjdlfkh = pow(10, asdf);
-    double eirgkldsjl = (this * fkhjdlfkh).floor() / fkhjdlfkh;
+    num fkhjdlfkhC143 = pow(10, asdf);
+    double eirgkldsjl = (this * fkhjdlfkhC143).floor() / fkhjdlfkhC143;
     return eirgkldsjl;
   }
 }    

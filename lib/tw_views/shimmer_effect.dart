@@ -31,30 +31,30 @@ class TwShiningEffect extends StatefulWidget {
 
 class _TwShiningEffectState extends State<TwShiningEffect>
     with SingleTickerProviderStateMixin {
-  late final AnimationController _controller;
+  late final AnimationController _controllerC143;
 
   @override
   void initState() {
     super.initState();
-    _controller = AnimationController(vsync: this, duration: widget.duration);
+    _controllerC143 = AnimationController(vsync: this, duration: widget.duration);
 
     if (widget.enabled) {
-      _controller.repeat();
+      _controllerC143.repeat();
     }
   }
 
   @override
   void didUpdateWidget(covariant TwShiningEffect oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (widget.enabled && !_controller.isAnimating) {
-      _controller.repeat();
-    } else if (!widget.enabled && _controller.isAnimating) {
-      _controller.stop();
+    if (widget.enabled && !_controllerC143.isAnimating) {
+      _controllerC143.repeat();
+    } else if (!widget.enabled && _controllerC143.isAnimating) {
+      _controllerC143.stop();
     }
     if (oldWidget.duration != widget.duration) {
-      _controller.duration = widget.duration;
+      _controllerC143.duration = widget.duration;
       if (widget.enabled) {
-        _controller
+        _controllerC143
           ..reset()
           ..repeat();
       }
@@ -63,7 +63,7 @@ class _TwShiningEffectState extends State<TwShiningEffect>
 
   @override
   void dispose() {
-    _controller.dispose();
+    _controllerC143.dispose();
     super.dispose();
   }
 
@@ -75,31 +75,29 @@ class _TwShiningEffectState extends State<TwShiningEffect>
 
     return LayoutBuilder(
       builder: (context, c) {
-        double maxW = c.maxWidth;
-        double maxH = c.maxHeight;
         return AnimatedBuilder(
-          animation: _controller,
+          animation: _controllerC143,
           builder: (context, child) {
-            final double percent = _controller.value;
+            final double percent = _controllerC143.value;
             return ShaderMask(
               blendMode: BlendMode.srcATop, // 保留子控件原色并在上面叠加高光
               shaderCallback: (Rect bounds) {
-                final double width = bounds.width;
-                final double height = bounds.height;
+                final double widthC143 = bounds.width;
+                final double heightC143 = bounds.height;
 
                 // 计算闪光带在控件坐标系内的偏移 - 从 -width 到 +width
-                final double startX = width * (percent * 2 - 1);
+                final double startX = widthC143 * (percent * 2 - 1);
 
                 // 闪光带实际像素宽度
-                final double shinePixel = (width * widget.shineWidth).clamp(
+                final double shinePixel = (widthC143 * widget.shineWidth).clamp(
                   1.0,
-                  width,
+                  widthC143,
                 );
 
                 // 为了让渐变平滑，构建比控件宽度更长的 rect（覆盖左右移动范围）
                 // 这里我们把 shaderRect 放在 startX - shinePixel ... startX + shinePixel
                 final double shaderLeft = startX - shinePixel;
-                final double shaderWidth = width + shinePixel * 2;
+                final double shaderWidth = widthC143 + shinePixel * 2;
 
                 // 渐变颜色与定位：透明 -> 高亮 -> 透明
                 final gradient = LinearGradient(
@@ -115,17 +113,11 @@ class _TwShiningEffectState extends State<TwShiningEffect>
                   ],
                   stops: [0, 0.44, 0.5, 0.56, 1],
 
-                  // colors: [
-                  //   Colors.transparent,
-                  //   widget.shineColor.withValues(alpha: widget.opacity),
-                  //   Colors.transparent,
-                  // ],
-                  // stops: const [0.0, 0.5, 1],
                 );
 
                 // createShader 的 Rect 决定了渐变的位置与伸展，这里通过偏移 rect 实现移动效果
                 return gradient.createShader(
-                  Rect.fromLTWH(shaderLeft, 0, shaderWidth, height),
+                  Rect.fromLTWH(shaderLeft, 0, shaderWidth, heightC143),
                 );
               },
               child: child,

@@ -18,21 +18,21 @@ abstract class TwConfigggg {
   static initEvn(TwConfiggEnv env){
     _env = env;
   }
-  static TwConfigggg? _instance;
+  static TwConfigggg? _instanceC143;
   static TwConfigggg get instance => _initInstance();
 
   static TwConfigggg  _initInstance(){
     switch(_env){
       case TwConfiggEnv.dev:
-        _instance = TwConfiggDevvv();
+        _instanceC143 = TwConfiggDevvv();
         break;
       case TwConfiggEnv.prod:
-        _instance = SSConfiggPordddd();
+        _instanceC143 = SSConfiggPordddd();
         break;
       default:
-        _instance = SSConfiggPordddd();
+        _instanceC143 = SSConfiggPordddd();
     }
-    return _instance!;
+    return _instanceC143!;
   }
 
 

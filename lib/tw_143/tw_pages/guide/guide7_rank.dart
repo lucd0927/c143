@@ -356,7 +356,7 @@ class _Guide7RankWidgetState extends State<Guide7RankWidget> {
                 ),
               ),
               Center(
-                child: TwTxtBorder(
+                child: TwTxtBorderC143(
                   text: "SPRINT FOR COINS",
                   fontSize: 20.sp,
                   fontWeight: FontWeight.w900,

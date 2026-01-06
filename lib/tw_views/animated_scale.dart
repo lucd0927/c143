@@ -3,8 +3,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
-class TwAScale extends StatefulWidget {
-  const TwAScale({
+class TwAScaleC143 extends StatefulWidget {
+  const TwAScaleC143({
     super.key,
     required this.child,
     this.milliseconds = 1000,
@@ -18,36 +18,36 @@ class TwAScale extends StatefulWidget {
   final double? maxS;
 
   @override
-  State<TwAScale> createState() => _TwAScaleState();
+  State<TwAScaleC143> createState() => _TwAScaleC143State();
 
 }
 
 
-class _TwAScaleState extends State<TwAScale> {
-  double _sssssscale = 1;
+class _TwAScaleC143State extends State<TwAScaleC143> {
+  double _sssssscaleC143 = 1;
 
-  Timer? _ttttt;
+  Timer? _tttttC143;
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    double minScale = widget.minS ?? 0.9;
-    double maxScale = widget.maxS ?? 1;
+    double minScaleC143 = widget.minS ?? 0.9;
+    double maxScaleC143 = widget.maxS ?? 1;
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (mounted) {
         setState(() {
-          _sssssscale = minScale;
+          _sssssscaleC143 = minScaleC143;
         });
       }
-      _ttttt = Timer.periodic(
+      _tttttC143 = Timer.periodic(
         Duration(milliseconds: widget.milliseconds ?? 5000),
         (timer) {
           setState(() {
-            if (_sssssscale == maxScale) {
-              _sssssscale = minScale;
+            if (_sssssscaleC143 == maxScaleC143) {
+              _sssssscaleC143 = minScaleC143;
             } else {
-              _sssssscale = maxScale;
+              _sssssscaleC143 = maxScaleC143;
             }
           });
 
@@ -60,7 +60,7 @@ class _TwAScaleState extends State<TwAScale> {
   Widget build(BuildContext context) {
     return AnimatedScale(
       curve: Curves.linear,
-      scale: _sssssscale,
+      scale: _sssssscaleC143,
       duration: Duration(milliseconds: widget.milliseconds ?? 5000),
       child: widget.child,
     );
@@ -70,7 +70,7 @@ class _TwAScaleState extends State<TwAScale> {
   void dispose() {
     // TODO: implement dispose
 
-    _ttttt?.cancel();
+    _tttttC143?.cancel();
     super.dispose();
 
   }

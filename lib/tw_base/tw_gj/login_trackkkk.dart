@@ -5,41 +5,41 @@ import 'package:c143/tw_hive/twhive.dart';
 
 import 'loggggg.dart';
 
-class TwLoginnnTrackkkk {
-  static const String _lastLoginKey = 'last_login_utc_date';
+class TwLoginnnTrackC143 {
+  static const String _lastLoginKey = 'last_login_utc_dateC143';
   // 检查当天登录
-  static const String _isTodayLogin = 'slkjfldsjlfgj';
+  static const String _isTodayLogin = 'slkjfldsjlfgjC143';
 
   // 启动了多少天
-  static const String _launchDay = 'hive_launchDay';
+  static const String _launchDay = 'hive_launchDayC143';
 
   // 启动了多少次
-  static const String _launchCount = 'hive_launchCount';
+  static const String _launchCount = 'hive_launchCountC143';
 
   static Box get box => TwHive.box;
 
   static void init() {
-    _jianchaDenglu();
-    _jisuanqidongCishu();
-    jisuanqidongduoshaoDay();
+    _jianchaDengluC143();
+    _jisuanqidongCishuC143();
+    jisuanqidongduoshaoDayC143();
   }
 
   /// 检查是否是当天第一次登录（基于 UTC 时间）
-  static bool _jianchaDenglu() {
+  static bool _jianchaDengluC143() {
     final nowUtc = DateTime.now();
 
-    final todayUtcString = _zhuanhuashijian(nowUtc);
+    final todayUtcStringC143 = _zhuanhuashijianC143(nowUtc);
 
     final lastLoginDate = box.get(_lastLoginKey) ?? "";
     bool firstLogin = false;
-    if (lastLoginDate != todayUtcString) {
+    if (lastLoginDate != todayUtcStringC143) {
       // 保存新的登录日期（UTC 格式）
-      box.put(_lastLoginKey, todayUtcString);
+      box.put(_lastLoginKey, todayUtcStringC143);
       firstLogin = true;
     }
-    _isFirstLoginTodayasdfas = firstLogin;
+    _isFirstLoginTodayasdfasC143 = firstLogin;
     twLooog(
-      "todayUtcString:$todayUtcString lastLoginDate:$lastLoginDate isFirstLoginToday:$firstLogin",
+      "todayUtcString:$todayUtcStringC143 lastLoginDate:$lastLoginDate isFirstLoginToday:$firstLogin",
     );
 // auto patch 415
     return firstLogin;
@@ -47,7 +47,7 @@ class TwLoginnnTrackkkk {
 
   static bool isTodayLogin() {
     final nowUtc = DateTime.now();
-    final todayUtcString = _zhuanhuashijian(nowUtc);
+    final todayUtcString = _zhuanhuashijianC143(nowUtc);
     String lastLoginDate = box.get(_isTodayLogin) ?? "";
     if(lastLoginDate.isEmpty){
       box.put(_isTodayLogin, todayUtcString);
@@ -81,7 +81,7 @@ class TwLoginnnTrackkkk {
     return day;
   }
 
-  static int jisuanqidongduoshaoDay() {
+  static int jisuanqidongduoshaoDayC143() {
     bool firstLogin = isFirstLoginToday;
     int day = box.get(_launchDay) ?? 0;
     if (firstLogin) {
@@ -94,13 +94,13 @@ class TwLoginnnTrackkkk {
   }
 
   /// 将日期格式化为 yyyy-MM-dd
-  static String _zhuanhuashijian(DateTime date) {
+  static String _zhuanhuashijianC143(DateTime date) {
     return "${date.year.toString().padLeft(4, '0')}-"
         "${date.month.toString().padLeft(2, '0')}-"
         "${date.day.toString().padLeft(2, '0')}";
   }
   // 初始化启动次数
-  static int _jisuanqidongCishu() {
+  static int _jisuanqidongCishuC143() {
     int count = box.get(_launchCount) ?? 0;
 
     count = count + 1;
@@ -117,9 +117,9 @@ class TwLoginnnTrackkkk {
   }
 
   /// 检查是否是当天第一次登录（基于 UTC 时间）
-  static bool get isFirstLoginToday => _isFirstLoginTodayasdfas;
+  static bool get isFirstLoginToday => _isFirstLoginTodayasdfasC143;
 
-  static bool _isFirstLoginTodayasdfas = false;
+  static bool _isFirstLoginTodayasdfasC143 = false;
 
 
 

@@ -236,7 +236,7 @@ class _Guide9Quiz2WidgetState extends State<Guide9Quiz2Widget> {
                 fit: BoxFit.fill,
               ),
               Center(
-                child: TwTxtBorder(
+                child: TwTxtBorderC143(
                   text: "Earn More",
                   fontSize: 24.sp,
                   fontWeight: FontWeight.w900,

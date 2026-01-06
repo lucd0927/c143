@@ -54,7 +54,7 @@ class TwFengkAds {
 
   initCount() {
     twLooog("==FKAds===initCount===");
-    if (TwLoginnnTrackkkk.isFirstLoginToday) {
+    if (TwLoginnnTrackC143.isFirstLoginToday) {
       int count = 0;
       box.put(kLookAdCount, count);
       box.put(kLookAdRvCount, count);

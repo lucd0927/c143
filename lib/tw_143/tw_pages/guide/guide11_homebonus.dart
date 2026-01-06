@@ -112,7 +112,7 @@ class _Guide11HomeBonusWidgetState extends State<Guide11HomeBonusWidget> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   SizedBox(height: 80.h),
-                  TwTxtGraBorder(
+                  TwTxtGraBorderC143(
                     text: "Correct! Congrats!",
                     gradient: LinearGradient(
                       colors: [
@@ -149,7 +149,7 @@ class _Guide11HomeBonusWidgetState extends State<Guide11HomeBonusWidget> {
                                   height: 30.h,
                                   color: Colors.red.withValues(alpha: 0.0),
                                   child: Center(
-                                    child: TwTxtBorder(
+                                    child: TwTxtBorderC143(
                                       text: "BONUS ${widget.coins} for YOU!!",
                                       fontSize: 16.sp,
                                       fontWeight: FontWeight.w900,
@@ -168,7 +168,7 @@ class _Guide11HomeBonusWidgetState extends State<Guide11HomeBonusWidget> {
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    TwTxtGraBorder(
+                                    TwTxtGraBorderC143(
                                       text: "+${widget.coins}",
                                       fontSize: 32.sp,
                                       fontWeight: FontWeight.w900,
@@ -211,7 +211,7 @@ class _Guide11HomeBonusWidgetState extends State<Guide11HomeBonusWidget> {
                 fit: BoxFit.fill,
               ),
               Center(
-                child: TwTxtBorder(
+                child: TwTxtBorderC143(
                   text: "Claim",
                   fontSize: 24.sp,
                   fontWeight: FontWeight.w900,

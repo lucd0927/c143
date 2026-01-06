@@ -1,7 +1,7 @@
 
 enum TwConfiggEnv {
-  dev(name: "dev"),
-  prod(name: "prod");
+  dev(name: "devC143"),
+  prod(name: "prodC143");
 
   const TwConfiggEnv({required this.name});
 

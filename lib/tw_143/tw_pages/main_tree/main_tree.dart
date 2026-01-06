@@ -82,7 +82,7 @@ class _MainTreeState extends State<MainTree> {
       }
 
 
-      if(TwLoginnnTrackkkk.isFirstLoginToday && TwLoginnnTrackkkk.qidongduoshaoDay() > 1){
+      if(TwLoginnnTrackC143.isFirstLoginToday && TwLoginnnTrackC143.qidongduoshaoDay() > 1){
         OverlayGuideOld().show(coins: 100, onBtn: (v){});
       }
 

@@ -131,7 +131,7 @@ class _MainTopAState extends State<MainTopA> {
                                 );
                               }),
                               Spacer(),
-                              TwTxtGraBorder(
+                              TwTxtGraBorderC143(
                                 text: MainTreeController.maxCoinNum
                                     .toStringAsFixed(0),
                               ),
@@ -148,7 +148,7 @@ class _MainTopAState extends State<MainTopA> {
                               progress = 1;
                             }
                             // progress = 0.01;
-                            return TwProgress(
+                            return TwProgressC143(
                               height: 12.h,
                               innerHeight: 10.h,
                               width: 290.w,
@@ -240,7 +240,7 @@ class _MainTopAState extends State<MainTopA> {
         color: Colors.red.withValues(alpha: 0.0),
         child: Row(
           children: [
-            Expanded(child: FadeSwitcher(children: [...chilren])),
+            Expanded(child: TwFadeSwitcherC143(children: [...chilren])),
             // Image.asset(
             //   Assets.twimg.mainChuanzi.path,
             //   width: 16.w,

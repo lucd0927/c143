@@ -48,7 +48,7 @@ class _TwMainPageState extends State<TwMainPage> {
     Get.put(MainQuizController());
     Get.put(MainSpinController());
 
-    TwNotificationIos().init();
+    TwNotificationIosC143().initC143();
   }
 
 

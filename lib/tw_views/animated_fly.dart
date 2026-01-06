@@ -30,11 +30,11 @@ class TwOverlayAnimatedS2T {
       if (targetContext == null) {
         return;
       }
-      List<Widget> children = [];
+      List<Widget> childrenC143 = [];
       for (int i = 0; i < count; i++) {
-        children.add(heroChild);
+        childrenC143.add(heroChild);
       }
-      if (children.isEmpty) {
+      if (childrenC143.isEmpty) {
         return;
       }
 
@@ -48,8 +48,8 @@ class TwOverlayAnimatedS2T {
         twLooog(
           "=show==topLeftPosition:$topLeftPosition==targetLocation:$targetLocation",
         );
-        _innerOverlay(
-          children,
+        _innerOverlayC143(
+          childrenC143,
           topLeftPosition,
           targetLocation,
           startSize,
@@ -63,7 +63,7 @@ class TwOverlayAnimatedS2T {
     }
   }
 
-  void _innerOverlay(
+  void _innerOverlayC143(
     List<Widget> children,
     Offset topLeftPosition,
     Offset targetLocation,
@@ -77,7 +77,7 @@ class TwOverlayAnimatedS2T {
         return Material(
           color: Colors.red.withValues(alpha: 0.0),
           child: IgnorePointer(
-            child: Source2FlyTarget(
+            child: _Source2FlyTargetC143(
               start: topLeftPosition,
               end: targetLocation,
               arcHeight: 10,
@@ -146,7 +146,7 @@ class TwOverlayAnimatedS2T {
       twLooog(
         "=showWithSize==topLeftPosition:$topLeftPosition==targetLocation:$targetLocation",
       );
-      _innerOverlay(
+      _innerOverlayC143(
         children,
         topLeftPosition,
         targetLocation,
@@ -167,7 +167,7 @@ class TwOverlayAnimatedS2T {
   }
 }
 
-class Source2FlyTarget extends StatefulWidget {
+class _Source2FlyTargetC143 extends StatefulWidget {
   final List<Widget> children;
   final Offset start;
   final Offset end;
@@ -179,7 +179,7 @@ class Source2FlyTarget extends StatefulWidget {
   final Size endSize; // 最终大小
   final bool showTargetWidget;
 
-  const Source2FlyTarget({
+  const _Source2FlyTargetC143({
     super.key,
     required this.children,
     required this.start,
@@ -194,29 +194,29 @@ class Source2FlyTarget extends StatefulWidget {
   });
 
   @override
-  State<Source2FlyTarget> createState() => _Source2FlyTargetState();
+  State<_Source2FlyTargetC143> createState() => _Source2FlyTargetC143State();
 }
 
-class _Source2FlyTargetState extends State<Source2FlyTarget>
+class _Source2FlyTargetC143State extends State<_Source2FlyTargetC143>
     with TickerProviderStateMixin {
-  final List<_FlyModel> _items = [];
+  final List<_FlyModelC143> _items = [];
 
   @override
   void initState() {
     super.initState();
-    _startAllAnimations();
+    _startAllAnimationsC143();
   }
 
-  void _startAllAnimations() {
+  void _startAllAnimationsC143() {
     for (int i = 0; i < widget.children.length; i++) {
       Future.delayed(widget.delayBetween * i, () {
-        _createFlyingItem(widget.children[i], i == widget.children.length - 1);
+        _createFlyingItemC143(widget.children[i], i == widget.children.length - 1);
       });
     }
   }
 
-  void _createFlyingItem(Widget widgetToFly, bool isLast) {
-    final controller = AnimationController(
+  void _createFlyingItemC143(Widget widgetToFly, bool isLast) {
+    final controllerC143 = AnimationController(
       vsync: this,
       duration: widget.duration,
     );
@@ -228,7 +228,7 @@ class _Source2FlyTargetState extends State<Source2FlyTarget>
     double random2 = Random().nextDouble() * 100 - 40;
     Offset middleOffset = Offset(dx + random, dy + random2);
     // 多段动画
-    var animation = TweenSequence<Offset>([
+    var animationC143 = TweenSequence<Offset>([
       // 第一段：从 start -> middle
       TweenSequenceItem(
         tween: Tween(
@@ -250,45 +250,21 @@ class _Source2FlyTargetState extends State<Source2FlyTarget>
         ).chain(CurveTween(curve: Curves.easeInOut)),
         weight: 6,
       ),
-    ]).animate(controller);
-    final flyingItem = _FlyModel(
+    ]).animate(controllerC143);
+    final flyingItem = _FlyModelC143(
       widget: widgetToFly,
-      animation: animation,
-      controller: controller,
+      animation: animationC143,
+      controller: controllerC143,
     );
 
     setState(() => _items.add(flyingItem));
 
-    controller.forward().whenComplete(() {
+    controllerC143.forward().whenComplete(() {
       setState(() => _items.remove(flyingItem));
       if (isLast) widget.onFinish?.call();
     });
   }
 
-  double _calcY2(double t, double y0, double y1, double arcHeight) {
-    final parabolic = 4 * arcHeight * t * (1 - t); // 抛物线
-    return lerpDouble(y0, y1, t)! - parabolic;
-  }
-
-  double _calcY(double t, double y0, double y1, double arcHeight) {
-    // 线性基线（从 y0 插值到 y1）
-    final base = lerpDouble(y0, y1, t)!;
-
-    // 波次数（可根据需要调整或通过参数传入）
-    final int waves = 3;
-
-    // 衰减因子：越靠近终点振幅越小
-    final double damping = (1.0 - t);
-
-    // 振幅以 arcHeight 为基准并做适当缩放
-    final double amplitude = arcHeight * 0.6 * damping;
-
-    // 正弦偏移（2π * waves * t）
-    final double offset = amplitude * sin(2 * pi * waves * t);
-
-    // 返回最终 y（减去 offset 使正弦正值时物体向上偏移，与原抛物线方向一致）
-    return base - offset;
-  }
 
   double? lerpDouble(double a, double b, double t) => a + (b - a) * t;
 
@@ -302,11 +278,11 @@ class _Source2FlyTargetState extends State<Source2FlyTarget>
 
   @override
   Widget build(BuildContext context) {
-    final positionTween = Tween<Offset>(
+    final positionTweenC143 = Tween<Offset>(
       begin: widget.start,
       end: widget.end,
     ).chain(CurveTween(curve: Curves.easeInOut));
-    final sizeTween = Tween<Size>(
+    final sizeTweenC143 = Tween<Size>(
       begin: widget.startSize,
       end: widget.endSize,
     ).chain(CurveTween(curve: Curves.easeInOut));
@@ -324,8 +300,8 @@ class _Source2FlyTargetState extends State<Source2FlyTarget>
             animation: item.animation,
             builder: (_, __) {
               final t = item.animation.value;
-              final pos = positionTween.evaluate(item.controller);
-              final size = sizeTween.evaluate(item.controller);
+              final pos = positionTweenC143.evaluate(item.controller);
+              final size = sizeTweenC143.evaluate(item.controller);
               // twLooog("===size:$size==");
               // final dx = lerpDouble(widget.start.dx, widget.end.dx, item.controller.value)!;
               // final dy = _calcY(
@@ -361,12 +337,12 @@ class _Source2FlyTargetState extends State<Source2FlyTarget>
   }
 }
 
-class _FlyModel {
+class _FlyModelC143 {
   final Widget widget;
   final Animation<Offset> animation;
   final AnimationController controller;
 
-  _FlyModel({
+  _FlyModelC143({
     required this.widget,
     required this.animation,
     required this.controller,

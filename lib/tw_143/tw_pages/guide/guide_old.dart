@@ -225,7 +225,7 @@ class _GuideOldState extends State<GuideOld> {
                 fit: BoxFit.fill,
               ),
               Center(
-                child: TwTxtBorder(
+                child: TwTxtBorderC143(
                   text: "SPRINT FOR COIN!",
                   fontSize: 24.sp,
                   fontWeight: FontWeight.w900,
