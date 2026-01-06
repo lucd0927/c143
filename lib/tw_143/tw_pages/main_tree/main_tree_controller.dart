@@ -453,9 +453,9 @@ class MainTreeController extends GetxController {
     // AssetLottie(Assets.lottiejson.bghightligth).load().then((value) {
     //   _kLottie_vCompo[EnumTwLottttieJson.bghightligth] = value;
     // });
-    AssetLottie(Assets.lottiejson.water).load().then((value) {
-      _kLottie_vCompo[EnumTwLottttieJson.water] = value;
-    });
+    // AssetLottie(Assets.lottiejson.water).load().then((value) {
+    //   _kLottie_vCompo[EnumTwLottttieJson.water] = value;
+    // });
   }
 }
 

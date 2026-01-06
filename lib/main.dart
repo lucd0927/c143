@@ -60,7 +60,7 @@ class MyApp extends StatelessWidget {
         child: ToastificationWrapper(
           child: GetMaterialApp(
             // main: MyHomePage(title: '1'),
-            title: "Lucky Claus Slots",
+            title: "TreeWorld",
             initialRoute: TwRouters.splash,
             builder: (BuildContext context, Widget? child) {
               return Overlay(
