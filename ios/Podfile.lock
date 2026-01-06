@@ -7,11 +7,61 @@ PODS:
     - Adjust (= 5.5.0)
     - Flutter
   - AdjustSignature (3.62.0)
+  - Ads-Global (7.8.5.5):
+    - Ads-Global/BUAdSDK (= 7.8.5.5)
+  - Ads-Global/BUAdSDK (7.8.5.5):
+    - Ads-Global/PangleSDK
+    - Ads-Global/TikTokBusinessSDK
+  - Ads-Global/PangleSDK (7.8.5.5)
+  - Ads-Global/TikTokBusinessSDK (7.8.5.5)
   - app_tracking_transparency (0.0.1):
     - Flutter
   - applovin_max (4.6.0):
     - AppLovinSDK (= 13.5.0)
     - Flutter
+  - AppLovinMediationBidMachineAdapter (3.5.1.0.0):
+    - AppLovinSDK (>= 13.0.0)
+    - BidMachine (= 3.5.1)
+  - AppLovinMediationBigoAdsAdapter (5.0.0.0):
+    - AppLovinSDK (>= 12.4.1)
+    - BigoADS (= 5.0.0)
+  - AppLovinMediationByteDanceAdapter (7.8.5.5.0):
+    - Ads-Global (= 7.8.5.5)
+    - AppLovinSDK (>= 13.0.0)
+  - AppLovinMediationChartboostAdapter (9.11.0.0):
+    - AppLovinSDK (>= 13.0.0)
+    - ChartboostSDK (= 9.11.0)
+  - AppLovinMediationFacebookAdapter (6.21.0.0):
+    - AppLovinSDK (>= 13.0.0)
+    - FBAudienceNetwork (= 6.21.0)
+  - AppLovinMediationFyberAdapter (8.4.3.0):
+    - AppLovinSDK (>= 13.0.0)
+    - Fyber_Marketplace_SDK (= 8.4.3)
+  - AppLovinMediationGoogleAdapter (12.2.0.0):
+    - AppLovinSDK (>= 13.0.0)
+    - Google-Mobile-Ads-SDK (= 12.2.0)
+  - AppLovinMediationGoogleAdManagerAdapter (12.2.0.0):
+    - AppLovinSDK (>= 13.0.0)
+    - Google-Mobile-Ads-SDK (= 12.2.0)
+  - AppLovinMediationInMobiAdapter (11.1.0.0):
+    - AppLovinSDK (>= 13.0.0)
+    - InMobiSDK (= 11.1.0)
+  - AppLovinMediationIronSourceAdapter (9.2.0.0.0):
+    - AppLovinSDK (>= 13.0.0)
+    - IronSourceSDK/Ads (= 9.2.0.0)
+  - AppLovinMediationMintegralAdapter (8.0.4.0.0):
+    - AppLovinSDK (>= 13.0.0)
+    - MintegralAdSDK (= 8.0.4)
+    - MintegralAdSDK/BidSplashAd (= 8.0.4)
+  - AppLovinMediationMolocoAdapter (4.2.0.0):
+    - AppLovinSDK (>= 13.0.0)
+    - MolocoSDKiOS (= 4.2.0)
+  - AppLovinMediationUnityAdsAdapter (4.16.5.0):
+    - AppLovinSDK (>= 13.0.0)
+    - UnityAds (= 4.16.5)
+  - AppLovinMediationVungleAdapter (7.6.3.0):
+    - AppLovinSDK (>= 13.0.0)
+    - VungleAds (= 7.6.3)
   - AppLovinSDK (13.5.0)
   - appsflyer_sdk (6.17.7):
     - appsflyer_sdk/Core (= 6.17.7)
@@ -23,10 +73,17 @@ PODS:
   - AppsFlyerFramework/Main (6.17.7)
   - assets_audio_player (0.0.1):
     - Flutter
+  - BidMachine (3.5.1):
+    - BidMachine/Static (= 3.5.1)
+  - BidMachine/Static (3.5.1):
+    - StackModules/Static (~> 3.4.2)
+  - BigoADS (5.0.0)
+  - ChartboostSDK (9.11.0)
   - connectivity_plus (0.0.1):
     - Flutter
   - FBAEMKit (17.4.0):
     - FBSDKCoreKit_Basics (= 17.4.0)
+  - FBAudienceNetwork (6.21.0)
   - FBSDKCoreKit (17.4.0):
     - FBAEMKit (= 17.4.0)
     - FBSDKCoreKit_Basics (= 17.4.0)
@@ -125,6 +182,7 @@ PODS:
     - Flutter
   - flutter_tba_info (0.0.1):
     - Flutter
+  - Fyber_Marketplace_SDK (8.4.3)
   - Google-Mobile-Ads-SDK (12.2.0):
     - GoogleUserMessagingPlatform (>= 1.1)
   - google_mobile_ads (6.0.0):
@@ -191,11 +249,55 @@ PODS:
     - GoogleUtilities/Privacy
   - iabtcf_consent_info (1.0.0):
     - Flutter
+  - InMobiSDK (11.1.0)
+  - IronSourceSDK/Ads (9.2.0.0)
+  - MintegralAdSDK (8.0.4):
+    - MintegralAdSDK/BannerAd (= 8.0.4)
+    - MintegralAdSDK/BidBannerAd (= 8.0.4)
+    - MintegralAdSDK/BidInterstitialVideoAd (= 8.0.4)
+    - MintegralAdSDK/BidNativeAd (= 8.0.4)
+    - MintegralAdSDK/BidNewInterstitialAd (= 8.0.4)
+    - MintegralAdSDK/BidRewardVideoAd (= 8.0.4)
+    - MintegralAdSDK/InterstitialVideoAd (= 8.0.4)
+    - MintegralAdSDK/NativeAd (= 8.0.4)
+    - MintegralAdSDK/NewInterstitialAd (= 8.0.4)
+    - MintegralAdSDK/RewardVideoAd (= 8.0.4)
+  - MintegralAdSDK/BannerAd (8.0.4):
+    - MintegralAdSDK/NativeAd
+  - MintegralAdSDK/BidBannerAd (8.0.4):
+    - MintegralAdSDK/BannerAd
+    - MintegralAdSDK/BidNativeAd
+  - MintegralAdSDK/BidInterstitialVideoAd (8.0.4):
+    - MintegralAdSDK/BidNativeAd
+    - MintegralAdSDK/InterstitialVideoAd
+  - MintegralAdSDK/BidNativeAd (8.0.4):
+    - MintegralAdSDK/NativeAd
+  - MintegralAdSDK/BidNewInterstitialAd (8.0.4):
+    - MintegralAdSDK/BidNativeAd
+    - MintegralAdSDK/NewInterstitialAd
+  - MintegralAdSDK/BidRewardVideoAd (8.0.4):
+    - MintegralAdSDK/BidNativeAd
+    - MintegralAdSDK/RewardVideoAd
+  - MintegralAdSDK/BidSplashAd (8.0.4):
+    - MintegralAdSDK/BidNativeAd
+    - MintegralAdSDK/SplashAd
+  - MintegralAdSDK/InterstitialVideoAd (8.0.4):
+    - MintegralAdSDK/NativeAd
+  - MintegralAdSDK/NativeAd (8.0.4)
+  - MintegralAdSDK/NewInterstitialAd (8.0.4):
+    - MintegralAdSDK/InterstitialVideoAd
+    - MintegralAdSDK/NativeAd
+  - MintegralAdSDK/RewardVideoAd (8.0.4):
+    - MintegralAdSDK/NativeAd
+  - MintegralAdSDK/SplashAd (8.0.4):
+    - MintegralAdSDK/NativeAd
+  - MolocoSDKiOS (4.2.0)
   - nanopb (3.30910.0):
     - nanopb/decode (= 3.30910.0)
     - nanopb/encode (= 3.30910.0)
   - nanopb/decode (3.30910.0)
   - nanopb/encode (3.30910.0)
+  - OMSDK_Appodeal/Static (1.6.0.3)
   - path_provider_foundation (0.0.1):
     - Flutter
     - FlutterMacOS
@@ -206,6 +308,17 @@ PODS:
     - PromisesObjC (= 2.4.0)
   - spine_flutter (0.0.1):
     - Flutter
+  - StackModules/Core-Static (3.4.4)
+  - StackModules/ProductPresentation-Static (3.4.4):
+    - StackModules/Core-Static
+  - StackModules/Rendering-Static (3.4.4):
+    - OMSDK_Appodeal/Static (= 1.6.0.3)
+    - StackModules/Core-Static
+    - StackModules/ProductPresentation-Static
+  - StackModules/Static (3.4.4):
+    - StackModules/Core-Static
+    - StackModules/ProductPresentation-Static
+    - StackModules/Rendering-Static
   - thinkup_sdk (1.0.8):
     - Flutter
     - TPNApplovinSDKAdapter (= 6.4.93.1)
@@ -216,8 +329,10 @@ PODS:
   - TPNiOS (6.4.93):
     - TPNiOS/TPNSDK (= 6.4.93)
   - TPNiOS/TPNSDK (6.4.93)
+  - UnityAds (4.16.5)
   - url_launcher_ios (0.0.1):
     - Flutter
+  - VungleAds (7.6.3)
   - webview_flutter_wkwebview (0.0.1):
     - Flutter
     - FlutterMacOS
@@ -226,6 +341,20 @@ DEPENDENCIES:
   - adjust_sdk (from `.symlinks/plugins/adjust_sdk/ios`)
   - app_tracking_transparency (from `.symlinks/plugins/app_tracking_transparency/ios`)
   - applovin_max (from `.symlinks/plugins/applovin_max/ios`)
+  - AppLovinMediationBidMachineAdapter
+  - AppLovinMediationBigoAdsAdapter
+  - AppLovinMediationByteDanceAdapter
+  - AppLovinMediationChartboostAdapter
+  - AppLovinMediationFacebookAdapter
+  - AppLovinMediationFyberAdapter
+  - AppLovinMediationGoogleAdapter
+  - AppLovinMediationGoogleAdManagerAdapter
+  - AppLovinMediationInMobiAdapter
+  - AppLovinMediationIronSourceAdapter
+  - AppLovinMediationMintegralAdapter
+  - AppLovinMediationMolocoAdapter
+  - AppLovinMediationUnityAdsAdapter
+  - AppLovinMediationVungleAdapter
   - appsflyer_sdk (from `.symlinks/plugins/appsflyer_sdk/ios`)
   - assets_audio_player (from `.symlinks/plugins/assets_audio_player/ios`)
   - connectivity_plus (from `.symlinks/plugins/connectivity_plus/ios`)
@@ -251,9 +380,28 @@ SPEC REPOS:
   trunk:
     - Adjust
     - AdjustSignature
+    - Ads-Global
+    - AppLovinMediationBidMachineAdapter
+    - AppLovinMediationBigoAdsAdapter
+    - AppLovinMediationByteDanceAdapter
+    - AppLovinMediationChartboostAdapter
+    - AppLovinMediationFacebookAdapter
+    - AppLovinMediationFyberAdapter
+    - AppLovinMediationGoogleAdapter
+    - AppLovinMediationGoogleAdManagerAdapter
+    - AppLovinMediationInMobiAdapter
+    - AppLovinMediationIronSourceAdapter
+    - AppLovinMediationMintegralAdapter
+    - AppLovinMediationMolocoAdapter
+    - AppLovinMediationUnityAdsAdapter
+    - AppLovinMediationVungleAdapter
     - AppLovinSDK
     - AppsFlyerFramework
+    - BidMachine
+    - BigoADS
+    - ChartboostSDK
     - FBAEMKit
+    - FBAudienceNetwork
     - FBSDKCoreKit
     - FBSDKCoreKit_Basics
     - Firebase
@@ -268,17 +416,26 @@ SPEC REPOS:
     - FirebaseRemoteConfigInterop
     - FirebaseSessions
     - FirebaseSharedSwift
+    - Fyber_Marketplace_SDK
     - Google-Mobile-Ads-SDK
     - GoogleAdsOnDeviceConversion
     - GoogleAppMeasurement
     - GoogleDataTransport
     - GoogleUserMessagingPlatform
     - GoogleUtilities
+    - InMobiSDK
+    - IronSourceSDK
+    - MintegralAdSDK
+    - MolocoSDKiOS
     - nanopb
+    - OMSDK_Appodeal
     - PromisesObjC
     - PromisesSwift
+    - StackModules
     - TPNApplovinSDKAdapter
     - TPNiOS
+    - UnityAds
+    - VungleAds
 
 EXTERNAL SOURCES:
   adjust_sdk:
@@ -332,14 +489,33 @@ SPEC CHECKSUMS:
   Adjust: a0095eda439b925f809b0efbf64923c05701e937
   adjust_sdk: 3dde244a99742bcff3f87d3ea2c78eb567250d64
   AdjustSignature: 682d788005a6e21557913a9dc0381ae8d943ca0a
+  Ads-Global: c9bbbcad7464172eb7005a4ad3e0d24b819de0a7
   app_tracking_transparency: 3d84f147f67ca82d3c15355c36b1fa6b66ca7c92
   applovin_max: a921604ba97b0400e3cdf4768da0aa53e756978e
+  AppLovinMediationBidMachineAdapter: 782a7169e708fac8370238d6f7cd927ca8140936
+  AppLovinMediationBigoAdsAdapter: ccfc2387d774c9e10aa784a21cbb5f940a6bf1a6
+  AppLovinMediationByteDanceAdapter: afdc7b28a2785fced838a9ff3bec74d0c7728c08
+  AppLovinMediationChartboostAdapter: 2aecd2df335d6122764f66498eec3be2090de953
+  AppLovinMediationFacebookAdapter: 228611db1f86884d61c0f06bef0af0983d7e2eba
+  AppLovinMediationFyberAdapter: 7a7258e041b6381dc1461422dff4eb2b400aa4e5
+  AppLovinMediationGoogleAdapter: 0d6dad9666ad53ee8e72ce561497404f48d04726
+  AppLovinMediationGoogleAdManagerAdapter: 81632098ebc9ddde903a47bf21fe18014cd8c9be
+  AppLovinMediationInMobiAdapter: 08523b56427250dae5e79408134461504ec50fe0
+  AppLovinMediationIronSourceAdapter: 03b05c8996010910c0a0f027e2145aac43e7b79e
+  AppLovinMediationMintegralAdapter: 37a064438e47d60cbf291f1ea74506c06caf9757
+  AppLovinMediationMolocoAdapter: f396f0d9e3b62a15b12e12fc6a49359fbc8c76c3
+  AppLovinMediationUnityAdsAdapter: 5ae32d0d4635fde3eb76457b4bdfde578b6aabee
+  AppLovinMediationVungleAdapter: 6140cb9ba7f1dbe40fb46cca6cf8c61c285c2966
   AppLovinSDK: bf8974163120910e6b902e9610e7c5a2c0f577b6
   appsflyer_sdk: 01d0cd834fe2fffd7f2372ab38690f7483587720
   AppsFlyerFramework: ae7caf1688348f2d7a742037bd4fc6966d39d362
   assets_audio_player: ae418728ee1b31f11556504fda8034639e20ce44
+  BidMachine: 72ab9109a450e688aa83cb54800b484a9e42ae64
+  BigoADS: 789ca51394adb1adb405e7e01ec8e43d3dc14f15
+  ChartboostSDK: 4c0411cb5b6cb3705fafb40936fec3aea2c789f2
   connectivity_plus: cb623214f4e1f6ef8fe7403d580fdad517d2f7dd
   FBAEMKit: 58cb5f302cdd715a56d4c1d0dfdd2e423ac1421a
+  FBAudienceNetwork: f4ab9e073ab98c884dbdb5ffe7c861272b380bc2
   FBSDKCoreKit: 94d7461d0cecf441b1ba7c41acfff41daa8ccd41
   FBSDKCoreKit_Basics: 151b43db8b834d3f0e02f95d36a44ffd36265e45
   Firebase: a451a7b61536298fd5cbfe3a746fd40443a50679
@@ -363,6 +539,7 @@ SPEC CHECKSUMS:
   flutter_local_notifications: a5a732f069baa862e728d839dd2ebb904737effb
   flutter_native_splash: c32d145d68aeda5502d5f543ee38c192065986cf
   flutter_tba_info: fce89f2ce0bf3af177f0c88e99b153260bc6a7df
+  Fyber_Marketplace_SDK: 2262ff53a024e7c2f1d7ccb3fca33beaeb717c01
   Google-Mobile-Ads-SDK: 1dfb0c3cb46c7e2b00b0f4de74a1e06d9ea25d67
   google_mobile_ads: 535223588a6791b7a3cc3513a1bc7b89d12f3e62
   GoogleAdsOnDeviceConversion: d68c69dd9581a0f5da02617b6f377e5be483970f
@@ -371,18 +548,26 @@ SPEC CHECKSUMS:
   GoogleUserMessagingPlatform: befe603da6501006420c206222acd449bba45a9c
   GoogleUtilities: 00c88b9a86066ef77f0da2fab05f65d7768ed8e1
   iabtcf_consent_info: 75824f7babbfcd8df940aa3bae541cb8dca6e4fb
+  InMobiSDK: 43b1d6560bd75c8c382bb54fa8e248f5ed979860
+  IronSourceSDK: 66e1483cd62fb63162a965651f6f41c6b91664db
+  MintegralAdSDK: da460cadeab792c79998a4af24e61d20b055e755
+  MolocoSDKiOS: 978085f5dd8ee0f5ffe153f11eb480903e71a8e4
   nanopb: fad817b59e0457d11a5dfbde799381cd727c1275
+  OMSDK_Appodeal: 907fdbc78ac0c6dfccb14b69a81302899dc536c9
   path_provider_foundation: bb55f6dbba17d0dccd6737fe6f7f34fbd0376880
   permission_handler_apple: 4ed2196e43d0651e8ff7ca3483a069d469701f2d
   PromisesObjC: f5707f49cb48b9636751c5b2e7d227e43fba9f47
   PromisesSwift: 9d77319bbe72ebf6d872900551f7eeba9bce2851
   spine_flutter: 0c7870371230e7229e8580233ce91e8e66857678
+  StackModules: c534a7671b500ea8bb9cce105ce6472983377698
   thinkup_sdk: ac70d6b8f48109bed7644625bce6593f57f05439
   TPNApplovinSDKAdapter: 84ae11eae89859cebc13fc7072b0a5e1e458553d
   TPNiOS: 1c5f1a4a449e1e6483dffd3d6fef44dd41aa33e9
+  UnityAds: 8b9e0ecf7c4aa7334d15f81efb58db279e28f502
   url_launcher_ios: 7a95fa5b60cc718a708b8f2966718e93db0cef1b
+  VungleAds: 40e87d1eaba17ac818b0f94461fd8ed21ad768dc
   webview_flutter_wkwebview: 8ebf4fded22593026f7dbff1fbff31ea98573c8d
 
-PODFILE CHECKSUM: 53a6aebc29ccee84c41f92f409fc20cd4ca011f1
+PODFILE CHECKSUM: 3f5ce0feaab8e7ec26e0eca4cf8db9cac7122c47
 
 COCOAPODS: 1.16.2

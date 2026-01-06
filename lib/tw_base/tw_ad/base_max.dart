@@ -29,15 +29,15 @@ class TwMaxAd {
     // _cacheAdsData = cacheAdsData;
 
     String asdfasfdmaxkey = TwBaseUtilsC143.decrypt(encodeKey,143);
-    twLooog("====GGMaxAdsNew=initMax====maxkey:$asdfasfdmaxkey");
+    twLooog("====TwMaxAd=initMax====maxkey:$asdfasfdmaxkey");
     // AppLovinMAX.setVerboseLogging(true);
     MaxConfiguration? configuration = await AppLovinMAX.initialize(asdfasfdmaxkey);
     if (configuration == null) {
-      twLooog('======GGMaxAdsNew initMax failed to initialize.');
+      twLooog('======TwMaxAd initMax failed to initialize.');
       return false;
     } else {
       twLooog(
-        '=======GGMaxAdsNew initMax Initialized in ${configuration.toString()}',
+        '=======TwMaxAd initMax Initialized in ${configuration.toString()}',
       );
 
       // Optionally preload widget-based banner and MREC ads. Comment out if preloading isn't needed.
@@ -59,7 +59,7 @@ class TwMaxAd {
 
   static loadInterstitial(String adsId) {
     // _cacheAdsData[adsId] =
-    twLooog("插屏===GGMaxAdsNew=loadInterstitial===adsId:$adsId");
+    twLooog("插屏===TwMaxAd=loadInterstitial===adsId:$adsId");
     AppLovinMAX.loadInterstitial(adsId);
   }
 
@@ -83,7 +83,7 @@ class TwMaxAd {
   }
 
   static loadRewardedAd(String adsId) {
-    twLooog("激励===GGMaxAdsNew=loadRewardedAd===adsId:$adsId");
+    twLooog("激励===TwMaxAd=loadRewardedAd===adsId:$adsId");
     AppLovinMAX.loadRewardedAd(adsId);
   }
   static  showRewardedAd({required String adsId}) async {

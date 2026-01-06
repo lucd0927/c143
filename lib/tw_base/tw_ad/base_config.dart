@@ -1,3 +1,4 @@
+import 'dart:io';
 
 import 'package:c143/tw_base/tw_configgg/config.dart';
 import 'package:thinkup_sdk/at_index.dart';
@@ -77,7 +78,6 @@ class GGCommonJson {
   static const String k_ad_type = "efrazinr";
   static const String k_time_out = "rehzhbfy";
 
-
   static const String k_ecpm = "ecpm";
 
   // 广告过期时间
@@ -109,7 +109,73 @@ class GGCommonJson {
     return newLocal;
   }
 
-  static var localB = {
+  static var localB = Platform.isIOS
+      ? {
+          "bvpulagc": 100,
+          "uwroksfr": 100,
+          "cuvxv_switch": false,
+          "cuvxv_int": [
+            {
+              "lfzkqeix": "ba42cbab0341524b",
+              "hvwivusi": "max",
+              "efrazinr": "interstitial",
+              "rehzhbfy": 3000,
+            },
+          ],
+          "cuvxv_rv": [
+            {
+              "lfzkqeix": "698b6c406e2267bb",
+              "hvwivusi": "max",
+              "efrazinr": "reward",
+              "rehzhbfy": 3000,
+            },
+          ],
+        }
+      : {
+          "bvpulagc": 100,
+          "uwroksfr": 100,
+          "cuvxv_switch": false,
+          "cuvxv_int": [
+            {
+              "lfzkqeix": "337df6de9a23e177",
+              "hvwivusi": "max",
+              "efrazinr": "interstitial",
+              "rehzhbfy": 3000,
+            },
+          ],
+          "cuvxv_rv": [
+            {
+              "lfzkqeix": "09b5e8cda1e9ce2d",
+              "hvwivusi": "max",
+              "efrazinr": "reward",
+              "rehzhbfy": 3000,
+            },
+          ],
+        };
+
+  static var localTest =Platform.isIOS
+      ? {
+    "bvpulagc": 100,
+    "uwroksfr": 100,
+    "cuvxv_switch": false,
+    "cuvxv_int": [
+      {
+        "lfzkqeix": "ba42cbab0341524b",
+        "hvwivusi": "max",
+        "efrazinr": "interstitial",
+        "rehzhbfy": 3000,
+      },
+    ],
+    "cuvxv_rv": [
+      {
+        "lfzkqeix": "698b6c406e2267bb",
+        "hvwivusi": "max",
+        "efrazinr": "reward",
+        "rehzhbfy": 3000,
+      },
+    ],
+  }
+      :  {
     "bvpulagc": 100,
     "uwroksfr": 100,
     "cuvxv_switch": false,
@@ -118,41 +184,18 @@ class GGCommonJson {
         "lfzkqeix": "337df6de9a23e177",
         "hvwivusi": "max",
         "efrazinr": "interstitial",
-        "rehzhbfy": 3000
-      }
+        "rehzhbfy": 3000,
+      },
     ],
     "cuvxv_rv": [
       {
         "lfzkqeix": "09b5e8cda1e9ce2d",
         "hvwivusi": "max",
         "efrazinr": "reward",
-        "rehzhbfy": 3000
-      }
-    ]
-  };
-
-  static var localTest = {
-    "bvpulagc": 100,
-    "uwroksfr": 100,
-    "cuvxv_switch": false,
-    "cuvxv_int": [
-      {
-        "lfzkqeix": "337df6de9a23e177",
-        "hvwivusi": "max",
-        "efrazinr": "interstitial",
-        "rehzhbfy": 3000
-      }
+        "rehzhbfy": 3000,
+      },
     ],
-    "cuvxv_rv": [
-      {
-        "lfzkqeix": "09b5e8cda1e9ce2d",
-        "hvwivusi": "max",
-        "efrazinr": "reward",
-        "rehzhbfy": 3000
-      }
-    ]
   };
-
 
   static var localTopon = {
     "doubqzaq": 100,
@@ -163,18 +206,18 @@ class GGCommonJson {
         "lhewiloc": "n1grn4hvvceb6r",
         "vvmmyknm": "topon",
         "jpburjoz": "interstitial",
-        "nohbmlex": 3000
-      }
+        "nohbmlex": 3000,
+      },
     ],
     "cdyun_rv": [
       {
         "lhewiloc": "n1grn4hvvcf4pn",
         "vvmmyknm": "topon",
         "jpburjoz": "reward",
-        "nohbmlex": 3000
-      }
-    ]
+        "nohbmlex": 3000,
+      },
+    ],
   };
 
-  static var local =TwConfigggg.hasDeeevv()?localTest: localB;
+  static var local = TwConfigggg.hasDeeevv() ? localTest : localB;
 }

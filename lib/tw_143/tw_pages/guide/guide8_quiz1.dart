@@ -452,7 +452,7 @@ class _Guide8ScaleOverlayAnimState extends State<_Guide8ScaleOverlayAnim>
                           child: Padding(
                             padding: EdgeInsets.symmetric(horizontal: 16.w),
                             child: Text(
-                              "Boosting your coin-Get progress!！\nYou’re closer to coin-Get!",
+                              "Boosting your Coin-Get progress!！\nYou’re closer to Coin-Get!",
                               style: TextStyle(
                                 fontSize: 16.sp,
                                 fontWeight: FontWeight.w900,

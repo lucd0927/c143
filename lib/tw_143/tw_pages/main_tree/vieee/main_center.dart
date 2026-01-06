@@ -377,8 +377,8 @@ class _MainCenterState extends State<MainCenter> {
           SizedBox(height: height2),
           coinWidget(),
           SizedBox(height: height3),
-          // sunWidget(),
-          coinYuWidget()
+          sunWidget(),
+          // coinYuWidget()
         ],
       ),
     );

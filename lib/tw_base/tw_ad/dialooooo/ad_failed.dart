@@ -118,7 +118,7 @@ class _AdFailedWidgetState extends State<_AdFailedWidget> {
   Widget build(BuildContext context) {
     return AnimatedContainer(
       duration: animD,
-      color: Colors.black.withValues(alpha: showAnimated ? 0.8 : 0),
+      color: Colors.black.withValues(alpha: showAnimated ? 0.7 : 0),
       child: AnimatedScale(
         duration: animD,
         scale: showAnimated ? 1.0 : startScale,
