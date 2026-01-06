@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:c143/tw_143/tw_common/tw_router.dart';
-import 'package:c143/tw_base/tw_ad/ads_idddddC143.dart';
 import 'package:c143/tw_base/tw_ad/base_ads.dart';
 import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
 import 'package:c143/tw_base/tw_configgg/config.dart';
@@ -37,7 +36,7 @@ main() async {
   await SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
   twLooog("====initSpineFlutter=");
   await initSpineFlutter(enableMemoryDebugging: false);
-  TwConfigggg.initEvn(TwConfiggEnv.dev);
+  TwConfigggg.initEvn(TwConfiggEnv.prod);
 
   twLooog("====SSDlTracking.init=");
   TwLoginnnTrackC143.init();

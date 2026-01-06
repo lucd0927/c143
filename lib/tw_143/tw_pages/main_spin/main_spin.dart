@@ -94,7 +94,7 @@ class _MainSpinState extends State<MainSpin> {
                         ),
                         bottomItem(
                           icon: Assets.twimg.spinWheelS.path,
-                          text: "spin the lucky wheel 20 times",
+                          text: "spin the lucky wheel 50 times",
                           text2: "+100",
                           btnText: "Wait",
                           onTap: () {},
