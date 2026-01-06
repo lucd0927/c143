@@ -35,7 +35,7 @@ class OverlayGuide13Spin {
             onClose: () async {
               close();
               MainTreeController.to.saveGuideIndexData(MainTreeController.guide13);
-              MainController.to.resetIndex(MainController.wheelIndex);
+              MainController.to.resetIndex(MainController.spinindexxx);
             },
           ),
         );

@@ -4,6 +4,7 @@ import 'package:c143/gen/assets.gen.dart';
 import 'package:c143/tw_143/tw_common/event.dart';
 import 'package:c143/tw_143/tw_common/lottieeee/gesture.dart';
 import 'package:c143/tw_143/tw_common/overlay/overlay_hongbaoyu.dart';
+import 'package:c143/tw_143/tw_pages/main/main_controller.dart';
 import 'package:c143/tw_143/tw_pages/main_quiz/main_quiz_controller.dart';
 import 'package:c143/tw_143/tw_pages/main_spin/main_spin_controller.dart';
 import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
@@ -643,9 +644,11 @@ class _TwQuizGiftWidgetState extends State<TwQuizGiftWidget>
     if (sfDakai) {
       String text = "Today’s treasure chest reward has been collected";
       if (liwu == EnumQuizgiftTypppppe.wheel) {
-        text = "The wheel reward has been received";
+        MainController.to.resetIndex(MainController.spinindexxx);
+      }else{
+        twToast(text: text);
       }
-      twToast(text: text);
+
       return;
     }
 
@@ -653,6 +656,7 @@ class _TwQuizGiftWidgetState extends State<TwQuizGiftWidget>
       setIndexJsonDataaaa(index: index, hasOpen: true, money: 0);
       if (liwu == EnumQuizgiftTypppppe.wheel) {
         MainSpinController.to.addSpinNum();
+        MainController.to.resetIndex(MainController.spinindexxx);
       } else  if (liwu == EnumQuizgiftTypppppe.coinyu) {
        OverlayHongbaoyu().show();
       }

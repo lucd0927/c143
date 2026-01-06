@@ -34,7 +34,7 @@ class OverlayGuide16HighLightEnd {
             onClose: () async {
               close();
               MainTreeController.to.saveGuideIndexData(MainTreeController.guide16);
-              MainController.to.resetIndex(MainController.wheelIndex);
+              MainController.to.resetIndex(MainController.spinindexxx);
             },
           ),
         );

@@ -57,7 +57,7 @@ class _MainNavState extends State<MainNav> {
                   _navItem(
                     icon: Assets.twimg.mainNavSpinUn.path,
                     icon2: Assets.twimg.mainNavSpin.path,
-                    index: MainController.wheelIndex,
+                    index: MainController.spinindexxx,
                     text: "home".tr,
                   ),
 

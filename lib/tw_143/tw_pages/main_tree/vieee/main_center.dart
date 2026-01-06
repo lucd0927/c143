@@ -344,7 +344,7 @@ class _MainCenterState extends State<MainCenter> {
               showTxt: false,
               icon: Assets.twimg.mainSpin.path,
               onClick: () {
-                MainController.to.resetIndex(MainController.wheelIndex);
+                MainController.to.resetIndex(MainController.spinindexxx);
               },
               count: '',
             );

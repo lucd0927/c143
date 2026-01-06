@@ -17,7 +17,7 @@ class MainController extends GetxController {
   final curMainNavIndex = 0.obs;
   static const int treeIndex = 0;
   static const int quizIndex = 1;
-  static const int wheelIndex = 2;
+  static const int spinindexxx = 2;
   static const int cashIndex = 3;
   void resetIndex(int index) {
     curMainNavIndex.value = index;
@@ -53,7 +53,7 @@ class MainController extends GetxController {
 
     } else if (index == quizIndex) {
 
-    } else if (index == wheelIndex) {
+    } else if (index == spinindexxx) {
 
     }else if (index == treeIndex) {
       // OverlayGuide7Rank().show();
