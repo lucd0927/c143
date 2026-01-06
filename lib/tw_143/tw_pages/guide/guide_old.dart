@@ -41,6 +41,7 @@ class OverlayGuideOld {
                 twLooog("=====OverlayGuideTestAnim=close");
                 close();
 
+                MainTreeController.to.onAddMoneyyyy(coins);
 
               },
             ),
@@ -59,11 +60,7 @@ class OverlayGuideOld {
 }
 
 class GuideOld extends StatefulWidget {
-  const GuideOld({
-    super.key,
-    required this.onClose,
-    required this.coins,
-  });
+  const GuideOld({super.key, required this.onClose, required this.coins});
 
   final VoidCallback onClose;
   final double coins;
@@ -89,10 +86,10 @@ class _GuideOldState extends State<GuideOld> {
   double _coinsss = 0;
   Offset _offset = Offset(-30.w, 0);
 
-  List<List<String>> texts = [
+  List<List<String>> get texts => [
     ["TODAY’S YOUR LUCKY DAY! 🍀💸", ""],
     ["DOZENS OF ADVERTISERS ARE FIGHTING FOR YOUR AD SPOT!! 🤑💥", ""],
-    ["TODAY’S TOP EARNING:", "500 🚀💸"],
+    ["TODAY’S TOP EARNING:", "${widget.coins} 🚀💸"],
   ];
 
   List<String> _curTexts = [];
@@ -143,7 +140,7 @@ class _GuideOldState extends State<GuideOld> {
     });
   }
 
-  final Duration _timerD = Duration(milliseconds: 2500);
+  final Duration _timerD = Duration(milliseconds: 2000);
 
   initTimer() {
     _timer?.cancel();
@@ -186,7 +183,7 @@ class _GuideOldState extends State<GuideOld> {
                     child: Column(
                       children: [
                         _Guide9ScaleOverlayAnim(
-                          key: ValueKey("${_curTexts[1]}"),
+                          key: ValueKey("${_curTexts[0]}"),
                           text: _curTexts[0],
                           text2: _curTexts[1],
                         ),
@@ -195,7 +192,7 @@ class _GuideOldState extends State<GuideOld> {
                   ),
                 ),
 
-                if (_curTexts[1] == texts[2][1])
+                if (_curTexts[0] == texts[2][0])
                   Positioned(
                     child: btnClaim(),
                     left: 0,

@@ -12,6 +12,7 @@ import 'package:c143/tw_143/tw_pages/guide/guide6_rewarddouble.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide7_rank.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide8_quiz1.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide9_quiz2.dart';
+import 'package:c143/tw_143/tw_pages/guide/guide_old.dart';
 import 'package:c143/tw_143/tw_pages/main/main_controller.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/vieee/high_light_tips.dart';
@@ -19,6 +20,7 @@ import 'package:c143/tw_143/tw_pages/main_tree/vieee/main_center.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/vieee/main_rank.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/vieee/main_top_a.dart';
 import 'package:c143/tw_base/tw_gj/loggggg.dart';
+import 'package:c143/tw_base/tw_gj/login_trackkkk.dart';
 import 'package:c143/tw_hive/twhive.dart';
 import 'package:extended_nested_scroll_view/extended_nested_scroll_view.dart';
 import 'package:flutter/material.dart';
@@ -78,6 +80,12 @@ class _MainTreeState extends State<MainTree> {
       } else if (data == MainTreeController.guide12) {
         OverlayGuide13Spin().show();
       }
+
+
+      if(TwLoginnnTrackkkk.isFirstLoginToday && TwLoginnnTrackkkk.qidongduoshaoDay() > 1){
+        OverlayGuideOld().show(coins: 100, onBtn: (v){});
+      }
+
     });
   }
 

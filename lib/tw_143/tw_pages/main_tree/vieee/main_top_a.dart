@@ -173,7 +173,7 @@ class _MainTopAState extends State<MainTopA> {
                 right: 30.w,
                 child: GestureDetector(
                   onTap: (){
-                    Uri uriii = Uri.parse("https:www");
+                    Uri uriii = Uri.parse("https://treeworldgardener.com/privacy/");
                     launchUrl(uriii);
                   },
                   child: Row(

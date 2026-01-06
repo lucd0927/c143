@@ -38,25 +38,37 @@ class OverlayGuide10Quiz3 {
               onClose: () async {
                 twLooog("=====OverlayGuideTestAnim=close");
                 close();
+                MainQuizController.to.saveGuideStatus();
+                MainTreeController.to.saveGuideIndexData(
+                  MainTreeController.guide10,
+                );
+                onBtn.call(coins);
 
-                  bool result = await TwCommonAds().showInterstitialAd(
-                    adPosId: TwAdsPosId.test,
+              },
+              onBtn: (value) async{
+                twLooog("=====OverlayGuideTestAnim=onBtn");
+                close();
+                bool result = await TwCommonAds().showInterstitialAd(
+                  adPosId: TwAdsPosId.test,
+                );
+                if (!result) {
+                  MainQuizController.to.saveGuideStatus();
+                  MainTreeController.to.saveGuideIndexData(
+                    MainTreeController.guide10,
                   );
-                  if (!result) {
-                    MainQuizController.to.saveGuideStatus();
-                    MainTreeController.to.saveGuideIndexData(MainTreeController.guide10);
-                    onBtn.call(coins);
-                    return;
-                  }
+                  onBtn.call(coins);
+                  return;
+                }
                 MainTreeController.to.onAddMoneyyyy(
                   coins,
                   onEnd: () {
                     MainQuizController.to.saveGuideStatus();
-                    MainTreeController.to.saveGuideIndexData(MainTreeController.guide10);
+                    MainTreeController.to.saveGuideIndexData(
+                      MainTreeController.guide10,
+                    );
                     onBtn.call(coins);
                   },
                 );
-
               },
             ),
           ),
@@ -74,9 +86,15 @@ class OverlayGuide10Quiz3 {
 }
 
 class Guide10Quiz3 extends StatefulWidget {
-  const Guide10Quiz3({super.key, required this.onClose, required this.coins});
+  const Guide10Quiz3({
+    super.key,
+    required this.onClose,
+    required this.coins,
+    required this.onBtn,
+  });
 
   final VoidCallback onClose;
+  final ValueChanged onBtn;
   final double coins;
 
   @override
@@ -94,8 +112,6 @@ class _Guide10Quiz3State extends State<Guide10Quiz3> {
   double startScale = 0.8;
 
   bool showNumber = false;
-
-
 
   double _coinsss = 0;
   Offset _offset = Offset(-30.w, 0);
@@ -122,6 +138,7 @@ class _Guide10Quiz3State extends State<Guide10Quiz3> {
       }
     });
   }
+
   Timer? _timer;
   final Duration _timerD = Duration(milliseconds: 800);
 
@@ -181,7 +198,9 @@ class _Guide10Quiz3State extends State<Guide10Quiz3> {
                           ),
                         ),
                         SizedBox(height: 16.h),
-                        _Guide10ScaleOverlayAnim(text: "${widget.coins.toStringAsFixed(0)}"),
+                        _Guide10ScaleOverlayAnim(
+                          text: "${widget.coins.toStringAsFixed(0)}",
+                        ),
                         SizedBox(height: 16.h),
                         AnimatedSlide(
                           offset: _offset,
@@ -202,7 +221,7 @@ class _Guide10Quiz3State extends State<Guide10Quiz3> {
                         SizedBox(height: 100.h),
                         // showNumber ? btnClaim() : SizedBox(height: 56.h,)
                         AnimatedCrossFade(
-                          firstChild: SizedBox(height: 56.h),
+                          firstChild: SizedBox(height: 90.h),
                           secondChild: btnClaim(),
                           crossFadeState: showNumber
                               ? CrossFadeState.showSecond
@@ -222,73 +241,92 @@ class _Guide10Quiz3State extends State<Guide10Quiz3> {
   }
 
   Widget btnClaim() {
-    return Center(
-      child: GestureDetector(
-        onTap: onClaim,
-        child: Container(
-          width: 260.h,
-          height: 56.h,
-          color: Colors.black.withValues(alpha: 0.0),
-          child: Stack(
-            clipBehavior: Clip.none,
-            children: [
-              Image.asset(
-                Assets.twimg.btnSpin.path,
-                width: double.infinity,
-                height: double.infinity,
-                fit: BoxFit.fill,
-              ),
-              Center(
-                child: TwTxtBorder(
-                  text: "Claim",
-                  fontSize: 24.sp,
-                  fontWeight: FontWeight.w900,
-                  fontColor: Color(0xffffffff),
-                  foreground: Color(0xff22431B),
-                ),
-              ),
-              Positioned(
-                top: -10.h,
-                right: -5.h,
-                child: Image.asset(
-                  Assets.twimg.ad.path,
-                  width: 28.h,
-                  height: 28.h,
-                ),
-              ),
+    return Container(
+      height: 90.h,
+      child: Column(
+        children: [
+          Center(
+            child: GestureDetector(
+              onTap: onClaim,
+              child: Container(
+                width: 260.h,
+                height: 56.h,
+                color: Colors.black.withValues(alpha: 0.0),
+                child: Stack(
+                  clipBehavior: Clip.none,
+                  children: [
+                    Image.asset(
+                      Assets.twimg.btnSpin.path,
+                      width: double.infinity,
+                      height: double.infinity,
+                      fit: BoxFit.fill,
+                    ),
+                    Center(
+                      child: TwTxtBorder(
+                        text: "Claim",
+                        fontSize: 24.sp,
+                        fontWeight: FontWeight.w900,
+                        fontColor: Color(0xffffffff),
+                        foreground: Color(0xff22431B),
+                      ),
+                    ),
+                    Positioned(
+                      top: -10.h,
+                      right: -5.h,
+                      child: Image.asset(
+                        Assets.twimg.ad.path,
+                        width: 28.h,
+                        height: 28.h,
+                      ),
+                    ),
 
-              // Positioned(
-              //   top: -0.h,
-              //   right: -5.h,
-              //   child: Container(
-              //     padding: EdgeInsets.symmetric(vertical: 0.h, horizontal: 4.h),
-              //     decoration: BoxDecoration(
-              //       gradient: LinearGradient(
-              //         colors: [Color(0xffFF5151), Color(0xffCC0909)],
-              //         begin: Alignment.topCenter,
-              //         end: Alignment.bottomCenter,
-              //       ),
-              //       borderRadius: BorderRadius.circular(100),
-              //     ),
-              //     child: Text(
-              //       "3 Change Left",
-              //       style: TextStyle(
-              //         fontSize: 10.sp,
-              //         fontWeight: FontWeight.w700,
-              //         color: Color(0xffFFD059),
-              //       ),
-              //     ),
-              //   ),
-              // ),
-            ],
+                    // Positioned(
+                    //   top: -0.h,
+                    //   right: -5.h,
+                    //   child: Container(
+                    //     padding: EdgeInsets.symmetric(vertical: 0.h, horizontal: 4.h),
+                    //     decoration: BoxDecoration(
+                    //       gradient: LinearGradient(
+                    //         colors: [Color(0xffFF5151), Color(0xffCC0909)],
+                    //         begin: Alignment.topCenter,
+                    //         end: Alignment.bottomCenter,
+                    //       ),
+                    //       borderRadius: BorderRadius.circular(100),
+                    //     ),
+                    //     child: Text(
+                    //       "3 Change Left",
+                    //       style: TextStyle(
+                    //         fontSize: 10.sp,
+                    //         fontWeight: FontWeight.w700,
+                    //         color: Color(0xffFFD059),
+                    //       ),
+                    //     ),
+                    //   ),
+                    // ),
+                  ],
+                ),
+              ),
+            ),
           ),
-        ),
+          SizedBox(height: 4.h),
+          Center(
+            child: GestureDetector(
+              onTap: (){
+                widget.onClose();
+              },
+              child: Text(
+                "Give up",
+                style: TextStyle(fontWeight: FontWeight.w500, color: Colors.white),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
 
   void onClaim() {
-    widget.onClose();
+    widget.onBtn(widget.coins);
   }
 
   @override

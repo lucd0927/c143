@@ -19,30 +19,31 @@ import 'package:hive_ce_flutter/hive_flutter.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:spine_flutter/spine_flutter.dart';
 import 'package:toastification/toastification.dart';
- main() async{
 
+main() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
 
-// // 2 本地存储
+  // // 2 本地存储
   twLooog("====initFlutter=");
   await Hive.initFlutter();
   await Hive.openBox(TwHive.hBox);
-  twLooog("====initSpineFlutter=");
-  await initSpineFlutter(enableMemoryDebugging: false);
-// 设置只允许竖屏
+
+  // 设置只允许竖屏
   await SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     // DeviceOrientation.portraitDown, // 可选：允许上下颠倒的竖屏
   ]);
-  await SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge,);
+  await SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
+  twLooog("====initSpineFlutter=");
+  await initSpineFlutter(enableMemoryDebugging: false);
   TwConfigggg.initEvn(TwConfiggEnv.dev);
 
   twLooog("====SSDlTracking.init=");
   TwLoginnnTrackkkk.init();
   TwNetCheckkkk().isOnline();
   ssNetChecccc.init();
-  
+
   runApp(const MyApp());
 }
 
@@ -87,9 +88,6 @@ class MyApp extends StatelessWidget {
   }
 }
 
-
-
-
 Timer? _bgTtttt;
 bool sssshowAd = false;
 
@@ -106,12 +104,12 @@ void lcChange() {
     // AppLifecycleState.paused
     // AppLifecycleState.detached
     if (msg == "AppLifecycleState.resumed") {
-
-
       // JCShijianBaogao.session();
       _bgTtttt?.cancel();
       if (sssshowAd) {
-        twLooog("===前后切换加载=GGCommonAds().showInterstitialAd=${TwCommonAds.hasDisplayAd()}=");
+        twLooog(
+          "===前后切换加载=GGCommonAds().showInterstitialAd=${TwCommonAds.hasDisplayAd()}=",
+        );
         if (!TwCommonAds.hasDisplayAd()) {
           twLooog("===前后切换加载=GGCommonAds().showInterstitialAd==");
 
