@@ -187,6 +187,9 @@ class _MainCenterState extends State<MainCenter> {
   fertilizeWidget() {
     return Obx(() {
       String leftTime = MainTreeController.to.curFertilizeLeftTime.value;
+      String? data = MainTreeController.to.guideIndexData();
+      bool showTxt = data != MainTreeController.guide3;
+      twLooog("=====fertilizeWidget showTxt:$showTxt data:$data");
       return Row(
         children: [
           SizedBox(width: 20.w),
@@ -196,7 +199,7 @@ class _MainCenterState extends State<MainCenter> {
                 width: 60.h,
                 count: leftTime,
                 icon: Assets.twimg.mainFertilize.path,
-                showTxt: true,
+                showTxt: showTxt,
                 showAd: false,
                 txtLocationBottom: false,
                 treeType: TwEnumTreeType.fertilize,
@@ -284,9 +287,6 @@ class _MainCenterState extends State<MainCenter> {
       }
     }
 
-    // bool showAd = treeType == TwEnumTreeType.coin ||
-    //     treeType == TwEnumTreeType.sun ||
-    //     treeType == TwEnumTreeType.water;
     return GestureDetector(
       onTap: onClick,
       child: TwAScale(
@@ -383,7 +383,7 @@ class _MainCenterState extends State<MainCenter> {
   waterWidget() {
     String? data = MainTreeController.to.guideIndexData();
     twLooog("====waterWidget==data:$data");
-    bool showAd = data == null;
+    bool showAd = data != null;
     return Row(
       children: [
         SizedBox(width: 50.w),
@@ -417,13 +417,17 @@ class _MainCenterState extends State<MainCenter> {
       double monnn = MainTreeController.to.curMoneyyyy.value;
       double stage2 = MainTreeController.stage2Num;
       bool showSun = stage2 <= monnn;
+      String? data = MainTreeController.to.guideIndexData();
+      bool showAd = data != MainTreeController.guide1;
+      twLooog("====coinWidget==data:$data showAd:$showAd");
+
       return Row(
         children: [
           SizedBox(width: 90.w),
           Builder(
             builder: (context) {
               Widget child = centerItem(
-                showAd: true,
+                showAd: showAd,
 
                 treeType: TwEnumTreeType.coin,
                 width: 60.h,
