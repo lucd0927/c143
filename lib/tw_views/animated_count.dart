@@ -249,7 +249,13 @@ class TwAnimatedCountttt extends StatelessWidget {
           // Draw digits before the decimal point
           ...integerWidgets,
           // Draw the decimal point
-          if (fractionDigits != 0) Text(decimalSeparator),
+          if (fractionDigits != 0 && textGradient != null)
+            ShaderMask(
+              shaderCallback: (bounds) => textGradient!.createShader(bounds),
+              blendMode: BlendMode.srcIn,
+              child: Text(decimalSeparator),
+            ),
+          if (fractionDigits != 0 && textGradient == null) Text(decimalSeparator),
           // Draw digits after the decimal point
           for (int i = digits.length - fractionDigits; i < digits.length; i++)
             _SingleDigitFlipCounter(

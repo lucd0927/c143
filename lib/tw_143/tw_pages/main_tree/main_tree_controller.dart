@@ -320,12 +320,12 @@ class MainTreeController extends GetxController {
     }
 
     if(showAd){
-      bool result = await TwCommonAds().showInterstitialAd(adPosId: TwAdsPosId.test);
-      if(!result){
-        _resetTreeGrownStatus();
-        onEnd();
-        return;
-      }
+      // bool result = await TwCommonAds().showInterstitialAd(adPosId: TwAdsPosId.test);
+      // if(!result){
+      //   _resetTreeGrownStatus();
+      //   onEnd();
+      //   return;
+      // }
     }
 
     if (canClickWater) {

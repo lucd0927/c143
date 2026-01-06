@@ -214,7 +214,7 @@ class _GetCoinsWidgetState extends State<GetCoinsWidget> {
                                     // ),
                                     TwAnimatedCountttt(
                                       value: _coins,
-                                      fractionDigits: 0,
+                                      fractionDigits: 2,
                                       prefix: "+",
                                       textStyle: TextStyle(
                                         fontWeight: FontWeight.w900,

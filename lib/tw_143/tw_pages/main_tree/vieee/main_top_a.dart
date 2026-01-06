@@ -9,6 +9,7 @@ import 'package:c143/tw_views/tw_progress.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class MainTopA extends StatefulWidget {
   const MainTopA({super.key});
@@ -68,10 +69,10 @@ class _MainTopAState extends State<MainTopA> {
               Positioned.fill(
                 child: Column(
                   children: [
-                    SizedBox(height: 20.h),
+                    SizedBox(height: 30.h),
                     Container(
                       width: 290.w,
-                      height: 84.h,
+                      height: 74.h,
                       color: Colors.amber.withValues(alpha: 0.0),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -164,6 +165,30 @@ class _MainTopAState extends State<MainTopA> {
                     ),
                     bottomTxt(),
                   ],
+                ),
+              ),
+
+              Positioned(
+                top: 24.h,
+                right: 30.w,
+                child: GestureDetector(
+                  onTap: (){
+                    Uri uriii = Uri.parse("https:www");
+                    launchUrl(uriii);
+                  },
+                  child: Row(
+                    children: [
+                      Text(
+                        "Privacy Policy",
+                        style: TextStyle(
+                          fontSize: 12.sp,
+                          fontWeight: FontWeight.w800,
+                          color: Colors.white,
+                        ),
+                      ),
+                      Icon(Icons.arrow_right, size: 24.h, color: Colors.white),
+                    ],
+                  ),
                 ),
               ),
             ],

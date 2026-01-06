@@ -374,7 +374,8 @@ class _MainCenterState extends State<MainCenter> {
           SizedBox(height: height2),
           coinWidget(),
           SizedBox(height: height3),
-          sunWidget(),
+          // sunWidget(),
+          coinYuWidget()
         ],
       ),
     );
@@ -384,6 +385,7 @@ class _MainCenterState extends State<MainCenter> {
     String? data = MainTreeController.to.guideIndexData();
     twLooog("====waterWidget==data:$data");
     bool showAd = data != null;
+    showAd = true;
     return Row(
       children: [
         SizedBox(width: 50.w),
@@ -420,7 +422,7 @@ class _MainCenterState extends State<MainCenter> {
       String? data = MainTreeController.to.guideIndexData();
       bool showAd = data != MainTreeController.guide1;
       twLooog("====coinWidget==data:$data showAd:$showAd");
-
+      showAd = true;
       return Row(
         children: [
           SizedBox(width: 90.w),

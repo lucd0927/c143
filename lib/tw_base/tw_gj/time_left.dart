@@ -55,11 +55,9 @@ class TimeLeft {
 
   initLeftTimer({bool hasFirst = true}) {
     int tmpLeftTime = _getLeftTime();
-    if (hasFirst) {
-      _leftTime = tmpLeftTime;
+    _leftTime = tmpLeftTime;
 
-      _textLeftTime = _formatDuration(tmpLeftTime);
-    }
+    _textLeftTime = _formatDuration(tmpLeftTime);
     // ssLogggg("====_initTimer=shengyu:$shengyu");
     _leftTimeTimer?.cancel();
     _leftTimeTimer = Timer.periodic(Duration(seconds: 1), (timer) {
