@@ -409,6 +409,13 @@ class MainTreeController extends GetxController {
     canClickWater = true;
   }
 
+  bool showStage2(){
+    double monnn = MainTreeController.to.curMoneyyyy.value;
+    double stage2 = MainTreeController.stage2Num;
+    bool showSun = stage2 <= monnn;
+    return showSun;
+  }
+
   onAddMoneyyyy(double monnn, {VoidCallback? onEnd}) {
     overlayCoinMain.showWithSize(
       childSize: Size(20.w, 20.w),

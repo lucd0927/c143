@@ -223,9 +223,10 @@ class _MainCenterState extends State<MainCenter> {
   sunWidget() {
     return Obx(() {
       double count = 100;
-      double monnn = MainTreeController.to.curMoneyyyy.value;
-      double stage2 = MainTreeController.stage2Num;
-      bool showSun = stage2 <= monnn;
+      bool showSun = MainTreeController.to.showStage2();
+      if(showSun){
+        count = 1000;
+      }
       return Row(
         children: [
           SizedBox(width: 100.w),
@@ -238,13 +239,15 @@ class _MainCenterState extends State<MainCenter> {
                 ? Assets.twimg.mainSun.path
                 : Assets.twimg.mainCoin.path,
             onClick: () async {
-              bool result = await TwCommonAds().showInterstitialAd(
-                adPosId: TwAdsPosId.test,
-              );
-              if (!result) {
-                return;
+              // bool result = await TwCommonAds().showInterstitialAd(
+              //   adPosId: TwAdsPosId.test,
+              // );
+              // if (!result) {
+              //   return;
+              // }
+              if(showSun){
+                count = 10;
               }
-
               MainTreeController.to.onAddMoneyyyy(count);
             },
           ),
@@ -416,12 +419,13 @@ class _MainCenterState extends State<MainCenter> {
   coinWidget() {
     return Obx(() {
       double count = 100;
-      double monnn = MainTreeController.to.curMoneyyyy.value;
-      double stage2 = MainTreeController.stage2Num;
-      bool showSun = stage2 <= monnn;
+      bool showSun = MainTreeController.to.showStage2();
       String? data = MainTreeController.to.guideIndexData();
       bool showAd = data != MainTreeController.guide1;
       twLooog("====coinWidget==data:$data showAd:$showAd");
+      if(showSun){
+        count = 1000;
+      }
       showAd = true;
       return Row(
         children: [
@@ -444,6 +448,9 @@ class _MainCenterState extends State<MainCenter> {
                   );
                   if (!result) {
                     return;
+                  }
+                  if(showSun){
+                    count = 10;
                   }
                   MainTreeController.to.onAddMoneyyyy(count);
                 },
