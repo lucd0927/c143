@@ -737,7 +737,7 @@ class TwCommonAds {
     twLooog("====init=hashCode:${hashCode}=_rewardData:$jiliAdsModel");
 
     twLooog("====init==PbUuuump start");
-    await TwUmpppp().init();
+    // await TwUmpppp().init();
     twLooog("====init==PbUuuump end");
     twLooog("====init==initMax");
     bool result = await TwMaxAd.initMax(

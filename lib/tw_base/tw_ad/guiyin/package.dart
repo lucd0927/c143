@@ -200,18 +200,18 @@ class TwPackageAB {
 
     // 广告初始化
     twLooog("$TGA====_initA==cloak();==");
-    var cloakData = await cloakAAAA();
-    twLooog("$TGA====_initA==cloakData:$cloakData==");
+    // var cloakData = await cloakAAAA();
+    // twLooog("$TGA====_initA==cloakData:$cloakData==");
     DateTime dateTime = DateTime.now();
     twLooog("$TGA===PBFireBbbbbb==${dateTime.millisecondsSinceEpoch}");
     // 初始化firebase
-    await TwFirebasssss().init();
+    // await TwFirebasssss().init();
     DateTime dateTime2 = DateTime.now();
     twLooog(
       "$TGA===PBFireBbbbbb==${dateTime2.millisecondsSinceEpoch - dateTime.millisecondsSinceEpoch}",
     );
     initAd();
-    await _chushiGuiyin();
+    // await _chushiGuiyin();
 
     twLooog("$TGA===_chushiGuiyin==end");
   }

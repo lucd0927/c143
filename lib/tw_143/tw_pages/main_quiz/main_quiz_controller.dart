@@ -207,14 +207,9 @@ class MainQuizController extends GetxController {
     await Future.delayed(Duration(milliseconds: 1000));
     if (hasClickRight) {
       _onAddAnswerRightCount();
-      double coins = TwBaseNumber.coins();
-      OverlayGetCoins().show(coins: coins, onBtn: (){
-        _nextQuestion();
-      }, onClose: (){
-        _nextQuestion();
-      });
 
 
+      _nextQuestion();
     } else {
       _nextQuestion();
     }
@@ -234,7 +229,14 @@ class MainQuizController extends GetxController {
       MainQuizController.to.saveGuideStatus();
       __nextQuestion();
     } else {
-      __nextQuestion();
+      double coins = TwBaseNumber.coins();
+      OverlayGetCoins().show(coins: coins, onBtn: (){
+        __nextQuestion();
+      }, onClose: (){
+        __nextQuestion();
+      });
+
+
     }
   }
 

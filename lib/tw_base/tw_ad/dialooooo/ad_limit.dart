@@ -106,7 +106,7 @@ class _AdCishuLimitState extends State<AdCishuLimit> {
               ),
               Positioned(
                 top: 0,
-                right: 40.w,
+                right: 20.w,
                 bottom: 0,
                 child: GestureDetector(
                   onTap: () {
@@ -120,9 +120,10 @@ class _AdCishuLimitState extends State<AdCishuLimit> {
                   //   color: Color(0xffffffff),
                   // ),
                   child: Container(
-                    color: Color(0xffffffff),
                     width: 40.h,
                     height: 40.h,
+                    color: Colors.cyan.withValues(alpha: 0),
+                    child: Icon(Icons.close,color: Colors.white,),
                   ),
                 ),
               ),
@@ -131,8 +132,8 @@ class _AdCishuLimitState extends State<AdCishuLimit> {
           Expanded(
             child: Center(
               child: Container(
-                width: 640.w,
-                height: 660.h,
+                width: 320.w,
+                height: 330.h,
                 decoration: BoxDecoration(
                   color: Color(0xffFBFBFF),
                   borderRadius: BorderRadius.circular(16.w),
@@ -140,13 +141,14 @@ class _AdCishuLimitState extends State<AdCishuLimit> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SizedBox(height: 80.h),
+                    SizedBox(height: 40.h),
                     Stack(
                       children: [
                         Container(
-                          color: Color(0xffffffff),
-                          width: 288.h,
-                          height: 288.h,
+                          width: 120.h,
+                          height: 120.h,
+                          color: Colors.cyan.withValues(alpha: 0),
+                          child: Center(child: Icon(Icons.production_quantity_limits,size: 120.h,),),
                         ),
                         // Image.asset(
                         //   Assets.tupian.adLimit.path,
@@ -156,13 +158,13 @@ class _AdCishuLimitState extends State<AdCishuLimit> {
                         // ),
                       ],
                     ),
-                    SizedBox(height: 40.h),
+                    SizedBox(height: 20.h),
                     Center(
                       child: Text(
                         "You've watched all available ads for today. Try again tomorrow.",
                         style: TextStyle(
                           fontWeight: FontWeight.w700,
-                          fontSize: 30.sp,
+                          fontSize: 20.sp,
                           color: Color(0xff992D2D),
                         ),
                         textAlign: TextAlign.center,
@@ -176,13 +178,13 @@ class _AdCishuLimitState extends State<AdCishuLimit> {
                             widget.onBtn();
                           },
                           child: Container(
-                            width: 353.w,
-                            height: 80.h,
+                            width: 200.w,
+                            height: 50.h,
                             decoration: BoxDecoration(
-                              color: Color(0xffF85823),
+                              color: Color(0xff2d980f).withValues(alpha: 1),
                               borderRadius: BorderRadius.circular(16.w),
                               border: Border.all(
-                                color: Color(0xffD04A1E),
+                                color: Color(0xffbed01e),
                                 width: 2.w,
                               ),
                             ),
@@ -190,10 +192,10 @@ class _AdCishuLimitState extends State<AdCishuLimit> {
                               children: [
                                 Center(
                                   child: Text(
-                                    "Get",
+                                    "Try Again",
                                     style: TextStyle(
                                       fontWeight: FontWeight.w700,
-                                      fontSize: 42.sp,
+                                      fontSize: 20.sp,
                                       // foreground: Color(0xffD0871E),
                                       color: Color(0xffffffff),
                                     ),
@@ -201,7 +203,7 @@ class _AdCishuLimitState extends State<AdCishuLimit> {
                                 ),
                               ],
                             ),
-                          ),
+                          )
                         ),
                       ),
                     ),

@@ -23,6 +23,7 @@ import 'package:c143/tw_hive/twhive.dart';
 import 'package:extended_nested_scroll_view/extended_nested_scroll_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_tba_info/flutter_tba_info.dart';
 
 double minPinnedHeight = 200.h;
 double maxPinnedHeight = 500.h;
@@ -41,9 +42,10 @@ class _MainTreeState extends State<MainTree> {
     // TODO: implement initState
     super.initState();
     MainTreeController.initComposition();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
+    WidgetsBinding.instance.addPostFrameCallback((_) async{
+      var idfa = await FlutterTbaInfo.instance.getIdfa();
       String? data = MainTreeController.to.guideIndexData();
-      twLooog("======data:$data");
+      twLooog("======data:$data idfa:$idfa");
       // data = null;
       if (data == null) {
         OverlayGuide1Water().show();

@@ -83,7 +83,7 @@ class _PositionItemsState extends State<PositionItems>
 
     _controller = AnimationController(
       vsync: this,
-      duration: Duration(seconds: 6),
+      duration: Duration(seconds: 3),
     );
 
     generatedCoins();

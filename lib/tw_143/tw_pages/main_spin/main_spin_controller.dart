@@ -8,7 +8,7 @@ import 'package:get/get.dart';
 class MainSpinController extends GetxController {
   static MainSpinController get to => Get.find();
 
-  static int get initSpinNum => TwPackageAB.isPackageB() ? 5: 30;
+  static int get initSpinNum => TwPackageAB.isPackageB() ? 5: 3;
   static String get twkeySpinNum => TwPackageAB.isPackageB() ? "asfsafas655656Bbb": "asfsafas655656Aaa";
   static String get twkeyClickDailyCheck => TwPackageAB.isPackageB() ? "fg646456ghjyh": "fg646456ghjyhAaaa";
 
@@ -33,7 +33,7 @@ class MainSpinController extends GetxController {
       }
       tmpClickDailyCheck = false;
     }
-    tmpSpinNum =30;
+    // tmpSpinNum =30;
     curTwSpinNum = tmpSpinNum.obs;
     curClickDailyCheck = tmpClickDailyCheck.obs;
 

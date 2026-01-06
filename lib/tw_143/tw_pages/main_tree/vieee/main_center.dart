@@ -214,10 +214,7 @@ class _MainCenterState extends State<MainCenter> {
 
   void onAddShiFeiCount() async{
 
-    bool result = await TwCommonAds().showInterstitialAd(adPosId: TwAdsPosId.test);
-    if(!result){
-      return;
-    }
+
     MainTreeController.to.onAddShiFeiCount(onEnd: (){});
   }
 
@@ -400,10 +397,7 @@ class _MainCenterState extends State<MainCenter> {
 
   void onWater() async{
 
-    bool result = await TwCommonAds().showInterstitialAd(adPosId: TwAdsPosId.test);
-    if(!result){
-      return;
-    }
+
     MainTreeController.to.onAddWaterCount(onEnd: () {});
   }
 
@@ -426,7 +420,12 @@ class _MainCenterState extends State<MainCenter> {
                     ? Assets.twimg.mainSun.path
                     : Assets.twimg.mainCoin.path,
                 showTxt: true,
-                onClick: () {
+                onClick: () async{
+
+                  bool result = await TwCommonAds().showInterstitialAd(adPosId: TwAdsPosId.test);
+                  if(!result){
+                    return;
+                  }
                   MainTreeController.to.onAddMoneyyyy(count);
                 },
               );

@@ -5,6 +5,8 @@ import 'package:c143/tw_143/tw_pages/guide/guide1_water.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide4_fertilize.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide6_rewarddouble.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
+import 'package:c143/tw_base/tw_ad/ads_iddddd.dart';
+import 'package:c143/tw_base/tw_ad/base_ads.dart';
 import 'package:c143/tw_base/tw_gj/loggggg.dart';
 import 'package:c143/tw_views/animated_count.dart';
 import 'package:c143/tw_views/animated_scale.dart';
@@ -257,7 +259,7 @@ class _Guide11HomeBonusWidgetState extends State<Guide11HomeBonusWidget> {
     );
   }
 
-  void onClaim() {
+  void onClaim() async {
     widget.onClose();
   }
 }

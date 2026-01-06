@@ -5,6 +5,8 @@ import 'package:c143/gen/assets.gen.dart';
 import 'package:c143/tw_143/tw_common/overlay/overlay_lot_water.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide14_highligth.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide15_coin_to_sun.dart';
+import 'package:c143/tw_base/tw_ad/ads_iddddd.dart';
+import 'package:c143/tw_base/tw_ad/base_ads.dart';
 import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
 import 'package:c143/tw_base/tw_gj/loggggg.dart';
 import 'package:c143/tw_base/tw_gj/time_left.dart';
@@ -310,13 +312,18 @@ class MainTreeController extends GetxController {
     return curMax;
   }
 
-  onAddShiFeiCount({required VoidCallback onEnd}) {
+  onAddShiFeiCount({required VoidCallback onEnd}) async{
 
     if (curFertilizeLeftTime.value.isNotEmpty){
       twToast(text: "You can claim it after the countdown ends");
       return;
     }
-
+    bool result = await TwCommonAds().showInterstitialAd(adPosId: TwAdsPosId.test);
+    if(!result){
+      _resetTreeGrownStatus();
+      onEnd();
+      return;
+    }
     if (canClickWater) {
       canClickWater = false;
 
@@ -358,9 +365,16 @@ class MainTreeController extends GetxController {
   var curHasWatering = false.obs;
   bool canClickWater = true;
 
-  onAddWaterCount({required VoidCallback onEnd}) {
+  onAddWaterCount({required VoidCallback onEnd})async {
     if (canClickWater) {
+
       canClickWater = false;
+      bool result = await TwCommonAds().showInterstitialAd(adPosId: TwAdsPosId.test);
+      if(!result){
+        _resetTreeGrownStatus();
+        onEnd();
+        return;
+      }
 
       OverlayLotWater().show(
         onEnd: () {
