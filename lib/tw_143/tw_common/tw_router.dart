@@ -8,7 +8,7 @@ class TwRouters {
   static const main = "/main";
 
 
-  static List<GetPage> pages = [
+  static List<GetPage> pagesC143 = [
     GetPage(name: splash, page: () =>  TwSplash()),
     GetPage(name: main, page: () =>  TwMainPage()),
   ];

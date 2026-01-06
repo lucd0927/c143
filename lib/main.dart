@@ -43,11 +43,11 @@ main() async {
   TwNetCheckC143().isOnline();
   ssNetCheckC143.initC143();
 
-  runApp(const MyApp());
+  runApp(const MyAppC143());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class MyAppC143 extends StatelessWidget {
+  const MyAppC143({super.key});
 
   // This widget is the root of your application.
   @override
@@ -75,7 +75,7 @@ class MyApp extends StatelessWidget {
               return Overlay();
             },
             // theme: ThemeData(fontFamily: FontFamily.rubik),
-            getPages: TwRouters.pages,
+            getPages: TwRouters.pagesC143,
 
             // translations: FanyiTools(),
             // 你的翻译
@@ -87,12 +87,12 @@ class MyApp extends StatelessWidget {
   }
 }
 
-Timer? _bgTtttt;
-bool sssshowAd = false;
+Timer? _bgTttttC143;
+bool sssshowAdC143 = false;
 
-void lcChange() {
+void lcChangeC143() {
   SystemChannels.lifecycle.setMessageHandler((msg) async {
-    twLooog('lifecycle> $msg');
+    twLooog('lifecycleC143> $msg');
     // if(!GGABPackage.isPackageB()){
     //   return msg;
     // }
@@ -104,13 +104,13 @@ void lcChange() {
     // AppLifecycleState.detached
     if (msg == "AppLifecycleState.resumed") {
       // JCShijianBaogao.session();
-      _bgTtttt?.cancel();
-      if (sssshowAd) {
+      _bgTttttC143?.cancel();
+      if (sssshowAdC143) {
         twLooog(
-          "===前后切换加载=GGCommonAds().showInterstitialAd=${TwCommonAds.hasDisplayAd()}=",
+          "===前后切换加载=TwCommonAds().showInterstitialAd=${TwCommonAds.hasDisplayAd()}=",
         );
         if (!TwCommonAds.hasDisplayAd()) {
-          twLooog("===前后切换加载=GGCommonAds().showInterstitialAd==");
+          twLooog("===前后切换加载=TwCommonAds().showInterstitialAd==");
 
           if (TwPackageABC143.isPackageB()) {
             // TwCommonAds().showInterstitialAd(
@@ -121,19 +121,19 @@ void lcChange() {
           }
         }
       }
-      sssshowAd = false;
+      sssshowAdC143 = false;
     } else {
       // bgMusic.pause();
       // bgMusicFreeSpin.pause();
       if (msg == "AppLifecycleState.paused") {
         twLooog("====AppLifecycleState.paused===");
         // JCShijianBaogao.app_background();
-        sssshowAd = false;
-        _bgTtttt?.cancel();
-        _bgTtttt = Timer(Duration(seconds: 3), () {
-          sssshowAd = true;
-          twLooog("====AppLifecycleState.paused==showAd:$sssshowAd=");
-          _bgTtttt?.cancel();
+        sssshowAdC143 = false;
+        _bgTttttC143?.cancel();
+        _bgTttttC143 = Timer(Duration(seconds: 3), () {
+          sssshowAdC143 = true;
+          twLooog("====AppLifecycleState.paused==showAd:$sssshowAdC143=");
+          _bgTttttC143?.cancel();
         });
       } else if (msg == "AppLifecycleState.detached") {
       } else if (msg == "AppLifecycleState.inactive") {}

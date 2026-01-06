@@ -217,11 +217,11 @@ class TwPackageABC143 {
   Future _initBC143() async {
     // await TBDeviceManager.isLimitAdTrackingEnabled();
     // 广告初始化
-    twLooog("$TGA===_initB===GGCommonAds().init start==");
+    twLooog("$TGA===_initB===TwCommonAds().init start==");
     int time = DateTime.now().millisecondsSinceEpoch;
-    // await GGCommonAds().init();
+    // await TwCommonAds().init();
     int time2 = DateTime.now().millisecondsSinceEpoch;
-    twLooog("$TGA===_initB===GGCommonAds().init end===耗时:${time2 - time}");
+    twLooog("$TGA===_initB===TwCommonAds().init end===耗时:${time2 - time}");
     box.put(kHivePackage, packageB);
     twLooog("$TGA===_initB===_initAppsFlyer() start==");
     initAd();
