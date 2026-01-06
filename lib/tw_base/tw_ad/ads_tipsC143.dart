@@ -15,7 +15,7 @@ class TwAdsTips {
     required VoidCallback onTryAgain,
     required VoidCallback onClose,
   }) async {
-    showAdFailedDialog(
+    showAdFailedDialogC143(
       Get.context!,
       onBtn: () {
         onTryAgain();

@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:iabtcf_consent_info/iabtcf_consent_info.dart';
 import 'package:c143/tw_base/tw_configgg/config.dart';
-import 'package:c143/tw_base/tw_gj/loggggg.dart';
+import 'package:c143/tw_base/tw_gj/logC143.dart';
 
 
 

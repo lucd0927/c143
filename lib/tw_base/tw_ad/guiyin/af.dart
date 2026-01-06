@@ -2,7 +2,7 @@
 import 'package:appsflyer_sdk/appsflyer_sdk.dart';
 import 'package:flutter_tba_info/flutter_tba_info.dart';
 import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
-import 'package:c143/tw_base/tw_gj/loggggg.dart';
+import 'package:c143/tw_base/tw_gj/logC143.dart';
 
 
 
@@ -52,7 +52,7 @@ class TwApppsF{
         final payload = p["payload"];
         if (payload is Map && payload.containsKey("af_status")) {
           String af_status = payload["af_status"] ?? "";
-          TwPackageAB().guiyin(af_status);
+          TwPackageABC143().guiyin(af_status);
           return;
         }
 

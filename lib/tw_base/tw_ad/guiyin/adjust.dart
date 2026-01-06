@@ -5,18 +5,18 @@ import 'package:adjust_sdk/adjust_config.dart';
 import 'package:flutter_tba_info/flutter_tba_info.dart';
 import 'package:c143/tw_base/tw_ad/base_config.dart';
 import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
-import 'package:c143/tw_base/tw_gj/loggggg.dart';
+import 'package:c143/tw_base/tw_gj/logC143.dart';
 
 
-class TwAdjusssss {
-  static const String TGA = "TwAdjust";
-  static final TwAdjusssss _instance = TwAdjusssss._();
+class TwAdjusssC143 {
+  static const String TGA = "TwAdjustC143";
+  static final TwAdjusssC143 _instance = TwAdjusssC143._();
 
-  factory TwAdjusssss() {
+  factory TwAdjusssC143() {
     return _instance;
   }
 
-  TwAdjusssss._();
+  TwAdjusssC143._();
 
   AdjustConfig? adjustConfig() => _config;
 
@@ -75,7 +75,7 @@ class TwAdjusssss {
     Adjust.getAttribution().then((attributionChangedData){
       String? network = attributionChangedData.network;
       twLooog("$TGA====network:$network");
-      TwPackageAB().guiyin(network??"");
+      TwPackageABC143().guiyin(network??"");
     });
     // JCShijianBaogao.adjust_req();
 

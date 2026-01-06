@@ -9,7 +9,7 @@ import 'package:c143/tw_143/tw_pages/guide/guide9_quiz2.dart';
 import 'package:c143/tw_143/tw_pages/main/main_controller.dart';
 import 'package:c143/tw_143/tw_pages/main_quiz/main_quiz_controller.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
-import 'package:c143/tw_base/tw_gj/loggggg.dart';
+import 'package:c143/tw_base/tw_gj/logC143.dart';
 import 'package:c143/tw_views/animated_count.dart';
 import 'package:c143/tw_views/animated_scale.dart';
 import 'package:c143/tw_views/font_border.dart';

@@ -1,16 +1,16 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
-import 'package:c143/tw_base/tw_gj/base_utils.dart';
+import 'package:c143/tw_base/tw_gj/base_utilsC143.dart';
 import 'package:c143/tw_base/tw_ad/guiyin/firebbbbbb.dart';
-import 'package:c143/tw_base/tw_gj/loggggg.dart';
-import 'package:c143/tw_base/tw_http/http_dio.dart';
+import 'package:c143/tw_base/tw_gj/logC143.dart';
+import 'package:c143/tw_base/tw_http/http_dioC143.dart';
 
 
 import 'package:tuple/tuple.dart';
 
 
-import 'dsf/pbpig.dart';
+import 'dsf/pbpigC143.dart';
 
 class TwFengk {
   static bool _hasDanger = false;
@@ -329,7 +329,7 @@ class TwFengk {
     Map<String, dynamic> localJson = local;
     try {
       String name = "risk_control";
-      String key = TwFirebasssss().by(name: name);
+      String key = TwFirebasC143().by(name: name);
       twLooog(
         "====common_ads=== _onlineJson FirebaseUtils: $name string:$key test===",
       );

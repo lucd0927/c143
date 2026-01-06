@@ -5,7 +5,7 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 
 import 'package:flutter_tba_info/flutter_tba_info.dart';
-import 'package:c143/tw_base/tw_gj/loggggg.dart';
+import 'package:c143/tw_base/tw_gj/logC143.dart';
 import 'package:c143/tw_base/tw_configgg/config.dart';
 
 class TwHttpDio {

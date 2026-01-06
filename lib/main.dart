@@ -1,15 +1,15 @@
 import 'dart:async';
 
 import 'package:c143/tw_143/tw_common/tw_router.dart';
-import 'package:c143/tw_base/tw_ad/ads_iddddd.dart';
+import 'package:c143/tw_base/tw_ad/ads_idddddC143.dart';
 import 'package:c143/tw_base/tw_ad/base_ads.dart';
 import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
 import 'package:c143/tw_base/tw_configgg/config.dart';
 import 'package:c143/tw_base/tw_configgg/enum_app_evn.dart';
-import 'package:c143/tw_base/tw_gj/loggggg.dart';
-import 'package:c143/tw_base/tw_gj/login_trackkkk.dart';
+import 'package:c143/tw_base/tw_gj/logC143.dart';
+import 'package:c143/tw_base/tw_gj/login_trackC143.dart';
 import 'package:c143/tw_base/tw_http/tw_net_check.dart';
-import 'package:c143/tw_hive/twhive.dart';
+import 'package:c143/tw_hive/twhiveC143.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
@@ -113,7 +113,7 @@ void lcChange() {
         if (!TwCommonAds.hasDisplayAd()) {
           twLooog("===前后切换加载=GGCommonAds().showInterstitialAd==");
 
-          if (TwPackageAB.isPackageB()) {
+          if (TwPackageABC143.isPackageB()) {
             // TwCommonAds().showInterstitialAd(
             //   adPosId: TwAdsPosId.test,
             //   ignored_hasDisplayAd: false,

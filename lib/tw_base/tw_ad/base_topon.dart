@@ -1,5 +1,5 @@
 
-import 'package:c143/tw_base/tw_gj/loggggg.dart';
+import 'package:c143/tw_base/tw_gj/logC143.dart';
 import 'package:c143/tw_base/tw_configgg/config.dart';
 import 'package:thinkup_sdk/at_index.dart';
 

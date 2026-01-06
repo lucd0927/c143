@@ -2,7 +2,7 @@ import 'dart:math';
 
 import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
 import 'package:c143/tw_base/tw_configgg/config.dart';
-import 'package:c143/tw_base/tw_gj/loggggg.dart';
+import 'package:c143/tw_base/tw_gj/logC143.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
@@ -192,31 +192,31 @@ class TwNotificationIosC143 {
     String neirong3C143 = contentsC143[3]['content'];
     _pluginC143.periodicallyShowWithDuration(
       gudingC143,
-      TwPackageAB.isPackageB() ? baiotiC143 : baiotiAC143,
-      TwPackageAB.isPackageB() ? neirongC143 : contentAC143,
+      TwPackageABC143.isPackageB() ? baiotiC143 : baiotiAC143,
+      TwPackageABC143.isPackageB() ? neirongC143 : contentAC143,
       notificationDetails: notificationDetails2C143(),
       TwConfigggg.hasDeeevv() ? Duration(minutes: 1) : Duration(minutes: 25),
     );
 
     _pluginC143.periodicallyShowWithDuration(
       answerNotiC143,
-      TwPackageAB.isPackageB() ? baiotiC143 : baiotiAC143,
-      TwPackageAB.isPackageB() ? neirong1C143 : contentAC143,
+      TwPackageABC143.isPackageB() ? baiotiC143 : baiotiAC143,
+      TwPackageABC143.isPackageB() ? neirong1C143 : contentAC143,
       notificationDetails: notificationDetails2C143(),
       TwConfigggg.hasDeeevv() ? Duration(minutes: 2) : Duration(minutes: 40),
     );
     _pluginC143.periodicallyShowWithDuration(
       jianchaNotiC143,
-      TwPackageAB.isPackageB() ? baiotiC143 : baiotiAC143,
-      TwPackageAB.isPackageB() ? neirong2C143 : contentAC143,
+      TwPackageABC143.isPackageB() ? baiotiC143 : baiotiAC143,
+      TwPackageABC143.isPackageB() ? neirong2C143 : contentAC143,
       notificationDetails: notificationDetails2C143(),
       TwConfigggg.hasDeeevv() ? Duration(minutes: 3) : Duration(minutes: 60),
     );
 
     _pluginC143.periodicallyShowWithDuration(
       zhifuNotifiC143,
-      TwPackageAB.isPackageB() ? baiotiC143 : baiotiAC143,
-      TwPackageAB.isPackageB() ? neirong3C143 : contentAC143,
+      TwPackageABC143.isPackageB() ? baiotiC143 : baiotiAC143,
+      TwPackageABC143.isPackageB() ? neirong3C143 : contentAC143,
       notificationDetails: notificationDetails2C143(),
       TwConfigggg.hasDeeevv() ? Duration(minutes: 4) : Duration(minutes: 80),
     );

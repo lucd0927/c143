@@ -1,12 +1,12 @@
 
 import 'package:get/get.dart';
 import 'package:c143/tw_base/tw_ad/dialooooo/ad_limit.dart';
-import 'package:c143/tw_base/tw_gj/login_trackkkk.dart';
-import 'package:c143/tw_base/tw_gj/loggggg.dart';
-import 'package:c143/tw_hive/twhive.dart';
+import 'package:c143/tw_base/tw_gj/login_trackC143.dart';
+import 'package:c143/tw_base/tw_gj/logC143.dart';
+import 'package:c143/tw_hive/twhiveC143.dart';
 
 
-import 'fengkkkong.dart';
+import 'fengkkkongC143.dart';
 
 class TwFengkAds {
   static final TwFengkAds _instance = TwFengkAds._();
@@ -301,6 +301,6 @@ class TwFengkAds {
   showTomorrowDialog() {
     //todo: 添加对话框
     // showSeeYouTomorrowDialog(onSubmit: () {}, onClose: () {});
-    showAdLimitDialog(Get.context!, onBtn: (){}, onClose: () {});
+    showAdLimitDialogC143(Get.context!, onBtn: (){}, onClose: () {});
   }
 }

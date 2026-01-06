@@ -1,8 +1,8 @@
 import 'dart:async';
 
 import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
-import 'package:c143/tw_base/tw_gj/loggggg.dart';
-import 'package:c143/tw_hive/twhive.dart';
+import 'package:c143/tw_base/tw_gj/logC143.dart';
+import 'package:c143/tw_hive/twhiveC143.dart';
 
 class TimeLeft {
   final String twkeyTimeLeft;

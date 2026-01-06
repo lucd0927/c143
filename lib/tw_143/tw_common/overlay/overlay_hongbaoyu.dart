@@ -9,7 +9,7 @@ import 'package:c143/sfcj/floating_particles/src/widgets/particle_effects_widget
 import 'package:c143/tw_143/tw_common/overlay/overlay_get.dart';
 import 'package:c143/tw_143/tw_common/view/progress.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide1_water.dart';
-import 'package:c143/tw_base/tw_gj/loggggg.dart';
+import 'package:c143/tw_base/tw_gj/logC143.dart';
 import 'package:c143/tw_views/animated_count.dart';
 import 'package:c143/tw_views/font_border.dart';
 import 'package:c143/tw_views/tw_progress.dart';

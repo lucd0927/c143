@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:math';
 
 import 'package:c143/gen/assets.gen.dart';
-import 'package:c143/tw_base/tw_gj/loggggg.dart';
+import 'package:c143/tw_base/tw_gj/logC143.dart';
 import 'package:c143/tw_base/tw_gj/number_extend.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

@@ -1,16 +1,16 @@
 import 'package:c143/tw_143/tw_common/overlay/overlay_get.dart';
 import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
-import 'package:c143/tw_base/tw_gj/login_trackkkk.dart';
-import 'package:c143/tw_hive/twhive.dart';
+import 'package:c143/tw_base/tw_gj/login_trackC143.dart';
+import 'package:c143/tw_hive/twhiveC143.dart';
 import 'package:get/get.dart';
 
 
 class MainSpinController extends GetxController {
   static MainSpinController get to => Get.find();
 
-  static int get initSpinNum => TwPackageAB.isPackageB() ? 5: 3;
-  static String get twkeySpinNum => TwPackageAB.isPackageB() ? "asfsafas655656Bbb": "asfsafas655656Aaa";
-  static String get twkeyClickDailyCheck => TwPackageAB.isPackageB() ? "fg646456ghjyh": "fg646456ghjyhAaaa";
+  static int get initSpinNum => TwPackageABC143.isPackageB() ? 5: 3;
+  static String get twkeySpinNum => TwPackageABC143.isPackageB() ? "asfsafas655656Bbb": "asfsafas655656Aaa";
+  static String get twkeyClickDailyCheck => TwPackageABC143.isPackageB() ? "fg646456ghjyh": "fg646456ghjyhAaaa";
 
 
   var box = TwHive.box;

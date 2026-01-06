@@ -8,21 +8,21 @@ import 'package:c143/tw_143/tw_pages/guide/guide9_quiz2.dart';
 import 'package:c143/tw_143/tw_pages/main_quiz/datus/data.dart';
 import 'package:c143/tw_143/tw_pages/main_quiz/datus/quiz_model.dart';
 import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
-import 'package:c143/tw_base/tw_gj/loggggg.dart';
-import 'package:c143/tw_hive/twhive.dart';
+import 'package:c143/tw_base/tw_gj/logC143.dart';
+import 'package:c143/tw_hive/twhiveC143.dart';
 import 'package:get/get.dart';
 
 class MainQuizController extends GetxController {
   static MainQuizController get to => Get.find();
 
   String get twkeyAnswerCount {
-    return TwPackageAB.isPackageB()
+    return TwPackageABC143.isPackageB()
         ? "twkeyAnswerCountBBBBB"
         : "twkeyAnswerCountA";
   }
 
   String get twkeyAnswerRightCount {
-    return TwPackageAB.isPackageB()
+    return TwPackageABC143.isPackageB()
         ? "twkeyAnswerRightCountBBBB"
         : "twkeyAnswerRightCountAAAA";
   }
@@ -84,7 +84,7 @@ class MainQuizController extends GetxController {
   static const String guideStatus3 = "over_quiz_guide";
 
   String twkeyGuideStatus() {
-    return TwPackageAB.isPackageB()
+    return TwPackageABC143.isPackageB()
         ? "twkeyGuideStatus2e"
         : "twkeyGuideStatus54654";
   }

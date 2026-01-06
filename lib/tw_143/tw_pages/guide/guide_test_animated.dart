@@ -1,6 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:c143/gen/assets.gen.dart';
-import 'package:c143/tw_base/tw_gj/loggggg.dart';
+import 'package:c143/tw_base/tw_gj/logC143.dart';
 import 'package:c143/tw_views/animated_scale.dart';
 import 'package:c143/tw_views/shimmer_effect.dart';
 import 'package:flutter/material.dart';

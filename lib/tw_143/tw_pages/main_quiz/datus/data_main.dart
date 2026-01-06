@@ -5,7 +5,7 @@
 // import 'package:c143/tw_143/tw_pages/main_quiz/datus/data_daily_life.dart';
 // import 'package:c143/tw_143/tw_pages/main_quiz/datus/data_math.dart';
 // import 'package:c143/tw_143/tw_pages/main_quiz/datus/data_nature.dart';
-// import 'package:c143/tw_base/tw_gj/base_utils.dart';
+// import 'package:c143/tw_base/tw_gj/base_utilsC143.dart';
 //
 // import 'data.dart';
 // import 'data_science.dart';

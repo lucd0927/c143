@@ -4,7 +4,7 @@ import 'package:c143/tw_143/tw_common/lottieeee/gesture.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide1_water.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide3_adspot.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
-import 'package:c143/tw_base/tw_gj/loggggg.dart';
+import 'package:c143/tw_base/tw_gj/logC143.dart';
 import 'package:c143/tw_views/animated_count.dart';
 import 'package:c143/tw_views/animated_scale.dart';
 import 'package:c143/tw_views/tw_progress.dart';

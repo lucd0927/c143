@@ -5,11 +5,11 @@ import 'dart:math';
 import 'package:flutter_custom_facebook/flutter_custom_facebook.dart';
 import 'package:c143/tw_base/tw_ad/guiyin/af.dart';
 import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
-import 'package:c143/tw_base/tw_ad/uuuump.dart';
+import 'package:c143/tw_base/tw_ad/uuuumpC143.dart';
 import 'package:c143/tw_base/tw_ad/guiyin/firebbbbbb.dart';
-import 'package:c143/tw_base/tw_gj/loggggg.dart';
-import 'package:c143/tw_hive/twhive.dart';
-import 'package:c143/tw_base/tw_http/http_dio.dart';
+import 'package:c143/tw_base/tw_gj/logC143.dart';
+import 'package:c143/tw_hive/twhiveC143.dart';
+import 'package:c143/tw_base/tw_http/http_dioC143.dart';
 import 'package:c143/tw_views/pb_tushi.dart';
 
 import 'package:thinkup_sdk/at_index.dart';
@@ -20,10 +20,10 @@ import 'package:loader_overlay/loader_overlay.dart';
 
 import 'package:tuple/tuple.dart';
 
-import 'ads_tipppps.dart';
+import 'ads_tipsC143.dart';
 
-import 'fengkkkong.dart';
-import 'fengkkong_adssss.dart';
+import 'fengkkkongC143.dart';
+import 'fengkkong_adsC143.dart';
 import 'base_config.dart';
 import 'base_max.dart';
 import 'model/ads_json_model.dart';
@@ -1118,7 +1118,7 @@ class TwCommonAds {
     Map<String, dynamic> localJson = GGCommonJson.local;
     try {
       String name = "cuvxv_ad_config";
-      String key = TwFirebasssss().by(name: name);
+      String key = TwFirebasC143().by(name: name);
       twLooog(
         "====common_ads=== _onlineJson FirebaseUtils: $name string:$key test===",
       );

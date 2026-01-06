@@ -5,12 +5,12 @@ import 'package:c143/gen/assets.gen.dart';
 import 'package:c143/tw_143/tw_common/overlay/overlay_lot_water.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide14_highligth.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide15_coin_to_sun.dart';
-import 'package:c143/tw_base/tw_ad/ads_iddddd.dart';
+import 'package:c143/tw_base/tw_ad/ads_idddddC143.dart';
 import 'package:c143/tw_base/tw_ad/base_ads.dart';
 import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
-import 'package:c143/tw_base/tw_gj/loggggg.dart';
+import 'package:c143/tw_base/tw_gj/logC143.dart';
 import 'package:c143/tw_base/tw_gj/time_left.dart';
-import 'package:c143/tw_hive/twhive.dart';
+import 'package:c143/tw_hive/twhiveC143.dart';
 import 'package:c143/tw_views/animated_fly.dart';
 import 'package:c143/tw_views/pb_tushi.dart';
 import 'package:flutter/material.dart';
@@ -36,57 +36,57 @@ class MainTreeController extends GetxController {
 
   static const double maxCoinNum = 5000;
 
-  static String get twkeyGuideProgress => TwPackageAB.isPackageB()
+  static String get twkeyGuideProgress => TwPackageABC143.isPackageB()
       ? "MainTreeController_twkeyGuideProgressBbb"
       : "MainTreeController_twkeyGuideProgress";
 
   static String get guide1 =>
-      TwPackageAB.isPackageB() ? "guide1Bbb" : "guide1Aaaa";
+      TwPackageABC143.isPackageB() ? "guide1Bbb" : "guide1Aaaa";
 
   static String get guide2 =>
-      TwPackageAB.isPackageB() ? "guide2Bbb" : "guide2Aaaa";
+      TwPackageABC143.isPackageB() ? "guide2Bbb" : "guide2Aaaa";
 
   static String get guide3 =>
-      TwPackageAB.isPackageB() ? "guide3Bbb" : "guide3Aaaa";
+      TwPackageABC143.isPackageB() ? "guide3Bbb" : "guide3Aaaa";
 
   static String get guide4 =>
-      TwPackageAB.isPackageB() ? "guide4Bbb" : "guide4Aaaa";
+      TwPackageABC143.isPackageB() ? "guide4Bbb" : "guide4Aaaa";
 
   static String get guide5 =>
-      TwPackageAB.isPackageB() ? "guide5Bbb" : "guide5Aaaa";
+      TwPackageABC143.isPackageB() ? "guide5Bbb" : "guide5Aaaa";
 
   static String get guide6 =>
-      TwPackageAB.isPackageB() ? "guide6Bbb" : "guide6Aaaa";
+      TwPackageABC143.isPackageB() ? "guide6Bbb" : "guide6Aaaa";
 
   static String get guide7 =>
-      TwPackageAB.isPackageB() ? "guide7Bbb" : "guide7Aaaa";
+      TwPackageABC143.isPackageB() ? "guide7Bbb" : "guide7Aaaa";
 
   static String get guide8 =>
-      TwPackageAB.isPackageB() ? "guide8Bbb" : "guide8Aaaa";
+      TwPackageABC143.isPackageB() ? "guide8Bbb" : "guide8Aaaa";
 
   static String get guide9 =>
-      TwPackageAB.isPackageB() ? "guide9Bbb" : "guide9Aaaa";
+      TwPackageABC143.isPackageB() ? "guide9Bbb" : "guide9Aaaa";
 
   static String get guide10 =>
-      TwPackageAB.isPackageB() ? "guide10Bbb" : "guide10Aaaa";
+      TwPackageABC143.isPackageB() ? "guide10Bbb" : "guide10Aaaa";
 
   static String get guide11 =>
-      TwPackageAB.isPackageB() ? "guide11Bbb" : "guide11Aaaa";
+      TwPackageABC143.isPackageB() ? "guide11Bbb" : "guide11Aaaa";
 
   static String get guide12 =>
-      TwPackageAB.isPackageB() ? "guide12Bbb" : "guide12Aaaa";
+      TwPackageABC143.isPackageB() ? "guide12Bbb" : "guide12Aaaa";
 
   static String get guide13 =>
-      TwPackageAB.isPackageB() ? "guide13Bbb" : "guide13Aaaa";
+      TwPackageABC143.isPackageB() ? "guide13Bbb" : "guide13Aaaa";
 
   static String get guide14 =>
-      TwPackageAB.isPackageB() ? "guide14Bbb" : "guide14Aaaa";
+      TwPackageABC143.isPackageB() ? "guide14Bbb" : "guide14Aaaa";
 
   static String get guide15 =>
-      TwPackageAB.isPackageB() ? "guide15Bbb" : "guide15Aaaa";
+      TwPackageABC143.isPackageB() ? "guide15Bbb" : "guide15Aaaa";
 
   static String get guide16 =>
-      TwPackageAB.isPackageB() ? "guide16Bbb" : "guide16Aaaa";
+      TwPackageABC143.isPackageB() ? "guide16Bbb" : "guide16Aaaa";
 
   String? guideIndexData() {
     String key = twkeyGuideProgress;
@@ -114,19 +114,19 @@ class MainTreeController extends GetxController {
   var curFertilizeLeftTime = "".obs;
 
   static String get twKeyMoneyyyy =>
-      TwPackageAB.isPackageB() ? "twKeyMoneyyyyBbbb" : "twKeyMoneyyyy";
+      TwPackageABC143.isPackageB() ? "twKeyMoneyyyyBbbb" : "twKeyMoneyyyy";
 
   static String get twKeyLevelll =>
-      TwPackageAB.isPackageB() ? "twKeyLevelllbbbb" : "twKeyLevelll";
+      TwPackageABC143.isPackageB() ? "twKeyLevelllbbbb" : "twKeyLevelll";
 
   static String get twKeyWaterCount =>
-      TwPackageAB.isPackageB() ? "twKeyWaterCountBbbb" : "twKeyWaterCount";
+      TwPackageABC143.isPackageB() ? "twKeyWaterCountBbbb" : "twKeyWaterCount";
 
   static String get twKeyShifeiCount =>
-      TwPackageAB.isPackageB() ? "twKeyShifeiCountBbbb" : "twKeyShifeiCount";
+      TwPackageABC143.isPackageB() ? "twKeyShifeiCountBbbb" : "twKeyShifeiCount";
 
   static String get twkeyTimeLeftFertilize =>
-      TwPackageAB.isPackageB() ? "sdg4545uyioy3445" : "sdg4545uyioy344578ew";
+      TwPackageABC143.isPackageB() ? "sdg4545uyioy3445" : "sdg4545uyioy344578ew";
 
   TimeLeft _fertilizeLeftTime = TimeLeft(twkeyTimeLeft: twkeyTimeLeftFertilize);
 

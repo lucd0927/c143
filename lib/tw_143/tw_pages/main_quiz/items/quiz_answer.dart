@@ -3,7 +3,7 @@ import 'package:c143/gen/assets.gen.dart';
 import 'package:c143/tw_143/tw_common/lottieeee/gesture.dart';
 import 'package:c143/tw_143/tw_pages/main_quiz/datus/quiz_model.dart';
 import 'package:c143/tw_143/tw_pages/main_quiz/main_quiz_controller.dart';
-import 'package:c143/tw_base/tw_gj/loggggg.dart';
+import 'package:c143/tw_base/tw_gj/logC143.dart';
 import 'package:c143/tw_views/animated_scale.dart';
 import 'package:c143/tw_views/font_border.dart';
 import 'package:flutter/material.dart';
