@@ -209,13 +209,15 @@ class MainQuizController extends GetxController {
       _onAddAnswerRightCount();
 
 
-      _nextQuestion();
+      _nextQuestion(hasClickRight: true);
     } else {
-      _nextQuestion();
+      _nextQuestion(hasClickRight: false);
     }
   }
 
-  _nextQuestion() {
+  _nextQuestion({
+    required bool hasClickRight,
+}) {
     String keyguideStatus = guideStatus.value;
     if (keyguideStatus == guideStatus1) {
 
@@ -229,12 +231,18 @@ class MainQuizController extends GetxController {
       MainQuizController.to.saveGuideStatus();
       __nextQuestion();
     } else {
-      double coins = TwBaseNumber.coins();
-      OverlayGetCoins().show(coins: coins, onBtn: (){
+      if(hasClickRight){
+        double coins = TwBaseNumber.coins();
+        OverlayGetCoins().show(coins: coins, onBtn: (){
+          __nextQuestion();
+        }, onClose: (){
+          __nextQuestion();
+        });
+      }else{
         __nextQuestion();
-      }, onClose: (){
-        __nextQuestion();
-      });
+      }
+
+
 
 
     }
