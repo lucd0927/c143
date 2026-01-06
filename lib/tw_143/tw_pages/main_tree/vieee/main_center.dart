@@ -239,12 +239,12 @@ class _MainCenterState extends State<MainCenter> {
                 ? Assets.twimg.mainSun.path
                 : Assets.twimg.mainCoin.path,
             onClick: () async {
-              // bool result = await TwCommonAds().showInterstitialAd(
-              //   adPosId: TwAdsPosId.test,
-              // );
-              // if (!result) {
-              //   return;
-              // }
+              bool result = await TwCommonAds().showInterstitialAd(
+                adPosId: TwAdsPosId.test,
+              );
+              if (!result) {
+                return;
+              }
               if(showSun){
                 count = 10;
               }
