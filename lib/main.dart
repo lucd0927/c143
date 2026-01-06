@@ -116,11 +116,11 @@ void lcChange() {
           twLooog("===前后切换加载=GGCommonAds().showInterstitialAd==");
 
           if (TwPackageAB.isPackageB()) {
-            TwCommonAds().showInterstitialAd(
-              adPosId: TwAdsPosId.test,
-              ignored_hasDisplayAd: false,
-              canTryAgain: false,
-            );
+            // TwCommonAds().showInterstitialAd(
+            //   adPosId: TwAdsPosId.test,
+            //   ignored_hasDisplayAd: false,
+            //   canTryAgain: false,
+            // );
           }
         }
       }

@@ -33,14 +33,16 @@ class OverlayGuide1Water {
             onClose: () async {
               close();
 
+              MainTreeController.to.onAddWaterCount(
+                onEnd: () {
+                  MainTreeController.to.saveGuideIndexData(
+                    MainTreeController.guide1,
+                  );
 
-              MainTreeController.to.onAddWaterCount(onEnd: (){
-                MainTreeController.to.saveGuideIndexData(MainTreeController.guide1);
-
-                OverlayGuide2Coin().show();
-              });
-
-
+                  OverlayGuide2Coin().show();
+                },
+                showAd: false,
+              );
             },
           ),
         );
@@ -151,11 +153,7 @@ class GuideWidget extends StatelessWidget {
               clipBehavior: Clip.none,
               children: [
                 IgnorePointer(child: guideChild),
-                Positioned(
-                  top: 30.h,
-                  left: 30.w,
-                  child: TwLottieGesture(),
-                ),
+                Positioned(top: 30.h, left: 30.w, child: TwLottieGesture()),
 
                 Positioned(
                   top: -80.h,

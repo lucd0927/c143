@@ -43,9 +43,9 @@ class _MainTreeState extends State<MainTree> {
     super.initState();
     MainTreeController.initComposition();
     WidgetsBinding.instance.addPostFrameCallback((_) async{
-      var idfa = await FlutterTbaInfo.instance.getIdfa();
+      // var idfa = await FlutterTbaInfo.instance.getIdfa();
       String? data = MainTreeController.to.guideIndexData();
-      twLooog("======data:$data idfa:$idfa");
+      twLooog("======data:$data");
       // data = null;
       if (data == null) {
         OverlayGuide1Water().show();

@@ -197,6 +197,7 @@ class _MainCenterState extends State<MainCenter> {
                 count: leftTime,
                 icon: Assets.twimg.mainFertilize.path,
                 showTxt: true,
+                showAd: false,
                 txtLocationBottom: false,
                 treeType: TwEnumTreeType.fertilize,
                 onClick: onAddShiFeiCount,
@@ -212,10 +213,8 @@ class _MainCenterState extends State<MainCenter> {
     });
   }
 
-  void onAddShiFeiCount() async{
-
-
-    MainTreeController.to.onAddShiFeiCount(onEnd: (){});
+  void onAddShiFeiCount() async {
+    MainTreeController.to.onAddShiFeiCount(onEnd: () {});
   }
 
   sunWidget() {
@@ -231,13 +230,15 @@ class _MainCenterState extends State<MainCenter> {
             width: 50.h,
             count: count.toStringAsFixed(0),
             treeType: TwEnumTreeType.sun,
+            showAd: true,
             icon: showSun
                 ? Assets.twimg.mainSun.path
                 : Assets.twimg.mainCoin.path,
-            onClick: () async{
-
-              bool result = await TwCommonAds().showInterstitialAd(adPosId: TwAdsPosId.test);
-              if(!result){
+            onClick: () async {
+              bool result = await TwCommonAds().showInterstitialAd(
+                adPosId: TwAdsPosId.test,
+              );
+              if (!result) {
                 return;
               }
 
@@ -255,6 +256,7 @@ class _MainCenterState extends State<MainCenter> {
     required String icon,
     required VoidCallback onClick,
     required TwEnumTreeType treeType,
+    required bool showAd,
     bool showTxt = true,
     bool txtLocationBottom = true,
   }) {
@@ -281,6 +283,10 @@ class _MainCenterState extends State<MainCenter> {
         );
       }
     }
+
+    // bool showAd = treeType == TwEnumTreeType.coin ||
+    //     treeType == TwEnumTreeType.sun ||
+    //     treeType == TwEnumTreeType.water;
     return GestureDetector(
       onTap: onClick,
       child: TwAScale(
@@ -308,15 +314,16 @@ class _MainCenterState extends State<MainCenter> {
                   ? Positioned(left: 0, right: 0, bottom: 0, child: txtW)
                   : Positioned(left: 0, right: 0, top: 0, child: txtW),
 
-              if (treeType == TwEnumTreeType.coin || treeType == TwEnumTreeType.sun || treeType == TwEnumTreeType.water)  Positioned(
-                top: -10.h,
-                right: -5.h,
-                child: Image.asset(
-                  Assets.twimg.ad.path,
-                  width: 28.h,
-                  height: 28.h,
+              if (showAd)
+                Positioned(
+                  top: -10.h,
+                  right: -5.h,
+                  child: Image.asset(
+                    Assets.twimg.ad.path,
+                    width: 28.h,
+                    height: 28.h,
+                  ),
                 ),
-              ),
             ],
           ),
         ),
@@ -331,6 +338,7 @@ class _MainCenterState extends State<MainCenter> {
         Builder(
           builder: (context) {
             Widget child = centerItem(
+              showAd: false,
               treeType: TwEnumTreeType.spin,
               width: 50.h,
               showTxt: false,
@@ -373,12 +381,16 @@ class _MainCenterState extends State<MainCenter> {
   }
 
   waterWidget() {
+    String? data = MainTreeController.to.guideIndexData();
+    twLooog("====waterWidget==data:$data");
+    bool showAd = data == null;
     return Row(
       children: [
         SizedBox(width: 50.w),
         Builder(
           builder: (context) {
             Widget child = centerItem(
+              showAd: showAd,
               treeType: TwEnumTreeType.water,
               width: 60.h,
               count: '',
@@ -395,9 +407,7 @@ class _MainCenterState extends State<MainCenter> {
     );
   }
 
-  void onWater() async{
-
-
+  void onWater() async {
     MainTreeController.to.onAddWaterCount(onEnd: () {});
   }
 
@@ -413,6 +423,8 @@ class _MainCenterState extends State<MainCenter> {
           Builder(
             builder: (context) {
               Widget child = centerItem(
+                showAd: true,
+
                 treeType: TwEnumTreeType.coin,
                 width: 60.h,
                 count: count.toStringAsFixed(0),
@@ -420,10 +432,11 @@ class _MainCenterState extends State<MainCenter> {
                     ? Assets.twimg.mainSun.path
                     : Assets.twimg.mainCoin.path,
                 showTxt: true,
-                onClick: () async{
-
-                  bool result = await TwCommonAds().showInterstitialAd(adPosId: TwAdsPosId.test);
-                  if(!result){
+                onClick: () async {
+                  bool result = await TwCommonAds().showInterstitialAd(
+                    adPosId: TwAdsPosId.test,
+                  );
+                  if (!result) {
                     return;
                   }
                   MainTreeController.to.onAddMoneyyyy(count);
@@ -446,6 +459,7 @@ class _MainCenterState extends State<MainCenter> {
       children: [
         SizedBox(width: 90.w),
         centerItem(
+          showAd: false,
           treeType: TwEnumTreeType.coin_rain,
           width: 60.h,
           count: count.toStringAsFixed(0),

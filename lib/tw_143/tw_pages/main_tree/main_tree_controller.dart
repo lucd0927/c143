@@ -312,18 +312,22 @@ class MainTreeController extends GetxController {
     return curMax;
   }
 
-  onAddShiFeiCount({required VoidCallback onEnd}) async{
+  onAddShiFeiCount({required VoidCallback onEnd,bool showAd = true}) async{
 
     if (curFertilizeLeftTime.value.isNotEmpty){
       twToast(text: "You can claim it after the countdown ends");
       return;
     }
-    bool result = await TwCommonAds().showInterstitialAd(adPosId: TwAdsPosId.test);
-    if(!result){
-      _resetTreeGrownStatus();
-      onEnd();
-      return;
+
+    if(showAd){
+      bool result = await TwCommonAds().showInterstitialAd(adPosId: TwAdsPosId.test);
+      if(!result){
+        _resetTreeGrownStatus();
+        onEnd();
+        return;
+      }
     }
+
     if (canClickWater) {
       canClickWater = false;
 
@@ -365,16 +369,20 @@ class MainTreeController extends GetxController {
   var curHasWatering = false.obs;
   bool canClickWater = true;
 
-  onAddWaterCount({required VoidCallback onEnd})async {
+  onAddWaterCount({required VoidCallback onEnd,bool showAd = true})async {
     if (canClickWater) {
 
       canClickWater = false;
-      bool result = await TwCommonAds().showInterstitialAd(adPosId: TwAdsPosId.test);
-      if(!result){
-        _resetTreeGrownStatus();
-        onEnd();
-        return;
+      if(showAd){
+        bool result = await TwCommonAds().showInterstitialAd(adPosId: TwAdsPosId.test);
+        if(!result){
+          _resetTreeGrownStatus();
+          onEnd();
+          return;
+        }
       }
+
+
 
       OverlayLotWater().show(
         onEnd: () {
