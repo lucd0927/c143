@@ -8,6 +8,7 @@ import 'package:c143/tw_143/tw_common/overlay/overlay_hongbaoyu.dart';
 import 'package:c143/tw_143/tw_pages/main/views/main_nav.dart';
 import 'package:c143/tw_143/tw_pages/main_cash/main_cash.dart';
 import 'package:c143/tw_143/tw_pages/main/main_controller.dart';
+import 'package:c143/tw_143/tw_pages/main_cash/main_cash_controller.dart';
 import 'package:c143/tw_143/tw_pages/main_quiz/main_quiz.dart';
 import 'package:c143/tw_143/tw_pages/main_quiz/main_quiz_controller.dart';
 import 'package:c143/tw_143/tw_pages/main_spin/main_spin.dart';
@@ -47,6 +48,7 @@ class _TwMainPageState extends State<TwMainPage> {
     Get.put(MainTreeController());
     Get.put(MainQuizController());
     Get.put(MainSpinController());
+    Get.put(MainCashController());
 
     TwNotificationIosC143().initC143();
   }

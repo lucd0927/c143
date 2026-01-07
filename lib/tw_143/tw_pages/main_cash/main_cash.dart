@@ -1,4 +1,6 @@
 import 'package:c143/gen/assets.gen.dart';
+import 'package:c143/tw_143/tw_pages/main_cash/main_cash_controller.dart';
+import 'package:c143/tw_143/tw_pages/main_cash/overlayc143/pay_change.dart';
 import 'package:c143/tw_143/tw_pages/main_cash/viewC143/cash_account_detail.dart';
 import 'package:c143/tw_143/tw_pages/main_cash/viewC143/cash_progress.dart';
 import 'package:c143/tw_143/tw_pages/main_cash/viewC143/cash_top_bar.dart';
@@ -15,13 +17,21 @@ class MainCash extends StatefulWidget {
 class _MainCashState extends State<MainCash> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      height: double.infinity,
-      color: Color(0xffF2F2F2),
-      child: SingleChildScrollView(
-        child: Column(
-          children: [CashTopBar(), CashAccountDetail(), CashProgress()],
+    return OverlayPortal(
+      controller: MainCashController.overlayPortalController,
+      overlayChildBuilder: (BuildContext context){
+        return CashTopChange(onClose: () {
+          MainCashController.overlayPortalController.hide();
+        },);
+      },
+      child: Container(
+        width: double.infinity,
+        height: double.infinity,
+        color: Color(0xffF2F2F2),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [CashTopBar(), CashAccountDetail(), CashProgress()],
+          ),
         ),
       ),
     );
