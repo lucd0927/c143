@@ -120,8 +120,8 @@ class TwOverlayAnimatedS2T {
     List<Widget> children = [];
     heroChild ??= Image.asset(
       Assets.twimg.coin.path,
-      width: 20.w,
-      height: 20.w,
+      width: 24.w,
+      height: 24.w,
       fit: BoxFit.fill,
     );
     for (int i = 0; i < count; i++) {

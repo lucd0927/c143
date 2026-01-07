@@ -143,7 +143,7 @@ class _TwSplashState extends State<TwSplash> {
               right: 0,
               top: 240.h,
               child: Center(
-                child:  TwLottieCommon(type: EnumTwLottttieJson.coin5, animate: true),
+                child:  TwLottieCommon(type: TwPackageABC143.isPackageB()?EnumTwLottttieJson.monn5:EnumTwLottttieJson.coin5, animate: true),
               ),
             ),
             Positioned(
@@ -393,21 +393,21 @@ class _AnimGraProBar extends StatelessWidget {
                 clipBehavior: Clip.none,
                 children: [
                   Container(
-                    // decoration: BoxDecoration(
-                    //   gradient: LinearGradient(
-                    //     colors: gradientColors,
-                    //     begin: Alignment.topCenter,
-                    //     end: Alignment.bottomCenter,
-                    //   ),
-                    //   border: Border.all(color: Color(0xff5CD3F4), width: 0.w),
-                    //   borderRadius: BorderRadius.circular(height),
-                    // ),
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        colors: gradientColors,
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                      ),
+                      border: Border.all(color: Color(0xff5CD3F4), width: 1.w),
+                      borderRadius: BorderRadius.circular(height),
+                    ),
                     child: ShinyStripedProgressBar(
                       targetProgress: 1,
                       // height: 15.w,
                       duration: Duration(microseconds: 100),
                       progressColor: Color(0xff29BE00),
-                      borderRadius: BorderRadius.all(Radius.circular(15.w)),
+                      borderRadius: BorderRadius.all(Radius.circular(40.w)),
                       stripeAngle: StripeAngle.angle45,
                       stripeColor: Color(0xff79DD35),
                     ),

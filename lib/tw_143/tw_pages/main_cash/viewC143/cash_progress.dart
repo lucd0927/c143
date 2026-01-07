@@ -1,3 +1,4 @@
+import 'package:c143/tw_143/tw_pages/main_cash/main_cash_controller.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
 import 'package:c143/tw_views/tw_progress.dart';
 import 'package:flutter/material.dart';
@@ -22,6 +23,8 @@ class _CashProgressState extends State<CashProgress> {
         progress = 1;
       }
 
+      List<Color> prgressTxt = MainCashController.to.progressColors();
+
       return Padding(
         padding: EdgeInsets.symmetric(horizontal: 20.w),
         child: Column(
@@ -34,10 +37,7 @@ class _CashProgressState extends State<CashProgress> {
                   height: 16.h,
                   decoration: BoxDecoration(
                     gradient: LinearGradient(
-                      colors: [
-                        Color(0xff1564CB),
-                        Color(0xff0094DF).withValues(alpha: 0),
-                      ],
+                      colors: prgressTxt,
                       begin: Alignment.topLeft,
                       end: Alignment.bottomRight,
                     ),
@@ -95,7 +95,7 @@ class _CashProgressState extends State<CashProgress> {
                     innerHeight: 11.h,
                     width: 288.w,
                     progress: progress,
-                    gradientColors: [Color(0xff0056F1), Color(0xff009CDE)],
+                    gradientColors: prgressTxt,
                     bgColor: Color(0xffE2E2E2),
                   ),
 
@@ -105,10 +105,7 @@ class _CashProgressState extends State<CashProgress> {
                     height: 40.h,
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
-                        colors: [
-                          Color(0xff0056F1),
-                          Color(0xff009CDE).withValues(alpha: 1),
-                        ],
+                        colors: prgressTxt,
                         // begin: Alignment.topCenter,
                         // end: Alignment.bottomCenter,
                       ),

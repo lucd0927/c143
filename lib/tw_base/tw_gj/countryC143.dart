@@ -1,6 +1,6 @@
-
 import 'dart:io';
 
+import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
 
 class TwCountryyC143 {
   // 美国
@@ -25,11 +25,14 @@ class TwCountryyC143 {
 
   // 当前货币符号
   static String curCountryyyySymbolC143() {
-    String symbol = "\$";
-    if (!hasUSAC143()) {
-      // symbol = "R\$";
+    if (TwPackageABC143.isPackageB()) {
+      String symbol = "\$";
+      if (!hasUSAC143()) {
+        // symbol = "R\$";
+      }
+      return symbol;
     }
-    return symbol;
+    return "";
   }
 
   static String _huoquGuojiaC143() {
@@ -42,5 +45,4 @@ class TwCountryyC143 {
     }
     return usCountry;
   }
-
 }

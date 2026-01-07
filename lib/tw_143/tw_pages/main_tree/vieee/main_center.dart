@@ -156,7 +156,7 @@ class _MainCenterState extends State<MainCenter> {
                 },
               ),
             ),
-            SizedBox(width: 8.w),
+            SizedBox(width: 4.w),
           ],
         ),
       ),

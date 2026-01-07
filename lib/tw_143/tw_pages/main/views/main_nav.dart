@@ -96,7 +96,7 @@ class _MainNavState extends State<MainNav> {
               ),
             ),
             Container(
-              color: Color(0xff2F2B30),
+              color: Color(0xff40393F),
               height: bottomSafeHeight + 4.h,
               width: double.infinity,
             ),

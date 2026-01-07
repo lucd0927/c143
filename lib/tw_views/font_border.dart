@@ -44,7 +44,7 @@ class TwTxtBorderC143 extends StatelessWidget {
             height: height??1,
             // backgroundColor: TBColor.ffFFFFFF,
             foreground: Paint()
-              ..strokeWidth = strokeWidth ?? 2.w
+              ..strokeWidth = strokeWidth ?? 1.w
               ..style = PaintingStyle.stroke
               ..color = foreground ?? Colors.black,
           ),
@@ -57,7 +57,7 @@ class TwTxtBorderC143 extends StatelessWidget {
           textAlign: TextAlign.center,
           style: TextStyle(
             // fontFamily: FontFamily.made,
-            fontWeight: fontWeight ?? FontWeight.w600,
+            fontWeight: fontWeight ?? FontWeight.w700,
             fontSize: fontSize ?? 16.sp,
             overflow: TextOverflow.visible,
             color: fontColor ??  Color(0xffffffff),

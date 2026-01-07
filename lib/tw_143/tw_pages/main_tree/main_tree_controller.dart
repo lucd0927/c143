@@ -432,7 +432,13 @@ class MainTreeController extends GetxController {
 
   onAddMoneyyyy(double monnn, {VoidCallback? onEnd}) {
     overlayCoinMain.showWithSize(
-      childSize: Size(20.w, 20.w),
+      childSize:TwPackageABC143.isPackageB()?Size(24.w, 24.w): Size(20.w, 20.w),
+      heroChild: Image.asset(
+        TwPackageABC143.isPackageB()?Assets.twimgB.money.path:Assets.twimg.coin.path,
+        width: 24.w,
+        height: 24.w,
+        fit: BoxFit.fill,
+      ),
       showTargetWidget: true,
       onEnd: () {
         _onAddMoney(monnn, onEnd: onEnd);

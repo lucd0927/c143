@@ -576,6 +576,10 @@ class $AssetsTwimgGen {
 class $AssetsTwimgBGen {
   const $AssetsTwimgBGen();
 
+  /// File path: assets/twimgB/btn_withdraw.png
+  AssetGenImage get btnWithdraw =>
+      const AssetGenImage('assets/twimgB/btn_withdraw.png');
+
   /// File path: assets/twimgB/main_nav_cash.png
   AssetGenImage get mainNavCash =>
       const AssetGenImage('assets/twimgB/main_nav_cash.png');
@@ -608,6 +612,41 @@ class $AssetsTwimgBGen {
   AssetGenImage get mainNavTreeUn =>
       const AssetGenImage('assets/twimgB/main_nav_tree_un.png');
 
+  /// File path: assets/twimgB/money.png
+  AssetGenImage get money => const AssetGenImage('assets/twimgB/money.png');
+
+  /// File path: assets/twimgB/money_floating.png
+  AssetGenImage get moneyFloating =>
+      const AssetGenImage('assets/twimgB/money_floating.png');
+
+  /// File path: assets/twimgB/notification_bg.png
+  AssetGenImage get notificationBg =>
+      const AssetGenImage('assets/twimgB/notification_bg.png');
+
+  /// File path: assets/twimgB/notification_center.png
+  AssetGenImage get notificationCenter =>
+      const AssetGenImage('assets/twimgB/notification_center.png');
+
+  /// File path: assets/twimgB/setting_bg.png
+  AssetGenImage get settingBg =>
+      const AssetGenImage('assets/twimgB/setting_bg.png');
+
+  /// File path: assets/twimgB/setting_music.png
+  AssetGenImage get settingMusic =>
+      const AssetGenImage('assets/twimgB/setting_music.png');
+
+  /// File path: assets/twimgB/setting_music_un.png
+  AssetGenImage get settingMusicUn =>
+      const AssetGenImage('assets/twimgB/setting_music_un.png');
+
+  /// File path: assets/twimgB/setting_volume.png
+  AssetGenImage get settingVolume =>
+      const AssetGenImage('assets/twimgB/setting_volume.png');
+
+  /// File path: assets/twimgB/setting_volume_un.png
+  AssetGenImage get settingVolumeUn =>
+      const AssetGenImage('assets/twimgB/setting_volume_un.png');
+
   /// File path: assets/twimgB/tx_bg.png
   AssetGenImage get txBg => const AssetGenImage('assets/twimgB/tx_bg.png');
 
@@ -621,6 +660,10 @@ class $AssetsTwimgBGen {
   AssetGenImage get txCashapp =>
       const AssetGenImage('assets/twimgB/tx_cashapp.png');
 
+  /// File path: assets/twimgB/tx_cashapp_maintop.png
+  AssetGenImage get txCashappMaintop =>
+      const AssetGenImage('assets/twimgB/tx_cashapp_maintop.png');
+
   /// File path: assets/twimgB/tx_check.png
   AssetGenImage get txCheck =>
       const AssetGenImage('assets/twimgB/tx_check.png');
@@ -633,12 +676,17 @@ class $AssetsTwimgBGen {
   AssetGenImage get txPaypal =>
       const AssetGenImage('assets/twimgB/tx_paypal.png');
 
+  /// File path: assets/twimgB/tx_paypal_maintop.png
+  AssetGenImage get txPaypalMaintop =>
+      const AssetGenImage('assets/twimgB/tx_paypal_maintop.png');
+
   /// File path: assets/twimgB/tx_setting.png
   AssetGenImage get txSetting =>
       const AssetGenImage('assets/twimgB/tx_setting.png');
 
   /// List of all assets
   List<AssetGenImage> get values => [
+    btnWithdraw,
     mainNavCash,
     mainNavCashUn,
     mainNavQuiz,
@@ -647,13 +695,24 @@ class $AssetsTwimgBGen {
     mainNavSpinUn,
     mainNavTree,
     mainNavTreeUn,
+    money,
+    moneyFloating,
+    notificationBg,
+    notificationCenter,
+    settingBg,
+    settingMusic,
+    settingMusicUn,
+    settingVolume,
+    settingVolumeUn,
     txBg,
     txBg2,
     txBg3,
     txCashapp,
+    txCashappMaintop,
     txCheck,
     txPaychange,
     txPaypal,
+    txPaypalMaintop,
     txSetting,
   ];
 }

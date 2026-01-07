@@ -1,5 +1,7 @@
 import 'package:c143/gen/assets.gen.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
+import 'package:c143/tw_143/tw_pages/main_tree/vieee/main_top_b.dart';
+import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
 import 'package:c143/tw_views/animated_count.dart';
 import 'package:c143/tw_views/animated_fly.dart';
 import 'package:c143/tw_views/fade_switcher.dart';
@@ -51,6 +53,11 @@ class _MainTopAState extends State<MainTopA> {
 
   @override
   Widget build(BuildContext context) {
+
+    if(TwPackageABC143.isPackageB()){
+      return MainTopB();
+    }
+
     return Column(
       children: [
         SizedBox(height: 40.h),

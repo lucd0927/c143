@@ -74,7 +74,7 @@ class TwProgressC143 extends StatelessWidget {
                 text ?? "",
                 style: TextStyle(
                   color: Colors.white,
-                  fontSize: height - 2,
+                  fontSize: height - 3,
                   height: 1,
                 ),
               ),

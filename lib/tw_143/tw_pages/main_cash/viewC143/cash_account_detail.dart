@@ -1,9 +1,11 @@
 import 'package:c143/gen/assets.gen.dart';
+import 'package:c143/tw_143/tw_pages/main_cash/main_cash_controller.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
 import 'package:c143/tw_base/tw_gj/countryC143.dart';
 import 'package:c143/tw_base/tw_gj/number_extend.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
 class CashAccountDetail extends StatefulWidget {
   const CashAccountDetail({super.key});
@@ -22,12 +24,16 @@ class _CashAccountDetailState extends State<CashAccountDetail> {
       height: 176.h,
       child: Stack(
         children: [
-          Image.asset(
-            Assets.twimgB.txBg.path,
-            width: double.infinity,
-            height: double.infinity,
-            fit: BoxFit.fill,
-          ),
+          Obx((){
+            String icon = MainCashController.to.payBgCash();
+            return  Image.asset(
+              icon,
+              width: double.infinity,
+              height: double.infinity,
+              fit: BoxFit.fill,
+              gaplessPlayback: true,
+            );
+          }),
           Positioned.fill(
             child: Column(
               children: [
