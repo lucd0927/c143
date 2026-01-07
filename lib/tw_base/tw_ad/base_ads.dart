@@ -737,7 +737,7 @@ class TwCommonAds {
     twLooog("====init=hashCode:${hashCode}=_rewardData:$jiliAdsModel");
 
     twLooog("====init==PbUuuump start");
-    // await TwUmpppp().init();
+    await TwUmpppp().init();
     twLooog("====init==PbUuuump end");
     twLooog("====init==initMax");
     bool result = await TwMaxAd.initMax(
@@ -814,7 +814,7 @@ class TwCommonAds {
     bool ignored_hasDisplayAd = false, // 是否忽略_hasDisplayAd的 判断 false不忽略 true 忽略
     bool canTryAgain = true, // 是否可以再次尝试加载广告
   }) async {
-    // return true;
+    return true;
 
     bool result = await _showAdLogic(
       adPosId: adPosId,

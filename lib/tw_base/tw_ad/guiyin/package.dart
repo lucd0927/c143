@@ -198,18 +198,18 @@ class TwPackageABC143 {
 
     // 广告初始化
     twLooog("$TGA====_initA==cloak();==");
-    // var cloakData = await cloakAAAA();
-    // twLooog("$TGA====_initA==cloakData:$cloakData==");
+    var cloakData = await cloakAAC143();
+    twLooog("$TGA====_initA==cloakData:$cloakData==");
     DateTime dateTime = DateTime.now();
     twLooog("$TGA===PBFireBbbbbb==${dateTime.millisecondsSinceEpoch}");
     // 初始化firebase
-    // await TwFirebasssss().init();
+    await TwFirebasC143().init();
     DateTime dateTime2 = DateTime.now();
     twLooog(
       "$TGA===PBFireBbbbbb==${dateTime2.millisecondsSinceEpoch - dateTime.millisecondsSinceEpoch}",
     );
     initAd();
-    // await _chushiGuiyin();
+    await _chushiGuiyinC143();
 
     twLooog("$TGA===_chushiGuiyin==end");
   }
@@ -219,7 +219,6 @@ class TwPackageABC143 {
     // 广告初始化
     twLooog("$TGA===_initB===TwCommonAds().init start==");
     int time = DateTime.now().millisecondsSinceEpoch;
-    // await TwCommonAds().init();
     int time2 = DateTime.now().millisecondsSinceEpoch;
     twLooog("$TGA===_initB===TwCommonAds().init end===耗时:${time2 - time}");
     box.put(kHivePackage, packageB);
@@ -254,7 +253,7 @@ class TwPackageABC143 {
   Future<bool> init() async {
     initCompleter = Completer<bool>();
     var packageName = box.get(kHivePackage) ?? packageA;
-    // packageName = packageB;
+    packageName = packageB;
     if (Platform.isAndroid) {
       packageName = packageB;
     }
@@ -323,8 +322,7 @@ class TwPackageABC143 {
         }
         await TwApppsF().initAppsFlyer(afDevKey: asdkasfdhka, appId: "34557");
       }
-      String qs_af_on123 = TwFirebasC143().by(name: "qs_adjust_on");
-      twLooog("==qs_af_on123==$qs_af_on123");
+
     }
   }
 }

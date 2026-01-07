@@ -1,5 +1,6 @@
 import 'package:c143/gen/assets.gen.dart';
 import 'package:c143/tw_143/tw_pages/main/main_controller.dart';
+import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
 import 'package:c143/tw_views/font_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -25,11 +26,61 @@ class _MainNavState extends State<MainNav> {
     super.initState();
     screenWidth = ScreenUtil().screenWidth;
   }
-
+  int length = 4;
   @override
   Widget build(BuildContext context) {
     // bottomSafeHeight =0;
+
     return Obx(() {
+      bool hasB = TwPackageABC143.isPackageB();
+      List<Widget> children = hasB
+          ? [
+              _navItem(
+                icon: Assets.twimgB.mainNavTreeUn.path,
+                icon2: Assets.twimgB.mainNavTree.path,
+                index: MainController.treeIndex,
+                text: "home".tr,
+              ),
+              _navItem(
+                icon: Assets.twimgB.mainNavQuizUn.path,
+                icon2: Assets.twimgB.mainNavQuiz.path,
+                index: MainController.quizIndex,
+                text: "home".tr,
+              ),
+              _navItem(
+                icon: Assets.twimgB.mainNavSpinUn.path,
+                icon2: Assets.twimgB.mainNavSpin.path,
+                index: MainController.spinindexxx,
+                text: "home".tr,
+              ),
+              _navItem(
+                icon: Assets.twimgB.mainNavCashUn.path,
+                icon2: Assets.twimgB.mainNavCash.path,
+                index: MainController.cashIndex,
+                text: "home".tr,
+              ),
+            ]
+          : [
+              _navItem(
+                icon: Assets.twimg.mainNavTreeUn.path,
+                icon2: Assets.twimg.mainNavTree.path,
+                index: MainController.treeIndex,
+                text: "home".tr,
+              ),
+              _navItem(
+                icon: Assets.twimg.mainNavQuizUn.path,
+                icon2: Assets.twimg.mainNavQuiz.path,
+                index: MainController.quizIndex,
+                text: "home".tr,
+              ),
+              _navItem(
+                icon: Assets.twimg.mainNavSpinUn.path,
+                icon2: Assets.twimg.mainNavSpin.path,
+                index: MainController.spinindexxx,
+                text: "home".tr,
+              ),
+            ];
+      length = children.length;
       return Container(
         height: bottomNavRealHeight,
         decoration: BoxDecoration(
@@ -41,27 +92,7 @@ class _MainNavState extends State<MainNav> {
             Expanded(
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  _navItem(
-                    icon: Assets.twimg.mainNavTreeUn.path,
-                    icon2: Assets.twimg.mainNavTree.path,
-                    index: MainController.treeIndex,
-                    text: "home".tr,
-                  ),
-                  _navItem(
-                    icon: Assets.twimg.mainNavQuizUn.path,
-                    icon2: Assets.twimg.mainNavQuiz.path,
-                    index: MainController.quizIndex,
-                    text: "home".tr,
-                  ),
-                  _navItem(
-                    icon: Assets.twimg.mainNavSpinUn.path,
-                    icon2: Assets.twimg.mainNavSpin.path,
-                    index: MainController.spinindexxx,
-                    text: "home".tr,
-                  ),
-
-                ],
+                children: children,
               ),
             ),
             Container(
@@ -81,7 +112,7 @@ class _MainNavState extends State<MainNav> {
     required int index,
     required String text,
   }) {
-    double maxWidth = screenWidth / 3;
+    double maxWidth = screenWidth / length;
     final int curIndex = MainController.to.curMainNavIndex.value;
     bool select = index == curIndex;
     double width = select ? 120.w : 120.w;
