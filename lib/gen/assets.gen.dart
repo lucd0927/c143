@@ -608,6 +608,35 @@ class $AssetsTwimgBGen {
   AssetGenImage get mainNavTreeUn =>
       const AssetGenImage('assets/twimgB/main_nav_tree_un.png');
 
+  /// File path: assets/twimgB/tx_bg.png
+  AssetGenImage get txBg => const AssetGenImage('assets/twimgB/tx_bg.png');
+
+  /// File path: assets/twimgB/tx_bg2.png
+  AssetGenImage get txBg2 => const AssetGenImage('assets/twimgB/tx_bg2.png');
+
+  /// File path: assets/twimgB/tx_bg3.png
+  AssetGenImage get txBg3 => const AssetGenImage('assets/twimgB/tx_bg3.png');
+
+  /// File path: assets/twimgB/tx_cashapp.png
+  AssetGenImage get txCashapp =>
+      const AssetGenImage('assets/twimgB/tx_cashapp.png');
+
+  /// File path: assets/twimgB/tx_check.png
+  AssetGenImage get txCheck =>
+      const AssetGenImage('assets/twimgB/tx_check.png');
+
+  /// File path: assets/twimgB/tx_paychange.png
+  AssetGenImage get txPaychange =>
+      const AssetGenImage('assets/twimgB/tx_paychange.png');
+
+  /// File path: assets/twimgB/tx_paypal.png
+  AssetGenImage get txPaypal =>
+      const AssetGenImage('assets/twimgB/tx_paypal.png');
+
+  /// File path: assets/twimgB/tx_setting.png
+  AssetGenImage get txSetting =>
+      const AssetGenImage('assets/twimgB/tx_setting.png');
+
   /// List of all assets
   List<AssetGenImage> get values => [
     mainNavCash,
@@ -618,6 +647,14 @@ class $AssetsTwimgBGen {
     mainNavSpinUn,
     mainNavTree,
     mainNavTreeUn,
+    txBg,
+    txBg2,
+    txBg3,
+    txCashapp,
+    txCheck,
+    txPaychange,
+    txPaypal,
+    txSetting,
   ];
 }
 

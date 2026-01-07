@@ -9,6 +9,7 @@ import 'package:c143/tw_base/tw_ad/ads_idddddC143.dart';
 import 'package:c143/tw_base/tw_ad/base_ads.dart';
 import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
 import 'package:c143/tw_base/tw_gj/logC143.dart';
+import 'package:c143/tw_base/tw_gj/number_extend.dart';
 import 'package:c143/tw_base/tw_gj/time_left.dart';
 import 'package:c143/tw_hive/twhiveC143.dart';
 import 'package:c143/tw_views/animated_fly.dart';
@@ -34,7 +35,9 @@ enum TwEnumTreeType {
 class MainTreeController extends GetxController {
   static MainTreeController get to => Get.find();
 
-  static const double maxCoinNum = 5000;
+  static double get maxCoinNum => TwPackageABC143.isPackageB() ? 1000 : 5000;
+
+  static double get stageB1Num => 100;
 
   static String get twkeyGuideProgress => TwPackageABC143.isPackageB()
       ? "MainTreeController_twkeyGuideProgressBbb"
@@ -122,11 +125,13 @@ class MainTreeController extends GetxController {
   static String get twKeyWaterCount =>
       TwPackageABC143.isPackageB() ? "twKeyWaterCountBbbb" : "twKeyWaterCount";
 
-  static String get twKeyShifeiCount =>
-      TwPackageABC143.isPackageB() ? "twKeyShifeiCountBbbb" : "twKeyShifeiCount";
+  static String get twKeyShifeiCount => TwPackageABC143.isPackageB()
+      ? "twKeyShifeiCountBbbb"
+      : "twKeyShifeiCount";
 
-  static String get twkeyTimeLeftFertilize =>
-      TwPackageABC143.isPackageB() ? "sdg4545uyioy3445" : "sdg4545uyioy344578ew";
+  static String get twkeyTimeLeftFertilize => TwPackageABC143.isPackageB()
+      ? "sdg4545uyioy3445"
+      : "sdg4545uyioy344578ew";
 
   TimeLeft _fertilizeLeftTime = TimeLeft(twkeyTimeLeft: twkeyTimeLeftFertilize);
 
@@ -134,6 +139,19 @@ class MainTreeController extends GetxController {
   static const List<int> shifeiCounts = [1, 5, 15, 20];
   static double stage1Num = 1000;
   static double stage2Num = 2000;
+
+  double leftMonn() {
+    double curMonn = MainTreeController.to.curMoneyyyy.value;
+
+    curMonn = curMonn.toAsFixedFloor(2);
+    double left = MainTreeController.stageB1Num - curMonn;
+
+    if (left <= 0) {
+      left = 0;
+    }
+
+    return left;
+  }
 
   String treeIcon() {
     String tmpTreeIcon = Assets.twimg.mainTree1.path;
@@ -312,14 +330,13 @@ class MainTreeController extends GetxController {
     return curMax;
   }
 
-  onAddShiFeiCount({required VoidCallback onEnd,bool showAd = true}) async{
-
-    if (curFertilizeLeftTime.value.isNotEmpty){
+  onAddShiFeiCount({required VoidCallback onEnd, bool showAd = true}) async {
+    if (curFertilizeLeftTime.value.isNotEmpty) {
       twToast(text: "You can claim it after the countdown ends");
       return;
     }
 
-    if(showAd){
+    if (showAd) {
       // bool result = await TwCommonAds().showInterstitialAd(adPosId: TwAdsPosId.test);
       // if(!result){
       //   _resetTreeGrownStatus();
@@ -346,9 +363,7 @@ class MainTreeController extends GetxController {
               curLevel.value = tmpL;
 
               _fertilizeLeftTime.resetLeftTime();
-            } else {
-
-            }
+            } else {}
 
             _resetTreeGrownStatus();
             onEnd();
@@ -369,20 +384,19 @@ class MainTreeController extends GetxController {
   var curHasWatering = false.obs;
   bool canClickWater = true;
 
-  onAddWaterCount({required VoidCallback onEnd,bool showAd = true})async {
+  onAddWaterCount({required VoidCallback onEnd, bool showAd = true}) async {
     if (canClickWater) {
-
       canClickWater = false;
-      if(showAd){
-        bool result = await TwCommonAds().showInterstitialAd(adPosId: TwAdsPosId.test);
-        if(!result){
+      if (showAd) {
+        bool result = await TwCommonAds().showInterstitialAd(
+          adPosId: TwAdsPosId.test,
+        );
+        if (!result) {
           _resetTreeGrownStatus();
           onEnd();
           return;
         }
       }
-
-
 
       OverlayLotWater().show(
         onEnd: () {
@@ -404,12 +418,12 @@ class MainTreeController extends GetxController {
     }
   }
 
-  _resetTreeGrownStatus(){
+  _resetTreeGrownStatus() {
     curHasWatering.value = false;
     canClickWater = true;
   }
 
-  bool showStage2(){
+  bool showStage2() {
     double monnn = MainTreeController.to.curMoneyyyy.value;
     double stage2 = MainTreeController.stage2Num;
     bool showSun = stage2 <= monnn;
@@ -430,7 +444,7 @@ class MainTreeController extends GetxController {
     double tmpCurMmm = curMoneyyyy.value;
 
     double tmpCurmmm2 = tmpCurMmm + monnn;
-
+    tmpCurmmm2 = tmpCurmmm2.toAsFixedFloor(2);
     box.put(twKeyMoneyyyy, tmpCurmmm2);
     curMoneyyyy.value = tmpCurmmm2;
     onEnd?.call();

@@ -4,10 +4,10 @@ import 'dart:io';
 
 class TwCountryyC143 {
   // 美国
-  static const String usCountry = "ssssss";
+  static const String usCountry = "asfg";
 
   // 巴西
-  static const String brCountry = "Bxxxxx";
+  static const String brCountry = "ewtewrt";
 
   static bool hasUSAC143() {
     bool result = _huoquGuojiaC143() == usCountry;
@@ -27,7 +27,7 @@ class TwCountryyC143 {
   static String curCountryyyySymbolC143() {
     String symbol = "\$";
     if (!hasUSAC143()) {
-      symbol = "R\$";
+      // symbol = "R\$";
     }
     return symbol;
   }

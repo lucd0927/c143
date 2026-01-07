@@ -43,7 +43,7 @@ class TwProgressC143 extends StatelessWidget {
           ),
           Positioned(
             right: (height - innerHeight) / 2,
-            left: progress<0.1?0:(height - innerHeight) / 2,
+            left: progress<0.04?0:(height - innerHeight) / 2,
             bottom: 0.h,
             top: 0,
             child: Align(
