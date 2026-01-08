@@ -295,7 +295,7 @@ class _Guide6ScaleOverlayAnimState extends State<_Guide6ScaleOverlayAnim>
                           child: Padding(
                             padding: EdgeInsets.symmetric(horizontal: 16.w),
                             child: Text(
-                              "Your ad space value is SKYROCKETING!\n🚀 You’re now a TOP FEATURED SPOT on the platform!",
+                              "Congratulations! Your tree is growing！🚀 ",
                               style: TextStyle(
                                 fontSize: 16.sp,
                                 fontWeight: FontWeight.w900,

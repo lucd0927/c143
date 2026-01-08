@@ -48,7 +48,7 @@ class _MainSpinState extends State<MainSpin> {
           children: [
             Container(
               width: 336.h,
-              height: 202.h,
+              height: 182.h,
               child: Stack(
                 clipBehavior: Clip.none,
                 children: [
@@ -91,21 +91,22 @@ class _MainSpinState extends State<MainSpin> {
 
                             }
                           },
-                        ),
+                        ), SizedBox(height: 12.h),
+
                         bottomItem(
                           icon: Assets.twimg.spinWheelS.path,
                           text: "spin the lucky wheel 50 times",
-                          text2: "+100",
+                          text2: "+500",
                           btnText: "Wait",
                           onTap: () {},
                         ),
-                        bottomItem(
-                          icon: Assets.twimg.spinAd.path,
-                          text: "watch 100 ads",
-                          text2: "+100",
-                          btnText: "Wait",
-                          onTap: () {},
-                        ),
+                        // bottomItem(
+                        //   icon: Assets.twimg.spinAd.path,
+                        //   text: "watch 100 ads",
+                        //   text2: "+100",
+                        //   btnText: "Wait",
+                        //   onTap: () {},
+                        // ),
                       ],
                     ),
                   ),

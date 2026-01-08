@@ -7,27 +7,24 @@ import 'package:c143/tw_hive/twhiveC143.dart';
 class TimeLeft {
   final String twkeyTimeLeft;
 
-  TimeLeft({required this.twkeyTimeLeft});
+  final int maxSeconds;
 
+  TimeLeft({required this.twkeyTimeLeft, this.maxSeconds = 60 * 5});
 
   var box = TwHive.box;
 
-
   Timer? _leftTimeTimer;
-
-  int maxSeconds = 60 * 5;
 
   // static const int maxSeconds = 60 * 1;
 
   var _textLeftTime = "";
   var _leftTime = -1;
 
-
-  int leftTime(){
+  int leftTime() {
     return _leftTime;
   }
 
-  String leftTimeToHHmmss(){
+  String leftTimeToHHmmss() {
     return _textLeftTime;
   }
 

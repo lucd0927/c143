@@ -17,12 +17,12 @@ class _MainHighLightTipsState extends State<MainHighLightTips> {
   Offset _offset = Offset(0, -360.h);
   List<String> txts = [
     "HIGH-EARNING WINDOW ONLY 12 MINUTES LEFT! ⏰💸",
-    "High-Reward Window Ends in 12 Mins!",
+    // "High-Reward Window Ends in 12 Mins!",
     "You’re Racing for Today’s Earnings Leaderboard!",
-    "Ad Rewards +150% This Session!",
+    // "Ad Rewards +150% This Session!",
     "Tree-Planting with 14345 Players!",
-    "Stably Running for 896 Days!",
-    "2,000 New Winners Every Week!",
+    // "Stably Running for 896 Days!",
+    // "2,000 New Winners Every Week!",
   ];
 
   Timer? _timer;

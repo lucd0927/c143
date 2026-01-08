@@ -48,17 +48,17 @@ class OverlayGuide10Quiz3 {
               onBtn: (value) async{
                 twLooog("=====OverlayGuideTestAnim=onBtn");
                 close();
-                bool result = await TwCommonAds().showInterstitialAd(
-                  adPosId: TwAdsPosId.test,
-                );
-                if (!result) {
-                  MainQuizController.to.saveGuideStatus();
-                  MainTreeController.to.saveGuideIndexData(
-                    MainTreeController.guide10,
-                  );
-                  onBtn.call(coins);
-                  return;
-                }
+                // bool result = await TwCommonAds().showInterstitialAd(
+                //   adPosId: TwAdsPosId.test,
+                // );
+                // if (!result) {
+                //   MainQuizController.to.saveGuideStatus();
+                //   MainTreeController.to.saveGuideIndexData(
+                //     MainTreeController.guide10,
+                //   );
+                //   onBtn.call(coins);
+                //   return;
+                // }
                 MainTreeController.to.onAddMoneyyyy(
                   coins,
                   onEnd: () {
@@ -270,15 +270,15 @@ class _Guide10Quiz3State extends State<Guide10Quiz3> {
                         foreground: Color(0xff22431B),
                       ),
                     ),
-                    Positioned(
-                      top: -10.h,
-                      right: -5.h,
-                      child: Image.asset(
-                        Assets.twimg.ad.path,
-                        width: 28.h,
-                        height: 28.h,
-                      ),
-                    ),
+                    // Positioned(
+                    //   top: -10.h,
+                    //   right: -5.h,
+                    //   child: Image.asset(
+                    //     Assets.twimg.ad.path,
+                    //     width: 28.h,
+                    //     height: 28.h,
+                    //   ),
+                    // ),
 
                     // Positioned(
                     //   top: -0.h,

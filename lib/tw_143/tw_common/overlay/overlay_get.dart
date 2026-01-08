@@ -41,13 +41,13 @@ class OverlayGetCoins {
             onClaim: (value) async {
               close();
 
-              bool result = await TwCommonAds().showInterstitialAd(
-                adPosId: TwAdsPosId.test,
-              );
-              if (!result) {
-                onBtn();
-                return;
-              }
+              // bool result = await TwCommonAds().showInterstitialAd(
+              //   adPosId: TwAdsPosId.test,
+              // );
+              // if (!result) {
+              //   onBtn();
+              //   return;
+              // }
               MainTreeController.to.onAddMoneyyyy(
                 coins,
                 onEnd: () {
@@ -293,15 +293,15 @@ class _GetCoinsWidgetState extends State<GetCoinsWidget> {
                   foreground: Color(0xff22431B),
                 ),
               ),
-              Positioned(
-                top: -10.h,
-                right: -5.h,
-                child: Image.asset(
-                  Assets.twimg.ad.path,
-                  width: 28.h,
-                  height: 28.h,
-                ),
-              ),
+              // Positioned(
+              //   top: -10.h,
+              //   right: -5.h,
+              //   child: Image.asset(
+              //     Assets.twimg.ad.path,
+              //     width: 28.h,
+              //     height: 28.h,
+              //   ),
+              // ),
 
               // Positioned(
               //   top: -0.h,
