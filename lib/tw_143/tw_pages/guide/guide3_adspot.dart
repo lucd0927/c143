@@ -20,9 +20,7 @@ class OverlayGuide3AdSpot {
   bool get isShowing => _isShowing;
   bool _isShowing = false;
 
-  void show({
-    required double coins,
-}) {
+  void show({required double coins}) {
     _overlayEntry = null;
 
     _overlayEntry = OverlayEntry(
@@ -32,13 +30,16 @@ class OverlayGuide3AdSpot {
           child: Guide3AdSpot(
             onClose: () async {
               close();
-              MainTreeController.to.saveGuideIndexData(MainTreeController.guide3);
+              MainTreeController.to.saveGuideIndexData(
+                MainTreeController.guide3,
+              );
 
-              MainTreeController.to.onAddMoneyyyy(coins,onEnd: (){
-                OverlayGuide4Fertilize().show();
-              });
-
-
+              MainTreeController.to.onAddMoneyyyy(
+                coins,
+                onEnd: () {
+                  OverlayGuide4Fertilize().show();
+                },
+              );
             },
             coins: coins,
           ),
@@ -60,6 +61,7 @@ class Guide3AdSpot extends StatefulWidget {
 
   final VoidCallback onClose;
   final double coins;
+
   @override
   State<Guide3AdSpot> createState() => _Guide3AdSpotState();
 }
@@ -102,10 +104,31 @@ class _Guide3AdSpotState extends State<Guide3AdSpot> {
               Column(
                 children: [
                   SizedBox(height: 80.h),
-                  Image.asset(
-                    Assets.twimg.guide3Txt.path,
-                    width: 288.w,
+
+                  // Image.asset(
+                  //   Assets.twimg.guide3Txt.path,
+                  //   width: 288.w,
+                  //   height: 100.h,
+                  // ),
+                  Container(
                     height: 100.h,
+                    child: Center(
+                      child: TwTxtGraBorderC143(
+                        text: "Congrats!",
+                        gradient: LinearGradient(
+                          colors: [
+                            Color(0xffEBD462),
+                            Color(0xffFFF692),
+                            Color(0xffFFD92E),
+                          ],
+                          end: Alignment.bottomCenter,
+                          begin: Alignment.topCenter,
+                        ),
+
+                        fontSize: 40.sp,
+                        fontWeight: FontWeight.w900,
+                      ),
+                    ),
                   ),
                   SizedBox(height: 60.h),
                   Center(
@@ -155,7 +178,8 @@ class _Guide3AdSpotState extends State<Guide3AdSpot> {
                                     ),
                                     SizedBox(width: 8.w),
                                     TwTxtGraBorderC143(
-                                      text: "${widget.coins.toStringAsFixed(0)}",
+                                      text:
+                                          "${widget.coins.toStringAsFixed(0)}",
                                       fontSize: 32.sp,
                                       fontWeight: FontWeight.w900,
                                     ),

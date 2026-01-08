@@ -43,8 +43,8 @@ class _MainNavState extends State<MainNav> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   _navItem(
-                    icon: Assets.twimg.mainNavTreeUn.path,
-                    icon2: Assets.twimg.mainNavTree.path,
+                    icon: Assets.twimg.mainNavMoneytreeUn.path,
+                    icon2: Assets.twimg.mainNavMoneytree.path,
                     index: MainController.treeIndex,
                     text: "home".tr,
                   ),

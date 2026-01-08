@@ -112,6 +112,9 @@ class MainTreeController extends GetxController {
   var curStageWaterCount = 0.obs;
   var curStageShifeiCount = 0.obs;
   var curFertilizeLeftTime = "".obs;
+  var curLeftTimeCoin1 = "".obs;
+  var curLeftTimeCoin2 = "".obs;
+  var curLeftTimeCoin3 = "".obs;
 
   static String get twKeyMoneyyyy =>
       TwPackageABC143.isPackageB() ? "twKeyMoneyyyyBbbb" : "twKeyMoneyyyy";
@@ -122,13 +125,25 @@ class MainTreeController extends GetxController {
   static String get twKeyWaterCount =>
       TwPackageABC143.isPackageB() ? "twKeyWaterCountBbbb" : "twKeyWaterCount";
 
-  static String get twKeyShifeiCount =>
-      TwPackageABC143.isPackageB() ? "twKeyShifeiCountBbbb" : "twKeyShifeiCount";
+  static String get twKeyShifeiCount => TwPackageABC143.isPackageB()
+      ? "twKeyShifeiCountBbbb"
+      : "twKeyShifeiCount";
 
-  static String get twkeyTimeLeftFertilize =>
-      TwPackageABC143.isPackageB() ? "sdg4545uyioy3445" : "sdg4545uyioy344578ew";
+  static String get twkeyTimeLeftFertilize => TwPackageABC143.isPackageB()
+      ? "sdg4545uyioy3445"
+      : "sdg4545uyioy344578ew";
 
-  TimeLeft _fertilizeLeftTime = TimeLeft(twkeyTimeLeft: twkeyTimeLeftFertilize);
+  static String get twkeyTimeLeftCoin1 => TwPackageABC143.isPackageB()
+      ? "twkeyTimeLeftCoin1"
+      : "twkeyTimeLeftCoin1Aaaa";
+
+  static String get twkeyTimeLeftCoin2 => TwPackageABC143.isPackageB()
+      ? "twkeyTimeLeftCoin2"
+      : "twkeyTimeLeftCoin2Aaaa";
+
+  static String get twkeyTimeLeftCoin3 => TwPackageABC143.isPackageB()
+      ? "twkeyTimeLeftCoin3"
+      : "twkeyTimeLeftCoin3Aaaa";
 
   static const List<int> waterCounts = [1, 20, 60, 80];
   static const List<int> shifeiCounts = [1, 5, 15, 20];
@@ -182,19 +197,72 @@ class MainTreeController extends GetxController {
     int tmpWaterCount = box.get(twKeyWaterCount) ?? 0;
     curStageWaterCount = tmpWaterCount.obs;
     int tmpShifeiCount = box.get(twKeyShifeiCount) ?? 0;
+
     curStageShifeiCount = tmpShifeiCount.obs;
 
-    int tmpLevelll = _jisuanLevel(hasResetStageCount: false);
+    int tmpLevelll = box.get(twKeyLevelll) ?? 1;
+    // int tmpLevelll = _jisuanLevel(hasResetStageCount: false);
     curLevel = tmpLevelll.obs;
 
+    initCutdownTimer();
+  }
+
+  final TimeLeft _fertilizeLeftTime = TimeLeft(
+    twkeyTimeLeft: twkeyTimeLeftFertilize,
+    maxSeconds: 60*10
+  );
+  final TimeLeft _coinLeftTime1 = TimeLeft(
+    twkeyTimeLeft: twkeyTimeLeftCoin1,
+  );
+  final TimeLeft _coinLeftTime2 = TimeLeft(
+    twkeyTimeLeft: twkeyTimeLeftCoin2,
+  );
+  final TimeLeft _coinLeftTime3 = TimeLeft(
+    twkeyTimeLeft: twkeyTimeLeftCoin3,
+  );
+
+  resetCoin1Time(){
+    _coinLeftTime1.resetLeftTime();
+  }
+  resetCoin2Time(){
+    _coinLeftTime2.resetLeftTime();
+  }
+  resetCoin3Time(){
+    _coinLeftTime3.resetLeftTime();
+  }
+
+  initCutdownTimer() {
     _fertilizeLeftTime.initLeftTimer(hasFirst: true);
+    _coinLeftTime1.initLeftTimer(hasFirst: true);
+    _coinLeftTime2.initLeftTimer(hasFirst: true);
+    _coinLeftTime3.initLeftTimer(hasFirst: true);
     // _fertilizeLeftTime.textLeftTime;
     String tmpFertilizeTime = _fertilizeLeftTime.leftTimeToHHmmss();
+    String tmpcoinLeftTime1 = _coinLeftTime1.leftTimeToHHmmss();
+    String tmpcoinLeftTime2 = _coinLeftTime2.leftTimeToHHmmss();
+    String tmpcoinLeftTime3 = _coinLeftTime3.leftTimeToHHmmss();
     curFertilizeLeftTime = tmpFertilizeTime.obs;
+    curLeftTimeCoin1 = tmpcoinLeftTime1.obs;
+    curLeftTimeCoin2 = tmpcoinLeftTime2.obs;
+    curLeftTimeCoin3 = tmpcoinLeftTime3.obs;
     Timer.periodic(Duration(seconds: 1), (timer) {
       String tmpFertilizeTime2 = _fertilizeLeftTime.leftTimeToHHmmss();
       // twLooog("tmpFertilizeTime2:$tmpFertilizeTime2");
       curFertilizeLeftTime.value = tmpFertilizeTime2;
+
+      String tmp_coinLeftTime1 = _coinLeftTime1.leftTimeToHHmmss();
+      curLeftTimeCoin1.value = tmp_coinLeftTime1;
+
+      String tmp_coinLeftTime2 = _coinLeftTime2.leftTimeToHHmmss();
+      curLeftTimeCoin2.value = tmp_coinLeftTime2;
+
+      String tmp_coinLeftTime3 = _coinLeftTime3.leftTimeToHHmmss();
+      curLeftTimeCoin3.value = tmp_coinLeftTime3;
+
+
+
+
+
     });
   }
 
@@ -307,19 +375,19 @@ class MainTreeController extends GetxController {
 
     if (hasResetStageCount && tmpCurLevel != curMax) {
       resetWaterAndShifeiCount();
+      box.put(twKeyLevelll, curMax);
     }
 
     return curMax;
   }
 
-  onAddShiFeiCount({required VoidCallback onEnd,bool showAd = true}) async{
-
-    if (curFertilizeLeftTime.value.isNotEmpty){
+  onAddShiFeiCount({required VoidCallback onEnd, bool showAd = true}) async {
+    if (curFertilizeLeftTime.value.isNotEmpty) {
       twToast(text: "You can claim it after the countdown ends");
       return;
     }
 
-    if(showAd){
+    if (showAd) {
       // bool result = await TwCommonAds().showInterstitialAd(adPosId: TwAdsPosId.test);
       // if(!result){
       //   _resetTreeGrownStatus();
@@ -346,9 +414,7 @@ class MainTreeController extends GetxController {
               curLevel.value = tmpL;
 
               _fertilizeLeftTime.resetLeftTime();
-            } else {
-
-            }
+            } else {}
 
             _resetTreeGrownStatus();
             onEnd();
@@ -369,20 +435,19 @@ class MainTreeController extends GetxController {
   var curHasWatering = false.obs;
   bool canClickWater = true;
 
-  onAddWaterCount({required VoidCallback onEnd,bool showAd = true})async {
+  onAddWaterCount({required VoidCallback onEnd, bool showAd = true}) async {
     if (canClickWater) {
-
       canClickWater = false;
-      if(showAd){
-        bool result = await TwCommonAds().showInterstitialAd(adPosId: TwAdsPosId.test);
-        if(!result){
+      if (showAd) {
+        bool result = await TwCommonAds().showInterstitialAd(
+          adPosId: TwAdsPosId.test,
+        );
+        if (!result) {
           _resetTreeGrownStatus();
           onEnd();
           return;
         }
       }
-
-
 
       OverlayLotWater().show(
         onEnd: () {
@@ -404,12 +469,12 @@ class MainTreeController extends GetxController {
     }
   }
 
-  _resetTreeGrownStatus(){
+  _resetTreeGrownStatus() {
     curHasWatering.value = false;
     canClickWater = true;
   }
 
-  bool showStage2(){
+  bool showStage2() {
     double monnn = MainTreeController.to.curMoneyyyy.value;
     double stage2 = MainTreeController.stage2Num;
     bool showSun = stage2 <= monnn;
@@ -436,11 +501,11 @@ class MainTreeController extends GetxController {
     onEnd?.call();
     String? data = guideIndexData();
     twLooog("======guideIndexData:$data tmpCurmmm2:$tmpCurmmm2");
-    if (tmpCurmmm2 >= stage2Num && data == MainTreeController.guide14) {
-      OverlayGuide15CoinToSun().show();
-    } else if (tmpCurmmm2 >= stage1Num && data == MainTreeController.guide13) {
-      OverlayGuide14HighLight().show();
-    }
+    // if (tmpCurmmm2 >= stage2Num && data == MainTreeController.guide14) {
+    //   OverlayGuide15CoinToSun().show();
+    // } else if (tmpCurmmm2 >= stage1Num && data == MainTreeController.guide13) {
+    //   OverlayGuide14HighLight().show();
+    // }
   }
 
   static Map<EnumTwLottttieJson, LottieComposition> _kLottie_vCompo = {};

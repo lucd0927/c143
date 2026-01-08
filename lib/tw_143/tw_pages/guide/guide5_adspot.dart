@@ -105,10 +105,25 @@ class _Guide5AdSpotState extends State<Guide5AdSpot> {
               Column(
                 children: [
                   SizedBox(height: 80.h),
-                  Image.asset(
-                    Assets.twimg.guide3Txt.path,
-                    width: 288.w,
+                  Container(
                     height: 100.h,
+                    child: Center(
+                      child: TwTxtGraBorderC143(
+                        text: "Congrats!",
+                        gradient: LinearGradient(
+                          colors: [
+                            Color(0xffEBD462),
+                            Color(0xffFFF692),
+                            Color(0xffFFD92E),
+                          ],
+                          end: Alignment.bottomCenter,
+                          begin: Alignment.topCenter,
+                        ),
+
+                        fontSize: 40.sp,
+                        fontWeight: FontWeight.w900,
+                      ),
+                    ),
                   ),
                   SizedBox(height: 60.h),
                   Center(

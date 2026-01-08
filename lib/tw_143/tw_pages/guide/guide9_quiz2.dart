@@ -99,8 +99,8 @@ class _Guide9Quiz2WidgetState extends State<Guide9Quiz2Widget> {
 
   List<List<String>> texts = [
     ["Your ANSWERS are just as VALUABLE as ", "your ATTENTION!!!"],
-    ["Advertisers need YOUR feedback! You’re the one making ads ", "better!!!"],
-    ["Advertisers get feedback,", "YOU get COINS!!!"],
+    ["Answer a few questions. Your answers make a ", "Difference!!!"],
+    ["Finish the quiz,", "earn COIN!!"],
   ];
 
   List<String> _curTexts = [];

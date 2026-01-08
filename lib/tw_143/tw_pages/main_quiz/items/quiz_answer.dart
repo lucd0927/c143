@@ -63,7 +63,7 @@ class _QuizAnswerState extends State<QuizAnswer> {
         SizedBox(height: 8.h),
         answerView(answer: "B", answerContent: b),
         if(showC)SizedBox(height: 8.h),
-        if(showC) answerView(answer: "C", answerContent: "No"),
+        if(showC) answerView(answer: "C", answerContent: "I don't like it"),
       ],
     );
   }
@@ -109,7 +109,7 @@ class _QuizAnswerState extends State<QuizAnswer> {
           ? Assets.twimg.btnQuizSelectOk.path
           : Assets.twimg.btnQuizSelectError.path;
     }
-    twLooog("====showG:$showG selectRight:$selectRight answer:$answer rightAnswer:$rightAnswer showIcon:$showIcon");
+    // twLooog("====showG:$showG selectRight:$selectRight answer:$answer rightAnswer:$rightAnswer showIcon:$showIcon");
 
     double opacity = 1;
     if(showG){

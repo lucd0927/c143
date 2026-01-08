@@ -131,10 +131,10 @@ class _MainTopAState extends State<MainTopA> {
                                 );
                               }),
                               Spacer(),
-                              TwTxtGraBorderC143(
-                                text: MainTreeController.maxCoinNum
-                                    .toStringAsFixed(0),
-                              ),
+                              // TwTxtGraBorderC143(
+                              //   text: MainTreeController.maxCoinNum
+                              //       .toStringAsFixed(0),
+                              // ),
                             ],
                           ),
                           SizedBox(height: 10.h),

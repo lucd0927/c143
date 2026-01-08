@@ -327,15 +327,15 @@ class _PositionItemsState extends State<PositionItems>
                   fit: BoxFit.fill,
                 ),
 
-                Positioned(
-                  top: -10.h,
-                  left: -5.h,
-                  child: Image.asset(
-                    Assets.twimg.ad.path,
-                    width: 28.h,
-                    height: 28.h,
-                  ),
-                ),
+                // Positioned(
+                //   top: -10.h,
+                //   left: -5.h,
+                //   child: Image.asset(
+                //     Assets.twimg.ad.path,
+                //     width: 28.h,
+                //     height: 28.h,
+                //   ),
+                // ),
 
                 Positioned(
                   top: -0.h,

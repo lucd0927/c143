@@ -100,7 +100,6 @@ class _MainRankState extends State<MainRank> {
 
   @override
   Widget build(BuildContext context) {
-    twLooog("=====");
 
     Widget child = ClipRect(
       child: Container(

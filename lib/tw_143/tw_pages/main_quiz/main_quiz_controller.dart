@@ -10,6 +10,7 @@ import 'package:c143/tw_143/tw_pages/main_quiz/datus/quiz_model.dart';
 import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
 import 'package:c143/tw_base/tw_gj/logC143.dart';
 import 'package:c143/tw_hive/twhiveC143.dart';
+import 'package:c143/tw_views/pb_tushi.dart';
 import 'package:get/get.dart';
 
 class MainQuizController extends GetxController {
@@ -138,10 +139,10 @@ class MainQuizController extends GetxController {
       "answer": "a",
     },
     {
-      "question": "Were you happy with the ad you just watched?!",
-      "a": "Yes",
+      "question": "What do you think about earning coins by answering questions?",
+      "a": "I like it a lot",
       "b": "Just so-so",
-      "c": "No",
+      "c": "I don't like it",
       "answer": "a",
     },
   ];
@@ -239,6 +240,7 @@ class MainQuizController extends GetxController {
           __nextQuestion();
         });
       }else{
+        twToast(text: "Your answer is wrong");
         __nextQuestion();
       }
 

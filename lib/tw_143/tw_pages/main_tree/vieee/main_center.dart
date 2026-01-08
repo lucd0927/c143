@@ -13,6 +13,7 @@ import 'package:c143/tw_base/tw_gj/logC143.dart';
 import 'package:c143/tw_views/animated_count.dart';
 import 'package:c143/tw_views/animated_scale.dart';
 import 'package:c143/tw_views/font_border.dart';
+import 'package:c143/tw_views/pb_tushi.dart';
 import 'package:c143/tw_views/shimmer_effect.dart';
 import 'package:c143/tw_views/tw_progress.dart';
 import 'package:flutter/material.dart';
@@ -110,7 +111,7 @@ class _MainCenterState extends State<MainCenter> {
   levelWidget() {
     int curLevel = MainTreeController.to.curLevel.value;
     double progress = MainTreeController.to.curLevelProgress();
-    twLooog("=====progress:$progress");
+    // twLooog("=====progress:$progress");
     return Center(
       child: Container(
         width: 140.w,
@@ -174,7 +175,7 @@ class _MainCenterState extends State<MainCenter> {
       child: Column(
         children: [
           SizedBox(height: height1),
-          sunWidget(),
+          coinWidget1(),
           SizedBox(height: height2),
           fertilizeWidget(),
           SizedBox(height: height3),
@@ -189,7 +190,7 @@ class _MainCenterState extends State<MainCenter> {
       String leftTime = MainTreeController.to.curFertilizeLeftTime.value;
       String? data = MainTreeController.to.guideIndexData();
       bool showTxt = data != MainTreeController.guide3;
-      twLooog("=====fertilizeWidget showTxt:$showTxt data:$data");
+      // twLooog("=====fertilizeWidget showTxt:$showTxt data:$data");
       return Row(
         children: [
           SizedBox(width: 20.w),
@@ -197,11 +198,9 @@ class _MainCenterState extends State<MainCenter> {
             builder: (context) {
               Widget child = centerItem(
                 width: 60.h,
-                count: leftTime,
+                txtTop: leftTime,
                 icon: Assets.twimg.mainFertilize.path,
-                showTxt: showTxt,
                 showAd: false,
-                txtLocationBottom: false,
                 treeType: TwEnumTreeType.fertilize,
                 onClick: onAddShiFeiCount,
               );
@@ -220,11 +219,13 @@ class _MainCenterState extends State<MainCenter> {
     MainTreeController.to.onAddShiFeiCount(onEnd: () {});
   }
 
-  sunWidget() {
+  coinWidget1() {
     return Obx(() {
+      String leftTime = MainTreeController.to.curLeftTimeCoin1.value;
+
       double count = 100;
       bool showSun = MainTreeController.to.showStage2();
-      if(showSun){
+      if (showSun) {
         count = 1000;
       }
       return Row(
@@ -232,23 +233,77 @@ class _MainCenterState extends State<MainCenter> {
           SizedBox(width: 100.w),
           centerItem(
             width: 50.h,
-            count: count.toStringAsFixed(0),
+            txtBottom: count.toStringAsFixed(0),
+            txtTop: leftTime,
             treeType: TwEnumTreeType.sun,
-            showAd: true,
+            showAd: false,
             icon: showSun
                 ? Assets.twimg.mainSun.path
                 : Assets.twimg.mainCoin.path,
             onClick: () async {
-              bool result = await TwCommonAds().showInterstitialAd(
-                adPosId: TwAdsPosId.test,
-              );
-              if (!result) {
-                return;
-              }
-              if(showSun){
+              // bool result = await TwCommonAds().showInterstitialAd(
+              //   adPosId: TwAdsPosId.test,
+              // );
+              // if (!result) {
+              //   return;
+              // }
+              if (showSun) {
                 count = 10;
               }
-              MainTreeController.to.onAddMoneyyyy(count);
+              if(MainTreeController.to.curLeftTimeCoin1.isEmpty){
+                MainTreeController.to.onAddMoneyyyy(count,onEnd: (){
+                  MainTreeController.to.resetCoin1Time();
+                });
+              }else{
+                twToast(text: "You can claim it after the countdown ends");
+              }
+
+
+            },
+          ),
+        ],
+      );
+    });
+  }
+
+  coinWidget3() {
+    return Obx(() {
+      String leftTime = MainTreeController.to.curLeftTimeCoin3.value;
+
+      double count = 100;
+      bool showSun = MainTreeController.to.showStage2();
+      if (showSun) {
+        count = 1000;
+      }
+      return Row(
+        children: [
+          SizedBox(width: 100.w),
+          centerItem(
+            width: 50.h,
+            txtBottom: count.toStringAsFixed(0),
+            txtTop: leftTime,
+            treeType: TwEnumTreeType.sun,
+            showAd: false,
+            icon: showSun
+                ? Assets.twimg.mainSun.path
+                : Assets.twimg.mainCoin.path,
+            onClick: () async {
+              // bool result = await TwCommonAds().showInterstitialAd(
+              //   adPosId: TwAdsPosId.test,
+              // );
+              // if (!result) {
+              //   return;
+              // }
+              if (showSun) {
+                count = 10;
+              }
+              if(MainTreeController.to.curLeftTimeCoin3.isEmpty){
+                MainTreeController.to.onAddMoneyyyy(count,onEnd: (){
+                  MainTreeController.to.resetCoin3Time();
+                });
+              }else{
+                twToast(text: "You can claim it after the countdown ends");
+              }
             },
           ),
         ],
@@ -258,36 +313,38 @@ class _MainCenterState extends State<MainCenter> {
 
   centerItem({
     required double width,
-    required String count,
+    String? txtBottom,
+    String? txtTop,
     required String icon,
     required VoidCallback onClick,
     required TwEnumTreeType treeType,
     required bool showAd,
-    bool showTxt = true,
-    bool txtLocationBottom = true,
-  }) {
-    Widget txtW = const SizedBox();
-    if (showTxt) {
-      if (treeType == TwEnumTreeType.fertilize) {
-        txtW = Center(
-          child: TwTxtBorderC143(
-            text: "${count}",
-            fontSize: 10.sp,
 
-            fontWeight: FontWeight.w700,
-          ),
-        );
-      } else {
-        txtW = Center(
-          child: TwTxtBorderC143(
-            text: "+${count}",
-            fontSize: 12.sp,
-            fontColor: Color(0xffFFD64D),
-            foreground: Color(0xff874A00),
-            fontWeight: FontWeight.w700,
-          ),
-        );
-      }
+  }) {
+    Widget txtWB = const SizedBox();
+    Widget txtWT = const SizedBox();
+    bool txtLocationBottom = txtBottom != null && txtBottom.isNotEmpty;
+    bool txtLocationTop = txtTop != null && txtTop.isNotEmpty;
+    if (txtLocationBottom) {
+      txtWB = Center(
+        child: TwTxtBorderC143(
+          text: "+${txtBottom}",
+          fontSize: 12.sp,
+          fontColor: Color(0xffFFD64D),
+          foreground: Color(0xff874A00),
+          fontWeight: FontWeight.w700,
+        ),
+      );
+    }
+    if(txtLocationTop){
+      txtWT = Center(
+        child: TwTxtBorderC143(
+          text: "${txtTop}",
+          fontSize: 10.sp,
+
+          fontWeight: FontWeight.w700,
+        ),
+      );
     }
 
     return GestureDetector(
@@ -313,9 +370,10 @@ class _MainCenterState extends State<MainCenter> {
                   gaplessPlayback: true,
                 ),
               ),
-              txtLocationBottom
-                  ? Positioned(left: 0, right: 0, bottom: 0, child: txtW)
-                  : Positioned(left: 0, right: 0, top: 0, child: txtW),
+              if(txtLocationBottom)
+                Positioned(left: 0, right: 0, bottom: 0, child: txtWB),
+              if(txtLocationTop) Positioned(
+                  left: 0, right: 0, top: 0, child: txtWT),
 
               if (showAd)
                 Positioned(
@@ -344,12 +402,12 @@ class _MainCenterState extends State<MainCenter> {
               showAd: false,
               treeType: TwEnumTreeType.spin,
               width: 50.h,
-              showTxt: false,
+
               icon: Assets.twimg.mainSpin.path,
               onClick: () {
                 MainController.to.resetIndex(MainController.spinindexxx);
               },
-              count: '',
+              txtBottom: '',
             );
 
             OverlayGuide13Spin.guideChild = child;
@@ -375,9 +433,9 @@ class _MainCenterState extends State<MainCenter> {
           SizedBox(height: height1),
           waterWidget(),
           SizedBox(height: height2),
-          coinWidget(),
+          coinWidget2(),
           SizedBox(height: height3),
-          sunWidget(),
+          coinWidget3(),
           // coinYuWidget()
         ],
       ),
@@ -386,7 +444,7 @@ class _MainCenterState extends State<MainCenter> {
 
   waterWidget() {
     String? data = MainTreeController.to.guideIndexData();
-    twLooog("====waterWidget==data:$data");
+    // twLooog("====waterWidget==data:$data");
     bool showAd = data != null;
     showAd = true;
     return Row(
@@ -398,9 +456,9 @@ class _MainCenterState extends State<MainCenter> {
               showAd: showAd,
               treeType: TwEnumTreeType.water,
               width: 60.h,
-              count: '',
+              txtBottom: '',
               icon: Assets.twimg.mainWater.path,
-              showTxt: false,
+
               onClick: onWater,
             );
             OverlayGuide1Water.guideChild = child;
@@ -416,17 +474,18 @@ class _MainCenterState extends State<MainCenter> {
     MainTreeController.to.onAddWaterCount(onEnd: () {});
   }
 
-  coinWidget() {
+  coinWidget2() {
     return Obx(() {
+      String leftTime = MainTreeController.to.curLeftTimeCoin2.value;
       double count = 100;
       bool showSun = MainTreeController.to.showStage2();
       String? data = MainTreeController.to.guideIndexData();
       bool showAd = data != MainTreeController.guide1;
-      twLooog("====coinWidget==data:$data showAd:$showAd");
-      if(showSun){
+      // twLooog("====coinWidget==data:$data showAd:$showAd");
+      if (showSun) {
         count = 1000;
       }
-      showAd = true;
+      showAd = false;
       return Row(
         children: [
           SizedBox(width: 90.w),
@@ -434,25 +493,31 @@ class _MainCenterState extends State<MainCenter> {
             builder: (context) {
               Widget child = centerItem(
                 showAd: showAd,
-
+                txtTop: leftTime,
                 treeType: TwEnumTreeType.coin,
                 width: 60.h,
-                count: count.toStringAsFixed(0),
+                txtBottom: count.toStringAsFixed(0),
                 icon: showSun
                     ? Assets.twimg.mainSun.path
                     : Assets.twimg.mainCoin.path,
-                showTxt: true,
+
                 onClick: () async {
-                  bool result = await TwCommonAds().showInterstitialAd(
-                    adPosId: TwAdsPosId.test,
-                  );
-                  if (!result) {
-                    return;
-                  }
-                  if(showSun){
+                  // bool result = await TwCommonAds().showInterstitialAd(
+                  //   adPosId: TwAdsPosId.test,
+                  // );
+                  // if (!result) {
+                  //   return;
+                  // }
+                  if (showSun) {
                     count = 10;
                   }
-                  MainTreeController.to.onAddMoneyyyy(count);
+                  if(MainTreeController.to.curLeftTimeCoin2.isEmpty){
+                    MainTreeController.to.onAddMoneyyyy(count,onEnd: (){
+                      MainTreeController.to.resetCoin2Time();
+                    });
+                  }else{
+                    twToast(text: "You can claim it after the countdown ends");
+                  }
                 },
               );
               OverlayGuide2Coin.guideChild = child;
@@ -475,9 +540,9 @@ class _MainCenterState extends State<MainCenter> {
           showAd: false,
           treeType: TwEnumTreeType.coin_rain,
           width: 60.h,
-          count: count.toStringAsFixed(0),
+          txtBottom: count.toStringAsFixed(0),
           icon: Assets.twimg.mainCoinYu.path,
-          showTxt: false,
+
           onClick: () {
             OverlayHongbaoyu().show();
           },
