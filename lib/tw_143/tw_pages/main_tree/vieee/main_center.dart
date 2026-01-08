@@ -12,6 +12,7 @@ import 'package:c143/tw_base/tw_ad/base_ads.dart';
 import 'package:c143/tw_base/tw_gj/logC143.dart';
 import 'package:c143/tw_views/animated_count.dart';
 import 'package:c143/tw_views/animated_scale.dart';
+import 'package:c143/tw_views/fade_switcher.dart';
 import 'package:c143/tw_views/font_border.dart';
 import 'package:c143/tw_views/shimmer_effect.dart';
 import 'package:c143/tw_views/tw_progress.dart';
@@ -34,6 +35,7 @@ class _MainCenterState extends State<MainCenter> {
       height: 290.h,
       color: Colors.amber.withValues(alpha: 0.0),
       child: Stack(
+        clipBehavior: Clip.none,
         children: [
           Positioned(
             left: 0,
@@ -72,16 +74,17 @@ class _MainCenterState extends State<MainCenter> {
           Positioned(child: leftWidget(), left: 0, top: 0, bottom: 0),
           Positioned(child: rightWidget(), right: 0, top: 0, bottom: 0),
 
-          // Positioned(
-          //   child: textCongratulationWidget(),
-          //   left: 0,
-          //   right: 0,
-          //   bottom: 8.h,
-          // ),
+          Positioned(
+            child: textCongratulationWidget(),
+            left: 0,
+            right: 0,
+            bottom: -10.h,
+          ),
         ],
       ),
     );
   }
+
 
   textCongratulationWidget() {
     return Center(
@@ -94,17 +97,34 @@ class _MainCenterState extends State<MainCenter> {
           border: Border.all(color: Color(0xffFFE345)),
         ),
         child: Center(
-          child: Text(
-            "Congratulations to user 789",
-            style: TextStyle(
-              fontSize: 12.sp,
-              fontWeight: FontWeight.w700,
-              color: Color(0xff603000),
-            ),
-          ),
+          child: bottomTxt(),
         ),
       ),
     );
+  }
+
+  Widget bottomTxt() {
+    List<String> tmp =[
+      "Nice one! Your coin journey has begun!",
+      "You’ve earned your first pot of gold! Keep collecting coins!",
+      "Every tap brings you one step closer to your goal!",
+    ];
+
+    int length = tmp.length;
+    List<Widget> chilren = [];
+    for (int i = 0; i < length; i++) {
+      Widget item = Text(
+        tmp[i],
+        style: TextStyle(
+          fontSize: 12.sp,
+          fontWeight: FontWeight.w700,
+          height: 1,
+          color: Color(0xff603000),
+        ),
+      );
+      chilren.add(item);
+    }
+    return TwFadeSwitcherC143(children: [...chilren]);
   }
 
   levelWidget() {
