@@ -57,7 +57,7 @@ class _MainRankState extends State<MainRank> {
     // 生成 50 个 [0, 100] 内的随机整数
     List<int> numbersInt = List.generate(
       length,
-      (_) => randInt.nextInt(99) + 1,
+      (_) => randInt.nextInt(50) + 1,
     );
 
     // 排序，从大到小
@@ -164,7 +164,7 @@ class _MainRankState extends State<MainRank> {
     List tmpHistoryData = historyData[index];
     String userName = tmpHistoryData[0]?.toString() ?? "";
     String earing = "Total earning:${tmpHistoryData[1].toStringAsFixed(0)}";
-    String adCount = "Ads watched::${tmpHistoryData[2]}";
+    String adCount = "Ads watched:${tmpHistoryData[2]}";
     return Center(
       child: Container(
         width: 336.w,
