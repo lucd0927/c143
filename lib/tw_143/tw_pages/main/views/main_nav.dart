@@ -33,6 +33,7 @@ class _MainNavState extends State<MainNav> {
 
     return Obx(() {
       bool hasB = TwPackageABC143.isPackageB();
+      length = hasB?4:3;
       List<Widget> children = hasB
           ? [
               _navItem(
@@ -80,7 +81,7 @@ class _MainNavState extends State<MainNav> {
                 text: "home".tr,
               ),
             ];
-      length = children.length;
+
       return Container(
         height: bottomNavRealHeight,
         decoration: BoxDecoration(

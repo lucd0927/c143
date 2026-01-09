@@ -425,7 +425,7 @@ class _Guide10ScaleOverlayAnimState extends State<_Guide10ScaleOverlayAnim>
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Image.asset(
-                                  Assets.twimg.coin.path,
+                                  MainTreeController.to.moneyIconSmall(),
                                   width: 32.h,
                                   height: 32.h,
                                 ),

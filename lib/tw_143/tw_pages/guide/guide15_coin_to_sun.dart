@@ -152,7 +152,7 @@ class _Guide15CoinToSunState extends State<Guide15CoinToSun> {
                               ),
                               SizedBox(width: 8.w),
                               Image.asset(
-                                Assets.twimg.coin.path,
+                                MainTreeController.to.moneyIconSmall(),
                                 width: 32.w,
                                 height: 32.h,
                               ),

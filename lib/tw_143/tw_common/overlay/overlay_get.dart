@@ -269,66 +269,49 @@ class _GetCoinsWidgetState extends State<GetCoinsWidget> {
 
   Widget btnClaim() {
     return Center(
-      child: GestureDetector(
-        onTap: onClaim,
-        child: Container(
-          width: 260.h,
-          height: 56.h,
-          color: Colors.black.withValues(alpha: 0.0),
-          child: Stack(
-            clipBehavior: Clip.none,
-            children: [
-              Image.asset(
-                Assets.twimg.btnSpin.path,
-                width: double.infinity,
-                height: double.infinity,
-                fit: BoxFit.fill,
-              ),
-              Center(
-                child: TwTxtBorderC143(
-                  text: "Claim",
-                  fontSize: 24.sp,
-                  fontWeight: FontWeight.w900,
-                  fontColor: Color(0xffffffff),
-                  foreground: Color(0xff22431B),
+      child: AnimatedCrossFade(
+        alignment: Alignment.center,
+        firstChild: SizedBox(height: 56.h),
+        secondChild: GestureDetector(
+          onTap: onClaim,
+          child: Container(
+            width: 260.h,
+            height: 56.h,
+            color: Colors.black.withValues(alpha: 0.0),
+            child: Stack(
+              clipBehavior: Clip.none,
+              children: [
+                Image.asset(
+                  Assets.twimg.btnSpin.path,
+                  width: double.infinity,
+                  height: double.infinity,
+                  fit: BoxFit.fill,
                 ),
-              ),
-              // Positioned(
-              //   top: -10.h,
-              //   right: -5.h,
-              //   child: Image.asset(
-              //     Assets.twimg.ad.path,
-              //     width: 28.h,
-              //     height: 28.h,
-              //   ),
-              // ),
+                Center(
+                  child: TwTxtBorderC143(
+                    text: "Claim",
+                    fontSize: 24.sp,
+                    fontWeight: FontWeight.w900,
+                    fontColor: Color(0xffffffff),
+                    foreground: Color(0xff22431B),
+                  ),
+                ),
+                // Positioned(
+                //   top: -10.h,
+                //   right: -5.h,
+                //   child: Image.asset(
+                //     Assets.twimg.ad.path,
+                //     width: 28.h,
+                //     height: 28.h,
+                //   ),
+                // ),
 
-              // Positioned(
-              //   top: -0.h,
-              //   right: -5.h,
-              //   child: Container(
-              //     padding: EdgeInsets.symmetric(vertical: 0.h, horizontal: 4.h),
-              //     decoration: BoxDecoration(
-              //       gradient: LinearGradient(
-              //         colors: [Color(0xffFF5151), Color(0xffCC0909)],
-              //         begin: Alignment.topCenter,
-              //         end: Alignment.bottomCenter,
-              //       ),
-              //       borderRadius: BorderRadius.circular(100),
-              //     ),
-              //     child: Text(
-              //       "3 Change Left",
-              //       style: TextStyle(
-              //         fontSize: 10.sp,
-              //         fontWeight: FontWeight.w700,
-              //         color: Color(0xffFFD059),
-              //       ),
-              //     ),
-              //   ),
-              // ),
-            ],
+              ],
+            ),
           ),
         ),
+        crossFadeState:showAnimated?CrossFadeState.showSecond: CrossFadeState.showFirst,
+        duration: Duration(milliseconds: 300),
       ),
     );
   }

@@ -49,10 +49,10 @@ PODS:
   - AppLovinMediationIronSourceAdapter (9.2.0.0.0):
     - AppLovinSDK (>= 13.0.0)
     - IronSourceSDK/Ads (= 9.2.0.0)
-  - AppLovinMediationMintegralAdapter (8.0.4.0.0):
+  - AppLovinMediationMintegralAdapter (8.0.5.0.0):
     - AppLovinSDK (>= 13.0.0)
-    - MintegralAdSDK (= 8.0.4)
-    - MintegralAdSDK/BidSplashAd (= 8.0.4)
+    - MintegralAdSDK (= 8.0.5)
+    - MintegralAdSDK/BidSplashAd (= 8.0.5)
   - AppLovinMediationMolocoAdapter (4.2.0.0):
     - AppLovinSDK (>= 13.0.0)
     - MolocoSDKiOS (= 4.2.0)
@@ -251,45 +251,45 @@ PODS:
     - Flutter
   - InMobiSDK (11.1.0)
   - IronSourceSDK/Ads (9.2.0.0)
-  - MintegralAdSDK (8.0.4):
-    - MintegralAdSDK/BannerAd (= 8.0.4)
-    - MintegralAdSDK/BidBannerAd (= 8.0.4)
-    - MintegralAdSDK/BidInterstitialVideoAd (= 8.0.4)
-    - MintegralAdSDK/BidNativeAd (= 8.0.4)
-    - MintegralAdSDK/BidNewInterstitialAd (= 8.0.4)
-    - MintegralAdSDK/BidRewardVideoAd (= 8.0.4)
-    - MintegralAdSDK/InterstitialVideoAd (= 8.0.4)
-    - MintegralAdSDK/NativeAd (= 8.0.4)
-    - MintegralAdSDK/NewInterstitialAd (= 8.0.4)
-    - MintegralAdSDK/RewardVideoAd (= 8.0.4)
-  - MintegralAdSDK/BannerAd (8.0.4):
+  - MintegralAdSDK (8.0.5):
+    - MintegralAdSDK/BannerAd (= 8.0.5)
+    - MintegralAdSDK/BidBannerAd (= 8.0.5)
+    - MintegralAdSDK/BidInterstitialVideoAd (= 8.0.5)
+    - MintegralAdSDK/BidNativeAd (= 8.0.5)
+    - MintegralAdSDK/BidNewInterstitialAd (= 8.0.5)
+    - MintegralAdSDK/BidRewardVideoAd (= 8.0.5)
+    - MintegralAdSDK/InterstitialVideoAd (= 8.0.5)
+    - MintegralAdSDK/NativeAd (= 8.0.5)
+    - MintegralAdSDK/NewInterstitialAd (= 8.0.5)
+    - MintegralAdSDK/RewardVideoAd (= 8.0.5)
+  - MintegralAdSDK/BannerAd (8.0.5):
     - MintegralAdSDK/NativeAd
-  - MintegralAdSDK/BidBannerAd (8.0.4):
+  - MintegralAdSDK/BidBannerAd (8.0.5):
     - MintegralAdSDK/BannerAd
     - MintegralAdSDK/BidNativeAd
-  - MintegralAdSDK/BidInterstitialVideoAd (8.0.4):
+  - MintegralAdSDK/BidInterstitialVideoAd (8.0.5):
     - MintegralAdSDK/BidNativeAd
     - MintegralAdSDK/InterstitialVideoAd
-  - MintegralAdSDK/BidNativeAd (8.0.4):
+  - MintegralAdSDK/BidNativeAd (8.0.5):
     - MintegralAdSDK/NativeAd
-  - MintegralAdSDK/BidNewInterstitialAd (8.0.4):
+  - MintegralAdSDK/BidNewInterstitialAd (8.0.5):
     - MintegralAdSDK/BidNativeAd
     - MintegralAdSDK/NewInterstitialAd
-  - MintegralAdSDK/BidRewardVideoAd (8.0.4):
+  - MintegralAdSDK/BidRewardVideoAd (8.0.5):
     - MintegralAdSDK/BidNativeAd
     - MintegralAdSDK/RewardVideoAd
-  - MintegralAdSDK/BidSplashAd (8.0.4):
+  - MintegralAdSDK/BidSplashAd (8.0.5):
     - MintegralAdSDK/BidNativeAd
     - MintegralAdSDK/SplashAd
-  - MintegralAdSDK/InterstitialVideoAd (8.0.4):
+  - MintegralAdSDK/InterstitialVideoAd (8.0.5):
     - MintegralAdSDK/NativeAd
-  - MintegralAdSDK/NativeAd (8.0.4)
-  - MintegralAdSDK/NewInterstitialAd (8.0.4):
+  - MintegralAdSDK/NativeAd (8.0.5)
+  - MintegralAdSDK/NewInterstitialAd (8.0.5):
     - MintegralAdSDK/InterstitialVideoAd
     - MintegralAdSDK/NativeAd
-  - MintegralAdSDK/RewardVideoAd (8.0.4):
+  - MintegralAdSDK/RewardVideoAd (8.0.5):
     - MintegralAdSDK/NativeAd
-  - MintegralAdSDK/SplashAd (8.0.4):
+  - MintegralAdSDK/SplashAd (8.0.5):
     - MintegralAdSDK/NativeAd
   - MolocoSDKiOS (4.2.0)
   - nanopb (3.30910.0):
@@ -502,7 +502,7 @@ SPEC CHECKSUMS:
   AppLovinMediationGoogleAdManagerAdapter: 81632098ebc9ddde903a47bf21fe18014cd8c9be
   AppLovinMediationInMobiAdapter: 08523b56427250dae5e79408134461504ec50fe0
   AppLovinMediationIronSourceAdapter: 03b05c8996010910c0a0f027e2145aac43e7b79e
-  AppLovinMediationMintegralAdapter: 37a064438e47d60cbf291f1ea74506c06caf9757
+  AppLovinMediationMintegralAdapter: 7db2190cc4e0fa6cd2d4f952ecd81ef13f811433
   AppLovinMediationMolocoAdapter: f396f0d9e3b62a15b12e12fc6a49359fbc8c76c3
   AppLovinMediationUnityAdsAdapter: 5ae32d0d4635fde3eb76457b4bdfde578b6aabee
   AppLovinMediationVungleAdapter: 6140cb9ba7f1dbe40fb46cca6cf8c61c285c2966
@@ -550,7 +550,7 @@ SPEC CHECKSUMS:
   iabtcf_consent_info: 75824f7babbfcd8df940aa3bae541cb8dca6e4fb
   InMobiSDK: 43b1d6560bd75c8c382bb54fa8e248f5ed979860
   IronSourceSDK: 66e1483cd62fb63162a965651f6f41c6b91664db
-  MintegralAdSDK: da460cadeab792c79998a4af24e61d20b055e755
+  MintegralAdSDK: 07ff43683ce5ee0c9a394abba6dd79620c775555
   MolocoSDKiOS: 978085f5dd8ee0f5ffe153f11eb480903e71a8e4
   nanopb: fad817b59e0457d11a5dfbde799381cd727c1275
   OMSDK_Appodeal: 907fdbc78ac0c6dfccb14b69a81302899dc536c9

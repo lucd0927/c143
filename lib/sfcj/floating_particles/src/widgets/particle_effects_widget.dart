@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:math';
 
 import 'package:c143/gen/assets.gen.dart';
+import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
 import 'package:c143/tw_base/tw_gj/logC143.dart';
 import 'package:c143/tw_base/tw_gj/number_extend.dart';
 import 'package:flutter/material.dart';
@@ -238,7 +239,7 @@ class _ParticleEffectsState extends State<ParticleEffects>
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Image.asset(Assets.twimg.coin.path,width: 24.w,height: 24.w,),
+                Image.asset(MainTreeController.to.moneyIconSmall(),width: 24.w,height: 24.w,),
                 SizedBox(width: 4.w,),
                 Text(
                   "+$clickCoins",

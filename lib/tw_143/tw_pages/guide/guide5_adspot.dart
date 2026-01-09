@@ -4,6 +4,7 @@ import 'package:c143/tw_143/tw_pages/guide/guide1_water.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide4_fertilize.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide6_rewarddouble.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
+import 'package:c143/tw_base/tw_gj/countryC143.dart';
 import 'package:c143/tw_base/tw_gj/logC143.dart';
 import 'package:c143/tw_views/animated_count.dart';
 import 'package:c143/tw_views/animated_scale.dart';
@@ -167,14 +168,14 @@ class _Guide5AdSpotState extends State<Guide5AdSpot> {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Image.asset(
-                                      Assets.twimg.coin.path,
+                                      MainTreeController.to.moneyIconSmall(),
                                       width: 32.h,
                                       height: 32.h,
                                     ),
                                     SizedBox(width: 8.w),
                                     TwTxtGraBorderC143(
                                       text:
-                                          "${widget.coins.toStringAsFixed(0)}",
+                                          "+${TwCountryyC143.curCountryyyySymbolC143()}${widget.coins.toStringAsFixed(0)}",
                                       fontSize: 32.sp,
                                       fontWeight: FontWeight.w900,
                                     ),

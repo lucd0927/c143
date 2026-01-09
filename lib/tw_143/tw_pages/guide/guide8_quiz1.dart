@@ -224,7 +224,7 @@ class _Guide8Quiz1WidgetState extends State<Guide8Quiz1Widget> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Image.asset(
-                          Assets.twimg.coin.path,
+                          MainTreeController.to.moneyIconSmall(),
                           width: 32.h,
                           height: 32.h,
                         ),
@@ -263,7 +263,7 @@ class _Guide8Quiz1WidgetState extends State<Guide8Quiz1Widget> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Image.asset(
-                            Assets.twimg.coin.path,
+                            MainTreeController.to.moneyIconSmall(),
                             width: 28.h,
                             height: 28.h,
                           ),

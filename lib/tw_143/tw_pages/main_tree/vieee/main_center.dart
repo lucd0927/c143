@@ -9,6 +9,7 @@ import 'package:c143/tw_143/tw_pages/main/main_controller.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
 import 'package:c143/tw_base/tw_ad/ads_idddddC143.dart';
 import 'package:c143/tw_base/tw_ad/base_ads.dart';
+import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
 import 'package:c143/tw_base/tw_gj/logC143.dart';
 import 'package:c143/tw_views/animated_count.dart';
 import 'package:c143/tw_views/animated_scale.dart';
@@ -44,7 +45,6 @@ class _MainCenterState extends State<MainCenter> {
             bottom: 10.h,
             child: Center(
               child: Obx(() {
-                String icon = MainTreeController.to.treeIcon();
                 EnumTwLottttieJson type = MainTreeController.to.lottieType();
                 bool result = MainTreeController.to.curHasWatering.value;
                 return Container(
@@ -54,12 +54,6 @@ class _MainCenterState extends State<MainCenter> {
                     children: [
                       TwLottieCommon(type: type, animate: result),
 
-                      // Image.asset(
-                      //           icon,
-                      //           width: 280.h,
-                      //           height: 280.h,
-                      //           gaplessPlayback: true,
-                      //         ),
                       Positioned(
                         child: levelWidget(),
                         left: 0,
@@ -86,7 +80,6 @@ class _MainCenterState extends State<MainCenter> {
     );
   }
 
-
   textCongratulationWidget() {
     return Center(
       child: Container(
@@ -97,15 +90,13 @@ class _MainCenterState extends State<MainCenter> {
           borderRadius: BorderRadius.circular(28.h),
           border: Border.all(color: Color(0xffFFE345)),
         ),
-        child: Center(
-          child: bottomTxt(),
-        ),
+        child: Center(child: bottomTxt()),
       ),
     );
   }
 
   Widget bottomTxt() {
-    List<String> tmp =[
+    List<String> tmp = [
       "Nice one! Your coin journey has begun!",
       "You’ve earned your first pot of gold! Keep collecting coins!",
       "Every tap brings you one step closer to your goal!",
@@ -224,8 +215,8 @@ class _MainCenterState extends State<MainCenter> {
                 treeType: TwEnumTreeType.fertilize,
                 onClick: onAddShiFeiCount,
               );
-              OverlayGuide4Fertilize.guideChild = child;
-              OverlayGuide4Fertilize.guideContext = context;
+              // OverlayGuide4Fertilize.guideChild = child;
+              // OverlayGuide4Fertilize.guideContext = context;
 
               return child;
             },
@@ -241,10 +232,11 @@ class _MainCenterState extends State<MainCenter> {
 
   coinWidget1() {
     return Obx(() {
-      String leftTime = MainTreeController.to.curLeftTimeCoin1.value;
+      String leftTime = TwPackageABC143.isPackageB()?"": MainTreeController.to.curLeftTimeCoin1.value;
 
       double count = 100;
-      bool showSun = MainTreeController.to.showStage2();
+      bool showSun = MainTreeController.to.showMoneyStatusSunIcon();
+      String moneyIcon = MainTreeController.to.treeChildrenMoneyIcon();
       if (showSun) {
         count = 1000;
       }
@@ -257,9 +249,7 @@ class _MainCenterState extends State<MainCenter> {
             txtTop: leftTime,
             treeType: TwEnumTreeType.sun,
             showAd: false,
-            icon: showSun
-                ? Assets.twimg.mainSun.path
-                : Assets.twimg.mainCoin.path,
+            icon: moneyIcon,
             onClick: () async {
               // bool result = await TwCommonAds().showInterstitialAd(
               //   adPosId: TwAdsPosId.test,
@@ -270,15 +260,16 @@ class _MainCenterState extends State<MainCenter> {
               if (showSun) {
                 count = 10;
               }
-              if(MainTreeController.to.curLeftTimeCoin1.isEmpty){
-                MainTreeController.to.onAddMoneyyyy(count,onEnd: (){
-                  MainTreeController.to.resetCoin1Time();
-                });
-              }else{
+              if (MainTreeController.to.curLeftTimeCoin1.isEmpty) {
+                MainTreeController.to.onAddMoneyyyy(
+                  count,
+                  onEnd: () {
+                    MainTreeController.to.resetCoin1Time();
+                  },
+                );
+              } else {
                 twToast(text: "You can claim it after the countdown ends");
               }
-
-
             },
           ),
         ],
@@ -288,10 +279,11 @@ class _MainCenterState extends State<MainCenter> {
 
   coinWidget3() {
     return Obx(() {
-      String leftTime = MainTreeController.to.curLeftTimeCoin3.value;
+      String leftTime = TwPackageABC143.isPackageB()?"": MainTreeController.to.curLeftTimeCoin3.value;
 
       double count = 100;
-      bool showSun = MainTreeController.to.showStage2();
+      bool showSun = MainTreeController.to.showMoneyStatusSunIcon();
+      String moneyIcon = MainTreeController.to.treeChildrenMoneyIcon();
       if (showSun) {
         count = 1000;
       }
@@ -304,9 +296,7 @@ class _MainCenterState extends State<MainCenter> {
             txtTop: leftTime,
             treeType: TwEnumTreeType.sun,
             showAd: false,
-            icon: showSun
-                ? Assets.twimg.mainSun.path
-                : Assets.twimg.mainCoin.path,
+            icon: moneyIcon,
             onClick: () async {
               // bool result = await TwCommonAds().showInterstitialAd(
               //   adPosId: TwAdsPosId.test,
@@ -317,11 +307,14 @@ class _MainCenterState extends State<MainCenter> {
               if (showSun) {
                 count = 10;
               }
-              if(MainTreeController.to.curLeftTimeCoin3.isEmpty){
-                MainTreeController.to.onAddMoneyyyy(count,onEnd: (){
-                  MainTreeController.to.resetCoin3Time();
-                });
-              }else{
+              if (MainTreeController.to.curLeftTimeCoin3.isEmpty) {
+                MainTreeController.to.onAddMoneyyyy(
+                  count,
+                  onEnd: () {
+                    MainTreeController.to.resetCoin3Time();
+                  },
+                );
+              } else {
                 twToast(text: "You can claim it after the countdown ends");
               }
             },
@@ -339,7 +332,6 @@ class _MainCenterState extends State<MainCenter> {
     required VoidCallback onClick,
     required TwEnumTreeType treeType,
     required bool showAd,
-
   }) {
     Widget txtWB = const SizedBox();
     Widget txtWT = const SizedBox();
@@ -356,7 +348,7 @@ class _MainCenterState extends State<MainCenter> {
         ),
       );
     }
-    if(txtLocationTop){
+    if (txtLocationTop) {
       txtWT = Center(
         child: TwTxtBorderC143(
           text: "${txtTop}",
@@ -377,23 +369,43 @@ class _MainCenterState extends State<MainCenter> {
           child: Stack(
             clipBehavior: Clip.none,
             children: [
-              TwShiningEffect(
-                duration: Duration(milliseconds: 2000),
-                shineColor: Color(0xffffffff),
-                opacity: 1,
-                angle: -0.9,
-                topLeft: false,
-                child: Image.asset(
-                  icon,
-                  width: double.infinity,
-                  height: double.infinity,
-                  gaplessPlayback: true,
-                ),
+              Builder(
+                builder: (context) {
+                  Widget child = Container(
+                    width: width,
+                    height: width,
+                    child: TwShiningEffect(
+                      duration: Duration(milliseconds: 2000),
+                      shineColor: Color(0xffffffff),
+                      opacity: 1,
+                      angle: -0.9,
+                      topLeft: false,
+                      child: Image.asset(
+                        icon,
+                        width: double.infinity,
+                        height: double.infinity,
+                        gaplessPlayback: true,
+                      ),
+                    ),
+                  );
+                  if (treeType == TwEnumTreeType.water) {
+                    OverlayGuide1Water.guideChild = child;
+                    OverlayGuide1Water.guideContext = context;
+                  } else if (treeType == TwEnumTreeType.coinGuide) {
+                    OverlayGuide2Coin.guideChild = child;
+                    OverlayGuide2Coin.guideContext = context;
+                  } else if (treeType == TwEnumTreeType.fertilize) {
+                    OverlayGuide4Fertilize.guideChild = child;
+                    OverlayGuide4Fertilize.guideContext = context;
+                  }
+
+                  return child;
+                },
               ),
-              if(txtLocationBottom)
+              if (txtLocationBottom)
                 Positioned(left: 0, right: 0, bottom: 0, child: txtWB),
-              if(txtLocationTop) Positioned(
-                  left: 0, right: 0, top: 0, child: txtWT),
+              if (txtLocationTop)
+                Positioned(left: 0, right: 0, top: 0, child: txtWT),
 
               if (showAd)
                 Positioned(
@@ -481,8 +493,8 @@ class _MainCenterState extends State<MainCenter> {
 
               onClick: onWater,
             );
-            OverlayGuide1Water.guideChild = child;
-            OverlayGuide1Water.guideContext = context;
+            // OverlayGuide1Water.guideChild = child;
+            // OverlayGuide1Water.guideContext = context;
             return child;
           },
         ),
@@ -496,12 +508,12 @@ class _MainCenterState extends State<MainCenter> {
 
   coinWidget2() {
     return Obx(() {
-      String leftTime = MainTreeController.to.curLeftTimeCoin2.value;
+      String leftTime = TwPackageABC143.isPackageB()?"":MainTreeController.to.curLeftTimeCoin2.value;
       double count = 100;
-      bool showSun = MainTreeController.to.showStage2();
       String? data = MainTreeController.to.guideIndexData();
       bool showAd = data != MainTreeController.guide1;
-      // twLooog("====coinWidget==data:$data showAd:$showAd");
+      bool showSun = MainTreeController.to.showMoneyStatusSunIcon();
+      String moneyIcon = MainTreeController.to.treeChildrenMoneyIcon();
       if (showSun) {
         count = 1000;
       }
@@ -514,12 +526,10 @@ class _MainCenterState extends State<MainCenter> {
               Widget child = centerItem(
                 showAd: showAd,
                 txtTop: leftTime,
-                treeType: TwEnumTreeType.coin,
+                treeType: TwEnumTreeType.coinGuide,
                 width: 60.h,
                 txtBottom: count.toStringAsFixed(0),
-                icon: showSun
-                    ? Assets.twimg.mainSun.path
-                    : Assets.twimg.mainCoin.path,
+                icon: moneyIcon,
 
                 onClick: () async {
                   // bool result = await TwCommonAds().showInterstitialAd(
@@ -531,17 +541,20 @@ class _MainCenterState extends State<MainCenter> {
                   if (showSun) {
                     count = 10;
                   }
-                  if(MainTreeController.to.curLeftTimeCoin2.isEmpty){
-                    MainTreeController.to.onAddMoneyyyy(count,onEnd: (){
-                      MainTreeController.to.resetCoin2Time();
-                    });
-                  }else{
+                  if (MainTreeController.to.curLeftTimeCoin2.isEmpty) {
+                    MainTreeController.to.onAddMoneyyyy(
+                      count,
+                      onEnd: () {
+                        MainTreeController.to.resetCoin2Time();
+                      },
+                    );
+                  } else {
                     twToast(text: "You can claim it after the countdown ends");
                   }
                 },
               );
-              OverlayGuide2Coin.guideChild = child;
-              OverlayGuide2Coin.guideContext = context;
+              // OverlayGuide2Coin.guideChild = child;
+              // OverlayGuide2Coin.guideContext = context;
 
               return child;
             },

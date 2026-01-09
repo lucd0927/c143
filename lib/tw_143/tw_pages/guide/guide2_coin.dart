@@ -1,5 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:c143/gen/assets.gen.dart';
+import 'package:c143/tw_143/tw_common/lottieeee/common.dart';
 import 'package:c143/tw_143/tw_common/lottieeee/gesture.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide1_water.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide3_adspot.dart';
@@ -150,18 +151,15 @@ class GuideWidget extends StatelessWidget {
                 color: Colors.amber.withValues(alpha: 0.0),
                 child: Center(
                   child: Obx(() {
-                    String icon = MainTreeController.to.treeIcon();
+                    EnumTwLottttieJson type = MainTreeController.to.lottieType();
+                    bool result = MainTreeController.to.curHasWatering.value;
                     return Container(
                       width: 280.h,
                       height: 280.h,
                       child: Stack(
                         children: [
-                          Image.asset(
-                            icon,
-                            width: 280.h,
-                            height: 280.h,
-                            gaplessPlayback: true,
-                          ),
+                          TwLottieCommon(type: type, animate: result),
+
                           Positioned(
                             child: levelWidget(),
                             left: 0,
@@ -184,8 +182,8 @@ class GuideWidget extends StatelessWidget {
               children: [
                 IgnorePointer(child: guideChild),
                 Positioned(
-                  top: 20.h,
-                  left: 20.w,
+                  top: 40.h,
+                  left: 30.w,
                   // child: TwAScale(
                   //   child: Image.asset(
                   //     Assets.twimg.gesture.path,
@@ -202,7 +200,7 @@ class GuideWidget extends StatelessWidget {
           ),
 
           Positioned(
-            top: 80.h,
+            top: 100.h,
             right: 0,
             left: 0,
             child: Center(

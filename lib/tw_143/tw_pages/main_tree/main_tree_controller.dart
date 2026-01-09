@@ -23,6 +23,7 @@ enum TwEnumTreeType {
   fertilize("fertilize"),
   spin("spin"),
   coin("coin"),
+  coinGuide("coinGuide"),
   sun("sun"),
   coin_rain("coin_rain"),
   water("water");
@@ -150,8 +151,8 @@ class MainTreeController extends GetxController {
 
   static const List<int> waterCounts = [1, 20, 60, 80];
   static const List<int> shifeiCounts = [1, 5, 15, 20];
-  static double stage1Num = 1000;
-  static double stage2Num = 2000;
+  static double get stage1Num =>  TwPackageABC143.isPackageB()?90: 1000;
+  static double get stage2Num =>TwPackageABC143.isPackageB()?900: 2000;
 
   double leftMonn() {
     double curMonn = MainTreeController.to.curMoneyyyy.value;
@@ -166,19 +167,34 @@ class MainTreeController extends GetxController {
     return left;
   }
 
-  String treeIcon() {
-    String tmpTreeIcon = Assets.twimg.mainTree1.path;
-    int curLevvvv = curLevel.value;
-    if (curLevvvv == 1) {
-      tmpTreeIcon = Assets.twimg.mainTree1.path;
-    } else if (curLevvvv == 2) {
-      tmpTreeIcon = Assets.twimg.mainTree2.path;
-    } else if (curLevvvv == 3) {
-      tmpTreeIcon = Assets.twimg.mainTree3.path;
-    } else if (curLevvvv == 4) {
-      tmpTreeIcon = Assets.twimg.mainTree4.path;
-    } else if (curLevvvv >= 5) {
-      tmpTreeIcon = Assets.twimg.mainTree5.path;
+  bool showMoneyStatusSunIcon() {
+    double monnn = MainTreeController.to.curMoneyyyy.value;
+    double stage1 = MainTreeController.stage1Num;
+    if(stage1 <= monnn && monnn <= stageB1Num){
+      return true;
+    }
+
+    double stage2 = MainTreeController.stage2Num;
+    bool showSun = stage2 <= monnn;
+    return showSun;
+  }
+
+  //
+  String treeChildrenMoneyIcon() {
+    bool showSun = showMoneyStatusSunIcon();
+    String tmpTreeIcon = showSun ? Assets.twimg.mainSun.path : Assets.twimg.mainCoin.path;
+    if(TwPackageABC143.isPackageB()){
+      tmpTreeIcon = showSun ? Assets.twimg.mainSun.path : Assets.twimgB.moneyFloating.path;
+    }
+
+    return tmpTreeIcon;
+  }
+
+
+  String moneyIconSmall() {
+    String tmpTreeIcon = Assets.twimg.coin.path;
+    if(TwPackageABC143.isPackageB()){
+      tmpTreeIcon = Assets.twimgB.money.path;
     }
 
     return tmpTreeIcon;
@@ -187,16 +203,17 @@ class MainTreeController extends GetxController {
   EnumTwLottttieJson lottieType() {
     EnumTwLottttieJson type = EnumTwLottttieJson.coin1;
     int curLevvvv = curLevel.value;
+    bool hasB = TwPackageABC143.isPackageB();
     if (curLevvvv == 1) {
-      type = EnumTwLottttieJson.coin1;
+      type = hasB ? EnumTwLottttieJson.monn1 : EnumTwLottttieJson.coin1;
     } else if (curLevvvv == 2) {
-      type = EnumTwLottttieJson.coin2;
+      type = hasB ? EnumTwLottttieJson.monn2 : EnumTwLottttieJson.coin2;
     } else if (curLevvvv == 3) {
-      type = EnumTwLottttieJson.coin3;
+      type = hasB ? EnumTwLottttieJson.monn3 : EnumTwLottttieJson.coin3;
     } else if (curLevvvv == 4) {
-      type = EnumTwLottttieJson.coin4;
+      type = hasB ? EnumTwLottttieJson.monn4 : EnumTwLottttieJson.coin4;
     } else if (curLevvvv >= 5) {
-      type = EnumTwLottttieJson.coin5;
+      type = hasB ? EnumTwLottttieJson.monn5 : EnumTwLottttieJson.coin5;
     }
 
     return type;
@@ -225,25 +242,21 @@ class MainTreeController extends GetxController {
 
   final TimeLeft _fertilizeLeftTime = TimeLeft(
     twkeyTimeLeft: twkeyTimeLeftFertilize,
-    maxSeconds: 60*10
+    maxSeconds: 60 * 10,
   );
-  final TimeLeft _coinLeftTime1 = TimeLeft(
-    twkeyTimeLeft: twkeyTimeLeftCoin1,
-  );
-  final TimeLeft _coinLeftTime2 = TimeLeft(
-    twkeyTimeLeft: twkeyTimeLeftCoin2,
-  );
-  final TimeLeft _coinLeftTime3 = TimeLeft(
-    twkeyTimeLeft: twkeyTimeLeftCoin3,
-  );
+  final TimeLeft _coinLeftTime1 = TimeLeft(twkeyTimeLeft: twkeyTimeLeftCoin1);
+  final TimeLeft _coinLeftTime2 = TimeLeft(twkeyTimeLeft: twkeyTimeLeftCoin2);
+  final TimeLeft _coinLeftTime3 = TimeLeft(twkeyTimeLeft: twkeyTimeLeftCoin3);
 
-  resetCoin1Time(){
+  resetCoin1Time() {
     _coinLeftTime1.resetLeftTime();
   }
-  resetCoin2Time(){
+
+  resetCoin2Time() {
     _coinLeftTime2.resetLeftTime();
   }
-  resetCoin3Time(){
+
+  resetCoin3Time() {
     _coinLeftTime3.resetLeftTime();
   }
 
@@ -274,11 +287,6 @@ class MainTreeController extends GetxController {
 
       String tmp_coinLeftTime3 = _coinLeftTime3.leftTimeToHHmmss();
       curLeftTimeCoin3.value = tmp_coinLeftTime3;
-
-
-
-
-
     });
   }
 
@@ -499,9 +507,11 @@ class MainTreeController extends GetxController {
 
   onAddMoneyyyy(double monnn, {VoidCallback? onEnd}) {
     overlayCoinMain.showWithSize(
-      childSize:TwPackageABC143.isPackageB()?Size(24.w, 24.w): Size(20.w, 20.w),
+      childSize: TwPackageABC143.isPackageB()
+          ? Size(24.w, 24.w)
+          : Size(20.w, 20.w),
       heroChild: Image.asset(
-        TwPackageABC143.isPackageB()?Assets.twimgB.money.path:Assets.twimg.coin.path,
+        MainTreeController.to.moneyIconSmall(),
         width: 24.w,
         height: 24.w,
         fit: BoxFit.fill,
