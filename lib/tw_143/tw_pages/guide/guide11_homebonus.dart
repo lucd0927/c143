@@ -7,6 +7,7 @@ import 'package:c143/tw_143/tw_pages/guide/guide6_rewarddouble.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
 import 'package:c143/tw_base/tw_ad/ads_idddddC143.dart';
 import 'package:c143/tw_base/tw_ad/base_ads.dart';
+import 'package:c143/tw_base/tw_gj/countryC143.dart';
 import 'package:c143/tw_base/tw_gj/logC143.dart';
 import 'package:c143/tw_views/animated_count.dart';
 import 'package:c143/tw_views/animated_scale.dart';
@@ -24,9 +25,7 @@ class OverlayGuide11HomeBonus {
   bool get isShowing => _isShowing;
   bool _isShowing = false;
 
-  void show({
-    required double coins,
-}) {
+  void show({required double coins}) {
     _overlayEntry = null;
 
     _overlayEntry = OverlayEntry(
@@ -36,18 +35,16 @@ class OverlayGuide11HomeBonus {
           child: Guide11HomeBonusWidget(
             onClose: () async {
               close();
-              MainTreeController.to.saveGuideIndexData(MainTreeController.guide11);
-
-
+              MainTreeController.to.saveGuideIndexData(
+                MainTreeController.guide11,
+              );
 
               MainTreeController.to.onAddMoneyyyy(
                 coins,
                 onEnd: () {
-                  OverlayGuide12HomeReward().show(coins: 10, onBtn: (value) {  });
+                  OverlayGuide12HomeReward().show(coins: 10, onBtn: (value) {});
                 },
               );
-
-              
             },
             coins: coins,
           ),
@@ -65,10 +62,15 @@ class OverlayGuide11HomeBonus {
 }
 
 class Guide11HomeBonusWidget extends StatefulWidget {
-  const Guide11HomeBonusWidget({super.key, required this.onClose, required this.coins});
+  const Guide11HomeBonusWidget({
+    super.key,
+    required this.onClose,
+    required this.coins,
+  });
 
   final VoidCallback onClose;
   final double coins;
+
   @override
   State<Guide11HomeBonusWidget> createState() => _Guide11HomeBonusWidgetState();
 }
@@ -160,7 +162,7 @@ class _Guide11HomeBonusWidgetState extends State<Guide11HomeBonusWidget> {
                                 ),
                                 SizedBox(height: 24.h),
                                 Image.asset(
-                                  Assets.twimg.coinGuide6.path,
+                                  MainTreeController.to.moneyIconDialog(),
                                   width: 88.h,
                                   height: 88.h,
                                 ),
@@ -169,7 +171,8 @@ class _Guide11HomeBonusWidgetState extends State<Guide11HomeBonusWidget> {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     TwTxtGraBorderC143(
-                                      text: "+${widget.coins}",
+                                      text:
+                                          "+${TwCountryyC143.curCountryyyySymbolC143()}${widget.coins}",
                                       fontSize: 32.sp,
                                       fontWeight: FontWeight.w900,
                                     ),

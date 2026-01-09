@@ -151,8 +151,10 @@ class MainTreeController extends GetxController {
 
   static const List<int> waterCounts = [1, 20, 60, 80];
   static const List<int> shifeiCounts = [1, 5, 15, 20];
-  static double get stage1Num =>  TwPackageABC143.isPackageB()?90: 1000;
-  static double get stage2Num =>TwPackageABC143.isPackageB()?900: 2000;
+
+  static double get stage1Num => TwPackageABC143.isPackageB() ? 90 : 1000;
+
+  static double get stage2Num => TwPackageABC143.isPackageB() ? 900 : 2000;
 
   double leftMonn() {
     double curMonn = MainTreeController.to.curMoneyyyy.value;
@@ -170,7 +172,7 @@ class MainTreeController extends GetxController {
   bool showMoneyStatusSunIcon() {
     double monnn = MainTreeController.to.curMoneyyyy.value;
     double stage1 = MainTreeController.stage1Num;
-    if(stage1 <= monnn && monnn <= stageB1Num){
+    if (stage1 <= monnn && monnn <= stageB1Num) {
       return true;
     }
 
@@ -180,23 +182,39 @@ class MainTreeController extends GetxController {
   }
 
   //
-  String treeChildrenMoneyIcon() {
+  String moneyIconTreeChild() {
     bool showSun = showMoneyStatusSunIcon();
-    String tmpTreeIcon = showSun ? Assets.twimg.mainSun.path : Assets.twimg.mainCoin.path;
-    if(TwPackageABC143.isPackageB()){
-      tmpTreeIcon = showSun ? Assets.twimg.mainSun.path : Assets.twimgB.moneyFloating.path;
+    String tmpTreeIcon = showSun
+        ? Assets.twimg.mainSun.path
+        : Assets.twimg.mainCoin.path;
+    if (TwPackageABC143.isPackageB()) {
+      tmpTreeIcon = showSun
+          ? Assets.twimg.mainSun.path
+          : Assets.twimgB.moneyFloating.path;
     }
 
     return tmpTreeIcon;
   }
 
-
   String moneyIconSmall() {
     String tmpTreeIcon = Assets.twimg.coin.path;
-    if(TwPackageABC143.isPackageB()){
+    if (TwPackageABC143.isPackageB()) {
       tmpTreeIcon = Assets.twimgB.money.path;
     }
 
+    return tmpTreeIcon;
+  }
+
+  String moneyIconDialog() {
+    String tmpTreeIcon = TwPackageABC143.isPackageB()
+        ? Assets.twimgB.moneyDailog.path
+        : Assets.twimg.coinGuide6.path;
+    return tmpTreeIcon;
+  }
+  String moneyIconFloating() {
+    String tmpTreeIcon = TwPackageABC143.isPackageB()
+        ? Assets.twimgB.moneyFloating.path
+        : Assets.twimg.coinGuide6.path;
     return tmpTreeIcon;
   }
 

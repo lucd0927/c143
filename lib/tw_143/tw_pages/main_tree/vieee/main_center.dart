@@ -236,7 +236,7 @@ class _MainCenterState extends State<MainCenter> {
 
       double count = 100;
       bool showSun = MainTreeController.to.showMoneyStatusSunIcon();
-      String moneyIcon = MainTreeController.to.treeChildrenMoneyIcon();
+      String moneyIcon = MainTreeController.to.moneyIconTreeChild();
       if (showSun) {
         count = 1000;
       }
@@ -283,7 +283,7 @@ class _MainCenterState extends State<MainCenter> {
 
       double count = 100;
       bool showSun = MainTreeController.to.showMoneyStatusSunIcon();
-      String moneyIcon = MainTreeController.to.treeChildrenMoneyIcon();
+      String moneyIcon = MainTreeController.to.moneyIconTreeChild();
       if (showSun) {
         count = 1000;
       }
@@ -513,7 +513,7 @@ class _MainCenterState extends State<MainCenter> {
       String? data = MainTreeController.to.guideIndexData();
       bool showAd = data != MainTreeController.guide1;
       bool showSun = MainTreeController.to.showMoneyStatusSunIcon();
-      String moneyIcon = MainTreeController.to.treeChildrenMoneyIcon();
+      String moneyIcon = MainTreeController.to.moneyIconTreeChild();
       if (showSun) {
         count = 1000;
       }

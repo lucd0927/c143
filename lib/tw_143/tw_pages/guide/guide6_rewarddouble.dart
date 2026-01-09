@@ -187,7 +187,7 @@ class _Guide6RewardDoubleState extends State<Guide6RewardDouble> {
                           // ),
                         ),
                         Image.asset(
-                         TwPackageABC143.isPackageB()?Assets.twimgB.moneyFloating.path: Assets.twimg.coinGuide6.path,
+                          MainTreeController.to.moneyIconDialog(),
                           width: double.infinity,
                           height: double.infinity,
                           fit: BoxFit.fill,

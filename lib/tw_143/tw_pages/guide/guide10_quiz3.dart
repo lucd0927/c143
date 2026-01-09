@@ -8,6 +8,7 @@ import 'package:c143/tw_143/tw_pages/main_quiz/main_quiz_controller.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
 import 'package:c143/tw_base/tw_ad/ads_idddddC143.dart';
 import 'package:c143/tw_base/tw_ad/base_ads.dart';
+import 'package:c143/tw_base/tw_gj/countryC143.dart';
 import 'package:c143/tw_base/tw_gj/logC143.dart';
 import 'package:c143/tw_views/animated_count.dart';
 import 'package:c143/tw_views/animated_scale.dart';
@@ -43,9 +44,8 @@ class OverlayGuide10Quiz3 {
                   MainTreeController.guide10,
                 );
                 onBtn.call(coins);
-
               },
-              onBtn: (value) async{
+              onBtn: (value) async {
                 twLooog("=====OverlayGuideTestAnim=onBtn");
                 close();
                 // bool result = await TwCommonAds().showInterstitialAd(
@@ -199,7 +199,8 @@ class _Guide10Quiz3State extends State<Guide10Quiz3> {
                         ),
                         SizedBox(height: 16.h),
                         _Guide10ScaleOverlayAnim(
-                          text: "${widget.coins.toStringAsFixed(0)}",
+                          text:
+                              "+${TwCountryyC143.curCountryyyySymbolC143()}${widget.coins.toStringAsFixed(0)}",
                         ),
                         SizedBox(height: 16.h),
                         AnimatedSlide(
@@ -311,12 +312,15 @@ class _Guide10Quiz3State extends State<Guide10Quiz3> {
           SizedBox(height: 4.h),
           Center(
             child: GestureDetector(
-              onTap: (){
+              onTap: () {
                 widget.onClose();
               },
               child: Text(
                 "Give up",
-                style: TextStyle(fontWeight: FontWeight.w500, color: Colors.white),
+                style: TextStyle(
+                  fontWeight: FontWeight.w500,
+                  color: Colors.white,
+                ),
               ),
             ),
           ),

@@ -131,21 +131,39 @@ class MainQuizController extends GetxController {
     }
   }
 
-  static List<Map<String, dynamic>> guideData = [
-    {
-      "question": "Do you want to earn more coins?",
-      "a": "Yes",
-      "b": "No",
-      "answer": "a",
-    },
-    {
-      "question": "What do you think about earning coins by answering questions?",
-      "a": "I like it a lot",
-      "b": "Just so-so",
-      "c": "I don't like it",
-      "answer": "a",
-    },
-  ];
+  static List<Map<String, dynamic>> get guideData =>
+      TwPackageABC143.isPackageB()
+      ? [
+          {
+            "question": "Do you want to earn more money?",
+            "a": "Yes",
+            "b": "No",
+            "answer": "a",
+          },
+          {
+            "question": "Were you happy with the ad you just watched?",
+            "a": "Yes",
+            "b": "Just so-so",
+            "c": "No",
+            "answer": "a",
+          },
+        ]
+      : [
+          {
+            "question": "Do you want to earn more coins?",
+            "a": "Yes",
+            "b": "No",
+            "answer": "a",
+          },
+          {
+            "question":
+                "What do you think about earning coins by answering questions?",
+            "a": "I like it a lot",
+            "b": "Just so-so",
+            "c": "I don't like it",
+            "answer": "a",
+          },
+        ];
 
   @override
   void onInit() {
@@ -209,19 +227,15 @@ class MainQuizController extends GetxController {
     if (hasClickRight) {
       _onAddAnswerRightCount();
 
-
       _nextQuestion(hasClickRight: true);
     } else {
       _nextQuestion(hasClickRight: false);
     }
   }
 
-  _nextQuestion({
-    required bool hasClickRight,
-}) {
+  _nextQuestion({required bool hasClickRight}) {
     String keyguideStatus = guideStatus.value;
     if (keyguideStatus == guideStatus1) {
-
       OverlayGuide8Quiz1().show(
         coins: 5,
         onBtn: (v) {
@@ -232,25 +246,25 @@ class MainQuizController extends GetxController {
       MainQuizController.to.saveGuideStatus();
       __nextQuestion();
     } else {
-      if(hasClickRight){
+      if (hasClickRight) {
         double coins = TwBaseNumber.coins();
-        OverlayGetCoins().show(coins: coins, onBtn: (){
-          __nextQuestion();
-        }, onClose: (){
-          __nextQuestion();
-        });
-      }else{
+        OverlayGetCoins().show(
+          coins: coins,
+          onBtn: () {
+            __nextQuestion();
+          },
+          onClose: () {
+            __nextQuestion();
+          },
+        );
+      } else {
         twToast(text: "Your answer is wrong");
         __nextQuestion();
       }
-
-
-
-
     }
   }
 
-  onNextQuestion(){
+  onNextQuestion() {
     __nextQuestion();
   }
 

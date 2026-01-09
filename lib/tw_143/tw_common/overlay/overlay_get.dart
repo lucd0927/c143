@@ -196,7 +196,7 @@ class _GetCoinsWidgetState extends State<GetCoinsWidget> {
                                     angle: -0.9,
                                     topLeft: false,
                                     child: Image.asset(
-                                      Assets.twimg.coinGuide6.path,
+                                     MainTreeController.to.moneyIconDialog(),
                                       width: 88.h,
                                       height: 88.h,
                                     ),
