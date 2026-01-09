@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:math';
 
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:c143/gen/assets.gen.dart';
@@ -136,17 +137,21 @@ class _Guide0BGuideWidgetState extends State<Guide0BGuideWidget> {
             child: Stack(
               clipBehavior: Clip.none,
               children: [
-                Image.asset(
-                  Assets.twimgB.guide0Bg.path,
-                  width: double.infinity,
-                  height: double.infinity,
-                  fit: BoxFit.fill,
-                  gaplessPlayback: true,
-                  opacity: AlwaysStoppedAnimation(0.6),
-                ),
+                // Image.asset(
+                //   Assets.twimgB.guide0Bg.path,
+                //   width: double.infinity,
+                //   height: double.infinity,
+                //   fit: BoxFit.fill,
+                //   gaplessPlayback: true,
+                //   opacity: AlwaysStoppedAnimation(0.6),
+                // ),
+                StarryBeamScene(),
                 Positioned.fill(child: stepWidget()),
 
                 Positioned(left: 0, right: 0, bottom: 90.h, child: btnClaim()),
+
+
+
               ],
             ),
           ),
@@ -721,5 +726,180 @@ class _Guide0ScaleOverlayAnimState extends State<_Guide0ScaleOverlayAnim>
     // TODO: implement dispose
     super.dispose();
     _controller.dispose();
+  }
+}
+
+
+
+
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: const Scaffold(
+        backgroundColor: Colors.black,
+        body: StarryBeamScene(),
+      ),
+    );
+  }
+}
+
+class StarryBeamScene extends StatefulWidget {
+  const StarryBeamScene({super.key});
+
+  @override
+  State<StarryBeamScene> createState() => _StarryBeamSceneState();
+}
+
+class _StarryBeamSceneState extends State<StarryBeamScene>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  final List<StarParticle> _particles = [];
+  final Random _random = Random();
+  final int _particleCount = 60; // 粒子数量
+
+  @override
+  void initState() {
+    super.initState();
+    // 初始化动画控制器
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 10),
+    )..repeat(); // 无限循环
+
+    // 初始化粒子
+    for (int i = 0; i < _particleCount; i++) {
+      _particles.add(_generateParticle(initial: true));
+    }
+  }
+
+  // 生成随机粒子
+  StarParticle _generateParticle({bool initial = false}) {
+    return StarParticle(
+      x: _random.nextDouble(), // 0.0 到 1.0 (屏幕宽度的比例)
+      y: initial ? _random.nextDouble() : 1.1, // 初始随机分布，后续从底部生成
+      size: _random.nextDouble() * 6 + 2, // 大小 2 - 8
+      opacity: _random.nextDouble() * 0.5 + 0.3, // 透明度 0.3 - 0.8
+      speed: _random.nextDouble() * 0.002 + 0.0005, // 漂浮速度
+      blur: _random.nextDouble() * 4 + 1, // 模糊程度
+    );
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedBuilder(
+      animation: _controller,
+      builder: (context, child) {
+        // 更新粒子位置
+        for (var particle in _particles) {
+          particle.y -= particle.speed; // 向上移动
+          // 如果粒子跑出屏幕顶部，重置到底部
+          if (particle.y < -0.1) {
+            var newP = _generateParticle();
+            particle.x = newP.x;
+            particle.y = 1.1;
+            particle.size = newP.size;
+            particle.opacity = newP.opacity;
+            particle.speed = newP.speed;
+          }
+        }
+
+        return CustomPaint(
+          size: Size.infinite,
+          painter: BeamPainter(particles: _particles),
+        );
+      },
+    );
+  }
+}
+
+// 粒子模型类
+class StarParticle {
+  double x;
+  double y;
+  double size;
+  double opacity;
+  double speed;
+  double blur;
+
+  StarParticle({
+    required this.x,
+    required this.y,
+    required this.size,
+    required this.opacity,
+    required this.speed,
+    required this.blur,
+  });
+}
+
+// 画笔类
+class BeamPainter extends CustomPainter {
+  final List<StarParticle> particles;
+
+  BeamPainter({required this.particles});
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    // 1. 绘制深色背景 (带一点暖色调的黑)
+    final bgPaint = Paint()..color = const Color(0xFF0F1215);
+    canvas.drawRect(Offset.zero & size, bgPaint);
+
+    // 2. 绘制顶部光束 (The Beam)
+    final beamPaint = Paint()
+      ..shader = RadialGradient(
+        center: const Alignment(0.0, -0.8), // 光源中心在顶部略靠上
+        radius: 1.2,
+        colors: [
+          const Color(0xFFFFD700).withOpacity(0.3), // 金色核心
+          const Color(0xFFDAA520).withOpacity(0.1), // 暗金色外围
+          Colors.transparent,
+        ],
+        stops: const [0.0, 0.4, 1.0],
+      ).createShader(Rect.fromLTWH(0, 0, size.width, size.height));
+
+    // 使用混合模式让光束更柔和地叠加
+    canvas.drawRect(Offset.zero & size, beamPaint);
+
+    // 3. 绘制发光粒子
+    for (var particle in particles) {
+      final particlePaint = Paint()
+        ..color = const Color(0xFFFFE57F).withOpacity(particle.opacity)
+        ..style = PaintingStyle.fill
+      // 关键：高斯模糊蒙版，创造发光/虚焦效果
+        ..maskFilter = MaskFilter.blur(BlurStyle.normal, particle.blur);
+
+      final position = Offset(
+        particle.x * size.width,
+        particle.y * size.height,
+      );
+
+      canvas.drawCircle(position, particle.size, particlePaint);
+
+      // 再画一个小一点的亮核心，增加层次感
+      final corePaint = Paint()
+        ..color = Colors.white.withOpacity(particle.opacity * 0.8)
+        ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 1);
+
+      canvas.drawCircle(position, particle.size * 0.3, corePaint);
+    }
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) {
+    return true; // 因为有动画，每一帧都需要重绘
   }
 }
