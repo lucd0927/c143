@@ -576,9 +576,53 @@ class $AssetsTwimgGen {
 class $AssetsTwimgBGen {
   const $AssetsTwimgBGen();
 
+  /// File path: assets/twimgB/animated_bg3_1.png
+  AssetGenImage get animatedBg31 =>
+      const AssetGenImage('assets/twimgB/animated_bg3_1.png');
+
+  /// File path: assets/twimgB/animated_bg3_2.png
+  AssetGenImage get animatedBg32 =>
+      const AssetGenImage('assets/twimgB/animated_bg3_2.png');
+
+  /// File path: assets/twimgB/animated_bg3_3.png
+  AssetGenImage get animatedBg33 =>
+      const AssetGenImage('assets/twimgB/animated_bg3_3.png');
+
   /// File path: assets/twimgB/btn_withdraw.png
   AssetGenImage get btnWithdraw =>
       const AssetGenImage('assets/twimgB/btn_withdraw.png');
+
+  /// File path: assets/twimgB/guide_0_5_gesture.png
+  AssetGenImage get guide05Gesture =>
+      const AssetGenImage('assets/twimgB/guide_0_5_gesture.png');
+
+  /// File path: assets/twimgB/guide_0_bg.png
+  AssetGenImage get guide0Bg =>
+      const AssetGenImage('assets/twimgB/guide_0_bg.png');
+
+  /// File path: assets/twimgB/guide_0_txt1.png
+  AssetGenImage get guide0Txt1 =>
+      const AssetGenImage('assets/twimgB/guide_0_txt1.png');
+
+  /// File path: assets/twimgB/guide_0_txt2.png
+  AssetGenImage get guide0Txt2 =>
+      const AssetGenImage('assets/twimgB/guide_0_txt2.png');
+
+  /// File path: assets/twimgB/guide_0_txt3.png
+  AssetGenImage get guide0Txt3 =>
+      const AssetGenImage('assets/twimgB/guide_0_txt3.png');
+
+  /// File path: assets/twimgB/guide_0_txt4.png
+  AssetGenImage get guide0Txt4 =>
+      const AssetGenImage('assets/twimgB/guide_0_txt4.png');
+
+  /// File path: assets/twimgB/guide_0_txt5.png
+  AssetGenImage get guide0Txt5 =>
+      const AssetGenImage('assets/twimgB/guide_0_txt5.png');
+
+  /// File path: assets/twimgB/guide_0_txt6.png
+  AssetGenImage get guide0Txt6 =>
+      const AssetGenImage('assets/twimgB/guide_0_txt6.png');
 
   /// File path: assets/twimgB/main_nav_cash.png
   AssetGenImage get mainNavCash =>
@@ -690,7 +734,18 @@ class $AssetsTwimgBGen {
 
   /// List of all assets
   List<AssetGenImage> get values => [
+    animatedBg31,
+    animatedBg32,
+    animatedBg33,
     btnWithdraw,
+    guide05Gesture,
+    guide0Bg,
+    guide0Txt1,
+    guide0Txt2,
+    guide0Txt3,
+    guide0Txt4,
+    guide0Txt5,
+    guide0Txt6,
     mainNavCash,
     mainNavCashUn,
     mainNavQuiz,

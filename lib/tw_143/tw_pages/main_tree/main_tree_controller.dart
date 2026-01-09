@@ -44,6 +44,9 @@ class MainTreeController extends GetxController {
       ? "MainTreeController_twkeyGuideProgressBbb"
       : "MainTreeController_twkeyGuideProgress";
 
+  static String get guide0 =>
+      TwPackageABC143.isPackageB() ? "guide0Bbb" : "guide0Aaaa";
+
   static String get guide1 =>
       TwPackageABC143.isPackageB() ? "guide1Bbb" : "guide1Aaaa";
 
@@ -211,6 +214,7 @@ class MainTreeController extends GetxController {
         : Assets.twimg.coinGuide6.path;
     return tmpTreeIcon;
   }
+
   String moneyIconFloating() {
     String tmpTreeIcon = TwPackageABC143.isPackageB()
         ? Assets.twimgB.moneyFloating.path

@@ -301,13 +301,7 @@ class _Guide7RankWidgetState extends State<Guide7RankWidget> {
                                         : const SizedBox(),
                                   ),
                                 ),
-                                if (_text == text4)
-                                  Positioned(
-                                    left: 0,
-                                    right: 0,
-                                    bottom: 90.h,
-                                    child: Center(child: btnClaim()),
-                                  ),
+
                               ],
                             ),
                           ],
@@ -320,6 +314,14 @@ class _Guide7RankWidgetState extends State<Guide7RankWidget> {
                         right: 0,
                         child: IgnorePointer(child: MainNav()),
                       ),
+
+                      if (_text == text4)
+                        Positioned(
+                          left: 0,
+                          right: 0,
+                          bottom: 100.h,
+                          child: Center(child: btnClaim()),
+                        ),
                     ],
                   ),
                 ),
@@ -332,6 +334,8 @@ class _Guide7RankWidgetState extends State<Guide7RankWidget> {
   }
 
   Widget btnClaim() {
+
+
     return Center(
       child: GestureDetector(
         onTap: onClaim,

@@ -6,6 +6,7 @@ import 'package:c143/tw_143/tw_pages/guide/guide1_water.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide2_coin.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide4_fertilize.dart';
 import 'package:c143/tw_143/tw_pages/main/main_controller.dart';
+import 'package:c143/tw_143/tw_pages/main_tree/main_tree.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
 import 'package:c143/tw_base/tw_ad/ads_idddddC143.dart';
 import 'package:c143/tw_base/tw_ad/base_ads.dart';
@@ -32,9 +33,11 @@ class MainCenter extends StatefulWidget {
 class _MainCenterState extends State<MainCenter> {
   @override
   Widget build(BuildContext context) {
+    double height = maxPinnedHeight - 210.h;
+    double bottomTree = maxPinnedHeight - 500.h;
     return Container(
       width: double.infinity,
-      height: 290.h,
+      height: height,
       color: Colors.amber.withValues(alpha: 0.0),
       child: Stack(
         clipBehavior: Clip.none,
@@ -42,7 +45,7 @@ class _MainCenterState extends State<MainCenter> {
           Positioned(
             left: 0,
             right: 0,
-            bottom: 10.h,
+            bottom: bottomTree,
             child: Center(
               child: Obx(() {
                 EnumTwLottttieJson type = MainTreeController.to.lottieType();
@@ -108,11 +111,12 @@ class _MainCenterState extends State<MainCenter> {
       Widget item = Text(
         tmp[i],
         style: TextStyle(
-          fontSize: 12.sp,
+          fontSize: 11.sp,
           fontWeight: FontWeight.w700,
           height: 1,
           color: Color(0xff603000),
         ),
+        textAlign: TextAlign.center,
       );
       chilren.add(item);
     }

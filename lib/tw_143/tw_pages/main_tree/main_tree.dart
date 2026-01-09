@@ -1,4 +1,5 @@
 import 'package:c143/gen/assets.gen.dart';
+import 'package:c143/tw_143/tw_pages/guide/guide0_bguide.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide10_quiz3.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide11_homebonus.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide12_homereward.dart';
@@ -19,6 +20,7 @@ import 'package:c143/tw_143/tw_pages/main_tree/vieee/high_light_tips.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/vieee/main_center.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/vieee/main_rank.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/vieee/main_top_a.dart';
+import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
 import 'package:c143/tw_base/tw_gj/logC143.dart';
 import 'package:c143/tw_base/tw_gj/login_trackC143.dart';
 import 'package:c143/tw_hive/twhiveC143.dart';
@@ -28,7 +30,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_tba_info/flutter_tba_info.dart';
 
 double minPinnedHeight = 200.h;
-double maxPinnedHeight = 500.h;
+double maxPinnedHeight = 530.h;
 // double maxPinnedHeight = 500.h;
 
 class MainTree extends StatefulWidget {
@@ -44,12 +46,18 @@ class _MainTreeState extends State<MainTree> {
     // TODO: implement initState
     super.initState();
     MainTreeController.initComposition();
-    WidgetsBinding.instance.addPostFrameCallback((_) async{
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
       // var idfa = await FlutterTbaInfo.instance.getIdfa();
       String? data = MainTreeController.to.guideIndexData();
       twLooog("======data:$data");
       // data = null;
       if (data == null) {
+        if (TwPackageABC143.isPackageB()) {
+          OverlayGuide0BGuide().show(coins: 5, onBtn: (value) {});
+        } else {
+          OverlayGuide1Water().show();
+        }
+      } else if (data == MainTreeController.guide0) {
         OverlayGuide1Water().show();
       } else if (data == MainTreeController.guide1) {
         OverlayGuide2Coin().show();
@@ -81,11 +89,10 @@ class _MainTreeState extends State<MainTree> {
         OverlayGuide13Spin().show();
       }
 
-
-      if(TwLoginnnTrackC143.isFirstLoginToday && TwLoginnnTrackC143.qidongduoshaoDay() > 1){
-        OverlayGuideOld().show(coins: 100, onBtn: (v){});
+      if (TwLoginnnTrackC143.isFirstLoginToday &&
+          TwLoginnnTrackC143.qidongduoshaoDay() > 1) {
+        OverlayGuideOld().show(coins: 100, onBtn: (v) {});
       }
-
     });
   }
 

@@ -13,6 +13,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
+import '../main_tree/main_tree.dart' show maxPinnedHeight;
+
 class OverlayGuide2Coin {
   static BuildContext? guideContext;
   static Widget? guideChild;
@@ -133,7 +135,8 @@ class GuideWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     RenderBox box = guideContext.findRenderObject() as RenderBox;
-
+    double height = maxPinnedHeight - 210.h;
+    double bottomTree = maxPinnedHeight - 500.h;
     var topLeftPosition = box.localToGlobal(Offset.zero);
     return Container(
       color: Colors.transparent,
@@ -143,34 +146,41 @@ class GuideWidget extends StatelessWidget {
           Positioned(
             left: 0,
             right: 0,
-            top: 170.h,
-            child: Center(
-              child: Container(
-                width: double.infinity,
-                height: 320.h,
-                color: Colors.amber.withValues(alpha: 0.0),
-                child: Center(
-                  child: Obx(() {
-                    EnumTwLottttieJson type = MainTreeController.to.lottieType();
-                    bool result = MainTreeController.to.curHasWatering.value;
-                    return Container(
-                      width: 280.h,
-                      height: 280.h,
-                      child: Stack(
-                        children: [
-                          TwLottieCommon(type: type, animate: result),
+            top: 190.h,
+            child: Container(
+              width: double.infinity,
+              height: height,
+              color: Colors.amber.withValues(alpha: 0.0),
+              child: Stack(
+                children: [
+                  Positioned(
+                    left: 0,
+                    right: 0,
+                    bottom: bottomTree,
+                    child: Center(
+                      child: Obx(() {
+                        EnumTwLottttieJson type = MainTreeController.to.lottieType();
+                        bool result = MainTreeController.to.curHasWatering.value;
+                        return Container(
+                          width: 280.h,
+                          height: 280.h,
+                          child: Stack(
+                            children: [
+                              TwLottieCommon(type: type, animate: result),
 
-                          Positioned(
-                            child: levelWidget(),
-                            left: 0,
-                            right: 0,
-                            bottom: 0.h,
+                              Positioned(
+                                child: levelWidget(),
+                                left: 0,
+                                right: 0,
+                                bottom: 0.h,
+                              ),
+                            ],
                           ),
-                        ],
-                      ),
-                    );
-                  }),
-                ),
+                        );
+                      }),
+                    ),
+                  ),
+                ],
               ),
             ),
           ),
@@ -200,7 +210,7 @@ class GuideWidget extends StatelessWidget {
           ),
 
           Positioned(
-            top: 100.h,
+            top: 110.h,
             right: 0,
             left: 0,
             child: Center(

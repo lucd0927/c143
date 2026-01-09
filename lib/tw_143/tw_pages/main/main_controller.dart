@@ -1,3 +1,4 @@
+import 'package:c143/tw_143/tw_pages/guide/guide0_bguide.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide11_homebonus.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide14_highligth.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide15_coin_to_sun.dart';
@@ -30,7 +31,7 @@ class MainController extends GetxController {
     // );
 
 
-
+    // OverlayGuide0BGuide().show(coins: 5, onBtn: (v){});
     // OverlayGuide9Quiz2().show(
     //   coins: 100,
     //   onBtn: (v) {

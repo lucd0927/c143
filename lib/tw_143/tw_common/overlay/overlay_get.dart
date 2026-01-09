@@ -187,7 +187,7 @@ class _GetCoinsWidgetState extends State<GetCoinsWidget> {
                                     ),
                                   ),
                                 ),
-                                SizedBox(height: 24.h),
+                                SizedBox(height: 22.h),
                                 TwAScaleC143(
                                   child: TwShiningEffect(
                                     duration: Duration(milliseconds: 2000),
@@ -197,12 +197,12 @@ class _GetCoinsWidgetState extends State<GetCoinsWidget> {
                                     topLeft: false,
                                     child: Image.asset(
                                      MainTreeController.to.moneyIconDialog(),
-                                      width: 88.h,
-                                      height: 88.h,
+                                      width: 100.h,
+                                      height: 100.h,
                                     ),
                                   ),
                                 ),
-                                SizedBox(height: 12.h),
+                                SizedBox(height: 8.h),
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
