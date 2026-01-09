@@ -5,6 +5,7 @@ import 'package:c143/tw_143/tw_common/lottieeee/gesture.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide1_water.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide3_adspot.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
+import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
 import 'package:c143/tw_base/tw_gj/logC143.dart';
 import 'package:c143/tw_views/animated_count.dart';
 import 'package:c143/tw_views/animated_scale.dart';
@@ -37,8 +38,10 @@ class OverlayGuide2Coin {
             guideContext: guideContext!,
             onClose: () async {
               close();
-              MainTreeController.to.saveGuideIndexData(MainTreeController.guide2);
-              OverlayGuide3AdSpot().show(coins: 10);
+              MainTreeController.to.saveGuideIndexData(
+                MainTreeController.guide2,
+              );
+              OverlayGuide3AdSpot().show(coins: 2);
             },
           ),
         );
@@ -159,8 +162,10 @@ class GuideWidget extends StatelessWidget {
                     bottom: bottomTree,
                     child: Center(
                       child: Obx(() {
-                        EnumTwLottttieJson type = MainTreeController.to.lottieType();
-                        bool result = MainTreeController.to.curHasWatering.value;
+                        EnumTwLottttieJson type = MainTreeController.to
+                            .lottieType();
+                        bool result =
+                            MainTreeController.to.curHasWatering.value;
                         return Container(
                           width: 280.h,
                           height: 280.h,
@@ -203,8 +208,6 @@ class GuideWidget extends StatelessWidget {
                   // ),
                   child: TwLottieGesture(),
                 ),
-
-
               ],
             ),
           ),
@@ -215,19 +218,19 @@ class GuideWidget extends StatelessWidget {
             left: 0,
             child: Center(
               child: Image.asset(
-                Assets.twimg.guide2cointips.path,
+                TwPackageABC143.isPackageB()
+                    ? Assets.twimgB.guide2cointipsB.path
+                    : Assets.twimg.guide2cointips.path,
                 width: 324.h,
                 height: 160.h,
                 fit: BoxFit.fill,
               ),
             ),
           ),
-
         ],
       ),
     );
   }
-
 
   levelWidget() {
     int curLevel = MainTreeController.to.curLevel.value;

@@ -592,6 +592,10 @@ class $AssetsTwimgBGen {
   AssetGenImage get btnWithdraw =>
       const AssetGenImage('assets/twimgB/btn_withdraw.png');
 
+  /// File path: assets/twimgB/guide2cointips_b.png
+  AssetGenImage get guide2cointipsB =>
+      const AssetGenImage('assets/twimgB/guide2cointips_b.png');
+
   /// File path: assets/twimgB/guide_0_5_gesture.png
   AssetGenImage get guide05Gesture =>
       const AssetGenImage('assets/twimgB/guide_0_5_gesture.png');
@@ -738,6 +742,7 @@ class $AssetsTwimgBGen {
     animatedBg32,
     animatedBg33,
     btnWithdraw,
+    guide2cointipsB,
     guide05Gesture,
     guide0Bg,
     guide0Txt1,
