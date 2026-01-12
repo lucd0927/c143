@@ -114,6 +114,7 @@ class TwOverlayAnimatedS2T {
     _overlay = null;
     twLooog("=======showWithSize==targetContext:$targetContext");
     if (targetContext == null) {
+      onEnd?.call();
       return;
     }
 

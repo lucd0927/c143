@@ -7,6 +7,7 @@ import 'package:c143/tw_143/tw_pages/guide/guide6_rewarddouble.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
 import 'package:c143/tw_base/tw_ad/ads_idddddC143.dart';
 import 'package:c143/tw_base/tw_ad/base_ads.dart';
+import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
 import 'package:c143/tw_base/tw_gj/logC143.dart';
 import 'package:c143/tw_views/animated_count.dart';
 import 'package:c143/tw_views/animated_scale.dart';
@@ -143,7 +144,7 @@ class _GetCoinsWidgetState extends State<GetCoinsWidget> {
                       end: Alignment.bottomCenter,
                       begin: Alignment.topCenter,
                     ),
-
+                    height: 1.2,
                     fontSize: 24.sp,
                     fontWeight: FontWeight.w900,
                   ),
@@ -179,7 +180,7 @@ class _GetCoinsWidgetState extends State<GetCoinsWidget> {
                                   color: Colors.red.withValues(alpha: 0.0),
                                   child: Center(
                                     child: TwTxtBorderC143(
-                                      text: "Earn Coins",
+                                      text: TwPackageABC143.isPackageB()?"Earn Money":"Earn Coins",
                                       fontSize: 16.sp,
                                       fontWeight: FontWeight.w900,
                                       fontColor: Color(0xffffffff),

@@ -1,8 +1,10 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:c143/gen/assets.gen.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide1_water.dart';
+import 'package:c143/tw_143/tw_pages/guide/guide3b_trust.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide4_fertilize.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
+import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
 import 'package:c143/tw_base/tw_gj/countryC143.dart';
 import 'package:c143/tw_base/tw_gj/logC143.dart';
 import 'package:c143/tw_views/animated_count.dart';
@@ -38,7 +40,11 @@ class OverlayGuide3AdSpot {
               MainTreeController.to.onAddMoneyyyy(
                 coins,
                 onEnd: () {
-                  OverlayGuide4Fertilize().show();
+                  if(TwPackageABC143.isPackageB()){
+                    OverlayGuide3BTrust().show();
+                  }else{
+                    OverlayGuide4Fertilize().show();
+                  }
                 },
               );
             },
@@ -101,106 +107,185 @@ class _Guide3AdSpotState extends State<Guide3AdSpot> {
           height: ScreenUtil().screenHeight,
           child: IndexedStack(
             index: index,
-            children: [
-              Column(
-                children: [
-                  SizedBox(height: 80.h),
-
-                  // Image.asset(
-                  //   Assets.twimg.guide3Txt.path,
-                  //   width: 288.w,
-                  //   height: 100.h,
-                  // ),
-                  Container(
-                    height: 100.h,
-                    child: Center(
-                      child: TwTxtGraBorderC143(
-                        text: "Congrats!",
-                        gradient: LinearGradient(
-                          colors: [
-                            Color(0xffEBD462),
-                            Color(0xffFFF692),
-                            Color(0xffFFD92E),
-                          ],
-                          end: Alignment.bottomCenter,
-                          begin: Alignment.topCenter,
-                        ),
-
-                        fontSize: 40.sp,
-                        fontWeight: FontWeight.w900,
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: 60.h),
-                  Center(
-                    child: Container(
-                      width: 336.w,
-                      height: 236.h,
-                      child: Stack(
-                        children: [
-                          Image.asset(
-                            Assets.twimg.guide3Centerbg.path,
-                            width: double.infinity,
-                            height: double.infinity,
-                            fit: BoxFit.fill,
-                          ),
-
-                          Positioned.fill(
-                            child: Column(
-                              children: [
-                                SizedBox(height: 10.h),
-                                Container(
-                                  height: 30.h,
-                                  color: Colors.red.withValues(alpha: 0.0),
-                                  child: Center(
-                                    child: TwTxtBorderC143(
-                                      text: "Credited To Account",
-                                      fontSize: 16.sp,
-                                      fontWeight: FontWeight.w900,
-                                      fontColor: Color(0xffffffff),
-                                      foreground: Color(0xff904833),
-                                    ),
-                                  ),
-                                ),
-                                SizedBox(height: 24.h),
-                                Image.asset(
-                                  Assets.twimg.guide3Ok.path,
-                                  width: 88.h,
-                                  height: 88.h,
-                                ),
-                                SizedBox(height: 12.h),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Image.asset(
-                                      MainTreeController.to.moneyIconSmall(),
-                                      width: 32.h,
-                                      height: 32.h,
-                                    ),
-                                    SizedBox(width: 8.w),
-                                    TwTxtGraBorderC143(
-                                      text:
-                                          "+${TwCountryyC143.curCountryyyySymbolC143()}${widget.coins.toStringAsFixed(0)}",
-                                      fontSize: 32.sp,
-                                      fontWeight: FontWeight.w900,
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: 60.h),
-                  Center(child: btnClaim()),
-                ],
-              ),
-            ],
+            children: [TwPackageABC143.isPackageB() ? contentB() : contentA()],
           ),
         ),
       ),
+    );
+  }
+
+  Widget contentA() {
+    return Column(
+      children: [
+        SizedBox(height: 80.h),
+
+
+        Container(
+          height: 100.h,
+          child: Center(
+            child: TwTxtGraBorderC143(
+              text: "Congrats!",
+              gradient: LinearGradient(
+                colors: [
+                  Color(0xffEBD462),
+                  Color(0xffFFF692),
+                  Color(0xffFFD92E),
+                ],
+                end: Alignment.bottomCenter,
+                begin: Alignment.topCenter,
+              ),
+
+              fontSize: 40.sp,
+              fontWeight: FontWeight.w900,
+            ),
+          ),
+        ),
+        SizedBox(height: 60.h),
+        Center(
+          child: Container(
+            width: 336.w,
+            height: 236.h,
+            child: Stack(
+              children: [
+                Image.asset(
+                  Assets.twimg.guide3Centerbg.path,
+                  width: double.infinity,
+                  height: double.infinity,
+                  fit: BoxFit.fill,
+                ),
+
+                Positioned.fill(
+                  child: Column(
+                    children: [
+                      SizedBox(height: 10.h),
+                      Container(
+                        height: 30.h,
+                        color: Colors.red.withValues(alpha: 0.0),
+                        child: Center(
+                          child: TwTxtBorderC143(
+                            text: "Credited To Account",
+                            fontSize: 16.sp,
+                            fontWeight: FontWeight.w900,
+                            fontColor: Color(0xffffffff),
+                            foreground: Color(0xff904833),
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 24.h),
+                      Image.asset(
+                        Assets.twimg.guide3Ok.path,
+                        width: 88.h,
+                        height: 88.h,
+                      ),
+                      SizedBox(height: 12.h),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Image.asset(
+                            MainTreeController.to.moneyIconSmall(),
+                            width: 32.h,
+                            height: 32.h,
+                          ),
+                          SizedBox(width: 8.w),
+                          TwTxtGraBorderC143(
+                            text:
+                                "+${TwCountryyC143.curCountryyyySymbolC143()}${widget.coins.toStringAsFixed(0)}",
+                            fontSize: 32.sp,
+                            fontWeight: FontWeight.w900,
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+        SizedBox(height: 60.h),
+        Center(child: btnClaim()),
+      ],
+    );
+  }
+
+  Widget contentB() {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        SizedBox(height: 80.h),
+
+
+        Center(
+          child: Container(
+            width: 336.w,
+            height: 236.h,
+            child: Stack(
+              children: [
+                Image.asset(
+                  Assets.twimg.guide3Centerbg.path,
+                  width: double.infinity,
+                  height: double.infinity,
+                  fit: BoxFit.fill,
+                ),
+
+                Positioned.fill(
+                  child: Column(
+                    children: [
+                      SizedBox(height: 10.h),
+                      Container(
+                        height: 30.h,
+                        color: Colors.red.withValues(alpha: 0.0),
+                        child: Center(
+                          child: TwTxtBorderC143(
+                            text: "Credited To Account",
+                            fontSize: 16.sp,
+                            fontWeight: FontWeight.w900,
+                            fontColor: Color(0xffffffff),
+                            foreground: Color(0xff904833),
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 24.h),
+                      Image.asset(
+                        Assets.twimg.guide3Ok.path,
+                        width: 88.h,
+                        height: 88.h,
+                      ),
+                      SizedBox(height: 12.h),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Image.asset(
+                            MainTreeController.to.moneyIconSmall(),
+                            width: 32.h,
+                            height: 32.h,
+                          ),
+                          SizedBox(width: 8.w),
+                          TwTxtGraBorderC143(
+                            text:
+                                "+${TwCountryyC143.curCountryyyySymbolC143()}${widget.coins.toStringAsFixed(0)}",
+                            fontSize: 32.sp,
+                            fontWeight: FontWeight.w900,
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+        SizedBox(height: 20.h),
+        Image.asset(
+          Assets.twimgB.guide3Wow.path,
+          width: 308.w,
+          height: 132.h,
+        ),
+
+        SizedBox(height: 60.h),
+        Center(child: btnClaim()),
+      ],
     );
   }
 

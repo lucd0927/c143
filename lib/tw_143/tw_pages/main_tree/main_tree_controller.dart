@@ -528,6 +528,7 @@ class MainTreeController extends GetxController {
   }
 
   onAddMoneyyyy(double monnn, {VoidCallback? onEnd}) {
+    twLooog("====onAddMoneyyyy==monnn:$monnn");
     overlayCoinMain.showWithSize(
       childSize: TwPackageABC143.isPackageB()
           ? Size(24.w, 24.w)

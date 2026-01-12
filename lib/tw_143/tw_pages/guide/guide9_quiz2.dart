@@ -8,6 +8,7 @@ import 'package:c143/tw_143/tw_pages/guide/guide1_water.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide7_rank.dart';
 import 'package:c143/tw_143/tw_pages/main_quiz/main_quiz_controller.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
+import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
 import 'package:c143/tw_base/tw_gj/logC143.dart';
 import 'package:c143/tw_views/animated_count.dart';
 import 'package:c143/tw_views/animated_scale.dart';
@@ -40,16 +41,15 @@ class OverlayGuide9Quiz2 {
               onClose: () async {
                 twLooog("=====OverlayGuideTestAnim=close");
                 close();
-                MainTreeController.to.saveGuideIndexData(MainTreeController.guide9);
+                MainTreeController.to.saveGuideIndexData(
+                  MainTreeController.guide9,
+                );
                 OverlayGuide10Quiz3().show(
                   coins: 10,
                   onBtn: (v) {
-
                     onBtn.call(coins);
                   },
                 );
-
-
               },
             ),
           ),
@@ -97,11 +97,17 @@ class _Guide9Quiz2WidgetState extends State<Guide9Quiz2Widget> {
   double _coinsss = 0;
   Offset _offset = Offset(-30.w, 0);
 
-  List<List<String>> texts = [
-    ["Your ANSWERS are just as VALUABLE as ", "your ATTENTION!!!"],
-    ["Answer a few questions. Your answers make a ", "Difference!!!"],
-    ["Finish the quiz,", "earn COIN!!"],
-  ];
+  List<List<String>> get texts => TwPackageABC143.isPackageB()
+      ? [
+          ["Your ANSWERS are just as VALUABLE as ", "your ATTENTION!!!"],
+          ["Advertisers need YOUR feedback! You’re the one making ads ", "Better!!!"],
+          ["Advertisers get feedback,YOU ", "get CASH!!!"],
+        ]
+      : [
+          ["Your ANSWERS are just as VALUABLE as ", "your ATTENTION!!!"],
+          ["Answer a few questions. Your answers make a ", "Difference!!!"],
+          ["Finish the quiz,", "earn COIN!!"],
+        ];
 
   List<String> _curTexts = [];
 

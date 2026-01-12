@@ -128,7 +128,7 @@ class _SettingWidgetC143State extends State<_SettingWidgetC143> {
                               "https://treeworldgardener.com/privacy/",
                             );
 
-                            _laUuuu(uriii);
+                            _laUurrrr(uriii);
                           },
                         ),
                         SizedBox(height: 10.h),
@@ -242,7 +242,7 @@ class _SettingWidgetC143State extends State<_SettingWidgetC143> {
   }
 }
 
-Future<void> _laUuuu(
+Future<void> _laUurrrr(
   Uri uri, {
   LaunchMode mode = LaunchMode.platformDefault,
 }) async {
@@ -251,16 +251,16 @@ Future<void> _laUuuu(
   }
 }
 
-Future<void> _launEeeee() async {
-  final Uri emailLaunchUri = Uri(
-    scheme: 'mailto',
-    path: 'luckySlots@gmail.com',
-    queryParameters: {'subject': '', 'body': ''},
-  );
-
-  if (await canLaunchUrl(emailLaunchUri)) {
-    await launchUrl(emailLaunchUri);
-  } else {
-    throw 'Could not launch email app';
-  }
-}
+// Future<void> _launEeeee() async {
+//   final Uri emailLaunchUri = Uri(
+//     scheme: 'mailto',
+//     path: 'luckySlots@gmail.com',
+//     queryParameters: {'subject': '', 'body': ''},
+//   );
+//
+//   if (await canLaunchUrl(emailLaunchUri)) {
+//     await launchUrl(emailLaunchUri);
+//   } else {
+//     throw 'Could not launch email app';
+//   }
+// }

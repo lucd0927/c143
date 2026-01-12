@@ -50,20 +50,31 @@ class _MainCenterState extends State<MainCenter> {
               child: Obx(() {
                 EnumTwLottttieJson type = MainTreeController.to.lottieType();
                 bool result = MainTreeController.to.curHasWatering.value;
-                return Container(
-                  width: 280.h,
-                  height: 280.h,
-                  child: Stack(
-                    children: [
-                      TwLottieCommon(type: type, animate: result),
+                return GestureDetector(
+                  onTap: (){
+                    // if(!MainTreeController.to.curHasWatering.value){
+                    //   MainTreeController.to.curHasWatering.value = true;
+                    //   Future.delayed(Duration(milliseconds: 10000),(){
+                    //     MainTreeController.to.curHasWatering.value = false;
+                    //   });
+                    // }
 
-                      Positioned(
-                        child: levelWidget(),
-                        left: 0,
-                        right: 0,
-                        bottom: 0.h,
-                      ),
-                    ],
+                  },
+                  child: Container(
+                    width: 280.h,
+                    height: 280.h,
+                    child: Stack(
+                      children: [
+                        TwLottieCommon(type: type, animate: result),
+
+                        Positioned(
+                          child: levelWidget(),
+                          left: 0,
+                          right: 0,
+                          bottom: 0.h,
+                        ),
+                      ],
+                    ),
                   ),
                 );
               }),
@@ -366,16 +377,18 @@ class _MainCenterState extends State<MainCenter> {
     return GestureDetector(
       onTap: onClick,
       child: TwAScaleC143(
-        child: Container(
-          width: width,
-          height: width,
-          color: Colors.transparent,
-          child: Stack(
-            clipBehavior: Clip.none,
-            children: [
-              Builder(
-                builder: (context) {
-                  Widget child = Container(
+        maxS: 1,
+        minS: 0.7,
+        child: Builder(
+          builder: (context) {
+            Widget child =  Container(
+              width: width,
+              height: width,
+              color: Colors.transparent,
+              child: Stack(
+                clipBehavior: Clip.none,
+                children: [
+                  Container(
                     width: width,
                     height: width,
                     child: TwShiningEffect(
@@ -391,38 +404,37 @@ class _MainCenterState extends State<MainCenter> {
                         gaplessPlayback: true,
                       ),
                     ),
-                  );
-                  if (treeType == TwEnumTreeType.water) {
-                    OverlayGuide1Water.guideChild = child;
-                    OverlayGuide1Water.guideContext = context;
-                  } else if (treeType == TwEnumTreeType.coinGuide) {
-                    OverlayGuide2Coin.guideChild = child;
-                    OverlayGuide2Coin.guideContext = context;
-                  } else if (treeType == TwEnumTreeType.fertilize) {
-                    OverlayGuide4Fertilize.guideChild = child;
-                    OverlayGuide4Fertilize.guideContext = context;
-                  }
-
-                  return child;
-                },
-              ),
-              if (txtLocationBottom)
-                Positioned(left: 0, right: 0, bottom: 0, child: txtWB),
-              if (txtLocationTop)
-                Positioned(left: 0, right: 0, top: 0, child: txtWT),
-
-              if (showAd)
-                Positioned(
-                  top: -10.h,
-                  right: -5.h,
-                  child: Image.asset(
-                    Assets.twimg.ad.path,
-                    width: 28.h,
-                    height: 28.h,
                   ),
-                ),
-            ],
-          ),
+                  if (txtLocationBottom)
+                    Positioned(left: 0, right: 0, bottom: 0, child: txtWB),
+                  if (txtLocationTop)
+                    Positioned(left: 0, right: 0, top: 0, child: txtWT),
+
+                  if (showAd)
+                    Positioned(
+                      top: -10.h,
+                      right: -5.h,
+                      child: Image.asset(
+                        Assets.twimg.ad.path,
+                        width: 28.h,
+                        height: 28.h,
+                      ),
+                    ),
+                ],
+              ),
+            );
+            if (treeType == TwEnumTreeType.water) {
+              OverlayGuide1Water.guideChild = child;
+              OverlayGuide1Water.guideContext = context;
+            } else if (treeType == TwEnumTreeType.coinGuide) {
+              OverlayGuide2Coin.guideChild = child;
+              OverlayGuide2Coin.guideContext = context;
+            } else if (treeType == TwEnumTreeType.fertilize) {
+              OverlayGuide4Fertilize.guideChild = child;
+              OverlayGuide4Fertilize.guideContext = context;
+            }
+            return child;
+          }
         ),
       ),
     );
@@ -507,7 +519,7 @@ class _MainCenterState extends State<MainCenter> {
   }
 
   void onWater() async {
-    MainTreeController.to.onAddWaterCount(onEnd: () {});
+    MainTreeController.to.onAddWaterCount(onEnd: () {},showAd: true);
   }
 
   coinWidget2() {
@@ -521,7 +533,7 @@ class _MainCenterState extends State<MainCenter> {
       if (showSun) {
         count = 1000;
       }
-      showAd = false;
+      showAd = TwPackageABC143.isPackageB();
       return Row(
         children: [
           SizedBox(width: 90.w),

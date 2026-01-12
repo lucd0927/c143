@@ -39,7 +39,7 @@ class OverlayGuide6RewardDouble {
                 );
 
                 MainTreeController.to.onAddMoneyyyy(
-                  coins*2,
+                  coins * 2,
                   onEnd: () {
                     OverlayGuide7Rank().show();
                   },
@@ -296,7 +296,9 @@ class _Guide6ScaleOverlayAnimState extends State<_Guide6ScaleOverlayAnim>
                           child: Padding(
                             padding: EdgeInsets.symmetric(horizontal: 16.w),
                             child: Text(
-                              "Congratulations! Your tree is growing！🚀 ",
+                              TwPackageABC143.isPackageB()
+                                  ? "Your ad space value is SKYROCKETING! 🚀 You’re now a TOP FEATURED SPOT on the platform!"
+                                  : "Congratulations! Your tree is growing！🚀 ",
                               style: TextStyle(
                                 fontSize: 16.sp,
                                 fontWeight: FontWeight.w900,

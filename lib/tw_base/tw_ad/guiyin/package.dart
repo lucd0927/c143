@@ -50,7 +50,7 @@ class TwPackageABC143 {
     return packageB == name;
   }
 
-  var box = TwHive.box;
+  static var box = TwHive.box;
 
   _sendAC143({required String cloakData, required String afData}) async {
     bool entryBBB =
@@ -247,6 +247,14 @@ class TwPackageABC143 {
 
   // auto patch 285
 
+  static String boxPackName(){
+    var packageName = box.get(kHivePackage) ?? packageA;
+    if (Platform.isAndroid) {
+      packageName = packageB;
+    }
+    return packageName;
+  }
+
   Completer<bool>? initCompleter;
   static const String TGA = "13222222:";
 
@@ -263,7 +271,6 @@ class TwPackageABC143 {
     await requestATT();
     twLooog("$TGA=package==init:$packageName==");
     if (packageName == packageB) {
-      twLooog("$TGA===PBFireBbbbbb==${dateTime.millisecondsSinceEpoch}");
       // 初始化firebase
       await TwFirebasC143().init();
       DateTime dateTime2 = DateTime.now();

@@ -7,6 +7,7 @@ import 'package:c143/tw_143/tw_pages/guide/guide6_rewarddouble.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
 import 'package:c143/tw_base/tw_ad/ads_idddddC143.dart';
 import 'package:c143/tw_base/tw_ad/base_ads.dart';
+import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
 import 'package:c143/tw_base/tw_gj/countryC143.dart';
 import 'package:c143/tw_base/tw_gj/logC143.dart';
 import 'package:c143/tw_views/animated_count.dart';
@@ -115,7 +116,7 @@ class _Guide11HomeBonusWidgetState extends State<Guide11HomeBonusWidget> {
                 children: [
                   SizedBox(height: 80.h),
                   TwTxtGraBorderC143(
-                    text: "Correct! Congrats!",
+                    text: TwPackageABC143.isPackageB()?"Your feedback pays off":"Correct! Congrats!",
                     gradient: LinearGradient(
                       colors: [
                         Color(0xffEBD462),
@@ -125,7 +126,7 @@ class _Guide11HomeBonusWidgetState extends State<Guide11HomeBonusWidget> {
                       end: Alignment.bottomCenter,
                       begin: Alignment.topCenter,
                     ),
-
+                    height: 1.2,
                     fontSize: 24.sp,
                     fontWeight: FontWeight.w900,
                   ),

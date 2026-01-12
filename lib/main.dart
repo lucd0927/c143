@@ -36,7 +36,7 @@ main() async {
   await SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
   twLooog("====initSpineFlutter=");
   await initSpineFlutter(enableMemoryDebugging: false);
-  TwConfigggg.initEvn(TwConfiggEnv.prod);
+  TwConfigggg.initEvn(TwConfiggEnv.dev);
 
   twLooog("====SSDlTracking.init=");
   TwLoginnnTrackC143.init();

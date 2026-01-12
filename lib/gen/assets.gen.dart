@@ -596,6 +596,22 @@ class $AssetsTwimgBGen {
   AssetGenImage get guide2cointipsB =>
       const AssetGenImage('assets/twimgB/guide2cointips_b.png');
 
+  /// File path: assets/twimgB/guide3_1_trust.png
+  AssetGenImage get guide31Trust =>
+      const AssetGenImage('assets/twimgB/guide3_1_trust.png');
+
+  /// File path: assets/twimgB/guide3_wow.png
+  AssetGenImage get guide3Wow =>
+      const AssetGenImage('assets/twimgB/guide3_wow.png');
+
+  /// File path: assets/twimgB/guide5b_txt.png
+  AssetGenImage get guide5bTxt =>
+      const AssetGenImage('assets/twimgB/guide5b_txt.png');
+
+  /// File path: assets/twimgB/guide8b_txt.png
+  AssetGenImage get guide8bTxt =>
+      const AssetGenImage('assets/twimgB/guide8b_txt.png');
+
   /// File path: assets/twimgB/guide_0_5_gesture.png
   AssetGenImage get guide05Gesture =>
       const AssetGenImage('assets/twimgB/guide_0_5_gesture.png');
@@ -743,6 +759,10 @@ class $AssetsTwimgBGen {
     animatedBg33,
     btnWithdraw,
     guide2cointipsB,
+    guide31Trust,
+    guide3Wow,
+    guide5bTxt,
+    guide8bTxt,
     guide05Gesture,
     guide0Bg,
     guide0Txt1,

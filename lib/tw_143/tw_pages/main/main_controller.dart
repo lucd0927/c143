@@ -4,6 +4,7 @@ import 'package:c143/tw_143/tw_pages/guide/guide14_highligth.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide15_coin_to_sun.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide16_highligthend.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide1_water.dart';
+import 'package:c143/tw_143/tw_pages/guide/guide3b_trust.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide7_rank.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide8_quiz1.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide9_quiz2.dart';
@@ -11,6 +12,7 @@ import 'package:c143/tw_143/tw_pages/guide/guide_old.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide_test_animated.dart';
 import 'package:c143/tw_143/tw_pages/main_cash/main_cash_controller.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
+import 'package:c143/tw_notification/overlay_notify.dart';
 import 'package:get/get.dart';
 
 
@@ -30,7 +32,7 @@ class MainController extends GetxController {
     //   },
     // );
 
-
+    // OverlayTzNotify().show();
     // OverlayGuide0BGuide().show(coins: 5, onBtn: (v){});
     // OverlayGuide9Quiz2().show(
     //   coins: 100,

@@ -203,7 +203,13 @@ class _Guide8Quiz1WidgetState extends State<Guide8Quiz1Widget> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Image.asset(Assets.twimg.guide8Txt.path, width: 285.h, height: 76.h),
+        Image.asset(
+          TwPackageABC143.isPackageB()
+              ? Assets.twimgB.guide8bTxt.path
+              : Assets.twimg.guide8Txt.path,
+          width: 285.h,
+          height: 76.h,
+        ),
         SizedBox(height: 50.h),
         Container(
           width: 240.h,

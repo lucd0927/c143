@@ -9,6 +9,7 @@ import 'package:c143/tw_143/tw_pages/main/main_controller.dart';
 import 'package:c143/tw_143/tw_pages/main/views/main_nav.dart';
 import 'package:c143/tw_143/tw_pages/main_quiz/main_quiz_controller.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
+import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
 import 'package:c143/tw_base/tw_gj/logC143.dart';
 import 'package:c143/tw_views/animated_count.dart';
 import 'package:c143/tw_views/animated_scale.dart';
@@ -41,12 +42,12 @@ class OverlayGuide7Rank {
             guideContext: guideContext!,
             onClose: () async {
               close();
-              MainTreeController.to.saveGuideIndexData(MainTreeController.guide7);
+              MainTreeController.to.saveGuideIndexData(
+                MainTreeController.guide7,
+              );
               MainController.to.resetIndex(MainController.quizIndex);
 
-
               // MainQuizController.to.initQuizGuideDatusssss();
-
             },
           ),
         );
@@ -85,10 +86,18 @@ class _Guide7RankWidgetState extends State<Guide7RankWidget> {
   Duration animD = Duration(milliseconds: 200);
   double startScale = 0.8;
   String _text = "";
-  String text = "You’ve outpaced 65% of NEW USERS in earnings progress! ";
-  String text2 = "You’ve entered the COIN OUT PREP ZONE! 🎉 ";
-  String text3 = "Look! This spot will be YOURS SOON!! 🏆💸";
-  String text4 = "Dare to challenge the COIN LEADERBOARD TOP SPOT?! 🏆💥";
+
+  String get text => "You’ve outpaced 65% of NEW USERS in earnings progress! ";
+
+  String get text2 => TwPackageABC143.isPackageB()
+      ? "You’ve entered the CASH OUT PREP ZONE! 🎉"
+      : "You’ve entered the COIN OUT PREP ZONE! 🎉 ";
+
+  String get text3 => "Look! This spot will be YOURS SOON!! 🏆💸";
+
+  String get text4 => TwPackageABC143.isPackageB()
+      ? "Dare to challenge the CASH LEADERBOARD TOP SPOT?! 🏆💥"
+      : "Dare to challenge the COIN LEADERBOARD TOP SPOT?! 🏆💥";
 
   Timer? _timer;
   Timer? _timer2;
@@ -236,7 +245,6 @@ class _Guide7RankWidgetState extends State<Guide7RankWidget> {
                                         ),
                                 ),
 
-
                                 Positioned(
                                   top: -130.h,
                                   left: 0,
@@ -290,18 +298,17 @@ class _Guide7RankWidgetState extends State<Guide7RankWidget> {
                                   left: -topLeftPosition.dx,
                                   right: -topLeftPosition.dx,
                                   child: AnimatedSize(
-                                    duration: Duration(milliseconds:300),
+                                    duration: Duration(milliseconds: 300),
                                     alignment: Alignment.topCenter,
                                     child: _text == text4
                                         ? Image.asset(
-                                      Assets.twimg.guide7SprintTxt.path,
-                                      width: 272.w,
-                                      height: 80.h,
-                                    )
+                                            Assets.twimg.guide7SprintTxt.path,
+                                            width: 272.w,
+                                            height: 80.h,
+                                          )
                                         : const SizedBox(),
                                   ),
                                 ),
-
                               ],
                             ),
                           ],
@@ -334,8 +341,6 @@ class _Guide7RankWidgetState extends State<Guide7RankWidget> {
   }
 
   Widget btnClaim() {
-
-
     return Center(
       child: GestureDetector(
         onTap: onClaim,
@@ -361,7 +366,7 @@ class _Guide7RankWidgetState extends State<Guide7RankWidget> {
               ),
               Center(
                 child: TwTxtBorderC143(
-                  text: "SPRINT FOR COINS",
+                  text: TwPackageABC143.isPackageB()?"SPRINT FOR CASH!":"SPRINT FOR COINS!",
                   fontSize: 20.sp,
                   fontWeight: FontWeight.w900,
                   fontColor: Color(0xffffffff),
@@ -578,6 +583,7 @@ class _Guide7ScaleOverlayAnimState extends State<_Guide7ScaleOverlayAnim>
       ),
     );
   }
+
   @override
   void dispose() {
     // TODO: implement dispose

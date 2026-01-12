@@ -15,7 +15,9 @@ import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class MainTopB extends StatefulWidget {
-  const MainTopB({super.key});
+  const MainTopB({super.key, this.hasGuide = false});
+
+  final bool hasGuide;
 
   @override
   State<MainTopB> createState() => _MainTopBState();
@@ -76,8 +78,8 @@ class _MainTopBState extends State<MainTopB> {
                   String icon = MainCashController.to.payIconMainTop();
                   return Image.asset(
                     icon,
-                    width: 88.w*0.8,
-                    height: 76.h*0.8,
+                    width: 88.w * 0.8,
+                    height: 76.h * 0.8,
                     fit: BoxFit.contain,
                   );
                 }),
@@ -104,7 +106,10 @@ class _MainTopBState extends State<MainTopB> {
                               children: [
                                 Builder(
                                   builder: (context) {
-                                    overlayCoinMain.targetContext = context;
+                                    if (!widget.hasGuide) {
+                                      overlayCoinMain.targetContext = context;
+                                    }
+
                                     return Image.asset(
                                       Assets.twimgB.money.path,
                                       width: 24.w,
@@ -156,7 +161,9 @@ class _MainTopBState extends State<MainTopB> {
                                   height: 28.h,
                                   child: Stack(
                                     children: [
-                                      Image.asset(Assets.twimgB.btnWithdraw.path),
+                                      Image.asset(
+                                        Assets.twimgB.btnWithdraw.path,
+                                      ),
                                       Center(
                                         child: TwTxtBorderC143(
                                           text: "Withdraw",

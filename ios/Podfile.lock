@@ -14,6 +14,8 @@ PODS:
     - Ads-Global/TikTokBusinessSDK
   - Ads-Global/PangleSDK (7.8.5.5)
   - Ads-Global/TikTokBusinessSDK (7.8.5.5)
+  - app_settings (6.1.2):
+    - Flutter
   - app_tracking_transparency (0.0.1):
     - Flutter
   - applovin_max (4.6.0):
@@ -339,6 +341,7 @@ PODS:
 
 DEPENDENCIES:
   - adjust_sdk (from `.symlinks/plugins/adjust_sdk/ios`)
+  - app_settings (from `.symlinks/plugins/app_settings/ios`)
   - app_tracking_transparency (from `.symlinks/plugins/app_tracking_transparency/ios`)
   - applovin_max (from `.symlinks/plugins/applovin_max/ios`)
   - AppLovinMediationBidMachineAdapter
@@ -440,6 +443,8 @@ SPEC REPOS:
 EXTERNAL SOURCES:
   adjust_sdk:
     :path: ".symlinks/plugins/adjust_sdk/ios"
+  app_settings:
+    :path: ".symlinks/plugins/app_settings/ios"
   app_tracking_transparency:
     :path: ".symlinks/plugins/app_tracking_transparency/ios"
   applovin_max:
@@ -490,6 +495,7 @@ SPEC CHECKSUMS:
   adjust_sdk: 3dde244a99742bcff3f87d3ea2c78eb567250d64
   AdjustSignature: 682d788005a6e21557913a9dc0381ae8d943ca0a
   Ads-Global: c9bbbcad7464172eb7005a4ad3e0d24b819de0a7
+  app_settings: 0341ec6daa4f0c50f5a421bf0ad7c36084db6e90
   app_tracking_transparency: 3d84f147f67ca82d3c15355c36b1fa6b66ca7c92
   applovin_max: a921604ba97b0400e3cdf4768da0aa53e756978e
   AppLovinMediationBidMachineAdapter: 782a7169e708fac8370238d6f7cd927ca8140936
@@ -568,6 +574,6 @@ SPEC CHECKSUMS:
   VungleAds: 40e87d1eaba17ac818b0f94461fd8ed21ad768dc
   webview_flutter_wkwebview: 8ebf4fded22593026f7dbff1fbff31ea98573c8d
 
-PODFILE CHECKSUM: 3f5ce0feaab8e7ec26e0eca4cf8db9cac7122c47
+PODFILE CHECKSUM: 421cfd2d7b8c5fffb5fe05ae48e47cd2c8de8978
 
 COCOAPODS: 1.16.2

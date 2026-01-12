@@ -235,7 +235,7 @@ class _Guide0BGuideWidgetState extends State<Guide0BGuideWidget> {
                       width: 280.h,
                       height: 280.h,
                       child: Stack(
-                        children: [TwLottieCommon(type: type, animate: result)],
+                        children: [TwLottieCommon(type: type, animate: true)],
                       ),
                     ),
                   ),

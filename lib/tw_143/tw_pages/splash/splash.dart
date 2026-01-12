@@ -143,7 +143,13 @@ class _TwSplashState extends State<TwSplash> {
               right: 0,
               top: 240.h,
               child: Center(
-                child:  TwLottieCommon(type: TwPackageABC143.isPackageB()?EnumTwLottttieJson.monn5:EnumTwLottttieJson.coin5, animate: true),
+                child: TwLottieCommon(
+                  type:
+                      TwPackageABC143.boxPackName() == TwPackageABC143.packageB
+                      ? EnumTwLottttieJson.monn5
+                      : EnumTwLottttieJson.coin5,
+                  animate: true,
+                ),
               ),
             ),
             Positioned(
