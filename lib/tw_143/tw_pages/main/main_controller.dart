@@ -12,6 +12,7 @@ import 'package:c143/tw_143/tw_pages/guide/guide_old.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide_test_animated.dart';
 import 'package:c143/tw_143/tw_pages/main_cash/main_cash_controller.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
+import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
 import 'package:c143/tw_notification/overlay_notify.dart';
 import 'package:get/get.dart';
 
@@ -67,7 +68,7 @@ class MainController extends GetxController {
       String? data = MainTreeController.to.guideIndexData();
 
       if(data == MainTreeController.guide10){
-        OverlayGuide11HomeBonus().show(coins: 10);
+        OverlayGuide11HomeBonus().show(coins:TwPackageABC143.isPackageB()?5: 10);
 
       }
 

@@ -83,7 +83,7 @@ class _MainTreeState extends State<MainTree> {
         OverlayGuide10Quiz3().show(coins: 10, onBtn: (value) {});
       } else if (data == MainTreeController.guide10) {
         // MainController.to.resetIndex(MainController.quizIndex);
-        OverlayGuide11HomeBonus().show(coins: 10);
+        OverlayGuide11HomeBonus().show(coins: TwPackageABC143.isPackageB()?5:10);
       } else if (data == MainTreeController.guide11) {
         OverlayGuide12HomeReward().show(coins: 10, onBtn: (value) {});
       } else if (data == MainTreeController.guide12) {

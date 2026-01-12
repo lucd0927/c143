@@ -51,14 +51,13 @@ class _MainCenterState extends State<MainCenter> {
                 EnumTwLottttieJson type = MainTreeController.to.lottieType();
                 bool result = MainTreeController.to.curHasWatering.value;
                 return GestureDetector(
-                  onTap: (){
+                  onTap: () {
                     // if(!MainTreeController.to.curHasWatering.value){
                     //   MainTreeController.to.curHasWatering.value = true;
                     //   Future.delayed(Duration(milliseconds: 10000),(){
                     //     MainTreeController.to.curHasWatering.value = false;
                     //   });
                     // }
-
                   },
                   child: Container(
                     width: 280.h,
@@ -247,7 +246,9 @@ class _MainCenterState extends State<MainCenter> {
 
   coinWidget1() {
     return Obx(() {
-      String leftTime = TwPackageABC143.isPackageB()?"": MainTreeController.to.curLeftTimeCoin1.value;
+      String leftTime = TwPackageABC143.isPackageB()
+          ? ""
+          : MainTreeController.to.curLeftTimeCoin1.value;
 
       double count = 100;
       bool showSun = MainTreeController.to.showMoneyStatusSunIcon();
@@ -263,15 +264,13 @@ class _MainCenterState extends State<MainCenter> {
             txtBottom: count.toStringAsFixed(0),
             txtTop: leftTime,
             treeType: TwEnumTreeType.sun,
-            showAd: false,
+            showAd: TwPackageABC143.isPackageB(),
             icon: moneyIcon,
             onClick: () async {
-              // bool result = await TwCommonAds().showInterstitialAd(
-              //   adPosId: TwAdsPosId.test,
-              // );
-              // if (!result) {
-              //   return;
-              // }
+              if(TwPackageABC143.isPackageB()){
+                _onCoinB(coins: count,showSun: showSun);
+                return;
+              }
               if (showSun) {
                 count = 10;
               }
@@ -294,7 +293,9 @@ class _MainCenterState extends State<MainCenter> {
 
   coinWidget3() {
     return Obx(() {
-      String leftTime = TwPackageABC143.isPackageB()?"": MainTreeController.to.curLeftTimeCoin3.value;
+      String leftTime = TwPackageABC143.isPackageB()
+          ? ""
+          : MainTreeController.to.curLeftTimeCoin3.value;
 
       double count = 100;
       bool showSun = MainTreeController.to.showMoneyStatusSunIcon();
@@ -302,6 +303,7 @@ class _MainCenterState extends State<MainCenter> {
       if (showSun) {
         count = 1000;
       }
+      bool showAd = TwPackageABC143.isPackageB();
       return Row(
         children: [
           SizedBox(width: 100.w),
@@ -310,33 +312,42 @@ class _MainCenterState extends State<MainCenter> {
             txtBottom: count.toStringAsFixed(0),
             txtTop: leftTime,
             treeType: TwEnumTreeType.sun,
-            showAd: false,
+            showAd: showAd,
             icon: moneyIcon,
             onClick: () async {
-              // bool result = await TwCommonAds().showInterstitialAd(
-              //   adPosId: TwAdsPosId.test,
-              // );
-              // if (!result) {
-              //   return;
-              // }
-              if (showSun) {
-                count = 10;
+              if(TwPackageABC143.isPackageB()){
+                _onCoinB(coins: count,showSun: showSun);
+                return;
               }
-              if (MainTreeController.to.curLeftTimeCoin3.isEmpty) {
-                MainTreeController.to.onAddMoneyyyy(
-                  count,
-                  onEnd: () {
-                    MainTreeController.to.resetCoin3Time();
-                  },
-                );
-              } else {
-                twToast(text: "You can claim it after the countdown ends");
-              }
+              _onCoinA3(count, showSun);
             },
           ),
         ],
       );
     });
+  }
+
+  _onCoinB({required double coins, required bool showSun}) async {
+    bool result = await TwCommonAds().showRewardAd(adPosId: TwAdsPosId.test);
+    if (!result) {
+      return;
+    }
+  }
+
+  _onCoinA3(double count, bool showSun) {
+    if (showSun) {
+      count = 10;
+    }
+    if (MainTreeController.to.curLeftTimeCoin3.isEmpty) {
+      MainTreeController.to.onAddMoneyyyy(
+        count,
+        onEnd: () {
+          MainTreeController.to.resetCoin3Time();
+        },
+      );
+    } else {
+      twToast(text: "You can claim it after the countdown ends");
+    }
   }
 
   centerItem({
@@ -381,7 +392,7 @@ class _MainCenterState extends State<MainCenter> {
         minS: 0.7,
         child: Builder(
           builder: (context) {
-            Widget child =  Container(
+            Widget child = Container(
               width: width,
               height: width,
               color: Colors.transparent,
@@ -434,7 +445,7 @@ class _MainCenterState extends State<MainCenter> {
               OverlayGuide4Fertilize.guideContext = context;
             }
             return child;
-          }
+          },
         ),
       ),
     );
@@ -519,12 +530,14 @@ class _MainCenterState extends State<MainCenter> {
   }
 
   void onWater() async {
-    MainTreeController.to.onAddWaterCount(onEnd: () {},showAd: true);
+    MainTreeController.to.onAddWaterCount(onEnd: () {}, showAd: true);
   }
 
   coinWidget2() {
     return Obx(() {
-      String leftTime = TwPackageABC143.isPackageB()?"":MainTreeController.to.curLeftTimeCoin2.value;
+      String leftTime = TwPackageABC143.isPackageB()
+          ? ""
+          : MainTreeController.to.curLeftTimeCoin2.value;
       double count = 100;
       String? data = MainTreeController.to.guideIndexData();
       bool showAd = data != MainTreeController.guide1;
@@ -548,12 +561,10 @@ class _MainCenterState extends State<MainCenter> {
                 icon: moneyIcon,
 
                 onClick: () async {
-                  // bool result = await TwCommonAds().showInterstitialAd(
-                  //   adPosId: TwAdsPosId.test,
-                  // );
-                  // if (!result) {
-                  //   return;
-                  // }
+                  if(TwPackageABC143.isPackageB()){
+                    _onCoinB(coins: count,showSun: showSun);
+                    return;
+                  }
                   if (showSun) {
                     count = 10;
                   }
@@ -569,8 +580,6 @@ class _MainCenterState extends State<MainCenter> {
                   }
                 },
               );
-              // OverlayGuide2Coin.guideChild = child;
-              // OverlayGuide2Coin.guideContext = context;
 
               return child;
             },
