@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:c143/tw_143/tw_common/base_number.dart';
+import 'package:c143/tw_143/tw_common/firebase_json/number_json.dart';
 import 'package:c143/tw_143/tw_common/overlay/overlay_get.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide10_quiz3.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide8_quiz1.dart';
@@ -248,8 +249,13 @@ class MainQuizController extends GetxController {
     } else {
       if (hasClickRight) {
         double coins = TwBaseNumber.coins();
+        if(TwPackageABC143.isPackageB()){
+          coins = TwNumberJson.moneyAnswer();
+        }
+
         OverlayGetCoins().show(
           coins: coins,
+          type: TwEnumGetCoinsType.quizMoney,
           onBtn: () {
             __nextQuestion();
           },

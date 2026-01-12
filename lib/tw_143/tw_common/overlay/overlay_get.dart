@@ -20,6 +20,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
+enum TwEnumGetCoinsType { treeMoney, quizMoney, wheelMoney,hongbaoRainMoney }
+
 class OverlayGetCoins {
   OverlayEntry? _overlayEntry;
 
@@ -31,6 +33,7 @@ class OverlayGetCoins {
     required double coins,
     required VoidCallback onBtn,
     required VoidCallback onClose,
+    required TwEnumGetCoinsType type,
   }) {
     _overlayEntry = null;
 
@@ -180,7 +183,9 @@ class _GetCoinsWidgetState extends State<GetCoinsWidget> {
                                   color: Colors.red.withValues(alpha: 0.0),
                                   child: Center(
                                     child: TwTxtBorderC143(
-                                      text: TwPackageABC143.isPackageB()?"Earn Money":"Earn Coins",
+                                      text: TwPackageABC143.isPackageB()
+                                          ? "Earn Money"
+                                          : "Earn Coins",
                                       fontSize: 16.sp,
                                       fontWeight: FontWeight.w900,
                                       fontColor: Color(0xffffffff),
@@ -197,7 +202,7 @@ class _GetCoinsWidgetState extends State<GetCoinsWidget> {
                                     angle: -0.9,
                                     topLeft: false,
                                     child: Image.asset(
-                                     MainTreeController.to.moneyIconDialog(),
+                                      MainTreeController.to.moneyIconDialog(),
                                       width: 100.h,
                                       height: 100.h,
                                     ),
@@ -297,6 +302,7 @@ class _GetCoinsWidgetState extends State<GetCoinsWidget> {
                     foreground: Color(0xff22431B),
                   ),
                 ),
+
                 // Positioned(
                 //   top: -10.h,
                 //   right: -5.h,
@@ -306,12 +312,13 @@ class _GetCoinsWidgetState extends State<GetCoinsWidget> {
                 //     height: 28.h,
                 //   ),
                 // ),
-
               ],
             ),
           ),
         ),
-        crossFadeState:showAnimated?CrossFadeState.showSecond: CrossFadeState.showFirst,
+        crossFadeState: showAnimated
+            ? CrossFadeState.showSecond
+            : CrossFadeState.showFirst,
         duration: Duration(milliseconds: 300),
       ),
     );

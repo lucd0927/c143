@@ -1,10 +1,12 @@
 import 'dart:math';
 
 import 'package:c143/gen/assets.gen.dart';
+import 'package:c143/tw_143/tw_common/firebase_json/number_json.dart';
 import 'package:c143/tw_143/tw_common/lottieeee/gesture.dart';
 import 'package:c143/tw_143/tw_common/overlay/overlay_get.dart';
 import 'package:c143/tw_143/tw_pages/main/main_controller.dart';
 import 'package:c143/tw_143/tw_pages/main_spin/main_spin_controller.dart';
+import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
 import 'package:c143/tw_base/tw_gj/logC143.dart';
 import 'package:c143/tw_views/animated_count.dart';
 import 'package:c143/tw_views/animated_scale.dart';
@@ -17,6 +19,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:hive_ce_flutter/adapters.dart';
+import 'package:tuple/tuple.dart';
 
 double _imgWidth = 336.h;
 double _imgHeight = 324.h;
@@ -75,6 +78,7 @@ class _PositionItemsState extends State<PositionItems>
   late AnimationController _controller;
   late Animation<int> _animation;
   List<double> tmpCoins = [];
+  List<Tuple3<String, double, double>> tmpMoneys= [];
 
   @override
   void initState() {
@@ -90,6 +94,19 @@ class _PositionItemsState extends State<PositionItems>
   }
 
   generatedCoins() {
+    if (TwPackageABC143.isPackageB()) {
+      tmpCoins = [];
+      tmpMoneys = [];
+      List<Tuple3<String, double, double>> tmpTupe3 = TwNumberJson.moneyWheel();
+      tmpMoneys = tmpTupe3;
+      for (int i = 0; i < tmpTupe3.length; i++) {
+        var daaa = tmpTupe3[i];
+        tmpCoins.add(daaa.item2);
+      }
+
+      return;
+    }
+
     tmpCoins = [];
     for (int i = 0; i < 18; i++) {
       int coin = 100 + Random().nextInt(90);
@@ -150,6 +167,7 @@ class _PositionItemsState extends State<PositionItems>
                 generatedCoins();
               });
             },
+            type: TwEnumGetCoinsType.wheelMoney,
             onClose: () {
               setState(() {
                 generatedCoins();
@@ -336,7 +354,6 @@ class _PositionItemsState extends State<PositionItems>
                 //     height: 28.h,
                 //   ),
                 // ),
-
                 Positioned(
                   top: -0.h,
                   right: -5.h,
@@ -374,17 +391,13 @@ class _PositionItemsState extends State<PositionItems>
   _indexItem({required int index}) {
     String icon = Assets.twimg.wheelCoin.path;
     Widget txt = const SizedBox();
-    if (index == 0 ||
-        index == 4 ||
-        index == 5 ||
-        index == 6 ||
-        index == 7 ||
-        index == 8 ||
-        index == 9 ||
-        index == 10 ||
-        true ||
-        index == 11) {
-      icon = Assets.twimg.wheelCoin.path;
+    String type = tmpMoneys[index].item1;
+
+
+    if (type.toUpperCase() == "CASH" || !TwPackageABC143.isPackageB()) {
+      icon = TwPackageABC143.isPackageB()
+          ? Assets.twimgB.moneyFloating.path
+          : Assets.twimg.wheelCoin.path;
 
       txt = Center(
         // child: TwTxtGraBorder(
@@ -395,8 +408,11 @@ class _PositionItemsState extends State<PositionItems>
         // ),
         child: TwAnimatedCountttt(
           value: tmpCoins[index],
-          fractionDigits: 0,
-          textStyle: TextStyle(fontWeight: FontWeight.w700, fontSize: 20.sp),
+          fractionDigits: TwPackageABC143.isPackageB() ? 2 : 0,
+          textStyle: TextStyle(
+            fontWeight: FontWeight.w700,
+            fontSize: TwPackageABC143.isPackageB() ? 16.sp : 20.sp,
+          ),
           textGradient: LinearGradient(
             colors: [Color(0xffFFDF12), Color(0xffFFAA00)],
             end: Alignment.bottomCenter,
@@ -423,9 +439,9 @@ class _PositionItemsState extends State<PositionItems>
           ),
         ),
       );
-    } else if (index == 2) {
+    } else if (type.toUpperCase() == "CASH_RAIN") {
       icon = Assets.twimg.wheelFeiliang.path;
-      icon = Assets.twimg.wheelCoin.path;
+      // icon = Assets.twimg.wheelCoin.path;
       txt = Positioned(
         left: 0,
         right: 0,
@@ -433,16 +449,16 @@ class _PositionItemsState extends State<PositionItems>
         top: 0,
         child: Center(
           child: TwTxtGraBorderC143(
-            text: "${tmpCoins[index].toStringAsFixed(0)}",
+            text: "",
             fontWeight: FontWeight.w700,
             fontSize: 20.sp,
             strokeColor: Color(0xffBD5500),
           ),
         ),
       );
-    } else if (index == 3) {
+    } else if (type.toUpperCase() == "2X") {
       icon = Assets.twimg.wheelDoubleex.path;
-      icon = Assets.twimg.wheelCoin.path;
+      // icon = Assets.twimg.wheelCoin.path;
       txt = Positioned(
         left: 0,
         right: 0,
@@ -450,7 +466,7 @@ class _PositionItemsState extends State<PositionItems>
         top: 0,
         child: Center(
           child: TwTxtGraBorderC143(
-            text: "??",
+            text: "",
             fontWeight: FontWeight.w700,
             fontSize: 20.sp,
             strokeColor: Color(0xffBD5500),

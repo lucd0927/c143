@@ -37,7 +37,7 @@ class OverlayHongbaoyu {
             onClose: (value) async {
               close();
 
-              OverlayGetCoins().show(coins: value, onBtn: (){}, onClose: (){});
+              OverlayGetCoins().show(coins: value, onBtn: (){}, onClose: (){},type: TwEnumGetCoinsType.hongbaoRainMoney);
 
             },
           ),
