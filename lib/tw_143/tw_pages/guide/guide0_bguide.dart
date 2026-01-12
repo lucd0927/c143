@@ -149,9 +149,6 @@ class _Guide0BGuideWidgetState extends State<Guide0BGuideWidget> {
                 Positioned.fill(child: stepWidget()),
 
                 Positioned(left: 0, right: 0, bottom: 90.h, child: btnClaim()),
-
-
-
               ],
             ),
           ),
@@ -221,6 +218,14 @@ class _Guide0BGuideWidgetState extends State<Guide0BGuideWidget> {
             height: double.infinity,
             child: Stack(
               children: [
+                Image.asset(
+                  Assets.twimg.mainBg.path,
+                  width: double.infinity,
+                  height: double.infinity,
+
+                  fit: BoxFit.fill,
+                ),
+                StarryBeamScene(),
                 Positioned(
                   left: 0,
                   right: 0,
@@ -367,26 +372,7 @@ class _Guide0BGuideWidgetState extends State<Guide0BGuideWidget> {
                 width: 312.w,
                 height: 132.h,
               ),
-              // Container(
-              //   height: 100.h,
-              //   child: Center(
-              //     child: TwTxtGraBorderC143(
-              //       text: "Congrats!",
-              //       gradient: LinearGradient(
-              //         colors: [
-              //           Color(0xffEBD462),
-              //           Color(0xffFFF692),
-              //           Color(0xffFFD92E),
-              //         ],
-              //         end: Alignment.bottomCenter,
-              //         begin: Alignment.topCenter,
-              //       ),
-              //
-              //       fontSize: 40.sp,
-              //       fontWeight: FontWeight.w900,
-              //     ),
-              //   ),
-              // ),
+
               SizedBox(height: 60.h),
               Center(
                 child: Container(
@@ -729,29 +715,6 @@ class _Guide0ScaleOverlayAnimState extends State<_Guide0ScaleOverlayAnim>
   }
 }
 
-
-
-
-
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: const Scaffold(
-        backgroundColor: Colors.black,
-        body: StarryBeamScene(),
-      ),
-    );
-  }
-}
-
 class StarryBeamScene extends StatefulWidget {
   const StarryBeamScene({super.key});
 
@@ -764,7 +727,7 @@ class _StarryBeamSceneState extends State<StarryBeamScene>
   late AnimationController _controller;
   final List<StarParticle> _particles = [];
   final Random _random = Random();
-  final int _particleCount = 60; // 粒子数量
+  final int _particleCount = 30; // 粒子数量
 
   @override
   void initState() {
@@ -784,11 +747,16 @@ class _StarryBeamSceneState extends State<StarryBeamScene>
   // 生成随机粒子
   StarParticle _generateParticle({bool initial = false}) {
     return StarParticle(
-      x: _random.nextDouble(), // 0.0 到 1.0 (屏幕宽度的比例)
-      y: initial ? _random.nextDouble() : 1.1, // 初始随机分布，后续从底部生成
-      size: _random.nextDouble() * 6 + 2, // 大小 2 - 8
-      opacity: _random.nextDouble() * 0.5 + 0.3, // 透明度 0.3 - 0.8
-      speed: _random.nextDouble() * 0.002 + 0.0005, // 漂浮速度
+      x: _random.nextDouble(),
+      // 0.0 到 1.0 (屏幕宽度的比例)
+      y: initial ? _random.nextDouble() : 1.1,
+      // 初始随机分布，后续从底部生成
+      size: _random.nextDouble() * 6 + 2,
+      // 大小 2 - 8
+      opacity: _random.nextDouble() * 0.5 + 0.3,
+      // 透明度 0.3 - 0.8
+      speed: _random.nextDouble() * 0.002 + 0.0005,
+      // 漂浮速度
       blur: _random.nextDouble() * 4 + 1, // 模糊程度
     );
   }
@@ -855,7 +823,7 @@ class BeamPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     // 1. 绘制深色背景 (带一点暖色调的黑)
-    final bgPaint = Paint()..color = const Color(0xFF0F1215);
+    final bgPaint = Paint()..color = Color(0xFF0F1215).withValues(alpha: 0.0);
     canvas.drawRect(Offset.zero & size, bgPaint);
 
     // 2. 绘制顶部光束 (The Beam)
@@ -879,7 +847,7 @@ class BeamPainter extends CustomPainter {
       final particlePaint = Paint()
         ..color = const Color(0xFFFFE57F).withOpacity(particle.opacity)
         ..style = PaintingStyle.fill
-      // 关键：高斯模糊蒙版，创造发光/虚焦效果
+        // 关键：高斯模糊蒙版，创造发光/虚焦效果
         ..maskFilter = MaskFilter.blur(BlurStyle.normal, particle.blur);
 
       final position = Offset(

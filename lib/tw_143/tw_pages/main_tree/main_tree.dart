@@ -114,6 +114,7 @@ class _MainTreeState extends State<MainTree> {
               fit: BoxFit.fill,
               gaplessPlayback: true,
             ),
+            StarryBeamScene(),
             Positioned.fill(child: _buildExtendNestedScrollerView()),
           ],
         ),
