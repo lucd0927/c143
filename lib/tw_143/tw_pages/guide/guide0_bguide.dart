@@ -183,7 +183,7 @@ class _Guide0BGuideWidgetState extends State<Guide0BGuideWidget> {
     return Center(child: _Guide0ScaleOverlayAnim());
   }
 
-  Duration _duration = Duration(milliseconds: 300);
+  Duration _duration = Duration(milliseconds: 400);
 
   stepWidget1() {
     Widget child = stepIndex == 1
@@ -258,10 +258,11 @@ class _Guide0BGuideWidgetState extends State<Guide0BGuideWidget> {
               ],
             ),
           )
-        : SizedBox();
+        : SizedBox(   width: double.infinity,
+      );
     return AnimatedSize(
       duration: _duration,
-      alignment: Alignment.topLeft,
+      alignment: Alignment.topCenter,
       child: child,
     );
   }
