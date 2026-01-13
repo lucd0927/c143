@@ -285,7 +285,7 @@ class TwNumberJson {
       for (int i = 0; i < length; i++) {
         Tuple3<String, double, double> tmpTup3 = Tuple3(
           "Cash",
-          Random().nextDouble() * 10,
+          Random().nextDouble() * 10+5,
           0.0,
         );
         tmpDataTuple3s.add(tmpTup3);

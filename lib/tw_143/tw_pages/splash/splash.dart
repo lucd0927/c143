@@ -275,7 +275,7 @@ class _SplashProgressState extends State<SplashProgress> {
                   value: startTime, // 表示 60%
                   gradientColors: [Color(0xffd9e42e), Color(0xff7b5d17)],
                   height: 15.w,
-                  borderRadius: BorderRadius.circular(30.w),
+                  borderRadius: BorderRadius.circular(50.w),
                 ),
               ),
 
