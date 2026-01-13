@@ -24,6 +24,8 @@ import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
 import 'package:c143/tw_base/tw_gj/logC143.dart';
 import 'package:c143/tw_base/tw_gj/login_trackC143.dart';
 import 'package:c143/tw_hive/twhiveC143.dart';
+import 'package:c143/tw_notification/android_notification.dart';
+import 'package:c143/tw_notification/overlay_notify.dart';
 import 'package:extended_nested_scroll_view/extended_nested_scroll_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -93,6 +95,18 @@ class _MainTreeState extends State<MainTree> {
       if (TwLoginnnTrackC143.isFirstLoginToday &&
           TwLoginnnTrackC143.qidongduoshaoDay() > 1) {
         OverlayGuideOld().show(coins: 100, onBtn: (v) {});
+      }
+
+
+      bool showTz = true;
+      if (TwPackageABC143.isPackageB()) {
+        showTz = await TwNotificationnn().requestNotificationPermission();
+      }
+      twLooog("===OverlayGuide3BTrust==showTz:$showTz");
+      if (!showTz && data != null) {
+        OverlayTzNotify().show(onEnd: (){
+
+        });
       }
     });
   }

@@ -34,7 +34,7 @@ class MainSpinController extends GetxController {
       }
       tmpClickDailyCheck = false;
     }
-    // tmpSpinNum =30;
+    tmpSpinNum =30;
     curTwSpinNum = tmpSpinNum.obs;
     curClickDailyCheck = tmpClickDailyCheck.obs;
   }
