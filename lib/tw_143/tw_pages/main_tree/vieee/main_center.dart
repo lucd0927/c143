@@ -1,5 +1,6 @@
 import 'package:c143/gen/assets.gen.dart';
 import 'package:c143/tw_143/tw_common/lottieeee/common.dart';
+import 'package:c143/tw_143/tw_common/overlay/overlay_get_sun.dart';
 import 'package:c143/tw_143/tw_common/overlay/overlay_hongbaoyu.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide13_spin.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide1_water.dart';
@@ -256,19 +257,24 @@ class _MainCenterState extends State<MainCenter> {
       if (showSun) {
         count = 1000;
       }
+
+      if (TwPackageABC143.isPackageB()) {
+        count = MainTreeController.to.curCoin1.value;
+      }
+
       return Row(
         children: [
           SizedBox(width: 100.w),
           centerItem(
             width: 50.h,
-            txtBottom: count.toStringAsFixed(0),
+            txtBottom: count.toStringAsFixed(TwPackageABC143.isPackageB()?2:0),
             txtTop: leftTime,
-            treeType: TwEnumTreeType.sun,
+            treeType: TwEnumTreeType.coin,
             showAd: TwPackageABC143.isPackageB(),
             icon: moneyIcon,
             onClick: () async {
-              if(TwPackageABC143.isPackageB()){
-                _onCoinB(coins: count,showSun: showSun);
+              if (TwPackageABC143.isPackageB()) {
+                _onCoinB(coins: count, showSun: showSun,treeType: TwEnumTreeType.coin);
                 return;
               }
               if (showSun) {
@@ -303,20 +309,24 @@ class _MainCenterState extends State<MainCenter> {
       if (showSun) {
         count = 1000;
       }
+
+      if (TwPackageABC143.isPackageB()) {
+        count = MainTreeController.to.curCoin3.value;
+      }
       bool showAd = TwPackageABC143.isPackageB();
       return Row(
         children: [
           SizedBox(width: 100.w),
           centerItem(
             width: 50.h,
-            txtBottom: count.toStringAsFixed(0),
+            txtBottom: count.toStringAsFixed(TwPackageABC143.isPackageB()?2:0),
             txtTop: leftTime,
-            treeType: TwEnumTreeType.sun,
+            treeType: TwEnumTreeType.coin3,
             showAd: showAd,
             icon: moneyIcon,
             onClick: () async {
-              if(TwPackageABC143.isPackageB()){
-                _onCoinB(coins: count,showSun: showSun);
+              if (TwPackageABC143.isPackageB()) {
+                _onCoinB(coins: count, showSun: showSun,treeType: TwEnumTreeType.coin3);
                 return;
               }
               _onCoinA3(count, showSun);
@@ -327,11 +337,39 @@ class _MainCenterState extends State<MainCenter> {
     });
   }
 
-  _onCoinB({required double coins, required bool showSun}) async {
-    bool result = await TwCommonAds().showRewardAd(adPosId: TwAdsPosId.test);
-    if (!result) {
+  _onCoinB({
+    required double coins,
+    required bool showSun,
+    required TwEnumTreeType treeType,
+  }) async {
+    // bool result = await TwCommonAds().showRewardAd(adPosId: TwAdsPosId.test);
+    // if (!result) {
+    //   return;
+    // }
+
+    bool showSun = MainTreeController.to.showMoneyStatusSunIcon();
+
+    if(showSun){
+      coins = coins /100;
+
+      OverlayGetSun().show(coins: coins, onClose: (){});
       return;
     }
+
+    MainTreeController.to.onAddMoneyyyy(
+      coins,
+      onEnd: () {
+        if(treeType == TwEnumTreeType.coin){
+          MainTreeController.to.resetCoin1Time();
+        }else if(treeType == TwEnumTreeType.coin2Guide){
+          MainTreeController.to.resetCoin2Time();
+        }else if(treeType == TwEnumTreeType.coin3){
+          MainTreeController.to.resetCoin3Time();
+        }
+
+
+      },
+    );
   }
 
   _onCoinA3(double count, bool showSun) {
@@ -437,7 +475,7 @@ class _MainCenterState extends State<MainCenter> {
             if (treeType == TwEnumTreeType.water) {
               OverlayGuide1Water.guideChild = child;
               OverlayGuide1Water.guideContext = context;
-            } else if (treeType == TwEnumTreeType.coinGuide) {
+            } else if (treeType == TwEnumTreeType.coin2Guide) {
               OverlayGuide2Coin.guideChild = child;
               OverlayGuide2Coin.guideContext = context;
             } else if (treeType == TwEnumTreeType.fertilize) {
@@ -540,13 +578,21 @@ class _MainCenterState extends State<MainCenter> {
           : MainTreeController.to.curLeftTimeCoin2.value;
       double count = 100;
       String? data = MainTreeController.to.guideIndexData();
-      bool showAd = data != MainTreeController.guide1;
+
       bool showSun = MainTreeController.to.showMoneyStatusSunIcon();
       String moneyIcon = MainTreeController.to.moneyIconTreeChild();
       if (showSun) {
         count = 1000;
       }
-      showAd = TwPackageABC143.isPackageB();
+
+      if (TwPackageABC143.isPackageB()) {
+        count = MainTreeController.to.curCoin2.value;
+        bool showFirstCount = data == MainTreeController.guide1;
+        if(showFirstCount){
+          count = 2;
+        }
+      }
+      bool showAd = TwPackageABC143.isPackageB();
       return Row(
         children: [
           SizedBox(width: 90.w),
@@ -555,14 +601,14 @@ class _MainCenterState extends State<MainCenter> {
               Widget child = centerItem(
                 showAd: showAd,
                 txtTop: leftTime,
-                treeType: TwEnumTreeType.coinGuide,
+                treeType: TwEnumTreeType.coin2Guide,
                 width: 60.h,
-                txtBottom: count.toStringAsFixed(0),
+                txtBottom: count.toStringAsFixed(TwPackageABC143.isPackageB()?2:0),
                 icon: moneyIcon,
 
                 onClick: () async {
-                  if(TwPackageABC143.isPackageB()){
-                    _onCoinB(coins: count,showSun: showSun);
+                  if (TwPackageABC143.isPackageB()) {
+                    _onCoinB(coins: count, showSun: showSun,treeType: TwEnumTreeType.coin2Guide);
                     return;
                   }
                   if (showSun) {

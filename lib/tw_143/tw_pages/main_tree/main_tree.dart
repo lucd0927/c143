@@ -25,6 +25,7 @@ import 'package:c143/tw_base/tw_gj/logC143.dart';
 import 'package:c143/tw_base/tw_gj/login_trackC143.dart';
 import 'package:c143/tw_hive/twhiveC143.dart';
 import 'package:c143/tw_notification/android_notification.dart';
+import 'package:c143/tw_notification/ios_notification.dart';
 import 'package:c143/tw_notification/overlay_notify.dart';
 import 'package:extended_nested_scroll_view/extended_nested_scroll_view.dart';
 import 'package:flutter/material.dart';
@@ -97,18 +98,22 @@ class _MainTreeState extends State<MainTree> {
         OverlayGuideOld().show(coins: 100, onBtn: (v) {});
       }
 
+      initTz();
 
-      bool showTz = true;
-      if (TwPackageABC143.isPackageB()) {
-        showTz = await TwNotificationnn().requestNotificationPermission();
-      }
+    });
+  }
+
+  initTz()async{
+    await TwNotificationIosC143().initC143();
+    if (TwPackageABC143.isPackageB() ) {
+      bool  showTz = await TwNotificationnn().requestNotificationPermission();
       twLooog("===OverlayGuide3BTrust==showTz:$showTz");
-      if (!showTz && data != null) {
+      if (!showTz) {
         OverlayTzNotify().show(onEnd: (){
 
         });
       }
-    });
+    }
   }
 
   @override

@@ -340,7 +340,7 @@ class TwNumberJson {
         }
       }
     }
-
+    twLooog("======money:$money");
     return money;
   }
 

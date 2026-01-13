@@ -8,6 +8,7 @@ import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
 import 'package:c143/tw_base/tw_ad/ads_idddddC143.dart';
 import 'package:c143/tw_base/tw_ad/base_ads.dart';
 import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
+import 'package:c143/tw_base/tw_gj/countryC143.dart';
 import 'package:c143/tw_base/tw_gj/logC143.dart';
 import 'package:c143/tw_views/animated_count.dart';
 import 'package:c143/tw_views/animated_scale.dart';
@@ -53,7 +54,7 @@ class OverlayGetCoins {
               //   return;
               // }
               MainTreeController.to.onAddMoneyyyy(
-                coins,
+                value,
                 onEnd: () {
                   onBtn();
                 },
@@ -113,6 +114,10 @@ class _GetCoinsWidgetState extends State<GetCoinsWidget> {
         setState(() {
           showAnimated = true;
           _coins = widget.coins;
+          bool showSun = MainTreeController.to.showMoneyStatusSunIcon();
+          if(showSun){
+            _coins = _coins/100;
+          }
         });
       }
     });
@@ -193,7 +198,7 @@ class _GetCoinsWidgetState extends State<GetCoinsWidget> {
                                     ),
                                   ),
                                 ),
-                                SizedBox(height: 22.h),
+                                SizedBox(height: 28.h),
                                 TwAScaleC143(
                                   child: TwShiningEffect(
                                     duration: Duration(milliseconds: 2000),
@@ -208,7 +213,7 @@ class _GetCoinsWidgetState extends State<GetCoinsWidget> {
                                     ),
                                   ),
                                 ),
-                                SizedBox(height: 8.h),
+                                SizedBox(height: 4.h),
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
@@ -221,7 +226,7 @@ class _GetCoinsWidgetState extends State<GetCoinsWidget> {
                                     TwAnimatedCountttt(
                                       value: _coins,
                                       fractionDigits: 2,
-                                      prefix: "+",
+                                      prefix: "+${TwCountryyC143.curCountryyyySymbolC143()}",
                                       textStyle: TextStyle(
                                         fontWeight: FontWeight.w900,
                                         fontSize: 32.sp,
@@ -325,6 +330,6 @@ class _GetCoinsWidgetState extends State<GetCoinsWidget> {
   }
 
   void onClaim() {
-    widget.onClaim(widget.coins);
+    widget.onClaim(_coins);
   }
 }

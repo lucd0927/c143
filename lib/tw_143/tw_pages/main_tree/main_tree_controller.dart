@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:math';
 
 import 'package:c143/gen/assets.gen.dart';
+import 'package:c143/tw_143/tw_common/firebase_json/number_json.dart';
 import 'package:c143/tw_143/tw_common/overlay/overlay_lot_water.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide14_highligth.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide15_coin_to_sun.dart';
@@ -23,8 +24,9 @@ enum TwEnumTreeType {
   fertilize("fertilize"),
   spin("spin"),
   coin("coin"),
-  coinGuide("coinGuide"),
-  sun("sun"),
+  coin2Guide("coinGuide"),
+  coin3("coin3"),
+  // sun("sun"),
   coin_rain("coin_rain"),
   water("water");
 
@@ -123,6 +125,9 @@ class MainTreeController extends GetxController {
   var curLeftTimeCoin2 = "".obs;
   var curLeftTimeCoin3 = "".obs;
 
+  var curCoin1 = (0.0).obs;
+  var curCoin2 = (0.0).obs;
+  var curCoin3 = (0.0).obs;
   static String get twKeyMoneyyyy =>
       TwPackageABC143.isPackageB() ? "twKeyMoneyyyyBbbb" : "twKeyMoneyyyy";
 
@@ -212,6 +217,12 @@ class MainTreeController extends GetxController {
     String tmpTreeIcon = TwPackageABC143.isPackageB()
         ? Assets.twimgB.moneyDailog.path
         : Assets.twimg.coinGuide6.path;
+
+    bool showSun = showMoneyStatusSunIcon();
+    if(showSun){
+      tmpTreeIcon = Assets.twimg.mainSun.path;
+    }
+
     return tmpTreeIcon;
   }
 
@@ -259,8 +270,32 @@ class MainTreeController extends GetxController {
     // int tmpLevelll = _jisuanLevel(hasResetStageCount: false);
     curLevel = tmpLevelll.obs;
 
+    // double curCoins = MainTreeController.to.curMoneyyyy.value;
+
+
+
     initCutdownTimer();
   }
+
+  @override
+  void onReady() {
+    // TODO: implement onReady
+    super.onReady();
+    resetCoin();
+  }
+
+  resetCoin(){
+    double coin1 = TwNumberJson.moneyTree();
+    double coin2 = TwNumberJson.moneyTree();
+    double coin3 = TwNumberJson.moneyTree();
+
+    curCoin1.value = coin1;
+    curCoin2.value = coin2;
+    curCoin3.value = coin3;
+  }
+
+
+
 
   final TimeLeft _fertilizeLeftTime = TimeLeft(
     twkeyTimeLeft: twkeyTimeLeftFertilize,
@@ -272,14 +307,17 @@ class MainTreeController extends GetxController {
 
   resetCoin1Time() {
     _coinLeftTime1.resetLeftTime();
+    resetCoin();
   }
 
   resetCoin2Time() {
     _coinLeftTime2.resetLeftTime();
+    resetCoin();
   }
 
   resetCoin3Time() {
     _coinLeftTime3.resetLeftTime();
+    resetCoin();
   }
 
   initCutdownTimer() {
@@ -546,6 +584,7 @@ class MainTreeController extends GetxController {
     );
   }
 
+
   void _onAddMoney(double monnn, {required VoidCallback? onEnd}) {
     double tmpCurMmm = curMoneyyyy.value;
 
@@ -556,6 +595,12 @@ class MainTreeController extends GetxController {
     onEnd?.call();
     String? data = guideIndexData();
     twLooog("======guideIndexData:$data tmpCurmmm2:$tmpCurmmm2");
+
+    if(TwPackageABC143.isPackageB() && tmpCurmmm2 >= 100){
+      curLevel.value = 5;
+      box.put(twKeyLevelll, 5);
+    }
+
     // if (tmpCurmmm2 >= stage2Num && data == MainTreeController.guide14) {
     //   OverlayGuide15CoinToSun().show();
     // } else if (tmpCurmmm2 >= stage1Num && data == MainTreeController.guide13) {

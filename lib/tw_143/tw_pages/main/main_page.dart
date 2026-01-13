@@ -50,7 +50,6 @@ class _TwMainPageState extends State<TwMainPage> {
     Get.put(MainSpinController());
     Get.put(MainCashController());
 
-    TwNotificationIosC143().initC143();
   }
 
 

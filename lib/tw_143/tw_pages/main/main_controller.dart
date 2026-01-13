@@ -1,3 +1,4 @@
+import 'package:c143/tw_143/tw_common/overlay/overlay_get_sun.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide0_bguide.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide11_homebonus.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide14_highligth.dart';
@@ -32,6 +33,8 @@ class MainController extends GetxController {
     //   onBtn: (v) {
     //   },
     // );
+
+
 
     // OverlayTzNotify().show();
     // OverlayGuide0BGuide().show(coins: 5, onBtn: (v){});

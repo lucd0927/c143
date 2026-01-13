@@ -34,13 +34,13 @@ class _MainTopBState extends State<MainTopB> {
       "Full speed ahead! At this rate, you can cash out today!",
       "Halfway there! The bigger the tree, the bigger the profits!",
       "Watch an ad, and your progress bar will jump up a notch!",
-      "You’ve outpaced 20% of users in today’s progress!",
+      // "You’ve outpaced 20% of users in today’s progress!",
     ],
     95: [
       "Victory is within sight! Only \$0.50 left to go!",
       "Final sprint! Just 10 more taps to cash out!",
       "Wow! You’re almost there!",
-      "You’re expected to cash out in 15 minutes!",
+      // "You’re expected to cash out in 15 minutes!",
     ],
     100: [
       "🎉 Congratulations! You’ve reached your cash-out goal!",
