@@ -266,7 +266,7 @@ class _hongbaoyuuuState extends State<_hongbaoyuuu> {
                                   children: [
                                     SizedBox(width: 10.w),
                                     Image.asset(
-                                      MainTreeController.to.moneyIconSmall(),
+                                      MainTreeController.to.moneyIconTreeChild(),
                                       width: 24.w,
                                       height: 24.w,
                                     ),

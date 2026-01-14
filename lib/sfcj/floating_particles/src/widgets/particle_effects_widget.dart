@@ -44,6 +44,7 @@ class ParticleEffects extends StatefulWidget {
   /// Widget to show while images are loading (only for image particles)
   final Widget? loadingWidget;
   final ValueChanged<double> onClickValue;
+
   const ParticleEffects({
     super.key,
     required this.child,
@@ -103,7 +104,6 @@ class _ParticleEffectsState extends State<ParticleEffects>
   bool _isImageLoading = false;
   late DateTime _startTime;
 
-
   @override
   void initState() {
     super.initState();
@@ -111,18 +111,8 @@ class _ParticleEffectsState extends State<ParticleEffects>
     _setupAnimation();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _initializeParticles();
-
-
-
     });
-
-
-
-
-
   }
-
-
 
   /// Initialize particles with image/widget preloading if needed
   void _initializeParticles() async {
@@ -199,38 +189,52 @@ class _ParticleEffectsState extends State<ParticleEffects>
 
   Offset? clickLocation;
   double clickCoins = 0;
-  Timer? _clickTimer ;
-  generateClickCoins(){
-    double random = 10*Random().nextDouble();
-    clickCoins =  random.toAsFixedFloor(2);
+  Timer? _clickTimer;
+
+  generateClickCoins() {
+    int base = 2;
+    if(MainTreeController.to.curMoneyyyy.value >= MainTreeController.stageB1Num){
+      base = 4;
+    }
+    bool showSun = MainTreeController.to.showMoneyStatusSunIcon();
+    bool showFlower = MainTreeController.to.showMoneyStatusFlowerIcon();
+    if (showSun) {
+      base = 30;
+    } else if (showFlower) {
+      base = 50;
+    }
+    double random = base * Random().nextDouble();
+    clickCoins = random.toAsFixedFloor(2);
   }
+
   double value = 0;
+
   showClickWidget() {
     if (clickLocation == null) {
       return const SizedBox();
     }
     double width = 140.w;
     double height = 50.h;
-    double startY = clickLocation!.dy-widget.config.maxSize;
+    double startY = clickLocation!.dy - widget.config.maxSize;
     double screenHeight = ScreenUtil().screenHeight;
-    double maxY =screenHeight - widget.config.maxSize-20.h;
+    double maxY = screenHeight - widget.config.maxSize - 20.h;
     double leftY = screenHeight - startY;
 
-   return AnimatedBuilder(
+    return AnimatedBuilder(
       animation: _animation,
       builder: (context, child) {
         double value2 = _animation.value;
-        double top =startY + (value2 -value)*leftY;
-        if(top >= maxY){
-          top =maxY;
+        double top = startY + (value2 - value) * leftY;
+        if (top >= maxY) {
+          top = maxY;
         }
         return Positioned(
-          left: clickLocation!.dx -width/2,
+          left: clickLocation!.dx - width / 2,
           top: top,
           child: Container(
             // width: width,
             // height: height,
-            padding: EdgeInsets.symmetric(horizontal: 8.w,vertical: 2.w),
+            padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 2.w),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(height),
               color: Colors.amber.withValues(alpha: 0.2),
@@ -239,8 +243,12 @@ class _ParticleEffectsState extends State<ParticleEffects>
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Image.asset(MainTreeController.to.moneyIconSmall(),width: 24.w,height: 24.w,),
-                SizedBox(width: 4.w,),
+                Image.asset(
+                  MainTreeController.to.moneyIconTreeChild(),
+                  width: 24.w,
+                  height: 24.w,
+                ),
+                SizedBox(width: 4.w),
                 Text(
                   "+$clickCoins",
                   style: TextStyle(
@@ -255,8 +263,6 @@ class _ParticleEffectsState extends State<ParticleEffects>
         );
       },
     );
-
-
   }
 
   /// Generates all particles based on the current configuration.
@@ -383,44 +389,38 @@ class _ParticleEffectsState extends State<ParticleEffects>
   }
 
   void onTapDown(details) {
-      final painter = _curParticlePainter;
-      twLooog("=======particle:$painter=");
-      if (painter == null) return;
+    final painter = _curParticlePainter;
+    twLooog("=======particle:$painter=");
+    if (painter == null) return;
 
-      final particle = painter.hitTest2(details.localPosition);
-      twLooog("=======particle2:=$particle");
-      if (particle != null) {
-        twLooog(
-          "=======particle3:$particle= ${details.localPosition}",
-        );
-        _clickTimer?.cancel();
+    final particle = painter.hitTest2(details.localPosition);
+    twLooog("=======particle2:=$particle");
+    if (particle != null) {
+      twLooog("=======particle3:$particle= ${details.localPosition}");
+      _clickTimer?.cancel();
 
-        setState(() {
-          _particles.remove(particle);
-          _addRandomParticles();
-          clickLocation = details.localPosition;
-          generateClickCoins();
-          showClickWidget();
-          value =_animation.value;
+      setState(() {
+        _particles.remove(particle);
+        _addRandomParticles();
+        clickLocation = details.localPosition;
+        generateClickCoins();
+        showClickWidget();
+        value = _animation.value;
 
-          widget.onClickValue(clickCoins);
-        });
+        widget.onClickValue(clickCoins);
+      });
 
-        _clickTimer = Timer(Duration(milliseconds: 3000), (){
-          if(mounted){
-            setState(() {
-              clickLocation = null;
-              clickCoins = 0;
-              _clickTimer?.cancel();
-            });
-          }
-        });
-
-      }
+      _clickTimer = Timer(Duration(milliseconds: 3000), () {
+        if (mounted) {
+          setState(() {
+            clickLocation = null;
+            clickCoins = 0;
+            _clickTimer?.cancel();
+          });
+        }
+      });
     }
-
-
-
+  }
 }
 
 /// Predefined particle effect types for SimpleParticleEffects.
