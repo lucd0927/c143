@@ -592,6 +592,10 @@ class $AssetsTwimgBGen {
   AssetGenImage get btnWithdraw =>
       const AssetGenImage('assets/twimgB/btn_withdraw.png');
 
+  /// File path: assets/twimgB/guide14b_txt.png
+  AssetGenImage get guide14bTxt =>
+      const AssetGenImage('assets/twimgB/guide14b_txt.png');
+
   /// File path: assets/twimgB/guide2cointips_b.png
   AssetGenImage get guide2cointipsB =>
       const AssetGenImage('assets/twimgB/guide2cointips_b.png');
@@ -607,6 +611,10 @@ class $AssetsTwimgBGen {
   /// File path: assets/twimgB/guide5b_txt.png
   AssetGenImage get guide5bTxt =>
       const AssetGenImage('assets/twimgB/guide5b_txt.png');
+
+  /// File path: assets/twimgB/guide7b_sprint_txt.png
+  AssetGenImage get guide7bSprintTxt =>
+      const AssetGenImage('assets/twimgB/guide7b_sprint_txt.png');
 
   /// File path: assets/twimgB/guide8b_txt.png
   AssetGenImage get guide8bTxt =>
@@ -643,6 +651,10 @@ class $AssetsTwimgBGen {
   /// File path: assets/twimgB/guide_0_txt6.png
   AssetGenImage get guide0Txt6 =>
       const AssetGenImage('assets/twimgB/guide_0_txt6.png');
+
+  /// File path: assets/twimgB/main_flower.png
+  AssetGenImage get mainFlower =>
+      const AssetGenImage('assets/twimgB/main_flower.png');
 
   /// File path: assets/twimgB/main_nav_cash.png
   AssetGenImage get mainNavCash =>
@@ -758,10 +770,12 @@ class $AssetsTwimgBGen {
     animatedBg32,
     animatedBg33,
     btnWithdraw,
+    guide14bTxt,
     guide2cointipsB,
     guide31Trust,
     guide3Wow,
     guide5bTxt,
+    guide7bSprintTxt,
     guide8bTxt,
     guide05Gesture,
     guide0Bg,
@@ -771,6 +785,7 @@ class $AssetsTwimgBGen {
     guide0Txt4,
     guide0Txt5,
     guide0Txt6,
+    mainFlower,
     mainNavCash,
     mainNavCashUn,
     mainNavQuiz,

@@ -46,7 +46,7 @@ class MainTreeController extends GetxController {
 
   static double get stageB1Num => 100;
   static double get stageBeisuNum => 100;
-  static double get stageBeisu2Num => 1000;
+  static double get stageBeisu2Num => 10000;
 
   static double get stageB2Num => 950;
 
@@ -215,7 +215,7 @@ class MainTreeController extends GetxController {
           ? Assets.twimg.mainSun.path
           : Assets.twimgB.moneyFloating.path;
        if(showFlower){
-         tmpTreeIcon = Assets.twimgB.guide05Gesture.path;
+         tmpTreeIcon = Assets.twimgB.mainFlower.path;
       }
 
     }
@@ -238,8 +238,11 @@ class MainTreeController extends GetxController {
         : Assets.twimg.coinGuide6.path;
 
     bool showSun = showMoneyStatusSunIcon();
+    bool showFlower = showMoneyStatusFlowerIcon();
     if (showSun) {
       tmpTreeIcon = Assets.twimg.mainSun.path;
+    }else if(showFlower){
+      tmpTreeIcon = Assets.twimgB.mainFlower.path;
     }
 
     return tmpTreeIcon;

@@ -205,7 +205,7 @@ class _GetCoinsWidgetState extends State<GetCoinsWidget> {
                                 TwAScaleC143(
                                   child: TwShiningEffect(
                                     duration: Duration(milliseconds: 2000),
-                                    shineColor: Color(0xfff1db6d),
+                                    shineColor: Color(0xffffffff),
                                     opacity: 1,
                                     angle: -0.9,
                                     topLeft: false,

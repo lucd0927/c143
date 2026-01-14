@@ -302,7 +302,7 @@ class _Guide7RankWidgetState extends State<Guide7RankWidget> {
                                     alignment: Alignment.topCenter,
                                     child: _text == text4
                                         ? Image.asset(
-                                            Assets.twimg.guide7SprintTxt.path,
+                                          TwPackageABC143.isPackageB()?Assets.twimgB.guide7bSprintTxt.path:  Assets.twimg.guide7SprintTxt.path,
                                             width: 272.w,
                                             height: 80.h,
                                           )

@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:c143/gen/assets.gen.dart';
+import 'package:c143/tw_143/tw_common/view/cross_confetti.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide12_homereward.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide1_water.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide4_fertilize.dart';
@@ -130,92 +131,97 @@ class _GetSunWidgetState extends State<GetSunWidget> {
         width: ScreenUtil().screenWidth,
         height: ScreenUtil().screenHeight,
         color: Colors.transparent,
-        child: Center(
-          child: AnimatedContainer(
-            duration: animD,
+        child: Stack(
+          children: [
+            // ConfettiWidget(),
+            Center(
+              child: AnimatedContainer(
+                duration: animD,
 
-            decoration: BoxDecoration(
-              color: Colors.black.withValues(
-                alpha: showAnimated ? overlayOpacity : 0,
-              ),
-              borderRadius: BorderRadius.circular(16.w),
-            ),
-            child: AnimatedScale(
-              duration: animD,
-              scale: showAnimated ? 1.0 : startScale,
-              child: SizedBox(
-                width: 200.w,
-                height: 200.h,
-                child: IndexedStack(
-                  index: index,
-                  children: [
-                    Center(
-                      child: Container(
-                        width: 200.w,
-                        height: 200.h,
-                        child: Stack(
-                          children: [
-                            Center(
-                              child: TwRotateWidgggggC143(
-                                duration: Duration(milliseconds: 30000),
-                                child: Image.asset(
-                                  Assets.twimg.bghightlight.path,
-                                  width: 200.w,
-                                  height: 200.h,
-                                ),
-                              ),
-                            ),
-                            Center(
-                              child: TwAScaleC143(
-                                child: TwShiningEffect(
-                                  duration: Duration(milliseconds: 2000),
-                                  shineColor: Color(0xfffffffff),
-                                  opacity: 1,
-                                  angle: -0.9,
-                                  topLeft: false,
-                                  child: Image.asset(
-                                    Assets.twimg.mainSun.path,
-                                    width: 100.h,
-                                    height: 100.h,
+                decoration: BoxDecoration(
+                  color: Colors.black.withValues(
+                    alpha: showAnimated ? overlayOpacity : 0,
+                  ),
+                  borderRadius: BorderRadius.circular(16.w),
+                ),
+                child: AnimatedScale(
+                  duration: animD,
+                  scale: showAnimated ? 1.0 : startScale,
+                  child: SizedBox(
+                    width: 200.w,
+                    height: 200.h,
+                    child: IndexedStack(
+                      index: index,
+                      children: [
+                        Center(
+                          child: Container(
+                            width: 200.w,
+                            height: 200.h,
+                            child: Stack(
+                              children: [
+                                Center(
+                                  child: TwRotateWidgggggC143(
+                                    duration: Duration(milliseconds: 30000),
+                                    child: Image.asset(
+                                      Assets.twimg.bghightlight.path,
+                                      width: 200.w,
+                                      height: 200.h,
+                                    ),
                                   ),
                                 ),
-                              ),
-                            ),
-                            Positioned(
-                              left: 0,
-                              right: 0,
-                              bottom: 10.h,
-                              child: Center(
-                                child: TwAnimatedCountttt(
-                                  value: _coins,
-                                  fractionDigits: 2,
-                                  prefix: "+${TwCountryyC143.curCountryyyySymbolC143()}",
-                                  textStyle: TextStyle(
-                                    fontWeight: FontWeight.w900,
-                                    fontSize: 32.sp,
+                                Center(
+                                  child: TwAScaleC143(
+                                    child: TwShiningEffect(
+                                      duration: Duration(milliseconds: 2000),
+                                      shineColor: Color(0xfffffffff),
+                                      opacity: 1,
+                                      angle: -0.9,
+                                      topLeft: false,
+                                      child: Image.asset(
+                                        Assets.twimg.mainSun.path,
+                                        width: 100.h,
+                                        height: 100.h,
+                                      ),
+                                    ),
                                   ),
-                                  textGradient: LinearGradient(
-                                    colors: [
-                                      Color(0xffFFDF12),
-                                      Color(0xffFFAA00),
-                                    ],
-                                    end: Alignment.bottomCenter,
-                                    begin: Alignment.topCenter,
-                                  ),
-                                  strokeColor: Color(0xffBD5500),
-                                  strokeWidth: 1.w,
                                 ),
-                              ),
+                                Positioned(
+                                  left: 0,
+                                  right: 0,
+                                  bottom: 10.h,
+                                  child: Center(
+                                    child: TwAnimatedCountttt(
+                                      value: _coins,
+                                      fractionDigits: 2,
+                                      prefix: "+${TwCountryyC143.curCountryyyySymbolC143()}",
+                                      textStyle: TextStyle(
+                                        fontWeight: FontWeight.w900,
+                                        fontSize: 32.sp,
+                                      ),
+                                      textGradient: LinearGradient(
+                                        colors: [
+                                          Color(0xffFFDF12),
+                                          Color(0xffFFAA00),
+                                        ],
+                                        end: Alignment.bottomCenter,
+                                        begin: Alignment.topCenter,
+                                      ),
+                                      strokeColor: Color(0xffBD5500),
+                                      strokeWidth: 1.w,
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
-                          ],
+                          ),
                         ),
-                      ),
+                      ],
                     ),
-                  ],
+                  ),
                 ),
               ),
             ),
-          ),
+          ],
         ),
       ),
     );
@@ -276,3 +282,6 @@ class _GetSunWidgetState extends State<GetSunWidget> {
     widget.onClaim(widget.coins);
   }
 }
+
+
+

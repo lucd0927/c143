@@ -105,7 +105,7 @@ class _Guide14HighLightState extends State<Guide14HighLight> {
                   ),
                   SizedBox(height: 60.h),
                   Center(
-                    child: TwAnimatedProgress(width: 312.w, height: 16.h,maxProgress: 0.8,),
+                    child: TwAnimatedProgress(width: 312.w, height: 16.h,maxProgress: 0.9,),
                   ),
                   SizedBox(height: 120.h),
                   Text(

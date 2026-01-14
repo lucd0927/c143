@@ -159,12 +159,12 @@ class TwNumberJson {
       {
         "earning_range": [900, 950],
         "type": "sun",
-        "reward": [1000, 5000],
+        "reward": [100, 500],
       },
       {
         "earning_range": [950, 999],
         "type": "flower",
-        "reward": [1000, 5000],
+        "reward": [100, 500],
       },
     ],
     "ad_probability_by_earning": [
@@ -383,7 +383,7 @@ class TwNumberJson {
         }
       }
     }
-
+    twLooog("=======moneyAnswer:$money");
     return money;
   }
 }

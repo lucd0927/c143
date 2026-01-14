@@ -34,7 +34,9 @@ class MainController extends GetxController {
     //   },
     // );
 
-
+    // OverlayGetSun().show(coins: 0.01, onClose: () {
+    //
+    // });
 
     // OverlayTzNotify().show();
     // OverlayGuide0BGuide().show(coins: 5, onBtn: (v){});
