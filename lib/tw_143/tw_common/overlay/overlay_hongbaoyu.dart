@@ -26,7 +26,7 @@ class OverlayHongbaoyu {
   bool get isShowing => _isShowing;
   bool _isShowing = false;
 
-  void show() {
+  void show({required VoidCallback onEnd}) {
     _overlayEntry = null;
 
     _overlayEntry = OverlayEntry(
@@ -37,8 +37,16 @@ class OverlayHongbaoyu {
             onClose: (value) async {
               close();
 
-              OverlayGetCoins().show(coins: value, onBtn: (){}, onClose: (){},type: TwEnumGetCoinsType.hongbaoRainMoney);
-
+              OverlayGetCoins().show(
+                coins: value,
+                onBtn: () {
+                  onEnd();
+                },
+                onClose: () {
+                  onEnd();
+                },
+                type: TwEnumGetCoinsType.hongbaoRainMoney,
+              );
             },
           ),
         );
@@ -289,7 +297,7 @@ class _hongbaoyuuuState extends State<_hongbaoyuuu> {
                 top: 50.h,
                 left: 16.w,
                 child: GestureDetector(
-                  onTap: (){
+                  onTap: () {
                     _cutdownTimer?.cancel();
                     widget.onClose(getCoins);
                   },
@@ -339,7 +347,7 @@ class Hongbaoyu extends StatelessWidget {
           direction: ParticleDirection.topToBottom,
           // Already falling
           particleCount: 10,
-          imagePath: Assets.twimg.quizCoinYu.path,
+          imagePath: MainTreeController.to.moneyIconTreeChild(),
           minSize: 50.w,
           maxSize: 50.w,
           enableRotation: false,

@@ -674,7 +674,7 @@ class _MainCenterState extends State<MainCenter> {
           icon: Assets.twimg.mainCoinYu.path,
 
           onClick: () {
-            OverlayHongbaoyu().show();
+            OverlayHongbaoyu().show(onEnd: () {  });
           },
         ),
       ],

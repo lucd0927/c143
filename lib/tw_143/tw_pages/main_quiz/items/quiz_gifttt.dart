@@ -658,7 +658,7 @@ class _TwQuizGiftWidgetState extends State<TwQuizGiftWidget>
         MainSpinController.to.addSpinNum();
         MainController.to.resetIndex(MainController.spinindexxx);
       } else  if (liwu == EnumQuizgiftTypppppe.coinyu) {
-       OverlayHongbaoyu().show();
+       OverlayHongbaoyu().show(onEnd: () {  });
       }
 
       setState(() {});

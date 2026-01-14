@@ -5,6 +5,7 @@ import 'package:c143/tw_143/tw_common/event.dart';
 import 'package:c143/tw_143/tw_common/firebase_json/number_json.dart';
 import 'package:c143/tw_143/tw_common/lottieeee/gesture.dart';
 import 'package:c143/tw_143/tw_common/overlay/overlay_get.dart';
+import 'package:c143/tw_143/tw_common/overlay/overlay_hongbaoyu.dart';
 import 'package:c143/tw_143/tw_pages/main/main_controller.dart';
 import 'package:c143/tw_143/tw_pages/main_spin/main_spin_controller.dart';
 import 'package:c143/tw_143/tw_pages/main_spin/views/overlay_win_reward.dart';
@@ -79,11 +80,18 @@ class PositionItems extends StatefulWidget {
 }
 
 class _PositionItemsState extends State<PositionItems>
-    with SingleTickerProviderStateMixin  , TwEventBusMix {
+    with SingleTickerProviderStateMixin, TwEventBusMix {
   late AnimationController _controller;
   late Animation<int> _animation;
   List<double> tmpCoins = [];
   List<Tuple3<String, double, double>> tmpMoneys = [];
+
+  List<int> _cutdownCashIndex = [];
+  List<int> _cashIndex = [];
+  List<int> _phoneIndex = [];
+  List<int> _cashRainIndex = [];
+  List<int> _cashOutIndex = [];
+  List<int> _x2Index = [];
 
   @override
   void initState() {
@@ -95,8 +103,8 @@ class _PositionItemsState extends State<PositionItems>
       duration: Duration(seconds: 3),
     );
 
-    register<SpinEvent>((SpinEvent event ){
-      if(mounted){
+    register<SpinEvent>((SpinEvent event) {
+      if (mounted) {
         setState(() {
           generatedCoins();
         });
@@ -105,18 +113,45 @@ class _PositionItemsState extends State<PositionItems>
     generatedCoins();
   }
 
+  resetIndexes() {
+    _cashIndex = [];
+    _phoneIndex = [];
+    _cashRainIndex = [];
+    _cashOutIndex = [];
+    _x2Index = [];
+    tmpCoins = [];
+    tmpMoneys = [];
+  }
+
   generatedCoins() {
     if (TwPackageABC143.isPackageB()) {
-      tmpCoins = [];
-      tmpMoneys = [];
+      resetIndexes();
       List<Tuple3<String, double, double>> tmpTupe3 = TwNumberJson.moneyWheel();
       tmpMoneys = tmpTupe3;
       for (int i = 0; i < tmpTupe3.length; i++) {
         var daaa = tmpTupe3[i];
+        String type = daaa.item1;
+        // twLooog("=type:$type=====");
+        if (type == TwEnumWheelType.cash.nnname) {
+          _cashIndex.add(i);
+        } else if (type == TwEnumWheelType.cash_out.nnname) {
+          _cashOutIndex.add(i);
+        } else if (type == TwEnumWheelType.cash_rain.nnname) {
+          _cashRainIndex.add(i);
+        } else if (type == TwEnumWheelType.phone.nnname) {
+          _phoneIndex.add(i);
+        } else if (type == TwEnumWheelType.x2.nnname) {
+          _x2Index.add(i);
+        }
+
         double money = TwNumberJson.moneyTree();
         tmpCoins.add(money);
       }
-
+      twLooog("=_cashIndex:$_cashIndex=====");
+      twLooog("=_cashOutIndex:$_cashOutIndex=====");
+      twLooog("=_cashRainIndex:$_cashRainIndex=====");
+      twLooog("=_phoneIndex:$_phoneIndex=====");
+      twLooog("=_x2Index:$_x2Index=====");
       return;
     }
 
@@ -143,6 +178,7 @@ class _PositionItemsState extends State<PositionItems>
     int round = 5, // 转多少圈
     int startIndex = 0,
     int targetIndex = 3, // 最终停在哪个 icon
+    bool hasMoneyRain = false,
   }) {
     final int targetAngle = round * indexCount + targetIndex;
     _animation =
@@ -173,25 +209,37 @@ class _PositionItemsState extends State<PositionItems>
             _startIndex = targetIndex;
             canClick = true;
           });
+
+          if (hasMoneyRain) {
+            OverlayHongbaoyu().show(
+              onEnd: () {
+                _nextSpin();
+              },
+            );
+
+            return;
+          }
+
           OverlayGetCoins().show(
             coins: tmpCoins[_startIndex],
             onBtn: () {
-              setState(() {
-                generatedCoins();
-              });
-              MainSpinController.to.resetWinbigCount();
+              _nextSpin();
             },
             type: TwEnumGetCoinsType.wheelMoney,
             onClose: () {
-              setState(() {
-                generatedCoins();
-              });
-              MainSpinController.to.resetWinbigCount();
+              _nextSpin();
             },
           );
           twLooog("======whenComplete:whenComplete");
         }
       });
+  }
+
+  _nextSpin() {
+    setState(() {
+      generatedCoins();
+    });
+    MainSpinController.to.resetWinbigCount();
   }
 
   @override
@@ -415,7 +463,7 @@ class _PositionItemsState extends State<PositionItems>
       bool showSun = MainTreeController.to.showMoneyStatusSunIcon();
       bool showFlower = MainTreeController.to.showMoneyStatusFlowerIcon();
       int fraction = TwPackageABC143.isPackageB() ? 2 : 0;
-      if(showFlower || showSun){
+      if (showFlower || showSun) {
         fraction = 0;
       }
       txt = Center(
@@ -636,8 +684,33 @@ class _PositionItemsState extends State<PositionItems>
     if (_selectIndex <= 0) {
       _startIndex = 0;
     }
+
+    double random = Random().nextDouble();
     int targeIndex = Random().nextInt(12);
-    startSpin(startIndex: _startIndex, targetIndex: targeIndex);
+    bool hasMoneyRain = false;
+    // cash
+    if (random > 0.7) {
+      int length = _cashIndex.length;
+      targeIndex = _cashIndex[Random().nextInt(length)];
+    }
+    // cash rain
+    else if (random > 0.0) {
+      int length = _cashRainIndex.length;
+      targeIndex = _cashRainIndex[Random().nextInt(length)];
+      hasMoneyRain = true;
+    }
+    // x2
+    else if (random >= 0) {
+      int length = _x2Index.length;
+      targeIndex = _x2Index[Random().nextInt(length)];
+    }
+    twLooog("=====random:$random=targeIndex:$targeIndex");
+
+    startSpin(
+      startIndex: _startIndex,
+      targetIndex: targeIndex,
+      hasMoneyRain: hasMoneyRain,
+    );
   }
 
   _onWinbig() async {

@@ -273,7 +273,7 @@ class TwNumberJson {
         double gaulv = (tmpData['probability'] ?? 0) * 1.0;
 
         Tuple3<String, double, double> tmpTup3 = Tuple3(
-          reward_type.toString(),
+          reward_type.toString().toUpperCase(),
           money,
           gaulv * 1.0,
         );
@@ -285,7 +285,7 @@ class TwNumberJson {
     if (length < 0) {
       for (int i = 0; i < length; i++) {
         Tuple3<String, double, double> tmpTup3 = Tuple3(
-          "Cash",
+          "Cash".toUpperCase(),
           Random().nextDouble() * 10+5,
           0.0,
         );
@@ -347,7 +347,7 @@ class TwNumberJson {
     if(showSun || showFlower){
       money = money.toAsFixedFloor(0);
     }
-    twLooog("======money:$money");
+    // twLooog("======money:$money");
     return money;
   }
 
