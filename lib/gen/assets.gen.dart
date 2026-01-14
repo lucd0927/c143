@@ -703,6 +703,18 @@ class $AssetsTwimgBGen {
   AssetGenImage get moneyRain =>
       const AssetGenImage('assets/twimgB/money_rain.png');
 
+  /// File path: assets/twimgB/money_rain_bg.png
+  AssetGenImage get moneyRainBg =>
+      const AssetGenImage('assets/twimgB/money_rain_bg.png');
+
+  /// File path: assets/twimgB/money_rain_txt.png
+  AssetGenImage get moneyRainTxt =>
+      const AssetGenImage('assets/twimgB/money_rain_txt.png');
+
+  /// File path: assets/twimgB/money_rain_win.png
+  AssetGenImage get moneyRainWin =>
+      const AssetGenImage('assets/twimgB/money_rain_win.png');
+
   /// File path: assets/twimgB/notification_bg.png
   AssetGenImage get notificationBg =>
       const AssetGenImage('assets/twimgB/notification_bg.png');
@@ -822,6 +834,9 @@ class $AssetsTwimgBGen {
     moneyDailog,
     moneyFloating,
     moneyRain,
+    moneyRainBg,
+    moneyRainTxt,
+    moneyRainWin,
     notificationBg,
     notificationCenter,
     settingBg,
