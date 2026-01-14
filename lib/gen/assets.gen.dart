@@ -764,6 +764,26 @@ class $AssetsTwimgBGen {
   AssetGenImage get txSetting =>
       const AssetGenImage('assets/twimgB/tx_setting.png');
 
+  /// File path: assets/twimgB/wheel_phone.png
+  AssetGenImage get wheelPhone =>
+      const AssetGenImage('assets/twimgB/wheel_phone.png');
+
+  /// File path: assets/twimgB/wheel_pop_bg.png
+  AssetGenImage get wheelPopBg =>
+      const AssetGenImage('assets/twimgB/wheel_pop_bg.png');
+
+  /// File path: assets/twimgB/wheel_pop_jindu.png
+  AssetGenImage get wheelPopJindu =>
+      const AssetGenImage('assets/twimgB/wheel_pop_jindu.png');
+
+  /// File path: assets/twimgB/wheel_pop_next.png
+  AssetGenImage get wheelPopNext =>
+      const AssetGenImage('assets/twimgB/wheel_pop_next.png');
+
+  /// File path: assets/twimgB/wheel_pop_phone.png
+  AssetGenImage get wheelPopPhone =>
+      const AssetGenImage('assets/twimgB/wheel_pop_phone.png');
+
   /// List of all assets
   List<AssetGenImage> get values => [
     animatedBg31,
@@ -814,6 +834,11 @@ class $AssetsTwimgBGen {
     txPaypal,
     txPaypalMaintop,
     txSetting,
+    wheelPhone,
+    wheelPopBg,
+    wheelPopJindu,
+    wheelPopNext,
+    wheelPopPhone,
   ];
 }
 

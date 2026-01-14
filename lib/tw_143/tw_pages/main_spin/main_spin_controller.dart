@@ -15,11 +15,14 @@ class MainSpinController extends GetxController {
   static String get twkeyClickDailyCheck =>
       TwPackageABC143.isPackageB() ? "fg646456ghjyh" : "fg646456ghjyhAaaa";
 
+  static String get twkeywinbig =>
+      TwPackageABC143.isPackageB() ? "twkeywinbig" : "twkeywinbigAaaa";
   var box = TwHive.box;
 
   var curTwSpinNum = 0.obs;
 
   var curClickDailyCheck = false.obs;
+  var curWinbigCount = 3.obs;
 
   @override
   void onInit() {
@@ -34,9 +37,30 @@ class MainSpinController extends GetxController {
       }
       tmpClickDailyCheck = false;
     }
-    tmpSpinNum =30;
+    tmpSpinNum = 30;
     curTwSpinNum = tmpSpinNum.obs;
     curClickDailyCheck = tmpClickDailyCheck.obs;
+  }
+
+  subWinbigCount() {
+    int curN = curWinbigCount.value;
+    int tmpCurNnnn = curN - 1;
+    if (tmpCurNnnn <= 0) {
+      tmpCurNnnn = 0;
+    }
+    curWinbigCount.value = tmpCurNnnn;
+  }
+
+  resetWinbigCount() {
+    curWinbigCount.value = 3;
+  }
+
+  bool hasClickWinBigFirst() {
+    return box.get(twkeywinbig) ?? false;
+  }
+
+  saveClickWinBigFirst() {
+    box.put(twkeywinbig, true);
   }
 
   clickDailyCheck(double coins) {

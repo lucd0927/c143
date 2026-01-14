@@ -6,6 +6,7 @@ import 'package:c143/tw_143/tw_common/lottieeee/gesture.dart';
 import 'package:c143/tw_143/tw_common/overlay/overlay_get.dart';
 import 'package:c143/tw_143/tw_pages/main/main_controller.dart';
 import 'package:c143/tw_143/tw_pages/main_spin/main_spin_controller.dart';
+import 'package:c143/tw_143/tw_pages/main_spin/views/overlay_win_reward.dart';
 import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
 import 'package:c143/tw_base/tw_gj/logC143.dart';
 import 'package:c143/tw_views/animated_count.dart';
@@ -78,7 +79,7 @@ class _PositionItemsState extends State<PositionItems>
   late AnimationController _controller;
   late Animation<int> _animation;
   List<double> tmpCoins = [];
-  List<Tuple3<String, double, double>> tmpMoneys= [];
+  List<Tuple3<String, double, double>> tmpMoneys = [];
 
   @override
   void initState() {
@@ -166,12 +167,14 @@ class _PositionItemsState extends State<PositionItems>
               setState(() {
                 generatedCoins();
               });
+              MainSpinController.to.resetWinbigCount();
             },
             type: TwEnumGetCoinsType.wheelMoney,
             onClose: () {
               setState(() {
                 generatedCoins();
               });
+              MainSpinController.to.resetWinbigCount();
             },
           );
           twLooog("======whenComplete:whenComplete");
@@ -203,7 +206,7 @@ class _PositionItemsState extends State<PositionItems>
               index10(),
               index11(),
 
-              // centerBtnWinbig(),
+              if (TwPackageABC143.isPackageB()) centerBtnWinbig(),
             ],
           ),
         ),
@@ -221,7 +224,7 @@ class _PositionItemsState extends State<PositionItems>
       }
       return Center(
         child: GestureDetector(
-          onTap: onWinbig,
+          onTap: onDraw,
           child: Container(
             width: 260.h,
             height: 56.h,
@@ -330,7 +333,7 @@ class _PositionItemsState extends State<PositionItems>
       bottom: 80.h,
       child: Center(
         child: GestureDetector(
-          onTap: onWinbig,
+          onTap: _onWinbig,
           child: Container(
             width: 124.h,
             height: 44.h,
@@ -345,15 +348,15 @@ class _PositionItemsState extends State<PositionItems>
                   fit: BoxFit.fill,
                 ),
 
-                // Positioned(
-                //   top: -10.h,
-                //   left: -5.h,
-                //   child: Image.asset(
-                //     Assets.twimg.ad.path,
-                //     width: 28.h,
-                //     height: 28.h,
-                //   ),
-                // ),
+                Positioned(
+                  top: -10.h,
+                  left: -5.h,
+                  child: Image.asset(
+                    Assets.twimg.ad.path,
+                    width: 28.h,
+                    height: 28.h,
+                  ),
+                ),
                 Positioned(
                   top: -0.h,
                   right: -5.h,
@@ -371,7 +374,7 @@ class _PositionItemsState extends State<PositionItems>
                       borderRadius: BorderRadius.circular(100),
                     ),
                     child: Text(
-                      "3/3",
+                      "${MainSpinController.to.curWinbigCount.value}/3",
                       style: TextStyle(
                         fontSize: 10.sp,
                         fontWeight: FontWeight.w700,
@@ -392,7 +395,6 @@ class _PositionItemsState extends State<PositionItems>
     String icon = Assets.twimg.wheelCoin.path;
     Widget txt = const SizedBox();
     String type = tmpMoneys[index].item1;
-
 
     if (type.toUpperCase() == "CASH" || !TwPackageABC143.isPackageB()) {
       icon = TwPackageABC143.isPackageB()
@@ -591,7 +593,7 @@ class _PositionItemsState extends State<PositionItems>
 
   bool canClick = true;
 
-  void onWinbig() {
+  void onDraw() {
     twLooog("=======onWinbig canClick:$canClick");
     if (!canClick) {
       return;
@@ -611,5 +613,22 @@ class _PositionItemsState extends State<PositionItems>
     }
     int targeIndex = Random().nextInt(12);
     startSpin(startIndex: _startIndex, targetIndex: targeIndex);
+  }
+
+  _onWinbig() async {
+    bool result = MainSpinController.to.hasClickWinBigFirst();
+    if (!result) {
+      OverlayWinReward().show(coins: 0, onBtn: () {}, onClose: () {});
+      return;
+    }
+    int curNum = MainSpinController.to.curWinbigCount.value;
+
+    if (curNum > 0) {
+      if (mounted) {
+        setState(() {
+          MainSpinController.to.subWinbigCount();
+        });
+      }
+    }
   }
 }
