@@ -64,7 +64,7 @@ class _Guide14HighLightState extends State<Guide14HighLight> {
 
   bool showAnimated = false;
   Duration animD = Duration(milliseconds: 200);
-  double startScale = 0.8;
+  double startScale = 0.9;
 
   @override
   void initState() {

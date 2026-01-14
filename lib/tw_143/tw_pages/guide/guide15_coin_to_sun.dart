@@ -8,6 +8,7 @@ import 'package:c143/tw_143/tw_pages/guide/guide1_water.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide4_fertilize.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide6_rewarddouble.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
+import 'package:c143/tw_base/tw_gj/countryC143.dart';
 import 'package:c143/tw_base/tw_gj/logC143.dart';
 import 'package:c143/tw_views/animated_count.dart';
 import 'package:c143/tw_views/animated_scale.dart';
@@ -140,7 +141,7 @@ class _Guide15CoinToSunState extends State<Guide15CoinToSun> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               TwTxtGraBorderC143(
-                                text: "=0.01",
+                                text: "=${TwCountryyC143.curCountryyyySymbolC143()}0.01",
                                 fontWeight: FontWeight.w700,
                                 fontSize: 40.sp,
                                 gradient: LinearGradient(
@@ -204,7 +205,7 @@ class _Guide15CoinToSunState extends State<Guide15CoinToSun> {
               ),
               Center(
                 child: TwTxtBorderC143(
-                  text: "Claim",
+                  text: "Get",
                   fontSize: 24.sp,
                   fontWeight: FontWeight.w900,
                   fontColor: Color(0xffffffff),

@@ -69,13 +69,13 @@ class TwNumberJson {
         "earning_range": [900, 950],
         "type": "sun",
         "level_range": 5,
-        "reward": [1000, 5000],
+        "reward": [100, 500],
       },
       {
         "earning_range": [950, 999],
         "type": "flower",
         "level_range": 5,
-        "reward": [1000, 5000],
+        "reward": [100, 500],
       },
     ],
     "wheel_rewards": [

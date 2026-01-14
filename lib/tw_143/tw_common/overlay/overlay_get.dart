@@ -115,8 +115,11 @@ class _GetCoinsWidgetState extends State<GetCoinsWidget> {
           showAnimated = true;
           _coins = widget.coins;
           bool showSun = MainTreeController.to.showMoneyStatusSunIcon();
+          bool showFlower = MainTreeController.to.showMoneyStatusFlowerIcon();
           if(showSun){
-            _coins = _coins/100;
+            _coins = _coins/MainTreeController.stageBeisuNum;
+          }else if(showFlower){
+            _coins = _coins/MainTreeController.stageBeisu2Num;
           }
         });
       }

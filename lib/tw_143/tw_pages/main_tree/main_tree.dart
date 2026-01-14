@@ -105,7 +105,7 @@ class _MainTreeState extends State<MainTree> {
 
   initTz()async{
     await TwNotificationIosC143().initC143();
-    if (TwPackageABC143.isPackageB() ) {
+    if (TwPackageABC143.isPackageB() && TwLoginnnTrackC143.qiduoCishu() > 1) {
       bool  showTz = await TwNotificationnn().requestNotificationPermission();
       twLooog("===OverlayGuide3BTrust==showTz:$showTz");
       if (!showTz) {

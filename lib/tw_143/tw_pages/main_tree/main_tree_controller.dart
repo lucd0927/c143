@@ -40,7 +40,15 @@ class MainTreeController extends GetxController {
 
   static double get maxCoinNum => TwPackageABC143.isPackageB() ? 1000 : 5000;
 
+  static double get stage1Num => TwPackageABC143.isPackageB() ? 90 : 1000;
+
+  static double get stage2Num => TwPackageABC143.isPackageB() ? 900 : 2000;
+
   static double get stageB1Num => 100;
+  static double get stageBeisuNum => 100;
+  static double get stageBeisu2Num => 1000;
+
+  static double get stageB2Num => 950;
 
   static String get twkeyGuideProgress => TwPackageABC143.isPackageB()
       ? "MainTreeController_twkeyGuideProgressBbb"
@@ -128,6 +136,7 @@ class MainTreeController extends GetxController {
   var curCoin1 = (0.0).obs;
   var curCoin2 = (0.0).obs;
   var curCoin3 = (0.0).obs;
+
   static String get twKeyMoneyyyy =>
       TwPackageABC143.isPackageB() ? "twKeyMoneyyyyBbbb" : "twKeyMoneyyyy";
 
@@ -160,10 +169,6 @@ class MainTreeController extends GetxController {
   static const List<int> waterCounts = [1, 20, 60, 80];
   static const List<int> shifeiCounts = [1, 5, 15, 20];
 
-  static double get stage1Num => TwPackageABC143.isPackageB() ? 90 : 1000;
-
-  static double get stage2Num => TwPackageABC143.isPackageB() ? 900 : 2000;
-
   double leftMonn() {
     double curMonn = MainTreeController.to.curMoneyyyy.value;
 
@@ -185,13 +190,23 @@ class MainTreeController extends GetxController {
     }
 
     double stage2 = MainTreeController.stage2Num;
-    bool showSun = stage2 <= monnn;
+    bool showSun = stage2 <= monnn && monnn <= stageB2Num;
     return showSun;
+  }
+
+  bool showMoneyStatusFlowerIcon() {
+    double monnn = MainTreeController.to.curMoneyyyy.value;
+    double stage1 = MainTreeController.stageB2Num;
+    if (stage1 <= monnn && monnn <= maxCoinNum) {
+      return true;
+    }
+    return false;
   }
 
   //
   String moneyIconTreeChild() {
     bool showSun = showMoneyStatusSunIcon();
+    bool showFlower = showMoneyStatusFlowerIcon();
     String tmpTreeIcon = showSun
         ? Assets.twimg.mainSun.path
         : Assets.twimg.mainCoin.path;
@@ -199,6 +214,10 @@ class MainTreeController extends GetxController {
       tmpTreeIcon = showSun
           ? Assets.twimg.mainSun.path
           : Assets.twimgB.moneyFloating.path;
+       if(showFlower){
+         tmpTreeIcon = Assets.twimgB.guide05Gesture.path;
+      }
+
     }
 
     return tmpTreeIcon;
@@ -219,7 +238,7 @@ class MainTreeController extends GetxController {
         : Assets.twimg.coinGuide6.path;
 
     bool showSun = showMoneyStatusSunIcon();
-    if(showSun){
+    if (showSun) {
       tmpTreeIcon = Assets.twimg.mainSun.path;
     }
 
@@ -272,8 +291,6 @@ class MainTreeController extends GetxController {
 
     // double curCoins = MainTreeController.to.curMoneyyyy.value;
 
-
-
     initCutdownTimer();
   }
 
@@ -284,7 +301,7 @@ class MainTreeController extends GetxController {
     resetCoin();
   }
 
-  resetCoin(){
+  resetCoin() {
     double coin1 = TwNumberJson.moneyTree();
     double coin2 = TwNumberJson.moneyTree();
     double coin3 = TwNumberJson.moneyTree();
@@ -293,9 +310,6 @@ class MainTreeController extends GetxController {
     curCoin2.value = coin2;
     curCoin3.value = coin3;
   }
-
-
-
 
   final TimeLeft _fertilizeLeftTime = TimeLeft(
     twkeyTimeLeft: twkeyTimeLeftFertilize,
@@ -584,7 +598,6 @@ class MainTreeController extends GetxController {
     );
   }
 
-
   void _onAddMoney(double monnn, {required VoidCallback? onEnd}) {
     double tmpCurMmm = curMoneyyyy.value;
 
@@ -596,16 +609,21 @@ class MainTreeController extends GetxController {
     String? data = guideIndexData();
     twLooog("======guideIndexData:$data tmpCurmmm2:$tmpCurmmm2");
 
-    if(TwPackageABC143.isPackageB() && tmpCurmmm2 >= 100){
-      curLevel.value = 5;
-      box.put(twKeyLevelll, 5);
+    if (TwPackageABC143.isPackageB() ) {
+
+      if(tmpCurmmm2 >= 100 && curLevel.value != 5){
+        curLevel.value = 5;
+        box.put(twKeyLevelll, 5);
+      }
+      if (tmpCurmmm2 >= 90 && data == MainTreeController.guide14) {
+        OverlayGuide15CoinToSun().show();
+      } else if (tmpCurmmm2 >= 60 && data == MainTreeController.guide13) {
+        OverlayGuide14HighLight().show();
+      }
+
     }
 
-    // if (tmpCurmmm2 >= stage2Num && data == MainTreeController.guide14) {
-    //   OverlayGuide15CoinToSun().show();
-    // } else if (tmpCurmmm2 >= stage1Num && data == MainTreeController.guide13) {
-    //   OverlayGuide14HighLight().show();
-    // }
+
   }
 
   static Map<EnumTwLottttieJson, LottieComposition> _kLottie_vCompo = {};
