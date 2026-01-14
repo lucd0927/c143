@@ -45,14 +45,23 @@ class OverlayGetCoins {
           child: GetCoinsWidget(
             onClaim: (value) async {
               close();
+              if(TwPackageABC143.isPackageB()){
+                bool result = await TwCommonAds().showInterstitialAd(
+                  adPosId: TwAdsPosId.test,
+                );
+                if (!result) {
+                  onBtn();
+                  return;
+                }
+                MainTreeController.to.onAddMoneyyyy(
+                  value,
+                  onEnd: () {
+                    onBtn();
+                  },
+                );
+                return;
+              }
 
-              // bool result = await TwCommonAds().showInterstitialAd(
-              //   adPosId: TwAdsPosId.test,
-              // );
-              // if (!result) {
-              //   onBtn();
-              //   return;
-              // }
               MainTreeController.to.onAddMoneyyyy(
                 value,
                 onEnd: () {
@@ -311,15 +320,16 @@ class _GetCoinsWidgetState extends State<GetCoinsWidget> {
                   ),
                 ),
 
-                // Positioned(
-                //   top: -10.h,
-                //   right: -5.h,
-                //   child: Image.asset(
-                //     Assets.twimg.ad.path,
-                //     width: 28.h,
-                //     height: 28.h,
-                //   ),
-                // ),
+                if (TwPackageABC143.isPackageB())
+                  Positioned(
+                  top: -10.h,
+                  right: -5.h,
+                  child: Image.asset(
+                    Assets.twimg.ad.path,
+                    width: 28.h,
+                    height: 28.h,
+                  ),
+                ),
               ],
             ),
           ),

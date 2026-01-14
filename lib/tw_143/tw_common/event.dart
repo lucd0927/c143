@@ -16,3 +16,17 @@ class QuizGifttttEvent extends TwBaseEvent {
 
   QuizGifttttEvent({required this.type});
 }
+
+
+
+
+class SpinEvent extends TwBaseEvent {
+  @override
+  String name() {
+    return "SpinEvent";
+  }
+
+
+
+  SpinEvent();
+}

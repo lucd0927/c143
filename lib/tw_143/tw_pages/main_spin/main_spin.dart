@@ -1,6 +1,8 @@
 import 'package:c143/gen/assets.gen.dart';
+import 'package:c143/tw_143/tw_common/event.dart';
 import 'package:c143/tw_143/tw_pages/main_spin/main_spin_controller.dart';
 import 'package:c143/tw_143/tw_pages/main_spin/views/wheel_details.dart';
+import 'package:c143/tw_base/tw_gj/event_busC143.dart';
 import 'package:c143/tw_views/font_border.dart';
 import 'package:c143/tw_views/font_gradient_border.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +16,15 @@ class MainSpin extends StatefulWidget {
   State<MainSpin> createState() => _MainSpinState();
 }
 
-class _MainSpinState extends State<MainSpin> {
+class _MainSpinState extends State<MainSpin>{
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+  }
+
   @override
   Widget build(BuildContext context) {
     return Stack(

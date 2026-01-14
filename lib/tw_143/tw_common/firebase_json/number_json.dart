@@ -241,7 +241,7 @@ class TwNumberJson {
     return showAd;
   }
 
-  //item1 type:cash 2x cashout
+  //item1 type:cash 2x cashout phone cash_rain
   //item2 coin reward
   //item3 gailv
   static List<Tuple3<String, double, double>> moneyWheel() {

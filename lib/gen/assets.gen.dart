@@ -699,6 +699,10 @@ class $AssetsTwimgBGen {
   AssetGenImage get moneyFloating =>
       const AssetGenImage('assets/twimgB/money_floating.png');
 
+  /// File path: assets/twimgB/money_rain.png
+  AssetGenImage get moneyRain =>
+      const AssetGenImage('assets/twimgB/money_rain.png');
+
   /// File path: assets/twimgB/notification_bg.png
   AssetGenImage get notificationBg =>
       const AssetGenImage('assets/twimgB/notification_bg.png');
@@ -817,6 +821,7 @@ class $AssetsTwimgBGen {
     money,
     moneyDailog,
     moneyFloating,
+    moneyRain,
     notificationBg,
     notificationCenter,
     settingBg,

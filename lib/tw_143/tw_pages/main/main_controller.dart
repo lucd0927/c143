@@ -1,3 +1,4 @@
+import 'package:c143/tw_143/tw_common/event.dart';
 import 'package:c143/tw_143/tw_common/overlay/overlay_get_sun.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide0_bguide.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide11_homebonus.dart';
@@ -15,6 +16,7 @@ import 'package:c143/tw_143/tw_pages/main_cash/main_cash_controller.dart';
 import 'package:c143/tw_143/tw_pages/main_spin/views/overlay_win_reward.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
 import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
+import 'package:c143/tw_base/tw_gj/event_busC143.dart';
 import 'package:c143/tw_notification/overlay_notify.dart';
 import 'package:get/get.dart';
 
@@ -29,47 +31,12 @@ class MainController extends GetxController {
   void resetIndex(int index) {
     MainCashController.overlayPortalController.hide();
     curMainNavIndex.value = index;
-    // OverlayGuide8Quiz1().show(
-    //   coins: 100,
-    //   onBtn: (v) {
-    //   },
-    // );
-
-    // OverlayGetSun().show(coins: 0.01, onClose: () {
-    //
-    // });
-
-
-    // OverlayTzNotify().show();
-    // OverlayGuide0BGuide().show(coins: 5, onBtn: (v){});
-    // OverlayGuide9Quiz2().show(
-    //   coins: 100,
-    //   onBtn: (v) {
-    //   },
-    // );
-    // OverlayGuideTestAnim().show();
-    // OverlayGuide1Water().show();
-    // OverlayGuide7Rank().show();
-    // OverlayGuide8Quiz1().show(coins: 100);
-
-    // OverlayGuide11HomeBonus().show();
-
-    // bool result =MainTreeController.to.overlayPortalController.isShowing;
-    // if(result){
-    //   MainTreeController.to.overlayPortalController.hide();
-    // }else{
-    //   MainTreeController.to.overlayPortalController.show();
-    // }
-    // OverlayGuide14HighLight().show();
-    // OverlayGuide15CoinToSun().show();
-    // OverlayGuide16HighLightEnd().show();
-    // OverlayGuideOld().show(coins: 100, onBtn: (value) {  });
     if (index == cashIndex) {
 
     } else if (index == quizIndex) {
 
     } else if (index == spinindexxx) {
-
+        TwEventBusC143.fire(SpinEvent());
     }else if (index == treeIndex) {
       // OverlayGuide7Rank().show();
       String? data = MainTreeController.to.guideIndexData();

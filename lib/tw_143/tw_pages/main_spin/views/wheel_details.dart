@@ -1,13 +1,17 @@
 import 'dart:math';
 
 import 'package:c143/gen/assets.gen.dart';
+import 'package:c143/tw_143/tw_common/event.dart';
 import 'package:c143/tw_143/tw_common/firebase_json/number_json.dart';
 import 'package:c143/tw_143/tw_common/lottieeee/gesture.dart';
 import 'package:c143/tw_143/tw_common/overlay/overlay_get.dart';
 import 'package:c143/tw_143/tw_pages/main/main_controller.dart';
 import 'package:c143/tw_143/tw_pages/main_spin/main_spin_controller.dart';
 import 'package:c143/tw_143/tw_pages/main_spin/views/overlay_win_reward.dart';
+import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
 import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
+import 'package:c143/tw_base/tw_gj/countryC143.dart';
+import 'package:c143/tw_base/tw_gj/event_busC143.dart';
 import 'package:c143/tw_base/tw_gj/logC143.dart';
 import 'package:c143/tw_views/animated_count.dart';
 import 'package:c143/tw_views/animated_scale.dart';
@@ -75,7 +79,7 @@ class PositionItems extends StatefulWidget {
 }
 
 class _PositionItemsState extends State<PositionItems>
-    with SingleTickerProviderStateMixin {
+    with SingleTickerProviderStateMixin  , TwEventBusMix {
   late AnimationController _controller;
   late Animation<int> _animation;
   List<double> tmpCoins = [];
@@ -91,6 +95,13 @@ class _PositionItemsState extends State<PositionItems>
       duration: Duration(seconds: 3),
     );
 
+    register<SpinEvent>((SpinEvent event ){
+      if(mounted){
+        setState(() {
+          generatedCoins();
+        });
+      }
+    });
     generatedCoins();
   }
 
@@ -102,7 +113,8 @@ class _PositionItemsState extends State<PositionItems>
       tmpMoneys = tmpTupe3;
       for (int i = 0; i < tmpTupe3.length; i++) {
         var daaa = tmpTupe3[i];
-        tmpCoins.add(daaa.item2);
+        double money = TwNumberJson.moneyTree();
+        tmpCoins.add(money);
       }
 
       return;
@@ -394,20 +406,14 @@ class _PositionItemsState extends State<PositionItems>
   _indexItem({required int index}) {
     String icon = Assets.twimg.wheelCoin.path;
     Widget txt = const SizedBox();
-    String type = tmpMoneys[index].item1;
+    String type = tmpMoneys[index].item1.toUpperCase();
 
-    if (type.toUpperCase() == "CASH" || !TwPackageABC143.isPackageB()) {
+    if (type == TwEnumWheelType.cash.nnname || !TwPackageABC143.isPackageB()) {
       icon = TwPackageABC143.isPackageB()
-          ? Assets.twimgB.moneyFloating.path
+          ? MainTreeController.to.moneyIconTreeChild()
           : Assets.twimg.wheelCoin.path;
 
       txt = Center(
-        // child: TwTxtGraBorder(
-        //   text: "${tmpCoins[index].toStringAsFixed(0)}",
-        //   fontWeight: FontWeight.w700,
-        //   fontSize: 20.sp,
-        //   strokeColor: Color(0xffBD5500),
-        // ),
         child: TwAnimatedCountttt(
           value: tmpCoins[index],
           fractionDigits: TwPackageABC143.isPackageB() ? 2 : 0,
@@ -420,33 +426,15 @@ class _PositionItemsState extends State<PositionItems>
             end: Alignment.bottomCenter,
             begin: Alignment.topCenter,
           ),
-          strokeColor: Color(0xffBD5500),
+          strokeColor: Color(0xff42362b),
           strokeWidth: 1.w,
         ),
       );
-    } else if (index == 1) {
-      icon = Assets.twimg.wheelFeiliangad.path;
-      icon = Assets.twimg.wheelCoin.path;
+    } else if (type == TwEnumWheelType.phone.nnname) {
+      icon = Assets.twimgB.wheelPhone.path;
       txt = Positioned(
-        left: 0,
-        right: 0,
-        bottom: 0,
-        top: 0,
-        child: Center(
-          child: TwTxtGraBorderC143(
-            text: "${tmpCoins[index].toStringAsFixed(0)}",
-            fontWeight: FontWeight.w700,
-            fontSize: 20.sp,
-            strokeColor: Color(0xffBD5500),
-          ),
-        ),
-      );
-    } else if (type.toUpperCase() == "CASH_RAIN") {
-      icon = Assets.twimg.wheelFeiliang.path;
-      // icon = Assets.twimg.wheelCoin.path;
-      txt = Positioned(
-        left: 0,
-        right: 0,
+        left: -10.w,
+        right: -10.w,
         bottom: 0,
         top: 0,
         child: Center(
@@ -458,19 +446,51 @@ class _PositionItemsState extends State<PositionItems>
           ),
         ),
       );
-    } else if (type.toUpperCase() == "2X") {
+    } else if (type == TwEnumWheelType.cash_rain.nnname) {
+      icon = Assets.twimgB.moneyRain.path;
+      txt = Positioned(
+        left: -10.w,
+        right: -10.w,
+        bottom: 0,
+        top: 0,
+        child: Center(
+          child: TwTxtGraBorderC143(
+            text: "",
+            fontWeight: FontWeight.w700,
+            fontSize: 20.sp,
+            strokeColor: Color(0xffBD5500),
+          ),
+        ),
+      );
+    } else if (type == TwEnumWheelType.x2.nnname) {
       icon = Assets.twimg.wheelDoubleex.path;
       // icon = Assets.twimg.wheelCoin.path;
       txt = Positioned(
-        left: 0,
-        right: 0,
+        left: -10.w,
+        right: -10.w,
+        bottom: 0,
+        child: Center(
+          child: TwTxtGraBorderC143(
+            text: "Double\nEarning",
+            fontWeight: FontWeight.w700,
+            fontSize: 10.sp,
+            strokeColor: Color(0xff000000),
+          ),
+        ),
+      );
+    } else if (type == TwEnumWheelType.cash_out.nnname) {
+      icon = Assets.twimgB.moneyFloating.path;
+      // icon = Assets.twimg.wheelCoin.path;
+      txt = Positioned(
+        left: -10.w,
+        right: -10.w,
         bottom: 0,
         top: 0,
         child: Center(
           child: TwTxtGraBorderC143(
-            text: "",
+            text: "1000",
             fontWeight: FontWeight.w700,
-            fontSize: 20.sp,
+            fontSize: 16.sp,
             strokeColor: Color(0xffBD5500),
           ),
         ),
@@ -631,4 +651,16 @@ class _PositionItemsState extends State<PositionItems>
       }
     }
   }
+}
+
+enum TwEnumWheelType {
+  cash("CASH"),
+  x2("2X"),
+  cash_rain("CASH_RAIN"),
+  phone("PHONE"),
+  cash_out("CASH_OUT");
+
+  final String nnname;
+
+  const TwEnumWheelType(this.nnname);
 }
