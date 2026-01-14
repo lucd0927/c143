@@ -195,11 +195,15 @@ class MainTreeController extends GetxController {
   }
 
   bool showMoneyStatusFlowerIcon() {
-    double monnn = MainTreeController.to.curMoneyyyy.value;
-    double stage1 = MainTreeController.stageB2Num;
-    if (stage1 <= monnn && monnn <= maxCoinNum) {
-      return true;
+    if(TwPackageABC143.isPackageB()){
+      double monnn = MainTreeController.to.curMoneyyyy.value;
+      double stage1 = MainTreeController.stageB2Num;
+      if (stage1 <= monnn && monnn <= maxCoinNum) {
+        return true;
+      }
     }
+
+
     return false;
   }
 

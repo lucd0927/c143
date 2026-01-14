@@ -412,11 +412,16 @@ class _PositionItemsState extends State<PositionItems>
       icon = TwPackageABC143.isPackageB()
           ? MainTreeController.to.moneyIconTreeChild()
           : Assets.twimg.wheelCoin.path;
-
+      bool showSun = MainTreeController.to.showMoneyStatusSunIcon();
+      bool showFlower = MainTreeController.to.showMoneyStatusFlowerIcon();
+      int fraction = TwPackageABC143.isPackageB() ? 2 : 0;
+      if(showFlower || showSun){
+        fraction = 0;
+      }
       txt = Center(
         child: TwAnimatedCountttt(
           value: tmpCoins[index],
-          fractionDigits: TwPackageABC143.isPackageB() ? 2 : 0,
+          fractionDigits: fraction,
           textStyle: TextStyle(
             fontWeight: FontWeight.w700,
             fontSize: TwPackageABC143.isPackageB() ? 16.sp : 20.sp,
@@ -474,7 +479,7 @@ class _PositionItemsState extends State<PositionItems>
             text: "Double\nEarning",
             fontWeight: FontWeight.w700,
             fontSize: 10.sp,
-            strokeColor: Color(0xff000000),
+            strokeColor: Color(0xff42362b),
           ),
         ),
       );
@@ -491,7 +496,7 @@ class _PositionItemsState extends State<PositionItems>
             text: "1000",
             fontWeight: FontWeight.w700,
             fontSize: 16.sp,
-            strokeColor: Color(0xffBD5500),
+            strokeColor: Color(0xff42362b),
           ),
         ),
       );

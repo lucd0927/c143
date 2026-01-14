@@ -261,15 +261,17 @@ class _MainCenterState extends State<MainCenter> {
       if (TwPackageABC143.isPackageB()) {
         count = MainTreeController.to.curCoin1.value;
       }
-
+      bool showFlower = MainTreeController.to.showMoneyStatusFlowerIcon();
+      int fraction = TwPackageABC143.isPackageB() ? 2 : 0;
+      if (showFlower || showSun) {
+        fraction = 0;
+      }
       return Row(
         children: [
           SizedBox(width: 100.w),
           centerItem(
             width: 50.h,
-            txtBottom: count.toStringAsFixed(
-              TwPackageABC143.isPackageB() ? 2 : 0,
-            ),
+            txtBottom: count.toStringAsFixed(fraction),
             txtTop: leftTime,
             treeType: TwEnumTreeType.coin,
             showAd: TwPackageABC143.isPackageB(),
@@ -316,14 +318,17 @@ class _MainCenterState extends State<MainCenter> {
         count = MainTreeController.to.curCoin3.value;
       }
       bool showAd = TwPackageABC143.isPackageB();
+      bool showFlower = MainTreeController.to.showMoneyStatusFlowerIcon();
+      int fraction = TwPackageABC143.isPackageB() ? 2 : 0;
+      if (showFlower || showSun) {
+        fraction = 0;
+      }
       return Row(
         children: [
           SizedBox(width: 100.w),
           centerItem(
             width: 50.h,
-            txtBottom: count.toStringAsFixed(
-              TwPackageABC143.isPackageB() ? 2 : 0,
-            ),
+            txtBottom: count.toStringAsFixed(fraction),
             txtTop: leftTime,
             treeType: TwEnumTreeType.coin3,
             showAd: showAd,
@@ -358,15 +363,18 @@ class _MainCenterState extends State<MainCenter> {
         coins = coins / MainTreeController.stageBeisu2Num;
       }
       twLooog("===coins=${coins} showFlower:$showFlower");
-      OverlayGetSun().show(coins: coins, onClose: () {
-        if (treeType == TwEnumTreeType.coin) {
-          MainTreeController.to.resetCoin1Time();
-        } else if (treeType == TwEnumTreeType.coin2Guide) {
-          MainTreeController.to.resetCoin2Time();
-        } else if (treeType == TwEnumTreeType.coin3) {
-          MainTreeController.to.resetCoin3Time();
-        }
-      });
+      OverlayGetSun().show(
+        coins: coins,
+        onClose: () {
+          if (treeType == TwEnumTreeType.coin) {
+            MainTreeController.to.resetCoin1Time();
+          } else if (treeType == TwEnumTreeType.coin2Guide) {
+            MainTreeController.to.resetCoin2Time();
+          } else if (treeType == TwEnumTreeType.coin3) {
+            MainTreeController.to.resetCoin3Time();
+          }
+        },
+      );
       return;
     }
 
@@ -604,6 +612,12 @@ class _MainCenterState extends State<MainCenter> {
           count = 2;
         }
       }
+
+      bool showFlower = MainTreeController.to.showMoneyStatusFlowerIcon();
+      int fraction = TwPackageABC143.isPackageB() ? 2 : 0;
+      if (showFlower || showSun) {
+        fraction = 0;
+      }
       bool showAd = TwPackageABC143.isPackageB();
       return Row(
         children: [
@@ -615,9 +629,7 @@ class _MainCenterState extends State<MainCenter> {
                 txtTop: leftTime,
                 treeType: TwEnumTreeType.coin2Guide,
                 width: 60.h,
-                txtBottom: count.toStringAsFixed(
-                  TwPackageABC143.isPackageB() ? 2 : 0,
-                ),
+                txtBottom: count.toStringAsFixed(fraction),
                 icon: moneyIcon,
 
                 onClick: () async {

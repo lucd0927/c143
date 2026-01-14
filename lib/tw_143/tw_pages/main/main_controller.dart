@@ -46,7 +46,7 @@ class MainController extends GetxController {
 
       }
 
-
+      MainTreeController.to.resetCoin();
     }
   }
 }

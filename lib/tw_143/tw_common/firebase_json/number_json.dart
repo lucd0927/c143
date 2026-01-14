@@ -4,6 +4,7 @@ import 'dart:math';
 import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
 import 'package:c143/tw_base/tw_ad/guiyin/firebbbbbb.dart';
 import 'package:c143/tw_base/tw_gj/logC143.dart';
+import 'package:c143/tw_base/tw_gj/number_extend.dart';
 import 'package:tuple/tuple.dart';
 
 class TwNumberJson {
@@ -339,6 +340,12 @@ class TwNumberJson {
           }
         }
       }
+    }
+
+    bool showSun = MainTreeController.to.showMoneyStatusSunIcon();
+    bool showFlower = MainTreeController.to.showMoneyStatusFlowerIcon();
+    if(showSun || showFlower){
+      money = money.toAsFixedFloor(0);
     }
     twLooog("======money:$money");
     return money;

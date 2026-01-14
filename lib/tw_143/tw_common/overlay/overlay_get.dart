@@ -46,13 +46,13 @@ class OverlayGetCoins {
             onClaim: (value) async {
               close();
               if(TwPackageABC143.isPackageB()){
-                bool result = await TwCommonAds().showInterstitialAd(
-                  adPosId: TwAdsPosId.test,
-                );
-                if (!result) {
-                  onBtn();
-                  return;
-                }
+                // bool result = await TwCommonAds().showInterstitialAd(
+                //   adPosId: TwAdsPosId.test,
+                // );
+                // if (!result) {
+                //   onBtn();
+                //   return;
+                // }
                 MainTreeController.to.onAddMoneyyyy(
                   value,
                   onEnd: () {
