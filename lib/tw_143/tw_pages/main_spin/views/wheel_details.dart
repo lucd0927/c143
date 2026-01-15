@@ -250,7 +250,7 @@ class _PositionItemsState extends State<PositionItems>
   }
 
   _nextSpin() {
-    if(mounted){
+    if (mounted) {
       setState(() {
         generatedCoins();
       });
@@ -747,10 +747,23 @@ class _PositionItemsState extends State<PositionItems>
 
   _onWinbig() async {
     bool result = MainSpinController.to.hasClickWinBigFirst();
+    // result = false;
     if (!result) {
-      OverlayWinReward().show(coins: 0, onBtn: () {}, onClose: () {});
+      OverlayWinReward().show(
+        coins: 0,
+        onBtn: () {
+          __onWinbigg();
+        },
+        onClose: () {
+
+        },
+      );
       return;
     }
+    __onWinbigg();
+  }
+
+  __onWinbigg() {
     int curNum = MainSpinController.to.curWinbigCount.value;
 
     if (curNum > 0) {

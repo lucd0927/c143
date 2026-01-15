@@ -43,8 +43,7 @@ class OverlayWinReward {
           child: WinRewardWidget(
             onClaim: (value) async {
               close();
-
-
+              onBtn();
             },
             onClose: () async {
               twLooog("=====OverlayGetCoins onClose");
