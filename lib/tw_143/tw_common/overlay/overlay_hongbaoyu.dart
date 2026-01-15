@@ -6,8 +6,10 @@ import 'package:c143/sfcj/floating_particles/src/models/direction.dart';
 import 'package:c143/sfcj/floating_particles/src/models/particle_config.dart';
 import 'package:c143/sfcj/floating_particles/src/models/particle_type.dart';
 import 'package:c143/sfcj/floating_particles/src/widgets/particle_effects_widget.dart';
+import 'package:c143/tw_143/tw_common/lottieeee/gesture.dart';
 import 'package:c143/tw_143/tw_common/overlay/overlay_get.dart';
 import 'package:c143/tw_143/tw_common/view/progress.dart';
+import 'package:c143/tw_143/tw_pages/guide/guide0_bguide.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide1_water.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
 import 'package:c143/tw_base/tw_gj/logC143.dart';
@@ -74,7 +76,7 @@ class _hongbaoyuuu extends StatefulWidget {
 
 class _hongbaoyuuuState extends State<_hongbaoyuuu> {
   var box = TwHive.box;
-  String twkeyFirst = "asfdasf12444Bbb";
+  String twkeyFirst = "asfd6asf12d444Bbb";
 
   int index = 0;
 
@@ -104,6 +106,7 @@ class _hongbaoyuuuState extends State<_hongbaoyuuu> {
         });
         bool _hasF = hasFirst();
         if (_hasF) {
+        } else {
           initJishiTimer();
         }
       }
@@ -118,10 +121,10 @@ class _hongbaoyuuuState extends State<_hongbaoyuuu> {
 
       if (itke >= 3) {
         _jishiTimer?.cancel();
-       setState(() {
-         daojishiCount = 0;
-         initCutdownTimer();
-       });
+        setState(() {
+          daojishiCount = 0;
+          initCutdownTimer();
+        });
       } else {
         if (mounted) {
           setState(() {
@@ -195,259 +198,64 @@ class _hongbaoyuuuState extends State<_hongbaoyuuu> {
         child: SizedBox(
           width: ScreenUtil().screenWidth,
           height: ScreenUtil().screenHeight,
-          child: daojishiCount == 0
-              ? Stack(
-                  // index: index,
-                  children: [
-                    Image.asset(
-                      Assets.twimgB.moneyRainBg.path,
-                      width: double.infinity,
-                      height: double.infinity,
-                      fit: BoxFit.fill,
-                    ),
-                    Hongbaoyu(
-                      onClickValue: (value) {
-                        if (mounted) {
-                          setState(() {
-                            getCoins = getCoins + value;
-                          });
-                        }
-                      },
-                    ),
-
-                    Positioned(
-                      left: 0,
-                      right: 0,
-                      top: 100.h,
-                      child: IgnorePointer(
-                        child: Container(
-                          width: double.infinity,
-                          height: 50.h,
-                          decoration: BoxDecoration(
-                            color: Colors.amber.withValues(alpha: 0),
-                          ),
-                          child: Row(
-                            children: [
-                              SizedBox(width: 30.w),
-                              Container(
-                                width: 219.w,
-                                height: 28.h,
-                                child: Stack(
-                                  clipBehavior: Clip.none,
-                                  children: [
-                                    Image.asset(
-                                      Assets.twimg.hongbaoyuLeftbg.path,
-                                      width: double.infinity,
-                                      height: double.infinity,
-                                      fit: BoxFit.fill,
-                                    ),
-                                    Align(
-                                      alignment: Alignment.centerLeft,
-                                      child: ClipPath(
-                                        clipper: TrapezoidClipper(),
-                                        child: AnimatedContainer(
-                                          height: 20.h,
-                                          duration: Duration(milliseconds: 500),
-                                          width: 219.w * progress,
-                                          color: Colors.amber.withValues(
-                                            alpha: 0.0,
-                                          ),
-                                          child: ShinyStripedProgressBar(
-                                            targetProgress: 1,
-                                            backgroundColor: Colors.transparent,
-                                            // height: 15.w,
-                                            duration: Duration(
-                                              microseconds: 100,
-                                            ),
-                                            progressColor: Color(
-                                              0xffFFDC2B,
-                                            ).withValues(alpha: 0.35),
-                                            borderRadius: BorderRadius.all(
-                                              Radius.circular(0.w),
-                                            ),
-                                            stripeAngle: StripeAngle.angle45,
-                                            stripeColor: Color(
-                                              0xffFFA339,
-                                            ).withValues(alpha: 0.38),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-
-                                    Positioned(
-                                      top: -6.h,
-                                      bottom: -6.h,
-                                      left: -20.w,
-                                      child: Image.asset(
-                                        Assets.twimg.hongbaoyuTimer.path,
-                                        width: 40.w,
-                                        height: 40.h,
-                                        fit: BoxFit.contain,
-                                      ),
-                                    ),
-                                    Center(
-                                      child: TwTxtBorderC143(text: timeText),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              Spacer(),
-                              Container(
-                                width: 104.w,
-                                height: 28.h,
-
-                                child: Stack(
-                                  children: [
-                                    Image.asset(
-                                      Assets.twimg.hongbaoyuRightbg.path,
-                                      width: double.infinity,
-                                      height: double.infinity,
-                                      fit: BoxFit.fill,
-                                    ),
-
-                                    Positioned.fill(
-                                      left: -10.w,
-                                      child: Row(
-                                        children: [
-                                          SizedBox(width: 10.w),
-                                          Image.asset(
-                                            MainTreeController.to
-                                                .moneyIconTreeChild(),
-                                            width: 24.w,
-                                            height: 24.w,
-                                          ),
-                                          SizedBox(width: 4.w),
-
-                                          TwAnimatedCountttt(
-                                            value: getCoins,
-                                            fractionDigits: 2,
-                                            textStyle: TextStyle(
-                                              fontWeight: FontWeight.w800,
-                                              fontSize: 14.sp,
-                                              color: Color(0xffFFAA00),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-
-                    Positioned(
-                      top: 50.h,
-                      left: 16.w,
-                      child: GestureDetector(
-                        onTap: () {
-                          _cutdownTimer?.cancel();
-                          widget.onClose(getCoins);
-                        },
-                        child: Container(
-                          width: 40.w,
-                          height: 40.h,
-                          color: Colors.amber.withValues(alpha: 0),
-                          child: Align(
-                            alignment: Alignment.centerLeft,
-                            child: Image.asset(
-                              Assets.twimg.back.path,
-                              width: 24.w,
-                              height: 24.h,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                )
-              : Stack(
-                  children: [
-                    Image.asset(
-                      Assets.twimgB.moneyRainBg.path,
-                      width: double.infinity,
-                      height: double.infinity,
-                      fit: BoxFit.fill,
-                    ),
-
-                    Positioned(
-                      left: 0,
-                      right: 0,
-                      top: 0.h,
-                      bottom: 100.h,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Image.asset(
-                            Assets.twimgB.moneyRainTxt.path,
-                            width: 280.w,
-                            height: 120.h,
-                          ),
-
-                          Center(
-                            child: Container(
-                              width: 120.w,
-                              height: 120.w,
-                              decoration: BoxDecoration(
-                                color: Color(0xffFFFFFF).withValues(alpha: 0.2),
-                                borderRadius: BorderRadius.circular(120.w),
-                              ),
-                              child: Center(
-                                child: TwAnimatedCountttt(
-                                  value: daojishiCount,
-                                  strokeWidth: 1.w,
-                                  strokeColor: Color(0xff133F88),
-                                  textGradient: LinearGradient(
-                                    colors: [
-                                      Color(0xffFFDF12),
-                                      Color(0xffFFAA00),
-                                    ],
-                                    end: Alignment.bottomCenter,
-                                    begin: Alignment.topCenter,
-                                  ),
-                                  textStyle: TextStyle(
-                                    fontSize: 40.sp,
-                                    color: Color(0xffFFDF12),
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Positioned(
-                      top: 50.h,
-                      left: 16.w,
-                      child: GestureDetector(
-                        onTap: () {
-                          _cutdownTimer?.cancel();
-                          widget.onClose(getCoins);
-                        },
-                        child: Container(
-                          width: 40.w,
-                          height: 40.h,
-                          color: Colors.amber.withValues(alpha: 0),
-                          child: Align(
-                            alignment: Alignment.centerLeft,
-                            child: Image.asset(
-                              Assets.twimg.back.path,
-                              width: 24.w,
-                              height: 24.h,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+          child: daojishiCount == 0 ? _hongbaoyuWidget() : _guideWidget(),
         ),
       ),
     );
+  }
+
+  Widget btnClaim() {
+    return Center(
+      child: GestureDetector(
+        onTap: onStartEarning,
+        child: Container(
+          width: 260.h,
+          height: 56.h,
+          clipBehavior: Clip.none,
+          color: Colors.black.withValues(alpha: 0.0),
+          child: Stack(
+            clipBehavior: Clip.none,
+            children: [
+              Image.asset(
+                Assets.twimg.btnSpin.path,
+                width: 260.h,
+                height: 56.h,
+                fit: BoxFit.fill,
+              ),
+              Center(
+                child: TwTxtBorderC143(
+                  text: "Start Earning",
+                  fontSize: 24.sp,
+                  fontWeight: FontWeight.w900,
+                  fontColor: Color(0xffffffff),
+                  foreground: Color(0xff22431B),
+                ),
+              ),
+
+              Positioned(
+                top: 30.h,
+                right: 30.w,
+                // child: TwAScale(
+                //   child: Image.asset(
+                //     Assets.twimg.gesture.path,
+                //     width: 70.w,
+                //     height: 70.w,
+                //   ),
+                // ),
+                child: TwLottieGesture(),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  void onStartEarning() {
+    box.put(twkeyFirst, false);
+    setState(() {
+      initJishiTimer();
+    });
   }
 
   @override
@@ -456,6 +264,274 @@ class _hongbaoyuuuState extends State<_hongbaoyuuu> {
     super.dispose();
     _cutdownTimer?.cancel();
     _jishiTimer?.cancel();
+  }
+
+  _hongbaoyuWidget() {
+    return Stack(
+      // index: index,
+      children: [
+        Image.asset(
+          Assets.twimgB.moneyRainBg.path,
+          width: double.infinity,
+          height: double.infinity,
+          fit: BoxFit.fill,
+        ),
+        Hongbaoyu(
+          onClickValue: (value) {
+            if (mounted) {
+              setState(() {
+                getCoins = getCoins + value;
+              });
+            }
+          },
+        ),
+
+        Positioned(
+          left: 0,
+          right: 0,
+          top: 100.h,
+          child: IgnorePointer(
+            child: Container(
+              width: double.infinity,
+              height: 50.h,
+              decoration: BoxDecoration(
+                color: Colors.amber.withValues(alpha: 0),
+              ),
+              child: Row(
+                children: [
+                  SizedBox(width: 30.w),
+                  Container(
+                    width: 219.w,
+                    height: 28.h,
+                    child: Stack(
+                      clipBehavior: Clip.none,
+                      children: [
+                        Image.asset(
+                          Assets.twimg.hongbaoyuLeftbg.path,
+                          width: double.infinity,
+                          height: double.infinity,
+                          fit: BoxFit.fill,
+                        ),
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: ClipPath(
+                            clipper: TrapezoidClipper(),
+                            child: AnimatedContainer(
+                              height: 20.h,
+                              duration: Duration(milliseconds: 500),
+                              width: 219.w * progress,
+                              color: Colors.amber.withValues(alpha: 0.0),
+                              child: ShinyStripedProgressBar(
+                                targetProgress: 1,
+                                backgroundColor: Colors.transparent,
+                                // height: 15.w,
+                                duration: Duration(microseconds: 100),
+                                progressColor: Color(
+                                  0xffFFDC2B,
+                                ).withValues(alpha: 0.35),
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(0.w),
+                                ),
+                                stripeAngle: StripeAngle.angle45,
+                                stripeColor: Color(
+                                  0xffFFA339,
+                                ).withValues(alpha: 0.38),
+                              ),
+                            ),
+                          ),
+                        ),
+
+                        Positioned(
+                          top: -6.h,
+                          bottom: -6.h,
+                          left: -20.w,
+                          child: Image.asset(
+                            Assets.twimg.hongbaoyuTimer.path,
+                            width: 40.w,
+                            height: 40.h,
+                            fit: BoxFit.contain,
+                          ),
+                        ),
+                        Center(child: TwTxtBorderC143(text: timeText)),
+                      ],
+                    ),
+                  ),
+                  Spacer(),
+                  Container(
+                    width: 104.w,
+                    height: 28.h,
+
+                    child: Stack(
+                      children: [
+                        Image.asset(
+                          Assets.twimg.hongbaoyuRightbg.path,
+                          width: double.infinity,
+                          height: double.infinity,
+                          fit: BoxFit.fill,
+                        ),
+
+                        Positioned.fill(
+                          left: -10.w,
+                          child: Row(
+                            children: [
+                              SizedBox(width: 10.w),
+                              Image.asset(
+                                MainTreeController.to.moneyIconTreeChild(),
+                                width: 24.w,
+                                height: 24.w,
+                              ),
+                              SizedBox(width: 4.w),
+
+                              TwAnimatedCountttt(
+                                value: getCoins,
+                                fractionDigits: 2,
+                                textStyle: TextStyle(
+                                  fontWeight: FontWeight.w800,
+                                  fontSize: 14.sp,
+                                  color: Color(0xffFFAA00),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+
+        Positioned(
+          top: 50.h,
+          left: 16.w,
+          child: GestureDetector(
+            onTap: () {
+              _cutdownTimer?.cancel();
+              widget.onClose(getCoins);
+            },
+            child: Container(
+              width: 40.w,
+              height: 40.h,
+              color: Colors.amber.withValues(alpha: 0),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Image.asset(
+                  Assets.twimg.back.path,
+                  width: 24.w,
+                  height: 24.h,
+                ),
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  _guideWidget() {
+    return Stack(
+      children: [
+        Image.asset(
+          Assets.twimgB.moneyRainBg.path,
+          width: double.infinity,
+          height: double.infinity,
+          fit: BoxFit.fill,
+        ),
+        StarryBeamScene(),
+        Positioned(
+          left: 0,
+          right: 0,
+          top: 120.h,
+          bottom: 20.h,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset(
+                Assets.twimgB.moneyRainTxt.path,
+                width: 280.w,
+                height: 120.h,
+              ),
+              Container(
+                height: 300.h,
+                child: Column(children: [
+
+                  !hasFirst()
+                      ? Center(
+                    child: Container(
+                      width: 120.w,
+                      height: 120.h,
+                      decoration: BoxDecoration(
+                        color: Color(0xffFFFFFF).withValues(alpha: 0.2),
+                        borderRadius: BorderRadius.circular(120.w),
+                      ),
+                      child: Center(
+                        child: TwAnimatedCountttt(
+                          value: daojishiCount,
+                          strokeWidth: 1.w,
+                          strokeColor: Color(0xff133F88),
+                          textGradient: LinearGradient(
+                            colors: [Color(0xffFFDF12), Color(0xffFFAA00)],
+                            end: Alignment.bottomCenter,
+                            begin: Alignment.topCenter,
+                          ),
+                          textStyle: TextStyle(
+                            fontSize: 40.sp,
+                            color: Color(0xffFFDF12),
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ),
+                  )
+                      : Container(
+                    margin: EdgeInsets.only(top: 160.h),
+                    height: 120.h,
+                    child: Column(
+                      children: [
+                        Text(
+                          "Real Cash, Real Withdrawals",
+                          style: TextStyle(
+                            fontSize: 14.sp,
+                            fontWeight: FontWeight.w700,
+                            color: Colors.white,
+                          ),
+                        ),
+                        btnClaim(),
+                      ],
+                    ),
+                  ),
+                ],),
+              )
+            ],
+          ),
+        ),
+        Positioned(
+          top: 50.h,
+          left: 16.w,
+          child: GestureDetector(
+            onTap: () {
+              _cutdownTimer?.cancel();
+              widget.onClose(getCoins);
+            },
+            child: Container(
+              width: 40.w,
+              height: 40.h,
+              color: Colors.amber.withValues(alpha: 0),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Image.asset(
+                  Assets.twimg.back.path,
+                  width: 24.w,
+                  height: 24.h,
+                ),
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
   }
 }
 
