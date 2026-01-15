@@ -4,6 +4,17 @@ import 'package:c143/tw_base/tw_gj/login_trackC143.dart';
 import 'package:c143/tw_hive/twhiveC143.dart';
 import 'package:get/get.dart';
 
+enum TwEnumBtnClickStatus {
+
+  wait("wait"),
+  waitClick("waitClick"),
+  end("end");
+
+  final String name;
+
+  const TwEnumBtnClickStatus(this.name);
+}
+
 class MainSpinController extends GetxController {
   static MainSpinController get to => Get.find();
 
@@ -23,6 +34,18 @@ class MainSpinController extends GetxController {
 
   var curClickDailyCheck = false.obs;
   var curWinbigCount = 3.obs;
+
+
+  var curClickDailyCheckB = TwEnumBtnClickStatus.wait.name.obs;
+  var curEveryDayLookAdCountB = TwEnumBtnClickStatus.wait.name.obs;
+  var curEveryDayCollectSunB = TwEnumBtnClickStatus.wait.name.obs;
+  var curEveryDaySpinB = TwEnumBtnClickStatus.wait.name.obs;
+  var curEveryMoneyRainB = TwEnumBtnClickStatus.wait.name.obs;
+
+  var curTreeLevel = TwEnumBtnClickStatus.wait.name.obs;
+  var curWaterCount = TwEnumBtnClickStatus.wait.name.obs;
+  var curFertilizeCount = TwEnumBtnClickStatus.wait.name.obs;
+  var curLianxuLoginCount = TwEnumBtnClickStatus.wait.name.obs;
 
   @override
   void onInit() {

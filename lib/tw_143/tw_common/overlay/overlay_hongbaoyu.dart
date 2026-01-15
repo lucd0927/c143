@@ -394,7 +394,7 @@ class _hongbaoyuuuState extends State<_hongbaoyuuu> {
         //   height: double.infinity,
         //   fit: BoxFit.fill,
         // ),
-        MeteorBackground(meteorCount: 0,key: ValueKey("_hongbaoyuWidget"),),
+        MeteorBackground(meteorCount: 2,key: ValueKey("_hongbaoyuWidget"),),
         Hongbaoyu(
           onClickValue: (value) {
             if (mounted) {

@@ -45,7 +45,7 @@ class SpaceAnimationPage extends StatelessWidget {
 }
 
 class MeteorBackground extends StatefulWidget {
-  const MeteorBackground({super.key, this.meteorCount = 4});
+  const MeteorBackground({super.key, this.meteorCount = 8});
 
   final int meteorCount;
 
@@ -147,9 +147,9 @@ class _MeteorBackgroundState extends State<MeteorBackground>
         // gradient: LinearGradient(
         //   begin: Alignment.topCenter,
         //   end: Alignment.bottomCenter,
-        //   colors: [Color(0xFF150025), Color(0xFF0F0015)],
+        //   colors: [Color(0xFF150025).withValues(alpha: 0.0), Color(0xFF0F0015).withValues(alpha: 0.2)],
         // ),
-        color: Color(0xFF150025).withValues(alpha: 0.2),
+        color: Color(0xFF150025).withValues(alpha: 0.4),
       ),
       child: AnimatedBuilder(
         animation: _controller,
