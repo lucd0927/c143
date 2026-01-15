@@ -86,6 +86,7 @@ class _PositionItemsState extends State<PositionItems>
   List<double> tmpCoins = [];
   List<Tuple3<String, double, double>> tmpMoneys = [];
 
+  List<int> _cashSmall2BigIndex = [];
   List<int> _cutdownCashIndex = [];
   List<int> _cashIndex = [];
   List<int> _phoneIndex = [];
@@ -105,15 +106,15 @@ class _PositionItemsState extends State<PositionItems>
 
     register<SpinEvent>((SpinEvent event) {
       if (mounted) {
-        setState(() {
-          generatedCoins();
-        });
+        _nextSpin();
       }
     });
     generatedCoins();
   }
 
   resetIndexes() {
+    _cutdownCashIndex = [];
+    _cashSmall2BigIndex = [];
     _cashIndex = [];
     _phoneIndex = [];
     _cashRainIndex = [];
@@ -128,12 +129,17 @@ class _PositionItemsState extends State<PositionItems>
       resetIndexes();
       List<Tuple3<String, double, double>> tmpTupe3 = TwNumberJson.moneyWheel();
       tmpMoneys = tmpTupe3;
+      Map<double, int> _kNumber_vIndex = {};
       for (int i = 0; i < tmpTupe3.length; i++) {
         var daaa = tmpTupe3[i];
+        double money = TwNumberJson.moneyTree();
+        tmpCoins.add(money);
+
         String type = daaa.item1;
         // twLooog("=type:$type=====");
         if (type == TwEnumWheelType.cash.nnname) {
           _cashIndex.add(i);
+          _kNumber_vIndex[money] = i;
         } else if (type == TwEnumWheelType.cash_out.nnname) {
           _cashOutIndex.add(i);
         } else if (type == TwEnumWheelType.cash_rain.nnname) {
@@ -143,22 +149,30 @@ class _PositionItemsState extends State<PositionItems>
         } else if (type == TwEnumWheelType.x2.nnname) {
           _x2Index.add(i);
         }
-
-        double money = TwNumberJson.moneyTree();
-        tmpCoins.add(money);
       }
+      twLooog("=_kIndex_vNumber:$_kNumber_vIndex=====");
+      var _moneys = _kNumber_vIndex.keys.toList();
+      _moneys.sort((a, b) => a.compareTo(b));
+      twLooog("=_moneys:$_moneys=====");
+      _moneys.forEach((value) {
+        int index = _kNumber_vIndex[value] ?? -1;
+        _cashSmall2BigIndex.add(index);
+      });
+
       twLooog("=_cashIndex:$_cashIndex=====");
+      twLooog("=_cutdownCashIndex:$_cutdownCashIndex=====");
+      twLooog("=_cashSmall2BigIndex:$_cashSmall2BigIndex=====");
       twLooog("=_cashOutIndex:$_cashOutIndex=====");
       twLooog("=_cashRainIndex:$_cashRainIndex=====");
       twLooog("=_phoneIndex:$_phoneIndex=====");
       twLooog("=_x2Index:$_x2Index=====");
       return;
-    }
-
-    tmpCoins = [];
-    for (int i = 0; i < 18; i++) {
-      int coin = 100 + Random().nextInt(90);
-      tmpCoins.add(coin * 1.0);
+    } else {
+      tmpCoins = [];
+      for (int i = 0; i < 18; i++) {
+        int coin = 100 + Random().nextInt(90);
+        tmpCoins.add(coin * 1.0);
+      }
     }
   }
 
@@ -236,10 +250,12 @@ class _PositionItemsState extends State<PositionItems>
   }
 
   _nextSpin() {
-    setState(() {
-      generatedCoins();
-    });
-    MainSpinController.to.resetWinbigCount();
+    if(mounted){
+      setState(() {
+        generatedCoins();
+      });
+      MainSpinController.to.resetWinbigCount();
+    }
   }
 
   @override
@@ -455,7 +471,7 @@ class _PositionItemsState extends State<PositionItems>
     String icon = Assets.twimg.wheelCoin.path;
     Widget txt = const SizedBox();
     String type = tmpMoneys[index].item1.toUpperCase();
-
+    bool showGrey = false;
     if (type == TwEnumWheelType.cash.nnname || !TwPackageABC143.isPackageB()) {
       icon = TwPackageABC143.isPackageB()
           ? MainTreeController.to.moneyIconTreeChild()
@@ -466,6 +482,8 @@ class _PositionItemsState extends State<PositionItems>
       if (showFlower || showSun) {
         fraction = 0;
       }
+
+      showGrey = _cutdownCashIndex.contains(index);
       txt = Center(
         child: TwAnimatedCountttt(
           value: tmpCoins[index],
@@ -550,7 +568,7 @@ class _PositionItemsState extends State<PositionItems>
       );
     }
 
-    return Container(
+    Widget child = Container(
       width: _imgItemWidth,
       height: _imgItemWidth,
       color: Colors.amber.withValues(alpha: 0),
@@ -590,6 +608,13 @@ class _PositionItemsState extends State<PositionItems>
         ],
       ),
     );
+    if (showGrey) {
+      return ColorFiltered(
+        colorFilter: ColorFilter.mode(Colors.grey, BlendMode.modulate),
+        child: child,
+      );
+    }
+    return child;
   }
 
   index0() {
@@ -689,9 +714,16 @@ class _PositionItemsState extends State<PositionItems>
     int targeIndex = Random().nextInt(12);
     bool hasMoneyRain = false;
     // cash
-    if (random > 0.7) {
-      int length = _cashIndex.length;
-      targeIndex = _cashIndex[Random().nextInt(length)];
+    if (random > 0.09) {
+      List<int> _tmpCashIndex = [];
+      _cashIndex.forEach((index) {
+        bool hasCccc = _cutdownCashIndex.contains(index);
+        if (!hasCccc) {
+          _tmpCashIndex.add(index);
+        }
+      });
+      int length = _tmpCashIndex.length;
+      targeIndex = _tmpCashIndex[Random().nextInt(length)];
     }
     // cash rain
     else if (random > 0.0) {
@@ -725,6 +757,12 @@ class _PositionItemsState extends State<PositionItems>
       if (mounted) {
         setState(() {
           MainSpinController.to.subWinbigCount();
+          int length = _cutdownCashIndex.length;
+
+          _cutdownCashIndex.add(_cashSmall2BigIndex[length]);
+          twLooog("=_cashIndex:$_cashIndex=====");
+          twLooog("=_cutdownCashIndex:$_cutdownCashIndex=====");
+          twLooog("=_cashSmall2BigIndex:$_cashSmall2BigIndex=====");
         });
       }
     }

@@ -192,7 +192,7 @@ class _ParticleEffectsState extends State<ParticleEffects>
   Timer? _clickTimer;
 
   generateClickCoins() {
-    int base = 2;
+    int base = 1;
     if(MainTreeController.to.curMoneyyyy.value >= MainTreeController.stageB1Num){
       base = 4;
     }

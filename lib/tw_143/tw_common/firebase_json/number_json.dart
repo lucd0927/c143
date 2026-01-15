@@ -286,7 +286,7 @@ class TwNumberJson {
       for (int i = 0; i < length; i++) {
         Tuple3<String, double, double> tmpTup3 = Tuple3(
           "Cash".toUpperCase(),
-          Random().nextDouble() * 10+5,
+          Random().nextDouble() * 10 + 5,
           0.0,
         );
         tmpDataTuple3s.add(tmpTup3);
@@ -344,9 +344,11 @@ class TwNumberJson {
 
     bool showSun = MainTreeController.to.showMoneyStatusSunIcon();
     bool showFlower = MainTreeController.to.showMoneyStatusFlowerIcon();
-    if(showSun || showFlower){
-      money = money.toAsFixedFloor(0);
+    int foolr = 2;
+    if (showSun || showFlower) {
+      foolr = 0;
     }
+    money = money.toAsFixedFloor(foolr);
     // twLooog("======money:$money");
     return money;
   }
