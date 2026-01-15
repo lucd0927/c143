@@ -6,6 +6,7 @@ import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
 import 'package:c143/tw_base/tw_gj/event_busC143.dart';
 import 'package:c143/tw_views/font_border.dart';
 import 'package:c143/tw_views/font_gradient_border.dart';
+import 'package:c143/tw_views/pb_tushi.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -134,7 +135,20 @@ class _MainSpinState extends State<MainSpin> {
   }
 
   contentB() {
-    bool tmpClickDailyCheck = MainSpinController.to.curClickDailyCheck.value;
+    int mtpSpins = MainSpinController.to.curEveryDaySpinB.value;
+    String wheelspins = mtpSpins >= 3
+        ? TwEnumBtnClickStatus.waitClick.name
+        : mtpSpins == -1
+        ? TwEnumBtnClickStatus.end.name
+        : TwEnumBtnClickStatus.wait.name;
+
+    int tmpCashRain = MainSpinController.to.curEveryMoneyRainB.value;
+    String tmpCashRaintxt = tmpCashRain >= 3
+        ? TwEnumBtnClickStatus.waitClick.name
+        : mtpSpins == -1
+        ? TwEnumBtnClickStatus.end.name
+        : TwEnumBtnClickStatus.wait.name;
+
     return Column(
       children: [
         Container(
@@ -162,72 +176,68 @@ class _MainSpinState extends State<MainSpin> {
                   text: "Daily Check-in",
                   text2: "+10",
                   clickStatus: MainSpinController.to.curClickDailyCheckB.value,
-                  canClick: !tmpClickDailyCheck,
                   onTap: () {
-                    if (!tmpClickDailyCheck) {
-                      MainSpinController.to.clickDailyCheck(100);
-                    } else {}
+                    MainSpinController.to.onDailyCheckB();
                   },
                 ),
                 bottomItemB(
                   icon: Assets.twimg.spinWheelS.path,
                   text: "3 Wheel Spins",
                   text2: "+10",
-                  clickStatus: MainSpinController.to.curClickDailyCheckB.value,
-                  onTap: () {},
+                  clickStatus: wheelspins,
+                  onTap: () {
+                    MainSpinController.to.onSpinCount();
+                  },
                 ),
                 bottomItemB(
                   icon: Assets.twimg.spinAd.path,
                   text: "Watch 100 ads",
                   text2: "+1000",
-                  clickStatus: MainSpinController.to.curClickDailyCheckB.value,
-                  onTap: () {},
-                ),
-                bottomItemB(
-                  icon: Assets.twimg.spinAd.path,
-                  text: "Watch 100 ads",
-                  text2: "+1000",
-                  clickStatus: MainSpinController.to.curClickDailyCheckB.value,
+                  clickStatus: TwEnumBtnClickStatus.wait.name,
                   onTap: () {},
                 ),
 
                 bottomItemB(
-                  icon: Assets.twimg.spinAd.path,
+                  icon: Assets.twimgB.moneyRain.path,
                   text: "3 Cash Rain Plays",
-                  text2: "+1000",
-                  clickStatus: MainSpinController.to.curEveryMoneyRainB.value,
-                  onTap: () {},
+                  text2: "+100",
+                  clickStatus: tmpCashRaintxt,
+                  onTap: () {
+                    MainSpinController.to.onCashRainClaim();
+                  },
                 ),
                 bottomItemB(
-                  icon: Assets.twimg.spinAd.path,
+                  icon: Assets.twimg.mainTree5.path,
                   text: "Unlock Tree Level 5",
-                  text2: "+1000",
+                  text2: "+100",
                   clickStatus: MainSpinController.to.curTreeLevel.value,
-                  onTap: () {},
+                  onTap: () {
+                    MainSpinController.to.onUnlockTreeLevel5();
+                  },
                 ),
                 bottomItemB(
-                  icon: Assets.twimg.spinAd.path,
+                  icon: Assets.twimg.splashTreeworld.path,
                   text: "3-Day App Launch Streak",
                   text2: "+1000",
                   clickStatus: MainSpinController.to.curLianxuLoginCount.value,
                   onTap: () {},
                 ),
                 bottomItemB(
-                  icon: Assets.twimg.spinAd.path,
+                  icon: Assets.twimg.mainWater.path,
                   text: "100 Total Watering",
                   text2: "+1000",
                   clickStatus: MainSpinController.to.curWaterCount.value,
                   onTap: () {},
                 ),
                 bottomItemB(
-                  icon: Assets.twimg.spinAd.path,
+                  icon: Assets.twimg.mainFertilize.path,
                   text: "100 Total Fertilization",
                   text2: "+1000",
                   clickStatus: MainSpinController.to.curFertilizeCount.value,
                   onTap: () {},
                 ),
                 bottomItemB(
-                  icon: Assets.twimg.spinAd.path,
+                  icon: Assets.twimg.mainSun.path,
                   text: "Collect 100 suns",
                   text2: "+100",
                   clickStatus:
@@ -315,12 +325,13 @@ class _MainSpinState extends State<MainSpin> {
     required String text,
     required String text2,
     required String clickStatus,
-    bool canClick = false,
     required VoidCallback onTap,
   }) {
-    String btnText = clickStatus == TwEnumBtnClickStatus.wait.name
-        ? "Wait"
-        : "Claim";
+    bool hasClicked = clickStatus == TwEnumBtnClickStatus.end.name;
+    bool canClick = clickStatus == TwEnumBtnClickStatus.waitClick.name;
+    String btnText = clickStatus == TwEnumBtnClickStatus.waitClick.name
+        ? "Claim"
+        : "Wait";
     return Container(
       width: double.infinity,
       height: 50.h,
@@ -349,7 +360,17 @@ class _MainSpinState extends State<MainSpin> {
           ),
           SizedBox(width: 8.w),
           GestureDetector(
-            onTap: onTap,
+            onTap: () {
+              if (canClick) {
+                onTap();
+              } else {
+                twToast(
+                  text: hasClicked
+                      ? "You had clicked task"
+                      : "Please completed task",
+                );
+              }
+            },
             child: Container(
               width: 72.h,
               height: 28.h,
@@ -357,6 +378,8 @@ class _MainSpinState extends State<MainSpin> {
                 gradient: LinearGradient(
                   colors: canClick
                       ? [Color(0xffFFA800), Color(0xffF47900)]
+                      : hasClicked
+                      ? [Color(0xffcccccc), Color(0xffcccccc)]
                       : [Color(0xff42DF0F), Color(0xff098906)],
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,

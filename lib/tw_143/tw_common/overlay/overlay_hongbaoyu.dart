@@ -12,6 +12,7 @@ import 'package:c143/tw_143/tw_common/view/cross_confetti.dart';
 import 'package:c143/tw_143/tw_common/view/progress.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide0_bguide.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide1_water.dart';
+import 'package:c143/tw_143/tw_pages/main_spin/main_spin_controller.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
 import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
 import 'package:c143/tw_base/tw_gj/countryC143.dart';
@@ -112,6 +113,7 @@ class _hongbaoyuuuState extends State<_hongbaoyuuu> {
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (mounted) {
+        MainSpinController.to.onCashRainCount();
         setState(() {
           showAnimated = true;
         });
@@ -824,6 +826,7 @@ class _hongbaoyuuuState extends State<_hongbaoyuuu> {
   _onPlayAgain() {
     setState(() {
       _resetData();
+      MainSpinController.to.onCashRainCount();
     });
   }
 

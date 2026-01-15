@@ -6,6 +6,7 @@ import 'package:c143/tw_143/tw_common/firebase_json/number_json.dart';
 import 'package:c143/tw_143/tw_common/overlay/overlay_lot_water.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide14_highligth.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide15_coin_to_sun.dart';
+import 'package:c143/tw_143/tw_pages/main_spin/main_spin_controller.dart';
 import 'package:c143/tw_base/tw_ad/ads_idddddC143.dart';
 import 'package:c143/tw_base/tw_ad/base_ads.dart';
 import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
@@ -45,7 +46,9 @@ class MainTreeController extends GetxController {
   static double get stage2Num => TwPackageABC143.isPackageB() ? 900 : 2000;
 
   static double get stageB1Num => 100;
+
   static double get stageBeisuNum => 100;
+
   static double get stageBeisu2Num => 10000;
 
   static double get stageB2Num => 950;
@@ -195,14 +198,13 @@ class MainTreeController extends GetxController {
   }
 
   bool showMoneyStatusFlowerIcon() {
-    if(TwPackageABC143.isPackageB()){
+    if (TwPackageABC143.isPackageB()) {
       double monnn = MainTreeController.to.curMoneyyyy.value;
       double stage1 = MainTreeController.stageB2Num;
       if (stage1 <= monnn && monnn <= maxCoinNum) {
         return true;
       }
     }
-
 
     return false;
   }
@@ -218,10 +220,9 @@ class MainTreeController extends GetxController {
       tmpTreeIcon = showSun
           ? Assets.twimg.mainSun.path
           : Assets.twimgB.moneyFloating.path;
-       if(showFlower){
-         tmpTreeIcon = Assets.twimgB.mainFlower.path;
+      if (showFlower) {
+        tmpTreeIcon = Assets.twimgB.mainFlower.path;
       }
-
     }
 
     return tmpTreeIcon;
@@ -245,7 +246,7 @@ class MainTreeController extends GetxController {
     bool showFlower = showMoneyStatusFlowerIcon();
     if (showSun) {
       tmpTreeIcon = Assets.twimg.mainSun.path;
-    }else if(showFlower){
+    } else if (showFlower) {
       tmpTreeIcon = Assets.twimgB.mainFlower.path;
     }
 
@@ -616,21 +617,19 @@ class MainTreeController extends GetxController {
     String? data = guideIndexData();
     twLooog("======guideIndexData:$data tmpCurmmm2:$tmpCurmmm2");
 
-    if (TwPackageABC143.isPackageB() ) {
-
-      if(tmpCurmmm2 >= 100 && curLevel.value != 5){
+    if (TwPackageABC143.isPackageB()) {
+      if (tmpCurmmm2 >= 100 && curLevel.value != 5) {
         curLevel.value = 5;
         box.put(twKeyLevelll, 5);
+        MainSpinController.to.curTreeLevel.value =
+            TwEnumBtnClickStatus.waitClick.name;
       }
       if (tmpCurmmm2 >= 90 && data == MainTreeController.guide14) {
         OverlayGuide15CoinToSun().show();
       } else if (tmpCurmmm2 >= 60 && data == MainTreeController.guide13) {
         OverlayGuide14HighLight().show();
       }
-
     }
-
-
   }
 
   static Map<EnumTwLottttieJson, LottieComposition> _kLottie_vCompo = {};
