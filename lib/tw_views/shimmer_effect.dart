@@ -106,12 +106,13 @@ class _TwShiningEffectState extends State<TwShiningEffect>
                   transform: GradientRotation(widget.angle),
                   colors: [
                     Colors.transparent,
-                    widget.shineColor.withValues(alpha: 0.1),
+                    widget.shineColor.withValues(alpha: 0.01),
                     widget.shineColor.withValues(alpha: widget.opacity),
-                    widget.shineColor.withValues(alpha: 0.1),
+                    widget.shineColor.withValues(alpha: 0.01),
                     Colors.transparent,
                   ],
-                  stops: [0, 0.44, 0.5, 0.56, 1],
+                  // stops: [0, 0.44, 0.5, 0.56, 1],
+                  stops: [0, 0.46, 0.5, 0.53, 1],
 
                 );
 

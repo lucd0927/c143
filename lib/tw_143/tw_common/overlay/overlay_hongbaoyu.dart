@@ -8,14 +8,20 @@ import 'package:c143/sfcj/floating_particles/src/models/particle_type.dart';
 import 'package:c143/sfcj/floating_particles/src/widgets/particle_effects_widget.dart';
 import 'package:c143/tw_143/tw_common/lottieeee/gesture.dart';
 import 'package:c143/tw_143/tw_common/overlay/overlay_get.dart';
+import 'package:c143/tw_143/tw_common/view/cross_confetti.dart';
 import 'package:c143/tw_143/tw_common/view/progress.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide0_bguide.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide1_water.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
+import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
+import 'package:c143/tw_base/tw_gj/countryC143.dart';
 import 'package:c143/tw_base/tw_gj/logC143.dart';
 import 'package:c143/tw_hive/twhiveC143.dart';
 import 'package:c143/tw_views/animated_count.dart';
+import 'package:c143/tw_views/animated_fly.dart';
 import 'package:c143/tw_views/font_border.dart';
+import 'package:c143/tw_views/font_gradient_border.dart';
+import 'package:c143/tw_views/shimmer_effect.dart';
 import 'package:c143/tw_views/tw_progress.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -39,7 +45,8 @@ class OverlayHongbaoyu {
           child: _hongbaoyuuu(
             onClose: (value) async {
               close();
-
+              onEnd();
+              return;
               OverlayGetCoins().show(
                 coins: value,
                 onBtn: () {
@@ -94,6 +101,10 @@ class _hongbaoyuuuState extends State<_hongbaoyuuu> {
     return box.get(twkeyFirst) ?? true;
   }
 
+  bool _hongbaoRainEnd = false;
+  bool _hongbaoWinPop = false;
+  int daojishiCount = 3;
+
   @override
   void initState() {
     // TODO: implement initState
@@ -113,9 +124,8 @@ class _hongbaoyuuuState extends State<_hongbaoyuuu> {
     });
   }
 
-  int daojishiCount = 3;
-
   initJishiTimer() {
+    _jishiTimer?.cancel();
     _jishiTimer = Timer.periodic(Duration(milliseconds: 1000), (timer) {
       int itke = timer.tick;
 
@@ -158,6 +168,7 @@ class _hongbaoyuuuState extends State<_hongbaoyuuu> {
   }
 
   initCutdownTimer() {
+    _cutdownTimer?.cancel();
     timeText = _formatDuration(maxTimer);
     _cutdownTimer = Timer.periodic(Duration(milliseconds: 1000), (timer) {
       int tick = timer.tick;
@@ -171,9 +182,11 @@ class _hongbaoyuuuState extends State<_hongbaoyuuu> {
         if (mounted) {
           setState(() {
             progress = 1;
+            _hongbaoRainEnd = true;
+            _hongbaoWinPop = true;
           });
         }
-        widget.onClose(getCoins);
+        // widget.onClose(getCoins);
       } else {
         if (mounted) {
           setState(() {
@@ -195,10 +208,115 @@ class _hongbaoyuuuState extends State<_hongbaoyuuu> {
       child: AnimatedScale(
         duration: animD,
         scale: showAnimated ? 1.0 : startScale,
-        child: SizedBox(
+        child: Container(
           width: ScreenUtil().screenWidth,
           height: ScreenUtil().screenHeight,
-          child: daojishiCount == 0 ? _hongbaoyuWidget() : _guideWidget(),
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                Color(0xffAF00D2).withValues(alpha: 0.7),
+                Color(0xffAF00D2).withValues(alpha: 0.0),
+                Color(0xffffffff).withValues(alpha: 0.0),
+                Color(0xff003AD9).withValues(alpha: 0.8),
+              ],
+              stops: [0, 0.1, 0.9, 1],
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+            ),
+          ),
+          child: _hongbaoRainEnd
+              ? (_hongbaoWinPop ? _rainWinWidget() : _rainEndWidget())
+              : (daojishiCount == 0 ? _hongbaoyuWidget() : _guideWidget()),
+        ),
+      ),
+    );
+  }
+
+  Widget btnPlayAgainClaim() {
+    return Center(
+      child: GestureDetector(
+        onTap: _onPlayAgain,
+        child: Container(
+          width: 260.h,
+          height: 56.h,
+          clipBehavior: Clip.none,
+          color: Colors.black.withValues(alpha: 0.0),
+          child: Stack(
+            clipBehavior: Clip.none,
+            children: [
+              Image.asset(
+                Assets.twimg.btnSpin.path,
+                width: 260.h,
+                height: 56.h,
+                fit: BoxFit.fill,
+              ),
+              Center(
+                child: TwTxtBorderC143(
+                  text: "Play Again",
+                  fontSize: 24.sp,
+                  fontWeight: FontWeight.w900,
+                  fontColor: Color(0xffffffff),
+                  foreground: Color(0xff22431B),
+                ),
+              ),
+              if (TwPackageABC143.isPackageB())
+                Positioned(
+                  top: -10.h,
+                  right: -5.h,
+                  child: Image.asset(
+                    Assets.twimg.ad.path,
+                    width: 28.h,
+                    height: 28.h,
+                  ),
+                ),
+              Positioned(top: 36.h, right: 0.w, child: TwLottieGesture()),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget btnWinClaim() {
+    return Center(
+      child: GestureDetector(
+        onTap: _onBtnWin,
+        child: Container(
+          width: 260.h,
+          height: 56.h,
+          clipBehavior: Clip.none,
+          color: Colors.black.withValues(alpha: 0.0),
+          child: Stack(
+            clipBehavior: Clip.none,
+            children: [
+              Image.asset(
+                Assets.twimg.btnSpin.path,
+                width: 260.h,
+                height: 56.h,
+                fit: BoxFit.fill,
+              ),
+              Center(
+                child: TwTxtBorderC143(
+                  text: "Claim",
+                  fontSize: 24.sp,
+                  fontWeight: FontWeight.w900,
+                  fontColor: Color(0xffffffff),
+                  foreground: Color(0xff22431B),
+                ),
+              ),
+              if (TwPackageABC143.isPackageB())
+                Positioned(
+                  top: -10.h,
+                  right: -5.h,
+                  child: Image.asset(
+                    Assets.twimg.ad.path,
+                    width: 28.h,
+                    height: 28.h,
+                  ),
+                ),
+              Positioned(top: 36.h, right: 0.w, child: TwLottieGesture()),
+            ],
+          ),
         ),
       ),
     );
@@ -270,12 +388,13 @@ class _hongbaoyuuuState extends State<_hongbaoyuuu> {
     return Stack(
       // index: index,
       children: [
-        Image.asset(
-          Assets.twimgB.moneyRainBg.path,
-          width: double.infinity,
-          height: double.infinity,
-          fit: BoxFit.fill,
-        ),
+        // Image.asset(
+        //   Assets.twimgB.moneyRainBg.path,
+        //   width: double.infinity,
+        //   height: double.infinity,
+        //   fit: BoxFit.fill,
+        // ),
+        MeteorBackground(meteorCount: 0,key: ValueKey("_hongbaoyuWidget"),),
         Hongbaoyu(
           onClickValue: (value) {
             if (mounted) {
@@ -433,13 +552,13 @@ class _hongbaoyuuuState extends State<_hongbaoyuuu> {
   _guideWidget() {
     return Stack(
       children: [
-        Image.asset(
-          Assets.twimgB.moneyRainBg.path,
-          width: double.infinity,
-          height: double.infinity,
-          fit: BoxFit.fill,
-        ),
-        StarryBeamScene(),
+        // Image.asset(
+        //   Assets.twimgB.moneyRainBg.path,
+        //   width: double.infinity,
+        //   height: double.infinity,
+        //   fit: BoxFit.fill,
+        // ),
+        MeteorBackground(),
         Positioned(
           left: 0,
           right: 0,
@@ -455,83 +574,279 @@ class _hongbaoyuuuState extends State<_hongbaoyuuu> {
               ),
               Container(
                 height: 300.h,
-                child: Column(children: [
-
-                  !hasFirst()
-                      ? Center(
-                    child: Container(
-                      width: 120.w,
-                      height: 120.h,
-                      decoration: BoxDecoration(
-                        color: Color(0xffFFFFFF).withValues(alpha: 0.2),
-                        borderRadius: BorderRadius.circular(120.w),
-                      ),
-                      child: Center(
-                        child: TwAnimatedCountttt(
-                          value: daojishiCount,
-                          strokeWidth: 1.w,
-                          strokeColor: Color(0xff133F88),
-                          textGradient: LinearGradient(
-                            colors: [Color(0xffFFDF12), Color(0xffFFAA00)],
-                            end: Alignment.bottomCenter,
-                            begin: Alignment.topCenter,
+                child: Column(
+                  children: [
+                    !hasFirst()
+                        ? Center(
+                            child: Container(
+                              width: 120.w,
+                              height: 120.h,
+                              decoration: BoxDecoration(
+                                color: Color(0xffFFFFFF).withValues(alpha: 0.2),
+                                borderRadius: BorderRadius.circular(120.w),
+                              ),
+                              child: Center(
+                                child: TwAnimatedCountttt(
+                                  value: daojishiCount,
+                                  strokeWidth: 1.w,
+                                  strokeColor: Color(0xff133F88),
+                                  textGradient: LinearGradient(
+                                    colors: [
+                                      Color(0xffFFDF12),
+                                      Color(0xffFFAA00),
+                                    ],
+                                    end: Alignment.bottomCenter,
+                                    begin: Alignment.topCenter,
+                                  ),
+                                  textStyle: TextStyle(
+                                    fontSize: 40.sp,
+                                    color: Color(0xffFFDF12),
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          )
+                        : Container(
+                            margin: EdgeInsets.only(top: 160.h),
+                            height: 120.h,
+                            child: Column(
+                              children: [
+                                Text(
+                                  "Real Cash, Real Withdrawals",
+                                  style: TextStyle(
+                                    fontSize: 14.sp,
+                                    fontWeight: FontWeight.w700,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                                SizedBox(height: 4.h),
+                                btnClaim(),
+                              ],
+                            ),
                           ),
-                          textStyle: TextStyle(
-                            fontSize: 40.sp,
-                            color: Color(0xffFFDF12),
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                    ),
-                  )
-                      : Container(
-                    margin: EdgeInsets.only(top: 160.h),
-                    height: 120.h,
-                    child: Column(
-                      children: [
-                        Text(
-                          "Real Cash, Real Withdrawals",
-                          style: TextStyle(
-                            fontSize: 14.sp,
-                            fontWeight: FontWeight.w700,
-                            color: Colors.white,
-                          ),
-                        ),
-                        btnClaim(),
-                      ],
-                    ),
-                  ),
-                ],),
-              )
-            ],
-          ),
-        ),
-        Positioned(
-          top: 50.h,
-          left: 16.w,
-          child: GestureDetector(
-            onTap: () {
-              _cutdownTimer?.cancel();
-              widget.onClose(getCoins);
-            },
-            child: Container(
-              width: 40.w,
-              height: 40.h,
-              color: Colors.amber.withValues(alpha: 0),
-              child: Align(
-                alignment: Alignment.centerLeft,
-                child: Image.asset(
-                  Assets.twimg.back.path,
-                  width: 24.w,
-                  height: 24.h,
+                  ],
                 ),
               ),
-            ),
+            ],
           ),
         ),
       ],
     );
+  }
+
+  _rainWinWidget() {
+    bool showSun = MainTreeController.to.showMoneyStatusSunIcon();
+    bool showFlower = MainTreeController.to.showMoneyStatusFlowerIcon();
+    if (showSun) {
+      getCoins = getCoins / MainTreeController.stageBeisuNum;
+    } else if (showFlower) {
+      getCoins = getCoins / MainTreeController.stageBeisu2Num;
+    }
+    return Stack(
+      children: [
+        // Image.asset(
+        //   Assets.twimgB.moneyRainBg.path,
+        //   width: double.infinity,
+        //   height: double.infinity,
+        //   fit: BoxFit.fill,
+        // ),
+        MeteorBackground(),
+        Positioned(
+          left: 0,
+          right: 0,
+          top: 120.h,
+          bottom: 20.h,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                width: 240.w,
+                height: 188.h,
+                child: Stack(
+                  children: [
+                    TwShiningEffect(
+                      duration: Duration(milliseconds: 2000),
+                      shineColor: Color(0xffffffff),
+                      opacity: 0.8,
+                      angle: -0.9,
+                      topLeft: false,
+                      child: Image.asset(
+                        Assets.twimgB.moneyRainWin.path,
+                        width: 240.w,
+                        height: 188.h,
+                        fit: BoxFit.fill,
+                      ),
+                    ),
+                    Positioned(
+                      left: 0,
+                      right: 0,
+                      bottom: 4.h,
+                      child: Center(
+                        child: Container(
+                          width: 240.w,
+                          height: 56.h,
+                          decoration: BoxDecoration(
+                            color: Colors.blue.withValues(alpha: 0.0),
+                          ),
+                          child: Center(
+                            child: TwTxtGraBorderC143(
+                              text:
+                                  "${TwCountryyC143.curCountryyyySymbolC143()}${getCoins.toStringAsFixed(2)}",
+                              fontWeight: FontWeight.w900,
+                              fontSize: 32.sp,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                height: 300.h,
+                child: Column(
+                  children: [
+                    Container(
+                      margin: EdgeInsets.only(top: 160.h),
+                      height: 120.h,
+                      child: Column(
+                        children: [
+                          btnWinClaim(),
+                          GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                _hongbaoWinPop = false;
+                              });
+                            },
+                            child: Text(
+                              "Give Up",
+                              style: TextStyle(
+                                fontSize: 14.sp,
+                                fontWeight: FontWeight.w700,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+
+  _bgWidget() {
+    return Container(
+      width: double.infinity,
+      height: double.infinity,
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          colors: [
+            Color(0xffAF00D2).withValues(alpha: 0.7),
+            Color(0xffAF00D2).withValues(alpha: 0.0),
+            Color(0xffffffff).withValues(alpha: 0.0),
+            Color(0xff003AD9).withValues(alpha: 0.8),
+          ],
+          stops: [0, 0.1, 0.9, 1],
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+        ),
+      ),
+    );
+  }
+
+  _rainEndWidget() {
+    return Stack(
+      children: [
+        // _bgWidget(),
+        // Image.asset(
+        //   Assets.twimgB.moneyRainBg.path,
+        //   width: double.infinity,
+        //   height: double.infinity,
+        //   fit: BoxFit.fill,
+        // ),
+        // MeteorBackground(),
+        MeteorBackground(),
+        Positioned(
+          left: 0,
+          right: 0,
+          top: 120.h,
+          bottom: 20.h,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset(
+                Assets.twimgB.moneyRainTxt.path,
+                width: 280.w,
+                height: 120.h,
+              ),
+              Container(
+                height: 300.h,
+                child: Column(
+                  children: [
+                    Container(
+                      margin: EdgeInsets.only(top: 160.h),
+                      height: 120.h,
+                      child: Column(
+                        children: [
+                          btnPlayAgainClaim(),
+                          SizedBox(height: 4.h),
+                          GestureDetector(
+                            onTap: _onGiveup,
+                            child: Text(
+                              "Give Up",
+                              style: TextStyle(
+                                fontSize: 14.sp,
+                                fontWeight: FontWeight.w700,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+
+  _onPlayAgain() {
+    setState(() {
+      _resetData();
+    });
+  }
+
+  _onGiveup() {
+    widget.onClose(0);
+  }
+
+  _onBtnWin() async {
+
+
+    MainTreeController.to.onAddMoneyyyy(getCoins, onEnd: () {});
+
+    setState(() {
+      _hongbaoWinPop = false;
+    });
+  }
+
+  void _resetData() {
+    _hongbaoRainEnd = false;
+    _hongbaoWinPop = false;
+    daojishiCount = 3;
+    getCoins = 0;
+    initJishiTimer();
   }
 }
 

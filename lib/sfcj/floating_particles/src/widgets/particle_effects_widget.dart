@@ -199,7 +199,7 @@ class _ParticleEffectsState extends State<ParticleEffects>
     bool showSun = MainTreeController.to.showMoneyStatusSunIcon();
     bool showFlower = MainTreeController.to.showMoneyStatusFlowerIcon();
     if (showSun) {
-      base = 30;
+      base = 8;
     } else if (showFlower) {
       base = 50;
     }
