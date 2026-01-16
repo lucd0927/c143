@@ -839,7 +839,7 @@ class _PositionItemsState extends State<PositionItems>
     int targeIndex = Random().nextInt(12);
     bool hasMoneyRain = false;
     // cash
-    if (random > 0.99) {
+    if (random > 0.69) {
       List<int> _tmpCashIndex = [];
       _cashIndex.forEach((index) {
         bool hasCccc = _cutdownCashIndex.contains(index);

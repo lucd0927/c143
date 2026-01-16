@@ -1,6 +1,7 @@
 import 'package:c143/tw_143/tw_common/overlay/overlay_get.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
 import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
+import 'package:c143/tw_base/tw_configgg/config.dart';
 import 'package:c143/tw_base/tw_gj/logC143.dart';
 import 'package:c143/tw_base/tw_gj/login_trackC143.dart';
 import 'package:c143/tw_hive/twhiveC143.dart';
@@ -79,7 +80,9 @@ class MainSpinController extends GetxController {
       }
       tmpClickDailyCheck = false;
     }
-    tmpSpinNum = 30;
+    if(TwConfigggg.hasDeeevv()){
+      tmpSpinNum = 30;
+    }
     curTwSpinNum = tmpSpinNum.obs;
     curClickDailyCheck = tmpClickDailyCheck.obs;
 

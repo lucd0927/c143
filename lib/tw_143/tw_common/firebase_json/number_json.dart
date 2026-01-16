@@ -10,7 +10,7 @@ import 'package:tuple/tuple.dart';
 class TwNumberJson {
   static dynamic _onlineJson = null;
 
-  static Map<String, dynamic> _localJson = {
+  static final Map<String, dynamic> _localJson = {
     "user_balance_reward": [
       {
         "earning_range": [0, 90],
