@@ -466,8 +466,96 @@ class _PositionItemsState extends State<PositionItems>
       ),
     );
   }
+  _indexItemA({required int index}) {
+    String icon = Assets.twimg.wheelCoin.path;
+    Widget txt = const SizedBox();
 
-  _indexItem({required int index}) {
+    bool showGrey = false;
+    if (true) {
+      icon = TwPackageABC143.isPackageB()
+          ? MainTreeController.to.moneyIconTreeChild()
+          : Assets.twimg.wheelCoin.path;
+      bool showSun = MainTreeController.to.showMoneyStatusSunIcon();
+      bool showFlower = MainTreeController.to.showMoneyStatusFlowerIcon();
+      int fraction = TwPackageABC143.isPackageB() ? 2 : 0;
+      if (showFlower || showSun) {
+        fraction = 0;
+      }
+
+      showGrey = _cutdownCashIndex.contains(index);
+      txt = Center(
+        child: TwAnimatedCountttt(
+          value: tmpCoins[index],
+          fractionDigits: fraction,
+          textStyle: TextStyle(
+            fontWeight: FontWeight.w700,
+            fontSize: TwPackageABC143.isPackageB() ? 16.sp : 20.sp,
+          ),
+          textGradient: LinearGradient(
+            colors: [Color(0xffFFDF12), Color(0xffFFAA00)],
+            end: Alignment.bottomCenter,
+            begin: Alignment.topCenter,
+          ),
+          strokeColor: Color(0xff42362b),
+          strokeWidth: 1.w,
+        ),
+      );
+    }
+
+    Widget child = Container(
+      width: _imgItemWidth,
+      height: _imgItemWidth,
+      color: Colors.amber.withValues(alpha: 0),
+      child: Stack(
+        clipBehavior: Clip.none,
+        children: [
+          Image.asset(
+            icon,
+            width: double.infinity,
+            height: double.infinity,
+            fit: BoxFit.contain,
+          ),
+          if (_selectIndex == index)
+            Positioned(
+              left: -10.h,
+              right: -10.h,
+              top: -10.h,
+              bottom: -10.h,
+              child: Center(
+                child: Container(
+                  width: _imgItemWidth + 10.h,
+                  height: _imgItemWidth + 10.h,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(_imgItemWidth),
+                    border: Border.all(
+                      color: Colors.red.withValues(alpha: 0.5),
+                      width: 2.w,
+                    ),
+                  ),
+                  child: Stack(
+                    children: [Image.asset(Assets.twimg.wheelScroll.path)],
+                  ),
+                ),
+              ),
+            ),
+          txt,
+        ],
+      ),
+    );
+    if (showGrey) {
+      return ColorFiltered(
+        colorFilter: ColorFilter.mode(Colors.grey, BlendMode.modulate),
+        child: child,
+      );
+    }
+    return child;
+  }
+  _indexItemB({required int index}) {
+    if(!TwPackageABC143.isPackageB()){
+      return _indexItemA(index: index);
+    }
+
+
     String icon = Assets.twimg.wheelCoin.path;
     Widget txt = const SizedBox();
     String type = tmpMoneys[index].item1.toUpperCase();
@@ -620,78 +708,111 @@ class _PositionItemsState extends State<PositionItems>
   index0() {
     double left = _imgWidth / 2 - _imgItemWidth / 2;
     double top = 10.h;
-    return Positioned(left: left, top: top, child: _indexItem(index: 0));
+    return Positioned(left: left, top: top, child: _indexItemB(index: 0));
   }
 
   index6() {
     double left = _imgWidth / 2 - _imgItemWidth / 2;
     double top = 268.h;
-    return Positioned(left: left, top: top, child: _indexItem(index: 6));
+    return Positioned(left: left, top: top, child: _indexItemB(index: 6));
   }
 
   index1() {
     double left = _imgWidth / 2 - _imgItemWidth / 2 + 70.h;
     double top = 30.h;
-    return Positioned(left: left, top: top, child: _indexItem(index: 1));
+    return Positioned(left: left, top: top, child: _indexItemB(index: 1));
   }
 
   index11() {
     double left = 74.h;
     double top = 30.h;
-    return Positioned(left: left, top: top, child: _indexItem(index: 11));
+    return Positioned(left: left, top: top, child: _indexItemB(index: 11));
   }
 
   index2() {
     double left = _imgWidth / 2 - _imgItemWidth / 2 + 120.h;
     double top = 80.h;
-    return Positioned(left: left, top: top, child: _indexItem(index: 2));
+    return Positioned(left: left, top: top, child: _indexItemB(index: 2));
   }
 
   index10() {
     double left = 25.h;
     double top = 80.h;
-    return Positioned(left: left, top: top, child: _indexItem(index: 10));
+    return Positioned(left: left, top: top, child: _indexItemB(index: 10));
   }
 
   index3() {
     double left = _imgWidth / 2 - _imgItemWidth / 2 + 130.h;
     double top = 145.h;
-    return Positioned(left: left, top: top, child: _indexItem(index: 3));
+    return Positioned(left: left, top: top, child: _indexItemB(index: 3));
   }
 
   index9() {
     double left = 8.h;
     double top = 148.h;
-    return Positioned(left: left, top: top, child: _indexItem(index: 9));
+    return Positioned(left: left, top: top, child: _indexItemB(index: 9));
   }
 
   index4() {
     double left = _imgWidth / 2 - _imgItemWidth / 2 + 115.h;
     double top = 210.h;
-    return Positioned(left: left, top: top, child: _indexItem(index: 4));
+    return Positioned(left: left, top: top, child: _indexItemB(index: 4));
   }
 
   index8() {
     double left = 28.h;
     double top = 210.h;
-    return Positioned(left: left, top: top, child: _indexItem(index: 8));
+    return Positioned(left: left, top: top, child: _indexItemB(index: 8));
   }
 
   index5() {
     double left = _imgWidth / 2 - _imgItemWidth / 2 + 64.h;
     double top = 250.h;
-    return Positioned(left: left, top: top, child: _indexItem(index: 5));
+    return Positioned(left: left, top: top, child: _indexItemB(index: 5));
   }
 
   index7() {
     double left = 74.h;
     double top = 250.h;
-    return Positioned(left: left, top: top, child: _indexItem(index: 7));
+    return Positioned(left: left, top: top, child: _indexItemB(index: 7));
   }
 
   bool canClick = true;
 
   void onDraw() {
+    twLooog("=======onWinbig canClick:$canClick");
+    if (!canClick) {
+      return;
+    }
+
+    int curSpinNum = MainSpinController.to.curTwSpinNum.value;
+    if (curSpinNum <= 0) {
+      twToast(text: "You can earn spins by answering questions.");
+      MainController.to.resetIndex(MainController.quizIndex);
+      return;
+    }
+    canClick = false;
+    MainSpinController.to.subSpinNum();
+
+    if (_selectIndex <= 0) {
+      _startIndex = 0;
+    }
+
+    double random = Random().nextDouble();
+    int targeIndex = Random().nextInt(12);
+    bool hasMoneyRain = false;
+    int length = 12;
+    targeIndex = Random().nextInt(length);
+    twLooog("=====random:$random=targeIndex:$targeIndex");
+
+    startSpin(
+      startIndex: _startIndex,
+      targetIndex: targeIndex,
+      hasMoneyRain: hasMoneyRain,
+    );
+  }
+
+  void onDrawA() {
     twLooog("=======onWinbig canClick:$canClick");
     if (!canClick) {
       return;

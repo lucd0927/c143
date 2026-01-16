@@ -43,14 +43,15 @@ class OverlayGuide2Coin {
               MainTreeController.to.saveGuideIndexData(
                 MainTreeController.guide2,
               );
-
+              double coins = 10;
               if(TwPackageABC143.isPackageB()){
+                coins = 2;
                 bool result = await TwCommonAds().showInterstitialAd(
                   adPosId: TwAdsPosId.cuvxv_newadview_rv,
                 );
               }
 
-              OverlayGuide3AdSpot().show(coins: 2);
+              OverlayGuide3AdSpot().show(coins: coins);
             },
           ),
         );

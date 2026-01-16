@@ -1,5 +1,6 @@
 import 'package:c143/tw_143/tw_common/event.dart';
 import 'package:c143/tw_143/tw_common/overlay/overlay_get_sun.dart';
+import 'package:c143/tw_143/tw_common/overlay/overlay_hongbaoyu.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide0_bguide.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide11_homebonus.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide14_highligth.dart';
@@ -33,6 +34,11 @@ class MainController extends GetxController {
   void resetIndex(int index) {
     MainCashController.overlayPortalController.hide();
     curMainNavIndex.value = index;
+    // OverlayHongbaoyu().show(
+    //   onEnd: () {
+    //
+    //   },
+    // );
 
     //
     // OverlayTxStep().show(coins: 10, onBtn: (va) {});

@@ -46,8 +46,15 @@ class OverlayHongbaoyu {
           child: _hongbaoyuuu(
             onClose: (value) async {
               close();
-              onEnd();
-              return;
+              if(TwPackageABC143.isPackageB()){
+
+                onEnd();
+                return;
+              }
+              if(value <= 0){
+                onEnd();
+                return;
+              }
               OverlayGetCoins().show(
                 coins: value,
                 onBtn: () {
@@ -99,7 +106,10 @@ class _hongbaoyuuuState extends State<_hongbaoyuuu> {
   double getCoins = 0;
 
   bool hasFirst() {
-    return box.get(twkeyFirst) ?? true;
+    if(TwPackageABC143.isPackageB()){
+      return box.get(twkeyFirst) ?? true;
+    }
+    return false;
   }
 
   bool _hongbaoRainEnd = false;
@@ -188,7 +198,12 @@ class _hongbaoyuuuState extends State<_hongbaoyuuu> {
             _hongbaoWinPop = true;
           });
         }
-        // widget.onClose(getCoins);
+
+        if(!TwPackageABC143.isPackageB()){
+          widget.onClose(getCoins);
+        }
+
+
       } else {
         if (mounted) {
           setState(() {
@@ -226,9 +241,13 @@ class _hongbaoyuuuState extends State<_hongbaoyuuu> {
               end: Alignment.bottomCenter,
             ),
           ),
-          child: _hongbaoRainEnd
-              ? (_hongbaoWinPop ? _rainWinWidget() : _rainEndWidget())
-              : (daojishiCount == 0 ? _hongbaoyuWidget() : _guideWidget()),
+          child: TwPackageABC143.isPackageB()
+              ? (_hongbaoRainEnd
+                    ? (_hongbaoWinPop ? _rainWinWidget() : _rainEndWidget())
+                    : (daojishiCount == 0
+                          ? _hongbaoyuWidget()
+                          : _guideWidget()))
+              : _hongbaoyuWidget(),
         ),
       ),
     );
@@ -396,7 +415,7 @@ class _hongbaoyuuuState extends State<_hongbaoyuuu> {
         //   height: double.infinity,
         //   fit: BoxFit.fill,
         // ),
-        MeteorBackground(meteorCount: 2,key: ValueKey("_hongbaoyuWidget"),),
+        MeteorBackground(meteorCount: 2, key: ValueKey("_hongbaoyuWidget")),
         Hongbaoyu(
           onClickValue: (value) {
             if (mounted) {
@@ -835,8 +854,6 @@ class _hongbaoyuuuState extends State<_hongbaoyuuu> {
   }
 
   _onBtnWin() async {
-
-
     MainTreeController.to.onAddMoneyyyy(getCoins, onEnd: () {});
 
     setState(() {
