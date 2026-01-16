@@ -13,13 +13,14 @@ import 'package:c143/tw_143/tw_pages/guide/guide9_quiz2.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide_old.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide_test_animated.dart';
 import 'package:c143/tw_143/tw_pages/main_cash/main_cash_controller.dart';
+import 'package:c143/tw_143/tw_pages/main_cash/overlayc143/card_input.dart';
+import 'package:c143/tw_143/tw_pages/main_cash/overlayc143/overlay_tx_step.dart';
 import 'package:c143/tw_143/tw_pages/main_spin/views/overlay_win_reward.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
 import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
 import 'package:c143/tw_base/tw_gj/event_busC143.dart';
 import 'package:c143/tw_notification/overlay_notify.dart';
 import 'package:get/get.dart';
-
 
 class MainController extends GetxController {
   static MainController get to => Get.find();
@@ -28,22 +29,25 @@ class MainController extends GetxController {
   static const int quizIndex = 1;
   static const int spinindexxx = 2;
   static const int cashIndex = 3;
+
   void resetIndex(int index) {
     MainCashController.overlayPortalController.hide();
     curMainNavIndex.value = index;
+
+    //
+    // OverlayTxStep().show(coins: 10, onBtn: (va) {});
     if (index == cashIndex) {
-
     } else if (index == quizIndex) {
-
     } else if (index == spinindexxx) {
-        TwEventBusC143.fire(SpinEvent());
-    }else if (index == treeIndex) {
+      TwEventBusC143.fire(SpinEvent());
+    } else if (index == treeIndex) {
       // OverlayGuide7Rank().show();
       String? data = MainTreeController.to.guideIndexData();
 
-      if(data == MainTreeController.guide10){
-        OverlayGuide11HomeBonus().show(coins:TwPackageABC143.isPackageB()?5: 10);
-
+      if (data == MainTreeController.guide10) {
+        OverlayGuide11HomeBonus().show(
+          coins: TwPackageABC143.isPackageB() ? 5 : 10,
+        );
       }
 
       MainTreeController.to.resetCoin();

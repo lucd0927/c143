@@ -17,8 +17,13 @@ class _CashProgressState extends State<CashProgress> {
   @override
   Widget build(BuildContext context) {
     return Obx(() {
-      double progress =
-          MainTreeController.to.curMoneyyyy.value / MainTreeController.stageB1Num;
+      double maxnnn = MainTreeController.stageB1Num;
+
+      if (MainCashController.to.hasSaveCardIddddC143()) {
+        maxnnn = MainTreeController.maxCoinNum;
+      }
+
+      double progress = MainTreeController.to.curMoneyyyy.value / maxnnn;
       if (progress >= 1) {
         progress = 1;
       }
@@ -100,24 +105,27 @@ class _CashProgressState extends State<CashProgress> {
                   ),
 
                   SizedBox(height: 32.h),
-                  Container(
-                    width: 290.w,
-                    height: 40.h,
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        colors: prgressTxt,
-                        // begin: Alignment.topCenter,
-                        // end: Alignment.bottomCenter,
+                  GestureDetector(
+                    onTap: _onWithdraw,
+                    child: Container(
+                      width: 290.w,
+                      height: 40.h,
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          colors: prgressTxt,
+                          // begin: Alignment.topCenter,
+                          // end: Alignment.bottomCenter,
+                        ),
+                        borderRadius: BorderRadius.circular(40.h),
                       ),
-                      borderRadius: BorderRadius.circular(40.h),
-                    ),
-                    child: Center(
-                      child: Text(
-                        progress >= 1 ? "Withdraw Now" : "Earn Now",
-                        style: TextStyle(
-                          fontWeight: FontWeight.w700,
-                          fontSize: 16.sp,
-                          color: Color(0xffffffff),
+                      child: Center(
+                        child: Text(
+                          progress >= 1 ? "Withdraw Now" : "Earn Now",
+                          style: TextStyle(
+                            fontWeight: FontWeight.w700,
+                            fontSize: 16.sp,
+                            color: Color(0xffffffff),
+                          ),
                         ),
                       ),
                     ),
@@ -129,5 +137,9 @@ class _CashProgressState extends State<CashProgress> {
         ),
       );
     });
+  }
+
+  void _onWithdraw() {
+    MainCashController.to.onWithdraw();
   }
 }

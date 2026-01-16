@@ -743,6 +743,9 @@ class $AssetsTwimgBGen {
   AssetGenImage get settingVolumeUn =>
       const AssetGenImage('assets/twimgB/setting_volume_un.png');
 
+  /// File path: assets/twimgB/tx_ad.png
+  AssetGenImage get txAd => const AssetGenImage('assets/twimgB/tx_ad.png');
+
   /// File path: assets/twimgB/tx_bg.png
   AssetGenImage get txBg => const AssetGenImage('assets/twimgB/tx_bg.png');
 
@@ -764,6 +767,9 @@ class $AssetsTwimgBGen {
   AssetGenImage get txCheck =>
       const AssetGenImage('assets/twimgB/tx_check.png');
 
+  /// File path: assets/twimgB/tx_next.png
+  AssetGenImage get txNext => const AssetGenImage('assets/twimgB/tx_next.png');
+
   /// File path: assets/twimgB/tx_paychange.png
   AssetGenImage get txPaychange =>
       const AssetGenImage('assets/twimgB/tx_paychange.png');
@@ -779,6 +785,9 @@ class $AssetsTwimgBGen {
   /// File path: assets/twimgB/tx_setting.png
   AssetGenImage get txSetting =>
       const AssetGenImage('assets/twimgB/tx_setting.png');
+
+  /// File path: assets/twimgB/tx_you.png
+  AssetGenImage get txYou => const AssetGenImage('assets/twimgB/tx_you.png');
 
   /// File path: assets/twimgB/wheel_phone.png
   AssetGenImage get wheelPhone =>
@@ -799,6 +808,38 @@ class $AssetsTwimgBGen {
   /// File path: assets/twimgB/wheel_pop_phone.png
   AssetGenImage get wheelPopPhone =>
       const AssetGenImage('assets/twimgB/wheel_pop_phone.png');
+
+  /// File path: assets/twimgB/wheel_task_ad.png
+  AssetGenImage get wheelTaskAd =>
+      const AssetGenImage('assets/twimgB/wheel_task_ad.png');
+
+  /// File path: assets/twimgB/wheel_task_daily.png
+  AssetGenImage get wheelTaskDaily =>
+      const AssetGenImage('assets/twimgB/wheel_task_daily.png');
+
+  /// File path: assets/twimgB/wheel_task_fl.png
+  AssetGenImage get wheelTaskFl =>
+      const AssetGenImage('assets/twimgB/wheel_task_fl.png');
+
+  /// File path: assets/twimgB/wheel_task_rain.png
+  AssetGenImage get wheelTaskRain =>
+      const AssetGenImage('assets/twimgB/wheel_task_rain.png');
+
+  /// File path: assets/twimgB/wheel_task_tree5.png
+  AssetGenImage get wheelTaskTree5 =>
+      const AssetGenImage('assets/twimgB/wheel_task_tree5.png');
+
+  /// File path: assets/twimgB/wheel_task_treeworld.png
+  AssetGenImage get wheelTaskTreeworld =>
+      const AssetGenImage('assets/twimgB/wheel_task_treeworld.png');
+
+  /// File path: assets/twimgB/wheel_task_water.png
+  AssetGenImage get wheelTaskWater =>
+      const AssetGenImage('assets/twimgB/wheel_task_water.png');
+
+  /// File path: assets/twimgB/wheel_task_wheel.png
+  AssetGenImage get wheelTaskWheel =>
+      const AssetGenImage('assets/twimgB/wheel_task_wheel.png');
 
   /// List of all assets
   List<AssetGenImage> get values => [
@@ -844,21 +885,32 @@ class $AssetsTwimgBGen {
     settingMusicUn,
     settingVolume,
     settingVolumeUn,
+    txAd,
     txBg,
     txBg2,
     txBg3,
     txCashapp,
     txCashappMaintop,
     txCheck,
+    txNext,
     txPaychange,
     txPaypal,
     txPaypalMaintop,
     txSetting,
+    txYou,
     wheelPhone,
     wheelPopBg,
     wheelPopJindu,
     wheelPopNext,
     wheelPopPhone,
+    wheelTaskAd,
+    wheelTaskDaily,
+    wheelTaskFl,
+    wheelTaskRain,
+    wheelTaskTree5,
+    wheelTaskTreeworld,
+    wheelTaskWater,
+    wheelTaskWheel,
   ];
 }
 

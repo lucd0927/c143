@@ -110,7 +110,7 @@ class _Guide2CoinWidgetState extends State<Guide2CoinWidget> {
       color: Colors.black.withValues(alpha: showAnimated ? overlayOpacity : 0),
       child: AnimatedScale(
         duration: animD,
-        scale: showAnimated ? 1.0 : startScale,
+        scale: showAnimated ? 1.0 : 1,
         child: SizedBox(
           width: ScreenUtil().screenWidth,
           height: ScreenUtil().screenHeight,

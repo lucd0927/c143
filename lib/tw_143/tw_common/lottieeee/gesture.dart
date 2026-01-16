@@ -10,11 +10,13 @@ class TwLottieGesture extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 70.h,
-      height: 70.h,
-      child: TwLottieCommon(
-        type: EnumTwLottttieJson.gesture,
+    return IgnorePointer(
+      child: Container(
+        width: 70.h,
+        height: 70.h,
+        child: TwLottieCommon(
+          type: EnumTwLottttieJson.gesture,
+        ),
       ),
     );
   }

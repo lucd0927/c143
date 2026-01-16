@@ -6,6 +6,8 @@ import 'package:c143/tw_143/tw_common/firebase_json/number_json.dart';
 import 'package:c143/tw_143/tw_common/overlay/overlay_lot_water.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide14_highligth.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide15_coin_to_sun.dart';
+import 'package:c143/tw_143/tw_pages/main_cash/main_cash_controller.dart';
+import 'package:c143/tw_143/tw_pages/main_cash/overlayc143/card_input.dart';
 import 'package:c143/tw_143/tw_pages/main_spin/main_spin_controller.dart';
 import 'package:c143/tw_base/tw_ad/ads_idddddC143.dart';
 import 'package:c143/tw_base/tw_ad/base_ads.dart';
@@ -172,11 +174,25 @@ class MainTreeController extends GetxController {
   static const List<int> waterCounts = [1, 20, 60, 80];
   static const List<int> shifeiCounts = [1, 5, 15, 20];
 
-  double leftMonn() {
+  double leftMonn1() {
     double curMonn = MainTreeController.to.curMoneyyyy.value;
 
     curMonn = curMonn.toAsFixedFloor(2);
     double left = MainTreeController.stageB1Num - curMonn;
+
+    if (left <= 0) {
+      left = 0;
+    }
+
+    return left;
+  }
+
+
+  double leftMonn2() {
+    double curMonn = MainTreeController.to.curMoneyyyy.value;
+
+    curMonn = curMonn.toAsFixedFloor(2);
+    double left = MainTreeController.maxCoinNum - curMonn;
 
     if (left <= 0) {
       left = 0;
@@ -618,11 +634,20 @@ class MainTreeController extends GetxController {
     twLooog("======guideIndexData:$data tmpCurmmm2:$tmpCurmmm2");
 
     if (TwPackageABC143.isPackageB()) {
-      if (tmpCurmmm2 >= 100 && curLevel.value != 5) {
-        curLevel.value = 5;
-        box.put(twKeyLevelll, 5);
-        MainSpinController.to.curTreeLevel.value =
-            TwEnumBtnClickStatus.waitClick.name;
+      if (tmpCurmmm2 >= 100) {
+        if( curLevel.value != 5){
+          curLevel.value = 5;
+          box.put(twKeyLevelll, 5);
+          MainSpinController.to.curTreeLevel.value =
+              TwEnumBtnClickStatus.waitClick.name;
+        }
+
+        if(!MainCashController.to.hasSaveCardIddddC143()){
+          OverlayWithdrawCardInfoC143().show();
+        }
+
+
+
       }
       if (tmpCurmmm2 >= 90 && data == MainTreeController.guide14) {
         OverlayGuide15CoinToSun().show();

@@ -62,7 +62,7 @@ class ParticleEffects extends StatefulWidget {
   /// Call this method early in your app to preload images
   static Future<void> preloadImages(List<String> imagePaths) async {
     final futures = imagePaths.map(
-      (path) => ParticlePainter.preloadImage(path),
+          (path) => ParticlePainter.preloadImage(path),
     );
     await Future.wait(futures);
   }
@@ -75,11 +75,11 @@ class ParticleEffects extends StatefulWidget {
   /// Preloads custom widgets for particle effects
   /// Call this method early in your app to preload custom widgets
   static Future<void> preloadCustomWidgets(
-    List<Widget> widgets,
-    double size,
-  ) async {
+      List<Widget> widgets,
+      double size,
+      ) async {
     final futures = widgets.map(
-      (widget) => ParticlePainter.preloadCustomWidget(widget, size),
+          (widget) => ParticlePainter.preloadCustomWidget(widget, size),
     );
     await Future.wait(futures);
   }
@@ -192,7 +192,7 @@ class _ParticleEffectsState extends State<ParticleEffects>
   Timer? _clickTimer;
 
   generateClickCoins() {
-    int base = 1;
+    double base = 0.5;
     if(MainTreeController.to.curMoneyyyy.value >= MainTreeController.stageB1Num){
       base = 4;
     }
@@ -291,14 +291,14 @@ class _ParticleEffectsState extends State<ParticleEffects>
         oldWidget.config.imagePath != widget.config.imagePath) {
       needsImageReload =
           widget.config.particleType == ParticleType.image &&
-          widget.config.imagePath != null;
+              widget.config.imagePath != null;
     }
 
     if (oldWidget.config.particleType != widget.config.particleType ||
         oldWidget.config.customParticle != widget.config.customParticle) {
       needsWidgetReload =
           widget.config.particleType == ParticleType.custom &&
-          widget.config.customParticle != null;
+              widget.config.customParticle != null;
     }
 
     // Regenerate particles if configuration changed
@@ -346,7 +346,7 @@ class _ParticleEffectsState extends State<ParticleEffects>
         if (_isImageLoading)
           Positioned.fill(
             child:
-                widget.loadingWidget ??
+            widget.loadingWidget ??
                 Container(
                   color: Colors.transparent,
                   child: const Center(

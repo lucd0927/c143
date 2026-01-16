@@ -18,7 +18,11 @@ class _CashAccountDetailState extends State<CashAccountDetail> {
   @override
   Widget build(BuildContext context) {
     double curMonnn = MainTreeController.to.curMoneyyyy.value;
-    double lfettt = MainTreeController.to.leftMonn();
+    double lfettt = MainTreeController.to.leftMonn1();
+    if(MainCashController.to.hasSaveCardIddddC143()){
+      lfettt = MainTreeController.to.leftMonn2();
+    }
+    bool hasSsss = MainCashController.to.hasSaveCardIddddC143();
     return Container(
       width: 320.w,
       height: 176.h,
@@ -49,7 +53,7 @@ class _CashAccountDetailState extends State<CashAccountDetail> {
                         style: TextStyle(
                           fontWeight: FontWeight.w700,
                           fontSize: 12.sp,
-                          color: Color(0xff99C2EA),
+                          color: hasSsss?Color(0xffB7905B):Color(0xff99C2EA),
                         ),
                       ),
 
@@ -58,7 +62,7 @@ class _CashAccountDetailState extends State<CashAccountDetail> {
                         style: TextStyle(
                           fontWeight: FontWeight.w700,
                           fontSize: 36.sp,
-                          color: Color(0xffffffff),
+                          color: hasSsss?Color(0xffB7905B):Color(0xffffffff),
                         ),
                       ),
 
@@ -77,7 +81,7 @@ class _CashAccountDetailState extends State<CashAccountDetail> {
                         style: TextStyle(
                           fontWeight: FontWeight.w700,
                           fontSize: 12.sp,
-                          color: Color(0xff99C2EA),
+                          color: hasSsss?Color(0xffB7905B):Color(0xff99C2EA),
                         ),
                       ),
                     ],
@@ -95,9 +99,9 @@ class _CashAccountDetailState extends State<CashAccountDetail> {
                             Text(
                               "Earned",
                               style: TextStyle(
-                                fontWeight: FontWeight.w300,
+                                fontWeight: FontWeight.w400,
                                 fontSize: 12.sp,
-                                color: Color(0xff99C2EA),
+                                color:hasSsss?Color(0xffB7905B): Color(0xff99C2EA),
                               ),
                             ),
 
@@ -106,7 +110,7 @@ class _CashAccountDetailState extends State<CashAccountDetail> {
                               style: TextStyle(
                                 fontWeight: FontWeight.w500,
                                 fontSize: 16.sp,
-                                color: Color(0xffffffff),
+                                color: hasSsss?Color(0xffB7905B):Color(0xffffffff),
                               ),
                             ),
                           ],
@@ -117,9 +121,9 @@ class _CashAccountDetailState extends State<CashAccountDetail> {
                             Text(
                               "Pending",
                               style: TextStyle(
-                                fontWeight: FontWeight.w300,
+                                fontWeight: FontWeight.w400,
                                 fontSize: 12.sp,
-                                color: Color(0xff99C2EA),
+                                color:hasSsss?Color(0xffB7905B): Color(0xff99C2EA),
                               ),
                             ),
 
