@@ -284,7 +284,7 @@ class MainQuizController extends GetxController {
     int tmpcurInde = curAnswerCount.value;
     int maxLength = _initQuizDatus.length;
     int nextIndex = tmpcurInde + 1;
-    if (nextIndex > maxLength) {
+    if (nextIndex >= maxLength) {
       nextIndex = 0;
     }
 
