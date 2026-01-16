@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:c143/gen/assets.gen.dart';
+import 'package:c143/tw_143/tw_common/lottieeee/gesture.dart';
 import 'package:c143/tw_143/tw_common/view/progress.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide16_highligthend.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide1_water.dart';
@@ -14,6 +15,7 @@ import 'package:c143/tw_views/animated_count.dart';
 import 'package:c143/tw_views/animated_scale.dart';
 import 'package:c143/tw_views/font_border.dart';
 import 'package:c143/tw_views/font_gradient_border.dart';
+import 'package:c143/tw_views/shimmer_effect.dart';
 import 'package:c143/tw_views/tw_progress.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -36,7 +38,9 @@ class OverlayGuide15CoinToSun {
           child: Guide15CoinToSun(
             onClose: () async {
               close();
-              MainTreeController.to.saveGuideIndexData(MainTreeController.guide15);
+              MainTreeController.to.saveGuideIndexData(
+                MainTreeController.guide15,
+              );
               OverlayGuide16HighLightEnd().show();
             },
           ),
@@ -126,10 +130,23 @@ class _Guide15CoinToSunState extends State<Guide15CoinToSun> {
                       height: 76.h,
                     ),
                     SizedBox(height: 60.h),
-                    Image.asset(
-                      Assets.twimg.guide15Sun.path,
-                      width: 120.w,
-                      height: 120.h,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        // TwTxtGraBorderC143(text: "1 ",fontWeight: FontWeight.w900,fontSize: 80.sp,),
+                        TwShiningEffect(
+                          duration: Duration(milliseconds: 2000),
+                          shineColor: Color(0xffffffff),
+                          opacity: 1,
+                          angle: -0.9,
+                          topLeft: false,
+                          child: Image.asset(
+                            Assets.twimg.guide15Sun.path,
+                            width: 120.w,
+                            height: 120.h,
+                          ),
+                        ),
+                      ],
                     ),
                     SizedBox(height: 16.h),
                     AnimatedCrossFade(
@@ -141,11 +158,15 @@ class _Guide15CoinToSunState extends State<Guide15CoinToSun> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               TwTxtGraBorderC143(
-                                text: "=${TwCountryyC143.curCountryyyySymbolC143()}0.01",
+                                text:
+                                    "=${TwCountryyC143.curCountryyyySymbolC143()}0.01",
                                 fontWeight: FontWeight.w700,
                                 fontSize: 40.sp,
                                 gradient: LinearGradient(
-                                  colors: [Color(0xffFFFFFF), Color(0xffFFE56F)],
+                                  colors: [
+                                    Color(0xffFFFFFF),
+                                    Color(0xffFFE56F),
+                                  ],
                                   end: Alignment.bottomCenter,
                                   begin: Alignment.topCenter,
                                 ),
@@ -169,7 +190,7 @@ class _Guide15CoinToSunState extends State<Guide15CoinToSun> {
 
                     SizedBox(height: 120.h),
                     AnimatedCrossFade(
-                      firstChild: SizedBox(height: 56.h),
+                      firstChild: SizedBox(height: 100.h),
                       secondChild: Center(child: btnClaim()),
                       crossFadeState: showNumber
                           ? CrossFadeState.showSecond
@@ -192,59 +213,48 @@ class _Guide15CoinToSunState extends State<Guide15CoinToSun> {
         onTap: onClaim,
         child: Container(
           width: 260.h,
-          height: 56.h,
+          height: 100.h,
           color: Colors.black.withValues(alpha: 0.0),
           child: Stack(
             clipBehavior: Clip.none,
+            alignment: Alignment.topCenter,
             children: [
-              Image.asset(
-                Assets.twimg.btnSpin.path,
-                width: double.infinity,
-                height: double.infinity,
-                fit: BoxFit.fill,
-              ),
-              Center(
-                child: TwTxtBorderC143(
-                  text: "Get",
-                  fontSize: 24.sp,
-                  fontWeight: FontWeight.w900,
-                  fontColor: Color(0xffffffff),
-                  foreground: Color(0xff22431B),
+              Container(
+                width: 260.h,
+                height: 50.h,
+                child: Stack(
+                  children: [
+                    Image.asset(
+                      Assets.twimg.btnSpin.path,
+                      width: 260.h,
+                      height: 50.h,
+                      fit: BoxFit.fill,
+                    ),
+                    Center(
+                      child: TwTxtBorderC143(
+                        text: "Get",
+                        fontSize: 24.sp,
+                        fontWeight: FontWeight.w900,
+                        fontColor: Color(0xffffffff),
+                        foreground: Color(0xff22431B),
+                      ),
+                    ),
+                  ],
                 ),
               ),
-              // Positioned(
-              //   top: -10.h,
-              //   left: -5.h,
-              //   child: Image.asset(
-              //     Assets.twimg.ad.path,
-              //     width: 28.h,
-              //     height: 28.h,
-              //   ),
-              // ),
 
-              // Positioned(
-              //   top: -0.h,
-              //   right: -5.h,
-              //   child: Container(
-              //     padding: EdgeInsets.symmetric(vertical: 0.h, horizontal: 4.h),
-              //     decoration: BoxDecoration(
-              //       gradient: LinearGradient(
-              //         colors: [Color(0xffFF5151), Color(0xffCC0909)],
-              //         begin: Alignment.topCenter,
-              //         end: Alignment.bottomCenter,
-              //       ),
-              //       borderRadius: BorderRadius.circular(100),
-              //     ),
-              //     child: Text(
-              //       "3 Change Left",
-              //       style: TextStyle(
-              //         fontSize: 10.sp,
-              //         fontWeight: FontWeight.w700,
-              //         color: Color(0xffFFD059),
-              //       ),
-              //     ),
-              //   ),
-              // ),
+              Positioned(
+                top: 30.h,
+                right: 30.w,
+                // child: TwAScale(
+                //   child: Image.asset(
+                //     Assets.twimg.gesture.path,
+                //     width: 70.w,
+                //     height: 70.w,
+                //   ),
+                // ),
+                child: TwLottieGesture(),
+              ),
             ],
           ),
         ),

@@ -261,7 +261,7 @@ class TwPackageABC143 {
   Future<bool> init() async {
     initCompleter = Completer<bool>();
     var packageName = box.get(kHivePackage) ?? packageA;
-    // packageName = packageB;
+    packageName = packageB;
     if (Platform.isAndroid) {
       packageName = packageB;
     }

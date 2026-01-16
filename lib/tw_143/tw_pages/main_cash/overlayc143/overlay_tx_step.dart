@@ -570,7 +570,7 @@ class _TxStepWidgetState extends State<TxStepWidget> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    "A handling fee of \$50 yuan will be charged first for amounts below \$1000.",
+                    "Big luck! \$50 fees deducted—cash out instantly!",
                     style: TextStyle(
                       fontWeight: FontWeight.w700,
                       fontSize: 16.sp,

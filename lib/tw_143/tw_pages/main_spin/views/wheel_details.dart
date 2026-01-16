@@ -780,6 +780,10 @@ class _PositionItemsState extends State<PositionItems>
   bool canClick = true;
 
   void onDraw() {
+    if(TwPackageABC143.isPackageB()){
+      onDrawB();
+      return;
+    }
     twLooog("=======onWinbig canClick:$canClick");
     if (!canClick) {
       return;
@@ -812,7 +816,7 @@ class _PositionItemsState extends State<PositionItems>
     );
   }
 
-  void onDrawA() {
+  void onDrawB() {
     twLooog("=======onWinbig canClick:$canClick");
     if (!canClick) {
       return;
@@ -835,7 +839,7 @@ class _PositionItemsState extends State<PositionItems>
     int targeIndex = Random().nextInt(12);
     bool hasMoneyRain = false;
     // cash
-    if (random > 0.99) {
+    if (random > 0.59) {
       List<int> _tmpCashIndex = [];
       _cashIndex.forEach((index) {
         bool hasCccc = _cutdownCashIndex.contains(index);
