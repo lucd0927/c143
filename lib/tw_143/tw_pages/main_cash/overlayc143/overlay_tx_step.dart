@@ -8,6 +8,7 @@ import 'package:c143/tw_143/tw_common/lottieeee/gesture.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide1_water.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide7_rank.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide9_quiz2.dart';
+import 'package:c143/tw_143/tw_pages/main/main_controller.dart';
 import 'package:c143/tw_143/tw_pages/main_cash/main_cash_controller.dart';
 import 'package:c143/tw_143/tw_pages/main_quiz/main_quiz_controller.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
@@ -40,6 +41,7 @@ class OverlayTxStep {
             onClose: () async {
               twLooog("=====OverlayGuideTestAnim=close");
               close();
+              MainController.to.resetIndex(MainController.cashIndex);
             },
           ),
         );

@@ -27,7 +27,7 @@ class OverlayWithdrawCardInfoC143 {
           onBtn: () {
             close();
             // twToast(text: "")
-            MainController.to.resetIndex(MainController.cashIndex);
+
             OverlayTxStep().show(coins: 10, onBtn: (va) {});
           },
         );

@@ -627,7 +627,8 @@ class MainTreeController extends GetxController {
 
   void _onAddMoney(double monnn, {required VoidCallback? onEnd}) {
     double tmpCurMmm = curMoneyyyy.value;
-
+    bool showSun = showMoneyStatusSunIcon();
+    bool showFlower = showMoneyStatusFlowerIcon();
     double tmpCurmmm2 = tmpCurMmm + monnn;
     tmpCurmmm2 = tmpCurmmm2.toAsFixedFloor(2);
     box.put(twKeyMoneyyyy, tmpCurmmm2);
@@ -649,11 +650,11 @@ class MainTreeController extends GetxController {
           OverlayWithdrawCardInfoC143().show();
         }
       }
-      if (tmpCurmmm2 >= 90 && data == MainTreeController.guide14) {
+      if (showSun && tmpCurmmm2 >= 90 && data == MainTreeController.guide14) {
         OverlayGuide15CoinToSun().show();
       } else if (tmpCurmmm2 >= 60 && data == MainTreeController.guide13) {
         OverlayGuide14HighLight().show();
-      } else if (tmpCurmmm2 >= stageB2Num) {
+      } else if (tmpCurmmm2 >= stageB2Num && showFlower) {
         if (data != MainTreeController.guide17) {
           OverlayGuide17CoinToFlower().show();
         }
