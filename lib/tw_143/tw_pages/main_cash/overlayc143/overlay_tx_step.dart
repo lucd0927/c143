@@ -278,71 +278,78 @@ class _TxStepWidgetState extends State<TxStepWidget> {
                     textAlign: TextAlign.center,
                   ),
                   SizedBox(height: 16.h),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Container(
-                        width: 40.w,
-                        height: 40.h,
-                        decoration: BoxDecoration(
-                          color: Color(0xffE8E8E8).withValues(alpha: 0.8),
-                          borderRadius: BorderRadius.circular(4.w),
-                        ),
-                        child: Center(
-                          child: Image.asset(
-                            Assets.twimgB.txAd.path,
-                            width: 32.w,
-                            height: 32.h,
+                  TwShiningEffect(
+                    duration: Duration(milliseconds: 2000),
+                    shineColor: Color(0xffD9B275).withValues(alpha: 0.4),
+                    opacity: 1,
+                    angle: 0.1,
+                    topLeft: false,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          width: 40.w,
+                          height: 40.h,
+                          decoration: BoxDecoration(
+                            color: Color(0xffE8E8E8).withValues(alpha: 0.8),
+                            borderRadius: BorderRadius.circular(4.w),
+                          ),
+                          child: Center(
+                            child: Image.asset(
+                              Assets.twimgB.txAd.path,
+                              width: 32.w,
+                              height: 32.h,
+                            ),
                           ),
                         ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 8.w),
-                        child: Image.asset(
-                          Assets.twimgB.txNext.path,
-                          width: 12.w,
-                          height: 12.h,
-                        ),
-                      ),
-                      Container(
-                        width: 108.w,
-                        height: 40.h,
-                        decoration: BoxDecoration(
-                          color: Color(0xffE8E8E8).withValues(alpha: 0.8),
-                          borderRadius: BorderRadius.circular(4.w),
-                        ),
-                        child: Center(
+                        Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 8.w),
                           child: Image.asset(
-                            MainCashController.to.savePayIcon(),
-                            width: 100.w,
-                            height: 32.h,
+                            Assets.twimgB.txNext.path,
+                            width: 12.w,
+                            height: 12.h,
                           ),
                         ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 8.w),
-                        child: Image.asset(
-                          Assets.twimgB.txNext.path,
-                          width: 12.w,
-                          height: 12.h,
-                        ),
-                      ),
-                      Container(
-                        width: 40.w,
-                        height: 40.h,
-                        decoration: BoxDecoration(
-                          color: Color(0xffE8E8E8).withValues(alpha: 0.8),
-                          borderRadius: BorderRadius.circular(4.w),
-                        ),
-                        child: Center(
-                          child: Image.asset(
-                            Assets.twimgB.txYou.path,
-                            width: 32.w,
-                            height: 32.h,
+                        Container(
+                          width: 108.w,
+                          height: 40.h,
+                          decoration: BoxDecoration(
+                            color: Color(0xffE8E8E8).withValues(alpha: 0.8),
+                            borderRadius: BorderRadius.circular(4.w),
+                          ),
+                          child: Center(
+                            child: Image.asset(
+                              MainCashController.to.savePayIcon(),
+                              width: 100.w,
+                              height: 32.h,
+                            ),
                           ),
                         ),
-                      ),
-                    ],
+                        Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 8.w),
+                          child: Image.asset(
+                            Assets.twimgB.txNext.path,
+                            width: 12.w,
+                            height: 12.h,
+                          ),
+                        ),
+                        Container(
+                          width: 40.w,
+                          height: 40.h,
+                          decoration: BoxDecoration(
+                            color: Color(0xffE8E8E8).withValues(alpha: 0.8),
+                            borderRadius: BorderRadius.circular(4.w),
+                          ),
+                          child: Center(
+                            child: Image.asset(
+                              Assets.twimgB.txYou.path,
+                              width: 32.w,
+                              height: 32.h,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                   SizedBox(height: 12.h),
                   Container(

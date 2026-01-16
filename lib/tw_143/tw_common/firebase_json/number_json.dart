@@ -61,10 +61,16 @@ class TwNumberJson {
         "reward": [10, 100],
       },
       {
-        "earning_range": [100, 900],
+        "earning_range": [100, 700],
         "type": "cash",
         "level_range": 5,
         "reward": [10, 100],
+      },
+      {
+        "earning_range": [700, 900],
+        "type": "cash",
+        "level_range": 5,
+        "reward": [10, 50],
       },
       {
         "earning_range": [900, 950],
@@ -153,9 +159,16 @@ class TwNumberJson {
         "reward": [50, 100],
       },
       {
-        "earning_range": [100, 900],
+        "earning_range": [100, 700],
         "type": "cash",
+        "level_range": 5,
         "reward": [10, 100],
+      },
+      {
+        "earning_range": [700, 900],
+        "type": "cash",
+        "level_range": 5,
+        "reward": [10, 50],
       },
       {
         "earning_range": [900, 950],

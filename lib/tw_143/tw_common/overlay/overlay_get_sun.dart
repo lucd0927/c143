@@ -178,7 +178,7 @@ class _GetSunWidgetState extends State<GetSunWidget> {
                                       angle: -0.9,
                                       topLeft: false,
                                       child: Image.asset(
-                                        Assets.twimg.mainSun.path,
+                                        MainTreeController.to.moneyIconDialog(),
                                         width: 100.h,
                                         height: 100.h,
                                       ),

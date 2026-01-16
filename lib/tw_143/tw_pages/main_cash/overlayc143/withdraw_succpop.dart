@@ -225,7 +225,7 @@ class _TopSlideToastState extends State<TopSlideToast>
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 12.w),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Colors.white.withValues(alpha: 0.8),
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(

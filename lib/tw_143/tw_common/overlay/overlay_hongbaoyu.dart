@@ -543,29 +543,7 @@ class _hongbaoyuuuState extends State<_hongbaoyuuu> {
           ),
         ),
 
-        Positioned(
-          top: 50.h,
-          left: 16.w,
-          child: GestureDetector(
-            onTap: () {
-              _cutdownTimer?.cancel();
-              widget.onClose(getCoins);
-            },
-            child: Container(
-              width: 40.w,
-              height: 40.h,
-              color: Colors.amber.withValues(alpha: 0),
-              child: Align(
-                alignment: Alignment.centerLeft,
-                child: Image.asset(
-                  Assets.twimg.back.path,
-                  width: 24.w,
-                  height: 24.h,
-                ),
-              ),
-            ),
-          ),
-        ),
+
       ],
     );
   }
