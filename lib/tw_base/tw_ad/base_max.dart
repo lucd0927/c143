@@ -1,12 +1,10 @@
 import 'dart:async';
 
 import 'package:applovin_max/applovin_max.dart';
+import 'package:c143/tw_base/tw_http/event_report.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:c143/tw_base/tw_gj/base_utilsC143.dart';
 import 'package:c143/tw_base/tw_gj/logC143.dart';
-
-
-
 
 class TwMaxAd {
   static final TwMaxAd _instance = TwMaxAd._();
@@ -24,14 +22,16 @@ class TwMaxAd {
     required String encodeKey,
     required Map<dynamic, dynamic> cacheAdsData,
     InterstitialListener? interstitialListener,
-    RewardedAdListener? rewardedAdListener
+    RewardedAdListener? rewardedAdListener,
   }) async {
     // _cacheAdsData = cacheAdsData;
-
-    String asdfasfdmaxkey = TwBaseUtilsC143.decrypt(encodeKey,143);
+    int starInitTime = DateTime.now().millisecondsSinceEpoch;
+    String asdfasfdmaxkey = TwBaseUtilsC143.decrypt(encodeKey, 143);
     twLooog("====TwMaxAd=initMax====maxkey:$asdfasfdmaxkey");
     // AppLovinMAX.setVerboseLogging(true);
-    MaxConfiguration? configuration = await AppLovinMAX.initialize(asdfasfdmaxkey);
+    MaxConfiguration? configuration = await AppLovinMAX.initialize(
+      asdfasfdmaxkey,
+    );
     if (configuration == null) {
       twLooog('======TwMaxAd initMax failed to initialize.');
       return false;
@@ -43,6 +43,11 @@ class TwMaxAd {
       // Optionally preload widget-based banner and MREC ads. Comment out if preloading isn't needed.
       initInterstitialAds(interstitialListener);
       initializeRewardedAd(rewardedAdListener);
+      int endInitTime = DateTime.now().millisecondsSinceEpoch;
+      TwMaiDiannnn.cuvxv_ad_initsuc(
+        ad_init_time: "${endInitTime - starInitTime}",
+        ad_platform: "max",
+      );
       return true;
     }
   }
@@ -54,7 +59,6 @@ class TwMaxAd {
     AppLovinMAX.setInterstitialListener(interstitialListener);
 
     return;
-
   }
 
   static loadInterstitial(String adsId) {
@@ -69,14 +73,11 @@ class TwMaxAd {
 
   static Future<bool> hasInterstitialReady({required String adsId}) async {
     bool isReady = (await AppLovinMAX.isInterstitialReady(adsId))!;
-    twLooog(
-      "激励======isInterstitialReady:$isReady adsId: $adsId",
-    );
+    twLooog("激励======isInterstitialReady:$isReady adsId: $adsId");
     return isReady;
   }
 
-
-  static  initializeRewardedAd( RewardedAdListener? rewardedAdListener) {
+  static initializeRewardedAd(RewardedAdListener? rewardedAdListener) {
     twLooog("激励initializeRewardedAd======");
     AppLovinMAX.setRewardedAdListener(rewardedAdListener);
     return;
@@ -86,15 +87,14 @@ class TwMaxAd {
     twLooog("激励===TwMaxAd=loadRewardedAd===adsId:$adsId");
     AppLovinMAX.loadRewardedAd(adsId);
   }
-  static  showRewardedAd({required String adsId}) async {
-    AppLovinMAX.showRewardedAd(adsId, );
-  }
-  static Future<bool> hasRewardedAdReady({required String adsId}) async {
-    bool isReady = (await AppLovinMAX.isRewardedAdReady(adsId))!;
-    twLooog(
-      "激励======isRewardedAdReady:$isReady adsId: $adsId",
-    );
-    return isReady;
+
+  static showRewardedAd({required String adsId}) async {
+    AppLovinMAX.showRewardedAd(adsId);
   }
 
+  static Future<bool> hasRewardedAdReady({required String adsId}) async {
+    bool isReady = (await AppLovinMAX.isRewardedAdReady(adsId))!;
+    twLooog("激励======isRewardedAdReady:$isReady adsId: $adsId");
+    return isReady;
+  }
 }

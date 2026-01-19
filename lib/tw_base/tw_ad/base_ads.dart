@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:math';
 
+import 'package:c143/tw_base/tw_http/event_report.dart';
 import 'package:flutter_custom_facebook/flutter_custom_facebook.dart';
 import 'package:c143/tw_base/tw_ad/guiyin/af.dart';
 import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
@@ -218,11 +219,11 @@ class TwCommonAds {
       _hasFirstIntLoaded = false;
     }
 
-    // PBMaiDian.cdyun_ad_return(
-    //   ad_code_id: adsId,
-    //   ad_format: adsType.name,
-    //   ad_platform: platform.name,
-    // );
+    TwMaiDiannnn.cuvxv_ad_return(
+      ad_code_id: adsId,
+      ad_format: adsType.name,
+      ad_platform: platform.name,
+    );
   }
 
   // 加载失败
@@ -230,6 +231,7 @@ class TwCommonAds {
     EnumAdsPlatform platform,
     EnumAdsType adsType,
     dynamic data,
+    dynamic error,
   ) {
     twLooog(
       "==onAdLoadFailedCallback===platform:$platform adsType:$adsType $cacheAdsData",
@@ -261,6 +263,13 @@ class TwCommonAds {
     // });
     // cacheCompleter.clear();
     twLooog("==onAdLoadFailedCallback===cacheCompleter:$cacheCompleter ");
+
+    TwMaiDiannnn.cuvxv_ad_return_fail(
+      ad_code_id: adsId,
+      ad_format: adsType.name,
+      ad_platform: platform.name,
+      reason: "${error.toString()}",
+    );
     // 延迟2s加载
     Future.delayed(Duration(milliseconds: 2000), () {
       loadAdWithAdsId(adsType, adsId);
@@ -364,6 +373,13 @@ class TwCommonAds {
     cacheCompleter.remove(adsId);
     addAdEndCount();
     loadAdWithAdsId(adsType, adsId);
+
+    TwMaiDiannnn.cuvxv_ad_imp_close(
+      ad_code_id: adsId,
+      ad_format: adsType.name,
+      ad_pos_id: _curAdPosId,
+    );
+
   }
 
   // 下发收益
@@ -447,6 +463,7 @@ class TwCommonAds {
             EnumAdsPlatform.max,
             EnumAdsType.interstitial,
             adUnitId,
+            error,
           );
         },
         onAdDisplayedCallback: (ad) {
@@ -494,6 +511,7 @@ class TwCommonAds {
             EnumAdsPlatform.max,
             EnumAdsType.reward,
             adUnitId,
+            error,
           );
         },
         onAdDisplayedCallback: (ad) {
@@ -536,6 +554,7 @@ class TwCommonAds {
                 EnumAdsPlatform.topon,
                 EnumAdsType.reward,
                 value,
+                value.requestMessage,
               );
             });
 
@@ -633,6 +652,7 @@ class TwCommonAds {
                 EnumAdsPlatform.topon,
                 EnumAdsType.interstitial,
                 value,
+                value.requestMessage,
               );
             });
             break;
@@ -801,11 +821,11 @@ class TwCommonAds {
       }
     }
 
-    // PBMaiDian.ad_request(
-    //   ad_code_id: adsId,
-    //   ad_format: adsType,
-    //   ad_platform: platform,
-    // );
+    TwMaiDiannnn.ad_request(
+      ad_code_id: adsId,
+      ad_format: adsType,
+      ad_platform: platform,
+    );
   }
 
   // adPosId 场景
@@ -925,7 +945,7 @@ class TwCommonAds {
     _hasDisplayAd = true;
     _curAdPosId = adPosId;
 
-    // PBMaiDian.cdyun_ad_chance(veinKeyValue: adPosId);
+    TwMaiDiannnn.cuvxv_ad_chance(veinKeyValue: adPosId);
     Completer<bool> completer = Completer();
 
     if (outCompleter != null) {
@@ -1073,11 +1093,11 @@ class TwCommonAds {
         );
         _loadFailReason ??= AdLoadFailReason.notPrepared;
         if (ad_platform != null) {
-          // PBMaiDian.cdyun_ad_impression_fail(
-          //   ad_pos_id: firstRequestAdsId,
-          //   reason: _loadFailReason!.name,
-          //   ad_platform: ad_platform,
-          // );
+          TwMaiDiannnn.cuvxv_ad_impression_fail(
+            ad_pos_id: firstRequestAdsId,
+            reason: _loadFailReason!.name,
+            ad_platform: ad_platform,
+          );
         }
       }
     }

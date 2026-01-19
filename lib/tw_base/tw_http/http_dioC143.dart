@@ -393,6 +393,8 @@ class TwHttpDio {
     dynamic veinKeyValue2,
     String? veinKey3,
     dynamic veinKeyValue3,
+    String? veinKey4,
+    dynamic veinKeyValue4,
   }) async {
     // return;
     var dataJson = await baseData();
@@ -410,6 +412,9 @@ class TwHttpDio {
     if (veinKey3?.isNotEmpty ?? false) {
       // auto patch 864
       dataJson['weve%$veinKey3'] = veinKeyValue3;
+    }if (veinKey4?.isNotEmpty ?? false) {
+      // auto patch 864
+      dataJson['weve%$veinKey4'] = veinKeyValue4;
     }
     // dataJson['$moistValue'] = json;
     // dataJson.add;
