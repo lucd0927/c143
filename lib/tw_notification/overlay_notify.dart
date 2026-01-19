@@ -61,7 +61,7 @@ class TzNotifyWidget extends StatefulWidget {
 
 class _TzNotifyWidgetState extends State<TzNotifyWidget> {
   bool positive = audioMusic.hasOn;
-  bool positive2 = audioBtn.hasOn;
+  bool positive2 = audioBtn_Dingdong1.hasOn;
 
   bool showAnimated = false;
   Duration animD = Duration(milliseconds: 200);

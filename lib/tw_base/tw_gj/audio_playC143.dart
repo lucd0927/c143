@@ -7,12 +7,37 @@ import 'package:c143/tw_hive/twhiveC143.dart';
 const preivC143 = "assets/";
 TwAudioC143 audioMusic = TwAudioC143(
   audioKey: TwAudioC143.kAudioPlayerBg,
-  audioPath: "${preivC143}audddd/bg.mp3",
+  audioPath: "${preivC143}yuyin/bg.mp3",
 );
 
-TwAudioC143 audioBtn = TwAudioC143(
+TwAudioC143 audioBtn_Dingdong1 = TwAudioC143(
   audioKey: TwAudioC143.kAudioPlayerScratch,
-  audioPath: "${preivC143}audddd/jackpot.mp3",
+  audioPath: "${preivC143}yuyin/dingdong_1.mp3",
+);
+TwAudioC143 audioBtn_Water1 = TwAudioC143(
+  audioKey: TwAudioC143.kAudioPlayerScratch,
+  audioPath: "${preivC143}yuyin/water_1.mp3",
+);
+
+TwAudioC143 audioBtn_Water2 = TwAudioC143(
+  audioKey: TwAudioC143.kAudioPlayerScratch,
+  audioPath: "${preivC143}yuyin/water_2.mp3",
+);
+TwAudioC143 audioBtn_Fertilize2 = TwAudioC143(
+  audioKey: TwAudioC143.kAudioPlayerScratch,
+  audioPath: "${preivC143}yuyin/fertilize_2.mp3",
+);
+TwAudioC143 audioBtn_pop1 = TwAudioC143(
+  audioKey: TwAudioC143.kAudioPlayerScratch,
+  audioPath: "${preivC143}yuyin/pop1.mp3",
+);
+TwAudioC143 audioBtn_coin1 = TwAudioC143(
+  audioKey: TwAudioC143.kAudioPlayerScratch,
+  audioPath: "${preivC143}yuyin/coin1.mp3",
+);
+TwAudioC143 audioBtn_spin = TwAudioC143(
+  audioKey: TwAudioC143.kAudioPlayerScratch,
+  audioPath: "${preivC143}yuyin/spin.mp3",
 );
 
 

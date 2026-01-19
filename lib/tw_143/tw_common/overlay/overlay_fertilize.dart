@@ -65,7 +65,7 @@ class FertilizePop extends StatefulWidget {
 
 class _FertilizePopState extends State<FertilizePop> {
   bool positive = audioMusic.hasOn;
-  bool positive2 = audioBtn.hasOn;
+  bool positive2 = audioBtn_Dingdong1.hasOn;
 
   bool showAnimated = false;
   Duration animD = Duration(milliseconds: 200);

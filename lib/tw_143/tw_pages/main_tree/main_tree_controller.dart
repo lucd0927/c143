@@ -14,6 +14,7 @@ import 'package:c143/tw_143/tw_pages/main_spin/main_spin_controller.dart';
 import 'package:c143/tw_base/tw_ad/ads_idddddC143.dart';
 import 'package:c143/tw_base/tw_ad/base_ads.dart';
 import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
+import 'package:c143/tw_base/tw_gj/audio_playC143.dart';
 import 'package:c143/tw_base/tw_gj/logC143.dart';
 import 'package:c143/tw_base/tw_gj/number_extend.dart';
 import 'package:c143/tw_base/tw_gj/time_left.dart';
@@ -516,32 +517,29 @@ class MainTreeController extends GetxController {
   }
 
   onAddShiFeiCount({required VoidCallback onEnd, bool showAd = true}) async {
-    if (curFertilizeLeftTime.value.isNotEmpty) {
-      if (TwPackageABC143.isPackageB()) {
-        TwMaiDiannnn.fertilizer_click("ad");
-        OverlayFertilizePop().show(onEnd: () {});
-      } else {
-        twToast(text: "You can claim it after the countdown ends");
-      }
-      return;
-    }
+    // if (curFertilizeLeftTime.value.isNotEmpty) {
+    //   if (TwPackageABC143.isPackageB()) {
+    //     TwMaiDiannnn.fertilizer_click("ad");
+    //     OverlayFertilizePop().show(onEnd: () {});
+    //   } else {
+    //     twToast(text: "You can claim it after the countdown ends");
+    //   }
+    //   return;
+    // }
 
-    if (showAd) {
-      // bool result = await TwCommonAds().showInterstitialAd(adPosId: TwAdsPosId.test);
-      // if(!result){
-      //   _resetTreeGrownStatus();
-      //   onEnd();
-      //   return;
-      // }
-    }
+
 
     if (canClickWater) {
       canClickWater = false;
       TwMaiDiannnn.fertilizer_click("free");
+      // audioMusic.pause();
+      audioBtn_Fertilize2.play();
       OverlayLotWater().show(
         onEnd: () {
           curHasWatering.value = true;
+
           Timer(Duration(milliseconds: 2000), () {
+            audioBtn_Fertilize2.pause();
             if (curFertilizeLeftTime.value.isEmpty) {
               int tmpCurMmm = curStageShifeiCount.value;
 
@@ -579,20 +577,24 @@ class MainTreeController extends GetxController {
       TwMaiDiannnn.water_click();
       canClickWater = false;
       if (showAd) {
-        bool result = await TwCommonAds().showInterstitialAd(
-          adPosId: TwAdsPosId.test,
-        );
-        if (!result) {
-          _resetTreeGrownStatus();
-          onEnd();
-          return;
-        }
+        // bool result = await TwCommonAds().showInterstitialAd(
+        //   adPosId: TwAdsPosId.cuvxv_bubble_rv,
+        // );
+        // if (!result) {
+        //   _resetTreeGrownStatus();
+        //   onEnd();
+        //   return;
+        // }
       }
-
+      // audioMusic.pause();
+      audioBtn_Water2.play();
       OverlayLotWater().show(
         onEnd: () {
+
           curHasWatering.value = true;
           Timer(Duration(milliseconds: 2000), () {
+            audioBtn_Water2.pause();
+            audioMusic.resume();
             int tmpCurMmm = curStageWaterCount.value;
 
             int tmpCurmmm2 = tmpCurMmm + 1;
@@ -623,6 +625,7 @@ class MainTreeController extends GetxController {
 
   onAddMoneyyyy(double monnn, {VoidCallback? onEnd}) {
     twLooog("====onAddMoneyyyy==monnn:$monnn");
+    audioBtn_pop1.play();
     overlayCoinMain.showWithSize(
       childSize: TwPackageABC143.isPackageB()
           ? Size(24.w, 24.w)
@@ -653,6 +656,8 @@ class MainTreeController extends GetxController {
     twLooog("======guideIndexData:$data tmpCurmmm2:$tmpCurmmm2");
 
     if (TwPackageABC143.isPackageB()) {
+      audioBtn_coin1.play();
+      //
       if (tmpCurmmm2 >= 100) {
         if (curLevel.value != 5) {
           curLevel.value = 5;

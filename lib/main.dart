@@ -1,10 +1,12 @@
 import 'dart:async';
 
 import 'package:c143/tw_143/tw_common/tw_router.dart';
+import 'package:c143/tw_base/tw_ad/ads_idddddC143.dart';
 import 'package:c143/tw_base/tw_ad/base_ads.dart';
 import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
 import 'package:c143/tw_base/tw_configgg/config.dart';
 import 'package:c143/tw_base/tw_configgg/enum_app_evn.dart';
+import 'package:c143/tw_base/tw_gj/audio_playC143.dart';
 import 'package:c143/tw_base/tw_gj/logC143.dart';
 import 'package:c143/tw_base/tw_gj/login_trackC143.dart';
 import 'package:c143/tw_base/tw_http/tw_net_check.dart';
@@ -103,7 +105,7 @@ void lcChangeC143() {
     // AppLifecycleState.paused
     // AppLifecycleState.detached
     if (msg == "AppLifecycleState.resumed") {
-      // JCShijianBaogao.session();
+      audioMusic.resume();
       _bgTttttC143?.cancel();
       if (sssshowAdC143) {
         twLooog(
@@ -113,17 +115,17 @@ void lcChangeC143() {
           twLooog("===前后切换加载=TwCommonAds().showInterstitialAd==");
 
           if (TwPackageABC143.isPackageB()) {
-            // TwCommonAds().showInterstitialAd(
-            //   adPosId: TwAdsPosId.test,
-            //   ignored_hasDisplayAd: false,
-            //   canTryAgain: false,
-            // );
+            TwCommonAds().showInterstitialAd(
+              adPosId: TwAdsPosId.cuvxv_launch,
+              ignored_hasDisplayAd: false,
+              canTryAgain: false,
+            );
           }
         }
       }
       sssshowAdC143 = false;
     } else {
-      // bgMusic.pause();
+      audioMusic.pause();
       // bgMusicFreeSpin.pause();
       if (msg == "AppLifecycleState.paused") {
         twLooog("====AppLifecycleState.paused===");

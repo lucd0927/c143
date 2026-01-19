@@ -11,6 +11,7 @@ import 'package:c143/tw_143/tw_pages/main_spin/main_spin_controller.dart';
 import 'package:c143/tw_143/tw_pages/main_spin/views/overlay_win_reward.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
 import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
+import 'package:c143/tw_base/tw_gj/audio_playC143.dart';
 import 'package:c143/tw_base/tw_gj/countryC143.dart';
 import 'package:c143/tw_base/tw_gj/event_busC143.dart';
 import 'package:c143/tw_base/tw_gj/logC143.dart';
@@ -220,6 +221,7 @@ class _PositionItemsState extends State<PositionItems>
     _controller
       ..reset()
       ..forward().whenComplete(() {
+        audioBtn_spin.pause();
         if (mounted) {
           setState(() {
             _startIndex = targetIndex;
@@ -868,6 +870,7 @@ class _PositionItemsState extends State<PositionItems>
     twLooog("=====random:$random=targeIndex:$targeIndex");
     TwMaiDiannnn.spin_click();
     TwMaiDiannnn.spin_result(type);
+    audioBtn_spin.play();
     startSpin(
       startIndex: _startIndex,
       targetIndex: targeIndex,

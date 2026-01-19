@@ -46,7 +46,7 @@ class _SettingWidgetC143 extends StatefulWidget {
 
 class _SettingWidgetC143State extends State<_SettingWidgetC143> {
   bool positive = audioMusic.hasOn;
-  bool positive2 = audioBtn.hasOn;
+  bool positive2 = audioBtn_Dingdong1.hasOn;
 
   bool showAnimated = false;
   Duration animD = Duration(milliseconds: 200);
@@ -205,7 +205,7 @@ class _SettingWidgetC143State extends State<_SettingWidgetC143> {
     setState(() {
       positive2 = toggle;
       twLooog("== music=toggle:$toggle==");
-      audioBtn.setSWHasOn(positive2, showAudioPlayOrPause: false);
+      audioBtn_Dingdong1.setSWHasOn(positive2, showAudioPlayOrPause: false);
     });
   }
 
