@@ -2,6 +2,7 @@ import 'package:adjust_sdk/adjust.dart';
 import 'package:adjust_sdk/adjust_ad_revenue.dart';
 import 'package:adjust_sdk/adjust_attribution.dart';
 import 'package:adjust_sdk/adjust_config.dart';
+import 'package:c143/tw_base/tw_http/event_report.dart';
 import 'package:flutter_tba_info/flutter_tba_info.dart';
 import 'package:c143/tw_base/tw_ad/base_config.dart';
 import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
@@ -48,7 +49,8 @@ class TwAdjusssC143 {
       String? network = attributionChangedData.network;
       if (network != null) {
         twLooog('$TGA: Network: ${network}');
-        // JCABluoji().guiyin(network);
+        TwMaiDiannnn.natural_user(network);
+
       }
       if (attributionChangedData.creative != null) {
         twLooog('$TGA: Creative: ${attributionChangedData.creative}');
@@ -71,11 +73,12 @@ class TwAdjusssC143 {
 
     Adjust.initSdk(config,);
 
-
+    TwMaiDiannnn.af_req();
     Adjust.getAttribution().then((attributionChangedData){
       String? network = attributionChangedData.network;
       twLooog("$TGA====network:$network");
       TwPackageABC143().guiyin(network??"");
+
     });
     // JCShijianBaogao.adjust_req();
 

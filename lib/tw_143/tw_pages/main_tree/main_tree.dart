@@ -20,9 +20,12 @@ import 'package:c143/tw_143/tw_pages/main_tree/vieee/high_light_tips.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/vieee/main_center.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/vieee/main_rank.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/vieee/main_top_a.dart';
+import 'package:c143/tw_base/tw_ad/ads_idddddC143.dart';
+import 'package:c143/tw_base/tw_ad/base_ads.dart';
 import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
 import 'package:c143/tw_base/tw_gj/logC143.dart';
 import 'package:c143/tw_base/tw_gj/login_trackC143.dart';
+import 'package:c143/tw_base/tw_http/event_report.dart';
 import 'package:c143/tw_hive/twhiveC143.dart';
 import 'package:c143/tw_notification/android_notification.dart';
 import 'package:c143/tw_notification/ios_notification.dart';
@@ -48,9 +51,11 @@ class _MainTreeState extends State<MainTree> {
   void initState() {
     // TODO: implement initState
     super.initState();
+
     initScroller();
     MainTreeController.initComposition();
     WidgetsBinding.instance.addPostFrameCallback((_) async {
+      TwMaiDiannnn.home_view(MainTreeController.to.curLevel.value.toString());
       // var idfa = await FlutterTbaInfo.instance.getIdfa();
       String? data = MainTreeController.to.guideIndexData();
       twLooog("======data:$data");
@@ -103,23 +108,55 @@ class _MainTreeState extends State<MainTree> {
           onBtn: (v) {},
         );
       }
-
+      initInterAd();
       initTz();
     });
+  }
+
+  initInterAd() async {
+    if (TwLoginnnTrackC143.qidongduoshaoDay() <= 1 ||
+        !TwPackageABC143.isPackageB()) {
+      return;
+    }
+
+    int load = 1;
+    while (true) {
+      await Future.delayed(Duration(seconds: 1));
+      bool hasFirstIntLoaded = TwCommonAds.hasFirstIntLoaded;
+      if (!hasFirstIntLoaded) {
+        TwCommonAds().showInterstitialAd(
+          adPosId: TwAdsPosId.cuvxv_launch,
+          ignored_hasDisplayAd: true,
+          canTryAgain: false,
+        );
+        break;
+      } else {
+        load = load + 1;
+        if (load >= 30) {
+          break;
+        }
+      }
+    }
+    bool hasLoadSucc = load < 30;
+    TwMaiDiannnn.event_launch_non_first(hasLoadSucc ? "1" : "0");
   }
 
   final ScrollController _extendScrollController = ScrollController();
   late VoidCallback _extendScrollEvent;
   bool firstAttachMaxDistance = false;
+
   initScroller() {
     _extendScrollEvent = () {
       double offset = _extendScrollController.offset;
 
       double maxDistance = _extendScrollController.position.maxScrollExtent;
       twLooog("====offset:$offset=maxDistance:$maxDistance");
-      if(offset == maxDistance && !firstAttachMaxDistance){
+      if (offset == maxDistance && !firstAttachMaxDistance) {
         firstAttachMaxDistance = true;
-        twLooog("====offset:$offset=maxDistance:$maxDistance firstAttachMaxDistance:$firstAttachMaxDistance");
+        twLooog(
+          "====offset:$offset=maxDistance:$maxDistance firstAttachMaxDistance:$firstAttachMaxDistance",
+        );
+        TwMaiDiannnn.leaderboard_view();
       }
     };
 

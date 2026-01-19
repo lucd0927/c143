@@ -9,6 +9,7 @@ import 'package:c143/tw_base/tw_ad/guiyin/af.dart';
 import 'package:c143/tw_base/tw_ad/guiyin/firebbbbbb.dart';
 import 'package:c143/tw_base/tw_configgg/config.dart';
 import 'package:c143/tw_base/tw_gj/logC143.dart';
+import 'package:c143/tw_base/tw_http/event_report.dart';
 import 'package:c143/tw_base/tw_http/http_dioC143.dart';
 import 'package:c143/tw_hive/twhiveC143.dart';
 import 'package:rxdart/rxdart.dart';
@@ -36,7 +37,9 @@ class TwPackageABC143 {
   // static String _clockData = "";
 
   static bool showH5() {
-    twLooog("$TGA====showH5=_cloakData:$_cloakDataC143==cloakBData:$cloakBData");
+    twLooog(
+      "$TGA====showH5=_cloakData:$_cloakDataC143==cloakBData:$cloakBData",
+    );
     return _cloakDataC143 == cloakBData;
   }
 
@@ -55,7 +58,7 @@ class TwPackageABC143 {
   _sendAC143({required String cloakData, required String afData}) async {
     bool entryBBB =
         cloakData == cloakBData &&
-            (afData.isNotEmpty && afData != afDataOrganic);
+        (afData.isNotEmpty && afData != afDataOrganic);
     twLooog(
       "$TGA=SSABChange().listen ABPackage send: cloakData:$cloakData  ====afData:$afData entryBBB:$entryBBB",
     );
@@ -110,7 +113,7 @@ class TwPackageABC143 {
       return;
     }
     box.put(kkGuiyinC143, source);
-    String qs_af_on123 = TwFirebasC143().by(name: "qs_adjust_on");
+    String qs_af_on123 = TwFirebasC143().by(name: "ccccc");
     twLooog("$TGA==guiyin=pre==qs_af_on123:$qs_af_on123==");
     if (qs_af_on123.isEmpty) {
       qs_af_on123 = "1";
@@ -128,13 +131,8 @@ class TwPackageABC143 {
         _appsFlyerDataC143 = afDataOrganic;
         twLooog("$TGA===========guiyin= zirang");
       }
-      // JCShijianBaogao.adjust_suc(_appsFlyerData == afDataOrganic ? "0" : "1");
-      // int mill = 12000;
-      // Future.delayed(Duration(milliseconds: mill), () {
-      //   // todo: 测试代码
-      //   _appsFlyerData = "ddd";
-      //   sendAAA(cloakData: _cloakData, afData: _appsFlyerData);
-      // });
+      String result = _appsFlyerDataC143 == afDataOrganic ? "0" : "1";
+      TwMaiDiannnn.af_suc(result);
 
       _sendAC143(cloakData: _cloakDataC143, afData: _appsFlyerDataC143);
     } else if (qs_af_on123 == "0") {
@@ -144,27 +142,25 @@ class TwPackageABC143 {
     }
   }
 
-
   Future<void> requestATT() async {
-    if(Platform.isIOS){
+    if (Platform.isIOS) {
       final status = await AppTrackingTransparency.trackingAuthorizationStatus;
       twLooog("$TGA===requestATT==status: $status");
       if (status == TrackingStatus.notDetermined) {
-        TrackingStatus trackingStatus = await AppTrackingTransparency.requestTrackingAuthorization();
+        TrackingStatus trackingStatus =
+            await AppTrackingTransparency.requestTrackingAuthorization();
         twLooog("$TGA===requestATT==trackingStatus: $trackingStatus");
       }
     }
-
-
   }
 
   cloakAAC143({int count = 0}) async {
-    // JCShijianBaogao.cloak_req();
+    TwMaiDiannnn.cloak_req();
     var data = await TwHttpDio().cloak();
     twLooog("$TGA=package cloak data:$data count:$count");
 
     _cloakDataC143 = data;
-    // JCShijianBaogao.cloak_suc(_cloakData == cloakBData ? "1" : "0");
+    TwMaiDiannnn.cloak_suc(_cloakDataC143 == cloakBData ? "1" : "0");
     // 正常模式 B包
     if (data == cloakBData) {
       twLooog("$TGA=====正常模式 B包==data:$data=");
@@ -194,8 +190,6 @@ class TwPackageABC143 {
   }
 
   Future _initAC143() async {
-
-
     // 广告初始化
     twLooog("$TGA====_initA==cloak();==");
     var cloakData = await cloakAAC143();
@@ -247,7 +241,7 @@ class TwPackageABC143 {
 
   // auto patch 285
 
-  static String boxPackName(){
+  static String boxPackName() {
     var packageName = box.get(kHivePackage) ?? packageA;
     if (Platform.isAndroid) {
       packageName = packageB;
@@ -317,9 +311,7 @@ class TwPackageABC143 {
       if (hasAdjust) {
         await TwAdjusssC143().initSdk(
           TwConfigggg.hasDeeevv()
-              ? (Platform.isIOS
-              ? "tz9kjof185c0"
-              : "4qedga65udq8")
+              ? (Platform.isIOS ? "tz9kjof185c0" : "4qedga65udq8")
               : (Platform.isIOS ? "tz9kjof185c0" : "9lebq1vm016o"),
         );
       } else {
@@ -329,7 +321,6 @@ class TwPackageABC143 {
         }
         await TwApppsF().initAppsFlyer(afDevKey: asdkasfdhka, appId: "34557");
       }
-
     }
   }
 }

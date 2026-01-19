@@ -16,6 +16,7 @@ import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
 import 'package:c143/tw_base/tw_gj/logC143.dart';
 import 'package:c143/tw_base/tw_gj/number_extend.dart';
 import 'package:c143/tw_base/tw_gj/time_left.dart';
+import 'package:c143/tw_base/tw_http/event_report.dart';
 import 'package:c143/tw_hive/twhiveC143.dart';
 import 'package:c143/tw_views/animated_fly.dart';
 import 'package:c143/tw_views/pb_tushi.dart';
@@ -509,6 +510,7 @@ class MainTreeController extends GetxController {
   onAddShiFeiCount({required VoidCallback onEnd, bool showAd = true}) async {
     if (curFertilizeLeftTime.value.isNotEmpty) {
       twToast(text: "You can claim it after the countdown ends");
+
       return;
     }
 
@@ -523,7 +525,7 @@ class MainTreeController extends GetxController {
 
     if (canClickWater) {
       canClickWater = false;
-
+      TwMaiDiannnn.fertilizer_click("ad");
       OverlayLotWater().show(
         onEnd: () {
           curHasWatering.value = true;
@@ -562,6 +564,7 @@ class MainTreeController extends GetxController {
 
   onAddWaterCount({required VoidCallback onEnd, bool showAd = true}) async {
     if (canClickWater) {
+      TwMaiDiannnn.water_click();
       canClickWater = false;
       if (showAd) {
         bool result = await TwCommonAds().showInterstitialAd(

@@ -10,6 +10,7 @@ import 'package:c143/tw_base/tw_ad/base_ads.dart';
 import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
 import 'package:c143/tw_base/tw_gj/countryC143.dart';
 import 'package:c143/tw_base/tw_gj/logC143.dart';
+import 'package:c143/tw_base/tw_http/event_report.dart';
 import 'package:c143/tw_views/animated_count.dart';
 import 'package:c143/tw_views/animated_scale.dart';
 import 'package:c143/tw_views/font_border.dart';
@@ -123,13 +124,19 @@ class _GetCoinsWidgetState extends State<GetCoinsWidget> {
         setState(() {
           showAnimated = true;
           _coins = widget.coins;
-          bool showSun = MainTreeController.to.showMoneyStatusSunIcon();
-          bool showFlower = MainTreeController.to.showMoneyStatusFlowerIcon();
-          if(showSun){
-            _coins = _coins/MainTreeController.stageBeisuNum;
-          }else if(showFlower){
-            _coins = _coins/MainTreeController.stageBeisu2Num;
+
+          if(TwPackageABC143.isPackageB()){
+            bool showSun = MainTreeController.to.showMoneyStatusSunIcon();
+            bool showFlower = MainTreeController.to.showMoneyStatusFlowerIcon();
+            if(showSun){
+              _coins = _coins/MainTreeController.stageBeisuNum;
+            }else if(showFlower){
+              _coins = _coins/MainTreeController.stageBeisu2Num;
+            }
+            TwMaiDiannnn.quiz_reward(_coins.toStringAsFixed(2));
           }
+
+
         });
       }
     });

@@ -1,4 +1,6 @@
+import 'package:c143/tw_base/tw_gj/logC143.dart';
 import 'package:c143/tw_base/tw_http/http_dioC143.dart';
+import 'package:c143/tw_hive/twhiveC143.dart';
 
 class TwMaiDiannnn {
   static event_launch_first() {
@@ -14,16 +16,36 @@ class TwMaiDiannnn {
     );
   }
 
-  static natural_user() {
-    TwHttpDio().buryPoint(moistValue: "natural_user");
+  static natural_user(String value) {
+    TwHttpDio().buryPoint(
+      moistValue: "natural_user",
+      veinKey: "network",
+      veinKeyValue: value,
+    );
   }
 
   static session() {
-    TwHttpDio().buryPoint(moistValue: "session");
+    Future.delayed(Duration(milliseconds: 0), () async {
+      TwHttpDio().buryPoint(moistValue: "session");
+    });
   }
 
   static install() {
-    TwHttpDio().buryPoint(moistValue: "install");
+    String key = "xxadfc143";
+    var box = TwHive.box;
+    var data = box.get(key);
+
+    twLooog("====install=has request:$data");
+    if (data == null) {
+      Future.delayed(Duration(milliseconds: 0), () async {
+        // SSHttpDio().buryPoint(moistValue: "install");
+        var tmpData = await TwHttpDio().buryPoint(moistValue: "install");
+        if (tmpData != null) {
+          TwMaiDiannnn.event_launch_first();
+          box.put(key, true);
+        }
+      });
+    }
   }
 
   static launch_page() {
@@ -167,8 +189,12 @@ class TwMaiDiannnn {
     TwHttpDio().buryPoint(moistValue: "spin_ad_boost");
   }
 
-  static spin_daily_task_claim() {
-    TwHttpDio().buryPoint(moistValue: "spin_daily_task_claim");
+  static spin_daily_task_claim(String value) {
+    TwHttpDio().buryPoint(
+      moistValue: "spin_daily_task_claim",
+      veinKey: "reward_type",
+      veinKeyValue: value,
+    );
   }
 
   // balance（当前余额）
@@ -249,8 +275,6 @@ class TwMaiDiannnn {
     TwHttpDio().buryPoint(moistValue: "push_status");
   }
 
-
-
   //ad_code_id/ad_format/ad_platform
   static ad_request({
     required String ad_code_id,
@@ -311,14 +335,14 @@ class TwMaiDiannnn {
     );
   }
 
-// ad_pos_id、reason、ad_platform
-// "ad_pos_id：广告位名称
-// reason：
-// -ad_nocache：表示无广告缓存
-// -nonetwork：无网络
-// -impfail：展示失败（可能突然死机、卡顿、崩溃或其他问题导致展示失败）
-// -uninitialized：未初始化广告SDK
-// -notPrepared：广告未准备好"
+  // ad_pos_id、reason、ad_platform
+  // "ad_pos_id：广告位名称
+  // reason：
+  // -ad_nocache：表示无广告缓存
+  // -nonetwork：无网络
+  // -impfail：展示失败（可能突然死机、卡顿、崩溃或其他问题导致展示失败）
+  // -uninitialized：未初始化广告SDK
+  // -notPrepared：广告未准备好"
   static cuvxv_ad_impression_fail({
     required String ad_pos_id,
     required String reason,
@@ -334,7 +358,6 @@ class TwMaiDiannnn {
       // veinKeyValue3: ad_platform,
     );
   }
-
 
   static cuvxv_ad_imp_close({
     required String ad_code_id,
@@ -365,5 +388,4 @@ class TwMaiDiannnn {
       veinKeyValue2: ad_platform,
     );
   }
-
 }

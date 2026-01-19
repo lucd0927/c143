@@ -17,6 +17,7 @@ import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
 import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
 import 'package:c143/tw_base/tw_gj/countryC143.dart';
 import 'package:c143/tw_base/tw_gj/logC143.dart';
+import 'package:c143/tw_base/tw_http/event_report.dart';
 import 'package:c143/tw_hive/twhiveC143.dart';
 import 'package:c143/tw_views/animated_count.dart';
 import 'package:c143/tw_views/animated_fly.dart';
@@ -120,7 +121,7 @@ class _hongbaoyuuuState extends State<_hongbaoyuuu> {
   void initState() {
     // TODO: implement initState
     super.initState();
-
+    TwMaiDiannnn.cash_rain_start();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (mounted) {
         MainSpinController.to.onCashRainCount();
@@ -823,6 +824,7 @@ class _hongbaoyuuuState extends State<_hongbaoyuuu> {
   _onPlayAgain() {
     setState(() {
       _resetData();
+      TwMaiDiannnn.cash_rain_start();
       MainSpinController.to.onCashRainCount();
     });
   }

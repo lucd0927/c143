@@ -3,6 +3,7 @@ import 'package:c143/tw_143/tw_pages/main/main_controller.dart';
 import 'package:c143/tw_143/tw_pages/main_cash/main_cash_controller.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
 import 'package:c143/tw_base/tw_gj/countryC143.dart';
+import 'package:c143/tw_base/tw_http/event_report.dart';
 import 'package:c143/tw_views/animated_count.dart';
 import 'package:c143/tw_views/animated_fly.dart';
 import 'package:c143/tw_views/fade_switcher.dart';
@@ -304,6 +305,7 @@ class _MainTopBState extends State<MainTopB> {
   }
 
   void _onWithdraw() {
+    TwMaiDiannnn.cash_withdraw_click();
     MainController.to.resetIndex(MainController.cashIndex);
   }
 }

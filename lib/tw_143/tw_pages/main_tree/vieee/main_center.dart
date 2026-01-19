@@ -13,6 +13,7 @@ import 'package:c143/tw_base/tw_ad/ads_idddddC143.dart';
 import 'package:c143/tw_base/tw_ad/base_ads.dart';
 import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
 import 'package:c143/tw_base/tw_gj/logC143.dart';
+import 'package:c143/tw_base/tw_http/event_report.dart';
 import 'package:c143/tw_views/animated_count.dart';
 import 'package:c143/tw_views/animated_scale.dart';
 import 'package:c143/tw_views/fade_switcher.dart';
@@ -354,13 +355,15 @@ class _MainCenterState extends State<MainCenter> {
 
     bool showSun = MainTreeController.to.showMoneyStatusSunIcon();
     bool showFlower = MainTreeController.to.showMoneyStatusFlowerIcon();
-
+    String type = "cash";
     if (showSun || showFlower) {
       twLooog("===coins=${coins} showSun:$showSun");
       if (showSun) {
         coins = coins / MainTreeController.stageBeisuNum;
+        type = "sun";
       } else if (showFlower) {
         coins = coins / MainTreeController.stageBeisu2Num;
+        type = "flower";
       }
       twLooog("===coins=${coins} showFlower:$showFlower");
       OverlayGetSun().show(
@@ -375,21 +378,23 @@ class _MainCenterState extends State<MainCenter> {
           }
         },
       );
-      return;
-    }
 
-    MainTreeController.to.onAddMoneyyyy(
-      coins,
-      onEnd: () {
-        if (treeType == TwEnumTreeType.coin) {
-          MainTreeController.to.resetCoin1Time();
-        } else if (treeType == TwEnumTreeType.coin2Guide) {
-          MainTreeController.to.resetCoin2Time();
-        } else if (treeType == TwEnumTreeType.coin3) {
-          MainTreeController.to.resetCoin3Time();
-        }
-      },
-    );
+    }else{
+      MainTreeController.to.onAddMoneyyyy(
+        coins,
+        onEnd: () {
+          if (treeType == TwEnumTreeType.coin) {
+            MainTreeController.to.resetCoin1Time();
+          } else if (treeType == TwEnumTreeType.coin2Guide) {
+            MainTreeController.to.resetCoin2Time();
+          } else if (treeType == TwEnumTreeType.coin3) {
+            MainTreeController.to.resetCoin3Time();
+          }
+        },
+      );
+    }
+    TwMaiDiannnn.bubble_click(type);
+
   }
 
   _onCoinA3(double count, bool showSun) {

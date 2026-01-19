@@ -14,6 +14,7 @@ import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
 import 'package:c143/tw_base/tw_gj/countryC143.dart';
 import 'package:c143/tw_base/tw_gj/event_busC143.dart';
 import 'package:c143/tw_base/tw_gj/logC143.dart';
+import 'package:c143/tw_base/tw_http/event_report.dart';
 import 'package:c143/tw_views/animated_count.dart';
 import 'package:c143/tw_views/animated_scale.dart';
 import 'package:c143/tw_views/font_border.dart';
@@ -194,6 +195,7 @@ class _PositionItemsState extends State<PositionItems>
     int targetIndex = 3, // 最终停在哪个 icon
     bool hasMoneyRain = false,
   }) {
+
     final int targetAngle = round * indexCount + targetIndex;
     _animation =
         IntTween(begin: startIndex, end: targetAngle).animate(
@@ -838,6 +840,7 @@ class _PositionItemsState extends State<PositionItems>
     double random = Random().nextDouble();
     int targeIndex = Random().nextInt(12);
     bool hasMoneyRain = false;
+    String type = "cash";
     // cash
     if (random > 0.69) {
       List<int> _tmpCashIndex = [];
@@ -852,6 +855,7 @@ class _PositionItemsState extends State<PositionItems>
     }
     // cash rain
     else if (random > 0.0) {
+      type = "cash_rain";
       int length = _cashRainIndex.length;
       targeIndex = _cashRainIndex[Random().nextInt(length)];
       hasMoneyRain = true;
@@ -862,15 +866,21 @@ class _PositionItemsState extends State<PositionItems>
       targeIndex = _x2Index[Random().nextInt(length)];
     }
     twLooog("=====random:$random=targeIndex:$targeIndex");
-
+    TwMaiDiannnn.spin_click();
+    TwMaiDiannnn.spin_result(type);
     startSpin(
       startIndex: _startIndex,
       targetIndex: targeIndex,
       hasMoneyRain: hasMoneyRain,
     );
   }
-
+  bool canClickWinbig = true;
   _onWinbig() async {
+    if(!canClickWinbig){
+      return;
+    }
+    canClickWinbig = false;
+    TwMaiDiannnn.spin_ad_boost();
     bool result = MainSpinController.to.hasClickWinBigFirst();
     // result = false;
     if (!result) {
@@ -890,7 +900,7 @@ class _PositionItemsState extends State<PositionItems>
 
   __onWinbigg() {
     int curNum = MainSpinController.to.curWinbigCount.value;
-
+    canClickWinbig = true;
     if (curNum > 0) {
       if (mounted) {
         setState(() {

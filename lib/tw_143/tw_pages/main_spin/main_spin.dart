@@ -4,6 +4,7 @@ import 'package:c143/tw_143/tw_pages/main_spin/main_spin_controller.dart';
 import 'package:c143/tw_143/tw_pages/main_spin/views/wheel_details.dart';
 import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
 import 'package:c143/tw_base/tw_gj/event_busC143.dart';
+import 'package:c143/tw_base/tw_http/event_report.dart';
 import 'package:c143/tw_views/font_border.dart';
 import 'package:c143/tw_views/font_gradient_border.dart';
 import 'package:c143/tw_views/pb_tushi.dart';
@@ -177,6 +178,7 @@ class _MainSpinState extends State<MainSpin> {
                   text2: "+10",
                   clickStatus: MainSpinController.to.curClickDailyCheckB.value,
                   onTap: () {
+                    TwMaiDiannnn.spin_daily_task_claim("daily_check");
                     MainSpinController.to.onDailyCheckB();
                   },
                 ),
@@ -186,6 +188,7 @@ class _MainSpinState extends State<MainSpin> {
                   text2: "+10",
                   clickStatus: wheelspins,
                   onTap: () {
+                    TwMaiDiannnn.spin_daily_task_claim("spin");
                     MainSpinController.to.onSpinCount();
                   },
                 ),
@@ -203,6 +206,7 @@ class _MainSpinState extends State<MainSpin> {
                   text2: "+100",
                   clickStatus: tmpCashRaintxt,
                   onTap: () {
+                    TwMaiDiannnn.spin_daily_task_claim("cash_rain");
                     MainSpinController.to.onCashRainClaim();
                   },
                 ),
@@ -212,6 +216,7 @@ class _MainSpinState extends State<MainSpin> {
                   text2: "+100",
                   clickStatus: MainSpinController.to.curTreeLevel.value,
                   onTap: () {
+                    TwMaiDiannnn.spin_daily_task_claim("tree_level_5");
                     MainSpinController.to.onUnlockTreeLevel5();
                   },
                 ),

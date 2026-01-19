@@ -15,6 +15,7 @@ import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
 import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
 import 'package:c143/tw_base/tw_gj/countryC143.dart';
 import 'package:c143/tw_base/tw_gj/logC143.dart';
+import 'package:c143/tw_base/tw_http/event_report.dart';
 import 'package:c143/tw_views/animated_count.dart';
 import 'package:c143/tw_views/animated_scale.dart';
 import 'package:c143/tw_views/font_border.dart';
@@ -92,6 +93,7 @@ class _TxStepWidgetState extends State<TxStepWidget> {
             setState(() {
               stepIndex = 1;
             });
+            TwMaiDiannnn.withdraw_v();
           }
         });
       }
@@ -781,6 +783,7 @@ class _TxStepWidgetState extends State<TxStepWidget> {
       setState(() {
         if (stepIndex == 0) {
           stepIndex = 1;
+          TwMaiDiannnn.withdraw_c();
         } else if (stepIndex == 1) {
           stepIndex = 2;
           Future.delayed(animIndex2, () {
@@ -794,18 +797,17 @@ class _TxStepWidgetState extends State<TxStepWidget> {
                   setState(() {
                     stepIndex = 4;
                   });
+                  TwMaiDiannnn.zero_fee_v();
                 }
               });
             }
           });
-        } else if (stepIndex == 2) {
-          stepIndex = 3;
-        } else if (stepIndex == 3) {
-          stepIndex = 4;
-        } else if (stepIndex == 4) {
+        }  else if (stepIndex == 4) {
           stepIndex = 5;
+          TwMaiDiannnn.zero_fee_c();
         } else if (stepIndex == 5) {
           widget.onClose();
+          TwMaiDiannnn.unlock_high();
         }
       });
     }

@@ -9,6 +9,7 @@ import 'package:c143/tw_143/tw_pages/main_quiz/main_quiz_controller.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
 import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
 import 'package:c143/tw_base/tw_gj/logC143.dart';
+import 'package:c143/tw_base/tw_http/event_report.dart';
 import 'package:c143/tw_views/animated_count.dart';
 import 'package:c143/tw_views/animated_scale.dart';
 import 'package:c143/tw_views/font_border.dart';
@@ -27,7 +28,7 @@ class OverlayGuide8Quiz1 {
 
   void show({required double coins, required ValueChanged onBtn}) {
     _overlayEntry = null;
-
+    TwMaiDiannnn.guide_quiz_start();
     _overlayEntry = OverlayEntry(
       builder: (context) {
         return Material(

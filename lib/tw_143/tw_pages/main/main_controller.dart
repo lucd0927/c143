@@ -20,6 +20,7 @@ import 'package:c143/tw_143/tw_pages/main_spin/views/overlay_win_reward.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
 import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
 import 'package:c143/tw_base/tw_gj/event_busC143.dart';
+import 'package:c143/tw_base/tw_http/event_report.dart';
 import 'package:c143/tw_notification/overlay_notify.dart';
 import 'package:get/get.dart';
 
@@ -33,21 +34,21 @@ class MainController extends GetxController {
 
   void resetIndex(int index) {
     MainCashController.overlayPortalController.hide();
+    int curSelect = curMainNavIndex.value;
+    if (curSelect == index) {
+      return;
+    }
     curMainNavIndex.value = index;
-    // OverlayHongbaoyu().show(
-    //   onEnd: () {
-    //
-    //   },
-    // );
-
-    //
-    // OverlayTxStep().show(coins: 10, onBtn: (va) {});
     if (index == cashIndex) {
+      TwMaiDiannnn.cash_page_view(
+        MainTreeController.to.curMoneyyyy.value.toStringAsFixed(2),
+      );
     } else if (index == quizIndex) {
+      TwMaiDiannnn.quiz_start();
     } else if (index == spinindexxx) {
+      TwMaiDiannnn.spin_view();
       TwEventBusC143.fire(SpinEvent());
     } else if (index == treeIndex) {
-      // OverlayGuide7Rank().show();
       String? data = MainTreeController.to.guideIndexData();
 
       if (data == MainTreeController.guide10) {

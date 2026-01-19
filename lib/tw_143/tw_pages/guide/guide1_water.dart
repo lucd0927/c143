@@ -3,6 +3,7 @@ import 'package:c143/gen/assets.gen.dart';
 import 'package:c143/tw_143/tw_common/lottieeee/gesture.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide2_coin.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
+import 'package:c143/tw_base/tw_http/event_report.dart';
 import 'package:c143/tw_views/animated_scale.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -22,7 +23,7 @@ class OverlayGuide1Water {
 
   void show() {
     _overlayEntry = null;
-
+    TwMaiDiannnn.guide_water_tap();
     _overlayEntry = OverlayEntry(
       builder: (context) {
         return Material(

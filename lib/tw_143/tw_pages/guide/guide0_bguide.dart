@@ -12,6 +12,7 @@ import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
 import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
 import 'package:c143/tw_base/tw_gj/countryC143.dart';
 import 'package:c143/tw_base/tw_gj/logC143.dart';
+import 'package:c143/tw_base/tw_http/event_report.dart';
 import 'package:c143/tw_views/animated_count.dart';
 import 'package:c143/tw_views/animated_scale.dart';
 import 'package:c143/tw_views/font_border.dart';
@@ -109,6 +110,7 @@ class _Guide0BGuideWidgetState extends State<Guide0BGuideWidget> {
         setState(() {
           showAnimated = true;
         });
+        TwMaiDiannnn.guide_page_view("1");
       }
     });
   }
@@ -530,19 +532,32 @@ class _Guide0BGuideWidgetState extends State<Guide0BGuideWidget> {
       setState(() {
         if (stepIndex == 0) {
           stepIndex = 1;
+          TwMaiDiannnn.guide_page_view("2");
+          TwMaiDiannnn.guide_click_claim("1");
         } else if (stepIndex == 1) {
           stepIndex = 2;
+          TwMaiDiannnn.guide_page_view("3");
+          TwMaiDiannnn.guide_click_claim("2");
         } else if (stepIndex == 2) {
           stepIndex = 3;
+          TwMaiDiannnn.guide_page_view("4");
+          TwMaiDiannnn.guide_click_claim("3");
         } else if (stepIndex == 3) {
           stepIndex = 4;
+          TwMaiDiannnn.guide_page_view("5");
+          TwMaiDiannnn.guide_click_claim("4");
         } else if (stepIndex == 4) {
           stepIndex = 5;
+          TwMaiDiannnn.guide_page_view("6");
+          TwMaiDiannnn.guide_click_claim("5");
         } else if (stepIndex == 5) {
           // widget.onClose();
           stepIndex = 6;
+          TwMaiDiannnn.guide_page_view("7");
+          TwMaiDiannnn.guide_click_claim("6");
         } else if (stepIndex == 6) {
           widget.onClose();
+          TwMaiDiannnn.guide_click_claim("7");
         } else if (stepIndex == 7) {
           // stepIndex = -1;
         }

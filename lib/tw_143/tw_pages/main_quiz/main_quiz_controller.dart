@@ -10,6 +10,7 @@ import 'package:c143/tw_143/tw_pages/main_quiz/datus/data.dart';
 import 'package:c143/tw_143/tw_pages/main_quiz/datus/quiz_model.dart';
 import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
 import 'package:c143/tw_base/tw_gj/logC143.dart';
+import 'package:c143/tw_base/tw_http/event_report.dart';
 import 'package:c143/tw_hive/twhiveC143.dart';
 import 'package:c143/tw_views/pb_tushi.dart';
 import 'package:get/get.dart';
@@ -225,6 +226,7 @@ class MainQuizController extends GetxController {
     curShowGesture.value = false;
     _curGestureLeftTimer?.cancel();
     await Future.delayed(Duration(milliseconds: 1000));
+    TwMaiDiannnn.quiz_answer(hasClickRight?"1":"0");
     if (hasClickRight) {
       _onAddAnswerRightCount();
 
