@@ -446,6 +446,12 @@ class _TwQuizGiftWidgetState extends State<TwQuizGiftWidget>
       icon = heziLeixing
           ? Assets.twimg.quizCoinYu.path
           : Assets.twimg.quizSpin.path;
+
+      if(TwPackageABC143.isPackageB()){
+        icon = heziLeixing
+            ? Assets.twimgB.wheelTaskRain.path
+            : Assets.twimg.quizSpin.path;
+      }
     }
 
     Widget gift = canOpen && hasOpened

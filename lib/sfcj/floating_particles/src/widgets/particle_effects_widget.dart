@@ -200,6 +200,9 @@ class _ParticleEffectsState extends State<ParticleEffects>
     bool showFlower = MainTreeController.to.showMoneyStatusFlowerIcon();
     if (showSun) {
       base = 8;
+      if(MainTreeController.to.curMoneyyyy.value >= MainTreeController.stageB1Num){
+        base = 20;
+      }
     } else if (showFlower) {
       base = 40;
     }

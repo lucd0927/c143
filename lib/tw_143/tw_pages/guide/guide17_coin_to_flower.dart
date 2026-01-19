@@ -126,7 +126,7 @@ class _Guide17CoinToFlowerState extends State<Guide17CoinToFlower> {
                     //   height: 76.h,
                     // ),
                     TwTxtGraBorderC143(
-                      text: "Entering\nThe Final Stage!",
+                      text: "Getting Closer",
                       fontSize: 28.sp,
                       height: 1.2,
                       fontStyle: FontStyle.italic,
