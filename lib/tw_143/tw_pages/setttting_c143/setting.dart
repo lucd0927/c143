@@ -45,8 +45,8 @@ class _SettingWidgetC143 extends StatefulWidget {
 }
 
 class _SettingWidgetC143State extends State<_SettingWidgetC143> {
-  bool positive = bgMusic.hasOn;
-  bool positive2 = btnJackpot.hasOn;
+  bool positive = audioMusic.hasOn;
+  bool positive2 = audioBtn.hasOn;
 
   bool showAnimated = false;
   Duration animD = Duration(milliseconds: 200);
@@ -197,7 +197,7 @@ class _SettingWidgetC143State extends State<_SettingWidgetC143> {
     setState(() {
       positive = toggle;
       twLooog("== sound=toggle:$toggle==");
-      bgMusic.setSWHasOn(positive, showAudioPlayOrPause: true);
+      audioMusic.setSWHasOn(positive, showAudioPlayOrPause: true);
     });
   }
 
@@ -205,7 +205,7 @@ class _SettingWidgetC143State extends State<_SettingWidgetC143> {
     setState(() {
       positive2 = toggle;
       twLooog("== music=toggle:$toggle==");
-      btnJackpot.setSWHasOn(positive2, showAudioPlayOrPause: false);
+      audioBtn.setSWHasOn(positive2, showAudioPlayOrPause: false);
     });
   }
 

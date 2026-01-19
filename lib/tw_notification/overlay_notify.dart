@@ -60,8 +60,8 @@ class TzNotifyWidget extends StatefulWidget {
 }
 
 class _TzNotifyWidgetState extends State<TzNotifyWidget> {
-  bool positive = bgMusic.hasOn;
-  bool positive2 = btnJackpot.hasOn;
+  bool positive = audioMusic.hasOn;
+  bool positive2 = audioBtn.hasOn;
 
   bool showAnimated = false;
   Duration animD = Duration(milliseconds: 200);

@@ -924,6 +924,74 @@ class $AssetsTwimgBGen {
   ];
 }
 
+class $AssetsYuyinGen {
+  const $AssetsYuyinGen();
+
+  /// File path: assets/yuyin/bg.mp3
+  String get bg => 'assets/yuyin/bg.mp3';
+
+  /// File path: assets/yuyin/coin1.mp3
+  String get coin1 => 'assets/yuyin/coin1.mp3';
+
+  /// File path: assets/yuyin/coin2.mp3
+  String get coin2 => 'assets/yuyin/coin2.mp3';
+
+  /// File path: assets/yuyin/coin3.mp3
+  String get coin3 => 'assets/yuyin/coin3.mp3';
+
+  /// File path: assets/yuyin/dingdong_1.mp3
+  String get dingdong1 => 'assets/yuyin/dingdong_1.mp3';
+
+  /// File path: assets/yuyin/fertilize_1.mp3
+  String get fertilize1 => 'assets/yuyin/fertilize_1.mp3';
+
+  /// File path: assets/yuyin/fertilize_2.mp3
+  String get fertilize2 => 'assets/yuyin/fertilize_2.mp3';
+
+  /// File path: assets/yuyin/pop1.mp3
+  String get pop1 => 'assets/yuyin/pop1.mp3';
+
+  /// File path: assets/yuyin/pop2.mp3
+  String get pop2 => 'assets/yuyin/pop2.mp3';
+
+  /// File path: assets/yuyin/pop3.mp3
+  String get pop3 => 'assets/yuyin/pop3.mp3';
+
+  /// File path: assets/yuyin/spin.mp3
+  String get spin => 'assets/yuyin/spin.mp3';
+
+  /// File path: assets/yuyin/upgrade_1.mp3
+  String get upgrade1 => 'assets/yuyin/upgrade_1.mp3';
+
+  /// File path: assets/yuyin/upgrade_2.mp3
+  String get upgrade2 => 'assets/yuyin/upgrade_2.mp3';
+
+  /// File path: assets/yuyin/water_1.mp3
+  String get water1 => 'assets/yuyin/water_1.mp3';
+
+  /// File path: assets/yuyin/water_2.mp3
+  String get water2 => 'assets/yuyin/water_2.mp3';
+
+  /// List of all assets
+  List<String> get values => [
+    bg,
+    coin1,
+    coin2,
+    coin3,
+    dingdong1,
+    fertilize1,
+    fertilize2,
+    pop1,
+    pop2,
+    pop3,
+    spin,
+    upgrade1,
+    upgrade2,
+    water1,
+    water2,
+  ];
+}
+
 class Assets {
   const Assets._();
 
@@ -931,6 +999,7 @@ class Assets {
   static const $AssetsLottiejsonGen lottiejson = $AssetsLottiejsonGen();
   static const $AssetsTwimgGen twimg = $AssetsTwimgGen();
   static const $AssetsTwimgBGen twimgB = $AssetsTwimgBGen();
+  static const $AssetsYuyinGen yuyin = $AssetsYuyinGen();
 }
 
 class AssetGenImage {

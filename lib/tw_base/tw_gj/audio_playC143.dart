@@ -1,28 +1,29 @@
 // 🛠️ modified by obfuscator tool at 2025-07-09 11:08:44.316367
 import 'package:assets_audio_player/assets_audio_player.dart';
+import 'package:c143/tw_base/tw_gj/logC143.dart';
 import 'package:c143/tw_hive/twhiveC143.dart';
 
 
-import 'logC143.dart';
-
-const qianzhuiC143 = "assets/";
-TwAudioPlayyyC143 bgMusic = TwAudioPlayyyC143(
-  audioKey: TwAudioPlayyyC143.kAudioPlayerBg,
-  audioPath: "${qianzhuiC143}audio/bg.mp3",
-);
-TwAudioPlayyyC143 btnJackpot = TwAudioPlayyyC143(
-  audioKey: TwAudioPlayyyC143.kAudioPlayerScratch,
-  audioPath: "${qianzhuiC143}audio/scratch2.mp3",
+const preivC143 = "assets/";
+TwAudioC143 audioMusic = TwAudioC143(
+  audioKey: TwAudioC143.kAudioPlayerBg,
+  audioPath: "${preivC143}audddd/bg.mp3",
 );
 
-class TwAudioPlayyyC143 {
+TwAudioC143 audioBtn = TwAudioC143(
+  audioKey: TwAudioC143.kAudioPlayerScratch,
+  audioPath: "${preivC143}audddd/jackpot.mp3",
+);
+
+
+class TwAudioC143 {
   String audioKey;
   String audioPath;
 
-  TwAudioPlayyyC143({required this.audioKey, required this.audioPath});
+  TwAudioC143({required this.audioKey, required this.audioPath});
 
-  static const String kAudioPlayerBg = "kAudioPlayerBg";
-  static const String kAudioPlayerScratch = "kAudioPlayerScratch";
+  static const String kAudioPlayerBg = "sdfgsdc143";
+  static const String kAudioPlayerScratch = "ertwersdc143";
 
   bool _hasOn = true;
 
@@ -32,15 +33,16 @@ class TwAudioPlayyyC143 {
 
   setReleaseMode() async {}
 
-  Future<void> play() async {
+  Future<void> play({LoopMode loopMode = LoopMode.none}) async {
     twLooog("=====playLocalAssetBg==hasOn:$hasOn");
     if (hasOn) {
       await audioPlayer.open(
         Audio(audioPath),
-        loopMode: LoopMode.single,
+        loopMode: loopMode,
         autoStart: true,
+        playInBackground: PlayInBackground.disabledPause,
       );
-      audioPlayer.play();
+      await audioPlayer.play();
 
       // await audioPlayer.play(AssetSource(audioPath), volume: 1);
     }
@@ -59,7 +61,7 @@ class TwAudioPlayyyC143 {
       "===GGAudioPlayer=audioKey:$audioKey=setHasOn=_hasOn=$_hasOn  state:$state",
     );
     TwHive.box.put(audioKey, isOn);
-    if(showAudioPlayOrPause){
+    if (showAudioPlayOrPause) {
       if (isOn) {
         if (state == PlayerState.stop || state == PlayerState.pause) {
           play();
@@ -70,7 +72,6 @@ class TwAudioPlayyyC143 {
         audioPlayer.pause();
       }
     }
-
   }
 
   pause() {
@@ -88,109 +89,3 @@ class TwAudioPlayyyC143 {
     }
   }
 }
-// class GGAudioPlayer {
-//   String audioKey;
-//   String audioPath;
-//
-//   GGAudioPlayer({required this.audioKey, required this.audioPath});
-//
-//   static const String kAudioPlayerBg = "kAudioPlayerBg";
-//   static const String kAudioPlayerScratch = "kAudioPlayerScratch";
-//
-//   bool _hasOn = true;
-//
-//   bool get hasOn => GGHive.box.get(audioKey) ?? true;
-//
-//   void setHasOn(bool isOn) {
-//     _hasOn = isOn;
-//     PlayerState state = audioPlayer.state;
-//     ggPrint(
-//       "===GGAudioPlayer=audioKey:$audioKey=setHasOn=_hasOn=$_hasOn  state:$state",
-//     );
-//     GGHive.box.put(audioKey, isOn);
-//     if (isOn) {
-//       if (state == PlayerState.stopped) {
-//         play();
-//       } else {
-//         audioPlayer.resume();
-//       }
-//     } else {
-//       audioPlayer.pause();
-//     }
-//   }
-//
-//   final audioPlayer = AudioPlayer();
-//
-//   setReleaseMode() async {}
-//
-//   Future<void> play() async {
-//     ggPrint("=====playLocalAssetBg==hasOn:$hasOn");
-//     if (hasOn) {
-//       final context = AudioContext(
-//         iOS: AudioContextIOS(
-//           category: AVAudioSessionCategory.playAndRecord,
-//           options: {
-//             AVAudioSessionOptions.defaultToSpeaker,
-//             AVAudioSessionOptions.mixWithOthers, // 💡关键
-//           },
-//         ),
-//         android: const AudioContextAndroid(
-//           isSpeakerphoneOn: true,
-//           stayAwake: false,
-//           audioMode: AndroidAudioMode.inCommunication,
-//           contentType: AndroidContentType.music,
-//           usageType: AndroidUsageType.media,
-//           audioFocus: AndroidAudioFocus.gain,
-//         ),
-//       );
-//       audioPlayer.setAudioContext(context);
-//       audioPlayer.setReleaseMode(ReleaseMode.loop);
-//
-//       await audioPlayer.play(AssetSource(audioPath), volume: 1);
-//     }
-//   }
-//
-//   // Future<void> playLocalAssetBg() async {
-//   //   ggPrint("=====playLocalAssetBg==hasOn:$hasOn");
-//   //   if (hasOn) {
-//   //     audioPlayer.setReleaseMode(ReleaseMode.loop);
-//   //
-//   //     await audioPlayer.play(AssetSource("audio/bg.mp3"), volume: 1);
-//   //   }
-//   // }
-//   //
-//   // Future<void> playLocalAssetScratch() async {
-//   //   if (hasOn) {
-//   //     audioPlayer.setReleaseMode(ReleaseMode.loop);
-//   //     await audioPlayer.play(AssetSource("audio/scratch2.mp3"));
-//   //   }
-//   // }
-//
-//   Future<void> stop() async {
-//     if (hasOn) {
-//       await audioPlayer.stop();
-//     }
-//   }
-//
-//   pause() {
-//     ggPrint("=====audioplayer=pause=hasOn:$hasOn");
-//     if (hasOn) {
-//       audioPlayer.pause();
-//     }
-//   }
-//
-//   resume() {
-//     ggPrint("=====audioplayer=resume=");
-//     if (hasOn) {
-//       audioPlayer.resume();
-//       // auto patch 794
-//     }
-//   }
-// }
-//
-// // Dummy injected code for hash diff
-// void _dummyHashAdjuster_130184() {
-//   // auto patch 513
-//   final now = DateTime.now().microsecondsSinceEpoch;
-//   if (now == 609203819) print('Unreachable dummy code');
-// }
