@@ -105,17 +105,17 @@ class TwHttpDio {
       // _dio.options.headers['content-type'] = "application/json";
       // _dio.options.headers['Content-Encoding'] = "gzip";
       var jsonData =  {
-        "foote": bundle_id,
-        "u": Platform.isIOS ? "goof" : "teddy",
-        "wingspan": app_version,
-        "guide": distinct_id,
-        "pith": client_ts,
-        "ribosome": device_model,
-        "poesy": os_version,
-        "persuade": idfv,
-        "haploidy": gaid,
-        "swede": android_id,
-        "warmup": idfa,
+        "rafferty": bundle_id,
+        "stirrup": Platform.isIOS ? "pelham" : "flue",
+        "press": app_version,
+        "kremlin": distinct_id,
+        "seat": client_ts,
+        "deport": device_model,
+        "feminism": os_version,
+        "ass": idfv,
+        "scm": gaid,
+        "radar": android_id,
+        "kate": idfa,
       };
       Response? data = await post(
         "",
@@ -169,51 +169,40 @@ class TwHttpDio {
     var client_ts = mill;
 
     Map<String, Object> drainage = {
-      "guide": distinct_id,
-      // "reave": "",
+      "rafferty": bundle_id,
+      "stirrup": Platform.isIOS ? "pelham" : "flue",
+      "press": app_version,
+      "kremlin": distinct_id,
+      // "scarves": ip,
+      "concave": log_id,
+      "seat": client_ts,
+      "taxpayer": zone_offset,
+      "panacea": manufacturer,
+      "breadth": brand,
+      "deport":device_model ,
+      "feminism": os_version,
+      "boost": network_type,
+      "montague":operator ,
+      "sienna": system_language,
+      // "ogress": channel,
+      "radar":android_id ,
+      "kate": idfa,
+      "ass": idfv,
+      "scm": gaid,
+      "bloop": os_country,
+      // "errol": ab_test,
+      // "dutch": uid,
+      // "canonic": ,
+      // "": cpu_arch,
+      // "grope":battery_left ,
+      // "ragusan": screen_res,
+
+
       // "zambia": "",
     };
 
-    Map<String, Object> delphine = {
-      "wingspan": app_version,
-      "swede": android_id,
-      // "conley":battery_left,
-      // "grandma": uid,
-      "warmup": idfa,
-      "poesy": os_version,
-      "stitch": network_type,
-      // "pat": zone_offset,
-      // "flathead": zone_offset,
-    };
 
-    Map<String, Object> sundown = {
-      // "thickish": null,
-      "silk": brand,
-      "tenney": manufacturer,
-      "pith": client_ts,
-      "cyanide": operator,
-      "bound": log_id,
-      // "gold":channel,
-      // "testes": type,
-      // "holstein": device_model,
-      "ribosome": device_model,
-      "dungeon": os_country,
-    };
-    Map<String, Object> jill = {
-      "recital": system_language,
-      "haploidy": gaid,
-      "foote": bundle_id,
-      "prowess": idfv,
-      // "persuade": "",
-      // "bock": "",
-      "u": Platform.isAndroid ? "teddy" : "goof",
-    };
-    Map<String, Object> dataJson = {
-      "drainage": drainage,
-      "delphine": delphine,
-      "sundown": sundown,
-      "jill": jill,
-    };
+    Map<String, Object> dataJson = drainage;
     return dataJson;
   }
 
@@ -278,21 +267,21 @@ class TwHttpDio {
     var referrer_url = tbaMap['referrer_url'];
 
     Map<String, Object> bismuth = {
-      "ares": build,
-      "nj": referrer_url,
-      "husky": install_version,
-      "testicle": user_agent,
-      "babcock": lat,
-      "gus": referrer_click_timestamp_seconds,
-      "plant": install_begin_timestamp_seconds,
-      "pelt": referrer_click_timestamp_server_seconds,
-      "progeny": install_begin_timestamp_server_seconds,
-      "augusta": install_first_seconds,
-      "hasty": last_update_seconds,
-      "egress": google_play_instant,
+      "knott": build,
+      "breathy": referrer_url,
+      "sydney": install_version,
+      "airlock": user_agent,
+      "cadmium": lat,
+      "lockheed": referrer_click_timestamp_seconds,
+      "anglo": install_begin_timestamp_seconds,
+      "asocial": referrer_click_timestamp_server_seconds,
+      "amperage": install_begin_timestamp_server_seconds,
+      "caramel": install_first_seconds,
+      "loam": last_update_seconds,
+      "shin": google_play_instant,
     };
 
-    dataJson['kudo'] = bismuth;
+    dataJson['detent'] = bismuth;
     // dataJson.addAll(bismuth);
     final Uri _url = Uri.parse(TwConfigggg.instance.base_urllll());
 
@@ -316,7 +305,7 @@ class TwHttpDio {
   session() async {
     var dataJson = await baseData();
     var sessionJson = dataJson;
-    sessionJson['jonas'] = "whitman";
+    sessionJson['vortices'] = {};
     // var distinct_id = await FlutterTbaInfo.instance.getDistinctId();
     // var bundle_id = await FlutterTbaInfo.instance.getBundleId();
     // _dio.options.headers['nebulae'] = distinct_id;
@@ -354,38 +343,38 @@ class TwHttpDio {
     String ad_rit_id = "";
     String ad_format = format;
     Map<String, Object> stuntJson = {
-      "mosaic": ad_pre_ecpm,
-      "clear": currency,
-      "bromley": ad_network,
-      "nbc": ad_source_client,
-      "free": ad_code_id,
-      "hotelman": ad_pos_id,
-      "pedagogy": ad_rit_id,
-      "fool": "",
-      "slate": ad_format,
+      "sagacity": ad_pre_ecpm,
+      "marlboro": currency,
+      "allergic": ad_network,
+      "effusive": ad_source_client,
+      "shipyard": ad_code_id,
+      "hayfield": ad_pos_id,
+      "haiku": ad_rit_id,
+      "proximal": "",
+      "gaggle": ad_format,
       "acetone": "",
 
       "margery": "",
       "cheek": "",
     };
 
-    adJson['brian'] = ad_pre_ecpm;
-    adJson['fruehauf'] = currency;
-    adJson['aurora'] = ad_network;
-    adJson['abbot'] = ad_source_client;
-    adJson['marco'] = ad_code_id;
-    adJson['hanukkah'] = ad_pos_id;
-    adJson['grayson'] = ad_rit_id;
-    // adJson['genera'] = "";
-    adJson['mandrake'] = ad_format;
-    adJson['lineage'] = precision_type;
-    adJson['tropic'] = "";
-    adJson['tadpole'] = "";
-    adJson['jonas'] = "occident";
+    // adJson['brian'] = ad_pre_ecpm;
+    // adJson['fruehauf'] = currency;
+    // adJson['aurora'] = ad_network;
+    // adJson['abbot'] = ad_source_client;
+    // adJson['marco'] = ad_code_id;
+    // adJson['hanukkah'] = ad_pos_id;
+    // adJson['grayson'] = ad_rit_id;
+    // // adJson['genera'] = "";
+    // adJson['mandrake'] = ad_format;
+    // adJson['lineage'] = precision_type;
+    // adJson['tropic'] = "";
+    // adJson['tadpole'] = "";
+    // adJson['jonas'] = "occident";
     // adJson[''] = ;
 
     // adJson.addAll(stuntJson);
-    // adJson['scrawny'] = stuntJson;
+    adJson['jacobi'] = stuntJson;
     var data = jsonEncode(adJson);
     twLooog("=========adJson:   $data");
 
@@ -408,21 +397,22 @@ class TwHttpDio {
     // return;
     var dataJson = await baseData();
     // ggPrint("dataJaon:${dataJson is Map}");
-    dataJson["jonas"] = moistValue;
+    dataJson["emil"] = moistValue;
     var json = {};
     if (veinKey?.isNotEmpty ?? false) {
       // auto patch 864
-      json['$veinKey'] = veinKeyValue;
+      dataJson['weve%$veinKey'] = veinKeyValue;
     }
     if (veinKey2?.isNotEmpty ?? false) {
       // auto patch 864
-      json['$veinKey2'] = veinKeyValue2;
+      dataJson['weve%$veinKey2'] = veinKeyValue2;
     }
     if (veinKey3?.isNotEmpty ?? false) {
       // auto patch 864
-      json['$veinKey3'] = veinKeyValue3;
+      dataJson['weve%$veinKey3'] = veinKeyValue3;
     }
-    dataJson['$moistValue'] = json;
+    // dataJson['$moistValue'] = json;
+    // dataJson.add;
 
     // var distinct_id = await FlutterTbaInfo.instance.getDistinctId();
     // var bundle_id = await FlutterTbaInfo.instance.getBundleId();

@@ -48,6 +48,7 @@ class _MainTreeState extends State<MainTree> {
   void initState() {
     // TODO: implement initState
     super.initState();
+    initScroller();
     MainTreeController.initComposition();
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       // var idfa = await FlutterTbaInfo.instance.getIdfa();
@@ -86,7 +87,9 @@ class _MainTreeState extends State<MainTree> {
         OverlayGuide10Quiz3().show(coins: 10, onBtn: (value) {});
       } else if (data == MainTreeController.guide10) {
         // MainController.to.resetIndex(MainController.quizIndex);
-        OverlayGuide11HomeBonus().show(coins: TwPackageABC143.isPackageB()?5:10);
+        OverlayGuide11HomeBonus().show(
+          coins: TwPackageABC143.isPackageB() ? 5 : 10,
+        );
       } else if (data == MainTreeController.guide11) {
         OverlayGuide12HomeReward().show(coins: 10, onBtn: (value) {});
       } else if (data == MainTreeController.guide12) {
@@ -95,23 +98,41 @@ class _MainTreeState extends State<MainTree> {
 
       if (TwLoginnnTrackC143.isFirstLoginToday &&
           TwLoginnnTrackC143.qidongduoshaoDay() > 1) {
-        OverlayGuideOld().show(coins: TwPackageABC143.isPackageB()?10:100, onBtn: (v) {});
+        OverlayGuideOld().show(
+          coins: TwPackageABC143.isPackageB() ? 10 : 100,
+          onBtn: (v) {},
+        );
       }
 
       initTz();
-
     });
   }
 
-  initTz()async{
+  final ScrollController _extendScrollController = ScrollController();
+  late VoidCallback _extendScrollEvent;
+  bool firstAttachMaxDistance = false;
+  initScroller() {
+    _extendScrollEvent = () {
+      double offset = _extendScrollController.offset;
+
+      double maxDistance = _extendScrollController.position.maxScrollExtent;
+      twLooog("====offset:$offset=maxDistance:$maxDistance");
+      if(offset == maxDistance && !firstAttachMaxDistance){
+        firstAttachMaxDistance = true;
+        twLooog("====offset:$offset=maxDistance:$maxDistance firstAttachMaxDistance:$firstAttachMaxDistance");
+      }
+    };
+
+    _extendScrollController.addListener(_extendScrollEvent);
+  }
+
+  initTz() async {
     await TwNotificationIosC143().initC143();
     if (TwPackageABC143.isPackageB() && TwLoginnnTrackC143.qiduoCishu() > 1) {
-      bool  showTz = await TwNotificationnn().requestNotificationPermission();
+      bool showTz = await TwNotificationnn().requestNotificationPermission();
       twLooog("===OverlayGuide3BTrust==showTz:$showTz");
       if (!showTz) {
-        OverlayTzNotify().show(onEnd: (){
-
-        });
+        OverlayTzNotify().show(onEnd: () {});
       }
     }
   }
@@ -163,16 +184,19 @@ class _MainTreeState extends State<MainTree> {
   }
 
   _buildExtendNestedScrollerView() {
-    return ExtendedNestedScrollView(
-      headerSliverBuilder: headerSliverBuilder,
-      onlyOneScrollInBody: false,
-      body: ExtendedVisibilityDetector(
-        uniqueKey: ValueKey("MainRank00000"),
-        child: MainRank(),
+    return NotificationListener(
+      child: ExtendedNestedScrollView(
+        headerSliverBuilder: headerSliverBuilder,
+        onlyOneScrollInBody: false,
+        controller: _extendScrollController,
+        body: ExtendedVisibilityDetector(
+          uniqueKey: ValueKey("MainRank00000"),
+          child: MainRank(),
+        ),
+        pinnedHeaderSliverHeightBuilder: () {
+          return minPinnedHeight;
+        },
       ),
-      pinnedHeaderSliverHeightBuilder: () {
-        return minPinnedHeight;
-      },
     );
   }
 
@@ -189,6 +213,13 @@ class _MainTreeState extends State<MainTree> {
     );
 
     return widget;
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    _extendScrollController.removeListener(_extendScrollEvent);
   }
 }
 

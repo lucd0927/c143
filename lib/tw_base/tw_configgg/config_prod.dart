@@ -1,21 +1,25 @@
 // 🛠️ modified by obfuscator tool at 2025-07-09 11:08:44.325413
 
 
+import 'dart:io';
+
 import 'config.dart';
 
 class SSConfiggPordddd implements TwConfigggg{
   @override
   String base_urllll() {
-    // TODO: implement baseUrl
-    return "";
+    if(Platform.isAndroid){
+      return "";
+    }
+    return "https://gilmore.treeworldgardener.com/cloy/trinidad/cavemen";
   }
 
   @override
   String tbaaa_urlll() {
-// auto patch 793
-    // TODO: implement cloakUrl
-// auto patch 79
-    return "";
+    if(Platform.isAndroid){
+      return "";
+    }
+    return "https://wakeup.treeworldgardener.com/bloom/indulge/sorcery";
   }
 
 }    
