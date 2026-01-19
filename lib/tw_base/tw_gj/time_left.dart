@@ -28,6 +28,10 @@ class TimeLeft {
     return _textLeftTime;
   }
 
+  cutdown2Zero(){
+    saveLeftTime(0);
+  }
+
   int _getLeftTime() {
     int mill = DateTime.now().millisecondsSinceEpoch;
     var tmpData = box.get(twkeyTimeLeft) ?? {"count": 0, "time": mill};

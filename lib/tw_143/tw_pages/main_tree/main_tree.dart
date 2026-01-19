@@ -150,7 +150,7 @@ class _MainTreeState extends State<MainTree> {
       double offset = _extendScrollController.offset;
 
       double maxDistance = _extendScrollController.position.maxScrollExtent;
-      twLooog("====offset:$offset=maxDistance:$maxDistance");
+      // twLooog("====offset:$offset=maxDistance:$maxDistance");
       if (offset == maxDistance && !firstAttachMaxDistance) {
         firstAttachMaxDistance = true;
         twLooog(

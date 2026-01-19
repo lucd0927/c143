@@ -652,6 +652,10 @@ class $AssetsTwimgBGen {
   AssetGenImage get guide0Txt6 =>
       const AssetGenImage('assets/twimgB/guide_0_txt6.png');
 
+  /// File path: assets/twimgB/main_fertilize_pop.png
+  AssetGenImage get mainFertilizePop =>
+      const AssetGenImage('assets/twimgB/main_fertilize_pop.png');
+
   /// File path: assets/twimgB/main_flower.png
   AssetGenImage get mainFlower =>
       const AssetGenImage('assets/twimgB/main_flower.png');
@@ -866,6 +870,7 @@ class $AssetsTwimgBGen {
     guide0Txt4,
     guide0Txt5,
     guide0Txt6,
+    mainFertilizePop,
     mainFlower,
     mainNavCash,
     mainNavCashUn,

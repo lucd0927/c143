@@ -3,6 +3,7 @@ import 'dart:math';
 
 import 'package:c143/gen/assets.gen.dart';
 import 'package:c143/tw_143/tw_common/firebase_json/number_json.dart';
+import 'package:c143/tw_143/tw_common/overlay/overlay_fertilize.dart';
 import 'package:c143/tw_143/tw_common/overlay/overlay_lot_water.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide14_highligth.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide15_coin_to_sun.dart';
@@ -362,6 +363,13 @@ class MainTreeController extends GetxController {
     resetCoin();
   }
 
+  cutdown2ZeroFertilize(){
+    _fertilizeLeftTime.saveLeftTime(0);
+    curFertilizeLeftTime.value = "";
+    onAddShiFeiCount(onEnd: (){});
+
+  }
+
   initCutdownTimer() {
     _fertilizeLeftTime.initLeftTimer(hasFirst: true);
     _coinLeftTime1.initLeftTimer(hasFirst: true);
@@ -509,8 +517,12 @@ class MainTreeController extends GetxController {
 
   onAddShiFeiCount({required VoidCallback onEnd, bool showAd = true}) async {
     if (curFertilizeLeftTime.value.isNotEmpty) {
-      twToast(text: "You can claim it after the countdown ends");
-
+      if (TwPackageABC143.isPackageB()) {
+        TwMaiDiannnn.fertilizer_click("ad");
+        OverlayFertilizePop().show(onEnd: () {});
+      } else {
+        twToast(text: "You can claim it after the countdown ends");
+      }
       return;
     }
 
@@ -525,7 +537,7 @@ class MainTreeController extends GetxController {
 
     if (canClickWater) {
       canClickWater = false;
-      TwMaiDiannnn.fertilizer_click("ad");
+      TwMaiDiannnn.fertilizer_click("free");
       OverlayLotWater().show(
         onEnd: () {
           curHasWatering.value = true;
