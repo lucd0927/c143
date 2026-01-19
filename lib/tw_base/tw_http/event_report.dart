@@ -231,7 +231,22 @@ class TwMaiDiannnn {
   }
 
   static notification_pro_show_f() {
-    TwHttpDio().buryPoint(moistValue: "notification_pro_show_f");
+    String key = "notification_pro_show_fc143";
+    var box = TwHive.box;
+    var data = box.get(key);
+
+    twLooog("====install=has request:$data");
+    if (data == null) {
+      Future.delayed(Duration(milliseconds: 0), () async {
+        // SSHttpDio().buryPoint(moistValue: "install");
+        var tmpData = await TwHttpDio().buryPoint(moistValue: "notification_pro_show_f");
+        if (tmpData != null) {
+          TwMaiDiannnn.event_launch_first();
+          box.put(key, true);
+        }
+      });
+    }
+
   }
 
   static notification_granted_f() {

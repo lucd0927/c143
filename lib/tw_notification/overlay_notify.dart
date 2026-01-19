@@ -5,6 +5,8 @@ import 'package:c143/gen/assets.gen.dart';
 import 'package:c143/tw_143/tw_common/lottieeee/gesture.dart';
 import 'package:c143/tw_base/tw_gj/audio_playC143.dart';
 import 'package:c143/tw_base/tw_gj/logC143.dart';
+import 'package:c143/tw_base/tw_gj/login_trackC143.dart';
+import 'package:c143/tw_base/tw_http/event_report.dart';
 import 'package:c143/tw_views/font_border.dart';
 import 'package:c143/tw_views/font_gradient_border.dart';
 import 'package:flutter/material.dart';
@@ -17,9 +19,10 @@ class OverlayTzNotify {
 
   OverlayEntry? _overlayC143;
 
-  void show({
-    required VoidCallback onEnd,
-}) {
+  void show({required VoidCallback onEnd}) {
+    TwMaiDiannnn.notification_prompt_show(
+      TwLoginnnTrackC143.qidongduoshaoDay() <= 1 ? "new" : "old",
+    );
     _overlayC143 = null;
     _overlayC143 = OverlayEntry(
       builder: (context) {
@@ -27,10 +30,12 @@ class OverlayTzNotify {
           onClose: () {
             close();
             onEnd();
+            TwMaiDiannnn.notification_denied();
           },
-          onBtn: (){
+          onBtn: () {
             close();
             onEnd();
+            TwMaiDiannnn.notification_granted();
           },
         );
       },
@@ -170,6 +175,7 @@ class _TzNotifyWidgetState extends State<TzNotifyWidget> {
                         SizedBox(height: 30.h),
                         btnClaim(),
                         SizedBox(height: 4.h),
+
                         // Text(
                         //   "Give Up",
                         //   style: TextStyle(
@@ -179,7 +185,6 @@ class _TzNotifyWidgetState extends State<TzNotifyWidget> {
                         //   ),
                         //   textAlign: TextAlign.center,
                         // ),
-
                       ],
                     ),
                   ),
@@ -204,7 +209,6 @@ class _TzNotifyWidgetState extends State<TzNotifyWidget> {
       ),
     );
   }
-
 
   Widget btnClaim() {
     return Center(
@@ -232,11 +236,8 @@ class _TzNotifyWidgetState extends State<TzNotifyWidget> {
                   foreground: Color(0xff22431B),
                 ),
               ),
-              Positioned(
-                top: 30.h,
-                right: 0.w,
-                child: TwLottieGesture(),
-              ),
+              Positioned(top: 30.h, right: 0.w, child: TwLottieGesture()),
+
               // Positioned(
               //   top: -10.h,
               //   left: -5.h,
@@ -246,7 +247,6 @@ class _TzNotifyWidgetState extends State<TzNotifyWidget> {
               //     height: 28.h,
               //   ),
               // ),
-
             ],
           ),
         ),

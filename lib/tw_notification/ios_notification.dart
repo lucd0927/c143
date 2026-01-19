@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
 import 'package:c143/tw_base/tw_configgg/config.dart';
 import 'package:c143/tw_base/tw_gj/logC143.dart';
+import 'package:c143/tw_base/tw_http/event_report.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
@@ -44,33 +45,33 @@ class TwNotificationIosC143 {
   final IOSFlutterLocalNotificationsPlugin _pluginC143 =
       IOSFlutterLocalNotificationsPlugin();
 
-
-
   List get contentsC143 => [
     {
-      "title": "",
-      "content": "Come back now or lose your chance to coin out 1,000.",
+      "title": "Cash Bonus!",
+      "content":
+          "\$10 Bonus Ready! Tap to Open App → Shake Tree & Cash Out Fast!",
+    },
+
+    {"title": "Cash-Out So Close!", "content": "Tap more, Earn more!"},
+    {"title": "Cash-Out So Close!", "content": "Ad Value Up! Claim Rewards!"},
+
+    {
+      "title": "Cash Out Pending",
+      "content": "You have \$1,000 waiting! Tap to claim to PayPal!",
     },
 
     {
-      "title": "",
-      "content": "Come back now or lose your chance to coin out 1,000.",
+      "title": "You Can Cash Out!",
+      "content":
+          "Balance over \$1,000! Tap here to cash out & turn earnings into REAL CASH!",
     },
 
     {
-      "title": "",
-      "content": "Come back now or lose your chance to coin out 1,000.",
+      "title": "Cash Out Pending",
+      "content": "You have \$1,000 waiting! Tap to claim to PayPal!",
     },
 
-    {
-      "title": "",
-      "content": "Come back now or lose your chance to coin out 1,000.",
-    },
-
-    {
-      "title": "",
-      "content": "Come back now or lose your chance to coin out 1,000.",
-    },
+    {"title": "You Can Cash Out!", "content": "Open App → Grow & Cash Out!"},
   ];
 
   // void setTzCount(int value, SharedPreferences sp) =>
@@ -79,8 +80,9 @@ class TwNotificationIosC143 {
   // int getTzCount(SharedPreferences sp) => sp.getInt(local_ios) ?? 0;
 
   initC143() async {
+    TwMaiDiannnn.notification_pro_show_f();
+    TwMaiDiannnn.push_status();
     await requestNotificationPermissionC143();
-
 
     twLooog("=initNotification====init===");
 
@@ -100,8 +102,8 @@ class TwNotificationIosC143 {
       },
       onDidReceiveBackgroundNotificationResponse: backgroundNotfication,
     );
-    NotificationAppLaunchDetails? notificationAppLaunchDetails = await _pluginC143
-        .getNotificationAppLaunchDetails();
+    NotificationAppLaunchDetails? notificationAppLaunchDetails =
+        await _pluginC143.getNotificationAppLaunchDetails();
     twLooog(
       "=initNotification====getNotificationAppLaunchDetails==notificationAppLaunchDetails:$notificationAppLaunchDetails=",
     );
@@ -120,7 +122,6 @@ class TwNotificationIosC143 {
       }
     }
     dingshiC143();
-
   }
 
   tongsongdianji(int? tuisongid) {
@@ -137,8 +138,8 @@ class TwNotificationIosC143 {
     } else {
       payload = "fix";
     }
-    payload = "time_sensitive";
-    // SSEventReporttttt.all_noti_c(source_from: payload);
+
+    TwMaiDiannnn.inform_c(payload);
   }
 
   Future<bool> requestNotificationPermissionC143() async {
@@ -160,6 +161,9 @@ class TwNotificationIosC143 {
     PermissionStatus permissionStatus = await Permission.notification.request();
     result = permissionStatus == PermissionStatus.granted;
     twLooog("==requestNotificationPermission=result:$result");
+    result
+        ? TwMaiDiannnn.notification_granted_f()
+        : TwMaiDiannnn.notification_denied_f();
     return result;
   }
 
@@ -182,7 +186,6 @@ class TwNotificationIosC143 {
     twLooog("==initNotification=_repeatNotification=");
     int length = contentsC143.length;
     contentsC143.shuffle();
-    int random = Random().nextInt(length);
     String baiotiC143 = "TreeWorld";
     String baiotiAC143 = "TreeWorld";
     String contentAC143 = "Come join the quiz!";
@@ -221,10 +224,6 @@ class TwNotificationIosC143 {
       TwConfigggg.hasDeeevv() ? Duration(minutes: 4) : Duration(minutes: 80),
     );
   }
-
-
-
-
 
   Future<bool> checkNotificationPermission() async {
     bool result = await Permission.notification.isGranted;

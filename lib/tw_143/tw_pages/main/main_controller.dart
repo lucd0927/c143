@@ -49,6 +49,7 @@ class MainController extends GetxController {
       TwMaiDiannnn.spin_view();
       TwEventBusC143.fire(SpinEvent());
     } else if (index == treeIndex) {
+      TwMaiDiannnn.home_view(MainTreeController.to.curLevel.value.toString());
       String? data = MainTreeController.to.guideIndexData();
 
       if (data == MainTreeController.guide10) {

@@ -176,7 +176,7 @@ class TwHttpDio {
       // "scarves": ip,
       "concave": log_id,
       "seat": client_ts,
-      "taxpayer": zone_offset,
+      // "taxpayer": zone_offset,
       "panacea": manufacturer,
       "breadth": brand,
       "deport":device_model ,
