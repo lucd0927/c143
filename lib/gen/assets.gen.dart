@@ -688,6 +688,10 @@ class $AssetsTwimgBGen {
   AssetGenImage get mainNavTreeUn =>
       const AssetGenImage('assets/twimgB/main_nav_tree_un.png');
 
+  /// File path: assets/twimgB/main_rank_desb.png
+  AssetGenImage get mainRankDesb =>
+      const AssetGenImage('assets/twimgB/main_rank_desb.png');
+
   /// File path: assets/twimgB/money.png
   AssetGenImage get money => const AssetGenImage('assets/twimgB/money.png');
 
@@ -871,6 +875,7 @@ class $AssetsTwimgBGen {
     mainNavSpinUn,
     mainNavTree,
     mainNavTreeUn,
+    mainRankDesb,
     money,
     moneyDailog,
     moneyFloating,

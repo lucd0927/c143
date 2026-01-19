@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:c143/gen/assets.gen.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide7_rank.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/main_tree.dart';
+import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
 import 'package:c143/tw_base/tw_gj/logC143.dart';
 import 'package:c143/tw_base/tw_gj/login_trackC143.dart';
 import 'package:c143/tw_base/tw_gj/number_extend.dart';
@@ -45,7 +46,9 @@ class _MainRankState extends State<MainRank> {
     // 生成 50 个 [0, 100] 内的随机 double
     List<double> numbers = List.generate(length, (_) {
       double tmp = (tmpRandom.nextDouble() * 12000) + 1000;
-
+      if(TwPackageABC143.isPackageB()){
+        tmp = (tmpRandom.nextDouble() * 1200) + 500;
+      }
       return tmp.toAsFixedFloor(2);
     });
 
@@ -57,7 +60,7 @@ class _MainRankState extends State<MainRank> {
     // 生成 50 个 [0, 100] 内的随机整数
     List<int> numbersInt = List.generate(
       length,
-      (_) => randInt.nextInt(50) + 1,
+      (_) => randInt.nextInt(90) + 15,
     );
 
     // 排序，从大到小
@@ -100,7 +103,6 @@ class _MainRankState extends State<MainRank> {
 
   @override
   Widget build(BuildContext context) {
-
     Widget child = ClipRect(
       child: Container(
         // clipBehavior: Clip.none,
@@ -124,7 +126,7 @@ class _MainRankState extends State<MainRank> {
                         color: Color(0xff0E226C),
                         child: Column(
                           children: [
-                           SizedBox(height: 20.h),
+                            SizedBox(height: 20.h),
                             rankTopWidget(),
 
                             // _itemWidget(1),
@@ -144,7 +146,9 @@ class _MainRankState extends State<MainRank> {
               right: 0,
               top: 0.h,
               child: Image.asset(
-                Assets.twimg.mainRankDes.path,
+                TwPackageABC143.isPackageB()
+                    ? Assets.twimgB.mainRankDesb.path
+                    : Assets.twimg.mainRankDes.path,
                 width: double.infinity,
                 height: 52.h,
                 fit: BoxFit.fill,

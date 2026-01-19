@@ -318,9 +318,9 @@ class TwPackageABC143 {
         await TwAdjusssC143().initSdk(
           TwConfigggg.hasDeeevv()
               ? (Platform.isIOS
-              ? "sadf"
-              : "9lebq1vm016o")
-              : (Platform.isIOS ? "ghjj" : "9lebq1vm016o"),
+              ? "tz9kjof185c0"
+              : "4qedga65udq8")
+              : (Platform.isIOS ? "tz9kjof185c0" : "9lebq1vm016o"),
         );
       } else {
         String asdkasfdhka = "XM9ua37BHJWBKq8jTYg74a";

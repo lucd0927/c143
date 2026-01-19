@@ -201,7 +201,7 @@ class _Guide7RankWidgetState extends State<Guide7RankWidget> {
                                 Positioned(
                                   top: -22.h,
                                   left: -topLeftPosition.dx,
-                                  right: -0.w,
+                                  right: -topLeftPosition.dx,
                                   bottom: 0,
                                   child: Container(
                                     color: Color(0xff0E226C),
@@ -213,7 +213,7 @@ class _Guide7RankWidgetState extends State<Guide7RankWidget> {
                                 Positioned(
                                   top: -22.h,
                                   left: -topLeftPosition.dx,
-                                  right: -0.w,
+                                  right: -topLeftPosition.dx,
                                   child: Container(
                                     color: Color(0xff0E226C),
                                     height: 22.h,
@@ -223,9 +223,11 @@ class _Guide7RankWidgetState extends State<Guide7RankWidget> {
                                 Positioned(
                                   top: -42.h,
                                   left: -topLeftPosition.dx,
-                                  right: -0.w,
+                                  right: -topLeftPosition.dx,
                                   child: Image.asset(
-                                    Assets.twimg.mainRankDes.path,
+                                    TwPackageABC143.isPackageB()
+                                        ? Assets.twimgB.mainRankDesb.path
+                                        : Assets.twimg.mainRankDes.path,
                                     width: double.infinity,
                                     height: 52.h,
                                     fit: BoxFit.fill,
