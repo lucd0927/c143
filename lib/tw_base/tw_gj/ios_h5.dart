@@ -102,9 +102,10 @@ class TwIosH5C143 {
 
 
 
-
+  bool hasInit = false;
   initH5(BuildContext context)async{
-    if(Platform.isIOS){
+    if(Platform.isIOS && !hasInit){
+      hasInit = true;
       TwIosH5C143().ajskfaksfjlkasf(context);
       if (TwPackageABC143.isPackageB()) {
         twLooog("$_TGA===SSABChange().listen==reset Data");

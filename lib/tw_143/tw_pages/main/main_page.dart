@@ -19,6 +19,7 @@ import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
 import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
 import 'package:c143/tw_base/tw_gj/audio_playC143.dart';
 import 'package:c143/tw_base/tw_gj/ios_h5.dart';
+import 'package:c143/tw_base/tw_gj/logC143.dart';
 import 'package:c143/tw_notification/ios_notification.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -55,11 +56,23 @@ class _TwMainPageState extends State<TwMainPage> {
     Get.put(MainCashController());
     audioMusic.play(loopMode: LoopMode.single);
 
-
+    initABC143();
 
   }
 
+  initABC143(){
+    TwPackageABC143().listen((packN){
+      twLooog("===TwPackageABC143==packN:$packN");
+      TwIosH5C143().initH5(context);
+      if(packN == TwPackageABC143.packageB){
+        if(mounted){
+          setState(() {
 
+          });
+        }
+      }
+    });
+  }
 
 
 

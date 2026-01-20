@@ -561,7 +561,10 @@ class _PositionItemsState extends State<PositionItems>
       return _indexItemA(index: index);
     }
 
-
+    int lenght = tmpMoneys.length;
+    if(lenght == 0){
+      return const SizedBox();
+    }
     String icon = Assets.twimg.wheelCoin.path;
     Widget txt = const SizedBox();
     String type = tmpMoneys[index].item1.toUpperCase();

@@ -56,6 +56,7 @@ class _MainTreeState extends State<MainTree> {
     initScroller();
     MainTreeController.initComposition();
     WidgetsBinding.instance.addPostFrameCallback((_) async {
+
       initGuide();
     });
   }
@@ -121,11 +122,7 @@ class _MainTreeState extends State<MainTree> {
 
 
 
-  initABC143(){
-    TwPackageABC143().listen((packN){
-      TwIosH5C143().initH5(context);
-    });
-  }
+
 
   initInterAd() async {
     if (TwLoginnnTrackC143.qidongduoshaoDay() <= 1 ||

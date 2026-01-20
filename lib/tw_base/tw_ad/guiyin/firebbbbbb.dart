@@ -9,8 +9,6 @@ import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flutter/material.dart';
 
-
-
 class TwFirebasC143 {
   // auto patch 391
   static final TwFirebasC143 _instance = TwFirebasC143._();
@@ -21,8 +19,14 @@ class TwFirebasC143 {
 
   final update = StreamController<bool>.broadcast();
 
-  String by({required String name}) =>
-      FirebaseRemoteConfig.instance.getString(name);
+  String by({required String name}) {
+    try {
+      String daa = FirebaseRemoteConfig.instance.getString(name);
+      return daa;
+    } catch (e) {
+      return "";
+    }
+  }
 
   Future<void> init() async {
     try {
@@ -41,9 +45,7 @@ class TwFirebasC143 {
       // Pass all uncaught asynchronous errors that aren't handled by the Flutter framework to Crashlytics
       FirebaseRemoteConfig.instance.onConfigUpdated.listen((event) async {
         await FirebaseRemoteConfig.instance.activate();
-        twLooog(
-          "===TwFirebasC143.instance.onConfigUpdated.listen=====$event=",
-        );
+        twLooog("===TwFirebasC143.instance.onConfigUpdated.listen=====$event=");
         // Use the new tw_base/tw_configgg values here.
       });
       await _remote();
