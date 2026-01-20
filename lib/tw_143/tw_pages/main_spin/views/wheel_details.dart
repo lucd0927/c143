@@ -10,6 +10,8 @@ import 'package:c143/tw_143/tw_pages/main/main_controller.dart';
 import 'package:c143/tw_143/tw_pages/main_spin/main_spin_controller.dart';
 import 'package:c143/tw_143/tw_pages/main_spin/views/overlay_win_reward.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
+import 'package:c143/tw_base/tw_ad/ads_idddddC143.dart';
+import 'package:c143/tw_base/tw_ad/base_ads.dart';
 import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
 import 'package:c143/tw_base/tw_gj/audio_playC143.dart';
 import 'package:c143/tw_base/tw_gj/countryC143.dart';
@@ -844,7 +846,7 @@ class _PositionItemsState extends State<PositionItems>
     bool hasMoneyRain = false;
     String type = "cash";
     // cash
-    if (random > 0.69) {
+    if (random > 0.5) {
       List<int> _tmpCashIndex = [];
       _cashIndex.forEach((index) {
         bool hasCccc = _cutdownCashIndex.contains(index);
@@ -882,6 +884,9 @@ class _PositionItemsState extends State<PositionItems>
     if(!canClickWinbig){
       return;
     }
+
+
+
     canClickWinbig = false;
     TwMaiDiannnn.spin_ad_boost();
     bool result = MainSpinController.to.hasClickWinBigFirst();
@@ -889,13 +894,21 @@ class _PositionItemsState extends State<PositionItems>
     if (!result) {
       OverlayWinReward().show(
         coins: 0,
-        onBtn: () {
+        onBtn: () async{
+          bool adresult = await TwCommonAds().showRewardAd(adPosId: TwAdsPosId.cuvxv_increaseprob_rv);
+          if (!adresult) {
+            return;
+          }
           __onWinbigg();
         },
         onClose: () {
 
         },
       );
+      return;
+    }
+    bool adresult = await TwCommonAds().showRewardAd(adPosId: TwAdsPosId.cuvxv_increaseprob_rv);
+    if (!adresult) {
       return;
     }
     __onWinbigg();

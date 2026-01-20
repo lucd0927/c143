@@ -352,10 +352,10 @@ class _MainCenterState extends State<MainCenter> {
   }
 
   _onCoinB({required double coins, required TwEnumTreeType treeType}) async {
-    // bool result = await TwCommonAds().showRewardAd(adPosId: TwAdsPosId.test);
-    // if (!result) {
-    //   return;
-    // }
+    bool result = await TwCommonAds().showRewardAd(adPosId: TwAdsPosId.cuvxv_bubble_rv);
+    if (!result) {
+      return;
+    }
 
     bool showSun = MainTreeController.to.showMoneyStatusSunIcon();
     bool showFlower = MainTreeController.to.showMoneyStatusFlowerIcon();
@@ -559,7 +559,7 @@ class _MainCenterState extends State<MainCenter> {
               onClick: () {
                 TwIosH5C143().showWvC143();
               },
-              txtBottom: 'H5',
+              txtBottom: '',
             );
 
             return child;

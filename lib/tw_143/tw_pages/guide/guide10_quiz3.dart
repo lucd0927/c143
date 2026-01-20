@@ -329,7 +329,10 @@ class _Guide10Quiz3State extends State<Guide10Quiz3> {
     );
   }
 
-  void onClaim() {
+  void onClaim() async{
+    bool result = await TwCommonAds().showRewardAd(
+      adPosId: TwAdsPosId.cuvxv_newquizc_rv,
+    );
     widget.onBtn(widget.coins);
   }
 

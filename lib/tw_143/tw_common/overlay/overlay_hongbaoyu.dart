@@ -6,6 +6,7 @@ import 'package:c143/sfcj/floating_particles/src/models/direction.dart';
 import 'package:c143/sfcj/floating_particles/src/models/particle_config.dart';
 import 'package:c143/sfcj/floating_particles/src/models/particle_type.dart';
 import 'package:c143/sfcj/floating_particles/src/widgets/particle_effects_widget.dart';
+import 'package:c143/tw_143/tw_common/base_number.dart';
 import 'package:c143/tw_143/tw_common/lottieeee/gesture.dart';
 import 'package:c143/tw_143/tw_common/overlay/overlay_get.dart';
 import 'package:c143/tw_143/tw_common/view/cross_confetti.dart';
@@ -14,6 +15,8 @@ import 'package:c143/tw_143/tw_pages/guide/guide0_bguide.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide1_water.dart';
 import 'package:c143/tw_143/tw_pages/main_spin/main_spin_controller.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
+import 'package:c143/tw_base/tw_ad/ads_idddddC143.dart';
+import 'package:c143/tw_base/tw_ad/base_ads.dart';
 import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
 import 'package:c143/tw_base/tw_gj/countryC143.dart';
 import 'package:c143/tw_base/tw_gj/logC143.dart';
@@ -47,12 +50,11 @@ class OverlayHongbaoyu {
           child: _hongbaoyuuu(
             onClose: (value) async {
               close();
-              if(TwPackageABC143.isPackageB()){
-
+              if (TwPackageABC143.isPackageB()) {
                 onEnd();
                 return;
               }
-              if(value <= 0){
+              if (value <= 0) {
                 onEnd();
                 return;
               }
@@ -107,7 +109,7 @@ class _hongbaoyuuuState extends State<_hongbaoyuuu> {
   double getCoins = 0;
 
   bool hasFirst() {
-    if(TwPackageABC143.isPackageB()){
+    if (TwPackageABC143.isPackageB()) {
       return box.get(twkeyFirst) ?? true;
     }
     return false;
@@ -200,11 +202,9 @@ class _hongbaoyuuuState extends State<_hongbaoyuuu> {
           });
         }
 
-        if(!TwPackageABC143.isPackageB()){
+        if (!TwPackageABC143.isPackageB()) {
           widget.onClose(getCoins);
         }
-
-
       } else {
         if (mounted) {
           setState(() {
@@ -543,8 +543,6 @@ class _hongbaoyuuuState extends State<_hongbaoyuuu> {
             ),
           ),
         ),
-
-
       ],
     );
   }
@@ -714,11 +712,7 @@ class _hongbaoyuuuState extends State<_hongbaoyuuu> {
                         children: [
                           btnWinClaim(),
                           GestureDetector(
-                            onTap: () {
-                              setState(() {
-                                _hongbaoWinPop = false;
-                              });
-                            },
+                            onTap: _onWinGiveup,
                             child: Text(
                               "Give Up",
                               style: TextStyle(
@@ -739,6 +733,19 @@ class _hongbaoyuuuState extends State<_hongbaoyuuu> {
         ),
       ],
     );
+  }
+
+  void _onWinGiveup() async{
+    bool showInterAd = TwBaseNumber.showInter();
+    if(showInterAd){
+      bool result = await TwCommonAds().showInterstitialAd(
+        adPosId: TwAdsPosId.cuvxv_bonusgame_profit_int,
+      );
+    }
+
+    setState(() {
+      _hongbaoWinPop = false;
+    });
   }
 
   _bgWidget() {
@@ -798,7 +805,7 @@ class _hongbaoyuuuState extends State<_hongbaoyuuu> {
                           btnPlayAgainClaim(),
                           SizedBox(height: 4.h),
                           GestureDetector(
-                            onTap: _onGiveup,
+                            onTap: _onEndGiveup,
                             child: Text(
                               "Give Up",
                               style: TextStyle(
@@ -821,20 +828,39 @@ class _hongbaoyuuuState extends State<_hongbaoyuuu> {
     );
   }
 
-  _onPlayAgain() {
-    setState(() {
-      _resetData();
-      TwMaiDiannnn.cash_rain_start();
-      MainSpinController.to.onCashRainCount();
-    });
+  _onPlayAgain() async{
+    bool result = await TwCommonAds().showRewardAd(
+      adPosId: TwAdsPosId.cuvxv_bonusgame_end_rv,
+    );
+    if(result){
+      setState(() {
+        _resetData();
+        TwMaiDiannnn.cash_rain_start();
+        MainSpinController.to.onCashRainCount();
+      });
+    }
+
   }
 
-  _onGiveup() {
+  _onEndGiveup() async{
+    bool showInterAd = TwBaseNumber.showInter();
+    if(showInterAd){
+      bool result = await TwCommonAds().showInterstitialAd(
+        adPosId: TwAdsPosId.cuvxv_bonusgame_home_int,
+      );
+    }
+
+
     widget.onClose(0);
   }
 
   _onBtnWin() async {
-    MainTreeController.to.onAddMoneyyyy(getCoins, onEnd: () {});
+    bool result = await TwCommonAds().showRewardAd(
+      adPosId: TwAdsPosId.cuvxv_bonusgame_profit_rv,
+    );
+    if(result){
+      MainTreeController.to.onAddMoneyyyy(getCoins, onEnd: () {});
+    }
 
     setState(() {
       _hongbaoWinPop = false;

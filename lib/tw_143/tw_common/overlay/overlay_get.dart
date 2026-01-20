@@ -1,5 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:c143/gen/assets.gen.dart';
+import 'package:c143/tw_143/tw_common/base_number.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide12_homereward.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide1_water.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide4_fertilize.dart';
@@ -47,13 +48,14 @@ class OverlayGetCoins {
             onClaim: (value) async {
               close();
               if(TwPackageABC143.isPackageB()){
-                // bool result = await TwCommonAds().showInterstitialAd(
-                //   adPosId: TwAdsPosId.test,
-                // );
-                // if (!result) {
-                //   onBtn();
-                //   return;
-                // }
+
+                bool result = await TwCommonAds().showRewardAd(
+                  adPosId: TwAdsPosId.cuvxv_question_rv,
+                );
+                if (!result) {
+                  onBtn();
+                  return;
+                }
                 MainTreeController.to.onAddMoneyyyy(
                   value,
                   onEnd: () {
@@ -73,6 +75,14 @@ class OverlayGetCoins {
             onClose: () async {
               twLooog("=====OverlayGetCoins onClose");
               close();
+              if(TwPackageABC143.isPackageB()){
+                bool showInterAd = TwBaseNumber.showInter();
+                if(showInterAd){
+                  bool result = await TwCommonAds().showInterstitialAd(
+                    adPosId: TwAdsPosId.cuvxv_question_int,
+                  );
+                }
+              }
               onClose();
             },
             coins: coins,
