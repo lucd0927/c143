@@ -23,11 +23,14 @@ class TwOverlayAnimatedS2T {
     bool showTargetWidget = false,
   }) {
     try {
+      if (_isShowing) return;
       _overlay = null;
       if (childContext == null) {
+        onEnd?.call();
         return;
       }
       if (targetContext == null) {
+        onEnd?.call();
         return;
       }
       List<Widget> childrenC143 = [];
@@ -35,6 +38,7 @@ class TwOverlayAnimatedS2T {
         childrenC143.add(heroChild);
       }
       if (childrenC143.isEmpty) {
+        onEnd?.call();
         return;
       }
 
@@ -57,8 +61,12 @@ class TwOverlayAnimatedS2T {
           onEnd,
           showTargetWidget,
         );
+      }else{
+        onEnd?.call();
       }
     } catch (e) {
+      _isShowing = false;
+      onEnd?.call();
       twLooog("==SWAnimatedWidgetOverlay==error:$e=");
     }
   }
@@ -74,9 +82,9 @@ class TwOverlayAnimatedS2T {
   ) {
     _overlay = OverlayEntry(
       builder: (context) {
-        return Material(
-          color: Colors.red.withValues(alpha: 0.0),
-          child: IgnorePointer(
+        return IgnorePointer(
+          child: Material(
+            color: Colors.red.withValues(alpha: 0.0),
             child: _Source2FlyTargetC143(
               start: topLeftPosition,
               end: targetLocation,
@@ -86,7 +94,7 @@ class TwOverlayAnimatedS2T {
               duration: Duration(milliseconds: 800),
               delayBetween: Duration(milliseconds: 20),
               onFinish: () {
-                close();
+                _close();
                 if (onEnd != null) {
                   onEnd();
                 }
@@ -110,61 +118,67 @@ class TwOverlayAnimatedS2T {
     Offset? topLeftOffset,
     bool showTargetWidget = false,
   }) {
-    // if (_isShowing) return;
-    _overlay = null;
-    twLooog("=======showWithSize==targetContext:$targetContext");
-    if (targetContext == null) {
-      onEnd?.call();
-      return;
-    }
+    try{
+      if (_isShowing) return;
+      _overlay = null;
+      twLooog("=======showWithSize==targetContext:$targetContext");
+      if (targetContext == null) {
+        onEnd?.call();
+        return;
+      }
 
-    List<Widget> children = [];
-    heroChild ??= Image.asset(
-      Assets.twimg.coin.path,
-      width: 24.w,
-      height: 24.w,
-      fit: BoxFit.fill,
-    );
-    for (int i = 0; i < count; i++) {
-      children.add(heroChild);
-    }
+      List<Widget> children = [];
+      heroChild ??= Image.asset(
+        Assets.twimg.coin.path,
+        width: 24.w,
+        height: 24.w,
+        fit: BoxFit.fill,
+      );
+      for (int i = 0; i < count; i++) {
+        children.add(heroChild);
+      }
 
-    if (children.isEmpty) {
-      return;
-    }
+      if (children.isEmpty) {
+        onEnd?.call();
+        return;
+      }
 
-    Size startSize = childSize;
-    var topLeftPosition =
-        topLeftOffset ??
-        Offset(
-          ScreenUtil().screenWidth / 2 - startSize.width / 2,
-          ScreenUtil().screenHeight / 2,
+      Size startSize = childSize;
+      var topLeftPosition =
+          topLeftOffset ??
+              Offset(
+                ScreenUtil().screenWidth / 2 - startSize.width / 2,
+                ScreenUtil().screenHeight / 2,
+              );
+      if (targetContext != null && targetContext!.mounted) {
+        RenderBox targetBox = targetContext!.findRenderObject() as RenderBox;
+        Size endSize = targetBox.size;
+        var targetLocation = targetBox.localToGlobal(Offset.zero);
+        twLooog(
+          "=showWithSize==topLeftPosition:$topLeftPosition==targetLocation:$targetLocation",
         );
-    if (targetContext != null && targetContext!.mounted) {
-      RenderBox targetBox = targetContext!.findRenderObject() as RenderBox;
-      Size endSize = targetBox.size;
-      var targetLocation = targetBox.localToGlobal(Offset.zero);
-      twLooog(
-        "=showWithSize==topLeftPosition:$topLeftPosition==targetLocation:$targetLocation",
-      );
-      _innerOverlayC143(
-        children,
-        topLeftPosition,
-        targetLocation,
-        startSize,
-        endSize,
-        onEnd,
-        showTargetWidget,
-      );
+        _innerOverlayC143(
+          children,
+          topLeftPosition,
+          targetLocation,
+          startSize,
+          endSize,
+          onEnd,
+          showTargetWidget,
+        );
+      }else{
+        onEnd?.call();
+      }
+    }catch(e){
+      _isShowing = false;
+      onEnd?.call();
     }
   }
 
-  void close() {
+  void _close() {
     _isShowing = false;
     _overlay?.remove();
     _overlay = null;
-    // childContext = null;
-    // targetContext = null;
   }
 }
 
