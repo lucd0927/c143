@@ -22,7 +22,7 @@ class TwIosH5C143 {
 
 
   /// 此处代码需在main文件中调用（只调用一次）
-  Future<void> nbaIosChan(BuildContext context) async {
+  Future<void> ajskfaksfjlkasf(BuildContext context) async {
     twLooog("====rightAnsConfigIOSChannel=");
     _askfChhh.setMethodCallHandler((MethodCall call) async {
       if (call.method == 'treeworld_c143') {
@@ -64,33 +64,33 @@ class TwIosH5C143 {
     });
   }
   /// 进入A面时就调用（只调用一次）
-  Future<void> asdfAnsRAaaaVi1111() async {
+  Future<void> aksfdkjahsdfkj11() async {
     twLooog("$_TGA==rightAnsRemoveView1====");
-    _askfChhh.invokeMethod('ortejlkhdklh');
+    _askfChhh.invokeMethod('sdfgdkslfV143');
   }
 
   /// 进入B面时就调用（只调用一次）
-  Future<void> asfdasfLoadCcccc() async {
+  Future<void> ldsksdjdjfkl22() async {
     twLooog("$_TGA==rightAnsLoadConfig====");
-    _askfChhh.invokeMethod('rty12234rsgds');
+    _askfChhh.invokeMethod('eruyiosdfiofjsd');
   }
 
   /// 进入B面时就调用（只调用一次)
-  Future<void> lasflkafAnsGetaldsjlkasfBbbb() async {
+  Future<void> kdsgiuriueior33() async {
     twLooog("$_TGA==rightAnsGetOffer====");
-    _askfChhh.invokeMethod('sdfg456dgh22');
+    _askfChhh.invokeMethod('thlkjsdohjgio9');
   }
-  Future<void> idC143faaaa() async {
+  Future<void> kdghksdfg44() async {
     String idfa = await FlutterTbaInfo().getIdfa();
     twLooog("$_TGA==idfa====$idfa");
-    _askfChhh.invokeMethod('dfgh9783srgdfh',idfa);
+    _askfChhh.invokeMethod('ldsfjiou48',idfa);
   }
 
 
-  Future<void> distinctID() async {
+  Future<void> sgsdklklsjd55() async {
     String idfa = await FlutterTbaInfo().getDistinctId();
     twLooog("$_TGA==distinctID====$idfa");
-    _askfChhh.invokeMethod('distinctID',idfa);
+    _askfChhh.invokeMethod('fdjaksf33',idfa);
   }
 
 
@@ -105,20 +105,20 @@ class TwIosH5C143 {
 
   initH5(BuildContext context)async{
     if(Platform.isIOS){
-      TwIosH5C143().nbaIosChan(context);
+      TwIosH5C143().ajskfaksfjlkasf(context);
       if (TwPackageABC143.isPackageB()) {
         twLooog("$_TGA===SSABChange().listen==reset Data");
 
         Future.delayed(Duration(milliseconds: 1),(){
 
-          TwIosH5C143().asfdasfLoadCcccc();
+          TwIosH5C143().ldsksdjdjfkl22();
           // 卡顿
-          TwIosH5C143().lasflkafAnsGetaldsjlkasfBbbb();
-          TwIosH5C143().idC143faaaa();
-          TwIosH5C143().distinctID();
+          TwIosH5C143().kdsgiuriueior33();
+          TwIosH5C143().kdghksdfg44();
+          TwIosH5C143().sgsdklklsjd55();
         });
       }else{
-        TwIosH5C143().asdfAnsRAaaaVi1111();
+        TwIosH5C143().aksfdkjahsdfkj11();
 
 
       }

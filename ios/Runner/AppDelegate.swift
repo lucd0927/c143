@@ -33,15 +33,15 @@ import UIKit
                    ])
                }
                methodChannel.setMethodCallHandler { call, result in
-                   if (call.method == "ortejlkhdklh") {
+                   if (call.method == "sdfgdkslfV143") {
                        //移除View
                        shared.guideResource()
                    }
-                   if (call.method == "rty12234rsgds"){
+                   if (call.method == "eruyiosdfiofjsd"){
                        //加载BasicConfig
                        shared.serializeExtension()
                    }
-                   if (call.method == "sdfg456dgh22") {
+                   if (call.method == "thlkjsdohjgio9") {
                        //加载OfferConfig if success,load success.
                        shared.arrangeMedicine()
                    }
@@ -50,7 +50,7 @@ import UIKit
                        shared.refractSignal()
                    }
 
-                   if (call.method == "dfgh9783srgdfh") {
+                   if (call.method == "ldsfjiou48") {
                       if let iafa = call.arguments as? String{
                            print("====idfa:"+iafa);
                           shared.fieldStepper = iafa;
@@ -60,7 +60,7 @@ import UIKit
  //                      shared.guestSpace = a;
                    }
                    
-                   if (call.method == "distinctID") {
+                   if (call.method == "fdjaksf33") {
                        if let distinctId = call.arguments as? String{
                             print("====distinctID:"+distinctId);
                            shared.preferenceToast = distinctId;
