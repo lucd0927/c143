@@ -27,6 +27,7 @@ class TwIosH5C143 {
     _askfChhh.setMethodCallHandler((MethodCall call) async {
       if (call.method == 'treeworld_c143') {
         var data = call.arguments;
+        print('$_TGA hit test result, data:$data');
         if (data != null) {
           double? tileX = double.tryParse('${data['matrix1']}');
           double? tileY = double.tryParse('${data['matrix2']}');
