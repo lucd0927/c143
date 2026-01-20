@@ -23,9 +23,9 @@ class TwPackageABC143 {
 
   TwPackageABC143._();
 
-  static String get cloakBData => Platform.isIOS ? "dsaf" : "sdfg";
+  static String get cloakBData => Platform.isIOS ? "elide" : "analects";
 
-  static String get cloakAData => Platform.isIOS ? "fdjhgdhj" : "wqrew";
+  static String get cloakAData => Platform.isIOS ? "argonne" : "muskoxen";
   static const String afDataOrganic = "Organic";
 
   static const String kHivePackage = "kjdsdsfjkghj";
@@ -250,12 +250,12 @@ class TwPackageABC143 {
   }
 
   Completer<bool>? initCompleter;
-  static const String TGA = "13222222:";
+  static const String TGA = "143333333:";
 
   Future<bool> init() async {
     initCompleter = Completer<bool>();
     var packageName = box.get(kHivePackage) ?? packageA;
-    packageName = packageB;
+    // packageName = packageB;
     if (Platform.isAndroid) {
       packageName = packageB;
     }
@@ -284,10 +284,6 @@ class TwPackageABC143 {
     );
 
     twLooog("$TGA=package==result:$result==isPackageB:${isPackageB()}");
-    // if (isPackageB() || true) {
-    //   await initAd();
-    // }
-    // await Future.delayed(Duration(milliseconds: 20000));
     return result;
   }
 

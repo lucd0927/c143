@@ -8,6 +8,7 @@ import 'package:c143/tw_143/tw_pages/main_quiz/main_quiz_controller.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
 import 'package:c143/tw_base/tw_ad/ads_idddddC143.dart';
 import 'package:c143/tw_base/tw_ad/base_ads.dart';
+import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
 import 'package:c143/tw_base/tw_gj/countryC143.dart';
 import 'package:c143/tw_base/tw_gj/logC143.dart';
 import 'package:c143/tw_views/animated_count.dart';
@@ -271,15 +272,16 @@ class _Guide10Quiz3State extends State<Guide10Quiz3> {
                         foreground: Color(0xff22431B),
                       ),
                     ),
-                    // Positioned(
-                    //   top: -10.h,
-                    //   right: -5.h,
-                    //   child: Image.asset(
-                    //     Assets.twimg.ad.path,
-                    //     width: 28.h,
-                    //     height: 28.h,
-                    //   ),
-                    // ),
+                    if (TwPackageABC143.isPackageB())
+                      Positioned(
+                        top: -10.h,
+                        right: -5.h,
+                        child: Image.asset(
+                          Assets.twimg.ad.path,
+                          width: 28.h,
+                          height: 28.h,
+                        ),
+                      ),
 
                     // Positioned(
                     //   top: -0.h,
@@ -329,10 +331,13 @@ class _Guide10Quiz3State extends State<Guide10Quiz3> {
     );
   }
 
-  void onClaim() async{
-    bool result = await TwCommonAds().showRewardAd(
-      adPosId: TwAdsPosId.cuvxv_newquizc_rv,
-    );
+  void onClaim() async {
+    if (TwPackageABC143.isPackageB()){
+      bool result = await TwCommonAds().showRewardAd(
+        adPosId: TwAdsPosId.cuvxv_newquizc_rv,
+      );
+    }
+
     widget.onBtn(widget.coins);
   }
 

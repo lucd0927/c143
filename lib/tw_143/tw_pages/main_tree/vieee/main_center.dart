@@ -93,7 +93,8 @@ class _MainCenterState extends State<MainCenter> {
             bottom: -10.h,
           ),
 
-          Positioned(child: h5Widget(), left: 0.w, top: 0.h),
+          if (TwPackageABC143.isPackageB())
+            Positioned(child: h5Widget(), left: 0.w, top: 0.h),
         ],
       ),
     );
@@ -352,7 +353,9 @@ class _MainCenterState extends State<MainCenter> {
   }
 
   _onCoinB({required double coins, required TwEnumTreeType treeType}) async {
-    bool result = await TwCommonAds().showRewardAd(adPosId: TwAdsPosId.cuvxv_bubble_rv);
+    bool result = await TwCommonAds().showRewardAd(
+      adPosId: TwAdsPosId.cuvxv_bubble_rv,
+    );
     if (!result) {
       return;
     }
