@@ -10,6 +10,6 @@ class TwRouters {
 
   static List<GetPage> pagesC143 = [
     GetPage(name: splash, page: () =>  TwSplash()),
-    GetPage(name: main, page: () =>  TwMainPage(),transition: Transition.fadeIn),
+    GetPage(name: main, page: () =>  TwMainPage(),transition: Transition.noTransition),
   ];
 }

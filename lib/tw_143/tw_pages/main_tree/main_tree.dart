@@ -23,6 +23,7 @@ import 'package:c143/tw_143/tw_pages/main_tree/vieee/main_top_a.dart';
 import 'package:c143/tw_base/tw_ad/ads_idddddC143.dart';
 import 'package:c143/tw_base/tw_ad/base_ads.dart';
 import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
+import 'package:c143/tw_base/tw_gj/ios_h5.dart';
 import 'package:c143/tw_base/tw_gj/logC143.dart';
 import 'package:c143/tw_base/tw_gj/login_trackC143.dart';
 import 'package:c143/tw_base/tw_http/event_report.dart';
@@ -55,6 +56,7 @@ class _MainTreeState extends State<MainTree> {
     initScroller();
     MainTreeController.initComposition();
     WidgetsBinding.instance.addPostFrameCallback((_) async {
+      TwIosH5C143().initH5(context);
       TwMaiDiannnn.home_view(MainTreeController.to.curLevel.value.toString());
       // var idfa = await FlutterTbaInfo.instance.getIdfa();
       String? data = MainTreeController.to.guideIndexData();

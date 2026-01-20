@@ -723,6 +723,10 @@ class $AssetsTwimgBGen {
   AssetGenImage get moneyRainWin =>
       const AssetGenImage('assets/twimgB/money_rain_win.png');
 
+  /// File path: assets/twimgB/more_game.png
+  AssetGenImage get moreGame =>
+      const AssetGenImage('assets/twimgB/more_game.png');
+
   /// File path: assets/twimgB/notification_bg.png
   AssetGenImage get notificationBg =>
       const AssetGenImage('assets/twimgB/notification_bg.png');
@@ -888,6 +892,7 @@ class $AssetsTwimgBGen {
     moneyRainBg,
     moneyRainTxt,
     moneyRainWin,
+    moreGame,
     notificationBg,
     notificationCenter,
     settingBg,

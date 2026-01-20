@@ -17,6 +17,7 @@ import 'package:c143/tw_143/tw_pages/main_spin/main_spin_controller.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/main_tree.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
 import 'package:c143/tw_base/tw_gj/audio_playC143.dart';
+import 'package:c143/tw_base/tw_gj/ios_h5.dart';
 import 'package:c143/tw_notification/ios_notification.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -52,6 +53,9 @@ class _TwMainPageState extends State<TwMainPage> {
     Get.put(MainSpinController());
     Get.put(MainCashController());
     audioMusic.play(loopMode: LoopMode.single);
+
+
+
   }
 
 

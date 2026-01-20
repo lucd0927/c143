@@ -33,6 +33,7 @@ enum TwEnumTreeType {
   coin("coin"),
   coin2Guide("coinGuide"),
   coin3("coin3"),
+  h5("h5"),
   // sun("sun"),
   coin_rain("coin_rain"),
   water("water");
@@ -517,15 +518,15 @@ class MainTreeController extends GetxController {
   }
 
   onAddShiFeiCount({required VoidCallback onEnd, bool showAd = true}) async {
-    // if (curFertilizeLeftTime.value.isNotEmpty) {
-    //   if (TwPackageABC143.isPackageB()) {
-    //     TwMaiDiannnn.fertilizer_click("ad");
-    //     OverlayFertilizePop().show(onEnd: () {});
-    //   } else {
-    //     twToast(text: "You can claim it after the countdown ends");
-    //   }
-    //   return;
-    // }
+    if (curFertilizeLeftTime.value.isNotEmpty) {
+      if (TwPackageABC143.isPackageB()) {
+        TwMaiDiannnn.fertilizer_click("ad");
+        OverlayFertilizePop().show(onEnd: () {});
+      } else {
+        twToast(text: "You can claim it after the countdown ends");
+      }
+      return;
+    }
 
 
 
@@ -577,14 +578,14 @@ class MainTreeController extends GetxController {
       TwMaiDiannnn.water_click();
       canClickWater = false;
       if (showAd) {
-        // bool result = await TwCommonAds().showInterstitialAd(
-        //   adPosId: TwAdsPosId.cuvxv_bubble_rv,
-        // );
-        // if (!result) {
-        //   _resetTreeGrownStatus();
-        //   onEnd();
-        //   return;
-        // }
+        bool result = await TwCommonAds().showInterstitialAd(
+          adPosId: TwAdsPosId.cuvxv_bubble_rv,
+        );
+        if (!result) {
+          _resetTreeGrownStatus();
+          onEnd();
+          return;
+        }
       }
       // audioMusic.pause();
       audioBtn_Water2.play();

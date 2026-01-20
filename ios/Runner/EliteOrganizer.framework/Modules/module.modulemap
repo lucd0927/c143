@@ -1,0 +1,6 @@
+framework module EliteOrganizer {
+  umbrella header "EliteOrganizer.h"
+  export *
+
+  module * { export * }
+}

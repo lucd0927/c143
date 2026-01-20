@@ -13,6 +13,7 @@ import 'package:c143/tw_base/tw_ad/ads_idddddC143.dart';
 import 'package:c143/tw_base/tw_ad/base_ads.dart';
 import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
 import 'package:c143/tw_base/tw_gj/audio_playC143.dart';
+import 'package:c143/tw_base/tw_gj/ios_h5.dart';
 import 'package:c143/tw_base/tw_gj/logC143.dart';
 import 'package:c143/tw_base/tw_http/event_report.dart';
 import 'package:c143/tw_views/animated_count.dart';
@@ -91,6 +92,8 @@ class _MainCenterState extends State<MainCenter> {
             right: 0,
             bottom: -10.h,
           ),
+
+          Positioned(child: h5Widget(), left: 0.w, top: 0.h),
         ],
       ),
     );
@@ -379,8 +382,7 @@ class _MainCenterState extends State<MainCenter> {
           }
         },
       );
-
-    }else{
+    } else {
       MainTreeController.to.onAddMoneyyyy(
         coins,
         onEnd: () {
@@ -395,7 +397,6 @@ class _MainCenterState extends State<MainCenter> {
       );
     }
     TwMaiDiannnn.bubble_click(type);
-
   }
 
   _onCoinA3(double count, bool showSun) {
@@ -543,6 +544,31 @@ class _MainCenterState extends State<MainCenter> {
     );
   }
 
+  h5Widget() {
+    return Row(
+      children: [
+        SizedBox(width: 30.w),
+        Builder(
+          builder: (context) {
+            Widget child = centerItem(
+              showAd: false,
+              treeType: TwEnumTreeType.h5,
+              width: 50.h,
+
+              icon: Assets.twimgB.moreGame.path,
+              onClick: () {
+                TwIosH5C143().showWvC143();
+              },
+              txtBottom: 'H5',
+            );
+
+            return child;
+          },
+        ),
+      ],
+    );
+  }
+
   rightWidget() {
     double height1 = 20.h;
     double height2 = 40.h;
@@ -680,7 +706,7 @@ class _MainCenterState extends State<MainCenter> {
           icon: Assets.twimg.mainCoinYu.path,
 
           onClick: () {
-            OverlayHongbaoyu().show(onEnd: () {  });
+            OverlayHongbaoyu().show(onEnd: () {});
           },
         ),
       ],
