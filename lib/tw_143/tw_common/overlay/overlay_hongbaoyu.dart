@@ -7,6 +7,7 @@ import 'package:c143/sfcj/floating_particles/src/models/particle_config.dart';
 import 'package:c143/sfcj/floating_particles/src/models/particle_type.dart';
 import 'package:c143/sfcj/floating_particles/src/widgets/particle_effects_widget.dart';
 import 'package:c143/tw_143/tw_common/base_number.dart';
+import 'package:c143/tw_143/tw_common/firebase_json/number_json.dart';
 import 'package:c143/tw_143/tw_common/lottieeee/gesture.dart';
 import 'package:c143/tw_143/tw_common/overlay/overlay_get.dart';
 import 'package:c143/tw_143/tw_common/view/cross_confetti.dart';
@@ -736,7 +737,7 @@ class _hongbaoyuuuState extends State<_hongbaoyuuu> {
   }
 
   void _onWinGiveup() async{
-    bool showInterAd = TwBaseNumber.showInter();
+    bool showInterAd = TwNumberJson.showInter();
     if(showInterAd){
       bool result = await TwCommonAds().showInterstitialAd(
         adPosId: TwAdsPosId.cuvxv_bonusgame_profit_int,
@@ -843,7 +844,7 @@ class _hongbaoyuuuState extends State<_hongbaoyuuu> {
   }
 
   _onEndGiveup() async{
-    bool showInterAd = TwBaseNumber.showInter();
+    bool showInterAd = TwNumberJson.showInter();
     if(showInterAd){
       bool result = await TwCommonAds().showInterstitialAd(
         adPosId: TwAdsPosId.cuvxv_bonusgame_home_int,

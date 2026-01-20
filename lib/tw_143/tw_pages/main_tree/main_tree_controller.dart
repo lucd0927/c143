@@ -579,7 +579,7 @@ class MainTreeController extends GetxController {
       canClickWater = false;
       if (showAd) {
         bool result = await TwCommonAds().showInterstitialAd(
-          adPosId: TwAdsPosId.cuvxv_bubble_rv,
+          adPosId: TwAdsPosId.cuvxv_water_int,
         );
         if (!result) {
           _resetTreeGrownStatus();

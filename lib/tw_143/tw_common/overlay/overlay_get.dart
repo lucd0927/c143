@@ -1,6 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:c143/gen/assets.gen.dart';
 import 'package:c143/tw_143/tw_common/base_number.dart';
+import 'package:c143/tw_143/tw_common/firebase_json/number_json.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide12_homereward.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide1_water.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide4_fertilize.dart';
@@ -76,7 +77,7 @@ class OverlayGetCoins {
               twLooog("=====OverlayGetCoins onClose");
               close();
               if(TwPackageABC143.isPackageB()){
-                bool showInterAd = TwBaseNumber.showInter();
+                bool showInterAd = TwNumberJson.showInter();
                 if(showInterAd){
                   bool result = await TwCommonAds().showInterstitialAd(
                     adPosId: TwAdsPosId.cuvxv_question_int,

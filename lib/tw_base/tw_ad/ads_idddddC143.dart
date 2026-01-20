@@ -14,6 +14,7 @@ class TwAdsPosId {
   static const String cuvxv_bonusgame_home_int = "cuvxv_bonusgame_home_int";
   static const String cuvxv_bonusgame_end_rv = "cuvxv_bonusgame_end_rv";
   static const String cuvxv_bonusgame_end_int = "cuvxv_bonusgame_end_int";
+  static const String cuvxv_water_int = "cuvxv_water_int";
 
 
 }

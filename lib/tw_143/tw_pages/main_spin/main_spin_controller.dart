@@ -20,7 +20,7 @@ enum TwEnumBtnClickStatus {
 class MainSpinController extends GetxController {
   static MainSpinController get to => Get.find();
 
-  static int get initSpinNum => TwPackageABC143.isPackageB() ? 5 : 3;
+  static int get initSpinNum => TwPackageABC143.isPackageB() ? 3 : 3;
 
   static String get twkeySpinNum =>
       TwPackageABC143.isPackageB() ? "asfsafas655656Bbb" : "asfsafas655656Aaa";
@@ -80,9 +80,9 @@ class MainSpinController extends GetxController {
       }
       tmpClickDailyCheck = false;
     }
-    if(TwConfigggg.hasDeeevv()){
-      tmpSpinNum = 30;
-    }
+    // if(TwConfigggg.hasDeeevv()){
+    //   tmpSpinNum = 30;
+    // }
     curTwSpinNum = tmpSpinNum.obs;
     curClickDailyCheck = tmpClickDailyCheck.obs;
 
