@@ -5,6 +5,7 @@ import 'package:c143/tw_143/tw_pages/guide/guide7_rank.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
 import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
 import 'package:c143/tw_base/tw_gj/logC143.dart';
+import 'package:c143/tw_base/tw_gj/overlay_manager.dart';
 import 'package:c143/tw_views/animated_scale.dart';
 import 'package:c143/tw_views/font_border.dart';
 import 'package:c143/tw_views/rotate.dart';
@@ -23,40 +24,69 @@ class OverlayGuide6RewardDouble {
   void show({required double coins}) {
     _overlayEntry = null;
 
-    _overlayEntry = OverlayEntry(
-      builder: (context) {
-        return Material(
-          color: Colors.transparent,
-          child: Container(
-            child: Guide6RewardDouble(
-              coins: coins,
-              onClose: () async {
-                twLooog("=====OverlayGuideTestAnim=close");
-                // return;
-                close();
-                MainTreeController.to.saveGuideIndexData(
-                  MainTreeController.guide6,
-                );
+    // _overlayEntry = OverlayEntry(
+    //   builder: (context) {
+    //     return Material(
+    //       color: Colors.transparent,
+    //       child: Container(
+    //         child: Guide6RewardDouble(
+    //           coins: coins,
+    //           onClose: () async {
+    //             twLooog("=====OverlayGuideTestAnim=close");
+    //             // return;
+    //             close();
+    //             MainTreeController.to.saveGuideIndexData(
+    //               MainTreeController.guide6,
+    //             );
+    //
+    //             MainTreeController.to.onAddMoneyyyy(
+    //               coins * 2,
+    //               onEnd: () {
+    //                 OverlayGuide7Rank().show();
+    //               },
+    //             );
+    //           },
+    //         ),
+    //       ),
+    //     );
+    //   },
+    // );
+    // Overlay.of(Get.context!).insert(_overlayEntry!);
 
-                MainTreeController.to.onAddMoneyyyy(
-                  coins * 2,
-                  onEnd: () {
-                    OverlayGuide7Rank().show();
-                  },
-                );
+    Widget child =  Material(
+      color: Colors.transparent,
+      child: Container(
+        child: Guide6RewardDouble(
+          coins: coins,
+          onClose: () async {
+            twLooog("=====OverlayGuideTestAnim=close");
+            // return;
+            close();
+            MainTreeController.to.saveGuideIndexData(
+              MainTreeController.guide6,
+            );
+
+            MainTreeController.to.onAddMoneyyyy(
+              coins * 2,
+              onEnd: () {
+                OverlayGuide7Rank().show();
               },
-            ),
-          ),
-        );
-      },
+            );
+          },
+        ),
+      ),
     );
-    Overlay.of(Get.context!).insert(_overlayEntry!);
+    kHashCode =  OverlayManager.show(context: Get.context!, child: child);
+
     _isShowing = true;
   }
+  String kHashCode = "";
 
   void close() {
     _isShowing = false;
     _overlayEntry?.remove();
+    OverlayManager.clearOverlayEntry(kHashCode);
+
   }
 }
 

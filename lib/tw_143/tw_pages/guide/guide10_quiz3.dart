@@ -11,6 +11,7 @@ import 'package:c143/tw_base/tw_ad/base_ads.dart';
 import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
 import 'package:c143/tw_base/tw_gj/countryC143.dart';
 import 'package:c143/tw_base/tw_gj/logC143.dart';
+import 'package:c143/tw_base/tw_gj/overlay_manager.dart';
 import 'package:c143/tw_views/animated_count.dart';
 import 'package:c143/tw_views/animated_scale.dart';
 import 'package:c143/tw_views/font_border.dart';
@@ -30,59 +31,107 @@ class OverlayGuide10Quiz3 {
   void show({required double coins, required ValueChanged onBtn}) {
     _overlayEntry = null;
 
-    _overlayEntry = OverlayEntry(
-      builder: (context) {
-        return Material(
-          color: Colors.transparent,
-          child: Container(
-            child: Guide10Quiz3(
-              coins: coins,
-              onClose: () async {
-                twLooog("=====OverlayGuideTestAnim=close");
-                close();
+    // _overlayEntry = OverlayEntry(
+    //   builder: (context) {
+    //     return Material(
+    //       color: Colors.transparent,
+    //       child: Container(
+    //         child: Guide10Quiz3(
+    //           coins: coins,
+    //           onClose: () async {
+    //             twLooog("=====OverlayGuideTestAnim=close");
+    //             close();
+    //             MainQuizController.to.saveGuideStatus();
+    //             MainTreeController.to.saveGuideIndexData(
+    //               MainTreeController.guide10,
+    //             );
+    //             onBtn.call(coins);
+    //           },
+    //           onBtn: (value) async {
+    //             twLooog("=====OverlayGuideTestAnim=onBtn");
+    //             close();
+    //             // bool result = await TwCommonAds().showInterstitialAd(
+    //             //   adPosId: TwAdsPosId.test,
+    //             // );
+    //             // if (!result) {
+    //             //   MainQuizController.to.saveGuideStatus();
+    //             //   MainTreeController.to.saveGuideIndexData(
+    //             //     MainTreeController.guide10,
+    //             //   );
+    //             //   onBtn.call(coins);
+    //             //   return;
+    //             // }
+    //             MainTreeController.to.onAddMoneyyyy(
+    //               coins,
+    //               onEnd: () {
+    //                 MainQuizController.to.saveGuideStatus();
+    //                 MainTreeController.to.saveGuideIndexData(
+    //                   MainTreeController.guide10,
+    //                 );
+    //                 onBtn.call(coins);
+    //               },
+    //             );
+    //           },
+    //         ),
+    //       ),
+    //     );
+    //   },
+    // );
+    // Overlay.of(Get.context!).insert(_overlayEntry!);
+
+    Widget child =  Material(
+      color: Colors.transparent,
+      child: Container(
+        child: Guide10Quiz3(
+          coins: coins,
+          onClose: () async {
+            twLooog("=====OverlayGuideTestAnim=close");
+            close();
+            MainQuizController.to.saveGuideStatus();
+            MainTreeController.to.saveGuideIndexData(
+              MainTreeController.guide10,
+            );
+            onBtn.call(coins);
+          },
+          onBtn: (value) async {
+            twLooog("=====OverlayGuideTestAnim=onBtn");
+            close();
+            // bool result = await TwCommonAds().showInterstitialAd(
+            //   adPosId: TwAdsPosId.test,
+            // );
+            // if (!result) {
+            //   MainQuizController.to.saveGuideStatus();
+            //   MainTreeController.to.saveGuideIndexData(
+            //     MainTreeController.guide10,
+            //   );
+            //   onBtn.call(coins);
+            //   return;
+            // }
+            MainTreeController.to.onAddMoneyyyy(
+              coins,
+              onEnd: () {
                 MainQuizController.to.saveGuideStatus();
                 MainTreeController.to.saveGuideIndexData(
                   MainTreeController.guide10,
                 );
                 onBtn.call(coins);
               },
-              onBtn: (value) async {
-                twLooog("=====OverlayGuideTestAnim=onBtn");
-                close();
-                // bool result = await TwCommonAds().showInterstitialAd(
-                //   adPosId: TwAdsPosId.test,
-                // );
-                // if (!result) {
-                //   MainQuizController.to.saveGuideStatus();
-                //   MainTreeController.to.saveGuideIndexData(
-                //     MainTreeController.guide10,
-                //   );
-                //   onBtn.call(coins);
-                //   return;
-                // }
-                MainTreeController.to.onAddMoneyyyy(
-                  coins,
-                  onEnd: () {
-                    MainQuizController.to.saveGuideStatus();
-                    MainTreeController.to.saveGuideIndexData(
-                      MainTreeController.guide10,
-                    );
-                    onBtn.call(coins);
-                  },
-                );
-              },
-            ),
-          ),
-        );
-      },
+            );
+          },
+        ),
+      ),
     );
-    Overlay.of(Get.context!).insert(_overlayEntry!);
+    kHashCode =  OverlayManager.show(context: Get.context!, child: child);
+
     _isShowing = true;
   }
+  String kHashCode = "";
 
   void close() {
     _isShowing = false;
     _overlayEntry?.remove();
+    OverlayManager.clearOverlayEntry(kHashCode);
+
   }
 }
 

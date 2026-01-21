@@ -6,6 +6,7 @@ import 'package:c143/tw_143/tw_pages/guide/guide3_adspot.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide5_adspot.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
 import 'package:c143/tw_base/tw_gj/logC143.dart';
+import 'package:c143/tw_base/tw_gj/overlay_manager.dart';
 import 'package:c143/tw_base/tw_http/event_report.dart';
 import 'package:c143/tw_views/animated_count.dart';
 import 'package:c143/tw_views/animated_scale.dart';
@@ -27,31 +28,51 @@ class OverlayGuide4Fertilize{
   void show() {
     _overlayEntry = null;
     TwMaiDiannnn.guide_fertilizer_tap();
-    _overlayEntry = OverlayEntry(
-      builder: (context) {
-        return Material(
-          color: Colors.transparent,
-          child: Guide4Fertilize(
-            guideChild: guideChild!,
-            guideContext: guideContext!,
-            onClose: () async {
-              close();
-              MainTreeController.to.saveGuideIndexData(MainTreeController.guide4);
-              OverlayGuide5AdSpot().show(coins: 10);
+    // _overlayEntry = OverlayEntry(
+    //   builder: (context) {
+    //     return Material(
+    //       color: Colors.transparent,
+    //       child: Guide4Fertilize(
+    //         guideChild: guideChild!,
+    //         guideContext: guideContext!,
+    //         onClose: () async {
+    //           close();
+    //           MainTreeController.to.saveGuideIndexData(MainTreeController.guide4);
+    //           OverlayGuide5AdSpot().show(coins: 10);
+    //
+    //
+    //         },
+    //       ),
+    //     );
+    //   },
+    // );
+    // Overlay.of(guideContext!).insert(_overlayEntry!);
+
+    Widget child =  Material(
+      color: Colors.transparent,
+      child: Guide4Fertilize(
+        guideChild: guideChild!,
+        guideContext: guideContext!,
+        onClose: () async {
+          close();
+          MainTreeController.to.saveGuideIndexData(MainTreeController.guide4);
+          OverlayGuide5AdSpot().show(coins: 10);
 
 
-            },
-          ),
-        );
-      },
+        },
+      ),
     );
-    Overlay.of(guideContext!).insert(_overlayEntry!);
+    kHashCode = OverlayManager.show(context: guideContext!, child: child);
+
     _isShowing = true;
   }
+  String kHashCode = "";
 
   void close() {
     _isShowing = false;
     _overlayEntry?.remove();
+    OverlayManager.clearOverlayEntry(kHashCode);
+
   }
 }
 

@@ -22,6 +22,7 @@ import 'package:c143/tw_base/tw_gj/audio_playC143.dart';
 import 'package:c143/tw_base/tw_gj/event_busC143.dart';
 import 'package:c143/tw_base/tw_gj/ios_h5.dart';
 import 'package:c143/tw_base/tw_gj/logC143.dart';
+import 'package:c143/tw_base/tw_gj/overlay_manager.dart';
 import 'package:c143/tw_notification/ios_notification.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -71,7 +72,8 @@ class _TwMainPageState extends State<TwMainPage> {
 
         MainTreeController.to.resetAllData();
         MainSpinController.to.resetAllData();
-        // MainTreeController.to.initGuide();
+        OverlayManager.clearAll();
+        MainTreeController.to.initGuide();
         if(mounted){
           setState(() {
 

@@ -7,6 +7,7 @@ import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
 import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
 import 'package:c143/tw_base/tw_gj/countryC143.dart';
 import 'package:c143/tw_base/tw_gj/logC143.dart';
+import 'package:c143/tw_base/tw_gj/overlay_manager.dart';
 import 'package:c143/tw_views/animated_count.dart';
 import 'package:c143/tw_views/animated_scale.dart';
 import 'package:c143/tw_views/font_border.dart';
@@ -26,40 +27,70 @@ class OverlayGuide3AdSpot {
   void show({required double coins}) {
     _overlayEntry = null;
 
-    _overlayEntry = OverlayEntry(
-      builder: (context) {
-        return Material(
-          color: Colors.transparent,
-          child: Guide3AdSpot(
-            onClose: () async {
-              close();
-              MainTreeController.to.saveGuideIndexData(
-                MainTreeController.guide3,
-              );
+    // _overlayEntry = OverlayEntry(
+    //   builder: (context) {
+    //     return Material(
+    //       color: Colors.transparent,
+    //       child: Guide3AdSpot(
+    //         onClose: () async {
+    //           close();
+    //           MainTreeController.to.saveGuideIndexData(
+    //             MainTreeController.guide3,
+    //           );
+    //
+    //           MainTreeController.to.onAddMoneyyyy(
+    //             coins,
+    //             onEnd: () {
+    //               if(TwPackageABC143.isPackageB()){
+    //                 OverlayGuide3BTrust().show();
+    //               }else{
+    //                 OverlayGuide4Fertilize().show();
+    //               }
+    //             },
+    //           );
+    //         },
+    //         coins: coins,
+    //       ),
+    //     );
+    //   },
+    // );
+    // Overlay.of(Get.context!).insert(_overlayEntry!);
 
-              MainTreeController.to.onAddMoneyyyy(
-                coins,
-                onEnd: () {
-                  if(TwPackageABC143.isPackageB()){
-                    OverlayGuide3BTrust().show();
-                  }else{
-                    OverlayGuide4Fertilize().show();
-                  }
-                },
-              );
+
+    Widget child = Material(
+      color: Colors.transparent,
+      child: Guide3AdSpot(
+        onClose: () async {
+          close();
+          MainTreeController.to.saveGuideIndexData(
+            MainTreeController.guide3,
+          );
+
+          MainTreeController.to.onAddMoneyyyy(
+            coins,
+            onEnd: () {
+              if(TwPackageABC143.isPackageB()){
+                OverlayGuide3BTrust().show();
+              }else{
+                OverlayGuide4Fertilize().show();
+              }
             },
-            coins: coins,
-          ),
-        );
-      },
+          );
+        },
+        coins: coins,
+      ),
     );
-    Overlay.of(Get.context!).insert(_overlayEntry!);
+    kHashCode =  OverlayManager.show(context: Get.context!, child: child);
+
     _isShowing = true;
   }
+  String kHashCode = "";
 
   void close() {
     _isShowing = false;
     _overlayEntry?.remove();
+    OverlayManager.clearOverlayEntry(kHashCode);
+
   }
 }
 

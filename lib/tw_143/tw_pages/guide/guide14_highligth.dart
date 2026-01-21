@@ -8,6 +8,7 @@ import 'package:c143/tw_143/tw_pages/main/main_controller.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
 import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
 import 'package:c143/tw_base/tw_gj/logC143.dart';
+import 'package:c143/tw_base/tw_gj/overlay_manager.dart';
 import 'package:c143/tw_notification/android_notification.dart';
 import 'package:c143/tw_notification/overlay_notify.dart';
 import 'package:c143/tw_views/animated_count.dart';
@@ -29,40 +30,70 @@ class OverlayGuide14HighLight {
   void show() {
     _overlayEntry = null;
 
-    _overlayEntry = OverlayEntry(
-      builder: (context) {
-        return Material(
-          color: Colors.transparent,
-          child: Guide14HighLight(
-            onClose: () async {
-              close();
-              MainTreeController.to.saveGuideIndexData(
-                MainTreeController.guide14,
-              );
-              MainController.to.resetIndex(MainController.treeIndex);
+    // _overlayEntry = OverlayEntry(
+    //   builder: (context) {
+    //     return Material(
+    //       color: Colors.transparent,
+    //       child: Guide14HighLight(
+    //         onClose: () async {
+    //           close();
+    //           MainTreeController.to.saveGuideIndexData(
+    //             MainTreeController.guide14,
+    //           );
+    //           MainController.to.resetIndex(MainController.treeIndex);
+    //
+    //           bool showTz = true;
+    //           if (TwPackageABC143.isPackageB()) {
+    //             showTz = await TwNotificationnn().requestNotificationPermission();
+    //           }
+    //           twLooog("===OverlayGuide14HighLight==showTz:$showTz");
+    //           if (!showTz) {
+    //             OverlayTzNotify().show(onEnd: (){
+    //
+    //             });
+    //           }
+    //         },
+    //       ),
+    //     );
+    //   },
+    // );
+    // Overlay.of(Get.context!).insert(_overlayEntry!);
 
-              bool showTz = true;
-              if (TwPackageABC143.isPackageB()) {
-                showTz = await TwNotificationnn().requestNotificationPermission();
-              }
-              twLooog("===OverlayGuide14HighLight==showTz:$showTz");
-              if (!showTz) {
-                OverlayTzNotify().show(onEnd: (){
 
-                });
-              }
-            },
-          ),
-        );
-      },
+    Widget child = Material(
+      color: Colors.transparent,
+      child: Guide14HighLight(
+        onClose: () async {
+          close();
+          MainTreeController.to.saveGuideIndexData(
+            MainTreeController.guide14,
+          );
+          MainController.to.resetIndex(MainController.treeIndex);
+
+          bool showTz = true;
+          if (TwPackageABC143.isPackageB()) {
+            showTz = await TwNotificationnn().requestNotificationPermission();
+          }
+          twLooog("===OverlayGuide14HighLight==showTz:$showTz");
+          if (!showTz) {
+            OverlayTzNotify().show(onEnd: (){
+
+            });
+          }
+        },
+      ),
     );
-    Overlay.of(Get.context!).insert(_overlayEntry!);
+    kHashCode =  OverlayManager.show(context: Get.context!, child: child);
+
     _isShowing = true;
   }
+  String kHashCode = "";
 
   void close() {
     _isShowing = false;
     _overlayEntry?.remove();
+    OverlayManager.clearOverlayEntry(kHashCode);
+
   }
 }
 

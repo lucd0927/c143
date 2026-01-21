@@ -10,6 +10,7 @@ import 'package:c143/tw_base/tw_ad/base_ads.dart';
 import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
 import 'package:c143/tw_base/tw_gj/countryC143.dart';
 import 'package:c143/tw_base/tw_gj/logC143.dart';
+import 'package:c143/tw_base/tw_gj/overlay_manager.dart';
 import 'package:c143/tw_views/animated_count.dart';
 import 'package:c143/tw_views/animated_scale.dart';
 import 'package:c143/tw_views/font_border.dart';
@@ -29,36 +30,61 @@ class OverlayGuide11HomeBonus {
   void show({required double coins}) {
     _overlayEntry = null;
 
-    _overlayEntry = OverlayEntry(
-      builder: (context) {
-        return Material(
-          color: Colors.transparent,
-          child: Guide11HomeBonusWidget(
-            onClose: () async {
-              close();
-              MainTreeController.to.saveGuideIndexData(
-                MainTreeController.guide11,
-              );
+    // _overlayEntry = OverlayEntry(
+    //   builder: (context) {
+    //     return Material(
+    //       color: Colors.transparent,
+    //       child: Guide11HomeBonusWidget(
+    //         onClose: () async {
+    //           close();
+    //           MainTreeController.to.saveGuideIndexData(
+    //             MainTreeController.guide11,
+    //           );
+    //
+    //           MainTreeController.to.onAddMoneyyyy(
+    //             coins,
+    //             onEnd: () {
+    //               OverlayGuide12HomeReward().show(coins: 10, onBtn: (value) {});
+    //             },
+    //           );
+    //         },
+    //         coins: coins,
+    //       ),
+    //     );
+    //   },
+    // );
+    // Overlay.of(Get.context!).insert(_overlayEntry!);
 
-              MainTreeController.to.onAddMoneyyyy(
-                coins,
-                onEnd: () {
-                  OverlayGuide12HomeReward().show(coins: 10, onBtn: (value) {});
-                },
-              );
+    Widget child =  Material(
+      color: Colors.transparent,
+      child: Guide11HomeBonusWidget(
+        onClose: () async {
+          close();
+          MainTreeController.to.saveGuideIndexData(
+            MainTreeController.guide11,
+          );
+
+          MainTreeController.to.onAddMoneyyyy(
+            coins,
+            onEnd: () {
+              OverlayGuide12HomeReward().show(coins: 10, onBtn: (value) {});
             },
-            coins: coins,
-          ),
-        );
-      },
+          );
+        },
+        coins: coins,
+      ),
     );
-    Overlay.of(Get.context!).insert(_overlayEntry!);
+    kHashCode =  OverlayManager.show(context: Get.context!, child: child);
+
     _isShowing = true;
   }
+  String kHashCode = "";
 
   void close() {
     _isShowing = false;
     _overlayEntry?.remove();
+    OverlayManager.clearOverlayEntry(kHashCode);
+
   }
 }
 

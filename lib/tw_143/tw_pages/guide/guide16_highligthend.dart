@@ -8,6 +8,7 @@ import 'package:c143/tw_143/tw_pages/main/main_controller.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
 import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
 import 'package:c143/tw_base/tw_gj/logC143.dart';
+import 'package:c143/tw_base/tw_gj/overlay_manager.dart';
 import 'package:c143/tw_views/animated_count.dart';
 import 'package:c143/tw_views/animated_scale.dart';
 import 'package:c143/tw_views/font_border.dart';
@@ -27,27 +28,45 @@ class OverlayGuide16HighLightEnd {
   void show() {
     _overlayEntry = null;
 
-    _overlayEntry = OverlayEntry(
-      builder: (context) {
-        return Material(
-          color: Colors.transparent,
-          child: Guide14HighLight(
-            onClose: () async {
-              close();
-              MainTreeController.to.saveGuideIndexData(MainTreeController.guide16);
-              MainController.to.resetIndex(MainController.spinindexxx);
-            },
-          ),
-        );
-      },
+    // _overlayEntry = OverlayEntry(
+    //   builder: (context) {
+    //     return Material(
+    //       color: Colors.transparent,
+    //       child: Guide14HighLight(
+    //         onClose: () async {
+    //           close();
+    //           MainTreeController.to.saveGuideIndexData(MainTreeController.guide16);
+    //           MainController.to.resetIndex(MainController.spinindexxx);
+    //         },
+    //       ),
+    //     );
+    //   },
+    // );
+    // Overlay.of(Get.context!).insert(_overlayEntry!);
+
+
+
+    Widget child = Material(
+      color: Colors.transparent,
+      child: Guide14HighLight(
+        onClose: () async {
+          close();
+          MainTreeController.to.saveGuideIndexData(MainTreeController.guide16);
+          MainController.to.resetIndex(MainController.spinindexxx);
+        },
+      ),
     );
-    Overlay.of(Get.context!).insert(_overlayEntry!);
+    kHashCode =  OverlayManager.show(context: Get.context!, child: child);
+
     _isShowing = true;
   }
+  String kHashCode = "";
 
   void close() {
     _isShowing = false;
     _overlayEntry?.remove();
+    OverlayManager.clearOverlayEntry(kHashCode);
+
   }
 }
 

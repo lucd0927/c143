@@ -5,6 +5,7 @@ import 'package:c143/tw_143/tw_pages/guide/guide1_water.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide2_coin.dart';
 import 'package:c143/tw_143/tw_pages/main/main_controller.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
+import 'package:c143/tw_base/tw_gj/overlay_manager.dart';
 import 'package:c143/tw_views/animated_scale.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -25,29 +26,47 @@ class OverlayGuide13Spin {
   void show() {
     _overlayEntry = null;
 
-    _overlayEntry = OverlayEntry(
-      builder: (context) {
-        return Material(
-          color: Colors.transparent,
-          child: Guide13SpinWidget(
-            guideChild: guideChild!,
-            guideContext: guideContext!,
-            onClose: () async {
-              close();
-              MainTreeController.to.saveGuideIndexData(MainTreeController.guide13);
-              MainController.to.resetIndex(MainController.spinindexxx);
-            },
-          ),
-        );
-      },
+    // _overlayEntry = OverlayEntry(
+    //   builder: (context) {
+    //     return Material(
+    //       color: Colors.transparent,
+    //       child: Guide13SpinWidget(
+    //         guideChild: guideChild!,
+    //         guideContext: guideContext!,
+    //         onClose: () async {
+    //           close();
+    //           MainTreeController.to.saveGuideIndexData(MainTreeController.guide13);
+    //           MainController.to.resetIndex(MainController.spinindexxx);
+    //         },
+    //       ),
+    //     );
+    //   },
+    // );
+    // Overlay.of(guideContext!).insert(_overlayEntry!);
+
+    Widget child = Material(
+      color: Colors.transparent,
+      child: Guide13SpinWidget(
+        guideChild: guideChild!,
+        guideContext: guideContext!,
+        onClose: () async {
+          close();
+          MainTreeController.to.saveGuideIndexData(MainTreeController.guide13);
+          MainController.to.resetIndex(MainController.spinindexxx);
+        },
+      ),
     );
-    Overlay.of(guideContext!).insert(_overlayEntry!);
+    kHashCode = OverlayManager.show(context: guideContext!, child: child);
+
     _isShowing = true;
   }
+  String kHashCode = "";
 
   void close() {
     _isShowing = false;
     _overlayEntry?.remove();
+    OverlayManager.clearOverlayEntry(kHashCode);
+
   }
 }
 
