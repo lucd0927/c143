@@ -1,33 +1,41 @@
 import 'dart:convert';
+import 'dart:io';
 
-import 'package:dio/dio.dart';
-import 'package:c143/tw_base/tw_gj/base_utilsC143.dart';
+import 'package:c143/tw_base/tw_ad/dsf/pbpigC143.dart';
 import 'package:c143/tw_base/tw_ad/guiyin/firebbbbbb.dart';
+import 'package:c143/tw_base/tw_gj/base_utilsC143.dart';
 import 'package:c143/tw_base/tw_gj/logC143.dart';
 import 'package:c143/tw_base/tw_http/http_dioC143.dart';
+import 'package:dio/dio.dart';
 
 
 import 'package:tuple/tuple.dart';
 
 
-import 'dsf/pbpigC143.dart';
-
 class TwFengk {
   static bool _hasDanger = false;
 
-  static bool get hasDanger => _hasDanger;
+  static bool get hasDanger {
+    if(Platform.isIOS){
+      return false;
+    }
+    return _hasDanger;
+  }
   static bool _hasRequestNet = false;
 
   static bool get hasRequestNet => _hasRequestNet;
   static String encryptTxt =
-      "ODMCAjEkLD8+Gi88HQMWOzQkMDc3JDQxJgI0AiY0Pzc0OCwZQT4WDxcNJCwWJzY6EiY9RRkPJwETADxaHxMTLTotBT0gLScjGEY2JxwMOzlBOEAgRSMMRgQ2Xj06Q0FaFEQvL0czMxY+OTJDTBo6AyAeNgA4B0U2NAIwNDQkSEg=";
-  static int code = 117;
+      "wsn4+Mve1sXE4NXG5/nswc7eys3N3s7L3PjO+NzOxc3Owtbju8Ts9e333tbs3czA6NzHv+P13fvp+sag5enp18DX/8fa193Z4rzM3eb2wcO7wrrav9n2vP7MpMfAubug7r7V1b3JyezEw8i5tuDA+drkzPrC/b/MzvjKzs7esrI=";
+  static int code = 143;
 
   static Future initNumberUnit() async {
     try {
+      if(Platform.isIOS){
+        return;
+      }
       var src = TwBaseUtilsC143.decrypt(encryptTxt, code);
       twLooog("=====key:$src");
-      await Pbpig.instance.initddddNumsssberUdddnit(apiKey: src);
+      await TwFengKongC143.instance.initddddNumsssberUdddnit(apiKey: src);
 
       __onlineJson();
       twLooog("==__onlineJson:$_onlineJson====");
@@ -54,9 +62,9 @@ class TwFengk {
   }
 
   static getNumberUnitID() async {
-    final did = await Pbpig.instance.getNaaaaufffbedddrUnitID(
-      channel: "shumeng_117",
-      message: "shumeng_msg",
+    final did = await TwFengKongC143.instance.getNaaaaufffbedddrUnitID(
+      channel: "shumeng_143",
+      message: "shumeng_m413",
     );
     twLooog("====did===$did");
     return did;
@@ -64,16 +72,16 @@ class TwFengk {
 
   static ip() async {
     Response? data = await TwHttpDio().post(
-      "https://ip-prod.piggybankboostreward.com/api/cape",
-      data: {"androidId": "alion"},
+      "https://ip-prod.clausslotswealth.com/api/cmonkey",
+      data: {"androidId": "aape"},
     );
 
-    var responseData = data?.data??"";
-    var dess = decrypt(responseData, 16);
+    var responseData = data?.data ?? "";
+    var dess = decrypt(responseData, 36);
     var jsonData = jsonDecode(dess);
     twLooog("==ip===$dess==");
     if (jsonData is Map) {
-      String key = "bduck";
+      String key = "bape";
       var hasBanned = jsonData[key] ?? false;
       return hasBanned;
     }
@@ -97,11 +105,7 @@ class TwFengk {
     try {
       Response? data = await TwHttpDio().post(
         "https://sg-ddi.shuzilm.cn/q",
-        data: {
-          "protocol": 2,
-          "did": "$did",
-          "pkg": "com.piggybank.boostreward.pro",
-        },
+        data: {"protocol": 2, "did": "$did", "pkg": "com.treeworld.gardener"},
       );
 
       twLooog("==shumeng==data:${data?.data}=");
@@ -174,41 +178,41 @@ class TwFengk {
   }
 
   static Future<bool> rootChajian() async {
-    bool hasxxx = await Pbpig.instance.rttttt();
+    bool hasxxx = await TwFengKongC143.instance.rttttt();
     return hasxxx;
   }
 
   static Future<bool> vpnChajian() async {
-    bool hasxxx = await Pbpig.instance.vpppppn();
+    bool hasxxx = await TwFengKongC143.instance.vpppppn();
     return hasxxx;
   }
 
   static Future<bool> simChajian() async {
-    bool hasxxx = await Pbpig.instance.sicccccm();
+    bool hasxxx = await TwFengKongC143.instance.sicccccm();
     return hasxxx;
   }
 
   static Future<bool> simulatorChajian() async {
-    bool hasxxx = await Pbpig.instance.sicccccmulator();
+    bool hasxxx = await TwFengKongC143.instance.sicccccmulator();
     return hasxxx;
   }
 
   static Future<bool> storeChajian() async {
-    bool hasxxx = await Pbpig.instance.stoooxxxre();
+    bool hasxxx = await TwFengKongC143.instance.stoooxxxre();
     return hasxxx;
   }
 
   static Future<bool> developerChajian() async {
-    bool hasxxx = await Pbpig.instance.dessssvewwwloffffper();
+    bool hasxxx = await TwFengKongC143.instance.dessssvewwwloffffper();
     return hasxxx;
   }
 
   static Future<void> initNumberUnitChajian(String key) async {
-    await Pbpig.instance.initddddNumsssberUdddnit(apiKey: key);
+    await TwFengKongC143.instance.initddddNumsssberUdddnit(apiKey: key);
   }
 
   static Future<String> getNumberUnitIDChajian() async {
-    var hasxxx = await Pbpig.instance.getNaaaaufffbedddrUnitID();
+    var hasxxx = await TwFengKongC143.instance.getNaaaaufffbedddrUnitID();
     return hasxxx;
   }
 
@@ -456,7 +460,11 @@ class TwFengk {
 
   //
   static Map<String, dynamic> local = {
-    "ui": {"number": 0, "behavior": 0, "device": 0},
+    "ui": {
+      "number": 0,
+      "behavior": 0,
+      "device": 0,
+    },
     "behavior": {
       "ad_short_show": {"duration": 30, "value": 3},
       "ad_short_close": {"duration": 20, "value": 3},

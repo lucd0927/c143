@@ -28,10 +28,10 @@ class TwBaseUtilsC143 {
 }    
 
 
-void main(){
-  // String max = TwBaseUtils.encrypt("MWJzhnEPtKqxLKRLAlVrTyQfO2VxWZWtVx_SzTWC_MgoZL7kTKNt9t3M_OgIZ24nBXRXxVd9ogQEp7616TWf3C", 143);
-  // String fengkong = TwBaseUtils.encrypt("MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAMYl4KczbxQYcRCOgSH0lzRtfuI/jffXOXpHUXRVm3CRiyNL4M5U0Vy3qC+HO64/a1ZZ2FFcKLG69oOvUkCuMr0CAwEAAQ==", 143);
-  // print("==encrypt=:$max");
-  // String dd = TwBaseUtils.decrypt(max,143);
-  // print("==decrypt=:$dd");
-}
+// void main(){
+//   // String max = TwBaseUtils.encrypt("MWJzhnEPtKqxLKRLAlVrTyQfO2VxWZWtVx_SzTWC_MgoZL7kTKNt9t3M_OgIZ24nBXRXxVd9ogQEp7616TWf3C", 143);
+//   String max = TwBaseUtilsC143.encrypt("MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAMYl4KczbxQYcRCOgSH0lzRtfuI/jffXOXpHUXRVm3CRiyNL4M5U0Vy3qC+HO64/a1ZZ2FFcKLG69oOvUkCuMr0CAwEAAQ==", 143);
+//   print("==encrypt=:$max");
+//   String dd = TwBaseUtilsC143.decrypt(max,143);
+//   print("==decrypt=:$dd");
+// }

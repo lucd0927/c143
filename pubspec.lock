@@ -982,6 +982,13 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.1.0+3"
+  pbpig:
+    dependency: "direct main"
+    description:
+      path: "c143sfcj/pbpig"
+      relative: true
+    source: path
+    version: "0.0.1"
   percent_indicator:
     dependency: "direct main"
     description:

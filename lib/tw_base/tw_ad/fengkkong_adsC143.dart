@@ -1,21 +1,22 @@
+import 'dart:io';
 
-import 'package:get/get.dart';
-import 'package:c143/tw_base/tw_ad/dialooooo/ad_limit.dart';
-import 'package:c143/tw_base/tw_gj/login_trackC143.dart';
+import 'package:c143/tw_143/tw_pages/main_cash/main_cash_controller.dart';
+import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
+import 'package:c143/tw_base/tw_ad/fengkkkongC143.dart';
 import 'package:c143/tw_base/tw_gj/logC143.dart';
+import 'package:c143/tw_base/tw_gj/login_trackC143.dart';
 import 'package:c143/tw_hive/twhiveC143.dart';
-
-
-import 'fengkkkongC143.dart';
+import 'package:c143/tw_views/pb_tushi.dart';
+import 'package:get/get.dart';
 
 class TwFengkAds {
-  static final TwFengkAds _instance = TwFengkAds._();
+  static final TwFengkAds _insssss = TwFengkAds._();
 
   factory TwFengkAds() {
-    return _instance;
+    return _insssss;
   }
 
-  TwFengkAds._(){
+  TwFengkAds._() {
     initCount();
   }
 
@@ -62,6 +63,10 @@ class TwFengkAds {
   }
 
   bool showDangerWidthInter() {
+    if (Platform.isIOS) {
+      return false;
+    }
+
     bool fkDanger = TwFengk.hasDanger;
     twLooog("插屏==风控======fkDanger=$fkDanger=hasDanger:$hasDanger");
     if (hasDanger || fkDanger) {
@@ -88,6 +93,10 @@ class TwFengkAds {
 
   // 返回激励广告是否被封控
   bool showDangerWidthRv() {
+    if (Platform.isIOS) {
+      return false;
+    }
+
     // 是否被封控
     bool fkDanger = TwFengk.hasDanger;
     twLooog("激励==风控======fkDanger=$fkDanger=hasDanger:$hasDanger");
@@ -185,8 +194,8 @@ class TwFengkAds {
 
     int allCount = TwFengk.behavior_wrong_deem_ad_more();
     // todo:一定要改
-    // bool hasInitWithdrawTask = !XianjinController.to.hasInitWithdrawTask();
-    bool hasInitWithdrawTask = false;
+    bool hasInitWithdrawTask = !MainCashController.to.hasSaveCardIddddC143();
+    // bool hasInitWithdrawTask = false;
     twLooog(
       "===wrong_deem_ad_more==allCount:$allCount  count:$count 提现门槛：$hasInitWithdrawTask",
     );
@@ -263,13 +272,13 @@ class TwFengkAds {
 
   bool wrong_deem_ad_less() {
     // todo: 一定要改
-    // double curMoney = EarnController.to.curAllMoneyAZunashiAJinZhuan;
-    // bool hasInitWithdrawTask = XianjinController.to.hasInitWithdrawTask();
-    // double minWithdrawMoney = EarnController.minWithdrawMoney;
+    double curMoney = MainTreeController.to.curMoneyyyy.value;
+    bool hasInitWithdrawTask = MainCashController.to.hasSaveCardIddddC143();
+    double minWithdrawMoney = MainTreeController.stage1Num;
 
-    double curMoney = 0;
-    bool hasInitWithdrawTask = false;
-    double minWithdrawMoney = 1000;
+    // double curMoney = 0;
+    // bool hasInitWithdrawTask = false;
+    // double minWithdrawMoney = 1000;
 
     bool result = TwFengk.needUibehavior();
 
@@ -301,6 +310,9 @@ class TwFengkAds {
   showTomorrowDialog() {
     //todo: 添加对话框
     // showSeeYouTomorrowDialog(onSubmit: () {}, onClose: () {});
-    showAdLimitDialogC143(Get.context!, onBtn: (){}, onClose: () {});
+    // showAdLimitDialog(Get.context!, onBtn: (){}, onClose: () {});
+    twToast(
+      text: "You've watched all available ads for today. Try again tomorrow.",
+    );
   }
 }
