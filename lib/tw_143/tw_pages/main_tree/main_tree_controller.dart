@@ -5,9 +5,24 @@ import 'package:c143/gen/assets.gen.dart';
 import 'package:c143/tw_143/tw_common/firebase_json/number_json.dart';
 import 'package:c143/tw_143/tw_common/overlay/overlay_fertilize.dart';
 import 'package:c143/tw_143/tw_common/overlay/overlay_lot_water.dart';
+import 'package:c143/tw_143/tw_pages/guide/guide0_bguide.dart';
+import 'package:c143/tw_143/tw_pages/guide/guide10_quiz3.dart';
+import 'package:c143/tw_143/tw_pages/guide/guide11_homebonus.dart';
+import 'package:c143/tw_143/tw_pages/guide/guide12_homereward.dart';
+import 'package:c143/tw_143/tw_pages/guide/guide13_spin.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide14_highligth.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide15_coin_to_sun.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide17_coin_to_flower.dart';
+import 'package:c143/tw_143/tw_pages/guide/guide1_water.dart';
+import 'package:c143/tw_143/tw_pages/guide/guide2_coin.dart';
+import 'package:c143/tw_143/tw_pages/guide/guide3_adspot.dart';
+import 'package:c143/tw_143/tw_pages/guide/guide4_fertilize.dart';
+import 'package:c143/tw_143/tw_pages/guide/guide5_adspot.dart';
+import 'package:c143/tw_143/tw_pages/guide/guide6_rewarddouble.dart';
+import 'package:c143/tw_143/tw_pages/guide/guide7_rank.dart';
+import 'package:c143/tw_143/tw_pages/guide/guide9_quiz2.dart';
+import 'package:c143/tw_143/tw_pages/guide/guide_old.dart';
+import 'package:c143/tw_143/tw_pages/main/main_controller.dart';
 import 'package:c143/tw_143/tw_pages/main_cash/main_cash_controller.dart';
 import 'package:c143/tw_143/tw_pages/main_cash/overlayc143/card_input.dart';
 import 'package:c143/tw_143/tw_pages/main_spin/main_spin_controller.dart';
@@ -16,6 +31,7 @@ import 'package:c143/tw_base/tw_ad/base_ads.dart';
 import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
 import 'package:c143/tw_base/tw_gj/audio_playC143.dart';
 import 'package:c143/tw_base/tw_gj/logC143.dart';
+import 'package:c143/tw_base/tw_gj/login_trackC143.dart';
 import 'package:c143/tw_base/tw_gj/number_extend.dart';
 import 'package:c143/tw_base/tw_gj/time_left.dart';
 import 'package:c143/tw_base/tw_http/event_report.dart';
@@ -324,6 +340,78 @@ class MainTreeController extends GetxController {
 
     initCutdownTimer();
   }
+  initGuide(){
+
+    TwMaiDiannnn.home_view(MainTreeController.to.curLevel.value.toString());
+    // var idfa = await FlutterTbaInfo.instance.getIdfa();
+    String? data = MainTreeController.to.guideIndexData();
+    twLooog("======data:$data");
+    // data = null;
+    // data = MainTreeController.guide4;
+    if (data == null) {
+      if (TwPackageABC143.isPackageB()) {
+        OverlayGuide0BGuide().show(coins: 5, onBtn: (value) {});
+      } else {
+        OverlayGuide1Water().show();
+      }
+    } else if (data == MainTreeController.guide0) {
+      OverlayGuide1Water().show();
+    } else if (data == MainTreeController.guide1) {
+      OverlayGuide2Coin().show();
+    } else if (data == MainTreeController.guide2) {
+      OverlayGuide3AdSpot().show(coins: 10);
+    } else if (data == MainTreeController.guide3) {
+      OverlayGuide4Fertilize().show();
+    } else if (data == MainTreeController.guide4) {
+      OverlayGuide5AdSpot().show(coins: 10);
+    } else if (data == MainTreeController.guide5) {
+      OverlayGuide6RewardDouble().show(coins: 10);
+    } else if (data == MainTreeController.guide6) {
+      OverlayGuide7Rank().show();
+    } else if (data == MainTreeController.guide7) {
+      MainController.to.resetIndex(MainController.quizIndex);
+      // OverlayGuide8Quiz1().show(coins: 10, onBtn: (value) {  });
+    } else if (data == MainTreeController.guide8) {
+      MainController.to.resetIndex(MainController.quizIndex);
+      OverlayGuide9Quiz2().show(coins: 10, onBtn: (value) {});
+    } else if (data == MainTreeController.guide9) {
+      MainController.to.resetIndex(MainController.quizIndex);
+      OverlayGuide10Quiz3().show(coins: 10, onBtn: (value) {});
+    } else if (data == MainTreeController.guide10) {
+      // MainController.to.resetIndex(MainController.quizIndex);
+      OverlayGuide11HomeBonus().show(
+        coins: TwPackageABC143.isPackageB() ? 5 : 10,
+      );
+    } else if (data == MainTreeController.guide11) {
+      OverlayGuide12HomeReward().show(coins: 10, onBtn: (value) {});
+    } else if (data == MainTreeController.guide12) {
+      OverlayGuide13Spin().show();
+    }
+
+    if (TwLoginnnTrackC143.isFirstLoginToday &&
+        TwLoginnnTrackC143.qidongduoshaoDay() > 1) {
+      OverlayGuideOld().show(
+        coins: TwPackageABC143.isPackageB() ? 10 : 100,
+        onBtn: (v) {},
+      );
+    }
+
+  }
+  resetAllData(){
+    double tmpMmm = box.get(twKeyMoneyyyy) ?? 0.0;
+    curMoneyyyy.value = tmpMmm;
+
+    int tmpWaterCount = box.get(twKeyWaterCount) ?? 0;
+    curStageWaterCount.value = tmpWaterCount;
+    int tmpShifeiCount = box.get(twKeyShifeiCount) ?? 0;
+
+    curStageShifeiCount.value = tmpShifeiCount;
+
+    int tmpLevelll = box.get(twKeyLevelll) ?? 1;
+    // int tmpLevelll = _jisuanLevel(hasResetStageCount: false);
+    curLevel.value = tmpLevelll;
+  }
+
 
   @override
   void onReady() {

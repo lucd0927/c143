@@ -57,68 +57,13 @@ class _MainTreeState extends State<MainTree> {
     MainTreeController.initComposition();
     WidgetsBinding.instance.addPostFrameCallback((_) async {
 
-      initGuide();
+      MainTreeController.to.initGuide();
+      initInterAd();
+      initTz();
     });
   }
 
-  initGuide(){
 
-    TwMaiDiannnn.home_view(MainTreeController.to.curLevel.value.toString());
-    // var idfa = await FlutterTbaInfo.instance.getIdfa();
-    String? data = MainTreeController.to.guideIndexData();
-    twLooog("======data:$data");
-    // data = null;
-    // data = MainTreeController.guide4;
-    if (data == null) {
-      if (TwPackageABC143.isPackageB()) {
-        OverlayGuide0BGuide().show(coins: 5, onBtn: (value) {});
-      } else {
-        OverlayGuide1Water().show();
-      }
-    } else if (data == MainTreeController.guide0) {
-      OverlayGuide1Water().show();
-    } else if (data == MainTreeController.guide1) {
-      OverlayGuide2Coin().show();
-    } else if (data == MainTreeController.guide2) {
-      OverlayGuide3AdSpot().show(coins: 10);
-    } else if (data == MainTreeController.guide3) {
-      OverlayGuide4Fertilize().show();
-    } else if (data == MainTreeController.guide4) {
-      OverlayGuide5AdSpot().show(coins: 10);
-    } else if (data == MainTreeController.guide5) {
-      OverlayGuide6RewardDouble().show(coins: 10);
-    } else if (data == MainTreeController.guide6) {
-      OverlayGuide7Rank().show();
-    } else if (data == MainTreeController.guide7) {
-      MainController.to.resetIndex(MainController.quizIndex);
-      // OverlayGuide8Quiz1().show(coins: 10, onBtn: (value) {  });
-    } else if (data == MainTreeController.guide8) {
-      MainController.to.resetIndex(MainController.quizIndex);
-      OverlayGuide9Quiz2().show(coins: 10, onBtn: (value) {});
-    } else if (data == MainTreeController.guide9) {
-      MainController.to.resetIndex(MainController.quizIndex);
-      OverlayGuide10Quiz3().show(coins: 10, onBtn: (value) {});
-    } else if (data == MainTreeController.guide10) {
-      // MainController.to.resetIndex(MainController.quizIndex);
-      OverlayGuide11HomeBonus().show(
-        coins: TwPackageABC143.isPackageB() ? 5 : 10,
-      );
-    } else if (data == MainTreeController.guide11) {
-      OverlayGuide12HomeReward().show(coins: 10, onBtn: (value) {});
-    } else if (data == MainTreeController.guide12) {
-      OverlayGuide13Spin().show();
-    }
-
-    if (TwLoginnnTrackC143.isFirstLoginToday &&
-        TwLoginnnTrackC143.qidongduoshaoDay() > 1) {
-      OverlayGuideOld().show(
-        coins: TwPackageABC143.isPackageB() ? 10 : 100,
-        onBtn: (v) {},
-      );
-    }
-    initInterAd();
-    initTz();
-  }
 
 
 

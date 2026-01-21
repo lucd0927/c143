@@ -89,6 +89,23 @@ class MainSpinController extends GetxController {
     initTask();
   }
 
+  resetAllData(){
+    bool tmpClickDailyCheck = box.get(twkeyClickDailyCheck) ?? false;
+
+    int tmpSpinNum = box.get(twkeySpinNum) ?? initSpinNum;
+    if (TwLoginnnTrackC143.isFirstLoginToday) {
+      if (tmpSpinNum < initSpinNum) {
+        tmpSpinNum = initSpinNum;
+      }
+      tmpClickDailyCheck = false;
+    }
+    // if(TwConfigggg.hasDeeevv()){
+    //   tmpSpinNum = 30;
+    // }
+    curTwSpinNum.value = tmpSpinNum;
+    curClickDailyCheck.value = tmpClickDailyCheck;
+  }
+
   initTask() {
     String tmptwkeycurClickDailyCheckB =
         box.get(twkeycurClickDailyCheckB) ??

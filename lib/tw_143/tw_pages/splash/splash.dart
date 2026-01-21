@@ -182,7 +182,7 @@ class _SplashProgressState extends State<SplashProgress> {
   double startTime = 0.0;
   late Timer _timer;
   final Duration _delayTime = Duration(milliseconds: _oneTime);
-  double _allTime = 5000;
+  int _allTime = 10000;
   static const int _oneTime = 100;
   bool canGoToMain = true;
   Timer? _delayTimer;
@@ -224,19 +224,24 @@ class _SplashProgressState extends State<SplashProgress> {
 
   initAbLogic() async {
     int time = DateTime.now().millisecondsSinceEpoch;
-    twLooog("==SSABChange().init start====");
+    twLooog("==TwABC143().init start====");
     // // // 5 ab包逻辑
     bool result = await TwPackageABC143().init();
-    // int time2 = DateTime.now().millisecondsSinceEpoch;
-    // twLooog(
-    //   "==SSABChange().init end==canGoToMain:$canGoToMain=result:$result=耗时:${time2 - time}",
-    // );
+    int time2 = DateTime.now().millisecondsSinceEpoch;
+    int diffTime = time2 - time;
+    int leftTime = _allTime - diffTime;
+    // if(leftTime <= 0){
+    //   leftTime = 1000;
+    // }
+    twLooog(
+      "==TwABC143().init end==canGoToMain:$canGoToMain=result:$result=耗时diffTime:${diffTime} leftTime:$leftTime",
+    );
     await Future.delayed(
-      Duration(milliseconds: TwPackageABC143.isPackageB() ? 3000 : 0),
+      Duration(milliseconds: TwPackageABC143.isPackageB() ? 3000 : leftTime),
     );
     _timer.cancel();
     if (canGoToMain) {
-      twLooog("==SSABChange().init 等待进入main page====");
+      twLooog("==TwABC143().init 等待进入main page====");
       setState(() {
         startTime = 1.0;
       });
