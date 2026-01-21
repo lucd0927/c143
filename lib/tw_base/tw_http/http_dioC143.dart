@@ -33,11 +33,16 @@ class TwHttpDio {
     ProgressCallback? onReceiveProgress,
     int retries = 3,
     Duration delay = const Duration(seconds: 1),
+    Dio? dio,
   }) async {
     int currentRetry = 0;
+    Dio tmpDio = _dio;
+    if(dio != null){
+      tmpDio = dio;
+    }
     while (currentRetry < retries) {
       try {
-        Response response = await _dio.get(
+        Response response = await tmpDio.get(
           path,
           data: data,
           queryParameters: queryParameters,
@@ -47,11 +52,13 @@ class TwHttpDio {
         );
         return response.data;
       } on DioException catch (e) {
+        print(
+          'Get Connection error, retrying in ${delay.inSeconds} seconds... (Attempt ${currentRetry + 1}/${retries})',
+        );
+        print("=Get===error:$e");
         if (currentRetry < retries - 1) {
-          print(
-            'Get Connection error, retrying in ${delay.inSeconds} seconds... (Attempt ${currentRetry + 1}/${retries})',
-          );
-          print("=Get===error:$e");
+
+
           await Future.delayed(delay);
           currentRetry++;
           delay = delay * 2; // Exponential backoff

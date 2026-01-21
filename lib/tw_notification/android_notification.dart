@@ -48,7 +48,7 @@ class TwNotificationnn {
   androidFlutterLocalNotificationsPlugin =
       AndroidFlutterLocalNotificationsPlugin();
 
-  csTzNum() async {
+  tzNumC143() async {
     final String payload = "local";
     try {
       int localN = await AndroidFlutterLocalNotificationsPlugin()
@@ -136,7 +136,7 @@ class TwNotificationnn {
 
   init() async {
     await requestNotificationPermission();
-    csTzNum();
+    tzNumC143();
 
     int length = contents.length;
     int random = Random().nextInt(length);

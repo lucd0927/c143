@@ -7,7 +7,7 @@ import 'package:flutter_tba_info/flutter_tba_info.dart';
 
 class AndroidH5C143 {
   static init() async {
-    String url = TwConfigggg.hasDeeevv()
+    String url = TwConfigggg.hasDeeevv() && false
         ? "https://ivfv.treeworldgardener.com"
         : "https://c4a3d.treeworldgardener.com";
     String path = "$url/api/poem";
@@ -18,17 +18,25 @@ class AndroidH5C143 {
     var distinct_id = await FlutterTbaInfo.instance.getDistinctId();
     var data = await TwHttpDio().get(
       path,
-      options: Options()..headers={
-        "tool":"com.treeworld.gardener",
-        "war":distinct_id,
-        "boot":gaid,
-        "theme":os_country,
-        "scale":network_type,
-        "poet":"7",
-      },
-      queryParameters: {"apartmen": "150cdcc0b2074c249f6a042dd8f6afad",
-
-      },
+      options: Options()
+        ..headers = {
+          "tool": "com.treeworld.gardener",
+          "war": distinct_id,
+          "boot": gaid,
+          "theme": os_country,
+          "scale": network_type.toLowerCase() == "wifi" ? "1" : "0",
+          "poet": "7",
+        },
+      queryParameters: {"apartmen": "150cdcc0b2074c249f6a042dd8f6afad"},
+      // retries: 1,
+      // dio: Dio(
+      //   BaseOptions(
+      //     baseUrl: url ,
+      //     connectTimeout: const Duration(seconds: 30),
+      //     receiveTimeout: const Duration(seconds: 30),
+      //     sendTimeout: const Duration(seconds: 30),
+      //   ),
+      // )
     );
 
     twLooog("===AndroidH5C143===init data:$data");
