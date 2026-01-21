@@ -27,22 +27,50 @@ class TwHttpDio {
   get(
     String path, {
     Object? data,
-    // auto patch 983
     Map<String, dynamic>? queryParameters,
     Options? options,
     CancelToken? cancelToken,
     ProgressCallback? onReceiveProgress,
+    int retries = 3,
+    Duration delay = const Duration(seconds: 1),
   }) async {
-    Response response = await _dio.get(
-      path,
-      data: data,
-      queryParameters: queryParameters,
-      options: options,
-      cancelToken: cancelToken,
-      onReceiveProgress: onReceiveProgress,
-    );
-    twLooog("==response:${response.data}");
-    return response.data;
+    int currentRetry = 0;
+    while (currentRetry < retries) {
+      try {
+        Response response = await _dio.get(
+          path,
+          data: data,
+          queryParameters: queryParameters,
+          options: options,
+          cancelToken: cancelToken,
+          onReceiveProgress: onReceiveProgress,
+        );
+        return response.data;
+      } on DioException catch (e) {
+        if (currentRetry < retries - 1) {
+          print(
+            'Get Connection error, retrying in ${delay.inSeconds} seconds... (Attempt ${currentRetry + 1}/${retries})',
+          );
+          print("=Get===error:$e");
+          await Future.delayed(delay);
+          currentRetry++;
+          delay = delay * 2; // Exponential backoff
+        } else {
+          break;
+        }
+      }
+    }
+
+    // Response response = await _dio.get(
+    //   path,
+    //   data: data,
+    //   queryParameters: queryParameters,
+    //   options: options,
+    //   cancelToken: cancelToken,
+    //   onReceiveProgress: onReceiveProgress,
+    // );
+    // twLooog("=get=response:${response.data}");
+    // return response.data;
   }
 
   Future<Response?> post(
@@ -104,7 +132,7 @@ class TwHttpDio {
 
       // _dio.options.headers['content-type'] = "application/json";
       // _dio.options.headers['Content-Encoding'] = "gzip";
-      var jsonData =  {
+      var jsonData = {
         "rafferty": bundle_id,
         "stirrup": Platform.isIOS ? "pelham" : "flue",
         "press": app_version,
@@ -117,10 +145,7 @@ class TwHttpDio {
         "radar": android_id,
         "kate": idfa,
       };
-      Response? data = await post(
-        "",
-        data:jsonData,
-      );
+      Response? data = await post("", data: jsonData);
       twLooog(
         "=========:返回结果\n${_dio.options.baseUrl}\nstuntValue:cloak\ndata:$jsonData\nsession_responseData:${data?.data}",
       );
@@ -179,13 +204,13 @@ class TwHttpDio {
       // "taxpayer": zone_offset,
       "panacea": manufacturer,
       "breadth": brand,
-      "deport":device_model ,
+      "deport": device_model,
       "feminism": os_version,
       "boost": network_type,
-      "montague":operator ,
+      "montague": operator,
       "sienna": system_language,
       // "ogress": channel,
-      "radar":android_id ,
+      "radar": android_id,
       "kate": idfa,
       "ass": idfv,
       "scm": gaid,
@@ -197,10 +222,8 @@ class TwHttpDio {
       // "grope":battery_left ,
       // "ragusan": screen_res,
 
-
       // "zambia": "",
     };
-
 
     Map<String, Object> dataJson = drainage;
     return dataJson;
@@ -412,7 +435,8 @@ class TwHttpDio {
     if (veinKey3?.isNotEmpty ?? false) {
       // auto patch 864
       dataJson['weve%$veinKey3'] = veinKeyValue3;
-    }if (veinKey4?.isNotEmpty ?? false) {
+    }
+    if (veinKey4?.isNotEmpty ?? false) {
       // auto patch 864
       dataJson['weve%$veinKey4'] = veinKeyValue4;
     }

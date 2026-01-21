@@ -6,9 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:permission_handler/permission_handler.dart';
 
-
-
-
 // import 'package:firebase_messaging/firebase_messaging.dart';
 
 // 顶层方法（不能在类里）
@@ -27,12 +24,13 @@ void backgourdListener(NotificationResponse ntftRse) {
     '${ntftRse.actionId} with'
     ' payload: ${ntftRse.payload}',
   );
-
 }
 
 class TwNotificationnn {
   static final TwNotificationnn _shli = TwNotificationnn._();
+
   TwNotificationnn._();
+
   factory TwNotificationnn() {
     return _shli;
   }
@@ -85,11 +83,45 @@ class TwNotificationnn {
   }
 
   List get contents => [
+    {
+      "title": "Cash Bonus!",
+      "content":
+          "\$10 Bonus Ready! Tap to Open App → Shake Tree & Cash Out Fast!",
+    },
 
+    {"title": "Cash-Out So Close!", "content": "Tap more, Earn more!"},
+    {"title": "Cash-Out So Close!", "content": "Ad Value Up! Claim Rewards!"},
+
+    {
+      "title": "Cash Out Pending",
+      "content": "You have \$1,000 waiting! Tap to claim to PayPal!",
+    },
+
+    {
+      "title": "You Can Cash Out!",
+      "content":
+          "Balance over \$1,000! Tap here to cash out & turn earnings into REAL CASH!",
+    },
+
+    {
+      "title": "Cash Out Pending",
+      "content": "You have \$1,000 waiting! Tap to claim to PayPal!",
+    },
+
+    {"title": "You Can Cash Out!", "content": "Open App → Grow & Cash Out!"},
   ];
 
   List get imgTz => [
-
+    "c143n_img",
+    "c143n_img",
+    "c143n_img",
+    "c143n_img",
+    "c143n_img",
+    "c143n_img",
+    "c143n_img",
+    "c143n_img",
+    "c143n_img",
+    "c143n_img",
   ];
 
   List<T> getRandomNMinus3<T>(List<T> source) {
@@ -256,7 +288,7 @@ class TwNotificationnn {
     try {
       bool? result = await AndroidFlutterLocalNotificationsPlugin()
           .subscribeToTopic(
-           "c117fcm_piggy_br",
+            "c143_treeworld",
             AndroidNotificationDetails(
               'pbccasd',
               'fcm_notification',

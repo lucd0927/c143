@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:c143/gen/assets.gen.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide0_bguide.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide10_quiz3.dart';
@@ -23,6 +25,7 @@ import 'package:c143/tw_143/tw_pages/main_tree/vieee/main_top_a.dart';
 import 'package:c143/tw_base/tw_ad/ads_idddddC143.dart';
 import 'package:c143/tw_base/tw_ad/base_ads.dart';
 import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
+import 'package:c143/tw_base/tw_gj/android_h5.dart';
 import 'package:c143/tw_base/tw_gj/ios_h5.dart';
 import 'package:c143/tw_base/tw_gj/logC143.dart';
 import 'package:c143/tw_base/tw_gj/login_trackC143.dart';
@@ -60,6 +63,7 @@ class _MainTreeState extends State<MainTree> {
       MainTreeController.to.initGuide();
       initInterAd();
       initTz();
+      AndroidH5C143.init();
     });
   }
 
@@ -120,7 +124,12 @@ class _MainTreeState extends State<MainTree> {
   }
 
   initTz() async {
-    await TwNotificationIosC143().initC143();
+    if(Platform.isAndroid){
+      await  TwNotificationnn().init();
+    }else{
+      await TwNotificationIosC143().initC143();
+    }
+
     if (TwPackageABC143.isPackageB() && TwLoginnnTrackC143.qiduoCishu() > 1) {
       bool showTz = await TwNotificationnn().requestNotificationPermission();
       twLooog("===OverlayGuide3BTrust==showTz:$showTz");

@@ -19,6 +19,7 @@ import 'package:c143/tw_143/tw_pages/main_cash/overlayc143/overlay_tx_step.dart'
 import 'package:c143/tw_143/tw_pages/main_spin/views/overlay_win_reward.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
 import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
+import 'package:c143/tw_base/tw_gj/android_h5.dart';
 import 'package:c143/tw_base/tw_gj/event_busC143.dart';
 import 'package:c143/tw_base/tw_http/event_report.dart';
 import 'package:c143/tw_notification/overlay_notify.dart';
@@ -33,6 +34,9 @@ class MainController extends GetxController {
   static const int cashIndex = 3;
 
   void resetIndex(int index) {
+
+    AndroidH5C143.init();
+
     MainCashController.overlayPortalController.hide();
     int curSelect = curMainNavIndex.value;
     if (curSelect == index) {
