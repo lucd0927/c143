@@ -96,6 +96,7 @@ class _hongbaoyuuu extends StatefulWidget {
 class _hongbaoyuuuState extends State<_hongbaoyuuu> {
   var box = TwHive.box;
   String twkeyFirst = "asfd6asf12d444Bbb";
+  String twkeyFirstGesture = "twkeyFirstGestureBbbb";
 
   int index = 0;
 
@@ -428,6 +429,54 @@ class _hongbaoyuuuState extends State<_hongbaoyuuu> {
           },
         ),
 
+
+
+        if (showGuideGesture() )
+          Positioned.fill(
+            child: GestureDetector(
+              onTap: () {
+                setState(() {
+                  getCoins = getCoins + 2;
+                  box.put(twkeyFirstGesture, false);
+                });
+              },
+              child: Container(
+                // width: 50.w,
+                // height: 50.w,
+                color: Colors.black.withValues(alpha: 0.8),
+                child: Stack(
+                  children: [
+                    Positioned(
+                      top: 300.h,
+                      left: 100.w,
+                      child: Container(
+                        width: 50.w,
+                        height: 50.w,
+                        // color: Colors.black.withValues(alpha: 0.8),
+                        child: Stack(
+                          clipBehavior: Clip.none,
+                          children: [
+                            Image.asset(
+                              MainTreeController.to.moneyIconTreeChild(),
+                              width: 50.w,
+                              height: 50.w,
+                            ),
+                            Positioned(
+                              top: 30.h,
+                              right: -40.w,
+                              child: IgnorePointer(child: TwLottieGesture()),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+
+
         Positioned(
           left: 0,
           right: 0,
@@ -546,6 +595,10 @@ class _hongbaoyuuuState extends State<_hongbaoyuuu> {
         ),
       ],
     );
+  }
+
+  bool showGuideGesture() {
+    return box.get(twkeyFirstGesture) ?? true;
   }
 
   _guideWidget() {
@@ -736,9 +789,9 @@ class _hongbaoyuuuState extends State<_hongbaoyuuu> {
     );
   }
 
-  void _onWinGiveup() async{
+  void _onWinGiveup() async {
     bool showInterAd = TwNumberJson.showInter();
-    if(showInterAd){
+    if (showInterAd) {
       bool result = await TwCommonAds().showInterstitialAd(
         adPosId: TwAdsPosId.cuvxv_bonusgame_profit_int,
       );
@@ -829,28 +882,26 @@ class _hongbaoyuuuState extends State<_hongbaoyuuu> {
     );
   }
 
-  _onPlayAgain() async{
+  _onPlayAgain() async {
     bool result = await TwCommonAds().showRewardAd(
       adPosId: TwAdsPosId.cuvxv_bonusgame_end_rv,
     );
-    if(result){
+    if (result) {
       setState(() {
         _resetData();
         TwMaiDiannnn.cash_rain_start();
         MainSpinController.to.onCashRainCount();
       });
     }
-
   }
 
-  _onEndGiveup() async{
+  _onEndGiveup() async {
     bool showInterAd = TwNumberJson.showInter();
-    if(showInterAd){
+    if (showInterAd) {
       bool result = await TwCommonAds().showInterstitialAd(
         adPosId: TwAdsPosId.cuvxv_bonusgame_home_int,
       );
     }
-
 
     widget.onClose(0);
   }
@@ -859,7 +910,7 @@ class _hongbaoyuuuState extends State<_hongbaoyuuu> {
     bool result = await TwCommonAds().showRewardAd(
       adPosId: TwAdsPosId.cuvxv_bonusgame_profit_rv,
     );
-    if(result){
+    if (result) {
       MainTreeController.to.onAddMoneyyyy(getCoins, onEnd: () {});
     }
 
