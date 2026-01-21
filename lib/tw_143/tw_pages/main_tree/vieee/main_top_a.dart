@@ -1,6 +1,7 @@
 import 'package:c143/gen/assets.gen.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/vieee/main_top_b.dart';
+import 'package:c143/tw_143/tw_pages/setttting_c143/setting.dart';
 import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
 import 'package:c143/tw_views/animated_count.dart';
 import 'package:c143/tw_views/animated_fly.dart';
@@ -53,8 +54,7 @@ class _MainTopAState extends State<MainTopA> {
 
   @override
   Widget build(BuildContext context) {
-
-    if(TwPackageABC143.isPackageB()){
+    if (TwPackageABC143.isPackageB()) {
       return MainTopB();
     }
 
@@ -179,30 +179,47 @@ class _MainTopAState extends State<MainTopA> {
                 top: 24.h,
                 right: 30.w,
                 child: GestureDetector(
-                  onTap: (){
-                    Uri uriii = Uri.parse("https://treeworldgardener.com/privacy/");
-                    launchUrl(uriii);
-                  },
-                  child: Row(
-                    children: [
-                      Text(
-                        "Privacy Policy",
-                        style: TextStyle(
-                          fontSize: 12.sp,
-                          fontWeight: FontWeight.w800,
-                          color: Colors.white,
-                        ),
-                      ),
-                      Icon(Icons.arrow_right, size: 24.h, color: Colors.white),
-                    ],
+                  onTap: _onSettingC143,
+                  child: Image.asset(
+                    Assets.twimgB.txSetting.path,
+                    width: 28.h,
+                    height: 28.h,
+                    color: Colors.white,
                   ),
                 ),
               ),
+              // Positioned(
+              //   top: 24.h,
+              //   right: 30.w,
+              //   child: GestureDetector(
+              //     onTap: (){
+              //       Uri uriii = Uri.parse("https://treeworldgardener.com/privacy/");
+              //       launchUrl(uriii);
+              //     },
+              //     child: Row(
+              //       children: [
+              //         Text(
+              //           "Privacy Policy",
+              //           style: TextStyle(
+              //             fontSize: 12.sp,
+              //             fontWeight: FontWeight.w800,
+              //             color: Colors.white,
+              //           ),
+              //         ),
+              //         Icon(Icons.arrow_right, size: 24.h, color: Colors.white),
+              //       ],
+              //     ),
+              //   ),
+              // ),
             ],
           ),
         ),
       ],
     );
+  }
+
+  void _onSettingC143() {
+    OverlaySettingggC143().show();
   }
 
   Widget bottomTxt() {

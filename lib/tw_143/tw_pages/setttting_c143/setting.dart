@@ -45,8 +45,8 @@ class _SettingWidgetC143 extends StatefulWidget {
 }
 
 class _SettingWidgetC143State extends State<_SettingWidgetC143> {
-  bool positive = audioMusic.hasOn;
-  bool positive2 = audioBtn_Dingdong1.hasOn;
+  bool positiveBtnMusic = audioBtn_coin1.hasOn;
+  bool positiveBgMusic = audioMusic.hasOn;
 
   bool showAnimated = false;
   Duration animD = Duration(milliseconds: 200);
@@ -117,7 +117,11 @@ class _SettingWidgetC143State extends State<_SettingWidgetC143> {
                         btnWdiget(
                           txt: "User Agreement",
                           onTap: () {
-                            onClose();
+                            Uri uriii = Uri.parse(
+                              "https://treeworldgardener.com/terms/",
+                            );
+
+                            _laUurrrr(uriii);
                           },
                         ),
                         SizedBox(height: 10.h),
@@ -195,17 +199,17 @@ class _SettingWidgetC143State extends State<_SettingWidgetC143> {
 
   _onBtnMusic(bool toggle) {
     setState(() {
-      positive = toggle;
+      positiveBtnMusic = !positiveBtnMusic;
       twLooog("== sound=toggle:$toggle==");
-      audioMusic.setSWHasOn(positive, showAudioPlayOrPause: true);
+      audioBtn_coin1.setSWHasOn(positiveBtnMusic, showAudioPlayOrPause: false);
     });
   }
 
   _onBgMusic(bool toggle) {
     setState(() {
-      positive2 = toggle;
-      twLooog("== music=toggle:$toggle==");
-      audioBtn_Dingdong1.setSWHasOn(positive2, showAudioPlayOrPause: false);
+      positiveBgMusic = !positiveBgMusic;
+      twLooog("== music=toggle:$positiveBgMusic==");
+      audioMusic.setSWHasOn(positiveBgMusic, showAudioPlayOrPause: true);
     });
   }
 
@@ -218,23 +222,35 @@ class _SettingWidgetC143State extends State<_SettingWidgetC143> {
     widget.onClose();
   }
 
+
+
   _audioWidget() {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 40.w),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          Image.asset(
-            Assets.twimgB.settingVolume.path,
-            width: 68.w,
-            height: 68.h,
-            fit: BoxFit.fill,
+          GestureDetector(
+            onTap: (){
+              _onBtnMusic(positiveBtnMusic);
+            },
+            child: Image.asset(
+              !positiveBtnMusic?Assets.twimgB.settingVolumeUn.path: Assets.twimgB.settingVolume.path,
+              width: 68.w,
+              height: 68.h,
+              fit: BoxFit.fill,
+            ),
           ),
-          Image.asset(
-            Assets.twimgB.settingMusic.path,
-            width: 68.w,
-            height: 68.h,
-            fit: BoxFit.fill,
+          GestureDetector(
+            onTap: (){
+              _onBgMusic(positiveBgMusic);
+            },
+            child: Image.asset(
+              !positiveBgMusic?Assets.twimgB.settingMusicUn.path:  Assets.twimgB.settingMusic.path,
+              width: 68.w,
+              height: 68.h,
+              fit: BoxFit.fill,
+            ),
           ),
         ],
       ),

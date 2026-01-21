@@ -133,14 +133,14 @@ class TwPackageABC143 {
       }
       String result = _appsFlyerDataC143 == afDataOrganic ? "0" : "1";
       TwMaiDiannnn.af_suc(result);
-      if (TwConfigggg.hasDeeevv()) {
-        Future.delayed(Duration(milliseconds: 15000), () {
-          _appsFlyerDataC143 = "ttttt";
-          _sendAC143(cloakData: _cloakDataC143, afData: _appsFlyerDataC143);
-        });
-      } else {
-
-      }
+      // if (TwConfigggg.hasDeeevv()) {
+      //   Future.delayed(Duration(milliseconds: 15000), () {
+      //     _appsFlyerDataC143 = "ttttt";
+      //     _sendAC143(cloakData: _cloakDataC143, afData: _appsFlyerDataC143);
+      //   });
+      // } else {
+      //
+      // }
       _sendAC143(cloakData: _cloakDataC143, afData: _appsFlyerDataC143);
     } else if (qs_af_on123 == "0") {
       twLooog("$TGA===now==qm_af_on: 返回0 不需要判断af的数据");
