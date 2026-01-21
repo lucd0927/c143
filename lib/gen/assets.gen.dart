@@ -576,6 +576,9 @@ class $AssetsTwimgGen {
 class $AssetsTwimgBGen {
   const $AssetsTwimgBGen();
 
+  /// File path: assets/twimgB/alogo.png
+  AssetGenImage get alogo => const AssetGenImage('assets/twimgB/alogo.png');
+
   /// File path: assets/twimgB/animated_bg3_1.png
   AssetGenImage get animatedBg31 =>
       const AssetGenImage('assets/twimgB/animated_bg3_1.png');
@@ -623,10 +626,6 @@ class $AssetsTwimgBGen {
   /// File path: assets/twimgB/guide_0_5_gesture.png
   AssetGenImage get guide05Gesture =>
       const AssetGenImage('assets/twimgB/guide_0_5_gesture.png');
-
-  /// File path: assets/twimgB/guide_0_bg.png
-  AssetGenImage get guide0Bg =>
-      const AssetGenImage('assets/twimgB/guide_0_bg.png');
 
   /// File path: assets/twimgB/guide_0_txt1.png
   AssetGenImage get guide0Txt1 =>
@@ -710,10 +709,6 @@ class $AssetsTwimgBGen {
   /// File path: assets/twimgB/money_rain.png
   AssetGenImage get moneyRain =>
       const AssetGenImage('assets/twimgB/money_rain.png');
-
-  /// File path: assets/twimgB/money_rain_bg.png
-  AssetGenImage get moneyRainBg =>
-      const AssetGenImage('assets/twimgB/money_rain_bg.png');
 
   /// File path: assets/twimgB/money_rain_txt.png
   AssetGenImage get moneyRainTxt =>
@@ -855,6 +850,7 @@ class $AssetsTwimgBGen {
 
   /// List of all assets
   List<AssetGenImage> get values => [
+    alogo,
     animatedBg31,
     animatedBg32,
     animatedBg33,
@@ -867,7 +863,6 @@ class $AssetsTwimgBGen {
     guide7bSprintTxt,
     guide8bTxt,
     guide05Gesture,
-    guide0Bg,
     guide0Txt1,
     guide0Txt2,
     guide0Txt3,
@@ -889,7 +884,6 @@ class $AssetsTwimgBGen {
     moneyDailog,
     moneyFloating,
     moneyRain,
-    moneyRainBg,
     moneyRainTxt,
     moneyRainWin,
     moreGame,
