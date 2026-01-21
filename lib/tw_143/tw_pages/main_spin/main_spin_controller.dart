@@ -99,9 +99,7 @@ class MainSpinController extends GetxController {
       }
       tmpClickDailyCheck = false;
     }
-    // if(TwConfigggg.hasDeeevv()){
-    //   tmpSpinNum = 30;
-    // }
+
     curTwSpinNum.value = tmpSpinNum;
     curClickDailyCheck.value = tmpClickDailyCheck;
   }

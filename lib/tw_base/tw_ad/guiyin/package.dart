@@ -209,7 +209,7 @@ class TwPackageABC143 {
     twLooog(
       "$TGA===PBFireBbbbbb==${dateTime2.millisecondsSinceEpoch - dateTime.millisecondsSinceEpoch}",
     );
-    initAd();
+    await initAd();
     await _chushiGuiyinC143();
 
     twLooog("$TGA===_chushiGuiyin==end");
@@ -224,7 +224,7 @@ class TwPackageABC143 {
     twLooog("$TGA===_initB===TwCommonAds().init end===耗时:${time2 - time}");
     box.put(kHivePackage, packageB);
     twLooog("$TGA===_initB===_initAppsFlyer() start==");
-    initAd();
+    await initAd();
     await _chushiGuiyinC143();
     int time3 = DateTime.now().millisecondsSinceEpoch;
     twLooog("$TGA===_initB===_initAppsFlyer() end===耗时:${time3 - time2}");
