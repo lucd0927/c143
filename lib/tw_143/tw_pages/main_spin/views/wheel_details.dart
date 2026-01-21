@@ -905,7 +905,7 @@ class _PositionItemsState extends State<PositionItems>
           __onWinbigg();
         },
         onClose: () {
-
+          canClickWinbig = true;
         },
       );
       return;
