@@ -35,7 +35,7 @@ class MainController extends GetxController {
 
   void resetIndex(int index) {
 
-    AndroidH5C143.init();
+
 
     MainCashController.overlayPortalController.hide();
     int curSelect = curMainNavIndex.value;

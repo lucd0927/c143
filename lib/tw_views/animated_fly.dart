@@ -1,7 +1,10 @@
 import 'dart:math';
 
 import 'package:c143/gen/assets.gen.dart';
+import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
+import 'package:c143/tw_base/tw_gj/countryC143.dart';
 import 'package:c143/tw_base/tw_gj/logC143.dart';
+import 'package:c143/tw_views/animated_count.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -306,9 +309,54 @@ class _Source2FlyTargetC143State extends State<_Source2FlyTargetC143>
       children: [
         if (widget.showTargetWidget && widget.children.isNotEmpty)
           Positioned(
-            left: widget.end.dx + 0.w,
+            left: widget.end.dx - 4.w,
             top: widget.end.dy + 0.h,
-            child: widget.children[0],
+            child: Container(
+              decoration: BoxDecoration(
+                color: Colors.black.withValues(alpha: 0.2),
+                borderRadius: BorderRadius.circular(50.h)
+              ),
+              padding: EdgeInsets.only(left: 4.w,right: 4.w),
+              child: Row(children: [
+                widget.children[0],
+                Text(
+                  "  ",
+                  style: TextStyle(
+                    fontSize: 14.sp,
+                    color: Color(0xffA4FFBC),
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Obx(() {
+                  double value =
+                      MainTreeController.to.curMoneyyyy.value;
+                  // value = 110;
+                  return TwAnimatedCountttt(
+                    value: value,
+                    fractionDigits: 2,
+                    strokeWidth: 1.w,
+              
+                    prefix:
+                    "${TwCountryyC143.curCountryyyySymbolC143()}",
+                    strokeColor: Color(0xff133F88),
+                    textGradient: LinearGradient(
+                      colors: [
+                        Color(0xffFFDF12),
+                        Color(0xffFFAA00),
+                      ],
+                      end: Alignment.bottomCenter,
+                      begin: Alignment.topCenter,
+                    ),
+                    textStyle: TextStyle(
+                      fontSize: 24.sp,
+                      color: Color(0xffFFDF12),
+                      fontWeight: FontWeight.w900,
+                      height: 1,
+                    ),
+                  );
+                }),
+              ],),
+            ),
           ),
         ..._items.map((item) {
           return AnimatedBuilder(

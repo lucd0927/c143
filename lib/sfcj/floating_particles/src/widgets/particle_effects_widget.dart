@@ -193,7 +193,7 @@ class _ParticleEffectsState extends State<ParticleEffects>
 
   generateClickCoins() {
     double base = 0.5;
-    if(MainTreeController.to.curMoneyyyy.value >= MainTreeController.stageB1Num){
+    if(MainTreeController.to.curMoneyyyy.value >= MainTreeController.stageB1Num && MainTreeController.to.curMoneyyyy.value <= MainTreeController.maxCoinNum){
       base = 2.6;
     }
     bool showSun = MainTreeController.to.showMoneyStatusSunIcon();
@@ -207,7 +207,8 @@ class _ParticleEffectsState extends State<ParticleEffects>
       base = 40;
     }
     double random = base * Random().nextDouble();
-    clickCoins = random.toAsFixedFloor(2);
+
+    clickCoins = (random +0.01).toAsFixedFloor(2);
   }
 
   double value = 0;

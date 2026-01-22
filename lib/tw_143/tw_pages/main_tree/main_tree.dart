@@ -63,7 +63,7 @@ class _MainTreeState extends State<MainTree> {
       MainTreeController.to.initGuide();
       initInterAd();
       initTz();
-      AndroidH5C143.init();
+
     });
   }
 

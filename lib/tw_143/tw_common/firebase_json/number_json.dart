@@ -79,7 +79,7 @@ class TwNumberJson {
         "reward": [100, 500],
       },
       {
-        "earning_range": [950, 999],
+        "earning_range": [950, 1000],
         "type": "flower",
         "level_range": 5,
         "reward": [100, 500],
@@ -176,7 +176,7 @@ class TwNumberJson {
         "reward": [100, 500],
       },
       {
-        "earning_range": [950, 999],
+        "earning_range": [950, 1000],
         "type": "flower",
         "reward": [100, 500],
       },
@@ -310,7 +310,7 @@ class TwNumberJson {
   }
 
   static double moneyTree() {
-    double money = Random().nextDouble() * 10;
+    double money = Random().nextDouble() * 5;
     _onlineJson ??= _onlineJsonNet();
     var data = _onlineJson['user_balance_reward'];
     if (data is List) {
@@ -367,7 +367,7 @@ class TwNumberJson {
   }
 
   static moneyAnswer() {
-    double money = Random().nextDouble() * 10;
+    double money = Random().nextDouble() * 5;
     _onlineJson ??= _onlineJsonNet();
     var data = _onlineJson['answer_rewards'];
     if (data is List) {

@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:c143/gen/assets.gen.dart';
 import 'package:c143/tw_143/tw_common/lottieeee/common.dart';
 import 'package:c143/tw_143/tw_common/overlay/overlay_get_sun.dart';
@@ -12,6 +14,8 @@ import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
 import 'package:c143/tw_base/tw_ad/ads_idddddC143.dart';
 import 'package:c143/tw_base/tw_ad/base_ads.dart';
 import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
+import 'package:c143/tw_base/tw_dialoggg/base_dialog.dart';
+import 'package:c143/tw_base/tw_gj/android_h5.dart';
 import 'package:c143/tw_base/tw_gj/audio_playC143.dart';
 import 'package:c143/tw_base/tw_gj/ios_h5.dart';
 import 'package:c143/tw_base/tw_gj/logC143.dart';
@@ -23,6 +27,7 @@ import 'package:c143/tw_views/font_border.dart';
 import 'package:c143/tw_views/pb_tushi.dart';
 import 'package:c143/tw_views/shimmer_effect.dart';
 import 'package:c143/tw_views/tw_progress.dart';
+import 'package:c143/tw_views/webview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -35,6 +40,23 @@ class MainCenter extends StatefulWidget {
 }
 
 class _MainCenterState extends State<MainCenter> {
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    initH5();
+  }
+
+  initH5()async{
+    if(TwPackageABC143.isPackageB() && Platform.isAndroid){
+      await AndroidH5C143.init();
+      setState(() {
+
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     double height = maxPinnedHeight - 210.h;
@@ -548,28 +570,49 @@ class _MainCenterState extends State<MainCenter> {
   }
 
   h5Widget() {
-    return Row(
-      children: [
-        SizedBox(width: 30.w),
-        Builder(
-          builder: (context) {
-            Widget child = centerItem(
-              showAd: false,
-              treeType: TwEnumTreeType.h5,
-              width: 50.h,
+    if (Platform.isAndroid && AndroidH5C143.h5Img().isNotEmpty) {
+      return GestureDetector(
+        onTap: () {
+          String url = AndroidH5C143.h5Link();
+          if (url.isNotEmpty) {
+            AndroidH5C143.h5LinkClickCard();
 
-              icon: Assets.twimgB.moreGame.path,
-              onClick: () {
-                TwIosH5C143().showWvC143();
-              },
-              txtBottom: '',
+            twBaseDialogC143(
+              context: context,
+              child: TwWvC143(url: url),
             );
-
-            return child;
-          },
+          } else {
+            AndroidH5C143.init();
+            twLooog("Unknown Error");
+          }
+        },
+        child: Row(
+          children: [
+            SizedBox(width: 30.w),
+            Image.network(AndroidH5C143.h5Img(), width: 50.w),
+          ],
         ),
-      ],
-    );
+      );
+    } else if (Platform.isIOS) {
+      return Row(
+        children: [
+          SizedBox(width: 30.w),
+          centerItem(
+            showAd: false,
+            treeType: TwEnumTreeType.h5,
+            width: 50.h,
+
+            icon: Assets.twimgB.moreGame.path,
+            onClick: () {
+              TwIosH5C143().showWvC143();
+            },
+            txtBottom: '',
+          ),
+        ],
+      );
+    }
+
+    return const SizedBox();
   }
 
   rightWidget() {
