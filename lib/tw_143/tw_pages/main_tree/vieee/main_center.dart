@@ -525,14 +525,28 @@ class _MainCenterState extends State<MainCenter> {
               ),
             );
             if (treeType == TwEnumTreeType.water) {
-              OverlayGuide1Water.guideChild = child;
-              OverlayGuide1Water.guideContext = context;
+              if(OverlayGuide1Water.guideContext == null){
+                OverlayGuide1Water.guideChild = child;
+                OverlayGuide1Water.guideContext = context;
+              }
+
             } else if (treeType == TwEnumTreeType.coin2Guide) {
-              OverlayGuide2Coin.guideChild = child;
-              OverlayGuide2Coin.guideContext = context;
+              if(OverlayGuide2Coin.guideContext == null){
+                OverlayGuide2Coin.guideChild = child;
+                OverlayGuide2Coin.guideContext = context;
+              }
+
             } else if (treeType == TwEnumTreeType.fertilize) {
-              OverlayGuide4Fertilize.guideChild = child;
-              OverlayGuide4Fertilize.guideContext = context;
+              if(OverlayGuide4Fertilize.guideContext ==null){
+                OverlayGuide4Fertilize.guideChild = child;
+                OverlayGuide4Fertilize.guideContext = context;
+              }
+            }else if(treeType == TwEnumTreeType.spin){
+              if(OverlayGuide13Spin.guideContext == null){
+                OverlayGuide13Spin.guideChild = child;
+                OverlayGuide13Spin.guideContext = context;
+
+              }
             }
             return child;
           },
@@ -559,8 +573,6 @@ class _MainCenterState extends State<MainCenter> {
               txtBottom: '',
             );
 
-            OverlayGuide13Spin.guideChild = child;
-            OverlayGuide13Spin.guideContext = context;
 
             return child;
           },
