@@ -944,7 +944,7 @@ class Hongbaoyu extends StatelessWidget {
           direction: ParticleDirection.topToBottom,
           // Already falling
           particleCount: 10,
-          imagePath: MainTreeController.to.moneyIconTreeChild(),
+          imagePath: MainTreeController.to.moneyIconHongbao(),
           minSize: 50.w,
           maxSize: 50.w,
           enableRotation: false,

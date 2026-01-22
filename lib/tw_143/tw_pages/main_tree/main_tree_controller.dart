@@ -267,6 +267,21 @@ class MainTreeController extends GetxController {
     return tmpTreeIcon;
   }
 
+
+  String moneyIconHongbao() {
+    bool showSun = showMoneyStatusSunIcon();
+    bool showFlower = showMoneyStatusFlowerIcon();
+    String tmpTreeIcon = showSun
+        ? Assets.twimg.mainSun.path
+        : Assets.twimg.mainCoin.path;
+    if (TwPackageABC143.isPackageB()) {
+      tmpTreeIcon =Assets.twimgB.moneyFloating.path;
+
+    }
+
+    return tmpTreeIcon;
+  }
+
   String moneyIconSmall() {
     String tmpTreeIcon = Assets.twimg.coin.path;
     if (TwPackageABC143.isPackageB()) {

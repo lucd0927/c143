@@ -7,7 +7,7 @@ class TwConfiggDevvv implements TwConfigggg{
   @override
   String base_urllll() {
    if(Platform.isAndroid){
-     return "";
+     return "https://test-tnt.treeworldgardener.com/clever/cassava";
    }
 
     return "https://test-gilmore.treeworldgardener.com/position/nagoya/seminar";
@@ -16,7 +16,7 @@ class TwConfiggDevvv implements TwConfigggg{
   @override
   String tbaaa_urlll() {
     if(Platform.isAndroid){
-      return "";
+      return "https://teensy.treeworldgardener.com/wuhan/puny";
     }
     return "https://wakeup.treeworldgardener.com/bloom/indulge/sorcery";
   }

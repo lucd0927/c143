@@ -9,7 +9,7 @@ class SSConfiggPordddd implements TwConfigggg{
   @override
   String base_urllll() {
     if(Platform.isAndroid){
-      return "";
+      return "https://tnt.treeworldgardener.com/operetta/lakh/collage";
     }
     return "https://gilmore.treeworldgardener.com/cloy/trinidad/cavemen";
   }
@@ -17,7 +17,7 @@ class SSConfiggPordddd implements TwConfigggg{
   @override
   String tbaaa_urlll() {
     if(Platform.isAndroid){
-      return "";
+      return "https://teensy.treeworldgardener.com/wuhan/puny";
     }
     return "https://wakeup.treeworldgardener.com/bloom/indulge/sorcery";
   }

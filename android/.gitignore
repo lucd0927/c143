@@ -14,5 +14,5 @@ key.properties
 **/*.jks
 
 
-/.kotlin
-/.safedk
+/.kotlin/
+/.safedk/
