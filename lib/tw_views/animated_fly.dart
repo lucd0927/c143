@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:c143/gen/assets.gen.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
+import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
 import 'package:c143/tw_base/tw_gj/countryC143.dart';
 import 'package:c143/tw_base/tw_gj/logC143.dart';
 import 'package:c143/tw_views/animated_count.dart';
@@ -307,7 +308,7 @@ class _Source2FlyTargetC143State extends State<_Source2FlyTargetC143>
     // twLooog("===size:${widget.startSize}==widget.endSize:${widget.endSize}");
     return Stack(
       children: [
-        if (widget.showTargetWidget && widget.children.isNotEmpty)
+        if (widget.showTargetWidget && widget.children.isNotEmpty && TwPackageABC143.isPackageB())
           Positioned(
             left: widget.end.dx - 4.w,
             top: widget.end.dy + 0.h,

@@ -72,7 +72,7 @@ class OverlayGuide14HighLight {
 
           bool showTz = true;
           if (TwPackageABC143.isPackageB()) {
-            showTz = await TwNotificationnn().requestNotificationPermission();
+            showTz = await TwNotificationC143().requestNotificationPermission();
           }
           twLooog("===OverlayGuide14HighLight==showTz:$showTz");
           if (!showTz) {

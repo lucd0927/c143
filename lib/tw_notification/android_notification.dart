@@ -26,23 +26,23 @@ void backgourdListener(NotificationResponse ntftRse) {
   );
 }
 
-class TwNotificationnn {
-  static final TwNotificationnn _shli = TwNotificationnn._();
+class TwNotificationC143 {
+  static final TwNotificationC143 _instanceC143 = TwNotificationC143._();
 
-  TwNotificationnn._();
+  TwNotificationC143._();
 
-  factory TwNotificationnn() {
-    return _shli;
+  factory TwNotificationC143() {
+    return _instanceC143;
   }
 
-  static bool _dianjTzzzz = false;
+  static bool _dianjTzzzzC143 = false;
 
-  static bool get clickTz => _dianjTzzzz;
+  static bool get clickTz => _dianjTzzzzC143;
 
   static String baioti = "";
   static String neirong = "";
 
-  final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+  final FlutterLocalNotificationsPlugin flutterLocalNotificationsPluginC143 =
       FlutterLocalNotificationsPlugin();
   AndroidFlutterLocalNotificationsPlugin
   androidFlutterLocalNotificationsPlugin =
@@ -124,7 +124,7 @@ class TwNotificationnn {
     "c143n_img",
   ];
 
-  List<T> getRandomNMinus3<T>(List<T> source) {
+  List<T> getRandomNMinus3C143<T>(List<T> source) {
     if (source.length <= 3) {
       throw ArgumentError('数组长度必须大于 3');
     }
@@ -154,7 +154,7 @@ class TwNotificationnn {
       android: androidSettings,
     );
 
-    await flutterLocalNotificationsPlugin.initialize(
+    await flutterLocalNotificationsPluginC143.initialize(
       initSettings,
       onDidReceiveNotificationResponse: (NotificationResponse response) {
         // 点击通知回调
@@ -176,7 +176,7 @@ class TwNotificationnn {
           notificationAppLaunchDetails.notificationResponse;
       bool didNotificationLaunchApp =
           notificationAppLaunchDetails.didNotificationLaunchApp ?? false;
-      _dianjTzzzz = didNotificationLaunchApp;
+      _dianjTzzzzC143 = didNotificationLaunchApp;
       print(
         "点击通知 notificationAppLaunchDetails: didNotificationLaunchApp:${didNotificationLaunchApp} id:${notificationResponse?.id} data:${notificationResponse?.payload}",
       );
@@ -184,32 +184,32 @@ class TwNotificationnn {
         tongsongdianji(notificationResponse?.id);
       }
     }
-    List newContents = getRandomNMinus3(contents);
-    List tzimages = getRandomNMinus3(imgTz);
+    List newContents = getRandomNMinus3C143(contents);
+    List tzimages = getRandomNMinus3C143(imgTz);
     print("=====newContents:$newContents");
-    dingshhhhi(
-      id: dingshitzid,
-      minutes: TwConfigggg.hasDeeevv() ? 1 : 30,
+    dingshhhhiC143(
+      id: C143dingshitzid,
+      minutes: TwConfigggg.hasDeeevv() ? 1 : 28,
       title: newContents[0]['title'],
       content: newContents[0]['content'],
       tzimage: tzimages[0],
     );
-    dingshhhhi(
-      id: dingshitzid2,
-      minutes: TwConfigggg.hasDeeevv() ? 2 : 60,
+    dingshhhhiC143(
+      id: C143dingshitzid2,
+      minutes: TwConfigggg.hasDeeevv() ? 2 : 58,
       title: newContents[1]['title'],
       content: newContents[1]['content'],
       tzimage: tzimages[1],
     );
-    dingshhhhi(
-      id: dingshitzid3,
-      minutes: TwConfigggg.hasDeeevv() ? 3 : 90,
+    dingshhhhiC143(
+      id: C143dingshitzid3,
+      minutes: TwConfigggg.hasDeeevv() ? 3 : 80,
       title: newContents[2]['title'],
       content: newContents[2]['content'],
       tzimage: tzimages[2],
     );
     fcmtongzhi();
-    jiesoutz();
+    jiesoutzC143();
   }
 
   tongsongdianji(int? tuisongid) {
@@ -217,9 +217,9 @@ class TwNotificationnn {
     print("====tongsongdianji==tzid:$tuisongid==");
     if (tuisongid == unlockId) {
       payload = "unlock";
-    } else if (tuisongid == dingshitzid ||
-        tuisongid == dingshitzid2 ||
-        tuisongid == dingshitzid3) {
+    } else if (tuisongid == C143dingshitzid ||
+        tuisongid == C143dingshitzid2 ||
+        tuisongid == C143dingshitzid3) {
       payload = "local";
     } else {
       payload = "fcm";
@@ -240,12 +240,12 @@ class TwNotificationnn {
     return result;
   }
 
-  int dingshitzid = 5654;
-  int dingshitzid2 = 5655;
-  int dingshitzid3 = 5656;
+  int C143dingshitzid = 5696;
+  int C143dingshitzid2 = 5697;
+  int C143dingshitzid3 = 5698;
   String pushIcon = "tzimg1";
 
-  Future<void> dingshhhhi({
+  Future<void> dingshhhhiC143({
     required int id,
     required int minutes,
 
@@ -290,7 +290,7 @@ class TwNotificationnn {
           .subscribeToTopic(
             "c143_treeworld",
             AndroidNotificationDetails(
-              'pbccasd',
+              'fcm_tree',
               'fcm_notification',
               styleInformation: BeautyStyleInformation(
                 '',
@@ -311,7 +311,7 @@ class TwNotificationnn {
 
   int unlockId = 805;
 
-  Future<void> jiesoutz() async {
+  Future<void> jiesoutzC143() async {
     //自定义通知ID
     int id = unlockId;
     int length = contents.length;
@@ -324,10 +324,10 @@ class TwNotificationnn {
       tttttt,
       ccccc,
       //两次发送解锁通知的间隔，根据需求设置
-      TwConfigggg.hasDeeevv() ? Duration(seconds: 5) : Duration(minutes: 15),
+      TwConfigggg.hasDeeevv() ? Duration(seconds: 5) : Duration(seconds: 5),
       'android.intent.action.USER_PRESENT',
       AndroidNotificationDetails(
-        'pbwwww',
+        'lock_tree',
         'unlock:$id',
         priority: Priority.high,
         importance: Importance.max,

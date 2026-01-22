@@ -202,7 +202,7 @@ class TwPackageABC143 {
     var cloakData = await cloakAAC143();
     twLooog("$TGA====_initA==cloakData:$cloakData==");
     DateTime dateTime = DateTime.now();
-    twLooog("$TGA===PBFireBbbbbb==${dateTime.millisecondsSinceEpoch}");
+    twLooog("$TGA==_initA==PBFireBbbbbb==");
     // 初始化firebase
     await TwFirebasC143().init();
     DateTime dateTime2 = DateTime.now();
@@ -276,12 +276,11 @@ class TwPackageABC143 {
       await TwFirebasC143().init();
       DateTime dateTime2 = DateTime.now();
       twLooog(
-        "$TGA===PBFireBbbbbb==${dateTime2.millisecondsSinceEpoch - dateTime.millisecondsSinceEpoch}",
+        "$TGA===TwFirebasC143==${dateTime2.millisecondsSinceEpoch - dateTime.millisecondsSinceEpoch}",
       );
-
-      _initBC143();
+      await _initBC143();
     } else {
-      _initAC143();
+      await _initAC143();
     }
 
     bool result = (await initCompleter?.future) ?? false;

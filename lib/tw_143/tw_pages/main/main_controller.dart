@@ -35,7 +35,7 @@ class MainController extends GetxController {
 
   void resetIndex(int index) {
 
-
+    // throw Exception();
 
     MainCashController.overlayPortalController.hide();
     int curSelect = curMainNavIndex.value;

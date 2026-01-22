@@ -71,7 +71,7 @@ class OverlayGuide3BTrust {
 
           bool showTz = true;
           if (TwPackageABC143.isPackageB()) {
-            showTz = await TwNotificationnn().requestNotificationPermission();
+            showTz = await TwNotificationC143().requestNotificationPermission();
           }
           twLooog("===OverlayGuide3BTrust==showTz:$showTz");
           if (!showTz) {
