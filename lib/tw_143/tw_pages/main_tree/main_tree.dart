@@ -76,6 +76,7 @@ class _MainTreeState extends State<MainTree> {
   initInterAd() async {
     int count = TwLoginnnTrackC143.qiduoCishu();
     twLooog("initInterAd:$count");
+    // count = 1;
     if (count <= 1 ||
         !TwPackageABC143.isPackageB()) {
       return;

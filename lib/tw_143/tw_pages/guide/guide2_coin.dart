@@ -252,6 +252,16 @@ class GuideWidget extends StatelessWidget {
                     ),
                   ),
                 )),
+                if (TwPackageABC143.isPackageB())
+                  Positioned(
+                    top: -10.h,
+                    right: -5.h,
+                    child: Image.asset(
+                      Assets.twimg.ad.path,
+                      width: 28.h,
+                      height: 28.h,
+                    ),
+                  ),
                 Positioned(
                   top: 40.h,
                   left: 30.w,

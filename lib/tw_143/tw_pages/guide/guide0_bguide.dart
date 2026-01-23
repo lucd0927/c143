@@ -88,13 +88,13 @@ class OverlayGuide0BGuide {
 
     _isShowing = true;
   }
+
   String kHashCode = "";
 
   void close() {
     _isShowing = false;
     _overlayEntry?.remove();
     OverlayManager.clearOverlayEntry(kHashCode);
-
   }
 }
 
@@ -121,13 +121,9 @@ class _Guide0BGuideWidgetState extends State<Guide0BGuideWidget> {
 
   int stepIndex = 0;
 
-  // bool showNext1 = false;
-  // bool showNext2 = false;
-  // bool showNext3 = false;
-  // bool showNext4 = false;
-  // bool showNext5 = false;
-  // bool showNext6 = false;
-  // bool showNext7 = false;
+
+  Duration _nextDuration = Duration(milliseconds: 2500);
+  Timer? _timer0;
 
   @override
   void initState() {
@@ -140,12 +136,37 @@ class _Guide0BGuideWidgetState extends State<Guide0BGuideWidget> {
           showAnimated = true;
         });
         TwMaiDiannnn.guide_page_view("1");
+
+        _timer0 = Timer(_nextDuration, () {
+          _timer0?.cancel();
+          setSafeSetState(() {
+            TwMaiDiannnn.guide_page_view("2");
+            stepIndex = 1;
+            _timer0 = Timer(_nextDuration, () {
+              setSafeSetState(() {
+                stepIndex = 2;
+                TwMaiDiannnn.guide_page_view("3");
+              });
+            });
+          });
+        });
       }
     });
   }
 
-  final Duration _timerD = Duration(milliseconds: 3000);
+  _cancelAllTimer() {
+    _timer0?.cancel();
 
+  }
+
+  setSafeSetState(VoidCallback fn) {
+    if (mounted) {
+      setState(fn);
+    }
+  }
+
+  final Duration _timerD = Duration(milliseconds: 3000);
+  int maxIndex = 4;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -180,6 +201,40 @@ class _Guide0BGuideWidgetState extends State<Guide0BGuideWidget> {
                 Positioned.fill(child: stepWidget()),
 
                 Positioned(left: 0, right: 0, bottom: 90.h, child: btnClaim()),
+
+                if (stepIndex != maxIndex)
+                  Positioned(
+                    right: 30.w,
+                    top: 50.h,
+                    child: GestureDetector(
+                      onTap: () {
+                        _cancelAllTimer();
+                        setSafeSetState(() {
+                          stepIndex = maxIndex;
+                        });
+                      },
+                      child: Container(
+                        padding: EdgeInsets.only(
+                          left: 10.w,
+                          right: 10.w,
+                          top: 2.h,
+                          bottom: 2.h,
+                        ),
+                        decoration: BoxDecoration(
+                          color: Colors.white.withValues(alpha: 0.8),
+                          borderRadius: BorderRadius.circular(100.h),
+                        ),
+                        child: Text(
+                          "Skip",
+                          style: TextStyle(
+                            fontWeight: FontWeight.w500,
+                            fontSize: 16.sp,
+                            color: Color(0xffFFAA00),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
               ],
             ),
           ),
@@ -201,35 +256,30 @@ class _Guide0BGuideWidgetState extends State<Guide0BGuideWidget> {
         stepWidget0(),
         stepWidget1(),
         stepWidget2(),
-        stepWidget3(),
+        // stepWidget3(),
 
+        stepWidget3(),
+        // stepWidget5(),
         stepWidget4(),
-        stepWidget5(),
-        stepWidget6(),
       ],
     );
   }
 
   stepWidget0() {
-    return Center(child: _Guide0ScaleOverlayAnim());
+    return Center(
+      child: _Guide0ScaleOverlayAnim(text: "Your Attention = Cash"),
+    );
   }
 
   Duration _duration = Duration(milliseconds: 400);
 
   stepWidget1() {
     Widget child = stepIndex == 1
-        ? Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Center(
-                child: Image.asset(
-                  Assets.twimgB.guide0Txt1.path,
-                  width: 288.w,
-                  height: 228.h,
-                ),
-              ),
-              SizedBox(height: 200.h),
-            ],
+        ? Center(
+            child: _Guide0ScaleOverlayAnim(
+              text: "Turn Your Free Time Into Real Cash! ",
+              key: ValueKey("stepIndex$stepIndex"),
+            ),
           )
         : SizedBox();
     return AnimatedSize(
@@ -272,25 +322,25 @@ class _Guide0BGuideWidgetState extends State<Guide0BGuideWidget> {
                   ),
                 ),
                 Positioned.fill(
+                  left: 20.w,
                   child: Column(
                     // mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       SizedBox(height: 490.h),
-                      Center(
-                        child: Image.asset(
-                          Assets.twimgB.guide0Txt2.path,
-                          width: 288.w,
-                          height: 128.h,
-                        ),
+                      Image.asset(
+                        Assets.twimgB.guide0bText2.path,
+                        width: 288.w,
+                        height: 92.h,
                       ),
+
                     ],
                   ),
                 ),
               ],
             ),
           )
-        : SizedBox(   width: double.infinity,
-      );
+        : SizedBox(width: double.infinity);
     return AnimatedSize(
       duration: _duration,
       alignment: Alignment.topCenter,
@@ -298,19 +348,45 @@ class _Guide0BGuideWidgetState extends State<Guide0BGuideWidget> {
     );
   }
 
+  // stepWidget3() {
+  //   Widget child = stepIndex == 3
+  //       ? Column(
+  //           mainAxisAlignment: MainAxisAlignment.center,
+  //           children: [
+  //             Center(
+  //               child: TwTxtGraBorderC143(
+  //                 text: "The Bigger the Tree,",
+  //                 fontSize: 20.sp,
+  //               ),
+  //             ),
+  //             Center(
+  //               child: TwTxtGraBorderC143(
+  //                 text: "The More You Earn!",
+  //                 fontSize: 30.sp,
+  //               ),
+  //             ),
+  //             SizedBox(height: 200.h),
+  //           ],
+  //         )
+  //       : SizedBox();
+  //   return AnimatedSize(
+  //     duration: _duration,
+  //     alignment: Alignment.topLeft,
+  //     child: child,
+  //   );
+  // }
+
   stepWidget3() {
     Widget child = stepIndex == 3
         ? Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Center(
-                child: Image.asset(
-                  Assets.twimgB.guide0Txt3.path,
-                  width: 312.w,
-                  height: 240.h,
+                child: _Guide0ScaleOverlayAnim(
+                  text: "We get attention, YOU get CASH！",
+                  key: ValueKey("stepIndex$stepIndex"),
                 ),
               ),
-              SizedBox(height: 200.h),
             ],
           )
         : SizedBox();
@@ -320,81 +396,58 @@ class _Guide0BGuideWidgetState extends State<Guide0BGuideWidget> {
       child: child,
     );
   }
+
+  // stepWidget5() {
+  //   Widget child = stepIndex == 5
+  //       ? Column(
+  //           mainAxisAlignment: MainAxisAlignment.center,
+  //           children: [
+  //             Container(
+  //               width: 200.w,
+  //               height: 200.h,
+  //               color: Colors.red.withValues(alpha: 0),
+  //               child: Stack(
+  //                 children: [
+  //                   Center(
+  //                     child: TwRotateWidgggggC143(
+  //                       duration: Duration(milliseconds: 30000),
+  //                       child: Image.asset(
+  //                         Assets.twimg.bghightlight.path,
+  //                         width: double.infinity,
+  //                         height: double.infinity,
+  //                       ),
+  //                     ),
+  //                   ),
+  //                   Center(
+  //                     child: Image.asset(
+  //                       Assets.twimgB.guide05Gesture.path,
+  //                       width: 100.w,
+  //                       height: 100.h,
+  //                     ),
+  //                   ),
+  //                 ],
+  //               ),
+  //             ),
+  //             Center(
+  //               child: Image.asset(
+  //                 Assets.twimgB.guide0Txt5.path,
+  //                 width: 304.w,
+  //                 height: 128.h,
+  //               ),
+  //             ),
+  //             SizedBox(height: 200.h),
+  //           ],
+  //         )
+  //       : SizedBox();
+  //   return AnimatedSize(
+  //     duration: _duration,
+  //     alignment: Alignment.topLeft,
+  //     child: child,
+  //   );
+  // }
 
   stepWidget4() {
     Widget child = stepIndex == 4
-        ? Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Center(
-                child: Image.asset(
-                  Assets.twimgB.guide0Txt4.path,
-                  width: 308.w,
-                  height: 152.h,
-                ),
-              ),
-              SizedBox(height: 200.h),
-            ],
-          )
-        : SizedBox();
-    return AnimatedSize(
-      duration: _duration,
-      alignment: Alignment.topLeft,
-      child: child,
-    );
-  }
-
-  stepWidget5() {
-    Widget child = stepIndex == 5
-        ? Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                width: 200.w,
-                height: 200.h,
-                color: Colors.red.withValues(alpha: 0),
-                child: Stack(
-                  children: [
-                    Center(
-                      child: TwRotateWidgggggC143(
-                        duration: Duration(milliseconds: 30000),
-                        child: Image.asset(
-                          Assets.twimg.bghightlight.path,
-                          width: double.infinity,
-                          height: double.infinity,
-                        ),
-                      ),
-                    ),
-                    Center(
-                      child: Image.asset(
-                        Assets.twimgB.guide05Gesture.path,
-                        width: 100.w,
-                        height: 100.h,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Center(
-                child: Image.asset(
-                  Assets.twimgB.guide0Txt5.path,
-                  width: 304.w,
-                  height: 128.h,
-                ),
-              ),
-              SizedBox(height: 200.h),
-            ],
-          )
-        : SizedBox();
-    return AnimatedSize(
-      duration: _duration,
-      alignment: Alignment.topLeft,
-      child: child,
-    );
-  }
-
-  stepWidget6() {
-    Widget child = stepIndex == 6
         ? Column(
             children: [
               SizedBox(height: 80.h),
@@ -482,11 +535,12 @@ class _Guide0BGuideWidgetState extends State<Guide0BGuideWidget> {
     String txt = "Earn Now";
     if (stepIndex == 0 || stepIndex == 1) {
       txt = "Earn Now";
-    } else if (stepIndex == 2 || stepIndex == 5) {
-      txt = "Get";
-    } else if (stepIndex == 3 || stepIndex == 4) {
-      txt = "Of Course";
-    } else if (stepIndex == 6) {
+      return const SizedBox();
+    } else if (stepIndex == 2) {
+      txt = "I Want Cash!";
+    } else if (stepIndex == 3) {
+      return const SizedBox();
+    } else if (stepIndex == 4) {
       txt = "Claim";
     }
     return Center(
@@ -525,29 +579,7 @@ class _Guide0BGuideWidgetState extends State<Guide0BGuideWidget> {
               //   ),
               // ),
 
-              // Positioned(
-              //   top: -0.h,
-              //   right: -5.h,
-              //   child: Container(
-              //     padding: EdgeInsets.symmetric(vertical: 0.h, horizontal: 4.h),
-              //     decoration: BoxDecoration(
-              //       gradient: LinearGradient(
-              //         colors: [Color(0xffFF5151), Color(0xffCC0909)],
-              //         begin: Alignment.topCenter,
-              //         end: Alignment.bottomCenter,
-              //       ),
-              //       borderRadius: BorderRadius.circular(100),
-              //     ),
-              //     child: Text(
-              //       "3 Change Left",
-              //       style: TextStyle(
-              //         fontSize: 10.sp,
-              //         fontWeight: FontWeight.w700,
-              //         color: Color(0xffFFD059),
-              //       ),
-              //     ),
-              //   ),
-              // ),
+
             ],
           ),
         ),
@@ -559,36 +591,24 @@ class _Guide0BGuideWidgetState extends State<Guide0BGuideWidget> {
     // widget.onClose();
     if (mounted) {
       setState(() {
-        if (stepIndex == 0) {
-          stepIndex = 1;
-          TwMaiDiannnn.guide_page_view("2");
-          TwMaiDiannnn.guide_click_claim("1");
-        } else if (stepIndex == 1) {
-          stepIndex = 2;
-          TwMaiDiannnn.guide_page_view("3");
-          TwMaiDiannnn.guide_click_claim("2");
-        } else if (stepIndex == 2) {
-          stepIndex = 3;
-          TwMaiDiannnn.guide_page_view("4");
-          TwMaiDiannnn.guide_click_claim("3");
-        } else if (stepIndex == 3) {
-          stepIndex = 4;
-          TwMaiDiannnn.guide_page_view("5");
-          TwMaiDiannnn.guide_click_claim("4");
+        if (stepIndex == 2) {
+          setSafeSetState(() {
+            stepIndex = 3;
+            TwMaiDiannnn.guide_page_view("4");
+            TwMaiDiannnn.guide_click_claim("3");
+           _timer0 =  Timer(_nextDuration, () {
+             _timer0?.cancel();
+              setSafeSetState(() {
+                stepIndex = 4;
+                TwMaiDiannnn.guide_page_view("5");
+
+              });
+            });
+          });
+
         } else if (stepIndex == 4) {
-          stepIndex = 5;
-          TwMaiDiannnn.guide_page_view("6");
-          TwMaiDiannnn.guide_click_claim("5");
-        } else if (stepIndex == 5) {
-          // widget.onClose();
-          stepIndex = 6;
-          TwMaiDiannnn.guide_page_view("7");
-          TwMaiDiannnn.guide_click_claim("6");
-        } else if (stepIndex == 6) {
           widget.onClose();
-          TwMaiDiannnn.guide_click_claim("7");
-        } else if (stepIndex == 7) {
-          // stepIndex = -1;
+          TwMaiDiannnn.guide_click_claim("5");
         }
       });
     }
@@ -602,7 +622,9 @@ class _Guide0BGuideWidgetState extends State<Guide0BGuideWidget> {
 }
 
 class _Guide0ScaleOverlayAnim extends StatefulWidget {
-  const _Guide0ScaleOverlayAnim({super.key});
+  const _Guide0ScaleOverlayAnim({super.key, required this.text});
+
+  final String text;
 
   @override
   State<_Guide0ScaleOverlayAnim> createState() =>
@@ -685,9 +707,7 @@ class _Guide0ScaleOverlayAnimState extends State<_Guide0ScaleOverlayAnim>
                           child: Padding(
                             padding: EdgeInsets.symmetric(horizontal: 16.w),
                             child: Text(
-                              TwPackageABC143.isPackageB()
-                                  ? "Your Attention = Cash"
-                                  : "Your Attention = Coins",
+                              widget.text,
                               style: TextStyle(
                                 fontSize: 16.sp,
                                 fontWeight: FontWeight.w900,
