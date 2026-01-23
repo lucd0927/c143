@@ -21,9 +21,11 @@ import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
 import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
 import 'package:c143/tw_base/tw_gj/android_h5.dart';
 import 'package:c143/tw_base/tw_gj/event_busC143.dart';
+import 'package:c143/tw_base/tw_gj/vibration.dart';
 import 'package:c143/tw_base/tw_http/event_report.dart';
 import 'package:c143/tw_notification/overlay_notify.dart';
 import 'package:get/get.dart';
+import 'package:vibration/vibration.dart';
 
 class MainController extends GetxController {
   static MainController get to => Get.find();
@@ -33,10 +35,9 @@ class MainController extends GetxController {
   static const int spinindexxx = 2;
   static const int cashIndex = 3;
 
-  void resetIndex(int index) {
-
+  resetIndex(int index) async {
     // throw Exception();
-
+    // VibrationC143.vibrationClick();
     MainCashController.overlayPortalController.hide();
     int curSelect = curMainNavIndex.value;
     if (curSelect == index) {

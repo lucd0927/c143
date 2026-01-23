@@ -10,6 +10,7 @@ import 'package:c143/tw_143/tw_pages/main_quiz/datus/data.dart';
 import 'package:c143/tw_143/tw_pages/main_quiz/datus/quiz_model.dart';
 import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
 import 'package:c143/tw_base/tw_gj/logC143.dart';
+import 'package:c143/tw_base/tw_gj/vibration.dart';
 import 'package:c143/tw_base/tw_http/event_report.dart';
 import 'package:c143/tw_hive/twhiveC143.dart';
 import 'package:c143/tw_views/pb_tushi.dart';
@@ -215,6 +216,7 @@ class MainQuizController extends GetxController {
     if (tmpClick.isNotEmpty) {
       return;
     }
+    VibrationC143.vibrationClick();
     String tmpGuideStatus = guideStatus.value;
     bool hasGuide = tmpGuideStatus == guideStatus1;
     if (hasGuide && !hasClickRight) {

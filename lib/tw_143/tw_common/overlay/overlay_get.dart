@@ -12,6 +12,7 @@ import 'package:c143/tw_base/tw_ad/base_ads.dart';
 import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
 import 'package:c143/tw_base/tw_gj/countryC143.dart';
 import 'package:c143/tw_base/tw_gj/logC143.dart';
+import 'package:c143/tw_base/tw_gj/vibration.dart';
 import 'package:c143/tw_base/tw_http/event_report.dart';
 import 'package:c143/tw_views/animated_count.dart';
 import 'package:c143/tw_views/animated_scale.dart';
@@ -283,6 +284,7 @@ class _GetCoinsWidgetState extends State<GetCoinsWidget> {
                             top: 15.h,
                             child: GestureDetector(
                               onTap: () {
+                                VibrationC143.vibrationClick();
                                 widget.onClose();
                               },
                               child: Image.asset(
@@ -361,6 +363,7 @@ class _GetCoinsWidgetState extends State<GetCoinsWidget> {
   }
 
   void onClaim() {
+    VibrationC143.vibrationClick();
     widget.onClaim(_coins);
   }
 }

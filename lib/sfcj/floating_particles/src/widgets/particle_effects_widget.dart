@@ -5,6 +5,7 @@ import 'package:c143/gen/assets.gen.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
 import 'package:c143/tw_base/tw_gj/logC143.dart';
 import 'package:c143/tw_base/tw_gj/number_extend.dart';
+import 'package:c143/tw_base/tw_gj/vibration.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -396,7 +397,7 @@ class _ParticleEffectsState extends State<ParticleEffects>
     final painter = _curParticlePainter;
     twLooog("=======particle:$painter=");
     if (painter == null) return;
-
+    VibrationC143.vibrationClick();
     final particle = painter.hitTest2(details.localPosition);
     twLooog("=======particle2:=$particle");
     if (particle != null) {

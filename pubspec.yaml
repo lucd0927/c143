@@ -91,6 +91,7 @@ dependencies:
   app_tracking_transparency: ^2.0.6+1
   app_settings: ^7.0.0
   percent_indicator: any
+  vibration: ^3.1.5
   pbpig:
     path: ./c143sfcj/pbpig/
 dev_dependencies:

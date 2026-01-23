@@ -5,6 +5,7 @@ import 'package:c143/tw_143/tw_pages/main_cash/overlayc143/withdraw_succpop.dart
 import 'package:c143/tw_143/tw_pages/main_cash/viewC143/cash_account_detail.dart';
 import 'package:c143/tw_143/tw_pages/main_cash/viewC143/cash_progress.dart';
 import 'package:c143/tw_143/tw_pages/main_cash/viewC143/cash_top_bar.dart';
+import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -22,7 +23,9 @@ class _MainCashState extends State<MainCash> {
     super.initState();
     // 页面初始化后启动弹窗循环
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      TopNotificationManager.instance.startLoop(context);
+      if(TwPackageABC143.isPackageB()) {
+        TopNotificationManager.instance.startLoop(context);
+      }
     });
   }
   @override

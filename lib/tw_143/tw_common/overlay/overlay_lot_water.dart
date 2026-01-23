@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:c143/tw_143/tw_common/lottieeee/common.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
+import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -20,7 +21,7 @@ class OverlayLotWater {
     required VoidCallback onEnd,
 }) {
     _overlayEntry = null;
-
+    MainTreeController.to.onAddMoneyyyy(TwPackageABC143.isPackageB()?0.09:10);
     _overlayEntry = OverlayEntry(
       builder: (context) {
         return Material(

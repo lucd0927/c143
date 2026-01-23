@@ -19,6 +19,7 @@ import 'package:c143/tw_base/tw_gj/android_h5.dart';
 import 'package:c143/tw_base/tw_gj/audio_playC143.dart';
 import 'package:c143/tw_base/tw_gj/ios_h5.dart';
 import 'package:c143/tw_base/tw_gj/logC143.dart';
+import 'package:c143/tw_base/tw_gj/vibration.dart';
 import 'package:c143/tw_base/tw_http/event_report.dart';
 import 'package:c143/tw_views/animated_count.dart';
 import 'package:c143/tw_views/animated_scale.dart';
@@ -270,6 +271,7 @@ class _MainCenterState extends State<MainCenter> {
   }
 
   void onAddShiFeiCount() async {
+    VibrationC143.vibrationClick();
     MainTreeController.to.onAddShiFeiCount(onEnd: () {});
   }
 
@@ -305,6 +307,7 @@ class _MainCenterState extends State<MainCenter> {
             showAd: TwPackageABC143.isPackageB(),
             icon: moneyIcon,
             onClick: () async {
+              VibrationC143.vibrationClick();
               if (TwPackageABC143.isPackageB()) {
                 _onCoinB(coins: count, treeType: TwEnumTreeType.coin);
                 return;
@@ -362,6 +365,7 @@ class _MainCenterState extends State<MainCenter> {
             showAd: showAd,
             icon: moneyIcon,
             onClick: () async {
+              VibrationC143.vibrationClick();
               if (TwPackageABC143.isPackageB()) {
                 _onCoinB(coins: count, treeType: TwEnumTreeType.coin3);
                 return;
@@ -375,6 +379,7 @@ class _MainCenterState extends State<MainCenter> {
   }
 
   _onCoinB({required double coins, required TwEnumTreeType treeType}) async {
+    // VibrationC143.vibrationClick();
     bool result = await TwCommonAds().showRewardAd(
       adPosId: TwAdsPosId.cuvxv_bubble_rv,
     );
@@ -653,7 +658,7 @@ class _MainCenterState extends State<MainCenter> {
     String? data = MainTreeController.to.guideIndexData();
     // twLooog("====waterWidget==data:$data");
     bool showAd = data != null;
-    showAd = true;
+    showAd = !TwPackageABC143.isPackageB();
     return Row(
       children: [
         SizedBox(width: 50.w),
@@ -678,6 +683,7 @@ class _MainCenterState extends State<MainCenter> {
   }
 
   void onWater() async {
+    VibrationC143.vibrationClick();
     MainTreeController.to.onAddWaterCount(onEnd: () {}, showAd: true);
   }
 
@@ -723,6 +729,7 @@ class _MainCenterState extends State<MainCenter> {
                 icon: moneyIcon,
 
                 onClick: () async {
+                  VibrationC143.vibrationClick();
                   if (TwPackageABC143.isPackageB()) {
                     _onCoinB(coins: count, treeType: TwEnumTreeType.coin2Guide);
                     return;

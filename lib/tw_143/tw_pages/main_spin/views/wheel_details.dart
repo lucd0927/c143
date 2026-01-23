@@ -17,6 +17,7 @@ import 'package:c143/tw_base/tw_gj/audio_playC143.dart';
 import 'package:c143/tw_base/tw_gj/countryC143.dart';
 import 'package:c143/tw_base/tw_gj/event_busC143.dart';
 import 'package:c143/tw_base/tw_gj/logC143.dart';
+import 'package:c143/tw_base/tw_gj/vibration.dart';
 import 'package:c143/tw_base/tw_http/event_report.dart';
 import 'package:c143/tw_views/animated_count.dart';
 import 'package:c143/tw_views/animated_scale.dart';
@@ -789,6 +790,7 @@ class _PositionItemsState extends State<PositionItems>
   bool canClick = true;
 
   void onDraw() {
+    VibrationC143.vibrationClick();
     if(TwPackageABC143.isPackageB()){
       onDrawB();
       return;
