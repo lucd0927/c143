@@ -12,6 +12,7 @@ import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
 import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
 import 'package:c143/tw_base/tw_gj/countryC143.dart';
 import 'package:c143/tw_base/tw_gj/logC143.dart';
+import 'package:c143/tw_base/tw_gj/overlay_manager.dart';
 import 'package:c143/tw_base/tw_http/event_report.dart';
 import 'package:c143/tw_views/animated_count.dart';
 import 'package:c143/tw_views/animated_scale.dart';
@@ -32,40 +33,68 @@ class OverlayGuide0BGuide {
 
   void show({required double coins, required ValueChanged onBtn}) {
     _overlayEntry = null;
-
-    _overlayEntry = OverlayEntry(
-      builder: (context) {
-        return Material(
-          color: Colors.transparent,
-          child: Container(
-            child: Guide0BGuideWidget(
-              coins: coins,
-              onClose: () async {
-                twLooog("=====OverlayGuideTestAnim=close");
-                close();
-                MainTreeController.to.onAddMoneyyyy(
-                  coins,
-                  onEnd: () {
-                    MainTreeController.to.saveGuideIndexData(
-                      MainTreeController.guide0,
-                    );
-
-                    OverlayGuide1Water().show();
-                  },
+    OverlayManager.clearAll();
+    // _overlayEntry = OverlayEntry(
+    //   builder: (context) {
+    //     return Material(
+    //       color: Colors.transparent,
+    //       child: Container(
+    //         child: Guide0BGuideWidget(
+    //           coins: coins,
+    //           onClose: () async {
+    //             twLooog("=====OverlayGuideTestAnim=close");
+    //             close();
+    //             MainTreeController.to.onAddMoneyyyy(
+    //               coins,
+    //               onEnd: () {
+    //                 MainTreeController.to.saveGuideIndexData(
+    //                   MainTreeController.guide0,
+    //                 );
+    //                 OverlayManager.clearAll();
+    //                 OverlayGuide1Water().show();
+    //               },
+    //             );
+    //           },
+    //         ),
+    //       ),
+    //     );
+    //   },
+    // );
+    // Overlay.of(Get.context!).insert(_overlayEntry!);
+    Widget child = Material(
+      color: Colors.transparent,
+      child: Container(
+        child: Guide0BGuideWidget(
+          coins: coins,
+          onClose: () async {
+            twLooog("=====OverlayGuideTestAnim=close");
+            close();
+            OverlayManager.clearAll();
+            MainTreeController.to.onAddMoneyyyy(
+              coins,
+              onEnd: () {
+                MainTreeController.to.saveGuideIndexData(
+                  MainTreeController.guide0,
                 );
+
+                OverlayGuide1Water().show();
               },
-            ),
-          ),
-        );
-      },
+            );
+          },
+        ),
+      ),
     );
-    Overlay.of(Get.context!).insert(_overlayEntry!);
+    kHashCode = OverlayManager.show(context: Get.context!, child: child);
+
     _isShowing = true;
   }
+  String kHashCode = "";
 
   void close() {
     _isShowing = false;
     _overlayEntry?.remove();
+    OverlayManager.clearOverlayEntry(kHashCode);
+
   }
 }
 

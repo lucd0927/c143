@@ -1,3 +1,4 @@
+import 'package:c143/tw_base/tw_gj/logC143.dart';
 import 'package:flutter/material.dart';
 
 class OverlayManager {
@@ -10,6 +11,7 @@ class OverlayManager {
     String key = entry.hashCode.toString();
     Overlay.of(context).insert(entry);
     _kHashCode_vOverlay[key] = entry;
+    twLooog("==clearAll====key:$key _kHashCode_vOverlay:$_kHashCode_vOverlay");
     return key;
   }
 
@@ -19,6 +21,7 @@ class OverlayManager {
   }
 
   static void clearAll() {
+    twLooog("==clearAll====_kHashCode_vOverlay:$_kHashCode_vOverlay");
     for (var overlayEntry in _kHashCode_vOverlay.values) {
       overlayEntry.remove();
     }

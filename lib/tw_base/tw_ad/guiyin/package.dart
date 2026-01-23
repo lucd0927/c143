@@ -209,7 +209,7 @@ class TwPackageABC143 {
     twLooog(
       "$TGA===PBFireBbbbbb==${dateTime2.millisecondsSinceEpoch - dateTime.millisecondsSinceEpoch}",
     );
-    await initAd();
+    initAd();
     await _chushiGuiyinC143();
 
     twLooog("$TGA===_chushiGuiyin==end");

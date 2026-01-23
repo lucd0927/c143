@@ -74,7 +74,9 @@ class _MainTreeState extends State<MainTree> {
 
 
   initInterAd() async {
-    if (TwLoginnnTrackC143.qidongduoshaoDay() <= 1 ||
+    int count = TwLoginnnTrackC143.qiduoCishu();
+    twLooog("initInterAd:$count");
+    if (count <= 1 ||
         !TwPackageABC143.isPackageB()) {
       return;
     }
@@ -98,6 +100,7 @@ class _MainTreeState extends State<MainTree> {
       }
     }
     bool hasLoadSucc = load < 30;
+    twLooog("initInterAd: hasLoadSucc$hasLoadSucc");
     TwMaiDiannnn.event_launch_non_first(hasLoadSucc ? "1" : "0");
   }
 

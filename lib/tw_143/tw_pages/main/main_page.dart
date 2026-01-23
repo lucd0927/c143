@@ -68,11 +68,12 @@ class _TwMainPageState extends State<TwMainPage> {
       twLooog("===TwPackageABC143==packN:$packN");
       TwIosH5C143().initH5(context);
       if(packN == TwPackageABC143.packageB){
+        OverlayManager.clearAll();
         TwEventBusC143.fire(SpinEvent());
 
         MainTreeController.to.resetAllData();
         MainSpinController.to.resetAllData();
-        OverlayManager.clearAll();
+
         MainTreeController.to.initGuide();
         if(mounted){
           setState(() {

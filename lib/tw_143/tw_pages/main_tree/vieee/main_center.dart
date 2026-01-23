@@ -573,6 +573,7 @@ class _MainCenterState extends State<MainCenter> {
 
               icon: Assets.twimg.mainSpin.path,
               onClick: () {
+                VibrationC143.vibrationClick();
                 MainController.to.resetIndex(MainController.spinindexxx);
               },
               txtBottom: '',

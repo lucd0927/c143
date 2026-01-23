@@ -1,5 +1,6 @@
 import 'package:c143/tw_143/tw_pages/main_cash/main_cash_controller.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
+import 'package:c143/tw_base/tw_gj/vibration.dart';
 import 'package:c143/tw_views/tw_progress.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -140,6 +141,7 @@ class _CashProgressState extends State<CashProgress> {
   }
 
   void _onWithdraw() {
+    VibrationC143.vibrationClick();
     MainCashController.to.onWithdraw();
   }
 }
