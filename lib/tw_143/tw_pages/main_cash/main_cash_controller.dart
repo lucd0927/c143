@@ -127,7 +127,7 @@ class MainCashController extends GetxController {
     List<Color> tmpColors = [Color(0xff003389), Color(0xff0870BB)];
     String tmpCurPaytype = curPayTypeC143.value;
 
-    if (hasSaveCardIddddC143()) {
+    if (hasSaveCardIddddC143() && false) {
       tmpColors = [Color(0xffF4D5A4), Color(0xffD9B275)];
     } else {
       if (tmpCurPaytype == TwEnumPayType.paypal.nnnname) {

@@ -401,10 +401,11 @@ class _ParticleEffectsState extends State<ParticleEffects>
     final painter = _curParticlePainter;
     twLooog("=======particle:$painter=");
     if (painter == null) return;
-    VibrationC143.vibrationClick();
+
     final particle = painter.hitTest2(details.localPosition);
     twLooog("=======particle2:=$particle");
     if (particle != null) {
+      VibrationC143.vibrationClick();
       twLooog("=======particle3:$particle= ${details.localPosition}");
       _clickTimer?.cancel();
 

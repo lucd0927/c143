@@ -43,15 +43,16 @@ class _MainTopBState extends State<MainTopB> {
       "Wow! You’re almost there!",
       // "You’re expected to cash out in 15 minutes!",
     ],
+
     100: [
-      "🎉 Congratulations! You’ve reached your cash-out goal!",
-      "Awesome! Cash out now and get real money in hand!",
-      "Tap here—your money is ready!",
-    ],
-    101: [
       "Tomorrow’s taps are more valuable!",
       "Today’s tasks are complete! Log in tomorrow to get \$1.00 directly!",
       "The small tree grows at night—come back tomorrow morning for a surprise!",
+    ],
+    101: [
+      "🎉 Congratulations! You’ve reached your cash-out goal!",
+      "Awesome! Cash out now and get real money in hand!",
+      "Tap here—your money is ready!",
     ],
   };
 
@@ -73,7 +74,8 @@ class _MainTopBState extends State<MainTopB> {
               //   fit: BoxFit.fill,
               // ),
               Obx(() {
-                List<Color> prgressTxt = MainCashController.to.progressColorsMain();
+                List<Color> prgressTxt = MainCashController.to
+                    .progressColorsMain();
                 return Center(
                   child: Container(
                     width: 336.w,
@@ -121,109 +123,104 @@ class _MainTopBState extends State<MainTopB> {
                       if (progress > 1) {
                         progress = 1;
                       }
-                      return GestureDetector(
-                        onTap: _onWithdraw,
-                        child: Container(
-                          width: 290.w,
-                          height: 84.h,
-                          color: Colors.amber.withValues(alpha: 0.0),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Row(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  Builder(
-                                    builder: (context) {
-                                      if (!widget.hasGuide) {
-                                        overlayCoinMain.targetContext = context;
-                                      }
+                      return Container(
+                        width: 290.w,
+                        height: 84.h,
+                        color: Colors.amber.withValues(alpha: 0.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Builder(
+                                  builder: (context) {
+                                    if (!widget.hasGuide) {
+                                      overlayCoinMain.targetContext = context;
+                                    }
 
-                                      return Image.asset(
-                                        Assets.twimgB.money.path,
-                                        width: 24.w,
-                                        height: 24.w,
-                                      );
-                                    },
-                                  ),
-                                  Text(
-                                    "  ",
-                                    style: TextStyle(
-                                      fontSize: 14.sp,
-                                      color: Color(0xffA4FFBC),
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                  Obx(() {
-                                    double value =
-                                        MainTreeController.to.curMoneyyyy.value;
-                                    // value = 110;
-                                    return TwAnimatedCountttt(
-                                      value: value,
-                                      fractionDigits: 2,
-                                      strokeWidth: 1.w,
-
-                                      prefix:
-                                          "${TwCountryyC143.curCountryyyySymbolC143()}",
-                                      strokeColor: Color(0xff133F88),
-                                      textGradient: LinearGradient(
-                                        colors: [
-                                          Color(0xffFFDF12),
-                                          Color(0xffFFAA00),
-                                        ],
-                                        end: Alignment.bottomCenter,
-                                        begin: Alignment.topCenter,
-                                      ),
-                                      textStyle: TextStyle(
-                                        fontSize: 24.sp,
-                                        color: Color(0xffFFDF12),
-                                        fontWeight: FontWeight.w900,
-                                        height: 1,
-                                      ),
+                                    return Image.asset(
+                                      Assets.twimgB.money.path,
+                                      width: 24.w,
+                                      height: 24.w,
                                     );
-                                  }),
+                                  },
+                                ),
+                                Text(
+                                  "  ",
+                                  style: TextStyle(
+                                    fontSize: 14.sp,
+                                    color: Color(0xffA4FFBC),
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                Obx(() {
+                                  double value =
+                                      MainTreeController.to.curMoneyyyy.value;
+                                  // value = 110;
+                                  return TwAnimatedCountttt(
+                                    value: value,
+                                    fractionDigits: 2,
+                                    strokeWidth: 1.w,
 
-                                  Spacer(),
-
-
-                                ],
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    "Progress to: ",
-                                    style: TextStyle(
-                                      fontSize: 16.sp,
-                                      color: Color(0xffA4FFBC),
-                                      fontWeight: FontWeight.w700,
+                                    prefix:
+                                        "${TwCountryyC143.curCountryyyySymbolC143()}",
+                                    strokeColor: Color(0xff133F88),
+                                    textGradient: LinearGradient(
+                                      colors: [
+                                        Color(0xffFFDF12),
+                                        Color(0xffFFAA00),
+                                      ],
+                                      end: Alignment.bottomCenter,
+                                      begin: Alignment.topCenter,
                                     ),
-                                  ),
-                                  TwTxtGraBorderC143(
-                                    text:
-                                        "${TwCountryyC143.curCountryyyySymbolC143()}${curProgreeToNum.toStringAsFixed(0)}",
+                                    textStyle: TextStyle(
+                                      fontSize: 24.sp,
+                                      color: Color(0xffFFDF12),
+                                      fontWeight: FontWeight.w900,
+                                      height: 1,
+                                    ),
+                                  );
+                                }),
+
+                                Spacer(),
+                              ],
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Text(
+                                  "Progress to: ",
+                                  style: TextStyle(
                                     fontSize: 16.sp,
+                                    color: Color(0xffA4FFBC),
+                                    fontWeight: FontWeight.w700,
                                   ),
-                                ],
-                              ),
-                              SizedBox(height: 4.h),
-                              TwProgressC143(
-                                height: 12.h,
-                                innerHeight: 10.h,
-                                width: 200.w,
-                                progress: progress,
-                                gradientColors: [
-                                  Color(0xffFFDC2E),
-                                  Color(0xffFF8C00),
-                                ],
-                                text: "${(progress * 100).toStringAsFixed(2)}%",
-                                bgColor: Color(0xff000000).withValues(alpha: 0.3),
-                              ),
-                            ],
-                          ),
+                                ),
+                                TwTxtGraBorderC143(
+                                  text:
+                                      "${TwCountryyC143.curCountryyyySymbolC143()}${curProgreeToNum.toStringAsFixed(0)}",
+                                  fontSize: 16.sp,
+                                ),
+                              ],
+                            ),
+                            SizedBox(height: 4.h),
+                            TwProgressC143(
+                              height: 12.h,
+                              innerHeight: 10.h,
+                              width: 200.w,
+                              progress: progress,
+                              gradientColors: [
+                                Color(0xffFFDC2E),
+                                Color(0xffFF8C00),
+                              ],
+                              text: "${(progress * 100).toStringAsFixed(2)}%",
+                              bgColor: Color(0xff000000).withValues(alpha: 0.3),
+                            ),
+                          ],
                         ),
                       );
                     }),
@@ -231,23 +228,25 @@ class _MainTopBState extends State<MainTopB> {
                     Row(
                       children: [
                         Spacer(),
-                        Container(
-                          width: 88.w,
-                          height: 28.h,
-                          child: Stack(
-                            children: [
-                              Image.asset(
-                                Assets.twimgB.btnWithdraw.path,
-                              ),
-                              Center(
-                                child: TwTxtBorderC143(
-                                  text: "Withdraw",
-                                  fontSize: 12.sp,
-                                  fontWeight: FontWeight.w900,
-                                  foreground: Color(0xffA44A00),
+                        GestureDetector(
+                          onTap: _onWithdraw,
+                          child: Container(
+                            width: 88.w,
+                            height: 28.h,
+                            color: Colors.white.withValues(alpha: 0),
+                            child: Stack(
+                              children: [
+                                Image.asset(Assets.twimgB.btnWithdraw.path),
+                                Center(
+                                  child: TwTxtBorderC143(
+                                    text: "Withdraw",
+                                    fontSize: 12.sp,
+                                    fontWeight: FontWeight.w900,
+                                    foreground: Color(0xffA44A00),
+                                  ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ),
                         SizedBox(width: 20.w),
@@ -278,12 +277,12 @@ class _MainTopBState extends State<MainTopB> {
         tmp = stageTexts[30]!;
       } else if (progress <= 0.7) {
         tmp = stageTexts[70]!;
-      } else if (progress <= 0.8) {
+      } else if (progress <= 0.9) {
         tmp = stageTexts[90]!;
       } else if (progress <= 1) {
-        tmp = stageTexts[101]!;
-      } else if (progress > 1) {
         tmp = stageTexts[100]!;
+      } else if (progress > 1) {
+        tmp = stageTexts[101]!;
       }
       int length = tmp.length;
       List<Widget> chilren = [];
