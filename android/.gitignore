@@ -16,3 +16,4 @@ key.properties
 
 /.kotlin/
 /.safedk/
+/build/

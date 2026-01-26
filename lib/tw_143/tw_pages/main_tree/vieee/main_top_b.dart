@@ -37,7 +37,7 @@ class _MainTopBState extends State<MainTopB> {
       "Watch an ad, and your progress bar will jump up a notch!",
       // "You’ve outpaced 20% of users in today’s progress!",
     ],
-    95: [
+    90: [
       "Victory is within sight! Only \$0.50 left to go!",
       "Final sprint! Just 10 more taps to cash out!",
       "Wow! You’re almost there!",
@@ -59,28 +59,45 @@ class _MainTopBState extends State<MainTopB> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SizedBox(height: 40.h),
+        SizedBox(height: 56.h),
         Container(
           width: 352.w,
           height: 150.h,
           // color: Colors.amber,
           child: Stack(
             children: [
-              Image.asset(
-                Assets.twimg.mainTopbg.path,
-                width: double.infinity,
-                height: double.infinity,
-                fit: BoxFit.fill,
-              ),
+              // Image.asset(
+              //   Assets.twimg.mainTopbg.path,
+              //   width: double.infinity,
+              //   height: double.infinity,
+              //   fit: BoxFit.fill,
+              // ),
+              Obx(() {
+                List<Color> prgressTxt = MainCashController.to.progressColorsMain();
+                return Center(
+                  child: Container(
+                    width: 336.w,
+                    height: 150.h,
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        colors: prgressTxt,
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                      ),
+                      borderRadius: BorderRadius.circular(16.h),
+                    ),
+                  ),
+                );
+              }),
               Positioned(
-                bottom: 24.h,
-                right: 30.w,
+                top: -0.h,
+                right: 20.w,
                 child: Obx(() {
-                  String icon = MainCashController.to.payIconMainTop();
+                  String icon = MainCashController.to.payIconMainTop2();
                   return Image.asset(
                     icon,
-                    width: 88.w * 0.8,
-                    height: 76.h * 0.8,
+                    width: 80.w * 1,
+                    height: 80.h * 1,
                     fit: BoxFit.contain,
                   );
                 }),
@@ -90,7 +107,7 @@ class _MainTopBState extends State<MainTopB> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(height: 20.h),
+                    SizedBox(height: 0.h),
                     Obx(() {
                       double curProgreeToNum =
                           MainTreeController.to.curMoneyyyy.value >
@@ -98,11 +115,9 @@ class _MainTopBState extends State<MainTopB> {
                           ? MainTreeController.maxCoinNum
                           : MainTreeController.stageB1Num;
 
-                      double value =
-                          MainTreeController.to.curMoneyyyy.value;
+                      double value = MainTreeController.to.curMoneyyyy.value;
 
-                      double progress =
-                          value / curProgreeToNum;
+                      double progress = value / curProgreeToNum;
                       if (progress > 1) {
                         progress = 1;
                       }
@@ -172,25 +187,7 @@ class _MainTopBState extends State<MainTopB> {
 
                                   Spacer(),
 
-                                  Container(
-                                    width: 88.w,
-                                    height: 28.h,
-                                    child: Stack(
-                                      children: [
-                                        Image.asset(
-                                          Assets.twimgB.btnWithdraw.path,
-                                        ),
-                                        Center(
-                                          child: TwTxtBorderC143(
-                                            text: "Withdraw",
-                                            fontSize: 12.sp,
-                                            fontWeight: FontWeight.w900,
-                                            foreground: Color(0xffA44A00),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
+
                                 ],
                               ),
                               Row(
@@ -222,9 +219,8 @@ class _MainTopBState extends State<MainTopB> {
                                   Color(0xffFFDC2E),
                                   Color(0xffFF8C00),
                                 ],
-                                text:
-                                "${(progress * 100).toStringAsFixed(2)}%",
-                                bgColor: Color(0xff155F28),
+                                text: "${(progress * 100).toStringAsFixed(2)}%",
+                                bgColor: Color(0xff000000).withValues(alpha: 0.3),
                               ),
                             ],
                           ),
@@ -232,6 +228,31 @@ class _MainTopBState extends State<MainTopB> {
                       );
                     }),
                     bottomTxt(),
+                    Row(
+                      children: [
+                        Spacer(),
+                        Container(
+                          width: 88.w,
+                          height: 28.h,
+                          child: Stack(
+                            children: [
+                              Image.asset(
+                                Assets.twimgB.btnWithdraw.path,
+                              ),
+                              Center(
+                                child: TwTxtBorderC143(
+                                  text: "Withdraw",
+                                  fontSize: 12.sp,
+                                  fontWeight: FontWeight.w900,
+                                  foreground: Color(0xffA44A00),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(width: 20.w),
+                      ],
+                    ),
                   ],
                 ),
               ),
@@ -245,7 +266,7 @@ class _MainTopBState extends State<MainTopB> {
   Widget bottomTxt() {
     return Obx(() {
       double tmpCurMmmm = MainTreeController.to.curMoneyyyy.value;
-      double progress = tmpCurMmmm / MainTreeController.maxCoinNum;
+      double progress = tmpCurMmmm / MainTreeController.stage1Num;
       List<String> tmp =
           stageTexts[30] ??
           [
@@ -258,11 +279,11 @@ class _MainTopBState extends State<MainTopB> {
       } else if (progress <= 0.7) {
         tmp = stageTexts[70]!;
       } else if (progress <= 0.8) {
-        tmp = stageTexts[95]!;
+        tmp = stageTexts[90]!;
       } else if (progress <= 1) {
-        tmp = stageTexts[100]!;
-      } else if (progress > 1) {
         tmp = stageTexts[101]!;
+      } else if (progress > 1) {
+        tmp = stageTexts[100]!;
       }
       int length = tmp.length;
       List<Widget> chilren = [];

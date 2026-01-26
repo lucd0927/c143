@@ -39,7 +39,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_tba_info/flutter_tba_info.dart';
 
-double minPinnedHeight = 200.h;
+double minPinnedHeight = 220.h;
 double maxPinnedHeight = 530.h;
 // double maxPinnedHeight = 500.h;
 
@@ -155,11 +155,12 @@ class _MainTreeState extends State<MainTree> {
         child: Stack(
           children: [
             Image.asset(
-              Assets.twimg.mainBg.path,
+              Assets.twimg.mainBg1.path,
               width: double.infinity,
               height: double.infinity,
               fit: BoxFit.fill,
               gaplessPlayback: true,
+              // opacity: AlwaysStoppedAnimation(0.99),
             ),
             StarryBeamScene(),
             Positioned.fill(child: _buildExtendNestedScrollerView()),

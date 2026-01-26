@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:math';
 
+import 'package:c143/tw_base/tw_ad/guiyin/adjust.dart';
 import 'package:c143/tw_base/tw_http/event_report.dart';
 import 'package:flutter_custom_facebook/flutter_custom_facebook.dart';
 import 'package:c143/tw_base/tw_ad/guiyin/af.dart';
@@ -54,6 +55,7 @@ class TwCommonAds {
   //       k_platfrom: platform,
   //     }
   static Map<String, dynamic> cacheAdsData = {};
+  static Map<String, dynamic> cacheTimeAdsData = {};
 
   // 缓存当前播放的ads
   //  key ：adsID
@@ -172,6 +174,13 @@ class TwCommonAds {
       amount: value,
       currency: currency,
     );
+
+    TwAdjusssC143().adjustRevenue(
+      network: network,
+      currency: currency,
+      value: value,
+      source: source,
+    );
   }
 
   void onAdLoadedCallback(
@@ -218,11 +227,15 @@ class TwCommonAds {
     if (_hasFirstIntLoaded) {
       _hasFirstIntLoaded = false;
     }
-
+    int requestTime = DateTime.now().millisecondsSinceEpoch;
+    int starTime =
+        cacheTimeAdsData[adsId] ?? requestTime - Random().nextInt(2000);
+    int diffTime = requestTime - starTime;
     TwMaiDiannnn.cuvxv_ad_return(
       ad_code_id: adsId,
       ad_format: adsType.name,
       ad_platform: platform.name,
+      cuvxv_ad_request_time: "$diffTime",
     );
   }
 
@@ -379,7 +392,6 @@ class TwCommonAds {
       ad_format: adsType.name,
       ad_pos_id: _curAdPosId,
     );
-
   }
 
   // 下发收益
@@ -803,6 +815,8 @@ class TwCommonAds {
     String adsId = tuple4.adsId ?? "";
     String platform = tuple4.adsPlatform ?? "";
     String adsType = tuple4.adsType ?? "";
+    int tmpDataTime = DateTime.now().millisecondsSinceEpoch;
+    cacheTimeAdsData[adsId] = tmpDataTime;
     if (platform == GGCommonJson.ad_platfrom_max) {
       if (adsType == GGCommonJson.ad_type_int) {
         twLooog("=$platform=_loadAd===插屏loadInterstitial:$tuple4=");
@@ -834,7 +848,7 @@ class TwCommonAds {
     bool ignored_hasDisplayAd = false, // 是否忽略_hasDisplayAd的 判断 false不忽略 true 忽略
     bool canTryAgain = true, // 是否可以再次尝试加载广告
   }) async {
-    // return true;
+    return true;
 
     bool result = await _showAdLogic(
       adPosId: adPosId,

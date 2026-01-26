@@ -95,6 +95,17 @@ class MainCashController extends GetxController {
 
     return icon;
   }
+  String payIconMainTop2() {
+    String icon = Assets.twimgB.txPaypalMaintop2.path;
+    String tmpCurPaytype = curPayTypeC143.value;
+    if (tmpCurPaytype == TwEnumPayType.paypal.nnnname) {
+      icon = Assets.twimgB.txPaypalMaintop2.path;
+    } else if (tmpCurPaytype == TwEnumPayType.cashapp.nnnname) {
+      icon = Assets.twimgB.txCashappMaintop2.path;
+    }
+
+    return icon;
+  }
 
   String payBgCash() {
     String icon = Assets.twimgB.txBg.path;
@@ -112,6 +123,22 @@ class MainCashController extends GetxController {
     return icon;
   }
 
+  List<Color> progressColorsMain() {
+    List<Color> tmpColors = [Color(0xff003389), Color(0xff0870BB)];
+    String tmpCurPaytype = curPayTypeC143.value;
+
+    if (hasSaveCardIddddC143()) {
+      tmpColors = [Color(0xffF4D5A4), Color(0xffD9B275)];
+    } else {
+      if (tmpCurPaytype == TwEnumPayType.paypal.nnnname) {
+        tmpColors = [Color(0xff003389), Color(0xff0870BB)];
+      } else if (tmpCurPaytype == TwEnumPayType.cashapp.nnnname) {
+        tmpColors = [Color(0xff056629), Color(0xff0A963E)];
+      }
+    }
+
+    return tmpColors;
+  }
   List<Color> progressColors() {
     List<Color> tmpColors = [Color(0xff0056F1), Color(0xff009CDE)];
     String tmpCurPaytype = curPayTypeC143.value;

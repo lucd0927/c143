@@ -20,6 +20,7 @@ import 'package:c143/tw_views/animated_scale.dart';
 import 'package:c143/tw_views/font_border.dart';
 import 'package:c143/tw_views/tw_progress.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_infinite_marquee/flutter_infinite_marquee.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
@@ -62,39 +63,40 @@ class OverlayGuide3BTrust {
     // );
     // Overlay.of(Get.context!).insert(_overlayEntry!);
 
-
     Widget child = Material(
       color: Colors.transparent,
       child: Guide3BTrustWidget(
         onClose: () async {
           close();
-
+          return;
           bool showTz = true;
           if (TwPackageABC143.isPackageB()) {
             showTz = await TwNotificationC143().requestNotificationPermission();
           }
           twLooog("===OverlayGuide3BTrust==showTz:$showTz");
           if (!showTz) {
-            OverlayTzNotify().show(onEnd: (){
-              OverlayGuide4Fertilize().show();
-            });
+            OverlayTzNotify().show(
+              onEnd: () {
+                OverlayGuide4Fertilize().show();
+              },
+            );
           } else {
             OverlayGuide4Fertilize().show();
           }
         },
       ),
     );
-    kHashCode =  OverlayManager.show(context: Get.context!, child: child);
+    kHashCode = OverlayManager.show(context: Get.context!, child: child);
 
     _isShowing = true;
   }
+
   String kHashCode = "";
 
   void close() {
     _isShowing = false;
     _overlayEntry?.remove();
     OverlayManager.clearOverlayEntry(kHashCode);
-
   }
 }
 
@@ -113,6 +115,7 @@ class _Guide3BTrustWidgetState extends State<Guide3BTrustWidget> {
   bool showAnimated = false;
   Duration animD = Duration(milliseconds: 200);
   double startScale = 0.8;
+  double numneraa = 10000;
 
   @override
   void initState() {
@@ -123,6 +126,7 @@ class _Guide3BTrustWidgetState extends State<Guide3BTrustWidget> {
       if (mounted) {
         setState(() {
           showAnimated = true;
+          numneraa = Random().nextInt(10000) * 1.0 + 50000;
         });
       }
     });
@@ -139,129 +143,133 @@ class _Guide3BTrustWidgetState extends State<Guide3BTrustWidget> {
         child: SizedBox(
           width: ScreenUtil().screenWidth,
           height: ScreenUtil().screenHeight,
-          child: IndexedStack(
-            index: index,
+          child: Stack(
             children: [
               GestureDetector(
                 onTap: () {
                   widget.onClose();
                 },
-                child: Column(
-                  children: [
-                    IgnorePointer(child: MainTopB(hasGuide: true,)),
-                    Image.asset(
-                      Assets.twimgB.guide31Trust.path,
-                      width: 340.w,
-                      height: 184.h,
-                    ),
-                    SizedBox(height: 32.h),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        // Spacer(),
-                        Flexible(
-                          child: Container(
-                            padding: EdgeInsets.symmetric(
-                              horizontal: 10.w,
-                              vertical: 4.h,
+                child: AnimatedSize(
+                  duration: Duration(milliseconds: 500),
+                  alignment: Alignment.topLeft,
+                  child: showAnimated
+                      ? Column(
+                          children: [
+                            IgnorePointer(child: MainTopB(hasGuide: true)),
+                            SizedBox(height: 32.h),
+                            Image.asset(
+                              Assets.twimgB.guide31Trust.path,
+                              width: 340.w,
+                              height: 184.h,
                             ),
-                            decoration: BoxDecoration(
-                              color: Color(0xffFFFFFF).withValues(alpha: 0.4),
-                              border: Border.all(
-                                color: Color(0xffFFE345).withValues(alpha: 0.5),
-                                width: 1.w,
-                              ),
-                              borderRadius: BorderRadius.horizontal(
-                                left: Radius.circular(50),
-                              ),
-                            ),
-                            child: Text(
-                              "Congratulations to user ${Random().nextInt(9)}${Random().nextInt(9)}***${Random().nextInt(9)}${Random().nextInt(9)} on cashing out \$1000!",
-                              style: TextStyle(
-                                fontSize: 10.sp,
-                                color: Color(0xffffffff),
-                                fontWeight: FontWeight.w700,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 24.h),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        // Spacer(),
-                        Flexible(
-                          child: Container(
-                            padding: EdgeInsets.symmetric(
-                              horizontal: 10.w,
-                              vertical: 4.h,
-                            ),
-                            decoration: BoxDecoration(
-                              color: Color(0xffFFFFFF).withValues(alpha: 0.4),
-                              border: Border.all(
-                                color: Color(0xffFFE345).withValues(alpha: 0.5),
-                                width: 1.w,
-                              ),
-                              borderRadius: BorderRadius.horizontal(
-                                right: Radius.circular(50),
-                              ),
-                            ),
-                            child: Text(
-                              "Congratulations to user ${Random().nextInt(9)}${Random().nextInt(9)}***${Random().nextInt(9)}${Random().nextInt(9)} on cashing out \$1000!",
-                              style: TextStyle(
-                                fontSize: 10.sp,
-                                color: Color(0xffffffff),
-                                fontWeight: FontWeight.w700,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 16.h),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        // Spacer(),
-                        Flexible(
-                          child: Container(
-                            padding: EdgeInsets.symmetric(
-                              horizontal: 10.w,
-                              vertical: 4.h,
-                            ),
-                            decoration: BoxDecoration(
-                              color: Color(0xffFFFFFF).withValues(alpha: 0.4),
-                              border: Border.all(
-                                color: Color(0xffFFE345).withValues(alpha: 0.5),
-                                width: 1.w,
-                              ),
-                              borderRadius: BorderRadius.horizontal(
-                                left: Radius.circular(50),
-                              ),
-                            ),
-                            child: Text(
-                              "Congratulations to user ${Random().nextInt(9)}${Random().nextInt(9)}***${Random().nextInt(9)}${Random().nextInt(9)} on cashing out \$1000!",
-                              style: TextStyle(
-                                fontSize: 10.sp,
-                                color: Color(0xffffffff),
-                                fontWeight: FontWeight.w700,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
+                            SizedBox(height: 32.h),
+                            marquee2(0, speed: 100),
+                            SizedBox(height: 14.h),
+                            marquee2(10.w, speed: 150),
+                            SizedBox(height: 14.h),
+                            marquee2(30.w, speed: 50),
+                            SizedBox(height: 80.h),
+                            btnClaim(),
+                          ],
+                        )
+                      : SizedBox(width: double.infinity),
+                ),
+              ),
 
-                    SizedBox(height: 80.h),
-                    btnClaim(),
-                  ],
+              Positioned(
+                left: 104.w,
+                top: 250.h,
+                child: Container(
+                  width: 150.w,
+                  height: 40.h,
+                  color: Colors.white.withValues(alpha: 0.0),
+                  child: TwAnimatedCountttt(
+                    value: numneraa,
+                    fractionDigits: 0,
+                    duration: Duration(milliseconds: 1000),
+                    textStyle: TextStyle(
+                      fontWeight: FontWeight.w800,
+                      fontSize: 32.sp,
+                      color: Color(0xffFFAA00),
+                      height: 1
+                    ),
+                    textGradient: LinearGradient(
+                      colors: [
+                        Color(0xffFFDF12),
+                        Color(0xffFFAA00),
+                      ],
+                      end: Alignment.bottomCenter,
+                      begin: Alignment.topCenter,
+                    ),
+                    strokeColor: Color(0xffbd002c),
+                    strokeWidth: 2.w,
+                  ),
                 ),
               ),
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  Widget marquee2(double leftPadding, {required double speed}) {
+    return Container(
+      width: 360.w,
+      height: 30.h,
+      // color: Colors.black,
+      child: InfiniteMarquee(
+        speed: speed,
+        // stepOffset: 3,
+        itemBuilder: (BuildContext context, int index) {
+          return Container(
+            width: 360.w,
+            // height: 46.w,
+            padding: EdgeInsets.only(right: leftPadding),
+            // decoration: BoxDecoration(
+            //   color: Color(0xffFFFFFF).withValues(alpha: 0.8),
+            //   borderRadius: BorderRadius.circular(23.w),
+            // ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                // Spacer(),
+                Container(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 10.w,
+                    vertical: 4.h,
+                  ),
+                  decoration: BoxDecoration(
+                    color: Color(0xffFFFFFF).withValues(alpha: 0.4),
+                    border: Border.all(
+                      color: Color(0xffFFE345).withValues(alpha: 0.5),
+                      width: 1.w,
+                    ),
+                    borderRadius: BorderRadius.circular(50),
+                  ),
+                  child: Text(
+                    "Congratulations to user ${Random().nextInt(9)}${Random().nextInt(9)}***${Random().nextInt(9)}${Random().nextInt(9)} on cashing out \$1000!",
+                    style: TextStyle(
+                      fontSize: 10.sp,
+                      color: Color(0xffffffff),
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          );
+        },
+        separatorBuilder: (BuildContext context, int index) {
+          return Container(
+            width: 360.w,
+            height: 46.w,
+            decoration: BoxDecoration(
+              color: Color(0xffFFFFFF).withValues(alpha: 0.0),
+              borderRadius: BorderRadius.circular(23.w),
+            ),
+          );
+        },
       ),
     );
   }

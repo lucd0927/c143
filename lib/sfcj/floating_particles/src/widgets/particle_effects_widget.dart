@@ -3,6 +3,7 @@ import 'dart:math';
 
 import 'package:c143/gen/assets.gen.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
+import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
 import 'package:c143/tw_base/tw_gj/logC143.dart';
 import 'package:c143/tw_base/tw_gj/number_extend.dart';
 import 'package:c143/tw_base/tw_gj/vibration.dart';
@@ -193,14 +194,17 @@ class _ParticleEffectsState extends State<ParticleEffects>
   Timer? _clickTimer;
 
   generateClickCoins() {
-    double base = 0.5;
+    double base = 0.4;
+    if(TwPackageABC143.isPackageB()){
+      base = 0.2;
+    }
     if(MainTreeController.to.curMoneyyyy.value >= MainTreeController.stageB1Num && MainTreeController.to.curMoneyyyy.value <= MainTreeController.maxCoinNum){
-      base = 2.6;
+      base = 1;
     }
     bool showSun = MainTreeController.to.showMoneyStatusSunIcon();
     bool showFlower = MainTreeController.to.showMoneyStatusFlowerIcon();
     if (showSun) {
-      base = 8;
+      base = 1;
       if(MainTreeController.to.curMoneyyyy.value >= MainTreeController.stageB1Num){
         base = 20;
       }

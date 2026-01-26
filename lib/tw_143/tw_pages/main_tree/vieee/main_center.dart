@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:math';
 
 import 'package:c143/gen/assets.gen.dart';
 import 'package:c143/tw_143/tw_common/lottieeee/common.dart';
@@ -41,7 +42,6 @@ class MainCenter extends StatefulWidget {
 }
 
 class _MainCenterState extends State<MainCenter> {
-
   @override
   void initState() {
     // TODO: implement initState
@@ -49,12 +49,10 @@ class _MainCenterState extends State<MainCenter> {
     initH5();
   }
 
-  initH5()async{
-    if(TwPackageABC143.isPackageB() && Platform.isAndroid){
+  initH5() async {
+    if (TwPackageABC143.isPackageB() && Platform.isAndroid) {
       await AndroidH5C143.init();
-      setState(() {
-
-      });
+      setState(() {});
     }
   }
 
@@ -113,7 +111,7 @@ class _MainCenterState extends State<MainCenter> {
             child: textCongratulationWidget(),
             left: 0,
             right: 0,
-            bottom: -10.h,
+            bottom: 0.h,
           ),
 
           if (TwPackageABC143.isPackageB())
@@ -133,35 +131,41 @@ class _MainCenterState extends State<MainCenter> {
           borderRadius: BorderRadius.circular(28.h),
           border: Border.all(color: Color(0xffFFE345)),
         ),
-        child: Center(child: bottomTxt()),
+        child: Center(child: MainCeterTreeBottomText()),
       ),
     );
   }
 
-  Widget bottomTxt() {
-    List<String> tmp = [
-      "Nice one! Your coin journey has begun!",
-      "You’ve earned your first pot of gold! Keep collecting coins!",
-      "Every tap brings you one step closer to your goal!",
-    ];
-
-    int length = tmp.length;
-    List<Widget> chilren = [];
-    for (int i = 0; i < length; i++) {
-      Widget item = Text(
-        tmp[i],
-        style: TextStyle(
-          fontSize: 11.sp,
-          fontWeight: FontWeight.w700,
-          height: 1,
-          color: Color(0xff603000),
-        ),
-        textAlign: TextAlign.center,
-      );
-      chilren.add(item);
-    }
-    return TwFadeSwitcherC143(children: [...chilren]);
-  }
+  // Widget bottomTxt() {
+  //   const zifuc = '0123456789abcdefghijklmnopqrstuvwxyz';
+  //   final rand1 = zifuc[Random().nextInt(zifuc.length)];
+  //   final rand2 = zifuc[Random().nextInt(zifuc.length)];
+  //   final rand3 = zifuc[Random().nextInt(zifuc.length)];
+  //   final rand4 = zifuc[Random().nextInt(zifuc.length)];
+  //   String prefix = "$rand1$rand2";
+  //   // 生成 1000 到 9999 的随机数作为尾号
+  //   // String suffix = (_rng.nextInt(9000) + 1000).toString();
+  //   String suffix = "$rand3$rand4";
+  //   String randomUser = "$prefix****$suffix";
+  //   List<String> tmp = ["Congratulations To User "];
+  //
+  //   int length = tmp.length;
+  //   List<Widget> chilren = [];
+  //   for (int i = 0; i < length; i++) {
+  //     Widget item = Text(
+  //       tmp[i],
+  //       style: TextStyle(
+  //         fontSize: 11.sp,
+  //         fontWeight: FontWeight.w700,
+  //         height: 1,
+  //         color: Color(0xff603000),
+  //       ),
+  //       textAlign: TextAlign.center,
+  //     );
+  //     chilren.add(item);
+  //   }
+  //   return TwFadeSwitcherC143(children: [...chilren]);
+  // }
 
   levelWidget() {
     int curLevel = MainTreeController.to.curLevel.value;
@@ -220,7 +224,7 @@ class _MainCenterState extends State<MainCenter> {
   }
 
   leftWidget() {
-    double height1 = 20.h;
+    double height1 = 40.h;
     double height2 = 0.h;
     double height3 = 60.h;
 
@@ -530,27 +534,24 @@ class _MainCenterState extends State<MainCenter> {
               ),
             );
             if (treeType == TwEnumTreeType.water) {
-              if(OverlayGuide1Water.guideContext == null){
+              if (OverlayGuide1Water.guideContext == null) {
                 OverlayGuide1Water.guideChild = child;
                 OverlayGuide1Water.guideContext = context;
               }
-
             } else if (treeType == TwEnumTreeType.coin2Guide) {
-              if(OverlayGuide2Coin.guideContext == null){
+              if (OverlayGuide2Coin.guideContext == null) {
                 OverlayGuide2Coin.guideChild = child;
                 OverlayGuide2Coin.guideContext = context;
               }
-
             } else if (treeType == TwEnumTreeType.fertilize) {
-              if(OverlayGuide4Fertilize.guideContext ==null){
+              if (OverlayGuide4Fertilize.guideContext == null) {
                 OverlayGuide4Fertilize.guideChild = child;
                 OverlayGuide4Fertilize.guideContext = context;
               }
-            }else if(treeType == TwEnumTreeType.spin){
-              if(OverlayGuide13Spin.guideContext == null){
+            } else if (treeType == TwEnumTreeType.spin) {
+              if (OverlayGuide13Spin.guideContext == null) {
                 OverlayGuide13Spin.guideChild = child;
                 OverlayGuide13Spin.guideContext = context;
-
               }
             }
             return child;
@@ -578,7 +579,6 @@ class _MainCenterState extends State<MainCenter> {
               },
               txtBottom: '',
             );
-
 
             return child;
           },
@@ -777,5 +777,71 @@ class _MainCenterState extends State<MainCenter> {
         ),
       ],
     );
+  }
+}
+
+class MainCeterTreeBottomText extends StatefulWidget {
+  const MainCeterTreeBottomText({super.key});
+
+  @override
+  State<MainCeterTreeBottomText> createState() =>
+      _MainCeterTreeBottomTextState();
+}
+
+class _MainCeterTreeBottomTextState extends State<MainCeterTreeBottomText> {
+  @override
+  Widget build(BuildContext context) {
+    return bottomTxt();
+  }
+
+  List<String> tmp = [];
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    initDAtaaa();
+  }
+
+  initText() {
+    const zifuc = '0123456789abcdefghijklmnopqrstuvwxyz';
+    final rand1 = zifuc[Random().nextInt(zifuc.length)];
+    final rand2 = zifuc[Random().nextInt(zifuc.length)];
+    final rand3 = zifuc[Random().nextInt(zifuc.length)];
+    final rand4 = zifuc[Random().nextInt(zifuc.length)];
+    String prefix = "$rand1$rand2";
+    // 生成 1000 到 9999 的随机数作为尾号
+    // String suffix = (_rng.nextInt(9000) + 1000).toString();
+    String suffix = "$rand3$rand4";
+    String randomUser = "$prefix****$suffix";
+    return "Congratulations To User $randomUser On Successfully Withdrawing \$1000";
+  }
+
+  initDAtaaa() {
+    tmp = [];
+
+    for (int i = 0; i < 20; i++) {
+      String value = initText();
+      tmp.add(value);
+    }
+  }
+
+  Widget bottomTxt() {
+    int length = tmp.length;
+    List<Widget> chilren = [];
+    for (int i = 0; i < length; i++) {
+      Widget item = Text(
+        tmp[i],
+        style: TextStyle(
+          fontSize: 11.sp,
+          fontWeight: FontWeight.w700,
+          height: 1,
+          color: Color(0xff603000),
+        ),
+        textAlign: TextAlign.center,
+      );
+      chilren.add(item);
+    }
+    return TwFadeSwitcherC143(children: [...chilren]);
   }
 }

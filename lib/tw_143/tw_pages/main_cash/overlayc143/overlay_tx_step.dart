@@ -93,6 +93,7 @@ class _TxStepWidgetState extends State<TxStepWidget> {
             setState(() {
               stepIndex = 1;
             });
+
             TwMaiDiannnn.withdraw_v();
           }
         });
@@ -783,8 +784,9 @@ class _TxStepWidgetState extends State<TxStepWidget> {
       setState(() {
         if (stepIndex == 0) {
           stepIndex = 1;
-          TwMaiDiannnn.withdraw_c();
+
         } else if (stepIndex == 1) {
+          TwMaiDiannnn.withdraw_c();
           stepIndex = 2;
           Future.delayed(animIndex2, () {
             if (mounted) {

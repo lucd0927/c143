@@ -258,6 +258,10 @@ class $AssetsTwimgGen {
   /// File path: assets/twimg/main_bg5.png
   AssetGenImage get mainBg5 => const AssetGenImage('assets/twimg/main_bg5.png');
 
+  /// File path: assets/twimg/main_bg_1.png
+  AssetGenImage get mainBg1 =>
+      const AssetGenImage('assets/twimg/main_bg_1.png');
+
   /// File path: assets/twimg/main_chuanzi.png
   AssetGenImage get mainChuanzi =>
       const AssetGenImage('assets/twimg/main_chuanzi.png');
@@ -516,6 +520,7 @@ class $AssetsTwimgGen {
     mainBg3,
     mainBg4,
     mainBg5,
+    mainBg1,
     mainChuanzi,
     mainCoin,
     mainCoinYu,
@@ -774,6 +779,10 @@ class $AssetsTwimgBGen {
   AssetGenImage get txCashappMaintop =>
       const AssetGenImage('assets/twimgB/tx_cashapp_maintop.png');
 
+  /// File path: assets/twimgB/tx_cashapp_maintop2.png
+  AssetGenImage get txCashappMaintop2 =>
+      const AssetGenImage('assets/twimgB/tx_cashapp_maintop2.png');
+
   /// File path: assets/twimgB/tx_check.png
   AssetGenImage get txCheck =>
       const AssetGenImage('assets/twimgB/tx_check.png');
@@ -792,6 +801,10 @@ class $AssetsTwimgBGen {
   /// File path: assets/twimgB/tx_paypal_maintop.png
   AssetGenImage get txPaypalMaintop =>
       const AssetGenImage('assets/twimgB/tx_paypal_maintop.png');
+
+  /// File path: assets/twimgB/tx_paypal_maintop2.png
+  AssetGenImage get txPaypalMaintop2 =>
+      const AssetGenImage('assets/twimgB/tx_paypal_maintop2.png');
 
   /// File path: assets/twimgB/tx_setting.png
   AssetGenImage get txSetting =>
@@ -905,11 +918,13 @@ class $AssetsTwimgBGen {
     txBg3,
     txCashapp,
     txCashappMaintop,
+    txCashappMaintop2,
     txCheck,
     txNext,
     txPaychange,
     txPaypal,
     txPaypalMaintop,
+    txPaypalMaintop2,
     txSetting,
     txYou,
     wheelPhone,

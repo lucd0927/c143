@@ -436,7 +436,7 @@ class _hongbaoyuuuState extends State<_hongbaoyuuu> {
             child: GestureDetector(
               onTap: () {
                 setState(() {
-                  getCoins = getCoins + 2;
+                  getCoins = getCoins + 0.5;
                   box.put(twkeyFirstGesture, false);
                 });
               },

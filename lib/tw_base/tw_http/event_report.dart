@@ -40,8 +40,9 @@ class TwMaiDiannnn {
       Future.delayed(Duration(milliseconds: 0), () async {
         // SSHttpDio().buryPoint(moistValue: "install");
         var tmpData = await TwHttpDio().buryPoint(moistValue: "install");
+        TwMaiDiannnn.event_launch_first();
         if (tmpData != null) {
-          TwMaiDiannnn.event_launch_first();
+
           box.put(key, true);
         }
       });
@@ -241,7 +242,7 @@ class TwMaiDiannnn {
         // SSHttpDio().buryPoint(moistValue: "install");
         var tmpData = await TwHttpDio().buryPoint(moistValue: "notification_pro_show_f");
         if (tmpData != null) {
-          TwMaiDiannnn.event_launch_first();
+          // TwMaiDiannnn.event_launch_first();
           box.put(key, true);
         }
       });
@@ -306,11 +307,12 @@ class TwMaiDiannnn {
       veinKeyValue3: ad_platform,
     );
   }
-
+  //ad_code_id/ad_format/ad_platform、cuvxv_ad_request_time
   static cuvxv_ad_return({
     required String ad_code_id,
     required String ad_format,
     required String ad_platform,
+    required String cuvxv_ad_request_time,
   }) {
     TwHttpDio().buryPoint(
       moistValue: "cuvxv_ad_return",
@@ -320,6 +322,8 @@ class TwMaiDiannnn {
       veinKeyValue2: ad_format,
       veinKey3: "ad_platform",
       veinKeyValue3: ad_platform,
+      veinKey4: "cuvxv_ad_request_time",
+      veinKeyValue4: cuvxv_ad_request_time,
     );
   }
 

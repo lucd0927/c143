@@ -138,7 +138,7 @@ class MainQuizController extends GetxController {
       TwPackageABC143.isPackageB()
       ? [
           {
-            "question": "Do you want to earn more money?",
+            "question": "Do you want to cash out TODAY?",
             "a": "Yes",
             "b": "No",
             "answer": "a",

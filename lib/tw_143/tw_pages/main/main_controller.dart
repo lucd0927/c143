@@ -38,6 +38,7 @@ class MainController extends GetxController {
   resetIndex(int index) async {
     // throw Exception();
     // VibrationC143.vibrationClick();
+    OverlayGuide3BTrust().show();
     MainCashController.overlayPortalController.hide();
     int curSelect = curMainNavIndex.value;
     if (curSelect == index) {
