@@ -308,11 +308,39 @@ class _WithdrawCardInfoC143WidgetState extends State<WithdrawCardInfoC143Widget>
     );
   }
 
+  bool containsEmail(String input) {
+    final emailRegex = RegExp(
+      r'[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}',
+    );
+    return emailRegex.hasMatch(input);
+  }
+
+  bool isDigitStringOfLength(String input, int length) {
+    final regex = RegExp(r'^\d{' + length.toString() + r'}$');
+    return regex.hasMatch(input);
+  }
+
+  bool isDigitsOnly(String s) => RegExp(r'^\d+$').hasMatch(s);
+
   void onWithdrawwww() {
-    if (_inputCarddddd.isEmpty) {
+
+    bool isEeee = containsEmail(_inputCarddddd);
+    bool _isNnnnn = isDigitsOnly(_inputCarddddd);
+
+    if (_inputCarddddd.isEmpty ) {
       twToast(text: "Please check your input.");
       return;
     }
+    if(_enumPayType == TwEnumPayType.paypal){
+      bool hasConnnn = isEeee || _isNnnnn;
+      if(!hasConnnn){
+        twToast(text: "Please check your input.");
+        return;
+      }
+    }
+
+
+
     MainCashController.to.saveCardIdddd(_inputCarddddd);
     MainCashController.to.savePaytypeC143(_enumPayType);
 
