@@ -315,7 +315,7 @@ class _GetCoinsWidgetState extends State<GetCoinsWidget> {
       child: AnimatedCrossFade(
         alignment: Alignment.center,
         firstChild: SizedBox(height: 56.h),
-        secondChild: GestureDetector(
+        secondChild: InkWell(
           onTap: onClaim,
           child: Container(
             width: 260.h,

@@ -87,6 +87,14 @@ class _MainTopBState extends State<MainTopB> {
                         end: Alignment.bottomRight,
                       ),
                       borderRadius: BorderRadius.circular(16.h),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.4),
+                          offset: Offset(1, 1),
+                          blurRadius: 1,
+                          spreadRadius: 1,
+                        ),
+                      ],
                     ),
                   ),
                 );
