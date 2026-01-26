@@ -123,89 +123,87 @@ class _QuizAnswerState extends State<QuizAnswer> {
       }
 
     }
-    return GestureDetector(
+    return InkWell(
       onTap: () {
         MainQuizController.to.onClickAnswerrrr(click: answer, right: rightAnswer);
       },
-      child: Center(
-        child: Container(
-          width: 272.w,
-          height: 60.h,
-          color: Colors.red.withValues(alpha: 0.0),
-          child: Stack(
-            clipBehavior: Clip.none,
-            children: [
-              AnimatedOpacity(
-                duration: Duration(milliseconds: 300),
-                opacity: opacity,
-                child: Image.asset(
-                  icon,
-                  width: double.infinity,
-                  height: double.infinity,
-                  fit: BoxFit.fill,
-                  // opacity: AlwaysStoppedAnimation(opacity),
-                  gaplessPlayback: true,
-                ),
+      child: Container(
+        width: 272.w,
+        height: 60.h,
+        color: Colors.red.withValues(alpha: 0.0),
+        child: Stack(
+          clipBehavior: Clip.none,
+          children: [
+            AnimatedOpacity(
+              duration: Duration(milliseconds: 300),
+              opacity: opacity,
+              child: Image.asset(
+                icon,
+                width: double.infinity,
+                height: double.infinity,
+                fit: BoxFit.fill,
+                // opacity: AlwaysStoppedAnimation(opacity),
+                gaplessPlayback: true,
               ),
-              Positioned(
-                left: 15.w,
-                // right: 0,
-                top: 4.h,
-                bottom: 4.h,
-                child: Center(
-                  child: Padding(
-                    padding: EdgeInsets.all(10.w),
-                    child: TwTxtBorderC143(
-                      text: "$answer.",
-                      fontSize: 16.sp,
-                      fontWeight: FontWeight.w700,
-                      foreground: Color(0xff7E1D00),
-                    ),
+            ),
+            Positioned(
+              left: 15.w,
+              // right: 0,
+              top: 4.h,
+              bottom: 4.h,
+              child: Center(
+                child: Padding(
+                  padding: EdgeInsets.all(10.w),
+                  child: TwTxtBorderC143(
+                    text: "$answer.",
+                    fontSize: 16.sp,
+                    fontWeight: FontWeight.w700,
+                    foreground: Color(0xff7E1D00),
                   ),
                 ),
               ),
-              Positioned(
-                left: 40.w,
-                right: 40.w,
-                top: 4.h,
-                bottom: 4.h,
-                child: Center(
-                  child: Padding(
-                    padding: EdgeInsets.all(10.w),
-                    child: TwTxtBorderC143(
-                      text: "$answerContent",
-                      fontSize: 16.sp,
-                      fontWeight: FontWeight.w700,
-                      foreground: Color(0xff7E1D00),
-                    ),
+            ),
+            Positioned(
+              left: 40.w,
+              right: 40.w,
+              top: 4.h,
+              bottom: 4.h,
+              child: Center(
+                child: Padding(
+                  padding: EdgeInsets.all(10.w),
+                  child: TwTxtBorderC143(
+                    text: "$answerContent",
+                    fontSize: 16.sp,
+                    fontWeight: FontWeight.w700,
+                    foreground: Color(0xff7E1D00),
                   ),
                 ),
               ),
+            ),
 
-              if (showIcon)
-                Positioned(
-                  top: 0,
-                  bottom: 0.h,
-                  right: 20.w,
-                  child: Image.asset(answerIcon, width: 24.w, height: 24.w),
-                ),
+            if (showIcon)
+              Positioned(
+                top: 0,
+                bottom: 0.h,
+                right: 20.w,
+                child: Image.asset(answerIcon, width: 24.w, height: 24.w),
+              ),
 
-              if (showG && selectRight)
-                Positioned(
-                  top: 20.h,
-                  // bottom: 0,
-                  right: -20.w,
-                  // child: TwAScale(
-                  //   child: Image.asset(
-                  //     Assets.twimg.gesture.path,
-                  //     width: 70.w,
-                  //     height: 70.w,
-                  //   ),
-                  // ),
-                  child: TwLottieGesture(),
-                ),
-            ],
-          ),
+            if (showG && selectRight)
+              Positioned(
+                top: 20.h,
+                // bottom: 0,
+                right: -20.w,
+                // child: TwAScale(
+                //   child: Image.asset(
+                //     Assets.twimg.gesture.path,
+                //     width: 70.w,
+                //     height: 70.w,
+                //   ),
+                // ),
+                child: TwLottieGesture(),
+              ),
+          ],
         ),
       ),
     );
