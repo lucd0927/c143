@@ -233,7 +233,7 @@ class GuideWidget extends StatelessWidget {
           ),
 
           Positioned(
-            top: 190.h,
+            top: 180.h,
             left: 20.w,
             child: Image.asset(
               Assets.twimg.guide4Txt.path,

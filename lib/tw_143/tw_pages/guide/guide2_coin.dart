@@ -189,7 +189,7 @@ class GuideWidget extends StatelessWidget {
           Positioned(
             left: 0,
             right: 0,
-            top: 206.h,
+            top:TwPackageABC143.isPackageB()? 206.h:190.h,
             child: Container(
               width: double.infinity,
               height: height,

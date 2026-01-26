@@ -107,7 +107,7 @@ class _MainCenterState extends State<MainCenter> {
           Positioned(child: leftWidget(), left: 0, top: 0, bottom: 0),
           Positioned(child: rightWidget(), right: 0, top: 0, bottom: 0),
 
-          Positioned(
+          if (TwPackageABC143.isPackageB()) Positioned(
             child: textCongratulationWidget(),
             left: 0,
             right: 0,
