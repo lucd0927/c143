@@ -68,7 +68,7 @@ class OverlayGuide3BTrust {
       child: Guide3BTrustWidget(
         onClose: () async {
           close();
-          return;
+          // return;
           bool showTz = true;
           if (TwPackageABC143.isPackageB()) {
             showTz = await TwNotificationC143().requestNotificationPermission();

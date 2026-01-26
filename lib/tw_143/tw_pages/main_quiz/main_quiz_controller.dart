@@ -8,6 +8,7 @@ import 'package:c143/tw_143/tw_pages/guide/guide8_quiz1.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide9_quiz2.dart';
 import 'package:c143/tw_143/tw_pages/main_quiz/datus/data.dart';
 import 'package:c143/tw_143/tw_pages/main_quiz/datus/quiz_model.dart';
+import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
 import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
 import 'package:c143/tw_base/tw_gj/logC143.dart';
 import 'package:c143/tw_base/tw_gj/vibration.dart';
@@ -228,7 +229,7 @@ class MainQuizController extends GetxController {
     curShowGesture.value = false;
     _curGestureLeftTimer?.cancel();
     await Future.delayed(Duration(milliseconds: 1000));
-    TwMaiDiannnn.quiz_answer(hasClickRight?"1":"0");
+    TwMaiDiannnn.quiz_answer(hasClickRight ? "1" : "0");
     if (hasClickRight) {
       _onAddAnswerRightCount();
 
@@ -249,11 +250,14 @@ class MainQuizController extends GetxController {
       );
     } else if (keyguideStatus == guideStatus2) {
       MainQuizController.to.saveGuideStatus();
-      __nextQuestion();
+      MainTreeController.to.onAddMoneyyyy(0.09, onEnd: () {
+        __nextQuestion();
+      });
+
     } else {
       if (hasClickRight) {
         double coins = TwBaseNumber.coins();
-        if(TwPackageABC143.isPackageB()){
+        if (TwPackageABC143.isPackageB()) {
           coins = TwNumberJson.moneyAnswer();
         }
 

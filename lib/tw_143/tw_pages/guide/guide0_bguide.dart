@@ -70,6 +70,7 @@ class OverlayGuide0BGuide {
             twLooog("=====OverlayGuideTestAnim=close");
             close();
             OverlayManager.clearAll();
+            MainTreeController.to.curMoneyyyy.value = 0;
             MainTreeController.to.onAddMoneyyyy(
               coins,
               onEnd: () {

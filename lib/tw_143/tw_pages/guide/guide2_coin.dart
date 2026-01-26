@@ -189,7 +189,7 @@ class GuideWidget extends StatelessWidget {
           Positioned(
             left: 0,
             right: 0,
-            top: 190.h,
+            top: 206.h,
             child: Container(
               width: double.infinity,
               height: height,
