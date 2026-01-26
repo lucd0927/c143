@@ -6,6 +6,7 @@ import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
 import 'package:c143/tw_base/tw_gj/overlay_manager.dart';
 import 'package:c143/tw_base/tw_http/event_report.dart';
 import 'package:c143/tw_views/animated_scale.dart';
+import 'package:c143/tw_views/shimmer_effect.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -180,7 +181,24 @@ class GuideWidget extends StatelessWidget {
             child: Stack(
               clipBehavior: Clip.none,
               children: [
-                IgnorePointer(child: guideChild),
+                // IgnorePointer(child: guideChild),
+                IgnorePointer(child:  Container(
+                  width: 60.h,
+                  height: 60.h,
+                  child: TwShiningEffect(
+                    duration: Duration(milliseconds: 2000),
+                    shineColor: Color(0xffffffff),
+                    opacity: 1,
+                    angle: -0.9,
+                    topLeft: false,
+                    child: Image.asset(
+                      Assets.twimg.mainWater.path,
+                      width: double.infinity,
+                      height: double.infinity,
+                      gaplessPlayback: true,
+                    ),
+                  ),
+                )),
                 Positioned(top: 30.h, left: 30.w, child: TwLottieGesture()),
 
                 Positioned(

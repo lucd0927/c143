@@ -56,7 +56,7 @@ class MainQuizController extends GetxController {
     return _initQuizDatus[maxLength - 1];
   }
 
-  _initQuizDatusssss() {
+  initQuizDatusssss() {
     List tmpAllData = [];
 
     var categoryData = QuizDatus.data.values.toList();
@@ -180,7 +180,7 @@ class MainQuizController extends GetxController {
     curAnswerRightCount = tmpcurAnswerRightCount.obs;
     twLooog("====curAnswerCount:$curAnswerCount=");
     twLooog("====curAnswerRightCount:$curAnswerRightCount=");
-    _initQuizDatusssss();
+    initQuizDatusssss();
     _timerGesture(hasFirst: true);
   }
 

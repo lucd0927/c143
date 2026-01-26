@@ -1,4 +1,3 @@
-
 import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:c143/gen/assets.gen.dart';
 import 'package:c143/sfcj/floating_particles/src/models/direction.dart';
@@ -36,10 +35,6 @@ class TwMainPage extends StatefulWidget {
 }
 
 class _TwMainPageState extends State<TwMainPage> {
-
-
-
-
   List<Widget> get _mainNavs => [
     MainTree(),
     MainQuiz(),
@@ -60,33 +55,29 @@ class _TwMainPageState extends State<TwMainPage> {
     audioMusic.play(loopMode: LoopMode.single);
 
     initABC143();
-
   }
 
-  initABC143(){
+  initABC143() {
     bool hasBbbb = TwPackageABC143.isPackageB();
 
-    TwPackageABC143().listen((packN){
+    TwPackageABC143().listen((packN) {
       twLooog("===TwPackageABC143==packN:$packN");
       TwIosH5C143().initH5(context);
-      if(packN == TwPackageABC143.packageB && !hasBbbb){
+      if (packN == TwPackageABC143.packageB && !hasBbbb) {
         OverlayManager.clearAll();
         TwEventBusC143.fire(SpinEvent());
 
         MainTreeController.to.resetAllData();
         MainSpinController.to.resetAllData();
+        MainQuizController.to.initQuizDatusssss();
 
         MainTreeController.to.initGuide();
-        if(mounted){
-          setState(() {
-
-          });
+        if (mounted) {
+          setState(() {});
         }
       }
     });
   }
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -127,8 +118,6 @@ class _TwMainPageState extends State<TwMainPage> {
             }),
           ),
 
-
-
           // Center(child: ClipRRect(
           //   child: Container(
           //     width: 200,
@@ -136,7 +125,6 @@ class _TwMainPageState extends State<TwMainPage> {
           //     child: Hongbaoyu(),
           //   ),
           // ),)
-
         ],
       ),
     );
