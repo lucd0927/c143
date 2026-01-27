@@ -247,7 +247,7 @@ class TwNotificationC143 {
             content: "Withdraw",
             imgNameBg: showPau ? "noti_bg" : "noti_bg2",
             imgNameSmall: showPau ? "noti_pay" : "noti_pay2",
-            contentTextColor: showPau ? 0xff095DD6 : Color(0xff00A13C).intValue,
+            contentTextColor: showPau ?Color(0xff095DD6).intValue  : Color(0xff00A13C).intValue,
           )
           .then((result) {
             if (result == true) {
