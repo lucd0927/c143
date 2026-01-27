@@ -113,7 +113,7 @@ class GGCommonJson {
       ? {
           "bvpulagc": 100,
           "uwroksfr": 100,
-          "cuvxv_switch": true,
+          "cuvxv_switch": false,
           "cuvxv_int": [
             {
               "lfzkqeix": "ba42cbab0341524b",
@@ -134,7 +134,7 @@ class GGCommonJson {
       : {
           "bvpulagc": 100,
           "uwroksfr": 100,
-          "cuvxv_switch": true,
+          "cuvxv_switch": false,
           "cuvxv_int": [
             {
               "lfzkqeix": "337df6de9a23e177",
