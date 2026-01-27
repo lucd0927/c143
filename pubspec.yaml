@@ -93,6 +93,8 @@ dependencies:
   percent_indicator: any
   vibration: ^3.1.5
   flutter_infinite_marquee: any
+#  flutter_exit_app: ^2.0.0
+  flutter_app_minimizer_plus: ^1.0.2
   pbpig:
     path: ./c143sfcj/pbpig/
   foreground_service_gp:

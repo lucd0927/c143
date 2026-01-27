@@ -113,14 +113,14 @@ class _TwWvC143State extends State<TwWvC143> {
       children: [
         SizedBox(width: 16.w,),
         Container(
-          width: 50.h,
-          height: 50.h,
+          width: 40.h,
+          height: 40.h,
           decoration: BoxDecoration(
             color: Colors.black.withValues(alpha: 0.5),
-            borderRadius: BorderRadius.circular(50.h),
+            borderRadius: BorderRadius.circular(40.h),
           ),
 
-          child: Icon(Icons.arrow_back_ios_new, size: 30.h, color: Colors.white),
+          child: Icon(Icons.arrow_back_ios_new_rounded, size: 24.h, color: Colors.white),
         ),
       ],
     );

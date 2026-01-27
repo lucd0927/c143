@@ -24,6 +24,9 @@ import 'package:c143/tw_base/tw_gj/logC143.dart';
 import 'package:c143/tw_base/tw_gj/overlay_manager.dart';
 import 'package:c143/tw_notification/ios_notification.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_app_minimizer_plus/flutter_app_minimizer_plus.dart';
+
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
@@ -77,55 +80,68 @@ class _TwMainPageState extends State<TwMainPage> {
         }
       }
     });
+
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      // appBar: BaseAppBar(title: "title", leftTitle: ""),
-      backgroundColor: Colors.transparent,
-      resizeToAvoidBottomInset: false,
-      body: Stack(
-        children: [
-          Positioned(
-            left: 0,
-            right: 0,
-            bottom: 0,
-            top: 0,
-            child: Obx(() {
-              int curNacIndex = MainController.to.curMainNavIndex.value;
+    return PopScope(
+      canPop: false,
+      onPopInvokedWithResult:(bool didPop, dynamic result){
+        twLooog("=======main page didPop:$didPop");
+        if(didPop){
+          return;
+        }
+        // SystemNavigator.pop();
+        // FlutterExitApp.exitApp();
+        FlutterAppMinimizerPlus.minimizeApp();
+      },
+      child: Scaffold(
+        // appBar: BaseAppBar(title: "title", leftTitle: ""),
+        backgroundColor: Colors.transparent,
+        resizeToAvoidBottomInset: false,
+        body: Stack(
+          children: [
+            Positioned(
+              left: 0,
+              right: 0,
+              bottom: 0,
+              top: 0,
+              child: Obx(() {
+                int curNacIndex = MainController.to.curMainNavIndex.value;
 
-              return SafeArea(
-                bottom: false,
-                top: false,
-                child: Stack(
-                  children: [
-                    Column(
-                      children: [
-                        Expanded(
-                          child: IndexedStack(
-                            index: curNacIndex,
-                            children: _mainNavs,
+                return SafeArea(
+                  bottom: false,
+                  top: false,
+                  child: Stack(
+                    children: [
+                      Column(
+                        children: [
+                          Expanded(
+                            child: IndexedStack(
+                              index: curNacIndex,
+                              children: _mainNavs,
+                            ),
                           ),
-                        ),
-                        // SizedBox(height: bottomNavHeight,),
-                      ],
-                    ),
-                    Positioned(bottom: 0, left: 0, right: 0, child: MainNav()),
-                  ],
-                ),
-              );
-            }),
-          ),
+                          // SizedBox(height: bottomNavHeight,),
+                        ],
+                      ),
+                      Positioned(bottom: 0, left: 0, right: 0, child: MainNav()),
+                    ],
+                  ),
+                );
+              }),
+            ),
 
-          // Center(child: ClipRRect(
-          //   child: Container(
-          //     width: 200,
-          //     height: 300,
-          //     child: Hongbaoyu(),
-          //   ),
-          // ),)
-        ],
+            // Center(child: ClipRRect(
+            //   child: Container(
+            //     width: 200,
+            //     height: 300,
+            //     child: Hongbaoyu(),
+            //   ),
+            // ),)
+          ],
+        ),
       ),
     );
   }
