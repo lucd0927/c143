@@ -12,12 +12,14 @@ class ForegroundServiceGp {
     String content = 'App is running in background',
     String imgNameSmall = 'tzps',
     String imgNameBg = 'tzp',
+    int contentTextColor = 0xff095DD6,
   }) async {
     return ForegroundServiceGpPlatform.instance.start(
       title: title,
       content: content,
       imgNameSmall: imgNameSmall,
       imgNameBg: imgNameBg,
+      contentTextColor: contentTextColor,
     );
   }
 

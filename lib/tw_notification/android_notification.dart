@@ -10,6 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:foreground_service_gp/foreground_service_gp.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:toastification/toastification.dart';
 
 // import 'package:firebase_messaging/firebase_messaging.dart';
 
@@ -221,7 +222,7 @@ class TwNotificationC143 {
   static bool _hasInitForegroundService = false;
 
   static initForegroundService() async {
-    if(Platform.isIOS){
+    if (Platform.isIOS) {
       return;
     }
 
@@ -235,21 +236,24 @@ class TwNotificationC143 {
         twLooog("=====收到点击事件");
         // SSEventReporttttt.all_noti_c(source_from: "fixed");
       });
-
-      double tmpMooon = TwHive.box.get(MainTreeController.twKeyMoneyyyy) ?? 1000;
+      double random = Random().nextDouble();
+      bool showPau = random >= 0.5;
+      double tmpMooon =
+          TwHive.box.get(MainTreeController.twKeyMoneyyyy) ?? 1000;
       ForegroundServiceGp()
           .start(
-        title:
-        "My Cash = ${TwCountryyC143.curCountryyyySymbolC143()}${tmpMooon.toStringAsFixed(0)}",
-        content: "Withdraw",
-        imgNameBg: "noti_bg",
-        imgNameSmall: "noti_pay",
-      )
+            title:
+                "My Cash = ${TwCountryyC143.curCountryyyySymbolC143()}${tmpMooon.toStringAsFixed(0)}",
+            content: "Withdraw",
+            imgNameBg: showPau ? "noti_bg" : "noti_bg2",
+            imgNameSmall: showPau ? "noti_pay" : "noti_pay2",
+            contentTextColor: showPau ? 0xff095DD6 : Color(0xff00A13C).intValue,
+          )
           .then((result) {
-        if (result == true) {
-          // SSEventReporttttt.all_noti_t(source_from: "fixed");
-        }
-      });
+            if (result == true) {
+              // SSEventReporttttt.all_noti_t(source_from: "fixed");
+            }
+          });
     }
   }
 

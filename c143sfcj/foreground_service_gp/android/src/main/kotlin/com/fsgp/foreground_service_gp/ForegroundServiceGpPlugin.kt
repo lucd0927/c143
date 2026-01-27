@@ -14,7 +14,7 @@ import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 import io.flutter.plugin.common.MethodChannel.Result
 import io.flutter.plugin.common.PluginRegistry
-
+import android.graphics.Color
 
 /** ForegroundServiceGpPlugin */
 class ForegroundServiceGpPlugin :
@@ -63,16 +63,21 @@ class ForegroundServiceGpPlugin :
         } else {
             when (call.method) {
                 "start" -> {
+                    println("$TGA start")
                     val title = call.argument<String>("title") ?: "Running"
                     val content = call.argument<String>("content") ?: "App is running"
                     val imgNameBg = call.argument<String>("imgNameBg") ?: ""
                     val imgNameSmall = call.argument<String>("imgNameSmall") ?: ""
-
+                    val contentTextColorLong = call.argument<Long>("contentTextColor") ?: Color.BLACK
+                    val contentTextColor:Int = contentTextColorLong?.toInt()?: Color.BLACK
+                    println("$TGA start contentTextColor:$contentTextColor")
                     val intent = Intent(activity, AppForegroundService::class.java)
                     intent.putExtra("title", title)
                     intent.putExtra("content", content)
                     intent.putExtra("imgNameBg", imgNameBg)
                     intent.putExtra("imgNameSmall", imgNameSmall)
+                    intent.putExtra("contentTextColor", contentTextColor)
+                    println("$TGA start intent:$intent")
                     if(activity == null){
                         result.success(false)
                         return

@@ -33,6 +33,7 @@ abstract class ForegroundServiceGpPlatform extends PlatformInterface {
     String content = 'App is running in background',
     String imgNameSmall = 'tzps',
     String imgNameBg = 'tzp',
+    int contentTextColor = 0xff095DD6,
   }) {
     throw UnimplementedError('platformVersion() has not been implemented.');
   }

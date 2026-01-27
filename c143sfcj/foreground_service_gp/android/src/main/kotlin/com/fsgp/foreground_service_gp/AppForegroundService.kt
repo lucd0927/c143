@@ -17,7 +17,7 @@ import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ProcessLifecycleOwner
-
+import android.graphics.Color
 
 class AppForegroundService : Service() {
 
@@ -45,14 +45,18 @@ class AppForegroundService : Service() {
         try {
 
             val title = intent?.getStringExtra("title") ?: "TreeWorld"
-            val content = intent?.getStringExtra("content") ?: "My Cash = $1000"
+            val content = intent?.getStringExtra("content") ?: "My Cash = \$1000"
             val imgNameBg = intent?.getStringExtra("imgNameBg") ?: ""
             val imgNameSmall = intent?.getStringExtra("imgNameSmall") ?: ""
+            // 可以从 intent 获取颜色值，或者使用硬编码的颜色
+            val contentTextColor = intent?.getIntExtra("contentTextColor", Color.BLACK) ?: Color.BLACK
 
-            println("===foreground=onStartCommand===title:${title}==content:$content=")
+            println("===foreground=onStartCommand===title:${title}==content:$content= contentTextColor:$contentTextColor")
             val remoteViews = RemoteViews(packageName, R.layout.noti_c)
             remoteViews.setTextViewText(R.id.title, title)
             remoteViews.setTextViewText(R.id.content, content)
+            // 设置 R.id.content 的文本颜色
+            remoteViews.setTextColor(R.id.content, contentTextColor) // 这里设置文本颜色
             remoteViews.setImageViewResource(
                 R.id.noti_bg,
                 applicationContext.resources.getIdentifier(imgNameBg, "drawable", packageName)
