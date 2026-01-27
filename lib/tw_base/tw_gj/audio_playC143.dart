@@ -65,7 +65,7 @@ class TwAudioC143 {
         Audio(audioPath),
         loopMode: loopMode,
         autoStart: true,
-        playInBackground: PlayInBackground.disabledPause,
+        // playInBackground: PlayInBackground.disabledPause,
       );
       await audioPlayer.play();
 

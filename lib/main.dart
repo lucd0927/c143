@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:c143/tw_143/tw_common/tw_router.dart';
 import 'package:c143/tw_base/tw_ad/ads_idddddC143.dart';
 import 'package:c143/tw_base/tw_ad/base_ads.dart';
@@ -44,7 +45,7 @@ main() async {
   TwLoginnnTrackC143.init();
   TwNetCheckC143().isOnline();
   ssNetCheckC143.initC143();
-
+  lcChangeC143();
   runApp(const MyAppC143());
 }
 
@@ -105,6 +106,7 @@ void lcChangeC143() {
     // AppLifecycleState.paused
     // AppLifecycleState.detached
     if (msg == "AppLifecycleState.resumed") {
+      // audioMusic.play(loopMode:LoopMode.single);
       audioMusic.resume();
       _bgTttttC143?.cancel();
       if (sssshowAdC143) {
