@@ -186,6 +186,8 @@ PODS:
     - Flutter
   - flutter_tba_info (0.0.1):
     - Flutter
+  - foreground_service_gp (0.0.1):
+    - Flutter
   - Fyber_Marketplace_SDK (8.4.3)
   - Google-Mobile-Ads-SDK (12.2.0):
     - GoogleUserMessagingPlatform (>= 1.1)
@@ -372,6 +374,7 @@ DEPENDENCIES:
   - flutter_local_notifications (from `.symlinks/plugins/flutter_local_notifications/ios`)
   - flutter_native_splash (from `.symlinks/plugins/flutter_native_splash/ios`)
   - flutter_tba_info (from `.symlinks/plugins/flutter_tba_info/ios`)
+  - foreground_service_gp (from `.symlinks/plugins/foreground_service_gp/ios`)
   - google_mobile_ads (from `.symlinks/plugins/google_mobile_ads/ios`)
   - iabtcf_consent_info (from `.symlinks/plugins/iabtcf_consent_info/ios`)
   - permission_handler_apple (from `.symlinks/plugins/permission_handler_apple/ios`)
@@ -477,6 +480,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/flutter_native_splash/ios"
   flutter_tba_info:
     :path: ".symlinks/plugins/flutter_tba_info/ios"
+  foreground_service_gp:
+    :path: ".symlinks/plugins/foreground_service_gp/ios"
   google_mobile_ads:
     :path: ".symlinks/plugins/google_mobile_ads/ios"
   iabtcf_consent_info:
@@ -550,6 +555,7 @@ SPEC CHECKSUMS:
   flutter_local_notifications: a5a732f069baa862e728d839dd2ebb904737effb
   flutter_native_splash: c32d145d68aeda5502d5f543ee38c192065986cf
   flutter_tba_info: fce89f2ce0bf3af177f0c88e99b153260bc6a7df
+  foreground_service_gp: b2671d86009b0d822d580f21b1f76e54ca36d31c
   Fyber_Marketplace_SDK: 2262ff53a024e7c2f1d7ccb3fca33beaeb717c01
   Google-Mobile-Ads-SDK: 1dfb0c3cb46c7e2b00b0f4de74a1e06d9ea25d67
   google_mobile_ads: 535223588a6791b7a3cc3513a1bc7b89d12f3e62

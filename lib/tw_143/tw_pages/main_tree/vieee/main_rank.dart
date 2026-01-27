@@ -132,8 +132,8 @@ class _MainRankState extends State<MainRank> {
                           decoration: BoxDecoration(
                             gradient: LinearGradient(
                               colors: [
-                                prgressTxt[0].withValues(alpha: 0.8),
-                                prgressTxt[1].withValues(alpha: 0.8),
+                                prgressTxt[0].withValues(alpha: 0.9),
+                                prgressTxt[1].withValues(alpha: 0.9),
                               ],
                               begin: Alignment.topLeft,
                               end: Alignment.bottomRight,
