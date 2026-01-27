@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:c143/gen/assets.gen.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide7_rank.dart';
+import 'package:c143/tw_143/tw_pages/main_cash/main_cash_controller.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/main_tree.dart';
 import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
 import 'package:c143/tw_base/tw_gj/logC143.dart';
@@ -11,6 +12,7 @@ import 'package:c143/tw_hive/twhiveC143.dart';
 import 'package:c143/tw_views/font_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
 class MainRank extends StatefulWidget {
   const MainRank({super.key});
@@ -46,7 +48,7 @@ class _MainRankState extends State<MainRank> {
     // 生成 50 个 [0, 100] 内的随机 double
     List<double> numbers = List.generate(length, (_) {
       double tmp = (tmpRandom.nextDouble() * 12000) + 1000;
-      if(TwPackageABC143.isPackageB()){
+      if (TwPackageABC143.isPackageB()) {
         tmp = (tmpRandom.nextDouble() * 1200) + 500;
       }
       return tmp.toAsFixedFloor(2);
@@ -122,20 +124,34 @@ class _MainRankState extends State<MainRank> {
                   Expanded(
                     child: SingleChildScrollView(
                       physics: ClampingScrollPhysics(),
-                      child: Container(
-                        color: Color(0xff0E226C),
-                        child: Column(
-                          children: [
-                            SizedBox(height: 20.h),
-                            rankTopWidget(),
+                      child: Obx(() {
+                        List<Color> prgressTxt = MainCashController.to
+                            .progressColorsMain();
+                        return Container(
+                          // color: Color(0xff0E226C),
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                              colors: [
+                                prgressTxt[0].withValues(alpha: 0.8),
+                                prgressTxt[1].withValues(alpha: 0.8),
+                              ],
+                              begin: Alignment.topLeft,
+                              end: Alignment.bottomRight,
+                            ),
+                          ),
+                          child: Column(
+                            children: [
+                              SizedBox(height: 20.h),
+                              rankTopWidget(),
 
-                            // _itemWidget(1),
-                            SizedBox(height: 20.h),
-                            ...children,
-                            SizedBox(height: 90.h),
-                          ],
-                        ),
-                      ),
+                              // _itemWidget(1),
+                              SizedBox(height: 20.h),
+                              ...children,
+                              SizedBox(height: 90.h),
+                            ],
+                          ),
+                        );
+                      }),
                     ),
                   ),
                 ],

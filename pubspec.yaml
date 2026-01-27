@@ -95,6 +95,8 @@ dependencies:
   flutter_infinite_marquee: any
   pbpig:
     path: ./c143sfcj/pbpig/
+  foreground_service_gp:
+    path: ./c143sfcj/foreground_service_gp/
 dev_dependencies:
   flutter_test:
     sdk: flutter

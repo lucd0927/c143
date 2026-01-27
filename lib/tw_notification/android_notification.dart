@@ -1,9 +1,14 @@
+import 'dart:io';
 import 'dart:math';
 
+import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
+import 'package:c143/tw_base/tw_gj/countryC143.dart';
 import 'package:c143/tw_base/tw_gj/logC143.dart';
 import 'package:c143/tw_base/tw_configgg/config.dart';
+import 'package:c143/tw_hive/twhiveC143.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:foreground_service_gp/foreground_service_gp.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 // import 'package:firebase_messaging/firebase_messaging.dart';
@@ -210,6 +215,42 @@ class TwNotificationC143 {
     );
     fcmtongzhi();
     jiesoutzC143();
+    initForegroundService();
+  }
+
+  static bool _hasInitForegroundService = false;
+
+  static initForegroundService() async {
+    if(Platform.isIOS){
+      return;
+    }
+
+    bool result = await TwNotificationC143().checkNotificationPermission();
+    twLooog("=====initForegroundService result:$result");
+    if (result && !_hasInitForegroundService && Platform.isAndroid) {
+      _hasInitForegroundService = true;
+      // await Future.delayed(Duration(milliseconds: 5000));
+      twLooog("=====前台服务启动");
+      ForegroundServiceGp().initListener(() {
+        twLooog("=====收到点击事件");
+        // SSEventReporttttt.all_noti_c(source_from: "fixed");
+      });
+
+      double tmpMooon = TwHive.box.get(MainTreeController.twKeyMoneyyyy) ?? 1000;
+      ForegroundServiceGp()
+          .start(
+        title:
+        "My Cash = ${TwCountryyC143.curCountryyyySymbolC143()}${tmpMooon.toStringAsFixed(0)}",
+        content: "Withdraw",
+        imgNameBg: "noti_bg",
+        imgNameSmall: "noti_pay",
+      )
+          .then((result) {
+        if (result == true) {
+          // SSEventReporttttt.all_noti_t(source_from: "fixed");
+        }
+      });
+    }
   }
 
   tongsongdianji(int? tuisongid) {

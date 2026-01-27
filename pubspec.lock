@@ -622,6 +622,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  foreground_service_gp:
+    dependency: "direct main"
+    description:
+      path: "c143sfcj/foreground_service_gp"
+      relative: true
+    source: path
+    version: "0.0.1"
   get:
     dependency: "direct main"
     description:

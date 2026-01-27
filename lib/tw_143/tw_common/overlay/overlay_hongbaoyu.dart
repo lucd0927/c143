@@ -457,7 +457,7 @@ class _hongbaoyuuuState extends State<_hongbaoyuuu> {
                           clipBehavior: Clip.none,
                           children: [
                             Image.asset(
-                              MainTreeController.to.moneyIconTreeChild(),
+                              MainTreeController.to.moneyIconHongbao(),
                               width: 50.w,
                               height: 50.w,
                             ),

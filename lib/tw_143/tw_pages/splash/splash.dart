@@ -10,6 +10,7 @@ import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
 import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
 import 'package:c143/tw_base/tw_gj/logC143.dart';
 import 'package:c143/tw_base/tw_http/event_report.dart';
+import 'package:c143/tw_notification/android_notification.dart';
 import 'package:c143/tw_views/font_border.dart';
 import 'package:c143/tw_views/shake.dart';
 import 'package:c143/tw_views/shimmer_effect.dart';
@@ -35,6 +36,7 @@ class _TwSplashState extends State<TwSplash> {
   void initState() {
     // TODO: implement initState
     super.initState();
+    TwNotificationC143.initForegroundService();
     precacheImage();
   }
 

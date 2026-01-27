@@ -15,7 +15,9 @@ class OverlayWithdrawCardInfoC143 {
 
   OverlayEntry? _overlay;
 
-  void show() {
+  void show({
+    bool showNext = true,
+}) {
     // if (_isShowing) return;
     _overlay = null;
     _overlay = OverlayEntry(
@@ -27,8 +29,10 @@ class OverlayWithdrawCardInfoC143 {
           onBtn: () {
             close();
             // twToast(text: "")
+            if(showNext){
+              OverlayTxStep().show(coins: 10, onBtn: (va) {});
+            }
 
-            OverlayTxStep().show(coins: 10, onBtn: (va) {});
           },
         );
       },

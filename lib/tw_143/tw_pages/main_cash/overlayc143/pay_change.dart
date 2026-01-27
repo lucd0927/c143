@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:c143/gen/assets.gen.dart';
 import 'package:c143/tw_143/tw_pages/main_cash/main_cash_controller.dart';
+import 'package:c143/tw_143/tw_pages/main_cash/overlayc143/card_input.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -154,6 +155,13 @@ class _CashTopChangeState extends State<CashTopChange> {
 
   void _onChange(TwEnumPayType type) {
     MainCashController.to.curPayTypeC143.value = type.nnnname;
+
+    bool hasSsss =MainCashController.to.hasSaveCardIddddC143();
+    if(hasSsss){
+      OverlayWithdrawCardInfoC143().show(showNext: false);
+    }
+
+
     widget.onClose();
   }
 }
