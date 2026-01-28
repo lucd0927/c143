@@ -130,6 +130,8 @@ class TwNotificationC143 {
     "c143n_img3",
     "c143n_img4",
     "c143n_img5",
+    "c143n_img6",
+    "c143n_img7",
   ];
 
   List<T> getRandomNMinus3C143<T>(List<T> source) {
