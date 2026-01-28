@@ -36,6 +36,7 @@ import 'package:c143/tw_base/tw_gj/number_extend.dart';
 import 'package:c143/tw_base/tw_gj/time_left.dart';
 import 'package:c143/tw_base/tw_http/event_report.dart';
 import 'package:c143/tw_hive/twhiveC143.dart';
+import 'package:c143/tw_notification/android_notification.dart';
 import 'package:c143/tw_views/animated_fly.dart';
 import 'package:c143/tw_views/pb_tushi.dart';
 import 'package:flutter/material.dart';
@@ -760,6 +761,7 @@ class MainTreeController extends GetxController {
     twLooog("======guideIndexData:$data tmpCurmmm2:$tmpCurmmm2");
 
     if (TwPackageABC143.isPackageB()) {
+
       audioBtn_coin1.play();
       //
       if (tmpCurmmm2 >= 100) {

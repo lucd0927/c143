@@ -8,7 +8,7 @@
     <!-- 边框 -->
     <stroke
         android:width="2dp"
-        android:color="#FFB219" />
+        android:color="#C4C5C7" />
 
     <!-- 圆角（可选） -->
     <corners android:radius="8dp" />

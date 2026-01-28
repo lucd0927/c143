@@ -31,10 +31,7 @@ class OverlayGetSun {
   bool get isShowing => _isShowing;
   bool _isShowing = false;
 
-  void show({
-    required double coins,
-    required VoidCallback onClose,
-  }) {
+  void show({required double coins, required VoidCallback onClose}) {
     _overlayEntry = null;
 
     _overlayEntry = OverlayEntry(
@@ -44,8 +41,6 @@ class OverlayGetSun {
           child: GetSunWidget(
             onClaim: (value) async {
               close();
-
-
             },
             onClose: () async {
               twLooog("=====OverlayGetCoins onClose");
@@ -56,7 +51,6 @@ class OverlayGetSun {
                   onClose();
                 },
               );
-
             },
             coins: coins,
           ),
@@ -111,18 +105,19 @@ class _GetSunWidgetState extends State<GetSunWidget> {
           _coins = widget.coins;
         });
 
-        _timer = Timer(Duration(milliseconds: 2000), (){
+        _timer = Timer(Duration(milliseconds: 2000), () {
           _onclose();
         });
       }
     });
   }
 
-  _onclose(){
+  _onclose() {
     twLooog("======_onclose=");
     _timer?.cancel();
     widget.onClose();
   }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -193,10 +188,12 @@ class _GetSunWidgetState extends State<GetSunWidget> {
                                     child: TwAnimatedCountttt(
                                       value: _coins,
                                       fractionDigits: 2,
-                                      prefix: "+${TwCountryyC143.curCountryyyySymbolC143()}",
+                                      prefix:
+                                          "+${TwCountryyC143.curCountryyyySymbolC143()}",
                                       textStyle: TextStyle(
                                         fontWeight: FontWeight.w900,
                                         fontSize: 32.sp,
+                                        height: 1.2,
                                       ),
                                       textGradient: LinearGradient(
                                         colors: [
@@ -282,6 +279,3 @@ class _GetSunWidgetState extends State<GetSunWidget> {
     widget.onClaim(widget.coins);
   }
 }
-
-
-

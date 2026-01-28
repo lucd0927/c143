@@ -43,7 +43,7 @@ class OverlayGuide13Spin {
     //   },
     // );
     // Overlay.of(guideContext!).insert(_overlayEntry!);
-
+    MainController.to.resetIndex(MainController.treeIndex);
     Widget child = Material(
       color: Colors.transparent,
       child: Guide13SpinWidget(

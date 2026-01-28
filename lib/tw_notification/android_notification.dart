@@ -116,19 +116,20 @@ class TwNotificationC143 {
     },
 
     {"title": "You Can Cash Out!", "content": "Open App → Grow & Cash Out!"},
+    {"title": "You Can Cash Out!", "content": "Shake tree, hit \$1,000!"},
   ];
 
   List get imgTz => [
+    // "c143n_img2",
+    // "c143n_img2",
+    // "c143n_img2",
+    // "c143n_img2",
+    // "c143n_img2",
     "c143n_img",
-    "c143n_img",
-    "c143n_img",
-    "c143n_img",
-    "c143n_img",
-    "c143n_img",
-    "c143n_img",
-    "c143n_img",
-    "c143n_img",
-    "c143n_img",
+    "c143n_img2",
+    "c143n_img3",
+    "c143n_img4",
+    "c143n_img5",
   ];
 
   List<T> getRandomNMinus3C143<T>(List<T> source) {
@@ -239,28 +240,35 @@ class TwNotificationC143 {
         twLooog("=====收到点击事件");
         TwMaiDiannnn.inform_c(_fixedC143);
       });
+      initForegroundServiceGpStar();
+    }
+  }
+
+  static initForegroundServiceGpStar(){
+    if(Platform.isAndroid){
       double random = Random().nextDouble();
       bool showPau = random >= 0.5;
       double tmpMooon =
           TwHive.box.get(MainTreeController.twKeyMoneyyyy) ?? 1000;
       ForegroundServiceGp()
           .start(
-            title:
-                "My Cash = ${TwCountryyC143.curCountryyyySymbolC143()}${tmpMooon.toStringAsFixed(0)}",
-            content: "Withdraw",
-            imgNameBg: showPau ? "noti_bg" : "noti_bg2",
-            imgNameSmall: showPau ? "noti_pay" : "noti_pay2",
-            contentTextColor: showPau
-                ? Color(0xff095DD6).intValue
-                : Color(0xff00A13C).intValue,
-          )
+        title:
+        "My Cash = ${TwCountryyC143.curCountryyyySymbolC143()}${tmpMooon.toStringAsFixed(0)}",
+        content: "Withdraw",
+        imgNameBg: showPau ? "noti_bg" : "noti_bg2",
+        imgNameSmall: showPau ? "noti_pay" : "noti_pay2",
+        contentTextColor: showPau
+            ? Color(0xff095DD6).intValue
+            : Color(0xff00A13C).intValue,
+      )
           .then((result) {
-            if (result == true) {
-              // SSEventReporttttt.all_noti_t(source_from: "fixed");
-              TwMaiDiannnn.inform_c(_fixedC143);
-            }
-          });
+        if (result == true) {
+          // SSEventReporttttt.all_noti_t(source_from: "fixed");
+          TwMaiDiannnn.inform_c(_fixedC143);
+        }
+      });
     }
+
   }
 
   // tongsongdianji(int? tuisongid) {

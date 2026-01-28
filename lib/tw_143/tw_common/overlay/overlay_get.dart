@@ -25,7 +25,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-enum TwEnumGetCoinsType { treeMoney, quizMoney, wheelMoney,hongbaoRainMoney }
+enum TwEnumGetCoinsType { treeMoney, quizMoney, wheelMoney, hongbaoRainMoney }
 
 class OverlayGetCoins {
   OverlayEntry? _overlayEntry;
@@ -49,8 +49,7 @@ class OverlayGetCoins {
           child: GetCoinsWidget(
             onClaim: (value) async {
               close();
-              if(TwPackageABC143.isPackageB()){
-
+              if (TwPackageABC143.isPackageB()) {
                 bool result = await TwCommonAds().showRewardAd(
                   adPosId: TwAdsPosId.cuvxv_question_rv,
                 );
@@ -77,9 +76,9 @@ class OverlayGetCoins {
             onClose: () async {
               twLooog("=====OverlayGetCoins onClose");
               close();
-              if(TwPackageABC143.isPackageB()){
+              if (TwPackageABC143.isPackageB()) {
                 bool showInterAd = TwNumberJson.showInter();
-                if(showInterAd){
+                if (showInterAd) {
                   bool result = await TwCommonAds().showInterstitialAd(
                     adPosId: TwAdsPosId.cuvxv_question_int,
                   );
@@ -137,18 +136,16 @@ class _GetCoinsWidgetState extends State<GetCoinsWidget> {
           showAnimated = true;
           _coins = widget.coins;
 
-          if(TwPackageABC143.isPackageB()){
+          if (TwPackageABC143.isPackageB()) {
             bool showSun = MainTreeController.to.showMoneyStatusSunIcon();
             bool showFlower = MainTreeController.to.showMoneyStatusFlowerIcon();
-            if(showSun){
-              _coins = _coins/MainTreeController.stageBeisuNum;
-            }else if(showFlower){
-              _coins = _coins/MainTreeController.stageBeisu2Num;
+            if (showSun) {
+              _coins = _coins / MainTreeController.stageBeisuNum;
+            } else if (showFlower) {
+              _coins = _coins / MainTreeController.stageBeisu2Num;
             }
             TwMaiDiannnn.quiz_reward(_coins.toStringAsFixed(2));
           }
-
-
         });
       }
     });
@@ -257,10 +254,12 @@ class _GetCoinsWidgetState extends State<GetCoinsWidget> {
                                     TwAnimatedCountttt(
                                       value: _coins,
                                       fractionDigits: 2,
-                                      prefix: "+${TwCountryyC143.curCountryyyySymbolC143()}",
+                                      prefix:
+                                          "+${TwCountryyC143.curCountryyyySymbolC143()}",
                                       textStyle: TextStyle(
                                         fontWeight: FontWeight.w900,
                                         fontSize: 32.sp,
+                                        height: 1.2,
                                       ),
                                       textGradient: LinearGradient(
                                         colors: [
@@ -342,14 +341,14 @@ class _GetCoinsWidgetState extends State<GetCoinsWidget> {
 
                 if (TwPackageABC143.isPackageB())
                   Positioned(
-                  top: -10.h,
-                  right: -5.h,
-                  child: Image.asset(
-                    Assets.twimg.ad.path,
-                    width: 28.h,
-                    height: 28.h,
+                    top: -10.h,
+                    right: -5.h,
+                    child: Image.asset(
+                      Assets.twimg.ad.path,
+                      width: 28.h,
+                      height: 28.h,
+                    ),
                   ),
-                ),
               ],
             ),
           ),

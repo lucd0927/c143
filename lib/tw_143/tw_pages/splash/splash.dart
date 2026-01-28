@@ -20,6 +20,7 @@ import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:hive_ce_flutter/adapters.dart';
+import 'package:lottie/lottie.dart';
 import 'package:shiny_striped_progress_bar/shiny_striped_progress_bar.dart';
 
 double scale = 2;
@@ -39,15 +40,25 @@ class _TwSplashState extends State<TwSplash> {
     TwNotificationC143.initForegroundService();
     precacheImage();
   }
-
+  bool showAina = false;
   precacheImage() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       Duration tmpD = Duration(milliseconds: 200);
       Future.delayed(tmpD, () {
         FlutterNativeSplash.remove();
+
       });
 
+      Future.delayed(Duration(milliseconds: 400), () {
 
+        AssetLottie(Assets.lottiejson.monn5).load().then((value) {
+          if(mounted){
+            setState(() {
+              showAina = true;
+            });
+          }
+        });
+      });
       TwMaiDiannnn.session();
       TwMaiDiannnn.install();
       TwMaiDiannnn.launch_page();
@@ -156,7 +167,7 @@ class _TwSplashState extends State<TwSplash> {
                       TwPackageABC143.boxPackName() == TwPackageABC143.packageB
                       ? EnumTwLottttieJson.monn5
                       : EnumTwLottttieJson.coin5,
-                  animate: true,
+                  animate: showAina,
                 ),
               ),
             ),

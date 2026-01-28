@@ -162,12 +162,13 @@ class _Guide14HighLightState extends State<Guide14HighLight> {
                   ),
                   SizedBox(height: 120.h),
                   Text(
-                    "Don’t let fast coin slip away!",
+                    TwPackageABC143.isPackageB()?"Cash out NOW\nDon’t let fast money slip away!":"Don’t let fast coin slip away!",
                     style: TextStyle(
                       fontWeight: FontWeight.w700,
                       color: Color(0xffffffff),
                       fontSize: 14.sp,
                     ),
+                    textAlign: TextAlign.center,
                   ),
                   SizedBox(height: 120.h),
                   Center(child: btnClaim()),

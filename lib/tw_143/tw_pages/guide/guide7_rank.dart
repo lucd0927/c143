@@ -55,7 +55,7 @@ class OverlayGuide7Rank {
     //   },
     // );
     // Overlay.of(guideContext!).insert(_overlayEntry!);
-
+    MainController.to.resetIndex(MainController.treeIndex);
     Widget child =   Material(
       color: Colors.transparent,
       child: Guide7RankWidget(
