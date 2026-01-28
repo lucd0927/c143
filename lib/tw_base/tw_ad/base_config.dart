@@ -153,49 +153,49 @@ class GGCommonJson {
           ],
         };
 
-  static var localTest =Platform.isIOS
+  static var localTest = Platform.isIOS
       ? {
-    "bvpulagc": 100,
-    "uwroksfr": 100,
-    "cuvxv_switch": true,
-    "cuvxv_int": [
-      {
-        "lfzkqeix": "ba42cbab0341524b",
-        "hvwivusi": "max",
-        "efrazinr": "interstitial",
-        "rehzhbfy": 3000,
-      },
-    ],
-    "cuvxv_rv": [
-      {
-        "lfzkqeix": "698b6c406e2267bb",
-        "hvwivusi": "max",
-        "efrazinr": "reward",
-        "rehzhbfy": 3000,
-      },
-    ],
-  }
-      :  {
-    "bvpulagc": 100,
-    "uwroksfr": 100,
-    "cuvxv_switch": true,
-    "cuvxv_int": [
-      {
-        "lfzkqeix": "337df6de9a23e177",
-        "hvwivusi": "max",
-        "efrazinr": "interstitial",
-        "rehzhbfy": 3000,
-      },
-    ],
-    "cuvxv_rv": [
-      {
-        "lfzkqeix": "09b5e8cda1e9ce2d",
-        "hvwivusi": "max",
-        "efrazinr": "reward",
-        "rehzhbfy": 3000,
-      },
-    ],
-  };
+          "bvpulagc": 100,
+          "uwroksfr": 100,
+          "cuvxv_switch": true,
+          "cuvxv_int": [
+            {
+              "lfzkqeix": "ba42cbab0341524b",
+              "hvwivusi": "max",
+              "efrazinr": "interstitial",
+              "rehzhbfy": 3000,
+            },
+          ],
+          "cuvxv_rv": [
+            {
+              "lfzkqeix": "698b6c406e2267bb",
+              "hvwivusi": "max",
+              "efrazinr": "reward",
+              "rehzhbfy": 3000,
+            },
+          ],
+        }
+      : {
+          "bvpulagc": 100,
+          "uwroksfr": 100,
+          "cuvxv_switch": true,
+          "cuvxv_int": [
+            {
+              "lfzkqeix": "ecd1af3a2b36c516",
+              "hvwivusi": "max",
+              "efrazinr": "interstitial",
+              "rehzhbfy": 3000,
+            },
+          ],
+          "cuvxv_rv": [
+            {
+              "lfzkqeix": "0940327e7d9b666d",
+              "hvwivusi": "max",
+              "efrazinr": "reward",
+              "rehzhbfy": 3000,
+            },
+          ],
+        };
 
   static var localTopon = {
     "doubqzaq": 100,

@@ -5,6 +5,7 @@ import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
 import 'package:c143/tw_base/tw_gj/countryC143.dart';
 import 'package:c143/tw_base/tw_gj/logC143.dart';
 import 'package:c143/tw_base/tw_configgg/config.dart';
+import 'package:c143/tw_base/tw_http/event_report.dart';
 import 'package:c143/tw_hive/twhiveC143.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
@@ -141,6 +142,8 @@ class TwNotificationC143 {
   }
 
   init() async {
+    TwMaiDiannnn.notification_pro_show_f();
+    TwMaiDiannnn.push_status();
     await requestNotificationPermission();
     tzNumC143();
 
@@ -166,7 +169,7 @@ class TwNotificationC143 {
         // 点击通知回调
         print("点击通知 onDidReceiveNotificationResponse: ${response.payload}");
         String payload = response.payload ?? "local";
-        tongsongdianji(response.id);
+        tongsongdianji(payload);
       },
       onDidReceiveBackgroundNotificationResponse: backgourdListener,
     );
@@ -187,7 +190,7 @@ class TwNotificationC143 {
         "点击通知 notificationAppLaunchDetails: didNotificationLaunchApp:${didNotificationLaunchApp} id:${notificationResponse?.id} data:${notificationResponse?.payload}",
       );
       if (didNotificationLaunchApp) {
-        tongsongdianji(notificationResponse?.id);
+        tongsongdianji(notificationResponse?.payload ?? "local");
       }
     }
     List newContents = getRandomNMinus3C143(contents);
@@ -234,7 +237,7 @@ class TwNotificationC143 {
       twLooog("=====前台服务启动");
       ForegroundServiceGp().initListener(() {
         twLooog("=====收到点击事件");
-        // SSEventReporttttt.all_noti_c(source_from: "fixed");
+        TwMaiDiannnn.inform_c(_fixedC143);
       });
       double random = Random().nextDouble();
       bool showPau = random >= 0.5;
@@ -247,28 +250,54 @@ class TwNotificationC143 {
             content: "Withdraw",
             imgNameBg: showPau ? "noti_bg" : "noti_bg2",
             imgNameSmall: showPau ? "noti_pay" : "noti_pay2",
-            contentTextColor: showPau ?Color(0xff095DD6).intValue  : Color(0xff00A13C).intValue,
+            contentTextColor: showPau
+                ? Color(0xff095DD6).intValue
+                : Color(0xff00A13C).intValue,
           )
           .then((result) {
             if (result == true) {
               // SSEventReporttttt.all_noti_t(source_from: "fixed");
+              TwMaiDiannnn.inform_c(_fixedC143);
             }
           });
     }
   }
 
-  tongsongdianji(int? tuisongid) {
+  // tongsongdianji(int? tuisongid) {
+  //   String payload = "";
+  //   print("====tongsongdianji==tzid:$tuisongid==");
+  //   if (tuisongid == unlockId) {
+  //     payload = "unlock";
+  //   } else if (tuisongid == C143dingshitzid ||
+  //       tuisongid == C143dingshitzid2 ||
+  //       tuisongid == C143dingshitzid3) {
+  //     payload = "local";
+  //   } else {
+  //     payload = "fcm";
+  //   }
+  //   TwMaiDiannnn.inform_c(payload);
+  //   // PBMaiDian.launch_page(veinKeyValue: "push");
+  //   // PBMaiDian.inform_c(veinKeyValue: payload);
+  // }
+
+  static String _lockC143 = "lock";
+  static String _localC143 = "local";
+  static String _fcmC143 = "fcm";
+  static String _fixedC143 = "fixed";
+
+  tongsongdianji(String? tuisongid) {
     String payload = "";
     print("====tongsongdianji==tzid:$tuisongid==");
-    if (tuisongid == unlockId) {
-      payload = "unlock";
-    } else if (tuisongid == C143dingshitzid ||
-        tuisongid == C143dingshitzid2 ||
-        tuisongid == C143dingshitzid3) {
+    if (tuisongid == _lockC143) {
+      payload = "lock";
+    } else if (tuisongid == _localC143) {
       payload = "local";
+    } else if (tuisongid == _fixedC143) {
+      payload = "fixed";
     } else {
-      payload = "fcm";
+      payload = _fcmC143;
     }
+    TwMaiDiannnn.inform_c(payload);
     // PBMaiDian.launch_page(veinKeyValue: "push");
     // PBMaiDian.inform_c(veinKeyValue: payload);
   }
@@ -282,6 +311,9 @@ class TwNotificationC143 {
       result = permissionStatus == PermissionStatus.granted;
     }
     twLooog("==requestNotificationPermission=result:$result");
+    result
+        ? TwMaiDiannnn.notification_granted_f()
+        : TwMaiDiannnn.notification_denied_f();
     return result;
   }
 
@@ -325,7 +357,7 @@ class TwNotificationC143 {
       Duration(minutes: minutes),
       notificationDetails: details,
       scheduleMode: AndroidScheduleMode.inexactAllowWhileIdle,
-      payload: "local",
+      payload: _localC143,
     );
   }
 
@@ -386,7 +418,7 @@ class TwNotificationC143 {
         //“groupKey”：防止通知被系统折叠
         groupKey: "$id",
       ),
-      'unlock',
+      _lockC143,
     );
   }
 
