@@ -135,7 +135,7 @@ class _MainTreeState extends State<MainTree> {
     }
 
     if (TwPackageABC143.isPackageB() && TwLoginnnTrackC143.qiduoCishu() > 1) {
-      bool showTz = await TwNotificationC143().requestNotificationPermission();
+      bool showTz = await TwNotificationC143().checkNotificationPermission();
       twLooog("===OverlayGuide3BTrust==showTz:$showTz");
       if (!showTz) {
         OverlayTzNotify().show(onEnd: () {});

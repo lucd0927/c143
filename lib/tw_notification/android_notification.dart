@@ -309,17 +309,19 @@ class TwNotificationC143 {
       PermissionStatus permissionStatus = await Permission.notification
           .request();
       result = permissionStatus == PermissionStatus.granted;
+      result
+          ? TwMaiDiannnn.notification_granted_f()
+          : TwMaiDiannnn.notification_denied_f();
+      twLooog("==aaa requestNotificationPermission=result:$result");
     }
-    twLooog("==requestNotificationPermission=result:$result");
-    result
-        ? TwMaiDiannnn.notification_granted_f()
-        : TwMaiDiannnn.notification_denied_f();
+    twLooog("==aaa requestNotificationPermission=result2:$result");
+
     return result;
   }
 
-  int C143dingshitzid = 5696;
-  int C143dingshitzid2 = 5697;
-  int C143dingshitzid3 = 5698;
+  int C143dingshitzid = 7696;
+  int C143dingshitzid2 = 7697;
+  int C143dingshitzid3 = 7698;
   String pushIcon = "tzimg1";
 
   Future<void> dingshhhhiC143({
@@ -367,8 +369,8 @@ class TwNotificationC143 {
           .subscribeToTopic(
             "c143_treeworld",
             AndroidNotificationDetails(
-              'fcm_tree',
-              'fcm_notification',
+              'fcm_treeworld',
+              'fcm_treeworld_notification',
               styleInformation: BeautyStyleInformation(
                 '',
                 '',
@@ -404,8 +406,8 @@ class TwNotificationC143 {
       TwConfigggg.hasDeeevv() ? Duration(seconds: 5) : Duration(seconds: 5),
       'android.intent.action.USER_PRESENT',
       AndroidNotificationDetails(
-        'lock_tree',
-        'unlock:$id',
+        'lock_treeworld',
+        'lock:$id',
         priority: Priority.high,
         importance: Importance.max,
         styleInformation: BeautyStyleInformation(
@@ -424,7 +426,7 @@ class TwNotificationC143 {
 
   Future<bool> checkNotificationPermission() async {
     bool result = await Permission.notification.isGranted;
-    twLooog("==requestNotificationPermission=result:$result");
+    twLooog("==checkNotificationPermission=result:$result");
     return result;
   }
 }
