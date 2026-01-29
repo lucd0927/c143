@@ -63,7 +63,7 @@ class TwNotificationC143 {
       twLooog("==initNotificationCount==localcount:$localN==");
       if (localN > 0) {
         for (int i = 0; i < localN; i++) {
-          // PBMaiDian.inform_p(veinKeyValue: "local");
+          TwMaiDiannnn.inform_p(payload);
         }
       }
 
@@ -72,7 +72,7 @@ class TwNotificationC143 {
       twLooog("==initNotificationCount==fcmcount:$fcmNnnn==");
       if (fcmNnnn > 0) {
         for (int i = 0; i < localN; i++) {
-          // PBMaiDian.inform_p(veinKeyValue: "fcm");
+          TwMaiDiannnn.inform_p(payload);
         }
       }
 
@@ -81,7 +81,7 @@ class TwNotificationC143 {
       twLooog("==initNotificationCount==unlockcount:$lockNnnn==");
       if (lockNnnn > 0) {
         for (int i = 0; i < localN; i++) {
-          // PBMaiDian.inform_p(veinKeyValue: "unlock");
+          TwMaiDiannnn.inform_p(payload);
         }
       }
     } catch (e) {
@@ -290,7 +290,7 @@ class TwNotificationC143 {
   //   // PBMaiDian.inform_c(veinKeyValue: payload);
   // }
 
-  static String _lockC143 = "lock";
+  static String _lockC143 = "unlock";
   static String _localC143 = "local";
   static String _fcmC143 = "fcm";
   static String _fixedC143 = "fixed";
@@ -299,9 +299,9 @@ class TwNotificationC143 {
     String payload = "";
     print("====tongsongdianji==tzid:$tuisongid==");
     if (tuisongid == _lockC143) {
-      payload = "lock";
+      payload = _lockC143;
     } else if (tuisongid == _localC143) {
-      payload = "local";
+      payload = _localC143;
     } else if (tuisongid == _fixedC143) {
       payload = "fixed";
     } else {

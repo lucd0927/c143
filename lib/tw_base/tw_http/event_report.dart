@@ -286,6 +286,13 @@ class TwMaiDiannnn {
       veinKeyValue: value,
     );
   }
+  static inform_p(String value) {
+    TwHttpDio().buryPoint(
+      moistValue: "inform_p",
+      veinKey: "type",
+      veinKeyValue: value,
+    );
+  }
 
   static push_status() {
     TwHttpDio().buryPoint(moistValue: "push_status");

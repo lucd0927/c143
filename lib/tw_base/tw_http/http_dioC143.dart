@@ -846,7 +846,7 @@ class TwHttpDio {
   }) async {
     // return;
     var dataJson = await baseData();
-    twLooog("buryPointAndroid dataJaon:${dataJson is Map} dataJaon:$dataJson");
+    // twLooog("buryPointAndroid dataJaon:${dataJson is Map} dataJaon:$dataJson");
     dataJson["compete"] = moistValue;
     var json = {};
     String priii ="delft_";
