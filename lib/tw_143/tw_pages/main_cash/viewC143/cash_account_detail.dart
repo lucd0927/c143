@@ -6,6 +6,7 @@ import 'package:c143/tw_base/tw_gj/number_extend.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:hive_ce_flutter/hive_flutter.dart';
 
 class CashAccountDetail extends StatefulWidget {
   const CashAccountDetail({super.key});
@@ -19,7 +20,7 @@ class _CashAccountDetailState extends State<CashAccountDetail> {
   Widget build(BuildContext context) {
     double curMonnn = MainTreeController.to.curMoneyyyy.value;
     double lfettt = MainTreeController.to.leftMonn1();
-    if(MainCashController.to.hasSaveCardIddddC143()){
+    if (MainCashController.to.hasSaveCardIddddC143()) {
       lfettt = MainTreeController.to.leftMonn2();
     }
     bool hasSsss = MainCashController.to.hasSaveCardIddddC143();
@@ -28,9 +29,9 @@ class _CashAccountDetailState extends State<CashAccountDetail> {
       height: 176.h,
       child: Stack(
         children: [
-          Obx((){
+          Obx(() {
             String icon = MainCashController.to.payBgCash();
-            return  Image.asset(
+            return Image.asset(
               icon,
               width: double.infinity,
               height: double.infinity,
@@ -44,7 +45,7 @@ class _CashAccountDetailState extends State<CashAccountDetail> {
                 Container(
                   height: 118.h,
                   width: double.infinity,
-                  color: Colors.red.withValues(alpha: 0.0),
+
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -53,7 +54,9 @@ class _CashAccountDetailState extends State<CashAccountDetail> {
                         style: TextStyle(
                           fontWeight: FontWeight.w700,
                           fontSize: 12.sp,
-                          color: hasSsss?Color(0xffB7905B):Color(0xff99C2EA),
+                          color: hasSsss
+                              ? Color(0xffB7905B)
+                              : Color(0xff99C2EA),
                         ),
                       ),
 
@@ -62,26 +65,35 @@ class _CashAccountDetailState extends State<CashAccountDetail> {
                         style: TextStyle(
                           fontWeight: FontWeight.w700,
                           fontSize: 36.sp,
-                          color: hasSsss?Color(0xffB7905B):Color(0xffffffff),
+                          color: hasSsss
+                              ? Color(0xffB7905B)
+                              : Color(0xffffffff),
                         ),
                       ),
 
-                      Text.rich(
-                        TextSpan(
-                          text: "Only",
-                          children: [
-                            TextSpan(
-                              text:
-                                  "  ${TwCountryyC143.curCountryyyySymbolC143()}${lfettt.toStringAsFixed(2)}  ",
-                              style: TextStyle(color: Color(0xffe30b0b)),
-                            ),
-                            TextSpan(text: "Away From Withdrawal"),
-                          ],
-                        ),
-                        style: TextStyle(
-                          fontWeight: FontWeight.w700,
-                          fontSize: 12.sp,
-                          color: hasSsss?Color(0xffB7905B):Color(0xff99C2EA),
+                      Container(
+                        padding: EdgeInsets.symmetric(vertical: 4.h,horizontal: 8.w),
+
+                        decoration: BoxDecoration(color: Color(0xffFFD608),borderRadius: BorderRadius.circular(100.h)),
+                        child: Text.rich(
+                          TextSpan(
+                            text: "Only",
+                            children: [
+                              TextSpan(
+                                text:
+                                    "  ${TwCountryyC143.curCountryyyySymbolC143()}${lfettt.toStringAsFixed(2)}  ",
+                                style: TextStyle(color: Color(0xffe30b0b)),
+                              ),
+                              TextSpan(text: "Away From Withdrawal"),
+                            ],
+                          ),
+                          style: TextStyle(
+                            fontWeight: FontWeight.w700,
+                            fontSize: 12.sp,
+                            color: hasSsss
+                                ? Color(0xffB7905B)
+                                : Color(0xffAA1F00),
+                          ),
                         ),
                       ),
                     ],
@@ -101,7 +113,9 @@ class _CashAccountDetailState extends State<CashAccountDetail> {
                               style: TextStyle(
                                 fontWeight: FontWeight.w400,
                                 fontSize: 12.sp,
-                                color:hasSsss?Color(0xffB7905B): Color(0xff99C2EA),
+                                color: hasSsss
+                                    ? Color(0xffB7905B)
+                                    : Color(0xff99C2EA),
                               ),
                             ),
 
@@ -110,7 +124,9 @@ class _CashAccountDetailState extends State<CashAccountDetail> {
                               style: TextStyle(
                                 fontWeight: FontWeight.w500,
                                 fontSize: 16.sp,
-                                color: hasSsss?Color(0xffB7905B):Color(0xffffffff),
+                                color: hasSsss
+                                    ? Color(0xffB7905B)
+                                    : Color(0xffffffff),
                               ),
                             ),
                           ],
@@ -123,7 +139,9 @@ class _CashAccountDetailState extends State<CashAccountDetail> {
                               style: TextStyle(
                                 fontWeight: FontWeight.w400,
                                 fontSize: 12.sp,
-                                color:hasSsss?Color(0xffB7905B): Color(0xff99C2EA),
+                                color: hasSsss
+                                    ? Color(0xffB7905B)
+                                    : Color(0xff99C2EA),
                               ),
                             ),
 

@@ -972,7 +972,7 @@ class TwCommonAds {
     twLooog(
       "$text=======adPosId:$adPosId _scheme:$_scheme adsModel:$adIdWithJsonModel",
     );
-    if (_scheme == GGCommonJson.scheme_A) {
+    if (_scheme == GGCommonJson.scheme_A || hasInter) {
       for (var action in adIdWithJsonModel.keys) {
         String adsId = action;
         // 记录第一个广告id情况
@@ -1135,7 +1135,7 @@ class TwCommonAds {
     EnumGetScene? scene,
     bool ignored_hasDisplayAd = false,
   }) async {
-    // return true;
+    return true;
 
     bool result = await _showAdLogic(
       adPosId: adPosId,

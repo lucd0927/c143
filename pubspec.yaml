@@ -130,6 +130,8 @@ flutter:
     - assets/twimgB/
     - assets/avatar/
     - assets/lottiejson/
+    - assets/lottiejson/moneyhero/
+    - assets/lottiejson/moneyhero/images/
     - assets/yuyin/
 
   # An image asset can refer to one or more resolution-specific "variants", see
