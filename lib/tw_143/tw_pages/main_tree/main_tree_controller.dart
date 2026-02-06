@@ -20,6 +20,7 @@ import 'package:c143/tw_143/tw_pages/guide/guide4_fertilize.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide5_adspot.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide6_rewarddouble.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide7_rank.dart';
+import 'package:c143/tw_143/tw_pages/guide/guide8_cash.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide9_quiz2.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide_old.dart';
 import 'package:c143/tw_143/tw_pages/main/main_controller.dart';
@@ -105,6 +106,9 @@ class MainTreeController extends GetxController {
   static String get guide7 =>
       TwPackageABC143.isPackageB() ? "guide7Bbb" : "guide7Aaaa";
 
+  static String get guide7Cashout =>
+      TwPackageABC143.isPackageB() ? "guide7Cashout" : "guide7Cashoutaaaa";
+
   static String get guide8 =>
       TwPackageABC143.isPackageB() ? "guide8Bbb" : "guide8Aaaa";
 
@@ -139,6 +143,17 @@ class MainTreeController extends GetxController {
     String key = twkeyGuideProgress;
     var data = box.get(key);
     return data;
+  }
+
+   guide7CashoutData() {
+    String key = guide7Cashout;
+    var data = box.get(key);
+    return data;
+  }
+
+  saveGuide7CashoutData() {
+    String key = guide7Cashout;
+    box.put(key, guide7Cashout);
   }
 
   saveGuideIndexData(String value) {
@@ -268,7 +283,6 @@ class MainTreeController extends GetxController {
     return tmpTreeIcon;
   }
 
-
   String moneyIconHongbao() {
     bool showSun = showMoneyStatusSunIcon();
     bool showFlower = showMoneyStatusFlowerIcon();
@@ -276,8 +290,7 @@ class MainTreeController extends GetxController {
         ? Assets.twimg.mainSun.path
         : Assets.twimg.mainCoin.path;
     if (TwPackageABC143.isPackageB()) {
-      tmpTreeIcon =Assets.twimgB.moneyFloating.path;
-
+      tmpTreeIcon = Assets.twimgB.moneyFloating.path;
     }
 
     return tmpTreeIcon;
@@ -356,8 +369,8 @@ class MainTreeController extends GetxController {
 
     initCutdownTimer();
   }
-  initGuide(){
 
+  initGuide() {
     TwMaiDiannnn.home_view(MainTreeController.to.curLevel.value.toString());
     // var idfa = await FlutterTbaInfo.instance.getIdfa();
     String? data = MainTreeController.to.guideIndexData();
@@ -385,8 +398,12 @@ class MainTreeController extends GetxController {
     } else if (data == MainTreeController.guide6) {
       OverlayGuide7Rank().show();
     } else if (data == MainTreeController.guide7) {
-      MainController.to.resetIndex(MainController.quizIndex);
-      // OverlayGuide8Quiz1().show(coins: 10, onBtn: (value) {  });
+      String? data = MainTreeController.to.guide7CashoutData();
+      if (TwPackageABC143.isPackageB() && data == null) {
+        OverlayGuide8Cash().show(coins: 111);
+      } else {
+        MainController.to.resetIndex(MainController.quizIndex);
+      }
     } else if (data == MainTreeController.guide8) {
       MainController.to.resetIndex(MainController.quizIndex);
       OverlayGuide9Quiz2().show(coins: 10, onBtn: (value) {});
@@ -411,9 +428,9 @@ class MainTreeController extends GetxController {
         onBtn: (v) {},
       );
     }
-
   }
-  resetAllData(){
+
+  resetAllData() {
     double tmpMmm = box.get(twKeyMoneyyyy) ?? 0.0;
     curMoneyyyy.value = tmpMmm;
 
@@ -427,7 +444,6 @@ class MainTreeController extends GetxController {
     // int tmpLevelll = _jisuanLevel(hasResetStageCount: false);
     curLevel.value = tmpLevelll;
   }
-
 
   @override
   void onReady() {
@@ -469,11 +485,10 @@ class MainTreeController extends GetxController {
     resetCoin();
   }
 
-  cutdown2ZeroFertilize(){
+  cutdown2ZeroFertilize() {
     _fertilizeLeftTime.saveLeftTime(0);
     curFertilizeLeftTime.value = "";
-    onAddShiFeiCount(onEnd: (){});
-
+    onAddShiFeiCount(onEnd: () {});
   }
 
   initCutdownTimer() {
@@ -632,8 +647,6 @@ class MainTreeController extends GetxController {
       return;
     }
 
-
-
     if (canClickWater) {
       canClickWater = false;
       TwMaiDiannnn.fertilizer_click("free");
@@ -695,7 +708,6 @@ class MainTreeController extends GetxController {
       audioBtn_Water2.play();
       OverlayLotWater().show(
         onEnd: () {
-
           curHasWatering.value = true;
           Timer(Duration(milliseconds: 2000), () {
             audioBtn_Water2.pause();
@@ -761,7 +773,6 @@ class MainTreeController extends GetxController {
     twLooog("======guideIndexData:$data tmpCurmmm2:$tmpCurmmm2");
 
     if (TwPackageABC143.isPackageB()) {
-
       audioBtn_coin1.play();
       //
       if (tmpCurmmm2 >= 100) {
@@ -817,5 +828,6 @@ enum EnumTwLottttieJson {
   monn4,
   monn5,
   gesture,
+  moneyHero,
   bghightligth,
 }

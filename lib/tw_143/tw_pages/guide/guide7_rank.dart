@@ -5,6 +5,7 @@ import 'package:c143/gen/assets.gen.dart';
 import 'package:c143/tw_143/tw_common/lottieeee/gesture.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide1_water.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide3_adspot.dart';
+import 'package:c143/tw_143/tw_pages/guide/guide8_cash.dart';
 import 'package:c143/tw_143/tw_pages/main/main_controller.dart';
 import 'package:c143/tw_143/tw_pages/main/views/main_nav.dart';
 import 'package:c143/tw_143/tw_pages/main_quiz/main_quiz_controller.dart';
@@ -66,7 +67,14 @@ class OverlayGuide7Rank {
           MainTreeController.to.saveGuideIndexData(
             MainTreeController.guide7,
           );
-          MainController.to.resetIndex(MainController.quizIndex);
+          // MainController.to.resetIndex(MainController.quizIndex);
+          if(TwPackageABC143.isPackageB()){
+            OverlayGuide8Cash().show(coins: 111);
+          }else{
+            MainController.to.resetIndex(MainController.quizIndex);
+          }
+
+
 
           // MainQuizController.to.initQuizGuideDatusssss();
         },

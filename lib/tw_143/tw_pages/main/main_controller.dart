@@ -11,6 +11,7 @@ import 'package:c143/tw_143/tw_pages/guide/guide3b_trust.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide7_rank.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide8_quiz1.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide9_quiz2.dart';
+import 'package:c143/tw_143/tw_pages/guide/guide_OLD_launch2.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide_old.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide_test_animated.dart';
 import 'package:c143/tw_143/tw_pages/main_cash/main_cash_controller.dart';
@@ -39,6 +40,7 @@ class MainController extends GetxController {
     // throw Exception();
     // VibrationC143.vibrationClick();
     // OverlayGuide3BTrust().show();
+    // OverlayGuideOldLaunch2().show(coins: 11);
     MainCashController.overlayPortalController.hide();
     int curSelect = curMainNavIndex.value;
     if (curSelect == index) {

@@ -1,6 +1,9 @@
+import 'package:c143/tw_143/tw_common/lottieeee/gesture.dart';
 import 'package:c143/tw_143/tw_pages/main_cash/main_cash_controller.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
+import 'package:c143/tw_base/tw_gj/countryC143.dart';
 import 'package:c143/tw_base/tw_gj/vibration.dart';
+import 'package:c143/tw_views/animated_scale.dart';
 import 'package:c143/tw_views/tw_progress.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -30,7 +33,7 @@ class _CashProgressState extends State<CashProgress> {
       }
 
       List<Color> prgressTxt = MainCashController.to.progressColors();
-
+      double lfettt = MainTreeController.to.leftMonn1();
       return Padding(
         padding: EdgeInsets.symmetric(horizontal: 20.w),
         child: Column(
@@ -108,27 +111,68 @@ class _CashProgressState extends State<CashProgress> {
                   SizedBox(height: 32.h),
                   GestureDetector(
                     onTap: _onWithdraw,
-                    child: Container(
-                      width: 290.w,
-                      height: 40.h,
-                      decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          colors: prgressTxt,
-                          // begin: Alignment.topCenter,
-                          // end: Alignment.bottomCenter,
-                        ),
-                        borderRadius: BorderRadius.circular(40.h),
-                      ),
-                      child: Center(
-                        child: Text(
-                          progress >= 1 ? "Withdraw Now" : "Earn Now",
-                          style: TextStyle(
-                            fontWeight: FontWeight.w700,
-                            fontSize: 16.sp,
-                            color: Color(0xffffffff),
+                    child: Stack(
+                      clipBehavior: Clip.none,
+                      children: [
+                        Container(
+                          width: 290.w,
+                          height: 40.h,
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                              colors: prgressTxt,
+                              // begin: Alignment.topCenter,
+                              // end: Alignment.bottomCenter,
+                            ),
+                            borderRadius: BorderRadius.circular(8.h),
+                            boxShadow: [
+                              BoxShadow(
+                                offset: Offset(0, 0),
+                                blurRadius: 8.w,
+                                color: Color(0xff66CAFF),
+                              ),
+                            ],
+                          ),
+                          child: TwAScaleC143(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  progress >= 1 ? "Withdraw Now" : "CASH-OUT NOW",
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w700,
+                                    fontSize: 16.sp,   height: 1,
+                            
+                                    color: Color(0xffffffff),
+                                  ),
+                                ),
+                                Text(
+                                  progress >= 1
+                                      ? ""
+                                      : "quiz required to unlock final ${TwCountryyC143.curCountryyyySymbolC143()}${lfettt.toStringAsFixed(2)}",
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 12.sp,
+                                    height: 1,
+                                    color: Color(0xffffffff),
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
-                      ),
+                        Positioned(
+                          top: 20.h,
+                          right: -30.w,
+                          // child: TwAScale(
+                          //   child: Image.asset(
+                          //     Assets.twimg.gesture.path,
+                          //     width: 70.w,
+                          //     height: 70.w,
+                          //   ),
+                          // ),
+                          child: TwLottieGesture(),
+                        ),
+                      ],
                     ),
                   ),
                 ],

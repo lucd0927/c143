@@ -77,7 +77,7 @@ class TwLoginnnTrackC143 {
   static int qidongduoshaoDay() {
     int day = box.get(_launchDay) ?? 1;
 
-    // ggPrint("======launchDay:$day isFirstLoginToday:$isFirstLoginToday");
+    twLooog("======launchDay:$day isFirstLoginToday:$isFirstLoginToday");
     return day;
   }
 

@@ -66,7 +66,7 @@ class _TwMainPageState extends State<TwMainPage> {
     TwPackageABC143().listen((packN) {
       twLooog("===TwPackageABC143==packN:$packN");
       TwIosH5C143().initH5(context);
-      if (packN == TwPackageABC143.packageB && !hasBbbb) {
+      if (packN == TwPackageABC143.packageB) {
         OverlayManager.clearAll();
         TwEventBusC143.fire(SpinEvent());
 

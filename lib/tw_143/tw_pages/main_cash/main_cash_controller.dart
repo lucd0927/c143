@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:c143/gen/assets.gen.dart';
 import 'package:c143/tw_143/tw_pages/main/main_controller.dart';
 import 'package:c143/tw_143/tw_pages/main_cash/overlayc143/card_input.dart';
@@ -27,6 +29,7 @@ class MainCashController extends GetxController {
   var curSaveCardIdddC143 = "".obs;
   var curPayTypeC143 = TwEnumPayType.paypal.nnnname.obs;
   var box = TwHive.box;
+  var showMoneyHeorJson = false.obs;
 
   @override
   void onInit() {
@@ -39,6 +42,14 @@ class MainCashController extends GetxController {
 
     String tmpcardId = box.get(twkeySaveCardId) ?? "";
     curSaveCardIdddC143 = tmpcardId.obs;
+  }
+
+  showMoneyHeroJsonTrue() {
+    showMoneyHeorJson.value = true;
+    // Timer(Duration(milliseconds: 5000),(){
+    //   showMoneyHeorJson.value = false;
+    // });
+    MainTreeController.to.saveGuide7CashoutData();
   }
 
   savePaytypeC143(TwEnumPayType type) {
@@ -95,6 +106,7 @@ class MainCashController extends GetxController {
 
     return icon;
   }
+
   String payIconMainTop2() {
     String icon = Assets.twimgB.txPaypalMaintop2.path;
     String tmpCurPaytype = curPayTypeC143.value;
@@ -139,6 +151,7 @@ class MainCashController extends GetxController {
 
     return tmpColors;
   }
+
   List<Color> progressColors() {
     List<Color> tmpColors = [Color(0xff0056F1), Color(0xff009CDE)];
     String tmpCurPaytype = curPayTypeC143.value;
@@ -163,7 +176,8 @@ class MainCashController extends GetxController {
       MainController.to.resetIndex(MainController.treeIndex);
     } else {
       if (curMonnnn < MainTreeController.stageB1Num) {
-        twToast(text: "Minimum withdrawal amount not reached.");
+        // twToast(text: "Minimum withdrawal amount not reached.");
+        MainController.to.resetIndex(MainController.quizIndex);
         return;
       } else {
         OverlayWithdrawCardInfoC143().show();
