@@ -29,7 +29,7 @@ class TwAdjusssC143 {
     config.logLevel = AdjustLogLevel.verbose;
     var distinct_id = await FlutterTbaInfo.instance.getDistinctId();
     // config.externalDeviceId =distinct_id;
-    twLooog("$TGA===initSdk=");
+    twLooog("$TGA===initSdk=$appToken");
     _config = config;
     Adjust.addGlobalCallbackParameter("customer_user_id", distinct_id);
     config.attributionCallback = (AdjustAttribution attributionChangedData) {
