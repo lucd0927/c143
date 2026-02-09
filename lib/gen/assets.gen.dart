@@ -604,6 +604,25 @@ class $AssetsTwimgBGen {
   AssetGenImage get btnWithdraw =>
       const AssetGenImage('assets/twimgB/btn_withdraw.png');
 
+  /// File path: assets/twimgB/close2.png
+  AssetGenImage get close2 => const AssetGenImage('assets/twimgB/close2.png');
+
+  /// File path: assets/twimgB/give5_ok.png
+  AssetGenImage get give5Ok =>
+      const AssetGenImage('assets/twimgB/give5_ok.png');
+
+  /// File path: assets/twimgB/give5_star.png
+  AssetGenImage get give5Star =>
+      const AssetGenImage('assets/twimgB/give5_star.png');
+
+  /// File path: assets/twimgB/give5_star_un.png
+  AssetGenImage get give5StarUn =>
+      const AssetGenImage('assets/twimgB/give5_star_un.png');
+
+  /// File path: assets/twimgB/give5_starfsr.png
+  AssetGenImage get give5Starfsr =>
+      const AssetGenImage('assets/twimgB/give5_starfsr.png');
+
   /// File path: assets/twimgB/guide0b_text2.png
   AssetGenImage get guide0bText2 =>
       const AssetGenImage('assets/twimgB/guide0b_text2.png');
@@ -667,6 +686,9 @@ class $AssetsTwimgBGen {
   /// File path: assets/twimgB/guide_withdd.png
   AssetGenImage get guideWithdd =>
       const AssetGenImage('assets/twimgB/guide_withdd.png');
+
+  /// File path: assets/twimgB/logo2.png
+  AssetGenImage get logo2 => const AssetGenImage('assets/twimgB/logo2.png');
 
   /// File path: assets/twimgB/main_fertilize_pop.png
   AssetGenImage get mainFertilizePop =>
@@ -888,6 +910,11 @@ class $AssetsTwimgBGen {
     animatedBg32,
     animatedBg33,
     btnWithdraw,
+    close2,
+    give5Ok,
+    give5Star,
+    give5StarUn,
+    give5Starfsr,
     guide0bText2,
     guide14bTxt,
     guide2cointipsB,
@@ -904,6 +931,7 @@ class $AssetsTwimgBGen {
     guide0Txt5,
     guide0Txt6,
     guideWithdd,
+    logo2,
     mainFertilizePop,
     mainFlower,
     mainNavCash,

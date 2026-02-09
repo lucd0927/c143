@@ -95,7 +95,7 @@ dependencies {
     implementation("com.applovin.mediation:mintegral-adapter:+")
     implementation("com.applovin.mediation:moloco-adapter:+")
     implementation("com.applovin.mediation:bytedance-adapter:+")
-    implementation("com.applovin.mediation:unityads-adapter:4.16.3.0")
+    implementation("com.applovin.mediation:unityads-adapter:+")
     implementation("com.applovin.mediation:fyber-adapter:+")
 
     //TU (Necessary)

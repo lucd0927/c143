@@ -8,6 +8,7 @@ import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
 import 'package:c143/tw_base/tw_ad/ads_idddddC143.dart';
 import 'package:c143/tw_base/tw_ad/base_ads.dart';
 import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
+import 'package:c143/tw_base/tw_gj/countryC143.dart';
 import 'package:c143/tw_base/tw_gj/logC143.dart';
 import 'package:c143/tw_base/tw_gj/overlay_manager.dart';
 import 'package:c143/tw_views/animated_count.dart';
@@ -68,11 +69,9 @@ class OverlayGuide2Coin {
         guideContext: guideContext!,
         onClose: () async {
           close();
-          MainTreeController.to.saveGuideIndexData(
-            MainTreeController.guide2,
-          );
+          MainTreeController.to.saveGuideIndexData(MainTreeController.guide2);
           double coins = 10;
-          if(TwPackageABC143.isPackageB()){
+          if (TwPackageABC143.isPackageB()) {
             // coins = 2;
             // await TwCommonAds().showInterstitialAd(
             //   adPosId: TwAdsPosId.cuvxv_newadview_rv,
@@ -87,13 +86,13 @@ class OverlayGuide2Coin {
 
     _isShowing = true;
   }
+
   String kHashCode = "";
 
   void close() {
     _isShowing = false;
     _overlayEntry?.remove();
     OverlayManager.clearOverlayEntry(kHashCode);
-
   }
 }
 
@@ -119,6 +118,7 @@ class _Guide2CoinWidgetState extends State<Guide2CoinWidget> {
   bool showAnimated = false;
   Duration animD = Duration(milliseconds: 200);
   double startScale = 0.8;
+  double coin = 0;
 
   @override
   void initState() {
@@ -129,6 +129,7 @@ class _Guide2CoinWidgetState extends State<Guide2CoinWidget> {
       if (mounted) {
         setState(() {
           showAnimated = true;
+          coin = 10;
         });
       }
     });
@@ -155,6 +156,7 @@ class _Guide2CoinWidgetState extends State<Guide2CoinWidget> {
                 child: GuideWidget(
                   guideChild: widget.guideChild,
                   guideContext: widget.guideContext,
+                  coin: coin,
                 ),
               ),
             ],
@@ -170,10 +172,12 @@ class GuideWidget extends StatelessWidget {
     super.key,
     required this.guideChild,
     required this.guideContext,
+    required this.coin,
   });
 
   final Widget guideChild;
   final BuildContext guideContext;
+  final double coin;
 
   @override
   Widget build(BuildContext context) {
@@ -189,7 +193,7 @@ class GuideWidget extends StatelessWidget {
           Positioned(
             left: 0,
             right: 0,
-            top:TwPackageABC143.isPackageB()? 206.h:190.h,
+            top: TwPackageABC143.isPackageB() ? 206.h : 190.h,
             child: Container(
               width: double.infinity,
               height: height,
@@ -235,23 +239,25 @@ class GuideWidget extends StatelessWidget {
             child: Stack(
               clipBehavior: Clip.none,
               children: [
-                IgnorePointer(child: Container(
-                  width: 60.h,
-                  height: 60.h,
-                  child: TwShiningEffect(
-                    duration: Duration(milliseconds: 2000),
-                    shineColor: Color(0xffffffff),
-                    opacity: 1,
-                    angle: -0.9,
-                    topLeft: false,
-                    child: Image.asset(
-                      MainTreeController.to.moneyIconTreeChild(),
-                      width: double.infinity,
-                      height: double.infinity,
-                      gaplessPlayback: true,
+                IgnorePointer(
+                  child: Container(
+                    width: 60.h,
+                    height: 60.h,
+                    child: TwShiningEffect(
+                      duration: Duration(milliseconds: 2000),
+                      shineColor: Color(0xffffffff),
+                      opacity: 1,
+                      angle: -0.9,
+                      topLeft: false,
+                      child: Image.asset(
+                        MainTreeController.to.moneyIconTreeChild(),
+                        width: double.infinity,
+                        height: double.infinity,
+                        gaplessPlayback: true,
+                      ),
                     ),
                   ),
-                )),
+                ),
                 // if (TwPackageABC143.isPackageB())
                 //   Positioned(
                 //     top: -10.h,
@@ -290,6 +296,39 @@ class GuideWidget extends StatelessWidget {
                 width: 324.h,
                 height: 160.h,
                 fit: BoxFit.fill,
+              ),
+            ),
+          ),
+          Positioned(
+            left: 130.w,
+            top: 210.h,
+            child: IgnorePointer(
+              child: Container(
+                width: 55.w,
+                height: 30.h,
+                color: Colors.white.withValues(alpha: 0.0),
+                child: TwAnimatedCountttt(
+                  value: coin,
+                  fractionDigits: 0,
+                  prefix: "${TwCountryyC143.curCountryyyySymbolC143()}",
+                  duration: Duration(milliseconds: 1000),
+
+                  strokeColor: Color(0xff133F88),
+                  textGradient: LinearGradient(
+                    colors: [
+                      Color(0xffFFDF12),
+                      Color(0xffFFAA00),
+                    ],
+                    end: Alignment.bottomCenter,
+                    begin: Alignment.topCenter,
+                  ),
+                  textStyle: TextStyle(
+                    fontSize: 24.sp,
+                    color: Color(0xffFFDF12),
+                    fontWeight: FontWeight.w900,
+                    height: 1,
+                  ),
+                ),
               ),
             ),
           ),

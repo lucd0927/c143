@@ -9,6 +9,7 @@ import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
 import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
 import 'package:c143/tw_base/tw_gj/logC143.dart';
 import 'package:c143/tw_base/tw_gj/overlay_manager.dart';
+import 'package:c143/tw_base/tw_http/event_report.dart';
 import 'package:c143/tw_notification/android_notification.dart';
 import 'package:c143/tw_notification/overlay_notify.dart';
 import 'package:c143/tw_views/animated_count.dart';
@@ -117,7 +118,7 @@ class _Guide14HighLightState extends State<Guide14HighLight> {
   void initState() {
     // TODO: implement initState
     super.initState();
-
+    TwMaiDiannnn.high_begin_v();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (mounted) {
         setState(() {
@@ -250,6 +251,7 @@ class _Guide14HighLightState extends State<Guide14HighLight> {
   }
 
   void onClaim() {
+    TwMaiDiannnn.high_begin_c();
     widget.onClose();
   }
 }

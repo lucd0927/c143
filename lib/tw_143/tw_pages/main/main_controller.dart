@@ -26,6 +26,7 @@ import 'package:c143/tw_base/tw_gj/login_trackC143.dart';
 import 'package:c143/tw_base/tw_gj/vibration.dart';
 import 'package:c143/tw_base/tw_http/event_report.dart';
 import 'package:c143/tw_notification/overlay_notify.dart';
+import 'package:c143/tw_views/give_5_star.dart';
 import 'package:get/get.dart';
 import 'package:vibration/vibration.dart';
 
@@ -42,6 +43,9 @@ class MainController extends GetxController {
     // VibrationC143.vibrationClick();
     // OverlayGuide3BTrust().show();
     // OverlayGuideOldLaunch2().show(coins: 11);
+
+
+
     MainCashController.overlayPortalController.hide();
     int curSelect = curMainNavIndex.value;
     if (curSelect == index) {

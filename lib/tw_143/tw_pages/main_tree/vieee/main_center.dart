@@ -47,6 +47,7 @@ class _MainCenterState extends State<MainCenter> {
     // TODO: implement initState
     super.initState();
     initH5();
+    TwMaiDiannnn.h_v();
   }
 
   initH5() async {
@@ -591,6 +592,7 @@ class _MainCenterState extends State<MainCenter> {
     if (Platform.isAndroid && AndroidH5C143.h5Img().isNotEmpty) {
       return GestureDetector(
         onTap: () {
+          TwMaiDiannnn.h_c();
           String url = AndroidH5C143.h5Link();
           if (url.isNotEmpty) {
             AndroidH5C143.h5LinkClickCard();
@@ -622,6 +624,8 @@ class _MainCenterState extends State<MainCenter> {
 
             icon: Assets.twimgB.moreGame.path,
             onClick: () {
+              TwMaiDiannnn.h_c();
+
               TwIosH5C143().showWvC143();
             },
             txtBottom: '',

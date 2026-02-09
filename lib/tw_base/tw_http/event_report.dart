@@ -3,6 +3,124 @@ import 'package:c143/tw_base/tw_http/http_dioC143.dart';
 import 'package:c143/tw_hive/twhiveC143.dart';
 
 class TwMaiDiannnn {
+  //ad_code_id/ad_format/ad_platform
+  static ad_request({
+    required String ad_code_id,
+    required String ad_format,
+    required String ad_platform,
+  }) {
+    TwHttpDio().buryPoint(
+      moistValue: "ad_request",
+      veinKey: "ad_code_id",
+      veinKeyValue: ad_code_id,
+      veinKey2: "ad_format",
+      veinKeyValue2: ad_format,
+      veinKey3: "ad_platform",
+      veinKeyValue3: ad_platform,
+    );
+  }
+
+  //ad_code_id/ad_format/ad_platform、cuvxv_ad_request_time
+  static cuvxv_ad_return({
+    required String ad_code_id,
+    required String ad_format,
+    required String ad_platform,
+    required String cuvxv_ad_request_time,
+  }) {
+    TwHttpDio().buryPoint(
+      moistValue: "cuvxv_ad_return",
+      veinKey: "ad_code_id",
+      veinKeyValue: ad_code_id,
+      veinKey2: "ad_format",
+      veinKeyValue2: ad_format,
+      veinKey3: "ad_platform",
+      veinKeyValue3: ad_platform,
+      veinKey4: "cuvxv_ad_request_time",
+      veinKeyValue4: cuvxv_ad_request_time,
+    );
+  }
+
+  static cuvxv_ad_return_fail({
+    required String ad_code_id,
+    required String ad_format,
+    required String ad_platform,
+    required String reason,
+  }) {
+    TwHttpDio().buryPoint(
+      moistValue: "cuvxv_ad_return_fail",
+      veinKey: "ad_code_id",
+      veinKeyValue: ad_code_id,
+      veinKey2: "ad_format",
+      veinKeyValue2: ad_format,
+      veinKey3: "ad_platform",
+      veinKeyValue3: ad_platform,
+      veinKey4: "reason",
+      veinKeyValue4: reason,
+    );
+  }
+
+  static cuvxv_ad_chance({required String veinKeyValue}) {
+    TwHttpDio().buryPoint(
+      moistValue: "cuvxv_ad_chance",
+      veinKey: "ad_pos_id",
+      veinKeyValue: veinKeyValue,
+    );
+  }
+
+  // ad_pos_id、reason、ad_platform
+  // "ad_pos_id：广告位名称
+  // reason：
+  // -ad_nocache：表示无广告缓存
+  // -nonetwork：无网络
+  // -impfail：展示失败（可能突然死机、卡顿、崩溃或其他问题导致展示失败）
+  // -uninitialized：未初始化广告SDK
+  // -notPrepared：广告未准备好"
+  static cuvxv_ad_impression_fail({
+    required String ad_pos_id,
+    required String reason,
+    required String ad_platform,
+  }) {
+    TwHttpDio().buryPoint(
+      moistValue: "cuvxv_ad_impression_fail",
+      veinKey: "ad_pos_id",
+      veinKeyValue: ad_pos_id,
+      veinKey2: "reason",
+      veinKeyValue2: reason,
+      // veinKey3: "ad_platform",
+      // veinKeyValue3: ad_platform,
+    );
+  }
+
+  static cuvxv_ad_imp_close({
+    required String ad_code_id,
+    required String ad_pos_id,
+    required String ad_format,
+  }) {
+    TwHttpDio().buryPoint(
+      moistValue: "cuvxv_ad_imp_close",
+      veinKey: "ad_code_id",
+      veinKeyValue: ad_code_id,
+      veinKey2: "ad_format",
+      veinKeyValue2: ad_format,
+      veinKey3: "ad_pos_id",
+      veinKeyValue3: ad_pos_id,
+    );
+  }
+
+  // ad_platform、ad_init_time
+  static cuvxv_ad_initsuc({
+    required String ad_init_time,
+    required String ad_platform,
+  }) {
+    TwHttpDio().buryPoint(
+      moistValue: "cuvxv_ad_initsuc",
+      veinKey: "ad_init_time",
+      veinKeyValue: ad_init_time,
+      veinKey2: "ad_platform",
+      veinKeyValue2: ad_platform,
+    );
+  }
+
   static event_launch_first() {
     TwHttpDio().buryPoint(moistValue: "event_launch_first");
   }
@@ -42,7 +160,6 @@ class TwMaiDiannnn {
         var tmpData = await TwHttpDio().buryPoint(moistValue: "install");
         TwMaiDiannnn.event_launch_first();
         if (tmpData != null) {
-
           box.put(key, true);
         }
       });
@@ -240,14 +357,15 @@ class TwMaiDiannnn {
     if (data == null) {
       Future.delayed(Duration(milliseconds: 0), () async {
         // SSHttpDio().buryPoint(moistValue: "install");
-        var tmpData = await TwHttpDio().buryPoint(moistValue: "notification_pro_show_f");
+        var tmpData = await TwHttpDio().buryPoint(
+          moistValue: "notification_pro_show_f",
+        );
         if (tmpData != null) {
           // TwMaiDiannnn.event_launch_first();
           box.put(key, true);
         }
       });
     }
-
   }
 
   static notification_granted_f() {
@@ -286,6 +404,7 @@ class TwMaiDiannnn {
       veinKeyValue: value,
     );
   }
+
   static inform_p(String value) {
     TwHttpDio().buryPoint(
       moistValue: "inform_p",
@@ -298,120 +417,122 @@ class TwMaiDiannnn {
     TwHttpDio().buryPoint(moistValue: "push_status");
   }
 
-  //ad_code_id/ad_format/ad_platform
-  static ad_request({
-    required String ad_code_id,
-    required String ad_format,
-    required String ad_platform,
-  }) {
-    TwHttpDio().buryPoint(
-      moistValue: "ad_request",
-      veinKey: "ad_code_id",
-      veinKeyValue: ad_code_id,
-      veinKey2: "ad_format",
-      veinKeyValue2: ad_format,
-      veinKey3: "ad_platform",
-      veinKeyValue3: ad_platform,
-    );
+  static old_cash_v() {
+    TwHttpDio().buryPoint(moistValue: "old_cash_v");
   }
-  //ad_code_id/ad_format/ad_platform、cuvxv_ad_request_time
-  static cuvxv_ad_return({
-    required String ad_code_id,
-    required String ad_format,
-    required String ad_platform,
-    required String cuvxv_ad_request_time,
-  }) {
+
+  static old_cash_c() {
+    TwHttpDio().buryPoint(moistValue: "old_cash_c");
+  }
+
+  static new_cash_v() {
+    TwHttpDio().buryPoint(moistValue: "new_cash_v");
+  }
+
+  static new_cash_c() {
+    TwHttpDio().buryPoint(moistValue: "new_cash_c");
+  }
+
+  static ad_pv(String value) {
     TwHttpDio().buryPoint(
-      moistValue: "cuvxv_ad_return",
-      veinKey: "ad_code_id",
-      veinKeyValue: ad_code_id,
-      veinKey2: "ad_format",
-      veinKeyValue2: ad_format,
-      veinKey3: "ad_platform",
-      veinKeyValue3: ad_platform,
-      veinKey4: "cuvxv_ad_request_time",
-      veinKeyValue4: cuvxv_ad_request_time,
+      moistValue: "ad_pv",
+      veinKey: "number",
+      veinKeyValue: value,
     );
   }
 
-  static cuvxv_ad_return_fail({
-    required String ad_code_id,
-    required String ad_format,
-    required String ad_platform,
-    required String reason,
-  }) {
-    TwHttpDio().buryPoint(
-      moistValue: "cuvxv_ad_return_fail",
-      veinKey: "ad_code_id",
-      veinKeyValue: ad_code_id,
-      veinKey2: "ad_format",
-      veinKeyValue2: ad_format,
-      veinKey3: "ad_platform",
-      veinKeyValue3: ad_platform,
-      veinKey4: "reason",
-      veinKeyValue4: reason,
-    );
+  static earn_cash(double value) {
+    String key = "earncashllll";
+    var box = TwHive.box;
+    var data = box.get(key);
+    var tmpvalue = 0;
+    bool canRequset = false;
+    bool hasSaaa = data == null;
+    if (value >= 50 && value < 70) {
+      tmpvalue = 50;
+      if (hasSaaa) {
+        canRequset = true;
+      }
+    } else if (value >= 70 && value < 80) {
+      tmpvalue = 70;
+      if (data <= 50 || hasSaaa) {
+        canRequset = true;
+      }
+    } else if (value >= 80 && value < 90) {
+      tmpvalue = 80;
+      if (data <= 70 || hasSaaa) {
+        canRequset = true;
+      }
+    } else if (value >= 90 && value < 100) {
+      tmpvalue = 90;
+      if (data <= 80 || hasSaaa) {
+        canRequset = true;
+      }
+    } else if (value >= 100 && value < 700) {
+      tmpvalue = 100;
+      if (data <= 90 || hasSaaa) {
+        canRequset = true;
+      }
+    } else if (value >= 700 && value < 900) {
+      tmpvalue = 700;
+      if (data <= 100 || hasSaaa) {
+        canRequset = true;
+      }
+    } else if (value >= 900 && value < 950) {
+      tmpvalue = 900;
+      if (data <= 700 || hasSaaa) {
+        canRequset = true;
+      }
+    } else if (value >= 950) {
+      tmpvalue = 950;
+      if (data <= 900 || hasSaaa) {
+        canRequset = true;
+      }
+    }
+
+    if (canRequset) {
+      box.put(key, tmpvalue);
+    }else{
+
+    }
+    if (canRequset) {
+      TwHttpDio().buryPoint(
+        moistValue: "earn_cash",
+        veinKey: "earn",
+        veinKeyValue: tmpvalue.toStringAsFixed(0),
+      );
+    }
   }
 
-  static cuvxv_ad_chance({required String veinKeyValue}) {
-    TwHttpDio().buryPoint(
-      moistValue: "cuvxv_ad_chance",
-      veinKey: "ad_pos_id",
-      veinKeyValue: veinKeyValue,
-    );
+  static old_reward_v() {
+    TwHttpDio().buryPoint(moistValue: "old_reward_v");
   }
 
-  // ad_pos_id、reason、ad_platform
-  // "ad_pos_id：广告位名称
-  // reason：
-  // -ad_nocache：表示无广告缓存
-  // -nonetwork：无网络
-  // -impfail：展示失败（可能突然死机、卡顿、崩溃或其他问题导致展示失败）
-  // -uninitialized：未初始化广告SDK
-  // -notPrepared：广告未准备好"
-  static cuvxv_ad_impression_fail({
-    required String ad_pos_id,
-    required String reason,
-    required String ad_platform,
-  }) {
-    TwHttpDio().buryPoint(
-      moistValue: "cuvxv_ad_impression_fail",
-      veinKey: "ad_pos_id",
-      veinKeyValue: ad_pos_id,
-      veinKey2: "reason",
-      veinKeyValue2: reason,
-      // veinKey3: "ad_platform",
-      // veinKeyValue3: ad_platform,
-    );
+  static old_reward_c() {
+    TwHttpDio().buryPoint(moistValue: "old_reward_c");
   }
 
-  static cuvxv_ad_imp_close({
-    required String ad_code_id,
-    required String ad_pos_id,
-    required String ad_format,
-  }) {
-    TwHttpDio().buryPoint(
-      moistValue: "cuvxv_ad_imp_close",
-      veinKey: "ad_code_id",
-      veinKeyValue: ad_code_id,
-      veinKey2: "ad_format",
-      veinKeyValue2: ad_format,
-      veinKey3: "ad_pos_id",
-      veinKeyValue3: ad_pos_id,
-    );
+  static high_begin_v() {
+    TwHttpDio().buryPoint(moistValue: "high_begin_v");
   }
 
-  // ad_platform、ad_init_time
-  static cuvxv_ad_initsuc({
-    required String ad_init_time,
-    required String ad_platform,
-  }) {
-    TwHttpDio().buryPoint(
-      moistValue: "cuvxv_ad_initsuc",
-      veinKey: "ad_init_time",
-      veinKeyValue: ad_init_time,
-      veinKey2: "ad_platform",
-      veinKeyValue2: ad_platform,
-    );
+  static high_begin_c() {
+    TwHttpDio().buryPoint(moistValue: "high_begin_c");
+  }
+
+  static high_end_v() {
+    TwHttpDio().buryPoint(moistValue: "high_end_v");
+  }
+
+  static high_end_c() {
+    TwHttpDio().buryPoint(moistValue: "high_end_c");
+  }
+
+  static h_v() {
+    TwHttpDio().buryPoint(moistValue: "h_v");
+  }
+
+  static h_c() {
+    TwHttpDio().buryPoint(moistValue: "h_c");
   }
 }

@@ -172,10 +172,10 @@ packages:
     dependency: "direct dev"
     description:
       name: build_runner
-      sha256: b4d854962a32fd9f8efc0b76f98214790b833af8b2e9b2df6bfc927c0415a072
+      sha256: ac78098de97893812b7aff1154f29008fa2464cad9e8e7044d39bc905dad4fbc
       url: "https://pub.dev"
     source: hosted
-    version: "2.10.5"
+    version: "2.11.0"
   built_collection:
     dependency: transitive
     description:
@@ -220,10 +220,10 @@ packages:
     dependency: transitive
     description:
       name: code_assets
-      sha256: ae0db647e668cbb295a3527f0938e4039e004c80099dce2f964102373f5ce0b5
+      sha256: "83ccdaa064c980b5596c35dd64a8d3ecc68620174ab9b90b6343b753aa721687"
       url: "https://pub.dev"
     source: hosted
-    version: "0.19.10"
+    version: "1.0.0"
   code_builder:
     dependency: transitive
     description:
@@ -300,10 +300,10 @@ packages:
     dependency: transitive
     description:
       name: dart_style
-      sha256: "8a0aa2b9bae196552b71575efc94580e447546c26c7120577bb6f81fbd33b52e"
+      sha256: "15a7db352c8fc6a4d2bc475ba901c25b39fe7157541da4c16eacce6f8be83e49"
       url: "https://pub.dev"
     source: hosted
-    version: "3.1.4"
+    version: "3.1.5"
   dartx:
     dependency: transitive
     description:
@@ -316,10 +316,10 @@ packages:
     dependency: transitive
     description:
       name: dbus
-      sha256: "79e0c23480ff85dc68de79e2cd6334add97e48f7f4865d17686dd6ea81a47e8c"
+      sha256: d0c98dcd4f5169878b6cf8f6e0a52403a9dff371a3e2f019697accbf6f44a270
       url: "https://pub.dev"
     source: hosted
-    version: "0.7.11"
+    version: "0.7.12"
   device_info_plus:
     dependency: transitive
     description:
@@ -340,10 +340,10 @@ packages:
     dependency: "direct main"
     description:
       name: dio
-      sha256: d90ee57923d1828ac14e492ca49440f65477f4bb1263575900be731a3dac66a9
+      sha256: b9d46faecab38fc8cc286f80bc4d61a3bb5d4ac49e51ed877b4d6706efe57b25
       url: "https://pub.dev"
     source: hosted
-    version: "5.9.0"
+    version: "5.9.1"
   dio_web_adapter:
     dependency: transitive
     description:
@@ -512,10 +512,9 @@ packages:
   flutter_custom_facebook:
     dependency: "direct main"
     description:
-      name: flutter_custom_facebook
-      sha256: aeb860bb550cd3926a6258efd9c08700accd89aec942bf3b95e31f66cbe028ba
-      url: "https://pub.dev"
-    source: hosted
+      path: "c143sfcj/flutter_custom_facebook-0.0.5"
+      relative: true
+    source: path
     version: "0.0.5"
   flutter_floating_particles:
     dependency: "direct main"
@@ -596,6 +595,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.4.7"
+  flutter_rating_bar:
+    dependency: "direct main"
+    description:
+      name: flutter_rating_bar
+      sha256: d2af03469eac832c591a1eba47c91ecc871fe5708e69967073c043b2d775ed93
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.0.1"
   flutter_screenutil:
     dependency: "direct main"
     description:
@@ -681,10 +688,10 @@ packages:
     dependency: transitive
     description:
       name: hive_ce
-      sha256: b01cb16fc79cd4f63344d63f197d921eeb6c5bf1b5db6a21d0c21db0ec021516
+      sha256: "8e9980e68643afb1e765d3af32b47996552a64e190d03faf622cea07c1294418"
       url: "https://pub.dev"
     source: hosted
-    version: "2.18.0"
+    version: "2.19.3"
   hive_ce_flutter:
     dependency: "direct main"
     description:
@@ -697,10 +704,10 @@ packages:
     dependency: transitive
     description:
       name: hooks
-      sha256: "5410b9f4f6c9f01e8ff0eb81c9801ea13a3c3d39f8f0b1613cda08e27eab3c18"
+      sha256: "7a08a0d684cb3b8fb604b78455d5d352f502b68079f7b80b831c62220ab0a4f6"
       url: "https://pub.dev"
     source: hosted
-    version: "0.20.5"
+    version: "1.0.1"
   html:
     dependency: transitive
     description:
@@ -801,10 +808,10 @@ packages:
     dependency: transitive
     description:
       name: isolate_channel
-      sha256: "68191008e3a219bc87cc8cddbcd1e29810bd9f3a0fdc2108b574ccbd9aafda08"
+      sha256: a9d3d620695bc984244dafae00b95e4319d6974b2d77f4b9e1eb4f2efe099094
       url: "https://pub.dev"
     source: hosted
-    version: "0.3.0"
+    version: "0.6.1"
   js:
     dependency: transitive
     description:
@@ -817,10 +824,10 @@ packages:
     dependency: transitive
     description:
       name: json_annotation
-      sha256: "1ce844379ca14835a50d2f019a3099f419082cfdd231cd86a142af94dd5c6bb1"
+      sha256: "805fa86df56383000f640384b282ce0cb8431f1a7a2396de92fb66186d8c57df"
       url: "https://pub.dev"
     source: hosted
-    version: "4.9.0"
+    version: "4.10.0"
   leak_tracker:
     dependency: transitive
     description:
@@ -921,10 +928,10 @@ packages:
     dependency: transitive
     description:
       name: native_toolchain_c
-      sha256: f8872ea6c7a50ce08db9ae280ca2b8efdd973157ce462826c82f3c3051d154ce
+      sha256: "89e83885ba09da5fdf2cdacc8002a712ca238c28b7f717910b34bcd27b0d03ac"
       url: "https://pub.dev"
     source: hosted
-    version: "0.17.2"
+    version: "0.17.4"
   nm:
     dependency: transitive
     description:
@@ -937,10 +944,10 @@ packages:
     dependency: transitive
     description:
       name: objective_c
-      sha256: "55eb67ede1002d9771b3f9264d2c9d30bc364f0267bc1c6cc0883280d5f0c7cb"
+      sha256: "100a1c87616ab6ed41ec263b083c0ef3261ee6cd1dc3b0f35f8ddfa4f996fe52"
       url: "https://pub.dev"
     source: hosted
-    version: "9.2.2"
+    version: "9.3.0"
   package_config:
     dependency: transitive
     description:
@@ -1181,10 +1188,10 @@ packages:
     dependency: transitive
     description:
       name: source_span
-      sha256: "254ee5351d6cb365c859e20ee823c3bb479bf4a293c22d17a9f1bf144ce86f7c"
+      sha256: "56a02f1f4cd1a2d96303c0144c93bd6d909eea6bee6bf5a0e0b685edbd4c47ab"
       url: "https://pub.dev"
     source: hosted
-    version: "1.10.1"
+    version: "1.10.2"
   spine_flutter:
     dependency: "direct main"
     description:
@@ -1396,10 +1403,10 @@ packages:
     dependency: transitive
     description:
       name: vector_graphics_compiler
-      sha256: d354a7ec6931e6047785f4db12a1f61ec3d43b207fc0790f863818543f8ff0dc
+      sha256: "201e876b5d52753626af64b6359cd13ac6011b80728731428fd34bc840f71c9b"
       url: "https://pub.dev"
     source: hosted
-    version: "1.1.19"
+    version: "1.1.20"
   vector_math:
     dependency: transitive
     description:
@@ -1412,10 +1419,10 @@ packages:
     dependency: "direct main"
     description:
       name: vibration
-      sha256: bfb274be6996651d36bf3e3a947d2122767dae255cfb9ce6ce8ee4b38fb56bad
+      sha256: "3cbdf4c93b469ec27b212c8dd0c720f85acc1186a68d08b56087f4e32b4c8e20"
       url: "https://pub.dev"
     source: hosted
-    version: "3.1.5"
+    version: "3.1.6"
   vibration_platform_interface:
     dependency: transitive
     description:
@@ -1508,10 +1515,10 @@ packages:
     dependency: transitive
     description:
       name: webview_flutter_wkwebview
-      sha256: e49f378ed066efb13fc36186bbe0bd2425630d4ea0dbc71a18fdd0e4d8ed8ebc
+      sha256: "0412b657a2828fb301e73509909e6ec02b77cd2b441ae9f77125d482b3ddf0e7"
       url: "https://pub.dev"
     source: hosted
-    version: "3.23.5"
+    version: "3.23.6"
   win32:
     dependency: transitive
     description:

@@ -790,6 +790,8 @@ class MainTreeController extends GetxController {
 
     if (TwPackageABC143.isPackageB()) {
       audioBtn_coin1.play();
+
+      TwMaiDiannnn.earn_cash(tmpCurmmm2);
       //
       if (tmpCurmmm2 >= 100) {
         if (curLevel.value != 5) {

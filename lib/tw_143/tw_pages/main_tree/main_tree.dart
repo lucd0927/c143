@@ -61,7 +61,7 @@ class _MainTreeState extends State<MainTree> {
     MainTreeController.initComposition();
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       await initTz();
-      if(TwLoginnnTrackC143.qiduoCishu() == 2){
+      if(TwLoginnnTrackC143.qiduoCishu() == 2 && TwPackageABC143.isPackageB()){
         OverlayGuideOldLaunch2().show(coins:5);
       }else{
         MainTreeController.to.initGuide();

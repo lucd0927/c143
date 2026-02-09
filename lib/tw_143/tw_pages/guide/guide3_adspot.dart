@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:c143/gen/assets.gen.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide1_water.dart';
@@ -12,6 +14,7 @@ import 'package:c143/tw_views/animated_count.dart';
 import 'package:c143/tw_views/animated_scale.dart';
 import 'package:c143/tw_views/font_border.dart';
 import 'package:c143/tw_views/font_gradient_border.dart';
+import 'package:c143/tw_views/give_5_star.dart';
 import 'package:c143/tw_views/tw_progress.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -56,22 +59,21 @@ class OverlayGuide3AdSpot {
     // );
     // Overlay.of(Get.context!).insert(_overlayEntry!);
 
-
     Widget child = Material(
       color: Colors.transparent,
       child: Guide3AdSpot(
         onClose: () async {
           close();
-          MainTreeController.to.saveGuideIndexData(
-            MainTreeController.guide3,
-          );
+          MainTreeController.to.saveGuideIndexData(MainTreeController.guide3);
 
           MainTreeController.to.onAddMoneyyyy(
             coins,
-            onEnd: () {
-              if(TwPackageABC143.isPackageB()){
+            onEnd: () async {
+              if (TwPackageABC143.isPackageB()) {
+                if (Platform.isIOS) {}
+                await twShow5Star(Get.context!);
                 OverlayGuide3BTrust().show();
-              }else{
+              } else {
                 OverlayGuide4Fertilize().show();
               }
             },
@@ -80,17 +82,17 @@ class OverlayGuide3AdSpot {
         coins: coins,
       ),
     );
-    kHashCode =  OverlayManager.show(context: Get.context!, child: child);
+    kHashCode = OverlayManager.show(context: Get.context!, child: child);
 
     _isShowing = true;
   }
+
   String kHashCode = "";
 
   void close() {
     _isShowing = false;
     _overlayEntry?.remove();
     OverlayManager.clearOverlayEntry(kHashCode);
-
   }
 }
 
@@ -149,7 +151,6 @@ class _Guide3AdSpotState extends State<Guide3AdSpot> {
     return Column(
       children: [
         SizedBox(height: 80.h),
-
 
         Container(
           height: 100.h,
@@ -245,7 +246,6 @@ class _Guide3AdSpotState extends State<Guide3AdSpot> {
       children: [
         SizedBox(height: 80.h),
 
-
         Center(
           child: Container(
             width: 336.w,
@@ -308,11 +308,7 @@ class _Guide3AdSpotState extends State<Guide3AdSpot> {
           ),
         ),
         SizedBox(height: 20.h),
-        Image.asset(
-          Assets.twimgB.guide3Wow.path,
-          width: 308.w,
-          height: 132.h,
-        ),
+        Image.asset(Assets.twimgB.guide3Wow.path, width: 308.w, height: 132.h),
 
         SizedBox(height: 60.h),
         Center(child: btnClaim()),

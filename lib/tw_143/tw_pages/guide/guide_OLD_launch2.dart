@@ -11,6 +11,7 @@ import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
 import 'package:c143/tw_base/tw_gj/countryC143.dart';
 import 'package:c143/tw_base/tw_gj/logC143.dart';
 import 'package:c143/tw_base/tw_gj/overlay_manager.dart';
+import 'package:c143/tw_base/tw_http/event_report.dart';
 import 'package:c143/tw_views/animated_count.dart';
 import 'package:c143/tw_views/animated_scale.dart';
 import 'package:c143/tw_views/font_border.dart';
@@ -85,7 +86,7 @@ class _GuideOldLaunch2State extends State<GuideOldLaunch2> {
   void initState() {
     // TODO: implement initState
     super.initState();
-
+    TwMaiDiannnn.old_cash_v();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (mounted) {
         setState(() {
@@ -316,6 +317,7 @@ class _GuideOldLaunch2State extends State<GuideOldLaunch2> {
   }
 
   void onClaim() {
+    TwMaiDiannnn.old_cash_c();
     widget.onClose();
   }
 }

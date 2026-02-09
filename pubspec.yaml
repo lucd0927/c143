@@ -62,7 +62,7 @@ dependencies:
 
 
 
-  flutter_custom_facebook: ^0.0.5
+#  flutter_custom_facebook: ^0.0.5
   permission_handler: ^12.0.1
   rxdart: ^0.27.7
   extended_nested_scroll_view: ^6.2.1
@@ -101,6 +101,9 @@ dependencies:
     path: ./c143sfcj/pbpig/
   foreground_service_gp:
     path: ./c143sfcj/foreground_service_gp/
+  flutter_custom_facebook:
+    path: ./c143sfcj/flutter_custom_facebook-0.0.5/
+  flutter_rating_bar: any
 dev_dependencies:
   flutter_test:
     sdk: flutter

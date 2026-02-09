@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:math';
 
+import 'package:c143/tw_143/tw_common/event.dart';
 import 'package:c143/tw_base/tw_ad/guiyin/adjust.dart';
 import 'package:c143/tw_base/tw_http/event_report.dart';
 import 'package:flutter_custom_facebook/flutter_custom_facebook.dart';
@@ -69,7 +70,7 @@ class TwCommonAds {
   // var rewardData = {};
 
   TwComAdsListener? _ggCommonAdsListener;
-  static const String kSWlvac = "kSWlvac";
+  static const String kSWlvac = "54653132qq";
 
   static void addAdEndCount() {
     var box = TwHive.box;
@@ -82,8 +83,7 @@ class TwCommonAds {
     twLooog("=addAdEndCount=now:$count===zero:$zero  report:$result");
     if (result) {
       // todo:
-      // SWEventReport.cash_ad_detail("$count");
-      // PBMaiDian.cash_ad_detail(veinKeyValue: "$count");
+      TwMaiDiannnn.ad_pv(count.toString());
     }
   }
 

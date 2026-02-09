@@ -11,6 +11,7 @@ import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
 import 'package:c143/tw_base/tw_gj/countryC143.dart';
 import 'package:c143/tw_base/tw_gj/logC143.dart';
 import 'package:c143/tw_base/tw_gj/overlay_manager.dart';
+import 'package:c143/tw_base/tw_http/event_report.dart';
 import 'package:c143/tw_views/animated_count.dart';
 import 'package:c143/tw_views/animated_scale.dart';
 import 'package:c143/tw_views/font_border.dart';
@@ -29,7 +30,7 @@ class OverlayGuide8Cash {
 
   void show({required double coins}) {
     _overlayEntry = null;
-
+    TwMaiDiannnn.new_cash_v();
     MainController.to.resetIndex(MainController.cashIndex);
 
     Widget child = Material(
@@ -38,7 +39,7 @@ class OverlayGuide8Cash {
         coins: coins,
         onClose: () async {
           close();
-
+          TwMaiDiannnn.new_cash_c();
           MainCashController.to.showMoneyHeroJsonTrue();
         },
       ),
