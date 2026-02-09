@@ -2,6 +2,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:c143/gen/assets.gen.dart';
 import 'package:c143/tw_143/tw_common/lottieeee/common.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide7_rank.dart';
+import 'package:c143/tw_143/tw_pages/guide/guide8_cash.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
 import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
 import 'package:c143/tw_base/tw_gj/logC143.dart';
@@ -69,7 +70,11 @@ class OverlayGuide6RewardDouble {
             MainTreeController.to.onAddMoneyyyy(
               coins * 2,
               onEnd: () {
-                OverlayGuide7Rank().show();
+                if(TwPackageABC143.isPackageB()){
+                  OverlayGuide8Cash().show(coins: 1);
+                }else{
+                  OverlayGuide7Rank().show();
+                }
               },
             );
           },

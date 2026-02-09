@@ -8,6 +8,7 @@ import 'package:c143/tw_143/tw_common/lottieeee/gesture.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide1_water.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide3_adspot.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide4_fertilize.dart';
+import 'package:c143/tw_143/tw_pages/guide/guide5_adspot.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/vieee/main_top_b.dart';
 import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
@@ -77,11 +78,15 @@ class OverlayGuide3BTrust {
           if (!showTz) {
             OverlayTzNotify().show(
               onEnd: () {
-                OverlayGuide4Fertilize().show();
+                // OverlayGuide4Fertilize().show();
+                MainTreeController.to.saveGuideIndexData(MainTreeController.guide4);
+                OverlayGuide5AdSpot().show(coins: 5);
               },
             );
           } else {
-            OverlayGuide4Fertilize().show();
+            // OverlayGuide4Fertilize().show();
+            MainTreeController.to.saveGuideIndexData(MainTreeController.guide4);
+            OverlayGuide5AdSpot().show(coins: 5);
           }
         },
       ),

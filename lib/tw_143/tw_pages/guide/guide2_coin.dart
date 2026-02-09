@@ -71,12 +71,12 @@ class OverlayGuide2Coin {
           MainTreeController.to.saveGuideIndexData(
             MainTreeController.guide2,
           );
-          double coins = 2;
+          double coins = 10;
           if(TwPackageABC143.isPackageB()){
-            coins = 2;
-            await TwCommonAds().showInterstitialAd(
-              adPosId: TwAdsPosId.cuvxv_newadview_rv,
-            );
+            // coins = 2;
+            // await TwCommonAds().showInterstitialAd(
+            //   adPosId: TwAdsPosId.cuvxv_newadview_rv,
+            // );
           }
 
           OverlayGuide3AdSpot().show(coins: coins);
@@ -252,16 +252,16 @@ class GuideWidget extends StatelessWidget {
                     ),
                   ),
                 )),
-                if (TwPackageABC143.isPackageB())
-                  Positioned(
-                    top: -10.h,
-                    right: -5.h,
-                    child: Image.asset(
-                      Assets.twimg.ad.path,
-                      width: 28.h,
-                      height: 28.h,
-                    ),
-                  ),
+                // if (TwPackageABC143.isPackageB())
+                //   Positioned(
+                //     top: -10.h,
+                //     right: -5.h,
+                //     child: Image.asset(
+                //       Assets.twimg.ad.path,
+                //       width: 28.h,
+                //       height: 28.h,
+                //     ),
+                //   ),
                 Positioned(
                   top: 40.h,
                   left: 30.w,

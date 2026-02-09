@@ -29,14 +29,20 @@ class OverlayGuideOldLaunch2 {
 
   void show({required double coins}) {
     _overlayEntry = null;
-
+    MainController.to.resetIndex(MainController.cashIndex);
     Widget child = Material(
       color: Colors.transparent,
       child: GuideOldLaunch2(
         coins: coins,
         onClose: () async {
           close();
-          MainController.to.resetIndex(MainController.cashIndex);
+          MainTreeController.to.onAddMoneyyyy(
+            5,
+            onEnd: () {
+              MainCashController.to.showMoneyHeroJsonTrue();
+            },
+          );
+          // MainController.to.resetIndex(MainController.cashIndex);
         },
       ),
     );

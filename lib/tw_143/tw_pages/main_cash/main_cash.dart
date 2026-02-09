@@ -59,7 +59,7 @@ class _MainCashState extends State<MainCash> {
             Obx(() {
               bool show = MainCashController.to.showMoneyHeorJson.value;
               if(!show){
-                // return const SizedBox();
+                return const SizedBox();
               }
               return Positioned.fill(
                   child: IgnorePointer(child: TwLottieCommon(type: EnumTwLottttieJson.moneyHero)));

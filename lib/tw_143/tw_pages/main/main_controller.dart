@@ -22,6 +22,7 @@ import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
 import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
 import 'package:c143/tw_base/tw_gj/android_h5.dart';
 import 'package:c143/tw_base/tw_gj/event_busC143.dart';
+import 'package:c143/tw_base/tw_gj/login_trackC143.dart';
 import 'package:c143/tw_base/tw_gj/vibration.dart';
 import 'package:c143/tw_base/tw_http/event_report.dart';
 import 'package:c143/tw_notification/overlay_notify.dart';
@@ -35,7 +36,7 @@ class MainController extends GetxController {
   static const int quizIndex = 1;
   static const int spinindexxx = 2;
   static const int cashIndex = 3;
-
+  bool hasQidong = false;
   resetIndex(int index) async {
     // throw Exception();
     // VibrationC143.vibrationClick();
@@ -46,6 +47,16 @@ class MainController extends GetxController {
     if (curSelect == index) {
       return;
     }
+
+    if(TwLoginnnTrackC143.qiduoCishu() == 2 && !hasQidong){
+      String? data = MainTreeController.to.guide7CashoutData();
+      if(data != null){
+        hasQidong = true;
+        MainTreeController.to.initGuide();
+      }
+
+    }
+
     curMainNavIndex.value = index;
     if (index == cashIndex) {
       TwMaiDiannnn.cash_page_view(
@@ -61,9 +72,14 @@ class MainController extends GetxController {
       String? data = MainTreeController.to.guideIndexData();
 
       if (data == MainTreeController.guide10) {
-        OverlayGuide11HomeBonus().show(
-          coins: TwPackageABC143.isPackageB() ? 5 : 10,
-        );
+        if(TwPackageABC143.isPackageB()){
+          OverlayGuide7Rank().show();
+        }else{
+          OverlayGuide11HomeBonus().show(
+            coins: TwPackageABC143.isPackageB() ? 5 : 10,
+          );
+        }
+
       }
 
       MainTreeController.to.resetCoin();

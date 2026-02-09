@@ -16,6 +16,7 @@ import 'package:c143/tw_143/tw_pages/guide/guide17_coin_to_flower.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide1_water.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide2_coin.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide3_adspot.dart';
+import 'package:c143/tw_143/tw_pages/guide/guide3b_trust.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide4_fertilize.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide5_adspot.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide6_rewarddouble.dart';
@@ -379,7 +380,7 @@ class MainTreeController extends GetxController {
     // data = MainTreeController.guide4;
     if (data == null) {
       if (TwPackageABC143.isPackageB()) {
-        OverlayGuide0BGuide().show(coins: 5, onBtn: (value) {});
+        OverlayGuide0BGuide().show(coins: 10, onBtn: (value) {});
       } else {
         OverlayGuide1Water().show();
       }
@@ -390,13 +391,28 @@ class MainTreeController extends GetxController {
     } else if (data == MainTreeController.guide2) {
       OverlayGuide3AdSpot().show(coins: 10);
     } else if (data == MainTreeController.guide3) {
-      OverlayGuide4Fertilize().show();
+      if(TwPackageABC143.isPackageB() ){
+        OverlayGuide3BTrust().show();
+      }else{
+        OverlayGuide4Fertilize().show();
+      }
+
     } else if (data == MainTreeController.guide4) {
       OverlayGuide5AdSpot().show(coins: 10);
     } else if (data == MainTreeController.guide5) {
-      OverlayGuide6RewardDouble().show(coins: 10);
+      OverlayGuide6RewardDouble().show(coins: 5);
     } else if (data == MainTreeController.guide6) {
-      OverlayGuide7Rank().show();
+      String? data = MainTreeController.to.guide7CashoutData();
+      if (TwPackageABC143.isPackageB()) {
+        if(data == null){
+          OverlayGuide8Cash().show(coins: 111);
+        }else{
+          MainController.to.resetIndex(MainController.cashIndex);
+        }
+
+      } else {
+        OverlayGuide7Rank().show();
+      }
     } else if (data == MainTreeController.guide7) {
       String? data = MainTreeController.to.guide7CashoutData();
       if (TwPackageABC143.isPackageB() && data == null) {
@@ -709,9 +725,9 @@ class MainTreeController extends GetxController {
       OverlayLotWater().show(
         onEnd: () {
           curHasWatering.value = true;
-          Timer(Duration(milliseconds: 2000), () {
+          Timer(Duration(milliseconds: 0), () {
             audioBtn_Water2.pause();
-            audioMusic.resume();
+            // audioMusic.resume();
             int tmpCurMmm = curStageWaterCount.value;
 
             int tmpCurmmm2 = tmpCurMmm + 1;

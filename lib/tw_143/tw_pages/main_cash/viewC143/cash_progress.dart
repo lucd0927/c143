@@ -2,6 +2,7 @@ import 'package:c143/tw_143/tw_common/lottieeee/gesture.dart';
 import 'package:c143/tw_143/tw_pages/main_cash/main_cash_controller.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
 import 'package:c143/tw_base/tw_gj/countryC143.dart';
+import 'package:c143/tw_base/tw_gj/logC143.dart';
 import 'package:c143/tw_base/tw_gj/vibration.dart';
 import 'package:c143/tw_views/animated_scale.dart';
 import 'package:c143/tw_views/tw_progress.dart';
@@ -22,18 +23,20 @@ class _CashProgressState extends State<CashProgress> {
   Widget build(BuildContext context) {
     return Obx(() {
       double maxnnn = MainTreeController.stageB1Num;
-
-      if (MainCashController.to.hasSaveCardIddddC143()) {
+      double lfettt = MainTreeController.to.leftMonn1();
+      bool hasSaaa = MainCashController.to.hasSaveCardIddddC143();
+      if (hasSaaa) {
         maxnnn = MainTreeController.maxCoinNum;
+        lfettt = MainTreeController.to.leftMonn2();
       }
 
       double progress = MainTreeController.to.curMoneyyyy.value / maxnnn;
       if (progress >= 1) {
         progress = 1;
       }
-
+      twLooog("===progress:$progress===");
       List<Color> prgressTxt = MainCashController.to.progressColors();
-      double lfettt = MainTreeController.to.leftMonn1();
+
       return Padding(
         padding: EdgeInsets.symmetric(horizontal: 20.w),
         child: Column(
@@ -69,7 +72,7 @@ class _CashProgressState extends State<CashProgress> {
             Container(
               padding: EdgeInsets.symmetric(horizontal: 16.w),
               width: 320.w,
-              height: 140.h,
+              height: 160.h,
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(12.h),
@@ -116,7 +119,7 @@ class _CashProgressState extends State<CashProgress> {
                       children: [
                         Container(
                           width: 290.w,
-                          height: 40.h,
+                          height: 60.h,
                           decoration: BoxDecoration(
                             gradient: LinearGradient(
                               colors: prgressTxt,
@@ -141,7 +144,7 @@ class _CashProgressState extends State<CashProgress> {
                                   style: TextStyle(
                                     fontWeight: FontWeight.w700,
                                     fontSize: 16.sp,   height: 1,
-                            
+
                                     color: Color(0xffffffff),
                                   ),
                                 ),

@@ -15,6 +15,7 @@ import 'package:c143/tw_143/tw_pages/guide/guide6_rewarddouble.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide7_rank.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide8_quiz1.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide9_quiz2.dart';
+import 'package:c143/tw_143/tw_pages/guide/guide_OLD_launch2.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide_old.dart';
 import 'package:c143/tw_143/tw_pages/main/main_controller.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
@@ -59,10 +60,14 @@ class _MainTreeState extends State<MainTree> {
     initScroller();
     MainTreeController.initComposition();
     WidgetsBinding.instance.addPostFrameCallback((_) async {
-
-      MainTreeController.to.initGuide();
+      await initTz();
+      if(TwLoginnnTrackC143.qiduoCishu() == 2){
+        OverlayGuideOldLaunch2().show(coins:5);
+      }else{
+        MainTreeController.to.initGuide();
+      }
       initInterAd();
-      initTz();
+
 
     });
   }
