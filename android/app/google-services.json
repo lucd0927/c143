@@ -1,39 +1,39 @@
-//{
-//  "project_info": {
-//    "project_number": "695577276598",
-//    "project_id": "sys-73878854341662153911229392",
-//    "storage_bucket": "sys-73878854341662153911229392.firebasestorage.app"
-//  },
-//  "client": [
-//    {
-//      "client_info": {
-//        "mobilesdk_app_id": "1:695577276598:android:9553cf34b00a22e1c17617",
-//        "android_client_info": {
-//          "package_name": "com.treeworld.gardener"
-//        }
-//      },
-//      "oauth_client": [
-//        {
-//          "client_id": "695577276598-vcdkljkcj7kr77g7cuuqg6bnada5mjkv.apps.googleusercontent.com",
-//          "client_type": 3
-//        }
-//      ],
-//      "api_key": [
-//        {
-//          "current_key": "AIzaSyB7rECq2WRfnjqMu6rISelTuIuPmdKekkM"
-//        }
-//      ],
-//      "services": {
-//        "appinvite_service": {
-//          "other_platform_oauth_client": [
-//            {
-//              "client_id": "695577276598-vcdkljkcj7kr77g7cuuqg6bnada5mjkv.apps.googleusercontent.com",
-//              "client_type": 3
-//            }
-//          ]
-//        }
-//      }
-//    }
-//  ],
-//  "configuration_version": "1"
-//}
+{
+  "project_info": {
+    "project_number": "695577276598",
+    "project_id": "sys-73878854341662153911229392",
+    "storage_bucket": "sys-73878854341662153911229392.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:695577276598:android:9553cf34b00a22e1c17617",
+        "android_client_info": {
+          "package_name": "com.treeworld.gardener"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "695577276598-vcdkljkcj7kr77g7cuuqg6bnada5mjkv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB7rECq2WRfnjqMu6rISelTuIuPmdKekkM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "695577276598-vcdkljkcj7kr77g7cuuqg6bnada5mjkv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
