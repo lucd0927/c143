@@ -3,6 +3,7 @@ class TwAdsPosId {
   static const String cuvxv_launch = "cuvxv_launch";
   static const String cuvxv_newadview_rv = "cuvxv_newadview_rv";
   static const String cuvxv_newquizc_rv = "cuvxv_newquizc_rv";
+  static const String cuvxv_newquizc_int = "cuvxv_newquizc_int";
   static const String cuvxv_manure_rv = "cuvxv_manure_rv";
   static const String cuvxv_bubble_rv = "cuvxv_bubble_rv";
   static const String cuvxv_question_rv = "cuvxv_question_rv";

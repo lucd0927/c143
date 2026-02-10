@@ -321,16 +321,16 @@ class _Guide10Quiz3State extends State<Guide10Quiz3> {
                         foreground: Color(0xff22431B),
                       ),
                     ),
-                    if (TwPackageABC143.isPackageB())
-                      Positioned(
-                        top: -10.h,
-                        right: -5.h,
-                        child: Image.asset(
-                          Assets.twimg.ad.path,
-                          width: 28.h,
-                          height: 28.h,
-                        ),
-                      ),
+                    // if (TwPackageABC143.isPackageB())
+                    //   Positioned(
+                    //     top: -10.h,
+                    //     right: -5.h,
+                    //     child: Image.asset(
+                    //       Assets.twimg.ad.path,
+                    //       width: 28.h,
+                    //       height: 28.h,
+                    //     ),
+                    //   ),
 
                     // Positioned(
                     //   top: -0.h,
@@ -382,8 +382,8 @@ class _Guide10Quiz3State extends State<Guide10Quiz3> {
 
   void onClaim() async {
     if (TwPackageABC143.isPackageB()){
-      bool result = await TwCommonAds().showRewardAd(
-        adPosId: TwAdsPosId.cuvxv_newquizc_rv,
+      bool result = await TwCommonAds().showInterstitialAd(
+        adPosId: TwAdsPosId.cuvxv_newquizc_int,
       );
     }
 

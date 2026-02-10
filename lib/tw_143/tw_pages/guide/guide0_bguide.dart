@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 import 'dart:math';
 
 import 'package:auto_size_text/auto_size_text.dart';
@@ -18,6 +19,7 @@ import 'package:c143/tw_views/animated_count.dart';
 import 'package:c143/tw_views/animated_scale.dart';
 import 'package:c143/tw_views/font_border.dart';
 import 'package:c143/tw_views/font_gradient_border.dart';
+import 'package:c143/tw_views/give_5_star.dart';
 import 'package:c143/tw_views/rotate.dart';
 import 'package:c143/tw_views/shimmer_effect.dart';
 import 'package:flutter/material.dart';
@@ -73,10 +75,13 @@ class OverlayGuide0BGuide {
             MainTreeController.to.curMoneyyyy.value = 0;
             MainTreeController.to.onAddMoneyyyy(
               coins,
-              onEnd: () {
+              onEnd: () async{
                 MainTreeController.to.saveGuideIndexData(
                   MainTreeController.guide0,
                 );
+                if (Platform.isIOS) {
+                  await twShow5Star(Get.context!);
+                }
 
                 OverlayGuide1Water().show();
               },

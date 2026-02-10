@@ -135,13 +135,13 @@ class TwNotificationC143 {
   ];
 
   List<T> getRandomNMinus3C143<T>(List<T> source) {
-    if (source.length <= 3) {
+    if (source.length <= 5) {
       throw ArgumentError('数组长度必须大于 3');
     }
 
     final list = List<T>.from(source); // 拷贝一份，避免修改原数组
     list.shuffle(Random()); // 随机打乱
-    return list.sublist(0, 3);
+    return list.sublist(0, 5);
   }
 
   init() async {
@@ -201,24 +201,31 @@ class TwNotificationC143 {
     print("=====newContents:$newContents");
     dingshhhhiC143(
       id: C143dingshitzid,
-      minutes: TwConfigggg.hasDeeevv() ? 1 : 28,
+      minutes: TwConfigggg.hasDeeevv() ? 1 : 25,
       title: newContents[0]['title'],
       content: newContents[0]['content'],
       tzimage: tzimages[0],
     );
     dingshhhhiC143(
       id: C143dingshitzid2,
-      minutes: TwConfigggg.hasDeeevv() ? 2 : 58,
+      minutes: TwConfigggg.hasDeeevv() ? 2 : 40,
       title: newContents[1]['title'],
       content: newContents[1]['content'],
       tzimage: tzimages[1],
     );
     dingshhhhiC143(
       id: C143dingshitzid3,
-      minutes: TwConfigggg.hasDeeevv() ? 3 : 80,
+      minutes: TwConfigggg.hasDeeevv() ? 3 : 60,
       title: newContents[2]['title'],
       content: newContents[2]['content'],
       tzimage: tzimages[2],
+    );
+    dingshhhhiC143(
+      id: C143dingshitzid3,
+      minutes: TwConfigggg.hasDeeevv() ? 3 : 80,
+      title: newContents[3]['title'],
+      content: newContents[3]['content'],
+      tzimage: tzimages[3],
     );
     fcmtongzhi();
     jiesoutzC143();

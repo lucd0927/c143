@@ -435,6 +435,8 @@ class MainTreeController extends GetxController {
       OverlayGuide12HomeReward().show(coins: 10, onBtn: (value) {});
     } else if (data == MainTreeController.guide12) {
       OverlayGuide13Spin().show();
+    }else{
+      MainController.to.resetIndex(MainController.cashIndex);
     }
 
     if (TwLoginnnTrackC143.isFirstLoginToday &&
@@ -725,7 +727,7 @@ class MainTreeController extends GetxController {
       OverlayLotWater().show(
         onEnd: () {
           curHasWatering.value = true;
-          Timer(Duration(milliseconds: 0), () {
+          Timer(Duration(milliseconds: 2000), () {
             audioBtn_Water2.pause();
             // audioMusic.resume();
             int tmpCurMmm = curStageWaterCount.value;

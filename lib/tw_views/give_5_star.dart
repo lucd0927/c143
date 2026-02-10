@@ -11,17 +11,16 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:hive_ce_flutter/hive_flutter.dart';
 
-
 import '../../../gen/assets.gen.dart';
 
-twShowFeedback(BuildContext context) async{
+twShowFeedback(BuildContext context) async {
   return await twBaseDialogC143(
     context: context,
     child: Material(color: Colors.transparent, child: TwGive5Star()),
   );
 }
 
-class TwGive5Star extends StatelessWidget{
+class TwGive5Star extends StatelessWidget {
   const TwGive5Star({super.key});
 
   @override
@@ -37,7 +36,7 @@ class TwGive5Star extends StatelessWidget{
               Spacer(),
               GestureDetector(
                 onTap: () {
-                  Navigator.pop(context);
+                  Navigator.pop(context,false);
                 },
                 child: Image.asset(
                   Assets.twimgB.close2.path,
@@ -73,7 +72,11 @@ class TwGive5Star extends StatelessWidget{
                 child: Column(
                   children: [
                     SizedBox(height: 20.h),
-                    Image.asset(Assets.twimgB.give5Ok.path, width: 96.h, height: 96.h),
+                    Image.asset(
+                      Assets.twimgB.give5Ok.path,
+                      width: 96.h,
+                      height: 96.h,
+                    ),
                     SizedBox(height: 28.h),
 
                     Row(
@@ -98,14 +101,17 @@ class TwGive5Star extends StatelessWidget{
                     SizedBox(height: 40.h),
                     InkWell(
                       onTap: () {
-                        Navigator.pop(context);
+                        Navigator.pop(context,false);
                       },
                       child: Stack(
                         children: [
                           Container(
                             width: 229.w,
                             height: 40.h,
-                            decoration: BoxDecoration(color: Color(0xff1cae1c),borderRadius: BorderRadius.circular(80.w)),
+                            decoration: BoxDecoration(
+                              color: Color(0xff1cae1c),
+                              borderRadius: BorderRadius.circular(80.w),
+                            ),
                           ),
                           Positioned(
                             top: 0,
@@ -135,7 +141,6 @@ class TwGive5Star extends StatelessWidget{
                 ),
               ),
             ),
-
           ],
         ),
       ],
@@ -143,12 +148,21 @@ class TwGive5Star extends StatelessWidget{
   }
 }
 
-twShow5Star(BuildContext context) async{
-  return await twBaseDialogC143(
+twShow5Star(BuildContext context) async {
+  bool result = await twBaseDialogC143(
     context: context,
     barrierColor: Colors.black.withValues(alpha: 0.8),
     child: Material(color: Colors.transparent, child: Give5Hp()),
   );
+
+  if (result == true) {
+    MainTreeController.to.onAddMoneyyyy(5);
+    await Future.delayed(Duration(milliseconds: 500));
+    TwIosStore.to();
+  } else {
+    await Future.delayed(Duration(milliseconds: 300));
+    await twShowFeedback(Get.context!);
+  }
 }
 
 class Give5Hp extends StatefulWidget {
@@ -205,10 +219,13 @@ class _Give5HpState extends State<Give5Hp> {
                 text: "Give Us Good Review",
                 fontSize: 30.sp,
                 fontWeight: FontWeight.w700,
-
               ),
               SizedBox(height: 30.h),
-              Image.asset(Assets.twimgB.logo2.path, width: 110.h, height: 110.h),
+              Image.asset(
+                Assets.twimgB.logo2.path,
+                width: 110.h,
+                height: 110.h,
+              ),
               SizedBox(height: 28.h),
               Stack(
                 clipBehavior: Clip.none,
@@ -240,9 +257,7 @@ class _Give5HpState extends State<Give5Hp> {
                     Positioned(
                       right: -50.w,
                       top: 20.h,
-                      child: IgnorePointer(
-                        child: TwLottieGesture(),
-                      ),
+                      child: IgnorePointer(child: TwLottieGesture()),
                     ),
                 ],
               ),
@@ -267,13 +282,17 @@ class _Give5HpState extends State<Give5Hp> {
                     ),
                   ),
                   SizedBox(width: 4.w),
-                  Image.asset(Assets.twimgB.money.path, width: 30.h, height: 30.h),
+                  Image.asset(
+                    Assets.twimgB.money.path,
+                    width: 30.h,
+                    height: 30.h,
+                  ),
                 ],
               ),
               SizedBox(height: 14.h),
               InkWell(
                 onTap: () {
-                  star =5.0;
+                  star = 5.0;
                   onGiveStaraaaa(context);
                 },
                 child: Stack(
@@ -316,18 +335,10 @@ class _Give5HpState extends State<Give5Hp> {
     );
   }
 
-  onGiveStaraaaa(BuildContext context) async{
-    Navigator.pop(context);
+  onGiveStaraaaa(BuildContext context) async {
+    bool give5 = star >= 4;
+    Navigator.pop(context, give5);
     // DtController.to.toAppStoreCommitReview();
-    if(star <= 4){
-      await Future.delayed(Duration(milliseconds: 300));
-      await twShowFeedback(Get.context!);
-    }else{
-      MainTreeController.to.onAddMoneyyyy(5);
-      TwIosStore.to();
-    }
-
-
   }
 
   Widget _image(String asset) {

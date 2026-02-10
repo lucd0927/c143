@@ -70,8 +70,7 @@ class OverlayGuide3AdSpot {
             coins,
             onEnd: () async {
               if (TwPackageABC143.isPackageB()) {
-                if (Platform.isIOS) {}
-                await twShow5Star(Get.context!);
+
                 OverlayGuide3BTrust().show();
               } else {
                 OverlayGuide4Fertilize().show();
