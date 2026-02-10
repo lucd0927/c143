@@ -57,6 +57,11 @@ class _QuizAnswerState extends State<QuizAnswer> {
     String a = twQuizModel.a ?? "";
     String b = twQuizModel.b ?? "";
     bool showC = MainQuizController.to.guideStatus.value == MainQuizController.guideStatus2;
+    int index = MainQuizController.to.curAnswerCount.value;
+    twLooog("=======answerWidget=index:${index}");
+    if(index == 1){
+      showC = true;
+    }
     return Column(
       children: [
         answerView(answer: "A", answerContent: a),

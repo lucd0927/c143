@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 import 'dart:math';
 
 import 'package:c143/gen/assets.gen.dart';
@@ -40,6 +41,7 @@ import 'package:c143/tw_base/tw_http/event_report.dart';
 import 'package:c143/tw_hive/twhiveC143.dart';
 import 'package:c143/tw_notification/android_notification.dart';
 import 'package:c143/tw_views/animated_fly.dart';
+import 'package:c143/tw_views/give_5_star.dart';
 import 'package:c143/tw_views/pb_tushi.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -437,6 +439,9 @@ class MainTreeController extends GetxController {
       OverlayGuide13Spin().show();
     }else{
       MainController.to.resetIndex(MainController.cashIndex);
+      if (Platform.isIOS) {
+        twShow5Star(Get.context!);
+      }
     }
 
     if (TwLoginnnTrackC143.isFirstLoginToday &&

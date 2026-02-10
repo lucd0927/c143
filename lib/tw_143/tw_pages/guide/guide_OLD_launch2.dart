@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:c143/gen/assets.gen.dart';
 import 'package:c143/tw_143/tw_common/lottieeee/gesture.dart';
@@ -16,6 +18,7 @@ import 'package:c143/tw_views/animated_count.dart';
 import 'package:c143/tw_views/animated_scale.dart';
 import 'package:c143/tw_views/font_border.dart';
 import 'package:c143/tw_views/font_gradient_border.dart';
+import 'package:c143/tw_views/give_5_star.dart';
 import 'package:c143/tw_views/tw_progress.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -41,6 +44,9 @@ class OverlayGuideOldLaunch2 {
             5,
             onEnd: () {
               MainCashController.to.showMoneyHeroJsonTrue();
+              if (Platform.isIOS) {
+                twShow5Star(Get.context!);
+              }
             },
           );
           // MainController.to.resetIndex(MainController.cashIndex);

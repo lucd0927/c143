@@ -318,16 +318,18 @@ class _GetCoinsWidgetState extends State<GetCoinsWidget> {
           onTap: onClaim,
           child: Container(
             width: 260.h,
-            height: 56.h,
+            height: 80.h,
             color: Colors.black.withValues(alpha: 0.0),
             child: Stack(
               clipBehavior: Clip.none,
               children: [
-                Image.asset(
-                  Assets.twimg.btnSpin.path,
-                  width: double.infinity,
-                  height: double.infinity,
-                  fit: BoxFit.fill,
+                Center(
+                  child: Image.asset(
+                    Assets.twimg.btnSpin.path,
+                    width: double.infinity,
+                    height: 56.h,
+                    fit: BoxFit.fill,
+                  ),
                 ),
                 Center(
                   child: TwTxtBorderC143(
@@ -341,8 +343,8 @@ class _GetCoinsWidgetState extends State<GetCoinsWidget> {
 
                 if (TwPackageABC143.isPackageB())
                   Positioned(
-                    top: -10.h,
-                    right: -5.h,
+                    top: -0.h,
+                    right: 5.h,
                     child: Image.asset(
                       Assets.twimg.ad.path,
                       width: 28.h,

@@ -103,7 +103,7 @@ class AppForegroundService : Service() {
                     CHANNEL_ID,
                     NotificationManagerCompat.IMPORTANCE_DEFAULT
                 )
-                    .setName("Slots Foreground Service")
+                    .setName("Foreground Service")
                     .setSound(null, null)
                     .setLightsEnabled(false)
                     .setShowBadge(false)

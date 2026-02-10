@@ -2,6 +2,8 @@ import 'package:c143/tw_143/tw_common/lottieeee/gesture.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
 import 'package:c143/tw_base/tw_dialoggg/base_dialog.dart';
 import 'package:c143/tw_base/tw_gj/apple_store.dart';
+import 'package:c143/tw_base/tw_gj/logC143.dart';
+import 'package:c143/tw_hive/twhiveC143.dart';
 import 'package:c143/tw_views/font_border.dart';
 import 'package:c143/tw_views/font_gradient_border.dart';
 import 'package:flutter/material.dart';
@@ -149,17 +151,27 @@ class TwGive5Star extends StatelessWidget {
 }
 
 twShow5Star(BuildContext context) async {
-  bool result = await twBaseDialogC143(
-    context: context,
-    barrierColor: Colors.black.withValues(alpha: 0.8),
-    child: Material(color: Colors.transparent, child: Give5Hp()),
-  );
+  var box  = TwHive.box;
+  String key = "xxxaaa5star";
+  var rsult = box.get(key);
+  twLooog("=====twShow5Star:$rsult==");
+  var result = null;
+  if(rsult == null){
+    result = await twBaseDialogC143(
+      context: context,
+      barrierColor: Colors.black.withValues(alpha: 0.8),
+      child: Material(color: Colors.transparent, child: Give5Hp()),
+    );
+  }
+
 
   if (result == true) {
+    box.put(key, true);
     MainTreeController.to.onAddMoneyyyy(5);
     await Future.delayed(Duration(milliseconds: 500));
     TwIosStore.to();
-  } else {
+  } else  if (result == false) {
+    box.put(key, false);
     await Future.delayed(Duration(milliseconds: 300));
     await twShowFeedback(Get.context!);
   }
