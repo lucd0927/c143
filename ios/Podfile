@@ -43,6 +43,7 @@ target 'Runner' do
   pod 'AppLovinMediationMolocoAdapter'
   pod 'AppLovinMediationByteDanceAdapter'
   pod 'AppLovinMediationUnityAdsAdapter'
+#   pod 'AppLovinMediationUnityAdsAdapter' , '~> 4.16.6.0'
   flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
   target 'RunnerTests' do
     inherit! :search_paths

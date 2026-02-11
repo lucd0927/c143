@@ -100,7 +100,7 @@ PODS:
   - Firebase/RemoteConfig (12.8.0):
     - Firebase/CoreOnly
     - FirebaseRemoteConfig (~> 12.8.0)
-  - firebase_analytics (12.1.1):
+  - firebase_analytics (12.1.2):
     - firebase_core
     - FirebaseAnalytics (= 12.8.0)
     - Flutter
@@ -535,7 +535,7 @@ SPEC CHECKSUMS:
   FBSDKCoreKit: 94d7461d0cecf441b1ba7c41acfff41daa8ccd41
   FBSDKCoreKit_Basics: 151b43db8b834d3f0e02f95d36a44ffd36265e45
   Firebase: 9a58fdbc9d8655ed7b79a19cf9690bb007d3d46d
-  firebase_analytics: b5a19eaf3e4bf4187b0815ef4850b8916e2bc549
+  firebase_analytics: a3285a9ab410456957496cdb659f00c1cf19a95f
   firebase_core: ee30637e6744af8e0c12a6a1e8a9718506ec2398
   firebase_crashlytics: 28b8f39df8104131376393e6af658b8b77dd120f
   firebase_remote_config: 3a5639062e130c4d4b7c4bae347cc3bac90f5a1e
@@ -585,6 +585,6 @@ SPEC CHECKSUMS:
   VungleAds: 1d60d6d08d4adcaa84a401a7e65c35de5cd16ae9
   webview_flutter_wkwebview: 8ebf4fded22593026f7dbff1fbff31ea98573c8d
 
-PODFILE CHECKSUM: 421cfd2d7b8c5fffb5fe05ae48e47cd2c8de8978
+PODFILE CHECKSUM: a6a0ba2c3490e81f6c7d484bd37485f9a640fc15
 
 COCOAPODS: 1.16.2

@@ -19,6 +19,12 @@ A new Flutter project.
   s.dependency 'Flutter'
   s.static_framework = true
   s.platform = :ios, '12.0'
+#   s.dependency 'TPNiOS','6.5.42'
+  #TPN Adx SDK(necessary)
+#   s.dependency 'TPNMediationAdxSmartdigimktAdapter','6.5.42.1'
+#   s.dependency 'TPNMediationApplovinAdapter','13.5.0.1'
+#   s.dependency 'TPNMediationUnityAdsAdapter','4.16.6.0'
+
   s.dependency 'TPNiOS','6.4.93'
   s.dependency 'TPNApplovinSDKAdapter','6.4.93.1'
   #************************* Manual import ******************************#

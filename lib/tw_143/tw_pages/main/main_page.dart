@@ -1,3 +1,4 @@
+import 'package:applovin_max/applovin_max.dart';
 import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:c143/gen/assets.gen.dart';
 import 'package:c143/sfcj/floating_particles/src/models/direction.dart';
@@ -49,7 +50,7 @@ class _TwMainPageState extends State<TwMainPage> {
   void initState() {
     // TODO: implement initState
     super.initState();
-
+    // AppLovinMAX.showMediationDebugger();
     Get.put(MainController());
     Get.put(MainTreeController());
     Get.put(MainQuizController());

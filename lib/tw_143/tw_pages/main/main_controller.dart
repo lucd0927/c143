@@ -1,3 +1,4 @@
+import 'package:applovin_max/applovin_max.dart';
 import 'package:c143/tw_143/tw_common/event.dart';
 import 'package:c143/tw_143/tw_common/overlay/overlay_get_sun.dart';
 import 'package:c143/tw_143/tw_common/overlay/overlay_hongbaoyu.dart';
@@ -43,8 +44,6 @@ class MainController extends GetxController {
     // VibrationC143.vibrationClick();
     // OverlayGuide3BTrust().show();
     // OverlayGuideOldLaunch2().show(coins: 11);
-
-
 
     MainCashController.overlayPortalController.hide();
     int curSelect = curMainNavIndex.value;
