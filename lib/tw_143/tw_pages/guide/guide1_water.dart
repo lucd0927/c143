@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:c143/gen/assets.gen.dart';
 import 'package:c143/tw_143/tw_common/lottieeee/gesture.dart';
@@ -110,7 +112,8 @@ class _Guide1WaterWidgetState extends State<Guide1WaterWidget> {
   bool showAnimated = false;
   Duration animD = Duration(milliseconds: 200);
   double startScale = 0.8;
-
+  Timer? _timer;
+  final Duration _timerD = Duration(milliseconds: 2000);
   @override
   void initState() {
     // TODO: implement initState
@@ -121,10 +124,22 @@ class _Guide1WaterWidgetState extends State<Guide1WaterWidget> {
         setState(() {
           showAnimated = true;
         });
+
+      }
+      initTimer();
+    });
+  }
+  initTimer() {
+    _timer?.cancel();
+    _timer = Timer(_timerD, () {
+      _timer?.cancel();
+      if (mounted) {
+        setState(() {
+          index = 1;
+        });
       }
     });
   }
-
   @override
   Widget build(BuildContext context) {
     return AnimatedContainer(
@@ -139,6 +154,7 @@ class _Guide1WaterWidgetState extends State<Guide1WaterWidget> {
           child: IndexedStack(
             index: index,
             children: [
+              Center(child: _Guide1ScaleOverlayAnim()),
               GestureDetector(
                 onTap: () {
                   widget.onClose();
@@ -222,5 +238,162 @@ class GuideWidget extends StatelessWidget {
         ],
       ),
     );
+  }
+}
+
+
+class _Guide1ScaleOverlayAnim extends StatefulWidget {
+  const _Guide1ScaleOverlayAnim({super.key});
+
+  @override
+  State<_Guide1ScaleOverlayAnim> createState() =>
+      _Guide1ScaleOverlayAnimState();
+}
+
+class _Guide1ScaleOverlayAnimState extends State<_Guide1ScaleOverlayAnim>
+    with SingleTickerProviderStateMixin {
+  static double containerHeight = 360.w;
+
+  late AnimationController _controller;
+  late Animation<double> heightAnim;
+  late Animation<double> slideAnim;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 500),
+    );
+
+    // 底图：先执行
+    heightAnim = Tween<double>(begin: 0, end: containerHeight * 1).animate(
+      CurvedAnimation(
+        parent: _controller,
+        curve: const Interval(0.0, 0.6, curve: Curves.easeOutCubic),
+      ),
+    );
+
+    // 上下叠图：后执行
+    slideAnim = Tween<double>(begin: -360.w, end: 0.w).animate(
+      CurvedAnimation(
+        parent: _controller,
+        curve: const Interval(0.6, 1.0, curve: Curves.easeInOut),
+      ),
+    );
+
+    _controller.forward();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: 360.w,
+      height: 124.h,
+      child: FittedBox(
+        child: Stack(
+          clipBehavior: Clip.none,
+          alignment: Alignment.center,
+          children: [
+            // 底图
+            AnimatedBuilder(
+              animation: heightAnim,
+              builder: (_, __) {
+                return Transform.translate(
+                  offset: Offset(slideAnim.value, 0),
+                  child: Container(
+                    width: 360.w,
+                    height: 124.h,
+                    child: Stack(
+                      children: [
+                        TwShiningEffect(
+                          duration: Duration(milliseconds: 2000),
+                          shineColor: Color(0xffffffff),
+                          opacity: 0.6,
+                          angle: -0.1,
+                          topLeft: false,
+                          child: Image.asset(
+                            Assets.twimg.animatedBg11.path,
+
+                            width: 360.w,
+                            height: 124.h,
+                            fit: BoxFit.fill,
+                          ),
+                        ),
+                        Center(
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 16.w),
+                            child: Text(
+                              "Advertisers dropping cash! Claim yours now!",
+                              style: TextStyle(
+                                fontSize: 16.sp,
+                                fontWeight: FontWeight.w900,
+                                color: Color(0xffffffff),
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                );
+              },
+            ),
+
+            // 上图
+            AnimatedBuilder(
+              animation: _controller,
+              builder: (_, __) {
+                final h = heightAnim.value / 2;
+                return Positioned(
+                  top: -14.h,
+                  child: Transform.translate(
+                    offset: Offset(-slideAnim.value, 0),
+                    child: Container(
+                      color: Colors.white.withValues(alpha: 0),
+                      child: Image.asset(
+                        Assets.twimg.animatedBg12.path,
+                        width: 360.w,
+                        height: 28.h,
+                        fit: BoxFit.fill,
+                      ),
+                    ),
+                  ),
+                );
+              },
+            ),
+
+            // 下图
+            AnimatedBuilder(
+              animation: _controller,
+              builder: (_, __) {
+                final h = heightAnim.value / 2;
+                return Positioned(
+                  bottom: -14.h,
+                  child: Transform.translate(
+                    offset: Offset(-slideAnim.value, 0),
+                    child: Image.asset(
+                      Assets.twimg.animatedBg13.path,
+                      width: 360.w,
+                      height: 28.h,
+                      fit: BoxFit.fill,
+                    ),
+                  ),
+                );
+              },
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    _controller.dispose();
   }
 }

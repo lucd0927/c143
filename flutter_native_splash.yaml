@@ -71,14 +71,14 @@ flutter_native_splash:
     # 768 pixels in diameter.  To fit a 1152x1152 image within a circle with a 768 diameter, simply
     # ensure that the most important design elements of your image are placed within a circular area
     # with a 768 diameter at the center of the 1152x1152 canvas.
-    image: assets/twimg/main_bg.png
-    image_dark: assets/twimg/main_bg.png
+    image: assets/twimgB/alogo.png
+    image_dark: assets/twimgB/alogo.png
     icon_background_color: "#ffffff"
     icon_background_color_dark: "#000000"
     # Splash screen background color.
     color: "#ffffff"
     color_dark: "#000000"
-    android_gravity: fill
+    android_gravity: center
   #    fullscreen: true
   # App icon background color.
   #icon_background_color: "#111111"

@@ -121,6 +121,9 @@ class MainTreeController extends GetxController {
   static String get guide10 =>
       TwPackageABC143.isPackageB() ? "guide10Bbb" : "guide10Aaaa";
 
+  static String get guide10_2 =>
+      TwPackageABC143.isPackageB() ? "guide10Bbb2" : "guide10Aaaa2";
+
   static String get guide11 =>
       TwPackageABC143.isPackageB() ? "guide11Bbb" : "guide11Aaaa";
 
@@ -129,6 +132,8 @@ class MainTreeController extends GetxController {
 
   static String get guide13 =>
       TwPackageABC143.isPackageB() ? "guide13Bbb" : "guide13Aaaa";
+  static String get guide13_2 =>
+      TwPackageABC143.isPackageB() ? "guide13Bbb_22" : "guide13Aaaa_2";
 
   static String get guide14 =>
       TwPackageABC143.isPackageB() ? "guide14Bbb" : "guide14Aaaa";
@@ -148,7 +153,7 @@ class MainTreeController extends GetxController {
     return data;
   }
 
-   guide7CashoutData() {
+  guide7CashoutData() {
     String key = guide7Cashout;
     var data = box.get(key);
     return data;
@@ -814,7 +819,7 @@ class MainTreeController extends GetxController {
       }
       if (showSun && tmpCurmmm2 >= 90 && data == MainTreeController.guide14) {
         OverlayGuide15CoinToSun().show();
-      } else if (tmpCurmmm2 >= 60 && data == MainTreeController.guide13) {
+      } else if (tmpCurmmm2 >= 60 && data == MainTreeController.guide13_2) {
         OverlayGuide14HighLight().show();
       } else if (tmpCurmmm2 >= stageB2Num && showFlower) {
         if (data != MainTreeController.guide17) {

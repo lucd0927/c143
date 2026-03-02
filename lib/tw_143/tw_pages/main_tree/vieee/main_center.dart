@@ -5,6 +5,7 @@ import 'package:c143/gen/assets.gen.dart';
 import 'package:c143/tw_143/tw_common/lottieeee/common.dart';
 import 'package:c143/tw_143/tw_common/overlay/overlay_get_sun.dart';
 import 'package:c143/tw_143/tw_common/overlay/overlay_hongbaoyu.dart';
+import 'package:c143/tw_143/tw_pages/guide/guide13_2rain.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide13_spin.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide1_water.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide2_coin.dart';
@@ -458,6 +459,7 @@ class _MainCenterState extends State<MainCenter> {
     required VoidCallback onClick,
     required TwEnumTreeType treeType,
     required bool showAd,
+    bool showBottomAddSymbol = true,
   }) {
     Widget txtWB = const SizedBox();
     Widget txtWT = const SizedBox();
@@ -466,7 +468,7 @@ class _MainCenterState extends State<MainCenter> {
     if (txtLocationBottom) {
       txtWB = Center(
         child: TwTxtBorderC143(
-          text: "+${txtBottom}",
+          text: "${showBottomAddSymbol?"+":""}${txtBottom}",
           fontSize: 12.sp,
           fontColor: Color(0xffFFD64D),
           foreground: Color(0xff874A00),
@@ -553,6 +555,11 @@ class _MainCenterState extends State<MainCenter> {
               if (OverlayGuide13Spin.guideContext == null) {
                 OverlayGuide13Spin.guideChild = child;
                 OverlayGuide13Spin.guideContext = context;
+              }
+            } else if (treeType == TwEnumTreeType.coin_rain) {
+              if (OverlayGuide13_2Rain.guideContext == null) {
+                OverlayGuide13_2Rain.guideChild = child;
+                OverlayGuide13_2Rain.guideContext = context;
               }
             }
             return child;
@@ -652,8 +659,8 @@ class _MainCenterState extends State<MainCenter> {
           SizedBox(height: height2),
           coinWidget2(),
           SizedBox(height: height3),
-          coinWidget3(),
-          // coinYuWidget()
+          // coinWidget3(),
+          coinYuWidget()
         ],
       ),
     );
@@ -764,23 +771,35 @@ class _MainCenterState extends State<MainCenter> {
   }
 
   coinYuWidget() {
-    int count = 10;
-    return Row(
-      children: [
-        SizedBox(width: 90.w),
-        centerItem(
-          showAd: false,
-          treeType: TwEnumTreeType.coin_rain,
-          width: 60.h,
-          txtBottom: count.toStringAsFixed(0),
-          icon: Assets.twimg.mainCoinYu.path,
+    return Obx((){
+      String leftTime = MainTreeController.to.curLeftTimeCoin3.value;
+      return Row(
+        children: [
+          SizedBox(width: 90.w),
+          centerItem(
+            showAd: false,
+            treeType: TwEnumTreeType.coin_rain,
+            width: 60.h,
+            txtBottom: leftTime,
+            showBottomAddSymbol: false,
+            // txtTop: leftTime,
+            icon: TwPackageABC143.isPackageB()?Assets.twimgB.moneyRain.path:Assets.twimg.mainCoinYu.path,
 
-          onClick: () {
-            OverlayHongbaoyu().show(onEnd: () {});
-          },
-        ),
-      ],
-    );
+            onClick: () {
+              if (MainTreeController.to.curLeftTimeCoin3.isEmpty) {
+                OverlayHongbaoyu().show(onEnd: () {
+                  MainTreeController.to.resetCoin3Time();
+                });
+              } else {
+                twToast(text: "You can claim it after the countdown ends");
+              }
+
+            },
+          ),
+
+        ],
+      );
+    });
   }
 }
 
