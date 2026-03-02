@@ -171,7 +171,9 @@ class _MainCenterState extends State<MainCenter> {
 
   levelWidget() {
     int curLevel = MainTreeController.to.curLevel.value;
+    String text = MainTreeController.to.curLevelProgressCount();
     double progress = MainTreeController.to.curLevelProgress();
+    // String text = "1/20";
     // twLooog("=====progress:$progress");
     return Center(
       child: Container(
@@ -207,13 +209,19 @@ class _MainCenterState extends State<MainCenter> {
                 builder: (BuildContext context, BoxConstraints constraints) {
                   double maxWidth = constraints.maxWidth;
 
-                  return TwProgressC143(
-                    height: 12.h,
-                    innerHeight: 8.h,
-                    width: maxWidth,
-                    progress: progress,
-                    gradientColors: [Color(0xffFFB52B), Color(0xffFF5F03)],
-                    bgColor: Color(0xffC18420),
+                  return Stack(
+                    alignment: Alignment.centerLeft,
+                    children: [
+                      TwProgressC143(
+                        height: 12.h,
+                        innerHeight: 8.h,
+                        width: maxWidth,
+                        progress: progress,
+                        gradientColors: [Color(0xffFFB52B), Color(0xffFF5F03)],
+                        bgColor: Color(0xffC18420),
+                      ),
+                      Center(child: TwTxtBorderC143(text: text,fontSize: 12.sp,),)
+                    ],
                   );
                 },
               ),

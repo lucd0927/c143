@@ -43,7 +43,9 @@ class OverlayGuide10_2Quiz2 {
             twLooog("=====OverlayGuideTestAnim=close");
             close();
             onBtn(0.00);
-
+            MainTreeController.to.saveGuideIndexData(
+              MainTreeController.guide10_2,
+            );
           },
         ),
       ),
@@ -486,7 +488,7 @@ class _Guide10_2BonusWidgetState extends State<Guide10_2BonusWidget> {
   Widget build(BuildContext context) {
     return AnimatedContainer(
       duration: animD,
-      color: Colors.black.withValues(alpha: showAnimated ? overlayOpacity : 0),
+      color: Colors.black.withValues(alpha: showAnimated ? 0 : 0),
       child: AnimatedScale(
         duration: animD,
         scale: showAnimated ? 1.0 : startScale,
@@ -500,22 +502,25 @@ class _Guide10_2BonusWidgetState extends State<Guide10_2BonusWidget> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   SizedBox(height: 80.h),
-                  TwTxtGraBorderC143(
-                    text: TwPackageABC143.isPackageB()
-                        ? "Your feedback pays off"
-                        : "Correct! Congrats!",
-                    gradient: LinearGradient(
-                      colors: [
-                        Color(0xffEBD462),
-                        Color(0xffFFF692),
-                        Color(0xffFFD92E),
-                      ],
-                      end: Alignment.bottomCenter,
-                      begin: Alignment.topCenter,
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 12.w),
+                    child: TwTxtGraBorderC143(
+                      text: TwPackageABC143.isPackageB()
+                          ? "You saved advertisers research fees—this is your bonus cash!"
+                          : "Correct! Congrats!",
+                      gradient: LinearGradient(
+                        colors: [
+                          Color(0xffEBD462),
+                          Color(0xffFFF692),
+                          Color(0xffFFD92E),
+                        ],
+                        end: Alignment.bottomCenter,
+                        begin: Alignment.topCenter,
+                      ),
+                      height: 1.2,
+                      fontSize: 24.sp,
+                      fontWeight: FontWeight.w900,
                     ),
-                    height: 1.2,
-                    fontSize: 24.sp,
-                    fontWeight: FontWeight.w900,
                   ),
                   SizedBox(height: 60.h),
                   Center(

@@ -50,6 +50,8 @@ class TwLottieCommon extends StatelessWidget {
       jsonpath = Assets.lottiejson.gesture;
     }else if (type == EnumTwLottttieJson.moneyHero) {
       jsonpath = Assets.lottiejson.moneyhero.mmm;
+    }else if (type == EnumTwLottttieJson.bgmoney) {
+      jsonpath = Assets.lottiejson.bgmoney;
     }
 
     if (jsonpath.isEmpty) {

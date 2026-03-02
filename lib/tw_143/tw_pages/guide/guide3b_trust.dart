@@ -196,7 +196,7 @@ class _Guide3BTrustWidgetState extends State<Guide3BTrustWidget> {
                       fontWeight: FontWeight.w800,
                       fontSize: 32.sp,
                       color: Color(0xffFFAA00),
-                      height: 1.2
+                      height: 1.4
                     ),
                     textGradient: LinearGradient(
                       colors: [

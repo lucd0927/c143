@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:c143/gen/assets.gen.dart';
+import 'package:c143/tw_143/tw_common/lottieeee/common.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide0_bguide.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide10_quiz3.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide11_homebonus.dart';
@@ -61,29 +62,21 @@ class _MainTreeState extends State<MainTree> {
     MainTreeController.initComposition();
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       await initTz();
-      if(TwLoginnnTrackC143.qiduoCishu() == 2 && TwPackageABC143.isPackageB()){
-        OverlayGuideOldLaunch2().show(coins:5);
-      }else{
+      if (TwLoginnnTrackC143.qiduoCishu() == 2 &&
+          TwPackageABC143.isPackageB()) {
+        OverlayGuideOldLaunch2().show(coins: 5);
+      } else {
         MainTreeController.to.initGuide();
       }
       initInterAd();
-
-
     });
   }
-
-
-
-
-
-
 
   initInterAd() async {
     int count = TwLoginnnTrackC143.qiduoCishu();
     twLooog("initInterAd:$count");
     // count = 1;
-    if (count <= 1 ||
-        !TwPackageABC143.isPackageB()) {
+    if (count <= 1 || !TwPackageABC143.isPackageB()) {
       return;
     }
 
@@ -133,9 +126,9 @@ class _MainTreeState extends State<MainTree> {
   }
 
   initTz() async {
-    if(Platform.isAndroid){
-      await  TwNotificationC143().init();
-    }else{
+    if (Platform.isAndroid) {
+      await TwNotificationC143().init();
+    } else {
       await TwNotificationIosC143().initC143();
     }
 
@@ -167,7 +160,20 @@ class _MainTreeState extends State<MainTree> {
               gaplessPlayback: true,
               // opacity: AlwaysStoppedAnimation(0.99),
             ),
-            StarryBeamScene(),
+            // StarryBeamScene(),
+            Positioned.fill(
+              left: 88.w,
+              right: 88.w,
+              top: 300.h,
+              bottom: 300.h,
+              child: Container(
+                color: Colors.yellow.withValues(alpha: 0),
+                child: Center(
+                  child: TwLottieCommon(type: EnumTwLottttieJson.bgmoney),
+                ),
+              ),
+            ),
+
             Positioned.fill(child: _buildExtendNestedScrollerView()),
           ],
         ),

@@ -33,6 +33,9 @@ class $AssetsLottiejsonGen {
   /// File path: assets/lottiejson/bghightligth.json
   String get bghightligth => 'assets/lottiejson/bghightligth.json';
 
+  /// File path: assets/lottiejson/bgmoney.json
+  String get bgmoney => 'assets/lottiejson/bgmoney.json';
+
   /// File path: assets/lottiejson/coin1.json
   String get coin1 => 'assets/lottiejson/coin1.json';
 
@@ -76,6 +79,7 @@ class $AssetsLottiejsonGen {
   /// List of all assets
   List<String> get values => [
     bghightligth,
+    bgmoney,
     coin1,
     coin2,
     coin3,

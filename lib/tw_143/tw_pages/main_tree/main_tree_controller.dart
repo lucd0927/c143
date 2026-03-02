@@ -433,7 +433,7 @@ class MainTreeController extends GetxController {
     } else if (data == MainTreeController.guide9) {
       MainController.to.resetIndex(MainController.quizIndex);
       OverlayGuide10Quiz3().show(coins: 10, onBtn: (value) {});
-    } else if (data == MainTreeController.guide10) {
+    } else if (data == MainTreeController.guide10_2) {
       // MainController.to.resetIndex(MainController.quizIndex);
       OverlayGuide11HomeBonus().show(
         coins: TwPackageABC143.isPackageB() ? 5 : 10,
@@ -547,6 +547,38 @@ class MainTreeController extends GetxController {
       String tmp_coinLeftTime3 = _coinLeftTime3.leftTimeToHHmmss();
       curLeftTimeCoin3.value = tmp_coinLeftTime3;
     });
+  }
+
+  String curLevelProgressCount() {
+    String txt = "";
+    int curLevellll = curLevel.value;
+    int tmpCurWaterCount = curStageWaterCount.value;
+    int tmpCurShifeiCount = curStageShifeiCount.value;
+    int curStageAllWaterCount = 1;
+    int curStageAllShifeiCount = 1;
+    if (curLevellll == 1) {
+      curStageAllWaterCount = waterCounts[0];
+      curStageAllShifeiCount = shifeiCounts[0];
+    } else if (curLevellll == 2) {
+      curStageAllWaterCount = waterCounts[1];
+      curStageAllShifeiCount = shifeiCounts[1];
+    } else if (curLevellll == 3) {
+      curStageAllWaterCount = waterCounts[2];
+      curStageAllShifeiCount = shifeiCounts[2];
+    } else if (curLevellll == 4) {
+      curStageAllWaterCount = waterCounts[3];
+      curStageAllShifeiCount = shifeiCounts[3];
+    } else if (curLevellll > 4) {
+      curStageAllWaterCount = waterCounts[3];
+      curStageAllShifeiCount = shifeiCounts[3];
+    }
+
+    // double waterPro = tmpCurWaterCount / curStageAllWaterCount;
+    // double shifeiPro = tmpCurShifeiCount / curStageAllShifeiCount;
+    // progress = max(waterPro, shifeiPro);
+    txt = "$tmpCurWaterCount / $curStageAllWaterCount";
+
+    return txt;
   }
 
   double curLevelProgress() {
@@ -860,4 +892,5 @@ enum EnumTwLottttieJson {
   gesture,
   moneyHero,
   bghightligth,
+  bgmoney,
 }
