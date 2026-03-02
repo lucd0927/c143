@@ -161,20 +161,23 @@ class _MainTreeState extends State<MainTree> {
               // opacity: AlwaysStoppedAnimation(0.99),
             ),
             // StarryBeamScene(),
+
             Positioned.fill(
               left: 88.w,
               right: 88.w,
               top: 300.h,
               bottom: 300.h,
-              child: Container(
-                color: Colors.yellow.withValues(alpha: 0),
-                child: Center(
-                  child: TwLottieCommon(type: EnumTwLottttieJson.bgmoney),
+              child: IgnorePointer(
+                child: Container(
+                  color: Colors.yellow.withValues(alpha: 0),
+                  child: Center(
+                    child: TwLottieCommon(type: EnumTwLottttieJson.bgmoney),
+                  ),
                 ),
               ),
             ),
-
             Positioned.fill(child: _buildExtendNestedScrollerView()),
+
           ],
         ),
       ),

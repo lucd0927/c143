@@ -636,6 +636,18 @@ class $AssetsTwimg0302Gen {
   AssetGenImage get guideTree2 =>
       const AssetGenImage('assets/twimg0302/guide_tree2.png');
 
+  /// File path: assets/twimg0302/m1000_stage1_bg.png
+  AssetGenImage get m1000Stage1Bg =>
+      const AssetGenImage('assets/twimg0302/m1000_stage1_bg.png');
+
+  /// File path: assets/twimg0302/m1000_stage1_gurad.png
+  AssetGenImage get m1000Stage1Gurad =>
+      const AssetGenImage('assets/twimg0302/m1000_stage1_gurad.png');
+
+  /// File path: assets/twimg0302/m1000_stage2_top.png
+  AssetGenImage get m1000Stage2Top =>
+      const AssetGenImage('assets/twimg0302/m1000_stage2_top.png');
+
   /// List of all assets
   List<AssetGenImage> get values => [
     guide0302Bg,
@@ -649,6 +661,9 @@ class $AssetsTwimg0302Gen {
     guideRain,
     guideSpin,
     guideTree2,
+    m1000Stage1Bg,
+    m1000Stage1Gurad,
+    m1000Stage2Top,
   ];
 }
 

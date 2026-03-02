@@ -192,7 +192,7 @@ class _GetSunWidgetState extends State<GetSunWidget> {
                                           "+${TwCountryyC143.curCountryyyySymbolC143()}",
                                       textStyle: TextStyle(
                                         fontWeight: FontWeight.w900,
-                                        fontSize: 32.sp,
+                                        fontSize: 30.sp,
                                         height: 1.2,
                                       ),
                                       textGradient: LinearGradient(
