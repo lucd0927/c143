@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:c143/tw_143/tw_common/base_number.dart';
 import 'package:c143/tw_143/tw_common/firebase_json/number_json.dart';
 import 'package:c143/tw_143/tw_common/overlay/overlay_get.dart';
+import 'package:c143/tw_143/tw_pages/guide/guide10_2quiz2.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide10_quiz3.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide8_quiz1.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide9_quiz2.dart';
@@ -249,10 +250,13 @@ class MainQuizController extends GetxController {
         },
       );
     } else if (keyguideStatus == guideStatus2) {
-      MainQuizController.to.saveGuideStatus();
-      MainTreeController.to.onAddMoneyyyy(0.09, onEnd: () {
-        __nextQuestion();
+      OverlayGuide10_2Quiz2().show(coins: 10,onBtn: (a){
+        MainQuizController.to.saveGuideStatus();
+        MainTreeController.to.onAddMoneyyyy(0.09, onEnd: () {
+          __nextQuestion();
+        });
       });
+
 
     } else {
       if (hasClickRight) {

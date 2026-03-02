@@ -31,54 +31,6 @@ class OverlayGuide10Quiz3 {
   void show({required double coins, required ValueChanged onBtn}) {
     _overlayEntry = null;
 
-    // _overlayEntry = OverlayEntry(
-    //   builder: (context) {
-    //     return Material(
-    //       color: Colors.transparent,
-    //       child: Container(
-    //         child: Guide10Quiz3(
-    //           coins: coins,
-    //           onClose: () async {
-    //             twLooog("=====OverlayGuideTestAnim=close");
-    //             close();
-    //             MainQuizController.to.saveGuideStatus();
-    //             MainTreeController.to.saveGuideIndexData(
-    //               MainTreeController.guide10,
-    //             );
-    //             onBtn.call(coins);
-    //           },
-    //           onBtn: (value) async {
-    //             twLooog("=====OverlayGuideTestAnim=onBtn");
-    //             close();
-    //             // bool result = await TwCommonAds().showInterstitialAd(
-    //             //   adPosId: TwAdsPosId.test,
-    //             // );
-    //             // if (!result) {
-    //             //   MainQuizController.to.saveGuideStatus();
-    //             //   MainTreeController.to.saveGuideIndexData(
-    //             //     MainTreeController.guide10,
-    //             //   );
-    //             //   onBtn.call(coins);
-    //             //   return;
-    //             // }
-    //             MainTreeController.to.onAddMoneyyyy(
-    //               coins,
-    //               onEnd: () {
-    //                 MainQuizController.to.saveGuideStatus();
-    //                 MainTreeController.to.saveGuideIndexData(
-    //                   MainTreeController.guide10,
-    //                 );
-    //                 onBtn.call(coins);
-    //               },
-    //             );
-    //           },
-    //         ),
-    //       ),
-    //     );
-    //   },
-    // );
-    // Overlay.of(Get.context!).insert(_overlayEntry!);
-
     Widget child =  Material(
       color: Colors.transparent,
       child: Container(

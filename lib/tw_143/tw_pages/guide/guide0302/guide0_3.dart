@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:c143/gen/assets.gen.dart';
+import 'package:c143/tw_143/tw_common/lottieeee/gesture.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide0302/guide_controller.dart';
 import 'package:c143/tw_base/tw_gj/countryC143.dart';
 import 'package:c143/tw_views/font_border.dart';
@@ -100,6 +101,7 @@ class _Guide03State extends State<Guide03> {
                     foreground: Color(0xff22431B),
                   ),
                 ),
+                Positioned(top: 30.h, right: 30.w, child: TwLottieGesture()),
               ],
             ),
           ),

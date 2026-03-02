@@ -46,10 +46,11 @@ class _TwNewGuide0302State extends State<TwNewGuide0302> {
         color: Colors.black.withValues(
           alpha: showAnimated ? overlayOpacity : 0,
         ),
-        child: AnimatedSlide(
+        child: AnimatedScale(
           duration: animD,
-          // scale: showAnimated ? 1.0 : 1.0,
-          offset: showAnimated?Offset.zero:Offset(-375.w, 0),
+          scale: showAnimated ? 1.0 : 0.8,
+          // offset: showAnimated?Offset.zero:Offset(-375.w, 0),
+          // offset: showAnimated?Offset.zero:Offset(1, 0),
           child: Container(
             width: ScreenUtil().screenWidth,
             height: ScreenUtil().screenHeight,

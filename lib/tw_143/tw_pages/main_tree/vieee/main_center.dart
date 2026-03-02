@@ -238,7 +238,7 @@ class _MainCenterState extends State<MainCenter> {
           SizedBox(height: height1),
           coinWidget1(),
           SizedBox(height: height2),
-          fertilizeWidget(),
+         TwPackageABC143.isPackageB()?coinYuWidget(): fertilizeWidget(),
           SizedBox(height: height3),
           spinWidget(),
         ],
@@ -659,8 +659,8 @@ class _MainCenterState extends State<MainCenter> {
           SizedBox(height: height2),
           coinWidget2(),
           SizedBox(height: height3),
-          // coinWidget3(),
-          coinYuWidget()
+          coinWidget3(),
+
         ],
       ),
     );
@@ -775,7 +775,7 @@ class _MainCenterState extends State<MainCenter> {
       String leftTime = MainTreeController.to.curLeftTimeCoin3.value;
       return Row(
         children: [
-          SizedBox(width: 90.w),
+          SizedBox(width: 20.w),
           centerItem(
             showAd: false,
             treeType: TwEnumTreeType.coin_rain,

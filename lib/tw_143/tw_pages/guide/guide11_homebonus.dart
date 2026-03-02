@@ -27,33 +27,9 @@ class OverlayGuide11HomeBonus {
   bool get isShowing => _isShowing;
   bool _isShowing = false;
 
-  void show({required double coins}) {
+  void show({required double coins,}) {
     _overlayEntry = null;
 
-    // _overlayEntry = OverlayEntry(
-    //   builder: (context) {
-    //     return Material(
-    //       color: Colors.transparent,
-    //       child: Guide11HomeBonusWidget(
-    //         onClose: () async {
-    //           close();
-    //           MainTreeController.to.saveGuideIndexData(
-    //             MainTreeController.guide11,
-    //           );
-    //
-    //           MainTreeController.to.onAddMoneyyyy(
-    //             coins,
-    //             onEnd: () {
-    //               OverlayGuide12HomeReward().show(coins: 10, onBtn: (value) {});
-    //             },
-    //           );
-    //         },
-    //         coins: coins,
-    //       ),
-    //     );
-    //   },
-    // );
-    // Overlay.of(Get.context!).insert(_overlayEntry!);
 
     Widget child =  Material(
       color: Colors.transparent,

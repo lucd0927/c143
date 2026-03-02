@@ -3,6 +3,7 @@ import 'package:c143/tw_143/tw_common/event.dart';
 import 'package:c143/tw_143/tw_common/overlay/overlay_get_sun.dart';
 import 'package:c143/tw_143/tw_common/overlay/overlay_hongbaoyu.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide0_bguide.dart';
+import 'package:c143/tw_143/tw_pages/guide/guide10_2quiz2.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide11_homebonus.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide13_2rain.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide14_highligth.dart';
@@ -46,7 +47,7 @@ class MainController extends GetxController {
     // VibrationC143.vibrationClick();
     // OverlayGuide3BTrust().show();
     // OverlayGuideOldLaunch2().show(coins: 11);
-
+    // OverlayGuide10_2Quiz2().show(coins: 10,onBtn: (a){});
     MainCashController.overlayPortalController.hide();
     int curSelect = curMainNavIndex.value;
     if (curSelect == index) {
@@ -76,7 +77,7 @@ class MainController extends GetxController {
       TwMaiDiannnn.home_view(MainTreeController.to.curLevel.value.toString());
       String? data = MainTreeController.to.guideIndexData();
       twLooog("====treeIndex=data:$data");
-      if (data == MainTreeController.guide10) {
+      if (data == MainTreeController.guide10_2) {
         if(TwPackageABC143.isPackageB()){
           OverlayGuide7Rank().show();
         }else{
