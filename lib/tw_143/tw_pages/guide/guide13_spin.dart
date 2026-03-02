@@ -178,16 +178,16 @@ class GuideWidget extends StatelessWidget {
                   child: TwLottieGesture(),
                 ),
 
-                // Positioned(
-                //   top: -80.h,
-                //   right: 0,
-                //   child: Image.asset(
-                //     Assets.twimg.guide1waterTips.path,
-                //     width: 270.h,
-                //     height: 80.h,
-                //     fit: BoxFit.fill,
-                //   ),
-                // ),
+                Positioned(
+                  top: -90.h,
+                  left: 0,
+                  child: Image.asset(
+                    Assets.twimg0302.guideSpin.path,
+                    width: 272.h,
+                    height: 80.h,
+                    fit: BoxFit.fill,
+                  ),
+                ),
               ],
             ),
           ),

@@ -284,14 +284,14 @@ class GuideWidget extends StatelessWidget {
             ),
           ),
 
-          Positioned(
-            top: 110.h,
+        Positioned(
+            top:  TwPackageABC143.isPackageB()?90.h:110.h,
             right: 0,
             left: 0,
             child: Center(
               child: Image.asset(
                 TwPackageABC143.isPackageB()
-                    ? Assets.twimgB.guide2cointipsB.path
+                    ? Assets.twimg0302.guide2Tree.path
                     : Assets.twimg.guide2cointips.path,
                 width: 324.h,
                 height: 160.h,
@@ -299,7 +299,7 @@ class GuideWidget extends StatelessWidget {
               ),
             ),
           ),
-          Positioned(
+         if(!TwPackageABC143.isPackageB()) Positioned(
             left: 130.w,
             top: 210.h,
             child: IgnorePointer(

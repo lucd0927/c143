@@ -3,6 +3,7 @@ import 'package:c143/gen/assets.gen.dart';
 import 'package:c143/tw_143/tw_common/lottieeee/gesture.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide2_coin.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
+import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
 import 'package:c143/tw_base/tw_gj/overlay_manager.dart';
 import 'package:c143/tw_base/tw_http/event_report.dart';
 import 'package:c143/tw_views/animated_scale.dart';
@@ -77,13 +78,13 @@ class OverlayGuide1Water {
 
     _isShowing = true;
   }
+
   String kHashCode = "";
 
   void close() {
     _isShowing = false;
     _overlayEntry?.remove();
     OverlayManager.clearOverlayEntry(kHashCode);
-
   }
 }
 
@@ -182,31 +183,35 @@ class GuideWidget extends StatelessWidget {
               clipBehavior: Clip.none,
               children: [
                 // IgnorePointer(child: guideChild),
-                IgnorePointer(child:  Container(
-                  width: 60.h,
-                  height: 60.h,
-                  child: TwShiningEffect(
-                    duration: Duration(milliseconds: 2000),
-                    shineColor: Color(0xffffffff),
-                    opacity: 1,
-                    angle: -0.9,
-                    topLeft: false,
-                    child: Image.asset(
-                      Assets.twimg.mainWater.path,
-                      width: double.infinity,
-                      height: double.infinity,
-                      gaplessPlayback: true,
+                IgnorePointer(
+                  child: Container(
+                    width: 60.h,
+                    height: 60.h,
+                    child: TwShiningEffect(
+                      duration: Duration(milliseconds: 2000),
+                      shineColor: Color(0xffffffff),
+                      opacity: 1,
+                      angle: -0.9,
+                      topLeft: false,
+                      child: Image.asset(
+                        Assets.twimg.mainWater.path,
+                        width: double.infinity,
+                        height: double.infinity,
+                        gaplessPlayback: true,
+                      ),
                     ),
                   ),
-                )),
+                ),
                 Positioned(top: 30.h, left: 30.w, child: TwLottieGesture()),
 
                 Positioned(
-                  top: -80.h,
+                  top: -82.h,
                   right: 0,
                   child: Image.asset(
-                    Assets.twimg.guide1waterTips.path,
-                    width: 270.h,
+                    TwPackageABC143.isPackageB()
+                        ? Assets.twimg0302.guide1Watertips.path
+                        : Assets.twimg.guide1waterTips.path,
+                    width: 272.h,
                     height: 80.h,
                     fit: BoxFit.fill,
                   ),

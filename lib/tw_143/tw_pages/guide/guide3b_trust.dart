@@ -298,7 +298,7 @@ class _Guide3BTrustWidgetState extends State<Guide3BTrustWidget> {
               ),
               Center(
                 child: TwTxtBorderC143(
-                  text: "Earn More",
+                  text: "My Cash Out",
                   fontSize: 24.sp,
                   fontWeight: FontWeight.w900,
                   fontColor: Color(0xffffffff),

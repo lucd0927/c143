@@ -125,7 +125,8 @@ class _Guide7RankWidgetState extends State<Guide7RankWidget> {
   double startScale = 0.8;
   String _text = "";
 
-  String get text => "You’ve outpaced 65% of NEW USERS in earnings progress! ";
+  String get textsss => "You’ve outpaced 65% of NEW USERS in earnings progress! ";
+  String get text => "Advertisers dropping cash！Claim yours now!";
 
   String get text2 => TwPackageABC143.isPackageB()
       ? "You’ve entered the CASH OUT PREP ZONE! 🎉"

@@ -136,6 +136,8 @@ flutter:
     - assets/lottiejson/moneyhero/
     - assets/lottiejson/moneyhero/images/
     - assets/yuyin/
+    - assets/twimg0302/
+    - assets/twimg0302/guide_ad/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

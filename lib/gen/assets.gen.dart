@@ -582,6 +582,72 @@ class $AssetsTwimgGen {
   ];
 }
 
+class $AssetsTwimg0302Gen {
+  const $AssetsTwimg0302Gen();
+
+  /// File path: assets/twimg0302/guide0302_bg.png
+  AssetGenImage get guide0302Bg =>
+      const AssetGenImage('assets/twimg0302/guide0302_bg.png');
+
+  /// File path: assets/twimg0302/guide03_error.png
+  AssetGenImage get guide03Error =>
+      const AssetGenImage('assets/twimg0302/guide03_error.png');
+
+  /// File path: assets/twimg0302/guide03_ok.png
+  AssetGenImage get guide03Ok =>
+      const AssetGenImage('assets/twimg0302/guide03_ok.png');
+
+  /// File path: assets/twimg0302/guide03_vs.png
+  AssetGenImage get guide03Vs =>
+      const AssetGenImage('assets/twimg0302/guide03_vs.png');
+
+  /// File path: assets/twimg0302/guide1_watertips.png
+  AssetGenImage get guide1Watertips =>
+      const AssetGenImage('assets/twimg0302/guide1_watertips.png');
+
+  /// File path: assets/twimg0302/guide2_tree.png
+  AssetGenImage get guide2Tree =>
+      const AssetGenImage('assets/twimg0302/guide2_tree.png');
+
+  /// Directory path: assets/twimg0302/guide_ad
+  $AssetsTwimg0302GuideAdGen get guideAd => const $AssetsTwimg0302GuideAdGen();
+
+  /// File path: assets/twimg0302/guide_ce.png
+  AssetGenImage get guideCe =>
+      const AssetGenImage('assets/twimg0302/guide_ce.png');
+
+  /// File path: assets/twimg0302/guide_ce_tree.png
+  AssetGenImage get guideCeTree =>
+      const AssetGenImage('assets/twimg0302/guide_ce_tree.png');
+
+  /// File path: assets/twimg0302/guide_rain.png
+  AssetGenImage get guideRain =>
+      const AssetGenImage('assets/twimg0302/guide_rain.png');
+
+  /// File path: assets/twimg0302/guide_spin.png
+  AssetGenImage get guideSpin =>
+      const AssetGenImage('assets/twimg0302/guide_spin.png');
+
+  /// File path: assets/twimg0302/guide_tree2.png
+  AssetGenImage get guideTree2 =>
+      const AssetGenImage('assets/twimg0302/guide_tree2.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [
+    guide0302Bg,
+    guide03Error,
+    guide03Ok,
+    guide03Vs,
+    guide1Watertips,
+    guide2Tree,
+    guideCe,
+    guideCeTree,
+    guideRain,
+    guideSpin,
+    guideTree2,
+  ];
+}
+
 class $AssetsTwimgBGen {
   const $AssetsTwimgBGen();
 
@@ -1072,6 +1138,114 @@ class $AssetsLottiejsonMoneyheroGen {
   List<String> get values => [mmm];
 }
 
+class $AssetsTwimg0302GuideAdGen {
+  const $AssetsTwimg0302GuideAdGen();
+
+  /// File path: assets/twimg0302/guide_ad/img0.png
+  AssetGenImage get img0 =>
+      const AssetGenImage('assets/twimg0302/guide_ad/img0.png');
+
+  /// File path: assets/twimg0302/guide_ad/img1.png
+  AssetGenImage get img1 =>
+      const AssetGenImage('assets/twimg0302/guide_ad/img1.png');
+
+  /// File path: assets/twimg0302/guide_ad/img10.png
+  AssetGenImage get img10 =>
+      const AssetGenImage('assets/twimg0302/guide_ad/img10.png');
+
+  /// File path: assets/twimg0302/guide_ad/img11.png
+  AssetGenImage get img11 =>
+      const AssetGenImage('assets/twimg0302/guide_ad/img11.png');
+
+  /// File path: assets/twimg0302/guide_ad/img12.png
+  AssetGenImage get img12 =>
+      const AssetGenImage('assets/twimg0302/guide_ad/img12.png');
+
+  /// File path: assets/twimg0302/guide_ad/img13.png
+  AssetGenImage get img13 =>
+      const AssetGenImage('assets/twimg0302/guide_ad/img13.png');
+
+  /// File path: assets/twimg0302/guide_ad/img14.png
+  AssetGenImage get img14 =>
+      const AssetGenImage('assets/twimg0302/guide_ad/img14.png');
+
+  /// File path: assets/twimg0302/guide_ad/img15.png
+  AssetGenImage get img15 =>
+      const AssetGenImage('assets/twimg0302/guide_ad/img15.png');
+
+  /// File path: assets/twimg0302/guide_ad/img16.png
+  AssetGenImage get img16 =>
+      const AssetGenImage('assets/twimg0302/guide_ad/img16.png');
+
+  /// File path: assets/twimg0302/guide_ad/img17.png
+  AssetGenImage get img17 =>
+      const AssetGenImage('assets/twimg0302/guide_ad/img17.png');
+
+  /// File path: assets/twimg0302/guide_ad/img18.png
+  AssetGenImage get img18 =>
+      const AssetGenImage('assets/twimg0302/guide_ad/img18.png');
+
+  /// File path: assets/twimg0302/guide_ad/img19.png
+  AssetGenImage get img19 =>
+      const AssetGenImage('assets/twimg0302/guide_ad/img19.png');
+
+  /// File path: assets/twimg0302/guide_ad/img2.png
+  AssetGenImage get img2 =>
+      const AssetGenImage('assets/twimg0302/guide_ad/img2.png');
+
+  /// File path: assets/twimg0302/guide_ad/img3.png
+  AssetGenImage get img3 =>
+      const AssetGenImage('assets/twimg0302/guide_ad/img3.png');
+
+  /// File path: assets/twimg0302/guide_ad/img4.png
+  AssetGenImage get img4 =>
+      const AssetGenImage('assets/twimg0302/guide_ad/img4.png');
+
+  /// File path: assets/twimg0302/guide_ad/img5.png
+  AssetGenImage get img5 =>
+      const AssetGenImage('assets/twimg0302/guide_ad/img5.png');
+
+  /// File path: assets/twimg0302/guide_ad/img6.png
+  AssetGenImage get img6 =>
+      const AssetGenImage('assets/twimg0302/guide_ad/img6.png');
+
+  /// File path: assets/twimg0302/guide_ad/img7.png
+  AssetGenImage get img7 =>
+      const AssetGenImage('assets/twimg0302/guide_ad/img7.png');
+
+  /// File path: assets/twimg0302/guide_ad/img8.png
+  AssetGenImage get img8 =>
+      const AssetGenImage('assets/twimg0302/guide_ad/img8.png');
+
+  /// File path: assets/twimg0302/guide_ad/img9.png
+  AssetGenImage get img9 =>
+      const AssetGenImage('assets/twimg0302/guide_ad/img9.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [
+    img0,
+    img1,
+    img10,
+    img11,
+    img12,
+    img13,
+    img14,
+    img15,
+    img16,
+    img17,
+    img18,
+    img19,
+    img2,
+    img3,
+    img4,
+    img5,
+    img6,
+    img7,
+    img8,
+    img9,
+  ];
+}
+
 class $AssetsLottiejsonMoneyheroImagesGen {
   const $AssetsLottiejsonMoneyheroImagesGen();
 
@@ -1461,6 +1635,7 @@ class Assets {
   static const $AssetsAvatarGen avatar = $AssetsAvatarGen();
   static const $AssetsLottiejsonGen lottiejson = $AssetsLottiejsonGen();
   static const $AssetsTwimgGen twimg = $AssetsTwimgGen();
+  static const $AssetsTwimg0302Gen twimg0302 = $AssetsTwimg0302Gen();
   static const $AssetsTwimgBGen twimgB = $AssetsTwimgBGen();
   static const $AssetsYuyinGen yuyin = $AssetsYuyinGen();
 }

@@ -20,7 +20,7 @@ class TwShakeWidgetC143 extends StatefulWidget {
     this.duration = const Duration(milliseconds: 500),
     this.offset = 10.0,
     this.axis = Axis.horizontal,
-    this.mode = ShakeModeC143.translate,
+    this.mode = ShakeModeC143.rotate,
     this.pause = const Duration(seconds: 2),
     this.autoPlay = true,
   });

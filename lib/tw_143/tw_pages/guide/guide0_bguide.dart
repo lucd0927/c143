@@ -5,6 +5,7 @@ import 'dart:math';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:c143/gen/assets.gen.dart';
 import 'package:c143/tw_143/tw_common/lottieeee/common.dart';
+import 'package:c143/tw_143/tw_pages/guide/guide0302/guide0_baseguide2.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide1_water.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide7_rank.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide9_quiz2.dart';
@@ -65,7 +66,23 @@ class OverlayGuide0BGuide {
     // Overlay.of(Get.context!).insert(_overlayEntry!);
     Widget child = Material(
       color: Colors.transparent,
-      child: Container(
+      child:Platform.isAndroid?TwNewGuide0302(onEnd: ()async{
+        OverlayManager.clearAll();
+        MainTreeController.to.curMoneyyyy.value = 0;
+        MainTreeController.to.onAddMoneyyyy(
+          coins,
+          onEnd: () async{
+            MainTreeController.to.saveGuideIndexData(
+              MainTreeController.guide0,
+            );
+            if (Platform.isIOS) {
+              await twShow5Star(Get.context!);
+            }
+
+            OverlayGuide1Water().show();
+          },
+        );
+      },): Container(
         child: Guide0BGuideWidget(
           coins: coins,
           onClose: () async {
