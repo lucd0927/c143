@@ -97,26 +97,23 @@ class TwNotificationC143 {
     },
 
     {"title": "Cash-Out So Close!", "content": "Tap more, Earn more!"},
-    {"title": "Cash-Out So Close!", "content": "Ad Value Up! Claim Rewards!"},
-
+    // {"title": "Cash-Out So Close!", "content": "Ad Value Up! Claim Rewards!"},
     {
       "title": "Cash Out Pending",
       "content": "You have \$1,000 waiting! Tap to claim to PayPal!",
     },
-
     {
       "title": "You Can Cash Out!",
       "content":
           "Balance over \$1,000! Tap here to cash out & turn earnings into REAL CASH!",
     },
 
-    {
-      "title": "Cash Out Pending",
-      "content": "You have \$1,000 waiting! Tap to claim to PayPal!",
-    },
-
-    {"title": "You Can Cash Out!", "content": "Open App → Grow & Cash Out!"},
-    {"title": "You Can Cash Out!", "content": "Shake tree, hit \$1,000!"},
+    // {
+    //   "title": "Cash Out Pending",
+    //   "content": "You have \$1,000 waiting! Tap to claim to PayPal!",
+    // },
+    {"title": "Cash-Out Time 🎉", "content": "Open App → Grow & Cash Out!"},
+    {"title": "Your Payout Is Ready! 💰", "content": "Shake tree, hit \$1,000!"},
   ];
 
   List get imgTz => [
@@ -128,10 +125,10 @@ class TwNotificationC143 {
     "c143n_img",
     "c143n_img2",
     "c143n_img3",
-    "c143n_img4",
-    "c143n_img5",
-    "c143n_img6",
-    "c143n_img7",
+    "c143n_img2",
+    "c143n_img",
+    "c143n_img3",
+
   ];
 
   List<T> getRandomNMinus3C143<T>(List<T> source) {
@@ -221,7 +218,7 @@ class TwNotificationC143 {
       tzimage: tzimages[2],
     );
     dingshhhhiC143(
-      id: C143dingshitzid3,
+      id: C143dingshitzid4,
       minutes: TwConfigggg.hasDeeevv() ? 3 : 80,
       title: newContents[3]['title'],
       content: newContents[3]['content'],
@@ -253,31 +250,30 @@ class TwNotificationC143 {
     }
   }
 
-  static initForegroundServiceGpStar(){
-    if(Platform.isAndroid){
+  static initForegroundServiceGpStar() {
+    if (Platform.isAndroid) {
       double random = Random().nextDouble();
       bool showPau = random >= 0.5;
       double tmpMooon =
           TwHive.box.get(MainTreeController.twKeyMoneyyyy) ?? 1000;
       ForegroundServiceGp()
           .start(
-        title:
-        "My Cash = ${TwCountryyC143.curCountryyyySymbolC143()}${tmpMooon.toStringAsFixed(0)}",
-        content: "Withdraw",
-        imgNameBg: showPau ? "noti_bg" : "noti_bg2",
-        imgNameSmall: showPau ? "noti_pay" : "noti_pay2",
-        contentTextColor: showPau
-            ? Color(0xff095DD6).intValue
-            : Color(0xff00A13C).intValue,
-      )
+            title:
+                "My Cash = ${TwCountryyC143.curCountryyyySymbolC143()}${tmpMooon.toStringAsFixed(0)}",
+            content: "Withdraw",
+            imgNameBg: showPau ? "noti_bg" : "noti_bg2",
+            imgNameSmall: showPau ? "noti_pay" : "noti_pay2",
+            contentTextColor: showPau
+                ? Color(0xff095DD6).intValue
+                : Color(0xff00A13C).intValue,
+          )
           .then((result) {
-        if (result == true) {
-          // SSEventReporttttt.all_noti_t(source_from: "fixed");
-          TwMaiDiannnn.inform_c(_fixedC143);
-        }
-      });
+            if (result == true) {
+              // SSEventReporttttt.all_noti_t(source_from: "fixed");
+              TwMaiDiannnn.inform_c(_fixedC143);
+            }
+          });
     }
-
   }
 
   // tongsongdianji(int? tuisongid) {
@@ -339,6 +335,7 @@ class TwNotificationC143 {
   int C143dingshitzid = 7696;
   int C143dingshitzid2 = 7697;
   int C143dingshitzid3 = 7698;
+  int C143dingshitzid4 = 7699;
   String pushIcon = "tzimg1";
 
   Future<void> dingshhhhiC143({

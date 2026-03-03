@@ -280,11 +280,12 @@ class _SplashProgressState extends State<SplashProgress> {
           fontWeight: FontWeight.w700,
           fontSize: 20.sp,
           fontColor: Color(0xffF9F7ED),
+          height: 1,
         ),
         // SizedBox(height: 15.h),
         Container(
           width: 325.w,
-          height: 48.h,
+          height: 30.h,
           // decoration: BoxDecoration(
           //   color: Color(0xff1B1652),
           //   border: Border.all(color: Color(0xff5CD3F4), width: 1.w),
