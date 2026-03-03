@@ -125,9 +125,9 @@ class TwNotificationC143 {
     "c143n_img",
     "c143n_img2",
     "c143n_img3",
-    "c143n_img2",
-    "c143n_img",
-    "c143n_img3",
+    "c143n_img4",
+    "c143n_img5",
+    "c143n_img6",
 
   ];
 
@@ -196,6 +196,7 @@ class TwNotificationC143 {
     List newContents = getRandomNMinus3C143(contents);
     List tzimages = getRandomNMinus3C143(imgTz);
     print("=====newContents:$newContents");
+    print("=====tzimages:$tzimages");
     dingshhhhiC143(
       id: C143dingshitzid,
       minutes: TwConfigggg.hasDeeevv() ? 1 : 25,
@@ -205,21 +206,21 @@ class TwNotificationC143 {
     );
     dingshhhhiC143(
       id: C143dingshitzid2,
-      minutes: TwConfigggg.hasDeeevv() ? 2 : 40,
+      minutes: TwConfigggg.hasDeeevv() ? 1 : 40,
       title: newContents[1]['title'],
       content: newContents[1]['content'],
       tzimage: tzimages[1],
     );
     dingshhhhiC143(
       id: C143dingshitzid3,
-      minutes: TwConfigggg.hasDeeevv() ? 3 : 60,
+      minutes: TwConfigggg.hasDeeevv() ? 1 : 60,
       title: newContents[2]['title'],
       content: newContents[2]['content'],
       tzimage: tzimages[2],
     );
     dingshhhhiC143(
       id: C143dingshitzid4,
-      minutes: TwConfigggg.hasDeeevv() ? 3 : 80,
+      minutes: TwConfigggg.hasDeeevv() ? 1 : 80,
       title: newContents[3]['title'],
       content: newContents[3]['content'],
       tzimage: tzimages[3],
