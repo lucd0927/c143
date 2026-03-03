@@ -442,65 +442,67 @@ class TwMaiDiannnn {
   }
 
   static earn_cash(double value) {
-    String key = "earncashllll";
-    var box = TwHive.box;
-    var data = box.get(key);
-    var tmpvalue = 0;
-    bool canRequset = false;
-    bool hasSaaa = data == null;
-    if (value >= 50 && value < 70) {
-      tmpvalue = 50;
-      if (hasSaaa) {
-        canRequset = true;
+    try {
+      String key = "earncashllll";
+      var box = TwHive.box;
+      var data = box.get(key);
+      double tmpvalue = 0;
+      bool canRequset = false;
+      bool hasSaaa = data == null;
+      if (value >= 50 && value < 70) {
+        tmpvalue = 50;
+        if (hasSaaa) {
+          canRequset = true;
+        }
+      } else if (value >= 70 && value < 80) {
+        tmpvalue = 70;
+        if (data <= 50 || hasSaaa) {
+          canRequset = true;
+        }
+      } else if (value >= 80 && value < 90) {
+        tmpvalue = 80;
+        if (data <= 70 || hasSaaa) {
+          canRequset = true;
+        }
+      } else if (value >= 90 && value < 100) {
+        tmpvalue = 90;
+        if (data <= 80 || hasSaaa) {
+          canRequset = true;
+        }
+      } else if (value >= 100 && value < 700) {
+        tmpvalue = 100;
+        if (data <= 90 || hasSaaa) {
+          canRequset = true;
+        }
+      } else if (value >= 700 && value < 900) {
+        tmpvalue = 700;
+        if (data <= 100 || hasSaaa) {
+          canRequset = true;
+        }
+      } else if (value >= 900 && value < 950) {
+        tmpvalue = 900;
+        if (data <= 700 || hasSaaa) {
+          canRequset = true;
+        }
+      } else if (value >= 950) {
+        tmpvalue = 950;
+        if (data <= 900 || hasSaaa) {
+          canRequset = true;
+        }
       }
-    } else if (value >= 70 && value < 80) {
-      tmpvalue = 70;
-      if (data <= 50 || hasSaaa) {
-        canRequset = true;
-      }
-    } else if (value >= 80 && value < 90) {
-      tmpvalue = 80;
-      if (data <= 70 || hasSaaa) {
-        canRequset = true;
-      }
-    } else if (value >= 90 && value < 100) {
-      tmpvalue = 90;
-      if (data <= 80 || hasSaaa) {
-        canRequset = true;
-      }
-    } else if (value >= 100 && value < 700) {
-      tmpvalue = 100;
-      if (data <= 90 || hasSaaa) {
-        canRequset = true;
-      }
-    } else if (value >= 700 && value < 900) {
-      tmpvalue = 700;
-      if (data <= 100 || hasSaaa) {
-        canRequset = true;
-      }
-    } else if (value >= 900 && value < 950) {
-      tmpvalue = 900;
-      if (data <= 700 || hasSaaa) {
-        canRequset = true;
-      }
-    } else if (value >= 950) {
-      tmpvalue = 950;
-      if (data <= 900 || hasSaaa) {
-        canRequset = true;
-      }
-    }
 
-    if (canRequset) {
-      box.put(key, tmpvalue);
-    }else{
-
-    }
-    if (canRequset) {
-      TwHttpDio().buryPoint(
-        moistValue: "earn_cash",
-        veinKey: "earn",
-        veinKeyValue: tmpvalue.toStringAsFixed(0),
-      );
+      if (canRequset) {
+        box.put(key, tmpvalue);
+      } else {}
+      if (canRequset) {
+        TwHttpDio().buryPoint(
+          moistValue: "earn_cash",
+          veinKey: "earn",
+          veinKeyValue: tmpvalue.toStringAsFixed(0),
+        );
+      }
+    } catch (e) {
+      twLooog("====earn_cash=error:$e");
     }
   }
 

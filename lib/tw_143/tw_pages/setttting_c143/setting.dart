@@ -263,7 +263,7 @@ Future<void> _laUurrrr(
   LaunchMode mode = LaunchMode.platformDefault,
 }) async {
   if (!await launchUrl(uri)) {
-    throw Exception('Could not launch $uri');
+    // throw Exception('Could not launch $uri');
   }
 }
 

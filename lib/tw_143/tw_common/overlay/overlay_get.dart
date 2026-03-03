@@ -98,6 +98,7 @@ class OverlayGetCoins {
   void close() {
     _isShowing = false;
     _overlayEntry?.remove();
+    _overlayEntry = null;
   }
 }
 
