@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 import 'dart:math';
 
 import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
@@ -10,201 +11,398 @@ import 'package:tuple/tuple.dart';
 class TwNumberJson {
   static dynamic _onlineJson = null;
 
-  static final Map<String, dynamic> _localJson = {
-    "user_balance_reward": [
-      {
-        "earning_range": [0, 90],
-        "type": "cash",
-        "level_range": 1,
-        "reward": [2, 2],
-      },
-      {
-        "earning_range": [0, 90],
-        "type": "cash",
-        "level_range": 2,
-        "reward": [2, 4],
-      },
-      {
-        "earning_range": [0, 90],
-        "type": "cash",
-        "level_range": 3,
-        "reward": [4, 8],
-      },
-      {
-        "earning_range": [0, 90],
-        "type": "cash",
-        "level_range": 3,
-        "reward": [8, 10],
-      },
-      {
-        "earning_range": [90, 100],
-        "type": "sun",
-        "level_range": 1,
-        "reward": [10, 100],
-      },
-      {
-        "earning_range": [90, 100],
-        "type": "sun",
-        "level_range": 2,
-        "reward": [10, 100],
-      },
-      {
-        "earning_range": [90, 100],
-        "type": "sun",
-        "level_range": 3,
-        "reward": [10, 100],
-      },
-      {
-        "earning_range": [90, 100],
-        "type": "sun",
-        "level_range": 4,
-        "reward": [10, 100],
-      },
-      {
-        "earning_range": [100, 700],
-        "type": "cash",
-        "level_range": 5,
-        "reward": [10, 100],
-      },
-      {
-        "earning_range": [700, 900],
-        "type": "cash",
-        "level_range": 5,
-        "reward": [10, 50],
-      },
-      {
-        "earning_range": [900, 950],
-        "type": "sun",
-        "level_range": 5,
-        "reward": [100, 500],
-      },
-      {
-        "earning_range": [950, 1000],
-        "type": "flower",
-        "level_range": 5,
-        "reward": [100, 500],
-      },
-    ],
-    "wheel_rewards": [
-      {
-        "reward_type": "Cash",
-        "number_range": [5, 10],
-        "probability": 0.5,
-      },
-      {
-        "reward_type": "Cash",
-        "number_range": [10, 15],
-        "probability": 0,
-      },
-      {
-        "reward_type": "Cash",
-        "number_range": [15, 20],
-        "probability": 0,
-      },
-      {
-        "reward_type": "Cash",
-        "number_range": [25, 50],
-        "probability": 0,
-      },
-      {
-        "reward_type": "Cash",
-        "number_range": [3, 5],
-        "probability": 0.1,
-      },
-      {
-        "reward_type": "Cash",
-        "number_range": [2, 3],
-        "probability": 0.2,
-      },
-      {
-        "reward_type": "Cash",
-        "number_range": [0, 1],
-        "probability": 0,
-      },
-      {
-        "reward_type": "Cash",
-        "number_range": [1, 2],
-        "probability": 0,
-      },
-      {
-        "reward_type": "phone",
-        "number_range": [1, 1],
-        "probability": 0,
-      },
-      {
-        "reward_type": "cash_out",
-        "number_range": [1, 1],
-        "probability": 0,
-      },
-      {
-        "reward_type": "2x",
-        "number_range": [1, 1],
-        "probability": 0.1,
-      },
-      {
-        "reward_type": "cash_rain",
-        "number_range": [1, 1],
-        "probability": 0.1,
-      },
-    ],
-    "answer_rewards": [
-      {
-        "earning_range": [0, 90],
-        "type": "cash",
-        "reward": [1, 2],
-      },
-      {
-        "earning_range": [90, 100],
-        "type": "sun",
-        "reward": [50, 100],
-      },
-      {
-        "earning_range": [100, 700],
-        "type": "cash",
-        "level_range": 5,
-        "reward": [10, 100],
-      },
-      {
-        "earning_range": [700, 900],
-        "type": "cash",
-        "level_range": 5,
-        "reward": [10, 50],
-      },
-      {
-        "earning_range": [900, 950],
-        "type": "sun",
-        "reward": [100, 500],
-      },
-      {
-        "earning_range": [950, 1000],
-        "type": "flower",
-        "reward": [100, 500],
-      },
-    ],
-    "ad_probability_by_earning": [
-      {
-        "earning_range": [0, 5],
-        "ad_prob": 0,
-      },
-      {
-        "earning_range": [5, 80],
-        "ad_prob": 0.6,
-      },
-      {
-        "earning_range": [80, 100],
-        "ad_prob": 0.8,
-      },
-      {
-        "earning_range": [100, 1000],
-        "ad_prob": 0.8,
-      },
-    ],
-  };
+  static final Map<String, dynamic> _localJson = true
+      ? {
+          "user_balance_reward": [
+            {
+              "earning_range": [0, 0],
+              "type": "cash",
+              "level_range": 1,
+              "reward": [2, 2],
+            },
+            {
+              "earning_range": [0, 60],
+              "type": "cash",
+              "level_range": 6,
+              "reward": [10, 15],
+            },
+            {
+              "earning_range": [60, 85],
+              "type": "cash",
+              "level_range": 6,
+              "reward": [5, 10],
+            },
+            {
+              "earning_range": [85, 95],
+              "type": "cash",
+              "level_range": 6,
+              "reward": [1, 3],
+            },
+            {
+              "earning_range": [95, 98],
+              "type": "cash",
+              "level_range": 6,
+              "reward": [0.3, 0.5],
+            },
+            {
+              "earning_range": [98, 100],
+              "type": "sun",
+              "level_range": 6,
+              "reward": [1, 5],
+            },
+            {
+              "earning_range": [100, 700],
+              "type": "cash",
+              "level_range": 6,
+              "reward": [100, 120],
+            },
+            {
+              "earning_range": [700, 900],
+              "type": "cash",
+              "level_range": 6,
+              "reward": [50, 100],
+            },
+            {
+              "earning_range": [900, 930],
+              "type": "cash",
+              "level_range": 6,
+              "reward": [10, 20],
+            },
+            {
+              "earning_range": [930, 970],
+              "type": "cash",
+              "level_range": 6,
+              "reward": [5, 10],
+            },
+            {
+              "earning_range": [970, 990],
+              "type": "cash",
+              "level_range": 6,
+              "reward": [3, 5],
+            },
+            {
+              "earning_range": [990, 995],
+              "type": "cash",
+              "level_range": 6,
+              "reward": [0.5, 1.5],
+            },
+            {
+              "earning_range": [995, 1000],
+              "type": "cash",
+              "level_range": 6,
+              "reward": [0.5, 1],
+            },
+          ],
+          "wheel_rewards": [
+            {
+              "reward_type": "Cash",
+              "number_range": [5, 10],
+              "probability": 0.5,
+            },
+            {
+              "reward_type": "Cash",
+              "number_range": [10, 15],
+              "probability": 0,
+            },
+            {
+              "reward_type": "Cash",
+              "number_range": [15, 20],
+              "probability": 0,
+            },
+            {
+              "reward_type": "Cash",
+              "number_range": [25, 50],
+              "probability": 0,
+            },
+            {
+              "reward_type": "Cash",
+              "number_range": [3, 5],
+              "probability": 0.1,
+            },
+            {
+              "reward_type": "Cash",
+              "number_range": [2, 3],
+              "probability": 0.2,
+            },
+            {
+              "reward_type": "Cash",
+              "number_range": [0, 1],
+              "probability": 0,
+            },
+            {
+              "reward_type": "Cash",
+              "number_range": [1, 2],
+              "probability": 0,
+            },
+            {
+              "reward_type": "phone",
+              "number_range": [1, 1],
+              "probability": 0,
+            },
+            {
+              "reward_type": "cash_out",
+              "number_range": [1, 1],
+              "probability": 0,
+            },
+            {
+              "reward_type": "2x",
+              "number_range": [1, 1],
+              "probability": 0.1,
+            },
+            {
+              "reward_type": "cash_rain",
+              "number_range": [1, 1],
+              "probability": 0.1,
+            },
+          ],
+          "answer_rewards": [
+            {
+              "earning_range": [0, 90],
+              "type": "cash",
+              "reward": [1, 2],
+            },
+            {
+              "earning_range": [90, 100],
+              "type": "sun",
+              "reward": [50, 100],
+            },
+            {
+              "earning_range": [100, 700],
+              "type": "cash",
+              "level_range": 5,
+              "reward": [10, 100],
+            },
+            {
+              "earning_range": [700, 900],
+              "type": "cash",
+              "level_range": 5,
+              "reward": [10, 50],
+            },
+            {
+              "earning_range": [900, 950],
+              "type": "sun",
+              "reward": [100, 500],
+            },
+            {
+              "earning_range": [950, 999],
+              "type": "flower",
+              "reward": [100, 500],
+            },
+          ],
+          "ad_probability_by_earning": [
+            {
+              "earning_range": [0, 5],
+              "ad_prob": 0,
+            },
+            {
+              "earning_range": [5, 80],
+              "ad_prob": 0.6,
+            },
+            {
+              "earning_range": [80, 100],
+              "ad_prob": 0.8,
+            },
+            {
+              "earning_range": [100, 1000],
+              "ad_prob": 0.8,
+            },
+          ],
+        }
+      : {
+          "user_balance_reward": [
+            {
+              "earning_range": [0, 90],
+              "type": "cash",
+              "level_range": 1,
+              "reward": [2, 2],
+            },
+            {
+              "earning_range": [0, 90],
+              "type": "cash",
+              "level_range": 2,
+              "reward": [2, 4],
+            },
+            {
+              "earning_range": [0, 90],
+              "type": "cash",
+              "level_range": 3,
+              "reward": [4, 8],
+            },
+            {
+              "earning_range": [0, 90],
+              "type": "cash",
+              "level_range": 3,
+              "reward": [8, 10],
+            },
+            {
+              "earning_range": [90, 100],
+              "type": "sun",
+              "level_range": 1,
+              "reward": [10, 100],
+            },
+            {
+              "earning_range": [90, 100],
+              "type": "sun",
+              "level_range": 2,
+              "reward": [10, 100],
+            },
+            {
+              "earning_range": [90, 100],
+              "type": "sun",
+              "level_range": 3,
+              "reward": [10, 100],
+            },
+            {
+              "earning_range": [90, 100],
+              "type": "sun",
+              "level_range": 4,
+              "reward": [10, 100],
+            },
+            {
+              "earning_range": [100, 700],
+              "type": "cash",
+              "level_range": 5,
+              "reward": [10, 100],
+            },
+            {
+              "earning_range": [700, 900],
+              "type": "cash",
+              "level_range": 5,
+              "reward": [10, 50],
+            },
+            {
+              "earning_range": [900, 950],
+              "type": "sun",
+              "level_range": 5,
+              "reward": [100, 500],
+            },
+            {
+              "earning_range": [950, 1000],
+              "type": "flower",
+              "level_range": 5,
+              "reward": [100, 500],
+            },
+          ],
+          "wheel_rewards": [
+            {
+              "reward_type": "Cash",
+              "number_range": [5, 10],
+              "probability": 0.5,
+            },
+            {
+              "reward_type": "Cash",
+              "number_range": [10, 15],
+              "probability": 0,
+            },
+            {
+              "reward_type": "Cash",
+              "number_range": [15, 20],
+              "probability": 0,
+            },
+            {
+              "reward_type": "Cash",
+              "number_range": [25, 50],
+              "probability": 0,
+            },
+            {
+              "reward_type": "Cash",
+              "number_range": [3, 5],
+              "probability": 0.1,
+            },
+            {
+              "reward_type": "Cash",
+              "number_range": [2, 3],
+              "probability": 0.2,
+            },
+            {
+              "reward_type": "Cash",
+              "number_range": [0, 1],
+              "probability": 0,
+            },
+            {
+              "reward_type": "Cash",
+              "number_range": [1, 2],
+              "probability": 0,
+            },
+            {
+              "reward_type": "phone",
+              "number_range": [1, 1],
+              "probability": 0,
+            },
+            {
+              "reward_type": "cash_out",
+              "number_range": [1, 1],
+              "probability": 0,
+            },
+            {
+              "reward_type": "2x",
+              "number_range": [1, 1],
+              "probability": 0.1,
+            },
+            {
+              "reward_type": "cash_rain",
+              "number_range": [1, 1],
+              "probability": 0.1,
+            },
+          ],
+          "answer_rewards": [
+            {
+              "earning_range": [0, 90],
+              "type": "cash",
+              "reward": [1, 2],
+            },
+            {
+              "earning_range": [90, 100],
+              "type": "sun",
+              "reward": [50, 100],
+            },
+            {
+              "earning_range": [100, 700],
+              "type": "cash",
+              "level_range": 5,
+              "reward": [10, 100],
+            },
+            {
+              "earning_range": [700, 900],
+              "type": "cash",
+              "level_range": 5,
+              "reward": [10, 50],
+            },
+            {
+              "earning_range": [900, 950],
+              "type": "sun",
+              "reward": [100, 500],
+            },
+            {
+              "earning_range": [950, 1000],
+              "type": "flower",
+              "reward": [100, 500],
+            },
+          ],
+          "ad_probability_by_earning": [
+            {
+              "earning_range": [0, 5],
+              "ad_prob": 0,
+            },
+            {
+              "earning_range": [5, 80],
+              "ad_prob": 0.6,
+            },
+            {
+              "earning_range": [80, 100],
+              "ad_prob": 0.8,
+            },
+            {
+              "earning_range": [100, 1000],
+              "ad_prob": 0.8,
+            },
+          ],
+        };
 
   static _onlineJsonNet() {
     Map<String, dynamic> localJson = _localJson;
     try {
-      String name = "c143number";
+      String name =Platform.isAndroid?"c143number_android": "c143number";
       String key = TwFirebasC143().by(name: name);
       twLooog(
         "====common_ads=== _onlineJson FirebaseUtils: $name string:$key test===",
@@ -315,7 +513,7 @@ class TwNumberJson {
     var data = _onlineJson['user_balance_reward'];
     if (data is List) {
       double curCoins = MainTreeController.to.curMoneyyyy.value;
-      int level = MainTreeController.to.curLevel.value;
+      // int level = MainTreeController.to.curLevel.value;
       for (int i = 0; i < data.length; i++) {
         var tmpData = data[i];
 
@@ -343,7 +541,7 @@ class TwNumberJson {
               } else {
                 money =
                     tmpreward1 +
-                        (tmpreward2 - tmpreward1) * Random().nextDouble();
+                    (tmpreward2 - tmpreward1) * Random().nextDouble();
               }
             }
 
@@ -360,11 +558,12 @@ class TwNumberJson {
       foolr = 0;
     }
     money = money.toAsFixedFloor(foolr);
-    // twLooog("======money:$money");
+    twLooog("======money:$money");
     return money;
   }
 
-  static moneyAnswer() {
+  static double moneyAnswer() {
+    return moneyTree();
     double money = Random().nextDouble() * 5;
     _onlineJson ??= _onlineJsonNet();
     var data = _onlineJson['answer_rewards'];

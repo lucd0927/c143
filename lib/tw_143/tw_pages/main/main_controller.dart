@@ -20,6 +20,7 @@ import 'package:c143/tw_143/tw_pages/guide/guide_test_animated.dart';
 import 'package:c143/tw_143/tw_pages/main_cash/main_cash_controller.dart';
 import 'package:c143/tw_143/tw_pages/main_cash/overlayc143/card_input.dart';
 import 'package:c143/tw_143/tw_pages/main_cash/overlayc143/overlay_tx_step.dart';
+import 'package:c143/tw_143/tw_pages/main_cash/viewC143/cash_1000.dart';
 import 'package:c143/tw_143/tw_pages/main_spin/views/overlay_win_reward.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
 import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
@@ -48,6 +49,7 @@ class MainController extends GetxController {
     // OverlayGuide3BTrust().show();
     // OverlayGuideOldLaunch2().show(coins: 11);
     // OverlayGuide10_2Quiz2().show(coins: 10,onBtn: (a){});
+
     MainCashController.overlayPortalController.hide();
     int curSelect = curMainNavIndex.value;
     if (curSelect == index) {

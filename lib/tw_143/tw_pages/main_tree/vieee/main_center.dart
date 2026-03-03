@@ -109,12 +109,13 @@ class _MainCenterState extends State<MainCenter> {
           Positioned(child: leftWidget(), left: 0, top: 0, bottom: 0),
           Positioned(child: rightWidget(), right: 0, top: 0, bottom: 0),
 
-          if (TwPackageABC143.isPackageB()) Positioned(
-            child: textCongratulationWidget(),
-            left: 0,
-            right: 0,
-            bottom: 0.h,
-          ),
+          if (TwPackageABC143.isPackageB())
+            Positioned(
+              child: textCongratulationWidget(),
+              left: 0,
+              right: 0,
+              bottom: 0.h,
+            ),
 
           if (TwPackageABC143.isPackageB())
             Positioned(child: h5Widget(), left: 0.w, top: 10.h),
@@ -220,7 +221,9 @@ class _MainCenterState extends State<MainCenter> {
                         gradientColors: [Color(0xffFFB52B), Color(0xffFF5F03)],
                         bgColor: Color(0xffC18420),
                       ),
-                      Center(child: TwTxtBorderC143(text: text,fontSize: 12.sp,),)
+                      Center(
+                        child: TwTxtBorderC143(text: text, fontSize: 12.sp),
+                      ),
                     ],
                   );
                 },
@@ -246,7 +249,7 @@ class _MainCenterState extends State<MainCenter> {
           SizedBox(height: height1),
           coinWidget1(),
           SizedBox(height: height2),
-         TwPackageABC143.isPackageB()?coinYuWidget(): fertilizeWidget(),
+          TwPackageABC143.isPackageB() ? coinYuWidget() : fertilizeWidget(),
           SizedBox(height: height3),
           spinWidget(),
         ],
@@ -417,13 +420,16 @@ class _MainCenterState extends State<MainCenter> {
       OverlayGetSun().show(
         coins: coins,
         onClose: () {
-          if (treeType == TwEnumTreeType.coin) {
-            MainTreeController.to.resetCoin1Time();
-          } else if (treeType == TwEnumTreeType.coin2Guide) {
-            MainTreeController.to.resetCoin2Time();
-          } else if (treeType == TwEnumTreeType.coin3) {
-            MainTreeController.to.resetCoin3Time();
+          if(!TwPackageABC143.isPackageB()){
+            if (treeType == TwEnumTreeType.coin) {
+              MainTreeController.to.resetCoin1Time();
+            } else if (treeType == TwEnumTreeType.coin2Guide) {
+              MainTreeController.to.resetCoin2Time();
+            } else if (treeType == TwEnumTreeType.coin3) {
+              MainTreeController.to.resetCoin3Time();
+            }
           }
+
         },
       );
     } else {
@@ -476,7 +482,7 @@ class _MainCenterState extends State<MainCenter> {
     if (txtLocationBottom) {
       txtWB = Center(
         child: TwTxtBorderC143(
-          text: "${showBottomAddSymbol?"+":""}${txtBottom}",
+          text: "${showBottomAddSymbol ? "+" : ""}${txtBottom}",
           fontSize: 12.sp,
           fontColor: Color(0xffFFD64D),
           foreground: Color(0xff874A00),
@@ -668,7 +674,6 @@ class _MainCenterState extends State<MainCenter> {
           coinWidget2(),
           SizedBox(height: height3),
           coinWidget3(),
-
         ],
       ),
     );
@@ -779,7 +784,7 @@ class _MainCenterState extends State<MainCenter> {
   }
 
   coinYuWidget() {
-    return Obx((){
+    return Obx(() {
       String leftTime = MainTreeController.to.curLeftTimeCoin3.value;
       return Row(
         children: [
@@ -791,20 +796,22 @@ class _MainCenterState extends State<MainCenter> {
             txtBottom: leftTime,
             showBottomAddSymbol: false,
             // txtTop: leftTime,
-            icon: TwPackageABC143.isPackageB()?Assets.twimgB.moneyRain.path:Assets.twimg.mainCoinYu.path,
+            icon: TwPackageABC143.isPackageB()
+                ? Assets.twimgB.moneyRain.path
+                : Assets.twimg.mainCoinYu.path,
 
             onClick: () {
               if (MainTreeController.to.curLeftTimeCoin3.isEmpty) {
-                OverlayHongbaoyu().show(onEnd: () {
-                  MainTreeController.to.resetCoin3Time();
-                });
+                OverlayHongbaoyu().show(
+                  onEnd: () {
+                    MainTreeController.to.resetCoin3Time();
+                  },
+                );
               } else {
                 twToast(text: "You can claim it after the countdown ends");
               }
-
             },
           ),
-
         ],
       );
     });

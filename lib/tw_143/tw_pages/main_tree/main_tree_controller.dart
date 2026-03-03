@@ -28,6 +28,7 @@ import 'package:c143/tw_143/tw_pages/guide/guide_old.dart';
 import 'package:c143/tw_143/tw_pages/main/main_controller.dart';
 import 'package:c143/tw_143/tw_pages/main_cash/main_cash_controller.dart';
 import 'package:c143/tw_143/tw_pages/main_cash/overlayc143/card_input.dart';
+import 'package:c143/tw_143/tw_pages/main_cash/viewC143/cash_1000.dart';
 import 'package:c143/tw_143/tw_pages/main_spin/main_spin_controller.dart';
 import 'package:c143/tw_base/tw_ad/ads_idddddC143.dart';
 import 'package:c143/tw_base/tw_ad/base_ads.dart';
@@ -69,9 +70,9 @@ class MainTreeController extends GetxController {
 
   static double get maxCoinNum => TwPackageABC143.isPackageB() ? 1000 : 5000;
 
-  static double get stage1Num => TwPackageABC143.isPackageB() ? 90 : 1000;
+  static double get stage1Num => TwPackageABC143.isPackageB() ? 98 : 1000;
 
-  static double get stage2Num => TwPackageABC143.isPackageB() ? 900 : 2000;
+  static double get stage2Num => TwPackageABC143.isPackageB() ? 1000 : 2000;
 
   static double get stageB1Num => 100;
 
@@ -79,7 +80,7 @@ class MainTreeController extends GetxController {
 
   static double get stageBeisu2Num => 1000;
 
-  static double get stageB2Num => 950;
+  static double get stageB2Num => 1000;
 
   static String get twkeyGuideProgress => TwPackageABC143.isPackageB()
       ? "MainTreeController_twkeyGuideProgressBbb"
@@ -132,6 +133,7 @@ class MainTreeController extends GetxController {
 
   static String get guide13 =>
       TwPackageABC143.isPackageB() ? "guide13Bbb" : "guide13Aaaa";
+
   static String get guide13_2 =>
       TwPackageABC143.isPackageB() ? "guide13Bbb_22" : "guide13Aaaa_2";
 
@@ -398,12 +400,11 @@ class MainTreeController extends GetxController {
     } else if (data == MainTreeController.guide2) {
       OverlayGuide3AdSpot().show(coins: 10);
     } else if (data == MainTreeController.guide3) {
-      if(TwPackageABC143.isPackageB() ){
+      if (TwPackageABC143.isPackageB()) {
         OverlayGuide3BTrust().show();
-      }else{
+      } else {
         OverlayGuide4Fertilize().show();
       }
-
     } else if (data == MainTreeController.guide4) {
       OverlayGuide5AdSpot().show(coins: 10);
     } else if (data == MainTreeController.guide5) {
@@ -411,12 +412,11 @@ class MainTreeController extends GetxController {
     } else if (data == MainTreeController.guide6) {
       String? data = MainTreeController.to.guide7CashoutData();
       if (TwPackageABC143.isPackageB()) {
-        if(data == null){
+        if (data == null) {
           OverlayGuide8Cash().show(coins: 111);
-        }else{
+        } else {
           MainController.to.resetIndex(MainController.cashIndex);
         }
-
       } else {
         OverlayGuide7Rank().show();
       }
@@ -442,7 +442,7 @@ class MainTreeController extends GetxController {
       OverlayGuide12HomeReward().show(coins: 10, onBtn: (value) {});
     } else if (data == MainTreeController.guide12) {
       OverlayGuide13Spin().show();
-    }else{
+    } else {
       MainController.to.resetIndex(MainController.cashIndex);
       if (Platform.isIOS) {
         twShow5Star(Get.context!);
@@ -838,7 +838,7 @@ class MainTreeController extends GetxController {
       TwMaiDiannnn.earn_cash(tmpCurmmm2);
       //
       if (tmpCurmmm2 >= 100) {
-        if (curLevel.value != 5) {
+        if (curLevel.value != 5 && Platform.isIOS) {
           curLevel.value = 5;
           box.put(twKeyLevelll, 5);
           MainSpinController.to.curTreeLevel.value =
@@ -858,7 +858,12 @@ class MainTreeController extends GetxController {
           OverlayGuide17CoinToFlower().show();
         }
       }
+
+      if (tmpCurmmm2 >= maxCoinNum) {
+        OverlayCash1000().show();
+      }
     }
+
   }
 
   static Map<EnumTwLottttieJson, LottieComposition> _kLottie_vCompo = {};

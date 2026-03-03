@@ -140,25 +140,27 @@ class _CashProgressState extends State<CashProgress> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text(
-                                  progress >= 1 ? "Withdraw Now" : "CASH-OUT NOW",
+                                  progress >= 1
+                                      ? "Withdraw Now"
+                                      : "CASH-OUT NOW",
                                   style: TextStyle(
                                     fontWeight: FontWeight.w700,
-                                    fontSize: 16.sp,   height: 1,
+                                    fontSize: progress >= 1 ? 24.sp : 16.sp,
+                                    height: 1,
 
                                     color: Color(0xffffffff),
                                   ),
                                 ),
-                                Text(
-                                  progress >= 1
-                                      ? ""
-                                      : "quiz required to unlock final ${TwCountryyC143.curCountryyyySymbolC143()}${lfettt.toStringAsFixed(2)}",
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 12.sp,
-                                    height: 1,
-                                    color: Color(0xffffffff),
+                                if (progress < 1)
+                                  Text(
+                                    "quiz required to unlock final ${TwCountryyC143.curCountryyyySymbolC143()}${lfettt.toStringAsFixed(2)}",
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.w500,
+                                      fontSize: 12.sp,
+                                      height: 1,
+                                      color: Color(0xffffffff),
+                                    ),
                                   ),
-                                ),
                               ],
                             ),
                           ),

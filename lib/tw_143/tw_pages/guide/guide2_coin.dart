@@ -34,34 +34,6 @@ class OverlayGuide2Coin {
   void show() {
     _overlayEntry = null;
 
-    // _overlayEntry = OverlayEntry(
-    //   builder: (context) {
-    //     return Material(
-    //       color: Colors.transparent,
-    //       child: Guide2CoinWidget(
-    //         guideChild: guideChild!,
-    //         guideContext: guideContext!,
-    //         onClose: () async {
-    //           close();
-    //           MainTreeController.to.saveGuideIndexData(
-    //             MainTreeController.guide2,
-    //           );
-    //           double coins = 2;
-    //           if(TwPackageABC143.isPackageB()){
-    //             coins = 2;
-    //             await TwCommonAds().showInterstitialAd(
-    //               adPosId: TwAdsPosId.cuvxv_newadview_rv,
-    //             );
-    //           }
-    //
-    //           OverlayGuide3AdSpot().show(coins: coins);
-    //         },
-    //       ),
-    //     );
-    //   },
-    // );
-    // Overlay.of(guideContext!).insert(_overlayEntry!);
-
     Widget child = Material(
       color: Colors.transparent,
       child: Guide2CoinWidget(

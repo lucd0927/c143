@@ -250,14 +250,18 @@ class MainQuizController extends GetxController {
         },
       );
     } else if (keyguideStatus == guideStatus2) {
-      OverlayGuide10_2Quiz2().show(coins: 10,onBtn: (a){
-        MainQuizController.to.saveGuideStatus();
-        MainTreeController.to.onAddMoneyyyy(10, onEnd: () {
-          __nextQuestion();
-        });
-      });
-
-
+      OverlayGuide10_2Quiz2().show(
+        coins: 10,
+        onBtn: (a) {
+          MainQuizController.to.saveGuideStatus();
+          MainTreeController.to.onAddMoneyyyy(
+            10,
+            onEnd: () {
+              __nextQuestion();
+            },
+          );
+        },
+      );
     } else {
       if (hasClickRight) {
         double coins = TwBaseNumber.coins();
@@ -276,7 +280,9 @@ class MainQuizController extends GetxController {
           },
         );
       } else {
-        twToast(text: "Your answer is wrong");
+        if (!TwPackageABC143.isPackageB()) {
+          twToast(text: "Your answer is wrong");
+        }
         __nextQuestion();
       }
     }
