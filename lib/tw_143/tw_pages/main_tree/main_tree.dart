@@ -160,7 +160,7 @@ class _MainTreeState extends State<MainTree> {
               gaplessPlayback: true,
               // opacity: AlwaysStoppedAnimation(0.99),
             ),
-            // StarryBeamScene(),
+            StarryBeamScene(),
 
             Positioned.fill(
               left: 88.w,

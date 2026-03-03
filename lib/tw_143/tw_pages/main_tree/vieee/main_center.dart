@@ -436,13 +436,16 @@ class _MainCenterState extends State<MainCenter> {
       MainTreeController.to.onAddMoneyyyy(
         coins,
         onEnd: () {
-          if (treeType == TwEnumTreeType.coin) {
-            MainTreeController.to.resetCoin1Time();
-          } else if (treeType == TwEnumTreeType.coin2Guide) {
-            MainTreeController.to.resetCoin2Time();
-          } else if (treeType == TwEnumTreeType.coin3) {
-            MainTreeController.to.resetCoin3Time();
+          if (!TwPackageABC143.isPackageB()){
+            if (treeType == TwEnumTreeType.coin) {
+              MainTreeController.to.resetCoin1Time();
+            } else if (treeType == TwEnumTreeType.coin2Guide) {
+              MainTreeController.to.resetCoin2Time();
+            } else if (treeType == TwEnumTreeType.coin3) {
+              MainTreeController.to.resetCoin3Time();
+            }
           }
+
         },
       );
     }
@@ -817,6 +820,7 @@ class _MainCenterState extends State<MainCenter> {
 
             onClick: () {
               if (MainTreeController.to.curLeftTimeCoin3.isEmpty) {
+                VibrationC143.vibrationClick();
                 OverlayHongbaoyu().show(
                   onEnd: () {
                     MainTreeController.to.resetCoin3Time();

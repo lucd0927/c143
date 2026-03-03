@@ -760,9 +760,18 @@ class MainTreeController extends GetxController {
       TwMaiDiannnn.water_click();
       canClickWater = false;
       if (showAd) {
-        bool result = await TwCommonAds().showInterstitialAd(
-          adPosId: TwAdsPosId.cuvxv_water_int,
-        );
+        bool result = false;
+        if(curMoneyyyy.value >= maxCoinNum){
+          result = await TwCommonAds().showRewardAd(
+            adPosId: TwAdsPosId.cuvxv_water_int,
+          );
+        }else{
+          result = await TwCommonAds().showInterstitialAd(
+            adPosId: TwAdsPosId.cuvxv_water_int,
+          );
+        }
+
+
         if (!result) {
           _resetTreeGrownStatus();
           onEnd();

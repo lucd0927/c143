@@ -33,6 +33,6 @@ class CannotBackC143 extends StatelessWidget {
   final Widget child;
   @override
   Widget build(BuildContext context) {
-    return PopScope(canPop: false, child: child);
+    return PopScope(canPop: true, child: child);
   }
 }

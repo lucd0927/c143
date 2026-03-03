@@ -21,6 +21,7 @@ import 'package:c143/tw_base/tw_ad/base_ads.dart';
 import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
 import 'package:c143/tw_base/tw_gj/countryC143.dart';
 import 'package:c143/tw_base/tw_gj/logC143.dart';
+import 'package:c143/tw_base/tw_gj/vibration.dart';
 import 'package:c143/tw_base/tw_http/event_report.dart';
 import 'package:c143/tw_hive/twhiveC143.dart';
 import 'package:c143/tw_views/animated_count.dart';
@@ -435,6 +436,7 @@ class _hongbaoyuuuState extends State<_hongbaoyuuu> {
           Positioned.fill(
             child: GestureDetector(
               onTap: () {
+                VibrationC143.vibrationClick();
                 setState(() {
                   getCoins = getCoins + 0.5;
                   box.put(twkeyFirstGesture, false);
