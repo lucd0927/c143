@@ -38,7 +38,7 @@ class OverlayGuide13_2Rain {
           close();
           MainTreeController.to.saveGuideIndexData(MainTreeController.guide13_2);
           OverlayHongbaoyu().show(onEnd: () {
-            MainTreeController.to.resetCoin3Time();
+            MainTreeController.to.resetRain3Time();
           });
         },
       ),

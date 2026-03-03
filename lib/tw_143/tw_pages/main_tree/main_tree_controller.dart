@@ -513,9 +513,18 @@ class MainTreeController extends GetxController {
   }
 
   resetCoin3Time() {
+    if(Platform.isIOS){
+      _coinLeftTime3.resetLeftTime();
+    }
+    resetCoin();
+  }
+
+  resetRain3Time() {
     _coinLeftTime3.resetLeftTime();
     resetCoin();
   }
+
+
 
   cutdown2ZeroFertilize() {
     _fertilizeLeftTime.saveLeftTime(0);

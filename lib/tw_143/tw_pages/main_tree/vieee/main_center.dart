@@ -421,14 +421,12 @@ class _MainCenterState extends State<MainCenter> {
       OverlayGetSun().show(
         coins: coins,
         onClose: () {
-          if (!TwPackageABC143.isPackageB()) {
-            if (treeType == TwEnumTreeType.coin) {
-              MainTreeController.to.resetCoin1Time();
-            } else if (treeType == TwEnumTreeType.coin2Guide) {
-              MainTreeController.to.resetCoin2Time();
-            } else if (treeType == TwEnumTreeType.coin3) {
-              MainTreeController.to.resetCoin3Time();
-            }
+          if (treeType == TwEnumTreeType.coin) {
+            MainTreeController.to.resetCoin1Time();
+          } else if (treeType == TwEnumTreeType.coin2Guide) {
+            MainTreeController.to.resetCoin2Time();
+          } else if (treeType == TwEnumTreeType.coin3) {
+            MainTreeController.to.resetCoin3Time();
           }
         },
       );
@@ -436,14 +434,12 @@ class _MainCenterState extends State<MainCenter> {
       MainTreeController.to.onAddMoneyyyy(
         coins,
         onEnd: () {
-          if (!TwPackageABC143.isPackageB()){
-            if (treeType == TwEnumTreeType.coin) {
-              MainTreeController.to.resetCoin1Time();
-            } else if (treeType == TwEnumTreeType.coin2Guide) {
-              MainTreeController.to.resetCoin2Time();
-            } else if (treeType == TwEnumTreeType.coin3) {
-              MainTreeController.to.resetCoin3Time();
-            }
+          if (treeType == TwEnumTreeType.coin) {
+            MainTreeController.to.resetCoin1Time();
+          } else if (treeType == TwEnumTreeType.coin2Guide) {
+            MainTreeController.to.resetCoin2Time();
+          } else if (treeType == TwEnumTreeType.coin3) {
+            MainTreeController.to.resetCoin3Time();
           }
 
         },
@@ -823,7 +819,7 @@ class _MainCenterState extends State<MainCenter> {
                 VibrationC143.vibrationClick();
                 OverlayHongbaoyu().show(
                   onEnd: () {
-                    MainTreeController.to.resetCoin3Time();
+                    MainTreeController.to.resetRain3Time();
                   },
                 );
               } else {
