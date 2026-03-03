@@ -72,7 +72,7 @@ class MainTreeController extends GetxController {
 
   static double get stage1Num => TwPackageABC143.isPackageB() ? 98 : 1000;
 
-  static double get stage2Num => TwPackageABC143.isPackageB() ? 1000 : 2000;
+  static double get stage2NumSun => TwPackageABC143.isPackageB() ? 1000 : 2000;
 
   static double get stageB1Num => 100;
 
@@ -80,7 +80,7 @@ class MainTreeController extends GetxController {
 
   static double get stageBeisu2Num => 1000;
 
-  static double get stageB2Num => 1000;
+  static double get stageB2NumFlower => 1000;
 
   static String get twkeyGuideProgress => TwPackageABC143.isPackageB()
       ? "MainTreeController_twkeyGuideProgressBbb"
@@ -221,8 +221,10 @@ class MainTreeController extends GetxController {
       ? "twkeyTimeLeftCoin3"
       : "twkeyTimeLeftCoin3Aaaa";
 
-  static const List<int> waterCounts = [1, 20, 60, 80];
+  static const List<int> waterCounts = [1, 20, 50, 100];
   static const List<int> shifeiCounts = [1, 5, 15, 20];
+
+  var showWaterGestureToCash1000 = false.obs;
 
   double leftMonn1() {
     double curMonn = MainTreeController.to.curMoneyyyy.value;
@@ -257,15 +259,15 @@ class MainTreeController extends GetxController {
       return true;
     }
 
-    double stage2 = MainTreeController.stage2Num;
-    bool showSun = stage2 <= monnn && monnn <= stageB2Num;
+    double stage2 = MainTreeController.stage2NumSun;
+    bool showSun = stage2 <= monnn && monnn <= stageB2NumFlower;
     return showSun;
   }
 
   bool showMoneyStatusFlowerIcon() {
     if (TwPackageABC143.isPackageB()) {
       double monnn = MainTreeController.to.curMoneyyyy.value;
-      double stage1 = MainTreeController.stageB2Num;
+      double stage1 = MainTreeController.stageB2NumFlower;
       if (stage1 <= monnn && monnn <= maxCoinNum) {
         return true;
       }
@@ -751,6 +753,7 @@ class MainTreeController extends GetxController {
   bool canClickWater = true;
 
   onAddWaterCount({required VoidCallback onEnd, bool showAd = true}) async {
+    showWaterGestureToCash1000.value = false;
     if (canClickWater) {
       TwMaiDiannnn.water_click();
       canClickWater = false;
@@ -793,12 +796,7 @@ class MainTreeController extends GetxController {
     canClickWater = true;
   }
 
-  bool showStage2() {
-    double monnn = MainTreeController.to.curMoneyyyy.value;
-    double stage2 = MainTreeController.stage2Num;
-    bool showSun = stage2 <= monnn;
-    return showSun;
-  }
+
 
   onAddMoneyyyy(double monnn, {VoidCallback? onEnd}) {
     twLooog("====onAddMoneyyyy==monnn:$monnn");
@@ -853,7 +851,7 @@ class MainTreeController extends GetxController {
         OverlayGuide15CoinToSun().show();
       } else if (tmpCurmmm2 >= 60 && data == MainTreeController.guide13_2) {
         OverlayGuide14HighLight().show();
-      } else if (tmpCurmmm2 >= stageB2Num && showFlower) {
+      } else if (tmpCurmmm2 >= stageB2NumFlower && showFlower) {
         if (data != MainTreeController.guide17) {
           OverlayGuide17CoinToFlower().show();
         }

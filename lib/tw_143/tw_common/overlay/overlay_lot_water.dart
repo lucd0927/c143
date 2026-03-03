@@ -21,7 +21,7 @@ class OverlayLotWater {
     required VoidCallback onEnd,
 }) {
     _overlayEntry = null;
-    MainTreeController.to.onAddMoneyyyy(TwPackageABC143.isPackageB()?0.09:10);
+    MainTreeController.to.onAddMoneyyyy(TwPackageABC143.isPackageB()?0.04:10);
     _overlayEntry = OverlayEntry(
       builder: (context) {
         return Material(

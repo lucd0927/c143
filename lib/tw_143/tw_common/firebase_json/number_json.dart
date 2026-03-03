@@ -14,12 +14,7 @@ class TwNumberJson {
   static final Map<String, dynamic> _localJson = true
       ? {
           "user_balance_reward": [
-            {
-              "earning_range": [0, 0],
-              "type": "cash",
-              "level_range": 1,
-              "reward": [2, 2],
-            },
+
             {
               "earning_range": [0, 60],
               "type": "cash",
@@ -419,6 +414,80 @@ class TwNumberJson {
     return localJson;
   }
 
+
+  static  final Map<String, dynamic> _localJsonNumType = {
+    "rewards": {
+      "cash": [
+        [0, 98],
+        [100, 1000]
+      ],
+      "sun": [
+        [98, 100],
+      ],
+      "flower": []
+    }
+  };
+
+  static bool _showSunOrFlower(String key){
+    // Determine whether to show the "sun" status using the configured ranges in
+    // `_localJsonNumType.rewards.sun`.
+    bool showSss = false;
+    try {
+      // _localJsonNumType is expected to be non-null and a Map
+      final Map<String, dynamic> cfg = _localJsonNumType;
+      final rewards = cfg['rewards'];
+      final sunRanges = (rewards is Map) ? rewards[key] : null;
+
+      final double curCoins = MainTreeController.to.curMoneyyyy.value;
+
+      if (sunRanges is List && sunRanges.isNotEmpty) {
+
+        for (final rangggg in sunRanges) {
+          if (rangggg is List && rangggg.isNotEmpty) {
+            // parse range endpoints (allow strings or numbers)
+            double a = (rangggg[0] is num) ? (rangggg[0] * 1.0) : (double.tryParse(rangggg[0].toString()) ?? double.nan);
+            double b = a;
+            if (rangggg.length > 1) {
+              b = (rangggg[1] is num) ? (rangggg[1] * 1.0) : (double.tryParse(rangggg[1].toString()) ?? a);
+            }
+
+            // normalize if inverted
+            if (b < a) {
+              final tmp = a;
+              a = b;
+              b = tmp;
+            }
+
+            bool inRange= (a <= curCoins && curCoins <= b);
+
+            if (inRange) {
+              showSss = true;
+              break;
+            }
+          } else if (rangggg is num) {
+            if ((rangggg * 1.0) == curCoins) {
+              showSss = true;
+              break;
+            }
+          }
+        }
+      }
+    } catch (e, s) {
+      twLooog("_showSunOrFlower key:$key error: $e stack:$s");
+    }
+
+    twLooog("showSun: $showSss");
+    return showSss;
+  }
+
+  static bool showSun(){
+      return _showSunOrFlower('sun');
+  }
+
+  static bool showFlower(){
+    return _showSunOrFlower('flower');
+  }
+
   static bool showInter() {
     bool showAd = true;
     _onlineJson ??= _onlineJsonNet();
@@ -564,45 +633,5 @@ class TwNumberJson {
 
   static double moneyAnswer() {
     return moneyTree();
-    double money = Random().nextDouble() * 5;
-    _onlineJson ??= _onlineJsonNet();
-    var data = _onlineJson['answer_rewards'];
-    if (data is List) {
-      double curCoins = MainTreeController.to.curMoneyyyy.value;
-      for (int i = 0; i < data.length; i++) {
-        var tmpData = data[i];
-        var tmpearning_range = tmpData['earning_range'];
-        if (tmpearning_range is List && tmpearning_range.isNotEmpty) {
-          int length = tmpearning_range.length;
-          double num1 = tmpearning_range[0] * 1.0;
-          double num2 = tmpearning_range[0] * 1.0;
-          if (length > 1) {
-            num2 = tmpearning_range[1] * 1.0;
-          }
-          if (num1 <= curCoins && curCoins <= num2) {
-            var tmpreward = tmpData['reward'];
-            if (tmpreward is List && tmpreward.isNotEmpty) {
-              int length = tmpreward.length;
-              double tmpreward1 = tmpreward[0] * 1.0;
-              double tmpreward2 = tmpreward[0] * 1.0;
-              if (length > 1) {
-                tmpreward2 = tmpreward[1] * 1.0;
-              }
-              if (tmpreward1 == tmpreward2) {
-                money = tmpreward2;
-              } else {
-                money =
-                    tmpreward1 +
-                    (tmpreward2 - tmpreward1) * Random().nextDouble();
-              }
-            }
-
-            break;
-          }
-        }
-      }
-    }
-    twLooog("=======moneyAnswer:$money");
-    return money;
   }
 }

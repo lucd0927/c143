@@ -28,13 +28,14 @@ class OverlayCash1000 {
     if (hasShow) {
       return;
     }
+
     Widget child = Material(
       color: Colors.transparent,
       child: Guide2CoinWidget(
         onClose: () async {
           close();
           box.put(twkeycash1000, true);
-          MainController.to.resetIndex(MainController.treeIndex);
+
         },
       ),
     );
@@ -328,7 +329,11 @@ class _Guide2CoinWidgetState extends State<Guide2CoinWidget> {
                       ),
                       SizedBox(height: 36.h),
                       GestureDetector(
-                        onTap: onbtnn,
+                        onTap: (){
+                          MainController.to.resetIndex(MainController.treeIndex);
+                          MainTreeController.to.showWaterGestureToCash1000.value = true;
+                          onbtnn();
+                        },
                         child: Container(
                           width: 270.w,
                           height: 40.h,

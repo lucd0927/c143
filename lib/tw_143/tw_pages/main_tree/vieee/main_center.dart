@@ -3,6 +3,7 @@ import 'dart:math';
 
 import 'package:c143/gen/assets.gen.dart';
 import 'package:c143/tw_143/tw_common/lottieeee/common.dart';
+import 'package:c143/tw_143/tw_common/lottieeee/gesture.dart';
 import 'package:c143/tw_143/tw_common/overlay/overlay_get_sun.dart';
 import 'package:c143/tw_143/tw_common/overlay/overlay_hongbaoyu.dart';
 import 'package:c143/tw_143/tw_pages/guide/guide13_2rain.dart';
@@ -420,7 +421,7 @@ class _MainCenterState extends State<MainCenter> {
       OverlayGetSun().show(
         coins: coins,
         onClose: () {
-          if(!TwPackageABC143.isPackageB()){
+          if (!TwPackageABC143.isPackageB()) {
             if (treeType == TwEnumTreeType.coin) {
               MainTreeController.to.resetCoin1Time();
             } else if (treeType == TwEnumTreeType.coin2Guide) {
@@ -429,7 +430,6 @@ class _MainCenterState extends State<MainCenter> {
               MainTreeController.to.resetCoin3Time();
             }
           }
-
         },
       );
     } else {
@@ -680,34 +680,49 @@ class _MainCenterState extends State<MainCenter> {
   }
 
   waterWidget() {
-    String? data = MainTreeController.to.guideIndexData();
-    // twLooog("====waterWidget==data:$data");
-    bool showAd = data != null;
-    showAd = !TwPackageABC143.isPackageB();
-    return Row(
-      children: [
-        SizedBox(width: 50.w),
-        Builder(
-          builder: (context) {
-            Widget child = centerItem(
-              showAd: showAd,
-              treeType: TwEnumTreeType.water,
-              width: 60.h,
-              txtBottom: '',
-              icon: Assets.twimg.mainWater.path,
+    return Obx(() {
+      String? data = MainTreeController.to.guideIndexData();
+      // twLooog("====waterWidget==data:$data");
+      bool showAd = data != null;
+      showAd = !TwPackageABC143.isPackageB();
+      bool showGe = MainTreeController.to.showWaterGestureToCash1000.value;
+      return Row(
+        children: [
+          SizedBox(width: 50.w),
+          Builder(
+            builder: (context) {
+              Widget child = centerItem(
+                showAd: showAd,
+                treeType: TwEnumTreeType.water,
+                width: 60.h,
+                txtBottom: '',
+                icon: Assets.twimg.mainWater.path,
 
-              onClick: onWater,
-            );
-            // OverlayGuide1Water.guideChild = child;
-            // OverlayGuide1Water.guideContext = context;
-            return child;
-          },
-        ),
-      ],
-    );
+                onClick: onWater,
+              );
+              return Stack(
+                clipBehavior: Clip.none,
+                children: [
+                  child,
+                 if(showGe) Positioned(
+                    top: 30.h,
+                    right: -30.w,
+                    child: Container(
+                      width: 50.h,
+                      height: 50.h,
+                      child: TwLottieGesture(),
+                    ),
+                  ),
+                ],
+              );
+            },
+          ),
+        ],
+      );
+    });
   }
 
-  void onWater() async {
+  onWater() async {
     VibrationC143.vibrationClick();
     MainTreeController.to.onAddWaterCount(onEnd: () {}, showAd: true);
   }
