@@ -252,7 +252,7 @@ class MainQuizController extends GetxController {
     } else if (keyguideStatus == guideStatus2) {
       OverlayGuide10_2Quiz2().show(coins: 10,onBtn: (a){
         MainQuizController.to.saveGuideStatus();
-        MainTreeController.to.onAddMoneyyyy(0.09, onEnd: () {
+        MainTreeController.to.onAddMoneyyyy(10, onEnd: () {
           __nextQuestion();
         });
       });

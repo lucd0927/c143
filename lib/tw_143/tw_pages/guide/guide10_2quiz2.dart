@@ -42,10 +42,11 @@ class OverlayGuide10_2Quiz2 {
           onClose: () async {
             twLooog("=====OverlayGuideTestAnim=close");
             close();
-            onBtn(0.00);
+
             MainTreeController.to.saveGuideIndexData(
               MainTreeController.guide10_2,
             );
+            onBtn(0.00);
           },
         ),
       ),

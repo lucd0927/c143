@@ -319,37 +319,35 @@ class TwNumberJson {
       for (int i = 0; i < data.length; i++) {
         var tmpData = data[i];
 
-        var tnolevel_range = tmpData['level_range'];
+        // var tnolevel_range = tmpData['level_range'];
 
-        if (tnolevel_range == level) {
-          var tmpearning_range = tmpData['earning_range'];
-          if (tmpearning_range is List && tmpearning_range.isNotEmpty) {
-            int length = tmpearning_range.length;
-            double num1 = tmpearning_range[0] * 1.0;
-            double num2 = tmpearning_range[0] * 1.0;
-            if (length > 1) {
-              num2 = tmpearning_range[1] * 1.0;
-            }
-            if (num1 <= curCoins && curCoins <= num2) {
-              var tmpreward = tmpData['reward'];
-              if (tmpreward is List && tmpreward.isNotEmpty) {
-                int length = tmpreward.length;
-                double tmpreward1 = tmpreward[0] * 1.0;
-                double tmpreward2 = tmpreward[0] * 1.0;
-                if (length > 1) {
-                  tmpreward2 = tmpreward[1] * 1.0;
-                }
-                if (tmpreward1 == tmpreward2) {
-                  money = tmpreward2;
-                } else {
-                  money =
-                      tmpreward1 +
-                      (tmpreward2 - tmpreward1) * Random().nextDouble();
-                }
+        var tmpearning_range = tmpData['earning_range'];
+        if (tmpearning_range is List && tmpearning_range.isNotEmpty) {
+          int length = tmpearning_range.length;
+          double num1 = tmpearning_range[0] * 1.0;
+          double num2 = tmpearning_range[0] * 1.0;
+          if (length > 1) {
+            num2 = tmpearning_range[1] * 1.0;
+          }
+          if (num1 <= curCoins && curCoins <= num2) {
+            var tmpreward = tmpData['reward'];
+            if (tmpreward is List && tmpreward.isNotEmpty) {
+              int length = tmpreward.length;
+              double tmpreward1 = tmpreward[0] * 1.0;
+              double tmpreward2 = tmpreward[0] * 1.0;
+              if (length > 1) {
+                tmpreward2 = tmpreward[1] * 1.0;
               }
-
-              break;
+              if (tmpreward1 == tmpreward2) {
+                money = tmpreward2;
+              } else {
+                money =
+                    tmpreward1 +
+                        (tmpreward2 - tmpreward1) * Random().nextDouble();
+              }
             }
+
+            break;
           }
         }
       }
