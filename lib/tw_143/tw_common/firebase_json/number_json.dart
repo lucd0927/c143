@@ -10,11 +10,11 @@ import 'package:tuple/tuple.dart';
 
 class TwNumberJson {
   static dynamic _onlineJson = null;
+  static dynamic _onlineJsonType = null;
 
   static final Map<String, dynamic> _localJson = true
       ? {
           "user_balance_reward": [
-
             {
               "earning_range": [0, 60],
               "type": "cash",
@@ -397,7 +397,7 @@ class TwNumberJson {
   static _onlineJsonNet() {
     Map<String, dynamic> localJson = _localJson;
     try {
-      String name =Platform.isAndroid?"c143number_android": "c143number";
+      String name = Platform.isAndroid ? "new143number" : "c143number";
       String key = TwFirebasC143().by(name: name);
       twLooog(
         "====common_ads=== _onlineJson FirebaseUtils: $name string:$key test===",
@@ -414,80 +414,83 @@ class TwNumberJson {
     return localJson;
   }
 
+  static _onlineJsonNet2() {
+    Map<String, dynamic> localJson = _localJsonNumType;
+    try {
+      String name = "new143type" ;
+      String key = TwFirebasC143().by(name: name);
+      twLooog(
+        "====common_ads=== _onlineJson FirebaseUtils: $name string:$key test===",
+      );
 
-  static  final Map<String, dynamic> _localJsonNumType = {
+      Map<String, dynamic> json = jsonDecode(key);
+      localJson = json;
+      twLooog("FirebaseUtils: $name json $json");
+    } on Exception catch (e) {
+      twLooog("onlineJson:$e");
+    }
+
+    twLooog("FirebaseUtils: final json ${jsonEncode(localJson)}");
+    return localJson;
+  }
+
+  static final Map<String, dynamic> _localJsonNumType = {
     "rewards": {
       "cash": [
         [0, 98],
-        [100, 1000]
+        [100, 1000],
       ],
       "sun": [
         [98, 100],
       ],
-      "flower": []
-    }
+      "flower": [],
+    },
   };
 
-  static bool _showSunOrFlower(String key){
-    // Determine whether to show the "sun" status using the configured ranges in
-    // `_localJsonNumType.rewards.sun`.
-    bool showSss = false;
+  static double _stage1SunNum(String key,int stage) {
+    double sunnum = MainTreeController.maxCoinNum;
     try {
-      // _localJsonNumType is expected to be non-null and a Map
-      final Map<String, dynamic> cfg = _localJsonNumType;
+      _onlineJsonType ??= _onlineJsonNet2();
+      var cfg = _onlineJsonType;
       final rewards = cfg['rewards'];
       final sunRanges = (rewards is Map) ? rewards[key] : null;
 
-      final double curCoins = MainTreeController.to.curMoneyyyy.value;
-
       if (sunRanges is List && sunRanges.isNotEmpty) {
+        int lenght = sunRanges.length;
+        if(lenght <= stage){
+          return sunnum;
+        }
+        var rangggg = sunRanges[stage];
+        if (rangggg is List && rangggg.isNotEmpty) {
+          // parse range endpoints (allow strings or numbers)
+          double a = (rangggg[0] is num)
+              ? (rangggg[0] * 1.0)
+              : (double.tryParse(rangggg[0].toString()) ?? sunnum);
 
-        for (final rangggg in sunRanges) {
-          if (rangggg is List && rangggg.isNotEmpty) {
-            // parse range endpoints (allow strings or numbers)
-            double a = (rangggg[0] is num) ? (rangggg[0] * 1.0) : (double.tryParse(rangggg[0].toString()) ?? double.nan);
-            double b = a;
-            if (rangggg.length > 1) {
-              b = (rangggg[1] is num) ? (rangggg[1] * 1.0) : (double.tryParse(rangggg[1].toString()) ?? a);
-            }
-
-            // normalize if inverted
-            if (b < a) {
-              final tmp = a;
-              a = b;
-              b = tmp;
-            }
-
-            bool inRange= (a <= curCoins && curCoins <= b);
-
-            if (inRange) {
-              showSss = true;
-              break;
-            }
-          } else if (rangggg is num) {
-            if ((rangggg * 1.0) == curCoins) {
-              showSss = true;
-              break;
-            }
-          }
+          sunnum = a * 1.0;
+        } else if (rangggg is num) {
+          sunnum = rangggg * 1.0;
         }
       }
     } catch (e, s) {
       twLooog("_showSunOrFlower key:$key error: $e stack:$s");
     }
 
-    twLooog("showSun: $showSss");
-    return showSss;
+    // twLooog("_stage1SunNum:key:$key index:$stage $sunnum");
+    return sunnum;
   }
 
-  static bool showSun(){
-      return _showSunOrFlower('sun');
+  static double stage1SunNum() {
+    return _stage1SunNum("sun", 0);
   }
 
-  static bool showFlower(){
-    return _showSunOrFlower('flower');
+  static double stage2SunNum() {
+    return _stage1SunNum("sun", 1);
   }
 
+  static double stage2FlowerNum() {
+    return _stage1SunNum("flower", 1);
+  }
   static bool showInter() {
     bool showAd = true;
     _onlineJson ??= _onlineJsonNet();

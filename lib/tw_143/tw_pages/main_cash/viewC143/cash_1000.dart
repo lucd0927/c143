@@ -22,11 +22,11 @@ class OverlayCash1000 {
   var box = TwHive.box;
   static const String twkeycash1000 = "tw_cash_1000";
 
-  void show() {
+  bool show() {
     _overlayEntry = null;
     bool hasShow = box.get(twkeycash1000) ?? false;
     if (hasShow) {
-      return;
+      return false;
     }
 
     Widget child = Material(
@@ -42,6 +42,7 @@ class OverlayCash1000 {
     kHashCode = OverlayManager.show(context: Get.context!, child: child);
 
     _isShowing = true;
+    return true;
   }
 
   String kHashCode = "";

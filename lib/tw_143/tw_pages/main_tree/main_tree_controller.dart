@@ -70,9 +70,9 @@ class MainTreeController extends GetxController {
 
   static double get maxCoinNum => TwPackageABC143.isPackageB() ? 1000 : 5000;
 
-  static double get stage1Num => TwPackageABC143.isPackageB() ? 98 : 1000;
+  static double get stage1Num => TwPackageABC143.isPackageB() ? TwNumberJson.stage1SunNum() : 1000;
 
-  static double get stage2NumSun => TwPackageABC143.isPackageB() ? 1000 : 2000;
+  static double get stage2NumSun => TwPackageABC143.isPackageB() ? TwNumberJson.stage2SunNum() : 2000;
 
   static double get stageB1Num => 100;
 
@@ -80,7 +80,7 @@ class MainTreeController extends GetxController {
 
   static double get stageBeisu2Num => 1000;
 
-  static double get stageB2NumFlower => 1000;
+  static double get stageB2NumFlower => TwNumberJson.stage2FlowerNum();
 
   static String get twkeyGuideProgress => TwPackageABC143.isPackageB()
       ? "MainTreeController_twkeyGuideProgressBbb"
@@ -253,6 +253,7 @@ class MainTreeController extends GetxController {
   }
 
   bool showMoneyStatusSunIcon() {
+    // return TwNumberJson.showSun();
     double monnn = MainTreeController.to.curMoneyyyy.value;
     double stage1 = MainTreeController.stage1Num;
     if (stage1 <= monnn && monnn <= stageB1Num) {
@@ -271,6 +272,7 @@ class MainTreeController extends GetxController {
       if (stage1 <= monnn && monnn <= maxCoinNum) {
         return true;
       }
+
     }
 
     return false;
@@ -857,9 +859,6 @@ class MainTreeController extends GetxController {
         }
       }
 
-      if (tmpCurmmm2 >= maxCoinNum) {
-        OverlayCash1000().show();
-      }
     }
 
   }

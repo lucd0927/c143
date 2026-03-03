@@ -1,7 +1,9 @@
 import 'package:c143/gen/assets.gen.dart';
 import 'package:c143/tw_143/tw_pages/main/main_controller.dart';
 import 'package:c143/tw_143/tw_pages/main_cash/main_cash_controller.dart';
+import 'package:c143/tw_143/tw_pages/main_cash/viewC143/cash_1000.dart';
 import 'package:c143/tw_143/tw_pages/main_tree/main_tree_controller.dart';
+import 'package:c143/tw_base/tw_ad/guiyin/package.dart';
 import 'package:c143/tw_base/tw_gj/countryC143.dart';
 import 'package:c143/tw_base/tw_http/event_report.dart';
 import 'package:c143/tw_views/animated_count.dart';
@@ -334,6 +336,15 @@ class _MainTopBState extends State<MainTopB> {
 
   void _onWithdraw() {
     TwMaiDiannnn.cash_withdraw_click();
+
+    double curMoney = MainTreeController.to.curMoneyyyy.value;
+    if (curMoney > MainTreeController.maxCoinNum && TwPackageABC143.isPackageB()) {
+      bool show = OverlayCash1000().show();
+      if(show) {
+        return;
+      }
+    }
+
     MainController.to.resetIndex(MainController.cashIndex);
   }
 }
