@@ -185,6 +185,9 @@ dependencies {
 //Androidx (Necessary)
     api("androidx.appcompat:appcompat:1.6.1")
     api("androidx.browser:browser:1.4.0")
+    //Moloco
+    api("com.thinkup.sdk:adapter-tpn-moloco:4.3.1.1.0")
+    api("com.moloco.sdk:moloco-sdk:4.3.1")
 //Vungle
     api("com.thinkup.sdk:adapter-tpn-vungle:7.6.1.1.0")
     api("com.vungle:vungle-ads:7.6.1")
