@@ -198,26 +198,26 @@ class GGCommonJson {
         };
 
   static var localTopon = {
-    "doubqzaq": 100,
-    "ddixmpdd": 100,
-    "cdyun_switch": false,
-    "cdyun_int": [
+    "bvpulagc": 100,
+    "uwroksfr": 100,
+    "cuvxv_switch": false,
+    "cuvxv_int": [
       {
-        "lhewiloc": "n1grn4hvvceb6r",
-        "vvmmyknm": "topon",
-        "jpburjoz": "interstitial",
-        "nohbmlex": 3000,
+        "lfzkqeix": "n1h6c3g8cegrga",
+        "hvwivusi": "topon",
+        "efrazinr": "interstitial",
+        "rehzhbfy": 3000,
       },
     ],
-    "cdyun_rv": [
+    "cuvxv_rv": [
       {
-        "lhewiloc": "n1grn4hvvcf4pn",
-        "vvmmyknm": "topon",
-        "jpburjoz": "reward",
-        "nohbmlex": 3000,
+        "lfzkqeix": "n1h6c3g8cegiq0",
+        "hvwivusi": "topon",
+        "efrazinr": "reward",
+        "rehzhbfy": 3000,
       },
     ],
   };
 
-  static var local = TwConfigggg.hasDeeevv() ? localTest : localB;
+  static var local = TwConfigggg.hasDeeevv() ? localTopon : localB;
 }

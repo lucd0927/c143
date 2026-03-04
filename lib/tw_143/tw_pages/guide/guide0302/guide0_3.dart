@@ -55,7 +55,7 @@ class _Guide03State extends State<Guide03> {
 
             StepAppear(
               controller: _controller,
-              waitDuration: Duration(milliseconds: 800),
+              waitDuration: Duration(milliseconds: 100),
               onFinished: () {
                 setState(() {
                   hasComplete = true;
@@ -221,7 +221,7 @@ class StepAppear extends StatefulWidget {
     super.key,
     required this.children,
     this.stepDuration = const Duration(milliseconds: 600),
-    this.waitDuration = const Duration(seconds: 2),
+    this.waitDuration = const Duration(milliseconds: 100),
     this.controller,
     this.onFinished,
   });

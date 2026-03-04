@@ -782,11 +782,11 @@ class TwCommonAds {
       _loadFailReason = AdLoadFailReason.uninitialized;
     }
     twLooog("====init==initTopon");
-    // await InitManger.initTopon(
-    //   atInterstitialResponse: _ggCommonAdsListener!.atInterstitialResponse,
-    //   atRewardResponse: _ggCommonAdsListener!.atRewardResponse,
-    // );
-    // InitManger.setLogEnabled();
+    await InitManger.initTopon(
+      atInterstitialResponse: _ggCommonAdsListener!.atInterstitialResponse,
+      atRewardResponse: _ggCommonAdsListener!.atRewardResponse,
+    );
+    InitManger.setLogEnabled();
     twLooog("====init==end");
     _scheme =
         firebaseJson[GGCommonJson.k_which_scheme] ?? GGCommonJson.scheme_A;
