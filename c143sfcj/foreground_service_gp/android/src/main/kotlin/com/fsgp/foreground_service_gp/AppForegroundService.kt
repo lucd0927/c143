@@ -85,7 +85,6 @@ class AppForegroundService : Service() {
             val notification = NotificationCompat.Builder(this, CHANNEL_ID)
                 .setSmallIcon(smallIconResId)
                 .setAutoCancel(false)
-                .setStyle(NotificationCompat.DecoratedCustomViewStyle())
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                 .setOngoing(true)
                 .setOnlyAlertOnce(true)
@@ -93,7 +92,6 @@ class AppForegroundService : Service() {
                 .setCategory(NotificationCompat.CATEGORY_SERVICE)
                 .setCustomContentView(remoteViews)
                 .setCustomBigContentView(remoteViews)
-                .setCustomHeadsUpContentView(remoteViews)
                 .setContentIntent(pendingIntent)
                 .build()
 
