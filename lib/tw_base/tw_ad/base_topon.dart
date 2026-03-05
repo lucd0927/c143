@@ -130,8 +130,10 @@ class TwInitTool {
       interstitialListener(atInterstitialResponse);
       rewardListener(atRewardResponse);
       twLooog("==initTopon====appidS:$appidS appidkeyStr:$appidkeyStr result:$result ");
+      return true;
     } catch (e) {
       twLooog("==initTopon====error:$e");
+      return false;
     }
   }
 
