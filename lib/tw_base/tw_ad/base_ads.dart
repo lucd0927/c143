@@ -792,8 +792,6 @@ class TwCommonAds {
     twLooog("====init==PbUuuump start");
     await TwUmpppp().init();
     twLooog("====init==PbUuuump end");
-    needInitMax = true;
-    needInitTopon = true;
     if (needInitMax) {
       twLooog("====init==initMax");
       bool result = await TwMaxAd.initMax(
