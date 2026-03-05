@@ -93,7 +93,7 @@ dependencies {
     implementation("com.applovin.mediation:vungle-adapter:+") // Liftoff Monetize
     implementation("com.applovin.mediation:facebook-adapter:+")
     implementation("com.applovin.mediation:mintegral-adapter:+")
-    implementation("com.applovin.mediation:moloco-adapter:+")
+//    implementation("com.applovin.mediation:moloco-adapter:+")
     implementation("com.applovin.mediation:bytedance-adapter:+")
     implementation("com.applovin.mediation:unityads-adapter:+")
     implementation("com.applovin.mediation:fyber-adapter:+")

@@ -484,7 +484,7 @@ class TwNumberJson {
       twLooog("onlineJson:$e");
     }
 
-    twLooog("FirebaseUtils: final json ${jsonEncode(localJson)}");
+    twLooog("FirebaseUtils: final json $localJson");
     return localJson;
   }
 
@@ -504,7 +504,7 @@ class TwNumberJson {
       twLooog("onlineJson:$e");
     }
 
-    twLooog("FirebaseUtils: final json ${jsonEncode(localJson)}");
+    twLooog("FirebaseUtils: final json $localJson");
     return localJson;
   }
 
@@ -550,7 +550,7 @@ class TwNumberJson {
       twLooog("_showSunOrFlower key:$key error: $e stack:$s");
     }
 
-    twLooog("_stage1SunNum:key:$key index:$stage $sunnum");
+    // twLooog("_stage1SunNum:key:$key index:$stage $sunnum");
     return sunnum;
   }
 
@@ -704,7 +704,7 @@ class TwNumberJson {
       foolr = 0;
     }
     money = money.toAsFixedFloor(foolr);
-    twLooog("======money:$money");
+    // twLooog("======money:$money");
     return money;
   }
 
