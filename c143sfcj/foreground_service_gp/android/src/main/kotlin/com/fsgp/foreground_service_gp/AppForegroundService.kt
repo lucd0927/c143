@@ -3,8 +3,6 @@ package com.fsgp.foreground_service_gp
 
 import android.Manifest
 import android.app.ForegroundServiceStartNotAllowedException
-import android.app.NotificationChannel
-import android.app.NotificationManager
 import android.app.PendingIntent
 import android.app.Service
 import android.content.Intent
@@ -15,8 +13,6 @@ import androidx.annotation.RequiresPermission
 import androidx.core.app.NotificationChannelCompat
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.ProcessLifecycleOwner
 import android.graphics.Color
 
 class AppForegroundService : Service() {
@@ -57,19 +53,29 @@ class AppForegroundService : Service() {
             remoteViews.setTextViewText(R.id.content, content)
             // 设置 R.id.content 的文本颜色
             remoteViews.setTextColor(R.id.content, contentTextColor) // 这里设置文本颜色
-            remoteViews.setImageViewResource(
-                R.id.noti_bg,
-                applicationContext.resources.getIdentifier(imgNameBg, "drawable", packageName)
-            )
-            remoteViews.setImageViewResource(
-                R.id.left_img,
-                applicationContext.resources.getIdentifier(imgNameSmall, "drawable", packageName)
-            )
+            val notiBgResId = applicationContext.resources.getIdentifier(imgNameBg, "drawable", packageName)
+            if (notiBgResId != 0) {
+                remoteViews.setImageViewResource(R.id.noti_bg, notiBgResId)
+            }
+            val leftImageResId = applicationContext.resources.getIdentifier(imgNameSmall, "drawable", packageName)
+            if (leftImageResId != 0) {
+                remoteViews.setImageViewResource(R.id.left_img, leftImageResId)
+            }
 
 
             val clickIntent =
-                applicationContext.packageManager.getLaunchIntentForPackage(packageName)
-            clickIntent?.putExtra("fix_tx", "android")
+                applicationContext.packageManager.getLaunchIntentForPackage(packageName)?.apply {
+                    putExtra("fix_tx", "android")
+                } ?: Intent().apply {
+                    setPackage(packageName)
+                    addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                    putExtra("fix_tx", "android")
+                }
+            val smallIconResId =
+                applicationContext.resources.getIdentifier("ic_launcher", "mipmap", packageName)
+                    .takeIf { it != 0 }
+                    ?: applicationInfo.icon.takeIf { it != 0 }
+                    ?: android.R.drawable.sym_def_app_icon
             val pendingIntent = PendingIntent.getActivity(
                 this,
                 0,
@@ -77,15 +83,8 @@ class AppForegroundService : Service() {
                 PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
             )
             val notification = NotificationCompat.Builder(this, CHANNEL_ID)
-                .setSmallIcon(
-                    applicationContext.resources.getIdentifier(
-                        "ic_launcher",
-                        "mipmap",
-                        packageName
-                    )
-                )
+                .setSmallIcon(smallIconResId)
                 .setAutoCancel(false)
-                .setStyle(NotificationCompat.DecoratedCustomViewStyle())
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                 .setOngoing(true)
                 .setOnlyAlertOnce(true)
@@ -93,7 +92,6 @@ class AppForegroundService : Service() {
                 .setCategory(NotificationCompat.CATEGORY_SERVICE)
                 .setCustomContentView(remoteViews)
                 .setCustomBigContentView(remoteViews)
-                .setCustomHeadsUpContentView(remoteViews)
                 .setContentIntent(pendingIntent)
                 .build()
 
@@ -111,33 +109,7 @@ class AppForegroundService : Service() {
             )
 
 
-
-            nmc.notify(NOTIFY_ID, notification)
-
-
-
-
-            if (ProcessLifecycleOwner.get()
-                    .lifecycle
-                    .currentState
-                    .isAtLeast(Lifecycle.State.STARTED) && sIsRunning
-            ) {
-                // App 在前台运行
-                println("===foreground=onStartCommand===app in foreground===")
-                startForeground(NOTIFY_ID, notification)
-//            ServiceCompat.startForeground(this,NOTIFY_ID, notification,FOREGROUND_SERVICE_TYPE_SPECIAL_USE)
-//            ServiceCompat.startForeground(this,NOTIFY_ID, notification,if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-//                FOREGROUND_SERVICE_TYPE_SPECIAL_USE
-//            } else {
-//                0
-//            })
-//            ServiceCompat.startForeground()
-            } else {
-                // App 在后台运行
-                println("===foreground=onStartCommand===app in background===")
-//              stopSelf()
-
-            }
+            startForeground(NOTIFY_ID, notification)
 
 
         } catch (e: Exception) {
@@ -147,8 +119,11 @@ class AppForegroundService : Service() {
                 println("===foreground=onStartCommand===app in background===ForegroundServiceStartNotAllowedException:${e.message}")
                 // App not in a valid state to start foreground service
                 // (e.g. started from bg)
+            } else {
+                println("===foreground=onStartCommand===Exception:${e.message}")
             }
-            // ...
+            stopSelf()
+            return START_NOT_STICKY
         }
 
 
@@ -157,20 +132,6 @@ class AppForegroundService : Service() {
     }
 
     override fun onBind(intent: Intent?): IBinder? = null
-
-    private fun createChannel() {
-
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val channel = NotificationChannel(
-                CHANNEL_ID,
-                "Foreground Service",
-                NotificationManager.IMPORTANCE_LOW
-            )
-            val mgr = getSystemService(NotificationManager::class.java)
-            mgr.createNotificationChannel(channel)
-        }
-    }
 
     override fun onDestroy() {
         super.onDestroy()

@@ -1334,8 +1334,8 @@ public class FlutterLocalNotificationsPlugin
     createNotification(context, notificationDetails, new NotificationBuildListener() {
       @Override
       public void complete(Notification notification) {
-//        int id = notificationDetails.id;
-        int id = generateNotifyId();
+        int id = notificationDetails.id;
+//        int id = generateNotifyId();
         NotificationManagerCompat notificationManagerCompat = getNotificationManager(context);
         if (notificationDetails.tag != null) {
           notificationManagerCompat.notify(

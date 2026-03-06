@@ -1,8 +1,9 @@
 package com.fsgp.foreground_service_gp
 
 import android.app.Activity
+import android.app.ForegroundServiceStartNotAllowedException
 import android.content.Intent
-import android.widget.RemoteViews
+import android.os.Build
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ProcessLifecycleOwner
@@ -64,11 +65,16 @@ class ForegroundServiceGpPlugin :
             when (call.method) {
                 "start" -> {
                     println("$TGA start")
+                    val activity = activity
+                    if(activity == null){
+                        result.success(false)
+                        return
+                    }
                     val title = call.argument<String>("title") ?: "Running"
                     val content = call.argument<String>("content") ?: "App is running"
                     val imgNameBg = call.argument<String>("imgNameBg") ?: ""
                     val imgNameSmall = call.argument<String>("imgNameSmall") ?: ""
-                    val contentTextColorLong = call.argument<Long>("contentTextColor") ?: Color.BLACK
+                    val contentTextColorLong = call.argument<Long>("contentTextColor")
                     val contentTextColor:Int = contentTextColorLong?.toInt()?: Color.BLACK
                     println("$TGA start contentTextColor:$contentTextColor")
                     val intent = Intent(activity, AppForegroundService::class.java)
@@ -78,22 +84,29 @@ class ForegroundServiceGpPlugin :
                     intent.putExtra("imgNameSmall", imgNameSmall)
                     intent.putExtra("contentTextColor", contentTextColor)
                     println("$TGA start intent:$intent")
-                    if(activity == null){
-                        result.success(false)
-                        return
-                    }
                     val isFg = isForeground()
                     println("$TGA start isForeground:$isFg AppForegroundService.sIsRunning:${AppForegroundService.sIsRunning}")
 //                    isFg = true
                     if (isFg && !AppForegroundService.sIsRunning) {
-                        ContextCompat.startForegroundService(activity!!,intent)
+                        try {
+                            ContextCompat.startForegroundService(activity,intent)
 //                    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
 //                        activity!!.startForegroundService(intent)
 //                    } else {
 //                        activity!!.startService(intent)
 //                    }
-                        onInvo()
-                        result.success(true)
+                            onInvo()
+                            result.success(true)
+                        } catch (e: Exception) {
+                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S
+                                && e is ForegroundServiceStartNotAllowedException
+                            ) {
+                                println("$TGA start ForegroundServiceStartNotAllowedException:${e.message}")
+                            } else {
+                                println("$TGA start Exception:${e.message}")
+                            }
+                            result.success(false)
+                        }
                     } else {
                         result.success(false)
                     }
