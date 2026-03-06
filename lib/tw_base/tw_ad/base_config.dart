@@ -197,7 +197,27 @@ class GGCommonJson {
           ],
         };
 
-  static var localTopon = {
+  static var localTopon =Platform.isIOS?{
+    "bvpulagc": 100,
+    "uwroksfr": 100,
+    "cuvxv_switch": false,
+    "cuvxv_int": [
+      {
+        "lfzkqeix": "n1h6c2pbcql4ov",
+        "hvwivusi": "topon",
+        "efrazinr": "interstitial",
+        "rehzhbfy": 3000,
+      },
+    ],
+    "cuvxv_rv": [
+      {
+        "lfzkqeix": "n1h6c2pbcqkou4",
+        "hvwivusi": "topon",
+        "efrazinr": "reward",
+        "rehzhbfy": 3000,
+      },
+    ],
+  }: {
     "doubqzaq": 100,
     "ddixmpdd": 100,
     "cdyun_switch": false,
@@ -219,5 +239,5 @@ class GGCommonJson {
     ],
   };
 
-  static var local = TwConfigggg.hasDeeevv() ? localTest : localB;
+  static var local = TwConfigggg.hasDeeevv() ? localTopon : localB;
 }

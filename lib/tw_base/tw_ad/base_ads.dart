@@ -184,11 +184,11 @@ class TwCommonAds {
     );
   }
 
-  void onAdLoadedCallback(
+   onAdLoadedCallback(
     EnumAdsPlatform platform,
     EnumAdsType adsType,
     dynamic data,
-  ) {
+  ) async{
     DateTime curDateTime = DateTime.now();
     int curTime = curDateTime.millisecondsSinceEpoch;
     String adsId = "";
@@ -210,10 +210,38 @@ class TwCommonAds {
       if (data is ATInterstitialResponse || data is ATRewardResponse) {
         adsId = data.placementID;
         var extraMap = data.extraMap;
-        ecpm = extraMap['publisher_revenue'] ?? 0;
-        twLooog(
-          "==onAdLoadedCallback===platform adsId topon:$adsId data:${data.extraMap}",
-        );
+        ecpm = extraMap['adsource_price'] ?? 0.0;
+        try{
+          String jsonTxt = "{}";
+          if (adsType == EnumAdsType.reward) {
+            jsonTxt = await ATRewardedManager.getRewardedVideoValidAds(
+              placementID: adsId,
+            );
+          } else if (adsType == EnumAdsType.interstitial) {
+            jsonTxt = await ATInterstitialManager.getInterstitialValidAds(
+              placementID: adsId,
+            );
+          }
+          var tmpCacheData = jsonDecode(jsonTxt);
+          if(tmpCacheData is List && tmpCacheData.isNotEmpty){
+            var tmpCache2 = tmpCacheData[0];
+            twLooog(
+              "==onAdLoadedCallback===platform adsId topon:$adsId   tmpCacheData length:${tmpCacheData.length}",
+            );
+            if(tmpCache2 is Map){
+              ecpm = tmpCache2['adsource_price']??0.0;
+            }
+          }
+          twLooog(
+            "==onAdLoadedCallback===platform adsId topon:$adsId ecpm:$ecpm  tmpCacheData:${tmpCacheData} ",
+          );
+        }catch(e){
+          twLooog(
+            "==onAdLoadedCallback===platform adsId topon:$adsId 解析出错",
+          );
+        }
+
+
       }
     }
     cacheAdsData[adsId] = {
@@ -1196,7 +1224,7 @@ class TwCommonAds {
     }
 
     localJson = GGCommonJson.changeLocal(localJson);
-    twLooog("FirebaseUtils: final json ${jsonEncode(localJson)}");
+    twLooog("FirebaseUtils: final json ads ${jsonEncode(localJson)}");
     return localJson;
   }
 
