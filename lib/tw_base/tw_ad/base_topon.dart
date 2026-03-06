@@ -1,4 +1,6 @@
 
+import 'dart:io';
+
 import 'package:c143/tw_base/tw_gj/logC143.dart';
 import 'package:c143/tw_base/tw_configgg/config.dart';
 import 'package:thinkup_sdk/at_index.dart';
@@ -121,8 +123,8 @@ class TwInitTool {
     required void Function(ATInterstitialResponse)? atInterstitialResponse,
   }) async {
     try {
-      String appidS = "h69a79d87c7402";
-      String appidkeyStr= "ae3905b64fcbdc8d8e09a29e3db1e715f";
+      String appidS =Platform.isIOS?"h69a79a734b302": "h69a79d87c7402";
+      String appidkeyStr=Platform.isIOS?"a2909ae4a58a9fe5d5dcebe66ceff1d0e":  "ae3905b64fcbdc8d8e09a29e3db1e715f";
       String result = await ATInitManger.initAnyThinkSDK(
         appidStr: appidS,
         appidkeyStr: appidkeyStr,
