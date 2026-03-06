@@ -1,4 +1,6 @@
 
+import 'dart:io';
+
 import 'package:c143/tw_base/tw_gj/logC143.dart';
 import 'package:c143/tw_base/tw_configgg/config.dart';
 import 'package:thinkup_sdk/at_index.dart';
@@ -121,10 +123,10 @@ class TwInitTool {
     required void Function(ATInterstitialResponse)? atInterstitialResponse,
   }) async {
     try {
-      String appidS = TwConfigggg.hasDeeevv() ? "h68f08f5ae3b21" : "h68ad7ba66635c";
-      String appidkeyStr= TwConfigggg.hasDeeevv()
-          ? "a6e684ab80848d5a5792d0027fb5443b5"
-          : "aa25858a3da423bc9ff10facbbeed3794";
+      String appidS = Platform.isIOS ? "h69a79a734b302" : "h69a79d87c7402";
+      String appidkeyStr= Platform.isIOS
+          ? "a2909ae4a58a9fe5d5dcebe66ceff1d0e"
+          : "ae3905b64fcbdc8d8e09a29e3db1e715f";
       String result = await ATInitManger.initAnyThinkSDK(
         appidStr: appidS,
         appidkeyStr: appidkeyStr,
@@ -132,8 +134,10 @@ class TwInitTool {
       interstitialListener(atInterstitialResponse);
       rewardListener(atRewardResponse);
       twLooog("==initTopon====appidS:$appidS appidkeyStr:$appidkeyStr result:$result ");
+      return true;
     } catch (e) {
       twLooog("==initTopon====error:$e");
+      return false;
     }
   }
 

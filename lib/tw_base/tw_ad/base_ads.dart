@@ -4,6 +4,7 @@ import 'dart:math';
 
 import 'package:c143/tw_143/tw_common/event.dart';
 import 'package:c143/tw_base/tw_ad/guiyin/adjust.dart';
+import 'package:c143/tw_base/tw_configgg/config.dart';
 import 'package:c143/tw_base/tw_http/event_report.dart';
 import 'package:flutter_custom_facebook/flutter_custom_facebook.dart';
 import 'package:c143/tw_base/tw_ad/guiyin/af.dart';
@@ -768,25 +769,55 @@ class TwCommonAds {
     _rewardAdsModel();
     twLooog("====init=hashCode:${hashCode}=_rewardData:$jiliAdsModel");
 
+    final Set<String> adPlatforms = <String>{};
+    chapingAdsModel.forEach((_, value) {
+      adPlatforms.add(value.adsPlatform);
+    });
+    jiliAdsModel.forEach((_, value) {
+      adPlatforms.add(value.adsPlatform);
+    });
+    bool needInitMax = adPlatforms.contains(GGCommonJson.ad_platfrom_max);
+    bool needInitTopon = adPlatforms.contains(
+      GGCommonJson.ad_platfrom_topon,
+    );
+    twLooog(
+      "====init==adPlatforms:$adPlatforms needInitMax:$needInitMax needInitTopon:$needInitTopon",
+    );
+    if (needInitMax && needInitTopon) {
+      twLooog(
+        "====init==Both MAX and TopOn are enabled. If Moloco is configured on both sides with different app keys, Moloco may fail to initialize.",
+      );
+    }
+
     twLooog("====init==PbUuuump start");
     await TwUmpppp().init();
     twLooog("====init==PbUuuump end");
-    twLooog("====init==initMax");
-    bool result = await TwMaxAd.initMax(
-      encodeKey: GGCommonJson.maxkeyEncode,
-      cacheAdsData: cacheAdsData,
-      interstitialListener: _ggCommonAdsListener!.interstitialListener,
-      rewardedAdListener: _ggCommonAdsListener!.rewardedAdListener,
-    );
-    if (!result) {
-      _loadFailReason = AdLoadFailReason.uninitialized;
+    if (needInitMax) {
+      twLooog("====init==initMax");
+      bool result = await TwMaxAd.initMax(
+        encodeKey: GGCommonJson.maxkeyEncode,
+        cacheAdsData: cacheAdsData,
+        interstitialListener: _ggCommonAdsListener!.interstitialListener,
+        rewardedAdListener: _ggCommonAdsListener!.rewardedAdListener,
+      );
+      if (!result) {
+        _loadFailReason = AdLoadFailReason.uninitialized;
+      }
     }
-    twLooog("====init==initTopon");
-    // await InitManger.initTopon(
-    //   atInterstitialResponse: _ggCommonAdsListener!.atInterstitialResponse,
-    //   atRewardResponse: _ggCommonAdsListener!.atRewardResponse,
-    // );
-    // InitManger.setLogEnabled();
+
+    if (needInitTopon) {
+      twLooog("====init==initTopon");
+      bool result = await InitManger.initTopon(
+        atInterstitialResponse: _ggCommonAdsListener!.atInterstitialResponse,
+        atRewardResponse: _ggCommonAdsListener!.atRewardResponse,
+      );
+      if (!result) {
+        _loadFailReason = AdLoadFailReason.uninitialized;
+      }
+      if (TwConfigggg.hasDeeevv()) {
+        InitManger.setLogEnabled();
+      }
+    }
     twLooog("====init==end");
     _scheme =
         firebaseJson[GGCommonJson.k_which_scheme] ?? GGCommonJson.scheme_A;

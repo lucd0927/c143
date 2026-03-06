@@ -299,7 +299,7 @@ class GuideWidget extends StatelessWidget {
               ),
             ),
           ),
-          Positioned(
+          if (TwPackageABC143.isPackageB()) Positioned(
             left: 130.w,
             top: 210.h,
             child: IgnorePointer(

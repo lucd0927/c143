@@ -438,7 +438,9 @@ class MainTreeController extends GetxController {
     } else if (data == MainTreeController.guide12) {
       OverlayGuide13Spin().show();
     }else{
-      MainController.to.resetIndex(MainController.cashIndex);
+      if(TwPackageABC143.isPackageB()) {
+        MainController.to.resetIndex(MainController.cashIndex);
+      }
       if (Platform.isIOS) {
         twShow5Star(Get.context!);
       }

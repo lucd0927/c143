@@ -131,7 +131,7 @@ class _Guide7RankWidgetState extends State<Guide7RankWidget> {
       ? "You’ve entered the CASH OUT PREP ZONE! 🎉"
       : "You’ve entered the COIN OUT PREP ZONE! 🎉 ";
 
-  String get text3 => "Look! This spot will be YOURS SOON!! 🏆💸";
+  String get text3 => "Look! This spot will be YOURS SOON!! 🏆${TwPackageABC143.isPackageB()?"💸":""}";
 
   String get text4 => TwPackageABC143.isPackageB()
       ? "Dare to challenge the CASH LEADERBOARD TOP SPOT?! 🏆💥"
